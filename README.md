@@ -18,7 +18,7 @@ TypeScript wrappers can be found in [`types/`](src/types) and used via `tvm-spec
 ## Development
 
 [`data/`](data) directory contains a set of files with description for all instructions. This description doesn't include
-information that can be obtained from [`sec/instructions/instructions.ts`](src/instructions/instructions.ts) file which
+information that can be obtained from [`src/instructions/instructions.ts`](src/instructions/instructions.ts) file which
 contains bit-level specification for each instruction.
 
 ### Generation
