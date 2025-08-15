@@ -1,0 +1,544 @@
+{
+  "SEMPTY": {
+    "description": {
+      "short": "",
+      "long": "Checks whether a _Slice_ `s` is empty (i.e., contains no bits of data and no cell references).",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Bool"]
+          }
+        ]
+      }
+    }
+  },
+  "SDEMPTY": {
+    "description": {
+      "short": "",
+      "long": "Checks whether _Slice_ `s` has no bits of data.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Bool"]
+          }
+        ]
+      }
+    }
+  },
+  "SREMPTY": {
+    "description": {
+      "short": "",
+      "long": "Checks whether _Slice_ `s` has no references.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Bool"]
+          }
+        ]
+      }
+    }
+  },
+  "SDFIRST": {
+    "description": {
+      "short": "",
+      "long": "Checks whether the first bit of _Slice_ `s` is a one.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Bool"]
+          }
+        ]
+      }
+    }
+  },
+  "SDLEXCMP": {
+    "description": {
+      "short": "",
+      "long": "Compares the data of `s` lexicographically with the data of `s'`, returning `-1`, 0, or 1 depending on the result.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "s2",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "SDEQ": {
+    "description": {
+      "short": "",
+      "long": "Checks if the data parts of `s` and `s'` are bitwise equal.",
+      "operands": [],
+      "other_implementations": [
+        {
+          "exact": false,
+          "instructions": ["SDLEXCMP", "ISZERO"]
+        }
+      ]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "s2",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Bool"]
+          }
+        ]
+      }
+    }
+  },
+  "SDPFX": {
+    "description": {
+      "short": "",
+      "long": "Checks whether `s` is a prefix of `s'`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "s2",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Bool"]
+          }
+        ]
+      }
+    }
+  },
+  "SDPFXREV": {
+    "description": {
+      "short": "",
+      "long": "Checks whether `s'` is a prefix of `s`, equivalent to `SWAP` `SDPFX`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "s2",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Bool"]
+          }
+        ]
+      }
+    }
+  },
+  "SDPPFX": {
+    "description": {
+      "short": "",
+      "long": "Checks whether `s` is a proper prefix of `s'` (i.e., a prefix distinct from `s'`).",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "s2",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Bool"]
+          }
+        ]
+      }
+    }
+  },
+  "SDPPFXREV": {
+    "description": {
+      "short": "",
+      "long": "Checks whether `s'` is a proper prefix of `s`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "s2",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Bool"]
+          }
+        ]
+      }
+    }
+  },
+  "SDSFX": {
+    "description": {
+      "short": "",
+      "long": "Checks whether `s` is a suffix of `s'`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "s2",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Bool"]
+          }
+        ]
+      }
+    }
+  },
+  "SDSFXREV": {
+    "description": {
+      "short": "",
+      "long": "Checks whether `s'` is a suffix of `s`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "s2",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Bool"]
+          }
+        ]
+      }
+    }
+  },
+  "SDPSFX": {
+    "description": {
+      "short": "",
+      "long": "Checks whether `s` is a proper suffix of `s'`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "s2",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Bool"]
+          }
+        ]
+      }
+    }
+  },
+  "SDPSFXREV": {
+    "description": {
+      "short": "",
+      "long": "Checks whether `s'` is a proper suffix of `s`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "s2",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Bool"]
+          }
+        ]
+      }
+    }
+  },
+  "SDCNTLEAD0": {
+    "description": {
+      "short": "",
+      "long": "Returns the number of leading zeroes in `s`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "SDCNTLEAD1": {
+    "description": {
+      "short": "",
+      "long": "Returns the number of leading ones in `s`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "SDCNTTRAIL0": {
+    "description": {
+      "short": "",
+      "long": "Returns the number of trailing zeroes in `s`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "SDCNTTRAIL1": {
+    "description": {
+      "short": "",
+      "long": "Returns the number of trailing ones in `s`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  }
+}

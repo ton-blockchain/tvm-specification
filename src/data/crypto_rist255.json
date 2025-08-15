@@ -1,0 +1,423 @@
+{
+  "RIST255_FROMHASH": {
+    "description": {
+      "short": "",
+      "long": "Deterministically generates a valid point `x` from a 512-bit hash (given as two 256-bit integers).",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "h1",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "h2",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "RIST255_VALIDATE": {
+    "description": {
+      "short": "",
+      "long": "Checks that integer `x` is a valid representation of some curve point. Throws range_chk on error.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "RIST255_ADD": {
+    "description": {
+      "short": "",
+      "long": "Addition of two points on a curve.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "RIST255_SUB": {
+    "description": {
+      "short": "",
+      "long": "Subtraction of two points on curve.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "RIST255_MUL": {
+    "description": {
+      "short": "",
+      "long": "Multiplies point `x` by a scalar `n`. Any `n` is valid, including negative.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "n",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "RIST255_MULBASE": {
+    "description": {
+      "short": "",
+      "long": "Multiplies the generator point `g` by a scalar `n`. Any `n` is valid, including negative.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "n",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "RIST255_PUSHL": {
+    "description": {
+      "short": "",
+      "long": "Pushes integer l=2^252+27742317777372353535851937790883648493, which is the order of the group.",
+      "operands": []
+    },
+    "signature": {
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "RIST255_QVALIDATE": {
+    "description": {
+      "short": "",
+      "long": "Checks that integer `x` is a valid representation of some curve point. Returns -1 on success and 0 on failure.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "RIST255_QADD": {
+    "description": {
+      "short": "",
+      "long": "Addition of two points on a curve. Returns -1 on success and 0 on failure.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": []
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "result",
+                    "value_types": ["Int"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "RIST255_QSUB": {
+    "description": {
+      "short": "",
+      "long": "Subtraction of two points on curve. Returns -1 on success and 0 on failure.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": []
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "result",
+                    "value_types": ["Int"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "RIST255_QMUL": {
+    "description": {
+      "short": "",
+      "long": "Multiplies point `x` by a scalar `n`. Any `n` is valid, including negative. Returns -1 on success and 0 on failure.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "n",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": []
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "result",
+                    "value_types": ["Int"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "RIST255_QMULBASE": {
+    "description": {
+      "short": "",
+      "long": "Multiplies the generator point `g` by a scalar `n`. Any `n` is valid, including negative.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "n",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": []
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "result",
+                    "value_types": ["Int"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  }
+}

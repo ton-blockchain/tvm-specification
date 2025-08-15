@@ -1,0 +1,580 @@
+{
+  "ADD": {
+    "description": {
+      "short": "Adds two integers and pushes the result back onto the stack.",
+      "long": "Pops two integers from the stack, adds them and pushes the result back onto the stack.",
+      "exit_codes": [
+        {
+          "errno": "2",
+          "condition": "Stack contains less than 2 elements."
+        },
+        {
+          "errno": "7",
+          "condition": "Top or second element is not an Int."
+        }
+      ],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "presentation": "x + y",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "SUB": {
+    "description": {
+      "short": "Subtracts two integers and pushes the result back onto the stack.",
+      "long": "Pops two integers from the stack, subtracts the second one from the first one and pushes the result back onto the stack.",
+      "exit_codes": [
+        {
+          "errno": "2",
+          "condition": "Stack contains less than 2 elements."
+        },
+        {
+          "errno": "7",
+          "condition": "Top or second element is not an Int."
+        }
+      ],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "presentation": "x - y",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "SUBR": {
+    "description": {
+      "short": "Subtracts two integers in reverse order and pushes the result back onto the stack.",
+      "long": "Pops two integers from the stack, subtracts the first one from the second one and pushes the result back onto the stack.",
+      "exit_codes": [
+        {
+          "errno": "2",
+          "condition": "Stack contains less than 2 elements."
+        },
+        {
+          "errno": "7",
+          "condition": "Top or second element is not an Int."
+        }
+      ],
+      "other_implementations": [
+        {
+          "exact": true,
+          "instructions": ["SWAP", "SUB"]
+        }
+      ],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "presentation": "y - x",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "NEGATE": {
+    "description": {
+      "short": "Negates an integer and pushes the result back onto the stack.",
+      "exit_codes": [
+        {
+          "errno": "2",
+          "condition": "Stack contains less than 1 element."
+        },
+        {
+          "errno": "7",
+          "condition": "Top element is not an Int."
+        },
+        {
+          "errno": "4",
+          "condition": "Integer overflow if `x = -2^256`."
+        }
+      ],
+      "other_implementations": [
+        {
+          "exact": true,
+          "instructions": ["MULINT -1", "NEGATE"]
+        },
+        {
+          "exact": true,
+          "instructions": ["ZERO", "SUBR"]
+        }
+      ],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "presentation": "-x",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "INC": {
+    "description": {
+      "short": "Increments an integer and pushes the result back onto the stack.",
+      "long": "Pops an integer from the stack, increments it by 1 and pushes the result back onto the stack.",
+      "exit_codes": [
+        {
+          "errno": "2",
+          "condition": "Stack contains less than 1 element."
+        },
+        {
+          "errno": "7",
+          "condition": "Top element is not an Int."
+        }
+      ],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "presentation": "x + 1",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "DEC": {
+    "description": {
+      "short": "Decrements an integer and pushes the result back onto the stack.",
+      "long": "Pops an integer from the stack, decrements it by 1 and pushes the result back onto the stack.",
+      "exit_codes": [
+        {
+          "errno": "2",
+          "condition": "Stack contains less than 1 element."
+        },
+        {
+          "errno": "7",
+          "condition": "Top element is not an Int."
+        }
+      ],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "presentation": "x - 1",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "MUL": {
+    "description": {
+      "short": "Multiplies two integers and pushes the result back onto the stack.",
+      "long": "Pops two integers from the stack, multiplies them and pushes the result back onto the stack.",
+      "exit_codes": [
+        {
+          "errno": "2",
+          "condition": "Stack contains less than 2 elements."
+        },
+        {
+          "errno": "7",
+          "condition": "Top or second element is not an Int."
+        }
+      ],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "presentation": "x * y",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QADD": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QSUB": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QSUBR": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QNEGATE": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QINC": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QDEC": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QMUL": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "ADDINT": {
+    "description": {
+      "short": "",
+      "long": ""
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "MULINT": {
+    "description": {
+      "short": "",
+      "long": ""
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "QADDINT": {
+    "description": {
+      "short": "",
+      "long": ""
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "QMULINT": {
+    "description": {
+      "short": "",
+      "long": ""
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  }
+}

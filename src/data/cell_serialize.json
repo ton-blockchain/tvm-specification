@@ -1,0 +1,3051 @@
+{
+  "NEWC": {
+    "description": {
+      "short": "Creates a new empty _Builder_.",
+      "exit_codes": [],
+      "operands": []
+    },
+    "signature": {
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          }
+        ]
+      }
+    }
+  },
+  "ENDC": {
+    "description": {
+      "short": "Converts a _Builder_ into an ordinary _Cell_.",
+      "long": "Pops a _Builder_ from the stack and converts it into an ordinary _Cell_.",
+      "exit_codes": [],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "c",
+            "value_types": ["Cell"]
+          }
+        ]
+      }
+    }
+  },
+  "ENDCST": {
+    "description": {
+      "short": "",
+      "long": ""
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "STBREF": {
+    "description": {
+      "short": "",
+      "long": "Converts a _Builder_ to _Cell_ and stores a reference to it into another _Builder_.",
+      "tags": ["builder building"],
+      "operands": [],
+      "other_implementations": [
+        {
+          "exact": true,
+          "instructions": ["SWAP", "STBREFR"]
+        }
+      ]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "child",
+            "value_types": ["Builder"]
+          },
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b'",
+            "value_types": ["Builder"]
+          }
+        ]
+      }
+    }
+  },
+  "STB": {
+    "description": {
+      "short": "",
+      "long": "Appends all data from _Builder_ `b'` to _Builder_ `b`.",
+      "tags": ["builder building"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "from",
+            "value_types": ["Builder"]
+          },
+          {
+            "type": "simple",
+            "name": "to",
+            "value_types": ["Builder"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b'",
+            "value_types": ["Builder"]
+          }
+        ]
+      }
+    }
+  },
+  "STREFR": {
+    "description": {
+      "short": "",
+      "long": "Stores a reference to _Cell_ `c` into _Builder_ `b` with swapped arguments.",
+      "tags": ["builder building"],
+      "operands": [],
+      "other_implementations": [
+        {
+          "exact": true,
+          "instructions": ["SWAP", "STREF"]
+        }
+      ]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          },
+          {
+            "type": "simple",
+            "name": "c",
+            "value_types": ["Cell"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b'",
+            "value_types": ["Builder"]
+          }
+        ]
+      }
+    }
+  },
+  "STBREFR": {
+    "description": {
+      "short": "",
+      "long": "Converts a _Builder_ to _Cell_ and stores a reference to it into another _Builder_.",
+      "tags": ["builder building"],
+      "operands": [],
+      "other_implementations": [
+        {
+          "exact": true,
+          "instructions": ["ENDC", "SWAP", "STREF"]
+        }
+      ]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          },
+          {
+            "type": "simple",
+            "name": "child",
+            "value_types": ["Builder"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b'",
+            "value_types": ["Builder"]
+          }
+        ]
+      }
+    }
+  },
+  "STSLICER": {
+    "description": {
+      "short": "",
+      "long": "Stores _Slice_ `s` into _Builder_ `b` with swapped arguments.",
+      "tags": ["builder building"],
+      "operands": [],
+      "other_implementations": [
+        {
+          "exact": true,
+          "instructions": ["SWAP", "STSLICE"]
+        }
+      ]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          },
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b'",
+            "value_types": ["Builder"]
+          }
+        ]
+      }
+    }
+  },
+  "STBR": {
+    "description": {
+      "short": "",
+      "long": "Appends all data from _Builder_ `b'` to _Builder_ `b` with swapped arguments.",
+      "tags": ["builder building"],
+      "operands": [],
+      "other_implementations": [
+        {
+          "exact": true,
+          "instructions": ["SWAP", "STB"]
+        }
+      ]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "to",
+            "value_types": ["Builder"]
+          },
+          {
+            "type": "simple",
+            "name": "from",
+            "value_types": ["Builder"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b3",
+            "value_types": ["Builder"]
+          }
+        ]
+      }
+    }
+  },
+  "STREFQ": {
+    "description": {
+      "short": "",
+      "long": "Stores a reference to _Cell_ `c` into _Builder_ `b`. This is a quiet version of `STREF` which means that instead of throwing an exception, it pushes a status flag to the stack: -1 if there is no space in `b`, 0 if the operation succeeds.",
+      "tags": ["builder building"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "c",
+            "value_types": ["Cell"]
+          },
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "b'",
+                    "value_types": ["Builder"]
+                  }
+                ]
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "c",
+                    "value_types": ["Cell"]
+                  },
+                  {
+                    "type": "simple",
+                    "name": "b",
+                    "value_types": ["Builder"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "STBREFQ": {
+    "description": {
+      "short": "",
+      "long": "Converts a _Builder_ to _Cell_ and stores a reference to it into another _Builder_. This is a quiet version of `STBREF` which means that instead of throwing an exception, it pushes a status flag to the stack: -1 if there is no space in `b`, 0 if the operation succeeds.",
+      "tags": ["builder building"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b'",
+            "value_types": ["Builder"]
+          },
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "b3",
+                    "value_types": ["Builder"]
+                  }
+                ]
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "b'",
+                    "value_types": ["Builder"]
+                  },
+                  {
+                    "type": "simple",
+                    "name": "b",
+                    "value_types": ["Builder"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "STSLICEQ": {
+    "description": {
+      "short": "",
+      "long": "Stores _Slice_ `s` into _Builder_ `b`. This is a quiet version of `STSLICE` which means that instead of throwing an exception, it pushes a status flag to the stack: -1 if there is no space in `b`, 0 if the operation succeeds.",
+      "tags": ["builder building"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "b'",
+                    "value_types": ["Builder"]
+                  }
+                ]
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "s",
+                    "value_types": ["Slice"]
+                  },
+                  {
+                    "type": "simple",
+                    "name": "b",
+                    "value_types": ["Builder"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "STBQ": {
+    "description": {
+      "short": "",
+      "long": "Appends all data from _Builder_ `b'` to _Builder_ `b`. This is a quiet version of `STB` which means that instead of throwing an exception, it pushes a status flag to the stack: -1 if there is no space in `b`, 0 if the operation succeeds.",
+      "tags": ["builder building"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b'",
+            "value_types": ["Builder"]
+          },
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "b3",
+                    "value_types": ["Builder"]
+                  }
+                ]
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "b'",
+                    "value_types": ["Builder"]
+                  },
+                  {
+                    "type": "simple",
+                    "name": "b",
+                    "value_types": ["Builder"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "STREFRQ": {
+    "description": {
+      "short": "",
+      "long": "Stores a reference to _Cell_ `c` into _Builder_ `b` with swapped arguments. This is a quiet version of `STREFR` which means that instead of throwing an exception, it pushes a status flag to the stack: -1 if there is no space in `b`, 0 if the operation succeeds.",
+      "tags": ["builder building"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          },
+          {
+            "type": "simple",
+            "name": "c",
+            "value_types": ["Cell"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "b'",
+                    "value_types": ["Builder"]
+                  }
+                ]
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "b",
+                    "value_types": ["Builder"]
+                  },
+                  {
+                    "type": "simple",
+                    "name": "c",
+                    "value_types": ["Cell"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "STBREFRQ": {
+    "description": {
+      "short": "",
+      "long": "Converts a _Builder_ to _Cell_ and stores a reference to it into another _Builder_. This is a quiet version of `STBREFR` which means that instead of throwing an exception, it pushes a status flag to the stack: -1 if there is no space in `b`, 0 if the operation succeeds.",
+      "tags": ["builder building"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b'",
+            "value_types": ["Builder"]
+          },
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "b3",
+                    "value_types": ["Builder"]
+                  }
+                ]
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "b'",
+                    "value_types": ["Builder"]
+                  },
+                  {
+                    "type": "simple",
+                    "name": "b",
+                    "value_types": ["Builder"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "STSLICERQ": {
+    "description": {
+      "short": "",
+      "long": "Stores _Slice_ `s` into _Builder_ `b` with swapped arguments. This is a quiet version of `STSLICER` which means that instead of throwing an exception, it pushes a status flag to the stack: -1 if there is no space in `b`, 0 if the operation succeeds.",
+      "tags": ["builder building"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          },
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "b3",
+                    "value_types": ["Builder"]
+                  }
+                ]
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "b",
+                    "value_types": ["Builder"]
+                  },
+                  {
+                    "type": "simple",
+                    "name": "s",
+                    "value_types": ["Slice"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "STBRQ": {
+    "description": {
+      "short": "",
+      "long": "Appends all data from _Builder_ `b'` to _Builder_ `b` with swapped arguments. This is a quiet version of `STBR` which means that instead of throwing an exception, it pushes a status flag to the stack: -1 if there is no space in `b`, 0 if the operation succeeds.",
+      "tags": ["builder building"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          },
+          {
+            "type": "simple",
+            "name": "b'",
+            "value_types": ["Builder"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "b3",
+                    "value_types": ["Builder"]
+                  }
+                ]
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "b",
+                    "value_types": ["Builder"]
+                  },
+                  {
+                    "type": "simple",
+                    "name": "b'",
+                    "value_types": ["Builder"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "ENDXC": {
+    "description": {
+      "short": "Creates an exotic or ordinary _Cell_ from _Builder_.",
+      "long": "If ` x!= 0`, creates a _special_ or _exotic_ cell from _Builder_ `b`.\nThe type of the exotic cell must be stored in the first 8 bits of `b`.\nIf `x == 0`, it is equivalent to `ENDC`. Otherwise some validity checks on the data and references of `b` are performed before creating the exotic cell.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          },
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "c",
+            "value_types": ["Cell"]
+          }
+        ]
+      }
+    }
+  },
+  "BDEPTH": {
+    "description": {
+      "short": "",
+      "long": "Returns the depth of _Builder_ `b`. If no cell references are stored in `b`, then `x == 0`; otherwise `x` is one plus the maximum of depths of cells referred to from `b`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "BBITS": {
+    "description": {
+      "short": "",
+      "long": "Returns the number of data bits already stored in _Builder_ `b`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "BREFS": {
+    "description": {
+      "short": "",
+      "long": "Returns the number of cell references already stored in `b`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "BBITREFS": {
+    "description": {
+      "short": "",
+      "long": "Returns the numbers of both data bits and cell references in `b`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "BREMBITS": {
+    "description": {
+      "short": "",
+      "long": "Returns the number of data bits that can still be stored in `b`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x2",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "BREMREFS": {
+    "description": {
+      "short": "",
+      "long": "Returns the number of references that can still be stored in `b`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "y2",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "BREMBITREFS": {
+    "description": {
+      "short": "",
+      "long": "Returns the numbers of both data bits and references that can still be stored in `b`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x2",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y2",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "BCHKREFS": {
+    "description": {
+      "short": "",
+      "long": "Checks whether `y` references can be stored into `b`, `0 <= y <= 7`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "BCHKBITREFS": {
+    "description": {
+      "short": "",
+      "long": "Checks whether `x` bits and `y` references can be stored into `b`, `0 <= x <= 1023`, `0 <= y <= 7`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          },
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "BCHKREFSQ": {
+    "description": {
+      "short": "",
+      "long": "Checks whether `y` references can be stored into `b`, `0 <= y <= 7`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Bool"]
+          }
+        ]
+      }
+    }
+  },
+  "BCHKBITREFSQ": {
+    "description": {
+      "short": "",
+      "long": "Checks whether `x` bits and `y` references can be stored into `b`, `0 <= x <= 1023`, `0 <= y <= 7`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          },
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Bool"]
+          }
+        ]
+      }
+    }
+  },
+  "STZEROES": {
+    "description": {
+      "short": "",
+      "long": "Stores `n` binary zeroes into _Builder_ `b`.",
+      "tags": ["builder building"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          },
+          {
+            "type": "simple",
+            "name": "n",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b'",
+            "value_types": ["Builder"]
+          }
+        ]
+      }
+    }
+  },
+  "STONES": {
+    "description": {
+      "short": "",
+      "long": "Stores `n` binary ones into _Builder_ `b`.",
+      "tags": ["builder building"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          },
+          {
+            "type": "simple",
+            "name": "n",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b'",
+            "value_types": ["Builder"]
+          }
+        ]
+      }
+    }
+  },
+  "STSAME": {
+    "description": {
+      "short": "",
+      "long": "Stores `n` binary `x`es (`0 <= x <= 1`) into _Builder_ `b`.",
+      "tags": ["builder building"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          },
+          {
+            "type": "simple",
+            "name": "n",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b'",
+            "value_types": ["Builder"]
+          }
+        ]
+      }
+    }
+  },
+  "STGRAMS": {
+    "description": {
+      "short": "",
+      "long": "Stores an _Integer_ `x` in the range `0...2^120-1` into _Builder_ `b`, and returns the resulting _Builder_ `b'`. The serialization of `x` consists of a 4-bit unsigned big-endian integer `l`, which is the smallest integer `l>=0`, such that `x<2^(8l)`, followed by an `8l`-bit unsigned big-endian representation of `x`. If `x` does not belong to the supported range, a range check exception is thrown.",
+      "tags": ["variable-size integer", "builder building"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          },
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b2",
+            "value_types": ["Builder"]
+          }
+        ]
+      }
+    }
+  },
+  "STVARINT16": {
+    "description": {
+      "short": "",
+      "long": "Stores a _signed_ _Integer_ `x` in the range `-2^119...2^119-1` into _Builder_ `b`, and returns the resulting _Builder_ `b'`. The serialization of `x` consists of a 4-bit unsigned big-endian integer `l`, which is the smallest integer `l>=0`, such that `-2^(8l-1) <= x < 2^(8l-1)`, followed by an `8l`-bit signed big-endian representation of `x`. If `x` does not belong to the supported range, a range check exception is thrown.",
+      "tags": ["variable-size integer", "builder building"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          },
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b2",
+            "value_types": ["Builder"]
+          }
+        ]
+      }
+    }
+  },
+  "STVARUINT32": {
+    "description": {
+      "short": "",
+      "long": "Stores an _Integer_ `x` in the range `0...2^248-1` into _Builder_ `b`, and returns the resulting _Builder_ `b'`. The serialization of `x` consists of a 5-bit unsigned big-endian integer `l`, which is the smallest integer `l>=0`, such that `x<2^(8l)`, followed by an `8l`-bit unsigned big-endian representation of `x`. If `x` does not belong to the supported range, a range check exception is thrown.",
+      "tags": ["variable-size integer", "builder building"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          },
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b2",
+            "value_types": ["Builder"]
+          }
+        ]
+      }
+    }
+  },
+  "STVARINT32": {
+    "description": {
+      "short": "",
+      "long": "Stores a _signed_ _Integer_ `x` in the range `-2^247...2^247-1` into _Builder_ `b`, and returns the resulting _Builder_ `b'`. The serialization of `x` consists of a 5-bit unsigned big-endian integer `l`, which is the smallest integer `l>=0`, such that `-2^(8l-1) <= x < 2^(8l-1)`, followed by an `8l`-bit signed big-endian representation of `x`. If `x` does not belong to the supported range, a range check exception is thrown.",
+      "tags": ["variable-size integer", "builder building"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          },
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b2",
+            "value_types": ["Builder"]
+          }
+        ]
+      }
+    }
+  },
+  "STIX": {
+    "description": {
+      "short": "",
+      "long": "Stores a signed `width`-bit integer `x` into `b` for `0 <= width <= 257`.",
+      "tags": ["builder building"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          },
+          {
+            "type": "simple",
+            "name": "width",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b'",
+            "value_types": ["Builder"],
+            "mutations": [
+              {
+                "length": {
+                  "stack_amount_arg": 0
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "STUX": {
+    "description": {
+      "short": "",
+      "long": "Stores an unsigned `width`-bit integer `x` into `b` for `0 <= width <= 256`.",
+      "tags": ["builder building"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          },
+          {
+            "type": "simple",
+            "name": "width",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b'",
+            "value_types": ["Builder"],
+            "mutations": [
+              {
+                "length": {
+                  "stack_amount_arg": 0
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "STIXR": {
+    "description": {
+      "short": "",
+      "long": "Stores a signed `width`-bit integer `x` into `b` for `0 <= width <= 257`, but with arguments in a different order.",
+      "tags": ["builder building"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          },
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "width",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b'",
+            "value_types": ["Builder"],
+            "mutations": [
+              {
+                "length": {
+                  "stack_amount_arg": 0
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "STUXR": {
+    "description": {
+      "short": "",
+      "long": "Stores an unsigned `width`-bit integer `x` into `b` for `0 <= width <= 256`, but with arguments in a different order.",
+      "tags": ["builder building"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          },
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "width",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b'",
+            "value_types": ["Builder"],
+            "mutations": [
+              {
+                "length": {
+                  "stack_amount_arg": 0
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "STIXQ": {
+    "description": {
+      "short": "",
+      "long": "A quiet version of `STIX`. If there is no space in `b`, sets `b'=b` and `f=-1`.\nIf `x` does not fit into `width` bits, sets `b'=b` and `f=1`.\nIf the operation succeeds, `b'` is the new _Builder_ and `f=0`.\nHowever, `0 <= width <= 257`, with a range check exception if this is not so.",
+      "tags": ["builder building"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          },
+          {
+            "type": "simple",
+            "name": "width",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "b'",
+                    "value_types": ["Builder"]
+                  }
+                ]
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "x",
+                    "value_types": ["Int"]
+                  },
+                  {
+                    "type": "simple",
+                    "name": "b",
+                    "value_types": ["Builder"]
+                  }
+                ]
+              },
+              {
+                "value": 1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "x",
+                    "value_types": ["Int"]
+                  },
+                  {
+                    "type": "simple",
+                    "name": "b",
+                    "value_types": ["Builder"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "STUXQ": {
+    "description": {
+      "short": "",
+      "long": "Stores an unsigned `width`-bit integer `x` into `b` for `0 <= width <= 256`. This is a quiet version of `STUX` which means that instead of throwing an exception, it pushes a status flag to the stack: -1 if there is no space in `b`, 0 if the operation succeeds.",
+      "tags": ["builder building"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          },
+          {
+            "type": "simple",
+            "name": "width",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "b'",
+                    "value_types": ["Builder"]
+                  }
+                ]
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "x",
+                    "value_types": ["Int"]
+                  },
+                  {
+                    "type": "simple",
+                    "name": "b",
+                    "value_types": ["Builder"]
+                  }
+                ]
+              },
+              {
+                "value": 1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "x",
+                    "value_types": ["Int"]
+                  },
+                  {
+                    "type": "simple",
+                    "name": "b",
+                    "value_types": ["Builder"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "STIXRQ": {
+    "description": {
+      "short": "",
+      "long": "Stores a signed `width`-bit integer `x` into `b` for `0 <= width <= 257`, but with arguments in a different order. This is a quiet version of `STIXR` which means that instead of throwing an exception, it pushes a status flag to the stack: -1 if there is no space in `b`, 0 if the operation succeeds.",
+      "tags": ["builder building"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          },
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "width",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "b'",
+                    "value_types": ["Builder"]
+                  }
+                ]
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "b",
+                    "value_types": ["Builder"]
+                  },
+                  {
+                    "type": "simple",
+                    "name": "x",
+                    "value_types": ["Int"]
+                  }
+                ]
+              },
+              {
+                "value": 1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "b",
+                    "value_types": ["Builder"]
+                  },
+                  {
+                    "type": "simple",
+                    "name": "x",
+                    "value_types": ["Int"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "STUXRQ": {
+    "description": {
+      "short": "",
+      "long": "Stores an unsigned `width`-bit integer `x` into `b` for `0 <= width <= 256`, but with arguments in a different order. This is a quiet version of `STUXR` which means that instead of throwing an exception, it pushes a status flag to the stack: -1 if there is no space in `b`, 0 if the operation succeeds.",
+      "tags": ["builder building"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          },
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "width",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "b'",
+                    "value_types": ["Builder"]
+                  }
+                ]
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "b",
+                    "value_types": ["Builder"]
+                  },
+                  {
+                    "type": "simple",
+                    "name": "x",
+                    "value_types": ["Int"]
+                  }
+                ]
+              },
+              {
+                "value": 1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "b",
+                    "value_types": ["Builder"]
+                  },
+                  {
+                    "type": "simple",
+                    "name": "x",
+                    "value_types": ["Int"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "STILE4": {
+    "description": {
+      "short": "",
+      "long": "Stores a little-endian signed 32-bit integer.",
+      "tags": ["builder building"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b'",
+            "value_types": ["Builder"]
+          }
+        ]
+      }
+    }
+  },
+  "STULE4": {
+    "description": {
+      "short": "",
+      "long": "Stores a little-endian unsigned 32-bit integer.",
+      "tags": ["builder building"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b'",
+            "value_types": ["Builder"]
+          }
+        ]
+      }
+    }
+  },
+  "STILE8": {
+    "description": {
+      "short": "",
+      "long": "Stores a little-endian signed 64-bit integer.",
+      "tags": ["builder building"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b'",
+            "value_types": ["Builder"]
+          }
+        ]
+      }
+    }
+  },
+  "STULE8": {
+    "description": {
+      "short": "",
+      "long": "Stores a little-endian unsigned 64-bit integer.",
+      "tags": ["builder building"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b'",
+            "value_types": ["Builder"]
+          }
+        ]
+      }
+    }
+  },
+  "STIR": {
+    "description": {
+      "short": "Stores a signed `width`-bit integer `x` into _Builder_ `b` and returns the resulting _Builder_ `b'`.",
+      "tags": ["builder building"],
+      "exit_codes": [
+        {
+          "errno": "2",
+          "condition": "Stack contains less than 2 elements."
+        },
+        {
+          "errno": "5",
+          "condition": "Integer is too large to fit into `c` bits."
+        },
+        {
+          "errno": "7",
+          "condition": "Top element is not an Int."
+        },
+        {
+          "errno": "7",
+          "condition": "Second element is not a Builder."
+        }
+      ],
+      "operands": ["width"],
+      "other_implementations": [
+        {
+          "exact": true,
+          "instructions": ["SWAP [c+1]", "STI"]
+        }
+      ]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          },
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b'",
+            "value_types": ["Builder"],
+            "mutations": [
+              {
+                "length": {
+                  "amount_arg": 0
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "STUR": {
+    "description": {
+      "short": "Stores an unsigned `width`-bit integer `x` into _Builder_ `b` and returns the resulting _Builder_ `b'`.",
+      "tags": ["builder building"],
+      "exit_codes": [
+        {
+          "errno": "2",
+          "condition": "Stack contains less than 2 elements."
+        },
+        {
+          "errno": "5",
+          "condition": "Integer is too large to fit into `c` bits."
+        },
+        {
+          "errno": "7",
+          "condition": "Top element is not an Int."
+        },
+        {
+          "errno": "7",
+          "condition": "Second element is not a Builder."
+        }
+      ],
+      "operands": ["width"],
+      "other_implementations": [
+        {
+          "exact": true,
+          "instructions": ["SWAP [c+1]", "STU"]
+        }
+      ]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          },
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b'",
+            "value_types": ["Builder"],
+            "mutations": [
+              {
+                "length": {
+                  "amount_arg": 0
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "STIQ": {
+    "description": {
+      "short": "",
+      "long": "Stores a signed `width`-bit integer `x` into _Builder_ `b` and returns the resulting _Builder_ `b'`. This is a quiet version of `STI` which means that instead of throwing an exception, it pushes a status flag to the stack: -1 if there is no space in `b`, 0 if the operation succeeds.",
+      "tags": ["builder building"],
+      "operands": ["c"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "b'",
+                    "value_types": ["Builder"]
+                  }
+                ]
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "x",
+                    "value_types": ["Int"]
+                  },
+                  {
+                    "type": "simple",
+                    "name": "b",
+                    "value_types": ["Builder"]
+                  }
+                ]
+              },
+              {
+                "value": 1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "x",
+                    "value_types": ["Int"]
+                  },
+                  {
+                    "type": "simple",
+                    "name": "b",
+                    "value_types": ["Builder"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "STUQ": {
+    "description": {
+      "short": "",
+      "long": "Stores an unsigned `width`-bit integer `x` into _Builder_ `b` and returns the resulting _Builder_ `b'`. This is a quiet version of `STU` which means that instead of throwing an exception, it pushes a status flag to the stack: -1 if there is no space in `b`, 0 if the operation succeeds.",
+      "tags": ["builder building"],
+      "operands": ["c"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "b'",
+                    "value_types": ["Builder"]
+                  }
+                ]
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "x",
+                    "value_types": ["Int"]
+                  },
+                  {
+                    "type": "simple",
+                    "name": "b",
+                    "value_types": ["Builder"]
+                  }
+                ]
+              },
+              {
+                "value": 1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "x",
+                    "value_types": ["Int"]
+                  },
+                  {
+                    "type": "simple",
+                    "name": "b",
+                    "value_types": ["Builder"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "STIRQ": {
+    "description": {
+      "short": "",
+      "long": "Stores a signed `width`-bit integer `x` into _Builder_ `b` and returns the resulting _Builder_ `b'`. This is a quiet version of `STIR` which means that instead of throwing an exception, it pushes a status flag to the stack: -1 if there is no space in `b`, 0 if the operation succeeds.",
+      "tags": ["builder building"],
+      "operands": ["c"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          },
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "b'",
+                    "value_types": ["Builder"]
+                  }
+                ]
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "b",
+                    "value_types": ["Builder"]
+                  },
+                  {
+                    "type": "simple",
+                    "name": "x",
+                    "value_types": ["Int"]
+                  }
+                ]
+              },
+              {
+                "value": 1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "b",
+                    "value_types": ["Builder"]
+                  },
+                  {
+                    "type": "simple",
+                    "name": "x",
+                    "value_types": ["Int"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "STURQ": {
+    "description": {
+      "short": "",
+      "long": "Stores an unsigned `width`-bit integer `x` into _Builder_ `b` and returns the resulting _Builder_ `b'`. This is a quiet version of `STUR` which means that instead of throwing an exception, it pushes a status flag to the stack: -1 if there is no space in `b`, 0 if the operation succeeds.",
+      "tags": ["builder building"],
+      "operands": ["c"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          },
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "b'",
+                    "value_types": ["Builder"]
+                  }
+                ]
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "b",
+                    "value_types": ["Builder"]
+                  },
+                  {
+                    "type": "simple",
+                    "name": "x",
+                    "value_types": ["Int"]
+                  }
+                ]
+              },
+              {
+                "value": 1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "b",
+                    "value_types": ["Builder"]
+                  },
+                  {
+                    "type": "simple",
+                    "name": "x",
+                    "value_types": ["Int"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "STREFCONST": {
+    "description": {
+      "short": "",
+      "long": "Pushes the reference `c` and stores it into _Builder_.",
+      "tags": ["builder building"],
+      "operands": ["c"],
+      "other_implementations": [
+        {
+          "exact": true,
+          "instructions": ["PUSHREF", "STREFR"]
+        }
+      ]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b'",
+            "value_types": ["Builder"]
+          }
+        ]
+      }
+    }
+  },
+  "STREF2CONST": {
+    "description": {
+      "short": "",
+      "long": "Stores two constant references `c1` and `c2` into _Builder_.",
+      "tags": ["builder building"],
+      "operands": ["c1", "c2"],
+      "other_implementations": [
+        {
+          "exact": true,
+          "instructions": ["STREFCONST", "STREFCONST"]
+        }
+      ]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b'",
+            "value_types": ["Builder"]
+          }
+        ]
+      }
+    }
+  },
+  "STREF": {
+    "description": {
+      "short": "",
+      "long": "Stores a reference to _Cell_ `c` into _Builder_ `b`.",
+      "tags": ["builder building"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "c",
+            "value_types": ["Cell"]
+          },
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b'",
+            "value_types": ["Builder"]
+          }
+        ]
+      }
+    }
+  },
+  "STREF_ALT": {
+    "description": {
+      "short": "",
+      "long": "Stores a reference to _Cell_ `c` into _Builder_ `b`. This is a longer encoding of `STREF`.",
+      "tags": ["builder building"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "c",
+            "value_types": ["Cell"]
+          },
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b'",
+            "value_types": ["Builder"]
+          }
+        ]
+      }
+    }
+  },
+  "STSLICE": {
+    "description": {
+      "short": "",
+      "long": "Stores _Slice_ `s` into _Builder_ `b`.",
+      "tags": ["builder building"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b'",
+            "value_types": ["Builder"],
+            "mutations": [
+              {
+                "length": {
+                  "stack_amount_arg": 1
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "STSLICE_ALT": {
+    "description": {
+      "short": "",
+      "long": "Stores _Slice_ `s` into _Builder_ `b`. This is a longer encoding of `STSLICE`.",
+      "tags": ["builder building"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b'",
+            "value_types": ["Builder"],
+            "mutations": [
+              {
+                "length": {
+                  "stack_amount_arg": 1
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "STI": {
+    "description": {
+      "short": "Stores a signed `width`-bit integer `x` into _Builder_ `b` and returns the resulting _Builder_ `b'`.",
+      "tags": ["builder building"],
+      "exit_codes": [
+        {
+          "errno": "2",
+          "condition": "Stack contains less than 2 elements."
+        },
+        {
+          "errno": "5",
+          "condition": "Integer is too large to fit into `c` bits."
+        },
+        {
+          "errno": "7",
+          "condition": "Top element is not an Int."
+        },
+        {
+          "errno": "7",
+          "condition": "Second element is not a Builder."
+        }
+      ],
+      "operands": ["width"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b'",
+            "value_types": ["Builder"],
+            "mutations": [
+              {
+                "length": {
+                  "amount_arg": 0
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "STI_ALT": {
+    "description": {
+      "short": "Stores a signed `width`-bit integer `x` into _Builder_ `b` and returns the resulting _Builder_ `b'`. A longer version of `[c+1] STI`.",
+      "tags": ["builder building"],
+      "exit_codes": [
+        {
+          "errno": "2",
+          "condition": "Stack contains less than 2 elements."
+        },
+        {
+          "errno": "5",
+          "condition": "Integer is too large to fit into `c` bits."
+        },
+        {
+          "errno": "7",
+          "condition": "Top element is not an Int."
+        },
+        {
+          "errno": "7",
+          "condition": "Second element is not a Builder."
+        }
+      ],
+      "operands": ["width"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b'",
+            "value_types": ["Builder"],
+            "mutations": [
+              {
+                "length": {
+                  "amount_arg": 0
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "STU": {
+    "description": {
+      "short": "Stores an unsigned `width`-bit integer `x` into _Builder_ `b` and returns the resulting _Builder_ `b'`.",
+      "tags": ["builder building"],
+      "exit_codes": [
+        {
+          "errno": "2",
+          "condition": "Stack contains less than 2 elements."
+        },
+        {
+          "errno": "5",
+          "condition": "Integer is too large to fit into `c` bits."
+        },
+        {
+          "errno": "7",
+          "condition": "Top element is not an Int."
+        },
+        {
+          "errno": "7",
+          "condition": "Second element is not a Builder."
+        }
+      ],
+      "operands": ["width"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b'",
+            "value_types": ["Builder"],
+            "mutations": [
+              {
+                "length": {
+                  "amount_arg": 0
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "STU_ALT": {
+    "description": {
+      "short": "Stores an unsigned `width`-bit integer `x` into _Builder_ `b` and returns the resulting _Builder_ `b'`. A longer version of `[c+1] STU`.",
+      "tags": ["builder building"],
+      "exit_codes": [
+        {
+          "errno": "2",
+          "condition": "Stack contains less than 2 elements."
+        },
+        {
+          "errno": "5",
+          "condition": "Integer is too large to fit into `c` bits."
+        },
+        {
+          "errno": "7",
+          "condition": "Top element is not an Int."
+        },
+        {
+          "errno": "7",
+          "condition": "Second element is not a Builder."
+        }
+      ],
+      "operands": ["width"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b'",
+            "value_types": ["Builder"],
+            "mutations": [
+              {
+                "length": {
+                  "amount_arg": 0
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "BCHKBITS_VAR": {
+    "description": {
+      "short": "",
+      "long": "Checks whether `x` bits can be stored into `b`, `0 <= x <= 1023`. If there is no space for `x` more bits in `b`, or if `x` is not within the range `0...1023`, throws an exception.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          },
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "BCHKBITS": {
+    "description": {
+      "short": "",
+      "long": "Checks whether `cc+1` bits can be stored into `b`, where `0 <= cc <= 255`.",
+      "operands": ["c"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          }
+        ]
+      }
+    }
+  },
+  "BCHKBITSQ_VAR": {
+    "description": {
+      "short": "",
+      "long": "Checks whether `x` bits can be stored into `b`, `0 <= x <= 1023`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          },
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Bool"]
+          }
+        ]
+      }
+    }
+  },
+  "BCHKBITSQ": {
+    "description": {
+      "short": "",
+      "long": "Checks whether `cc+1` bits can be stored into `b`, where `0 <= cc <= 255`.",
+      "operands": ["c"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Bool"]
+          }
+        ]
+      }
+    }
+  },
+  "STSLICECONST": {
+    "description": {
+      "short": "",
+      "long": "Stores a constant subslice `sss`.\n_Details:_ `sss` consists of `0 <= x <= 3` references and up to `8y+2` data bits, with `0 <= y <= 7`. Completion bit is assumed.\nNote that the assembler can replace `STSLICECONST` with `PUSHSLICE` `STSLICER` if the slice is too big.",
+      "tags": ["builder building"],
+      "operands": ["s"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b'",
+            "value_types": ["Builder"]
+          }
+        ]
+      }
+    }
+  }
+}

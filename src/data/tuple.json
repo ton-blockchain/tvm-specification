@@ -1,0 +1,1572 @@
+{
+  "PUSHNULL": {
+    "description": {
+      "short": "",
+      "long": "Pushes a `null`.",
+      "operands": []
+    },
+    "signature": {
+      "outputs": {
+        "stack": [
+          {
+            "type": "const",
+            "value": null,
+            "value_type": "Null"
+          }
+        ]
+      }
+    }
+  },
+  "ISNULL": {
+    "description": {
+      "short": "Checks whether `x` is a _Null_.",
+      "long": "Pops an element from the stack and checks whether it is a _Null_, pushing `-1` or `0` accordingly.",
+      "exit_codes": [
+        {
+          "errno": "2",
+          "condition": "Stack contains less than 1 element."
+        }
+      ],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Any", "Null"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Bool"]
+          }
+        ]
+      }
+    }
+  },
+  "TUPLEVAR": {
+    "description": {
+      "short": "",
+      "long": "Creates a new _Tuple_ `t` of length `n` similarly to `TUPLE`, but with `n` taken from the stack.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "array",
+            "name": "tuple_elements",
+            "length_var": "n",
+            "array_entry": [
+              {
+                "type": "simple",
+                "name": "x"
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "n",
+            "range": {
+              "min": 0,
+              "max": 255
+            },
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "t",
+            "value_types": ["Tuple"]
+          }
+        ]
+      }
+    }
+  },
+  "INDEXVAR": {
+    "description": {
+      "short": "",
+      "long": "Returns the `k`-th element of a _Tuple_ `t`, where `k` is taken from the stack rather than specified in the instruction.",
+      "exit_codes": [
+        {
+          "errno": "7",
+          "condition": "Top element is not a Tuple."
+        }
+      ],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "t",
+            "value_types": ["Tuple"]
+          },
+          {
+            "type": "simple",
+            "name": "k",
+            "range": {
+              "min": 0,
+              "max": 254
+            },
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x"
+          }
+        ]
+      }
+    }
+  },
+  "UNTUPLEVAR": {
+    "description": {
+      "short": "",
+      "long": "Unpacks a _Tuple_ `t=(x_1,...,x_n)` of length equal to `0 <= n <= 15`, where `n` is taken from the stack rather than specified in the instruction.",
+      "exit_codes": [
+        {
+          "errno": "7",
+          "condition": "Top element is not a Tuple."
+        },
+        {
+          "errno": "7",
+          "condition": "Tuple length is not equal to n."
+        }
+      ],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "t",
+            "value_types": ["Tuple"]
+          },
+          {
+            "type": "simple",
+            "name": "n",
+            "range": {
+              "min": 0,
+              "max": 255
+            },
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "array",
+            "name": "tuple_elements",
+            "length_var": "n",
+            "array_entry": [
+              {
+                "type": "simple",
+                "name": "x"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "UNPACKFIRSTVAR": {
+    "description": {
+      "short": "",
+      "long": "Unpacks first `k` elements of a _Tuple_ `t`, where `k` is taken from the stack rather than specified in the instruction.",
+      "exit_codes": [
+        {
+          "errno": "7",
+          "condition": "Tuple length is less than k."
+        }
+      ],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "t",
+            "value_types": ["Tuple"]
+          },
+          {
+            "type": "simple",
+            "name": "n",
+            "range": {
+              "min": 0,
+              "max": 255
+            },
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "array",
+            "name": "tuple_elements",
+            "length_var": "n",
+            "array_entry": [
+              {
+                "type": "simple",
+                "name": "x"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "EXPLODEVAR": {
+    "description": {
+      "short": "",
+      "long": "Unpacks a _Tuple_ `t=(x_1,...,x_m)` and returns its length `m`, but only if `m <= n <= 15`, where `n` is taken from the stack rather than specified in the instruction.",
+      "exit_codes": [
+        {
+          "errno": "7",
+          "condition": "Tuple length is greater than n or greater than 15."
+        }
+      ],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "t",
+            "value_types": ["Tuple"]
+          },
+          {
+            "type": "simple",
+            "name": "n",
+            "range": {
+              "min": 0,
+              "max": 255
+            },
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "array",
+            "name": "tuple_elements",
+            "length_var": "m",
+            "array_entry": [
+              {
+                "type": "simple",
+                "name": "x"
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "m",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "SETINDEXVAR": {
+    "description": {
+      "short": "",
+      "long": "Computes _Tuple_ `t'` that differs from `t` only at position `t'_{k+1}`, which is set to `x`, where `k` is taken from the stack rather than specified in the instruction.",
+      "exit_codes": [
+        {
+          "errno": "7",
+          "condition": "Index k is greater than or equal to tuple length."
+        }
+      ],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "t",
+            "value_types": ["Tuple"]
+          },
+          {
+            "type": "simple",
+            "name": "x"
+          },
+          {
+            "type": "simple",
+            "name": "k",
+            "range": {
+              "min": 0,
+              "max": 254
+            },
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "t2",
+            "value_types": ["Tuple"]
+          }
+        ]
+      }
+    }
+  },
+  "INDEXVARQ": {
+    "description": {
+      "short": "",
+      "long": "Returns the `k`-th element of a _Tuple_ `t`, where `k` is taken from the stack rather than specified in the instruction. In other words, returns `x_{k+1}` if `t=(x_1,...,x_n)`. If `k>=n`, or if `t` is _Null_, returns a _Null_ instead of `x`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "t",
+            "value_types": ["Tuple", "Null"]
+          },
+          {
+            "type": "simple",
+            "name": "k",
+            "range": {
+              "min": 0,
+              "max": 254
+            },
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x"
+          }
+        ]
+      }
+    }
+  },
+  "SETINDEXVARQ": {
+    "description": {
+      "short": "",
+      "long": "Sets the `k`-th component of _Tuple_ `t` to `x`, and returns the resulting _Tuple_ `t'`, where `k` is taken from the stack rather than specified in the instruction. If `|t| <= k`, first extends the original _Tuple_ to length `n'=k+1` by setting all new components to _Null_. If the original value of `t` is _Null_, treats it as an empty _Tuple_. If `x` is _Null_ and either `|t| <= k` or `t` is _Null_, then always returns `t'=t` (and does not consume tuple creation gas).",
+      "exit_codes": [
+        {
+          "errno": "7",
+          "condition": "Top element is neither a Tuple nor Null."
+        }
+      ],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "t",
+            "value_types": ["Tuple", "Null"]
+          },
+          {
+            "type": "simple",
+            "name": "x"
+          },
+          {
+            "type": "simple",
+            "name": "k",
+            "range": {
+              "min": 0,
+              "max": 254
+            },
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "t2",
+            "value_types": ["Tuple", "Null"]
+          }
+        ]
+      }
+    }
+  },
+  "TLEN": {
+    "description": {
+      "short": "",
+      "long": "Returns the length of a _Tuple_.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "t",
+            "value_types": ["Tuple"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "n",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QTLEN": {
+    "description": {
+      "short": "",
+      "long": "Returns the length of a _Tuple_ `t` if `t` is a _Tuple_, but returns `-1` if `t` is not a _Tuple_. Unlike `TLEN` which throws an exception when `t` is not a _Tuple_, this instruction provides a way to safely check if a value is a _Tuple_ and get its length in one operation.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "t",
+            "value_types": ["Tuple"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "is_tuple",
+            "match": [
+              {
+                "value": 0,
+                "stack": [
+                  {
+                    "type": "const",
+                    "value": "-1",
+                    "value_type": "Int"
+                  }
+                ]
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "length",
+                    "value_types": ["Int"]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "ISTUPLE": {
+    "description": {
+      "short": "",
+      "long": "Returns `-1` or `0` depending on whether `t` is a _Tuple_.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "t",
+            "value_types": ["Tuple"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "n",
+            "value_types": ["Bool"]
+          }
+        ]
+      }
+    }
+  },
+  "LAST": {
+    "description": {
+      "short": "",
+      "long": "Returns the last element of a non-empty _Tuple_ `t`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "t",
+            "value_types": ["Tuple"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x"
+          }
+        ]
+      }
+    }
+  },
+  "TPUSH": {
+    "description": {
+      "short": "",
+      "long": "Appends a value `x` to a _Tuple_ `t=(x_1,...,x_n)`, but only if the resulting _Tuple_ `t'=(x_1,...,x_n,x)` is of length at most 255.",
+      "exit_codes": [
+        {
+          "errno": "7",
+          "condition": "Top element is not a Tuple."
+        },
+        {
+          "errno": "7",
+          "condition": "Resulting tuple length would exceed 255."
+        }
+      ],
+      "examples": [
+        {
+          "instructions": [
+            {
+              "instruction": "PUSHINT_4 1"
+            },
+            {
+              "instruction": "PUSHINT_4 2"
+            },
+            {
+              "instruction": "TUPLE 2",
+              "comment": "Creates a tuple (1,2)"
+            },
+            {
+              "instruction": "PUSHINT_4 3"
+            },
+            {
+              "instruction": "TPUSH",
+              "comment": "Appends 3 to the tuple, resulting in (1,2,3)"
+            }
+          ],
+          "stack": {
+            "input": ["(1,2)", "3"],
+            "output": ["(1,2,3)"]
+          }
+        },
+        {
+          "instructions": [
+            {
+              "instruction": "PUSHINT_4 123",
+              "comment": "Push an integer (not a tuple)"
+            },
+            {
+              "instruction": "PUSHINT_4 456"
+            },
+            {
+              "instruction": "TPUSH",
+              "comment": "Try to append to a non-tuple value"
+            }
+          ],
+          "exit_code": 7,
+          "stack": {
+            "input": ["123", "456"],
+            "output": ["123", "456"]
+          }
+        }
+      ],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "t",
+            "value_types": ["Tuple"]
+          },
+          {
+            "type": "simple",
+            "name": "x"
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "t2",
+            "value_types": ["Tuple"]
+          }
+        ]
+      }
+    }
+  },
+  "TPOP": {
+    "description": {
+      "short": "",
+      "long": "Detaches the last element `x=x_n` from a non-empty _Tuple_ `t=(x_1,...,x_n)`, and returns both the resulting _Tuple_ `t'=(x_1,...,x_{n-1})` and the original last element `x`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "t",
+            "value_types": ["Tuple"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "t2",
+            "value_types": ["Tuple"]
+          },
+          {
+            "type": "simple",
+            "name": "x"
+          }
+        ]
+      }
+    }
+  },
+  "NULLSWAPIF": {
+    "description": {
+      "short": "",
+      "long": "Pushes a _Null_ under the topmost _Integer_ `x`, but only if `x != 0`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "x",
+            "match": [
+              {
+                "value": 0,
+                "stack": []
+              }
+            ],
+            "else": [
+              {
+                "type": "const",
+                "value": null,
+                "value_type": "Null"
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "NULLSWAPIFNOT": {
+    "description": {
+      "short": "",
+      "long": "Pushes a _Null_ under the topmost _Integer_ `x`, but only if `x == 0`. May be used for stack alignment after quiet primitives such as `PLDUXQ`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "x",
+            "match": [
+              {
+                "value": 0,
+                "stack": [
+                  {
+                    "type": "const",
+                    "value": null,
+                    "value_type": "Null"
+                  }
+                ]
+              }
+            ],
+            "else": []
+          },
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "NULLROTRIF": {
+    "description": {
+      "short": "",
+      "long": "Pushes a _Null_ under the second stack entry from the top, but only if the topmost _Integer_ `y` is non-zero.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x"
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "y",
+            "match": [
+              {
+                "value": 0,
+                "stack": []
+              }
+            ],
+            "else": [
+              {
+                "type": "const",
+                "value": null,
+                "value_type": "Null"
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "x"
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "NULLROTRIFNOT": {
+    "description": {
+      "short": "",
+      "long": "Pushes a _Null_ under the second stack entry from the top, but only if the topmost _Integer_ `y` is zero. May be used for stack alignment after quiet primitives such as `LDUXQ`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x"
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "y",
+            "match": [
+              {
+                "value": 0,
+                "stack": [
+                  {
+                    "type": "const",
+                    "value": null,
+                    "value_type": "Null"
+                  }
+                ]
+              }
+            ],
+            "else": []
+          },
+          {
+            "type": "simple",
+            "name": "x"
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "NULLSWAPIF2": {
+    "description": {
+      "short": "",
+      "long": "Pushes two nulls under the topmost _Integer_ `x`, but only if `x != 0`.\nEquivalent to `NULLSWAPIF` `NULLSWAPIF`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "x",
+            "match": [
+              {
+                "value": 0,
+                "stack": []
+              }
+            ],
+            "else": [
+              {
+                "type": "const",
+                "value": null,
+                "value_type": "Null"
+              },
+              {
+                "type": "const",
+                "value": null,
+                "value_type": "Null"
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "NULLSWAPIFNOT2": {
+    "description": {
+      "short": "",
+      "long": "Pushes two nulls under the topmost _Integer_ `x`, but only if `x == 0`.\nEquivalent to `NULLSWAPIFNOT` `NULLSWAPIFNOT`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "x",
+            "match": [
+              {
+                "value": 0,
+                "stack": [
+                  {
+                    "type": "const",
+                    "value": null,
+                    "value_type": "Null"
+                  },
+                  {
+                    "type": "const",
+                    "value": null,
+                    "value_type": "Null"
+                  }
+                ]
+              }
+            ],
+            "else": []
+          },
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "NULLROTRIF2": {
+    "description": {
+      "short": "",
+      "long": "Pushes two nulls under the second stack entry from the top, but only if the topmost _Integer_ `y` is non-zero.\nEquivalent to `NULLROTRIF` `NULLROTRIF`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x"
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "y",
+            "match": [
+              {
+                "value": 0,
+                "stack": []
+              }
+            ],
+            "else": [
+              {
+                "type": "const",
+                "value": null,
+                "value_type": "Null"
+              },
+              {
+                "type": "const",
+                "value": null,
+                "value_type": "Null"
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "x"
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "NULLROTRIFNOT2": {
+    "description": {
+      "short": "",
+      "long": "Pushes two nulls under the second stack entry from the top, but only if the topmost _Integer_ `y` is zero.\nEquivalent to `NULLROTRIFNOT` `NULLROTRIFNOT`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x"
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "y",
+            "match": [
+              {
+                "value": 0,
+                "stack": [
+                  {
+                    "type": "const",
+                    "value": null,
+                    "value_type": "Null"
+                  },
+                  {
+                    "type": "const",
+                    "value": null,
+                    "value_type": "Null"
+                  }
+                ]
+              }
+            ],
+            "else": []
+          },
+          {
+            "type": "simple",
+            "name": "x"
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "TUPLE": {
+    "description": {
+      "short": "",
+      "long": "Creates a new _Tuple_ from the first `n` values from the stack.",
+      "examples": [
+        {
+          "instructions": [
+            {
+              "instruction": "PUSHINT_4 1"
+            },
+            {
+              "instruction": "PUSHINT_4 2"
+            },
+            {
+              "instruction": "PUSHINT_4 3"
+            },
+            {
+              "instruction": "TUPLE 3",
+              "comment": "Creates a tuple (1,2,3) from the top 3 elements"
+            }
+          ],
+          "stack": {
+            "input": ["1", "2", "3"],
+            "output": ["(1, 2, 3)"]
+          }
+        }
+      ],
+      "operands": ["n"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "array",
+            "name": "tuple_elements",
+            "length_var": "n",
+            "array_entry": [
+              {
+                "type": "simple",
+                "name": "x"
+              }
+            ]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "t",
+            "value_types": ["Tuple"]
+          }
+        ]
+      }
+    }
+  },
+  "INDEX": {
+    "description": {
+      "short": "",
+      "long": "Returns the `$k`-th element of a _Tuple_ `$t`.",
+      "exit_codes": [
+        {
+          "errno": "7",
+          "condition": "Top element is not a Tuple."
+        }
+      ],
+      "examples": [
+        {
+          "instructions": [
+            {
+              "instruction": "PUSHINT_4 1"
+            },
+            {
+              "instruction": "PUSHINT_4 2"
+            },
+            {
+              "instruction": "PUSHINT_4 3"
+            },
+            {
+              "instruction": "TUPLE 3",
+              "comment": "Creates a tuple (1,2,3)"
+            },
+            {
+              "instruction": "INDEX 1",
+              "comment": "Returns the element at index 1 (which is 2)"
+            }
+          ],
+          "stack": {
+            "input": ["(1,2,3)"],
+            "output": ["2"]
+          }
+        },
+        {
+          "instructions": [
+            {
+              "instruction": "PUSHINT_4 123",
+              "comment": "Push an integer (not a tuple)"
+            },
+            {
+              "instruction": "INDEX 0",
+              "comment": "Try to get element at index 0, but the value is not a tuple"
+            }
+          ],
+          "exit_code": 7,
+          "stack": {
+            "input": ["123"],
+            "output": ["123"]
+          }
+        }
+      ],
+      "operands": ["k"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "t",
+            "value_types": ["Tuple"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x"
+          }
+        ]
+      }
+    }
+  },
+  "UNTUPLE": {
+    "description": {
+      "short": "",
+      "long": "Unpacks a _Tuple_ `t=(x_1,...,x_n)` of length equal to `0 <= n <= 15`.",
+      "exit_codes": [
+        {
+          "errno": "7",
+          "condition": "Top element is not a Tuple."
+        },
+        {
+          "errno": "7",
+          "condition": "Tuple length is not equal to `n`."
+        }
+      ],
+      "examples": [
+        {
+          "instructions": [
+            {
+              "instruction": "PUSHINT_4 1"
+            },
+            {
+              "instruction": "PUSHINT_4 2"
+            },
+            {
+              "instruction": "PUSHINT_4 3"
+            },
+            {
+              "instruction": "TUPLE 3",
+              "comment": "Creates a tuple (1,2,3)"
+            },
+            {
+              "instruction": "UNTUPLE 3",
+              "comment": "Unpacks the tuple into its 3 elements"
+            }
+          ],
+          "stack": {
+            "input": ["(1,2,3)"],
+            "output": ["1", "2", "3"]
+          }
+        },
+        {
+          "instructions": [
+            {
+              "instruction": "PUSHINT_4 123",
+              "comment": "Push an integer (not a tuple)"
+            },
+            {
+              "instruction": "UNTUPLE 3",
+              "comment": "Try to unpack a non-tuple value"
+            }
+          ],
+          "exit_code": 7,
+          "stack": {
+            "input": ["123"],
+            "output": ["123"]
+          }
+        },
+        {
+          "instructions": [
+            {
+              "instruction": "PUSHINT_4 1"
+            },
+            {
+              "instruction": "PUSHINT_4 2"
+            },
+            {
+              "instruction": "TUPLE 2",
+              "comment": "Creates a tuple (1,2) with 2 elements"
+            },
+            {
+              "instruction": "UNTUPLE 3",
+              "comment": "Try to unpack a tuple with 2 elements as if it had 3 elements"
+            }
+          ],
+          "exit_code": 7,
+          "stack": {
+            "input": ["(1,2)"],
+            "output": ["(1,2)"]
+          }
+        }
+      ],
+      "operands": ["n"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "t",
+            "value_types": ["Tuple"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "array",
+            "name": "tuple_elements",
+            "length_var": "n",
+            "array_entry": [
+              {
+                "type": "simple",
+                "name": "x"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "UNPACKFIRST": {
+    "description": {
+      "short": "",
+      "long": "Unpacks first `k` elements of a _Tuple_ `t`.",
+      "exit_codes": [
+        {
+          "errno": "7",
+          "condition": "Tuple length is less than `k`."
+        }
+      ],
+      "operands": ["k"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "t",
+            "value_types": ["Tuple"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "array",
+            "name": "tuple_elements",
+            "length_var": "k",
+            "array_entry": [
+              {
+                "type": "simple",
+                "name": "x"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "EXPLODE": {
+    "description": {
+      "short": "",
+      "long": "Unpacks a _Tuple_ `$t=(x_1,...,x_$tuple_len)` and returns its `$length`, but only if `$length <= $tuple_len <= 15`.",
+      "exit_codes": [
+        {
+          "errno": "7",
+          "condition": "Tuple length is greater than `tuple_len` or greater than 15."
+        }
+      ],
+      "operands": ["length"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "t",
+            "value_types": ["Tuple"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "array",
+            "name": "tuple_elements",
+            "length_var": "length",
+            "array_entry": [
+              {
+                "type": "simple",
+                "name": "x"
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "length",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "SETINDEX": {
+    "description": {
+      "short": "",
+      "long": "Computes _Tuple_ `t'` that differs from `t` only at position `t'_{k+1}`, which is set to `x`.",
+      "exit_codes": [
+        {
+          "errno": "7",
+          "condition": "Index `k` is greater than or equal to tuple length."
+        }
+      ],
+      "operands": ["k"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "t",
+            "value_types": ["Tuple"]
+          },
+          {
+            "type": "simple",
+            "name": "x"
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "t2",
+            "value_types": ["Tuple"]
+          }
+        ]
+      }
+    }
+  },
+  "INDEXQ": {
+    "description": {
+      "short": "",
+      "long": "Returns the `k`-th element of a _Tuple_ `t`. In other words, returns `x_{k+1}` if `t=(x_1,...,x_n)`. If `k>=n`, or if `t` is _Null_, returns a _Null_ instead of `x`.",
+      "operands": ["k"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "t",
+            "value_types": ["Tuple", "Null"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x"
+          }
+        ]
+      }
+    }
+  },
+  "SETINDEXQ": {
+    "description": {
+      "short": "",
+      "long": "Sets the `k`-th component of _Tuple_ `t` to `x`, and returns the resulting _Tuple_ `t'`.\nIf `|t| <= k`, first extends the original _Tuple_ to length `n'=k+1` by setting all new components to _Null_. If the original value of `t` is _Null_, treats it as an empty _Tuple_. If `x` is _Null_ and either `|t| <= k` or `t` is _Null_, then always returns `t'=t` (and does not consume tuple creation gas).",
+      "exit_codes": [
+        {
+          "errno": "7",
+          "condition": "Top element is neither a Tuple nor Null."
+        }
+      ],
+      "operands": ["k"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "t",
+            "value_types": ["Tuple", "Null"]
+          },
+          {
+            "type": "simple",
+            "name": "x"
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "t2",
+            "value_types": ["Tuple", "Null"]
+          }
+        ]
+      }
+    }
+  },
+  "INDEX2": {
+    "description": {
+      "short": "",
+      "long": "Returns `t[i][j]`.",
+      "exit_codes": [
+        {
+          "errno": "7",
+          "condition": "Element at index i is not a Tuple."
+        }
+      ],
+      "operands": ["i", "j"],
+      "other_implementations": [
+        {
+          "exact": true,
+          "instructions": ["[i] INDEX", "[j] INDEX"]
+        }
+      ]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "t",
+            "value_types": ["Tuple"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x"
+          }
+        ]
+      }
+    }
+  },
+  "INDEX3": {
+    "description": {
+      "short": "",
+      "long": "Returns `t[i][j][k]`.",
+      "exit_codes": [
+        {
+          "errno": "7",
+          "condition": "Element at index i is not a Tuple."
+        },
+        {
+          "errno": "7",
+          "condition": "Element at index j of t[i] is not a Tuple."
+        }
+      ],
+      "operands": ["i", "j", "k"],
+      "other_implementations": [
+        {
+          "exact": true,
+          "instructions": ["[i] [j] INDEX2", "[k] INDEX"]
+        }
+      ]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "t",
+            "value_types": ["Tuple"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x"
+          }
+        ]
+      }
+    }
+  }
+}

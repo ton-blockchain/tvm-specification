@@ -1,0 +1,244 @@
+{
+  "MIN": {
+    "description": {
+      "short": "",
+      "long": "Computes the minimum of two integers `x` and `y`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "MAX": {
+    "description": {
+      "short": "",
+      "long": "Computes the maximum of two integers `x` and `y`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "MINMAX": {
+    "description": {
+      "short": "",
+      "long": "Sorts two integers.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "r1",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r2",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "ABS": {
+    "description": {
+      "short": "",
+      "long": "Computes the absolute value of an integer `x`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QMIN": {
+    "description": {
+      "short": "",
+      "long": "Computes the minimum of two integers `x` and `y`. Returns `NaN` if any of the arguments is `NaN`."
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QMAX": {
+    "description": {
+      "short": "",
+      "long": "Computes the maximum of two integers `x` and `y`. Returns `NaN` if any of the arguments is `NaN`."
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QMINMAX": {
+    "description": {
+      "short": "",
+      "long": "Sorts two integers. Returns two `NaN` if any of the arguments is `NaN`."
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "r1",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r2",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QABS": {
+    "description": {
+      "short": "",
+      "long": ""
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  }
+}

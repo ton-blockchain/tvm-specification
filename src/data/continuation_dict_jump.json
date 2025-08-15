@@ -1,0 +1,133 @@
+{
+  "JMPDICT": {
+    "description": {
+      "short": "",
+      "long": "Jumps to the continuation in `c3`, pushing integer `0 <= n < 2^14` as its argument.",
+      "operands": ["n"],
+      "other_implementations": [
+        {
+          "exact": true,
+          "instructions": ["n PUSHINT", "c3 PUSHCTR", "JMPX"]
+        }
+      ]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": [
+          {
+            "type": "constant",
+            "index": 3
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "n",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "PREPAREDICT": {
+    "description": {
+      "short": "",
+      "long": "Equivalent to `n PUSHINT` `c3 PUSHCTR`, for `0 <= n < 2^14`.\nOne might use, for instance, `CALLXARGS` or `CALLCC` instead of `EXECUTE` here.",
+      "operands": ["n"],
+      "other_implementations": [
+        {
+          "exact": true,
+          "instructions": ["n PUSHINT", "c3 PUSHCTR"]
+        }
+      ]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": [
+          {
+            "type": "constant",
+            "index": 3
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "n",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "c",
+            "value_types": ["Continuation"]
+          }
+        ]
+      }
+    }
+  },
+  "CALLDICT": {
+    "description": {
+      "short": "",
+      "long": "Calls the continuation in `c3`, pushing integer `num` into its stack as an argument.",
+      "operands": ["num"],
+      "other_implementations": [
+        {
+          "exact": true,
+          "instructions": ["[n] PUSHINT", "c3 PUSHCTR", "EXECUTE"]
+        }
+      ]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": [
+          {
+            "type": "constant",
+            "index": 3
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "num",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "CALLDICT_LONG": {
+    "description": {
+      "short": "",
+      "long": "For `0 <= n < 2^14`, an encoding of `[n] CALL` for larger values of `n`.",
+      "operands": ["n"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": [
+          {
+            "type": "constant",
+            "index": 3
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "n",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  }
+}

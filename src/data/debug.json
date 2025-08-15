@@ -1,0 +1,116 @@
+{
+  "DEBUGSTR": {
+    "description": {
+      "short": "",
+      "long": "Outputs passed string to VM logs.",
+      "operands": ["s"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "DUMPSTK": {
+    "description": {
+      "short": "",
+      "long": ""
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "DEBUG": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": ["i", "j"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "STRDUMP": {
+    "description": {
+      "short": "",
+      "long": ""
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "DEBUG_1": {
+    "description": {
+      "short": "",
+      "long": ""
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "DUMP": {
+    "description": {
+      "short": "",
+      "long": ""
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "DEBUG_2": {
+    "description": {
+      "short": "",
+      "long": ""
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  }
+}

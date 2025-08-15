@@ -1,0 +1,5060 @@
+{
+  "ADDDIVMOD": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "w",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "ADDDIVMODR": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "w",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "ADDDIVMODC": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "w",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "DIV": {
+    "description": {
+      "short": "Divides two integers and pushes the result back onto the stack.",
+      "long": "Pops two integers from the stack, divides the second one by the first one and pushes the result back onto the stack.\nFormula: `q = floor(x / y)`.",
+      "exit_codes": [
+        {
+          "errno": "2",
+          "condition": "Stack contains less than 2 elements."
+        },
+        {
+          "errno": "7",
+          "condition": "Top or second element is not an Int."
+        }
+      ],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "presentation": "x / y",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "DIVR": {
+    "description": {
+      "short": "Divides two integers, rounds the result and pushes it back onto the stack.",
+      "long": "Pops two integers from the stack, divides the second one by the first one, rounds the result and pushes it back onto the stack.\nFormula: `q = round(x / y)`.",
+      "exit_codes": [
+        {
+          "errno": "2",
+          "condition": "Stack contains less than 2 elements."
+        },
+        {
+          "errno": "7",
+          "condition": "Top or second element is not an Int."
+        }
+      ],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "DIVC": {
+    "description": {
+      "short": "Divides two integers, rounds the result up and pushes it back onto the stack.",
+      "long": "Pops two integers from the stack, divides the second one by the first one, rounds the result up and pushes it back onto the stack.\nFormula: `q = ceil(x / y)`.",
+      "exit_codes": [
+        {
+          "errno": "2",
+          "condition": "Stack contains less than 2 elements."
+        },
+        {
+          "errno": "7",
+          "condition": "Top or second element is not an Int."
+        }
+      ],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "MOD": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "presentation": "x % y",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "MODR": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "MODC": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "DIVMOD": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "DIVMODR": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "DIVMODC": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QADDDIVMOD": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "w",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QADDDIVMODR": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "w",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QADDDIVMODC": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "w",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QDIV": {
+    "description": {
+      "short": "",
+      "long": "Division returns `NaN` if `y == 0`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QDIVR": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QDIVC": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QMOD": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QMODR": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QMODC": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QDIVMOD": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QDIVMODR": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QDIVMODC": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "ADDRSHIFTMOD": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "w",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "ADDRSHIFTMODR": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "w",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "ADDRSHIFTMODC": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "w",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "RSHIFTR": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "RSHIFTC": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "MODPOW2": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "MODPOW2R": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "MODPOW2C": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "RSHIFTMOD": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "RSHIFTMODR": {
+    "description": {
+      "short": "",
+      "long": ""
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "RSHIFTMODC": {
+    "description": {
+      "short": "",
+      "long": ""
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "QADDRSHIFTMOD": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "w",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QADDRSHIFTMODR": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "w",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QADDRSHIFTMODC": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "w",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QRSHIFTR": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QRSHIFTC": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QMODPOW2": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QMODPOW2R": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QMODPOW2C": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QRSHIFTMOD": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QRSHIFTMODR": {
+    "description": {
+      "short": "",
+      "long": ""
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "QRSHIFTMODC": {
+    "description": {
+      "short": "",
+      "long": ""
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "MULADDDIVMOD": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "w",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "MULADDDIVMODR": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "w",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "MULADDDIVMODC": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "w",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "MULDIV": {
+    "description": {
+      "short": "",
+      "long": "Calculates `result = floor(x * y / z)`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "MULDIVR": {
+    "description": {
+      "short": "",
+      "long": "Calculates `result = round(x * y / z)`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "MULDIVC": {
+    "description": {
+      "short": "",
+      "long": "Calculates `result = ceil( x * y / z)`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "MULMOD": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "MULMODR": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "MULMODC": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "MULDIVMOD": {
+    "description": {
+      "short": "",
+      "long": "`q=floor(x*y/z)`, `r=x*y-z*q`",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "MULDIVMODR": {
+    "description": {
+      "short": "",
+      "long": "`q=round(x*y/z)`, `r=x*y-z*q`",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "MULDIVMODC": {
+    "description": {
+      "short": "",
+      "long": "`q=ceil(x*y/z)`, `r=x*y-z*q`",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QMULADDDIVMOD": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "w",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QMULADDDIVMODR": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "w",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QMULADDDIVMODC": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "w",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QMULDIV": {
+    "description": {
+      "short": "",
+      "long": "Calculates `result = floor(x * y / z)`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QMULDIVR": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QMULDIVC": {
+    "description": {
+      "short": "",
+      "long": "Calculates `result = ceil(x * y / z)`",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QMULMOD": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QMULMODR": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QMULMODC": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QMULDIVMOD": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QMULDIVMODR": {
+    "description": {
+      "short": "",
+      "long": "Calculates `q = round(x * y / z)` and `r = x * y - z * q`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QMULDIVMODC": {
+    "description": {
+      "short": "",
+      "long": "Calculates `q = ceil(x * y / z)` and `r = x * y - z * q`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "MULADDRSHIFTMOD": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "w",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "MULADDRSHIFTRMOD": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "w",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "MULADDRSHIFTCMOD": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "w",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "MULRSHIFT": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "MULRSHIFTR": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "MULRSHIFTC": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "MULMODPOW2": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "MULMODPOW2R": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "MULMODPOW2C": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "MULRSHIFTMOD": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "MULRSHIFTRMOD": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "MULRSHIFTCMOD": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QMULADDRSHIFTMOD": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "w",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QMULADDRSHIFTRMOD": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "w",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QMULADDRSHIFTCMOD": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "w",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QMULRSHIFT": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QMULRSHIFTR": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QMULRSHIFTC": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QMULMODPOW2": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QMULMODPOW2R": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QMULMODPOW2C": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QMULRSHIFTMOD": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QMULRSHIFTRMOD": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QMULRSHIFTCMOD": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "LSHIFTADDDIVMOD": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "w",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "LSHIFTADDDIVMODR": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "w",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "LSHIFTADDDIVMODC": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "w",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "LSHIFTDIV": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "LSHIFTDIVR": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "LSHIFTDIVC": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "LSHIFTMOD": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "LSHIFTMODR": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "LSHIFTMODC": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "LSHIFTDIVMOD": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "LSHIFTDIVMODR": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "LSHIFTDIVMODC": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QLSHIFTADDDIVMOD": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "w",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QLSHIFTADDDIVMODR": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "w",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QLSHIFTADDDIVMODC": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "w",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QLSHIFTDIV": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QLSHIFTDIVR": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QLSHIFTDIVC": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QLSHIFTMOD": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QLSHIFTMODR": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QLSHIFTMODC": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QLSHIFTDIVMOD": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QLSHIFTDIVMODR": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QLSHIFTDIVMODC": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "ADDRSHIFT#MOD": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": ["t"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "ADDRSHIFTR#MOD": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": ["t"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "ADDRSHIFTC#MOD": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": ["t"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "RSHIFT#": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": ["t"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "RSHIFTR#": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": ["t"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "RSHIFTC#": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": ["t"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "MODPOW2#": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": ["t"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "MODPOW2R#": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": ["t"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "MODPOW2C#": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": ["t"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "RSHIFT#MOD": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": ["t"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "RSHIFTR#MOD": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": ["t"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "RSHIFTC#MOD": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": ["t"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "MULADDRSHIFT#MOD": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": ["t"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "MULADDRSHIFTR#MOD": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": ["t"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "MULADDRSHIFTC#MOD": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": ["t"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "MULRSHIFT#": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": ["t"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "MULRSHIFTR#": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": ["t"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "MULRSHIFTC#": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": ["t"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "MULMODPOW2#": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": ["t"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "MULMODPOW2R#": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": ["t"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "MULMODPOW2C#": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": ["t"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "MULRSHIFT#MOD": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": ["t"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "MULRSHIFTR#MOD": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": ["t"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "MULRSHIFTC#MOD": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": ["t"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "LSHIFT#ADDDIVMOD": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": ["t"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "LSHIFT#ADDDIVMODR": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": ["t"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "LSHIFT#ADDDIVMODC": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": ["t"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "LSHIFT#DIV": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": ["t"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "LSHIFT#DIVR": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": ["t"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "LSHIFT#DIVC": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": ["t"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "LSHIFT#MOD": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": ["t"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "LSHIFT#MODR": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": ["t"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "LSHIFT#MODC": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": ["t"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "LSHIFT#DIVMOD": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": ["t"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "LSHIFT#DIVMODR": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": ["t"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "LSHIFT#DIVMODC": {
+    "description": {
+      "short": "",
+      "long": "",
+      "operands": ["t"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "RSHIFT_ALT": {
+    "description": {
+      "short": "",
+      "long": ""
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "QRSHIFT_ALT": {
+    "description": {
+      "short": "",
+      "long": ""
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  }
+}

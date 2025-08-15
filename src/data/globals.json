@@ -1,0 +1,153 @@
+{
+  "GETGLOBVAR": {
+    "description": {
+      "short": "",
+      "long": "Returns the `i`-th (from the stack) global variable.",
+      "operands": [],
+      "other_implementations": [
+        {
+          "exact": true,
+          "instructions": ["PUSHCTR c7", "SWAP", "INDEXVARQ"]
+        }
+      ]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "i",
+            "value_types": ["Int"]
+          }
+        ],
+        "registers": [
+          {
+            "type": "constant",
+            "index": 7
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x"
+          }
+        ]
+      }
+    }
+  },
+  "SETGLOBVAR": {
+    "description": {
+      "short": "",
+      "long": "Assigns `x` from the stack to the `i`-th (from the stack) global variable.",
+      "operands": [],
+      "other_implementations": [
+        {
+          "exact": true,
+          "instructions": ["PUSHCTR c7", "ROTREV", "SETINDEXVARQ", "POPCTR c7"]
+        }
+      ]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x"
+          },
+          {
+            "type": "simple",
+            "name": "i",
+            "value_types": ["Int"]
+          }
+        ],
+        "registers": [
+          {
+            "type": "constant",
+            "index": 7
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [],
+        "registers": [
+          {
+            "type": "constant",
+            "index": 7
+          }
+        ]
+      }
+    }
+  },
+  "GETGLOB": {
+    "description": {
+      "short": "",
+      "long": "Returns the `i`-th global variable.",
+      "operands": ["i"],
+      "other_implementations": [
+        {
+          "exact": true,
+          "instructions": ["PUSHCTR c7", "INDEXQ [i]"]
+        }
+      ]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": [
+          {
+            "type": "constant",
+            "index": 7
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x"
+          }
+        ]
+      }
+    }
+  },
+  "SETGLOB": {
+    "description": {
+      "short": "",
+      "long": "Assigns `x` from the stack to the `i`-th global variable.",
+      "operands": ["i"],
+      "other_implementations": [
+        {
+          "exact": true,
+          "instructions": ["PUSHCTR c7", "SWAP", "SETINDEXQ [i]", "POPCTR c7"]
+        }
+      ]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x"
+          }
+        ],
+        "registers": [
+          {
+            "type": "constant",
+            "index": 7
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [],
+        "registers": [
+          {
+            "type": "constant",
+            "index": 7
+          }
+        ]
+      }
+    }
+  }
+}

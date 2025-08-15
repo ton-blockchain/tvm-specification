@@ -1,0 +1,1106 @@
+{
+  "NOW": {
+    "description": {
+      "short": "",
+      "long": ""
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "BLOCKLT": {
+    "description": {
+      "short": "",
+      "long": ""
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "LTIME": {
+    "description": {
+      "short": "",
+      "long": ""
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "RANDSEED": {
+    "description": {
+      "short": "",
+      "long": ""
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "BALANCE": {
+    "description": {
+      "short": "",
+      "long": ""
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "MYADDR": {
+    "description": {
+      "short": "",
+      "long": ""
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "CONFIGROOT": {
+    "description": {
+      "short": "",
+      "long": ""
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "MYCODE": {
+    "description": {
+      "short": "",
+      "long": ""
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "INCOMINGVALUE": {
+    "description": {
+      "short": "",
+      "long": ""
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "STORAGEFEES": {
+    "description": {
+      "short": "",
+      "long": ""
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "PREVBLOCKSINFOTUPLE": {
+    "description": {
+      "short": "",
+      "long": ""
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "UNPACKEDCONFIGTUPLE": {
+    "description": {
+      "short": "",
+      "long": ""
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "DUEPAYMENT": {
+    "description": {
+      "short": "",
+      "long": ""
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "CONFIGDICT": {
+    "description": {
+      "short": "",
+      "long": "Returns the global configuration dictionary along with its key length (32).\nEquivalent to `CONFIGROOT` `32 PUSHINT`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": [
+          {
+            "type": "constant",
+            "index": 7
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Slice", "Null"]
+          },
+          {
+            "type": "const",
+            "value": 32,
+            "value_type": "Int"
+          }
+        ]
+      }
+    }
+  },
+  "CONFIGPARAM": {
+    "description": {
+      "short": "",
+      "long": "Returns the value of the global configuration parameter with integer index `i` as a _Cell_ `c`, and a flag to indicate success.\nEquivalent to `CONFIGDICT` `DICTIGETREF`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "i",
+            "value_types": ["Int"]
+          }
+        ],
+        "registers": [
+          {
+            "type": "constant",
+            "index": 7
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": []
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "c",
+                    "value_types": ["Cell"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "CONFIGOPTPARAM": {
+    "description": {
+      "short": "",
+      "long": "Returns the value of the global configuration parameter with integer index `i` as a _Maybe Cell_ `c^?`.\nEquivalent to `CONFIGDICT` `DICTIGETOPTREF`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "i",
+            "value_types": ["Int"]
+          }
+        ],
+        "registers": [
+          {
+            "type": "constant",
+            "index": 7
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "c",
+            "value_types": ["Cell", "Null"]
+          }
+        ]
+      }
+    }
+  },
+  "PREVMCBLOCKS": {
+    "description": {
+      "short": "",
+      "long": "Retrives `last_mc_blocks` part of `PrevBlocksInfo` from c7 (parameter 13).",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": [
+          {
+            "type": "constant",
+            "index": 7
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "t",
+            "value_types": ["Tuple"]
+          }
+        ]
+      }
+    }
+  },
+  "PREVKEYBLOCK": {
+    "description": {
+      "short": "",
+      "long": "Retrives `prev_key_block` part of `PrevBlocksInfo` from c7 (parameter 13).",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": [
+          {
+            "type": "constant",
+            "index": 7
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "t",
+            "value_types": ["Tuple"]
+          }
+        ]
+      }
+    }
+  },
+  "PREVMCBLOCKS_100": {
+    "description": {
+      "short": "",
+      "long": "Retrives `last_mc_blocks` part of `PrevBlocksInfo` from c7 (parameter 13).",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": [
+          {
+            "type": "constant",
+            "index": 7
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "t",
+            "value_types": ["Tuple"]
+          }
+        ]
+      }
+    }
+  },
+  "GLOBALID": {
+    "description": {
+      "short": "",
+      "long": "Retrieves `global_id` from 19 network config.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": [
+          {
+            "type": "constant",
+            "index": 7
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "i",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "GETGASFEE": {
+    "description": {
+      "short": "",
+      "long": "Calculates gas fee (amount in nanotoncoin to be paid) for a transaction which consumed `gas_used` gas units.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "gas_used",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "is_mc",
+            "value_types": ["Int"]
+          }
+        ],
+        "registers": [
+          {
+            "type": "constant",
+            "index": 7
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "price",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "GETSTORAGEFEE": {
+    "description": {
+      "short": "",
+      "long": "Calculates storage fees (amount in nanotoncoin to be paid, only current StoragePrices entry is used) for storing a contract of provided size for `seconds`, `bits` and `cells` represent contract state (`code` + `data`).",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "cells",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "bits",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "seconds",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "is_mc",
+            "value_types": ["Int"]
+          }
+        ],
+        "registers": [
+          {
+            "type": "constant",
+            "index": 7
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "price",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "GETFORWARDFEE": {
+    "description": {
+      "short": "",
+      "long": "Calculates amount of nanotoncoin that must be paid to send a message of the specified size.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "cells",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "bits",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "is_mc",
+            "value_types": ["Int"]
+          }
+        ],
+        "registers": [
+          {
+            "type": "constant",
+            "index": 7
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "price",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "GETPRECOMPILEDGAS": {
+    "description": {
+      "short": "",
+      "long": "Returns gas usage for the current contract if it is precompiled, `null` otherwise.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": [
+          {
+            "type": "constant",
+            "index": 7
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "GETORIGINALFWDFEE": {
+    "description": {
+      "short": "",
+      "long": "Calculate `fwd_fee * 2^16 / first_frac`. Can be used to get the original `fwd_fee` of the message.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "fwd_fee",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "is_mc",
+            "value_types": ["Int"]
+          }
+        ],
+        "registers": [
+          {
+            "type": "constant",
+            "index": 7
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "orig_fwd_fee",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "GETGASFEESIMPLE": {
+    "description": {
+      "short": "",
+      "long": "Same as `GETGASFEE`, but without flat price (just `(gas_used * price) / 2^16)`.",
+      "doc_links": {
+        "Low-level fees overview": "https://docs.ton.org/develop/howto/fees-low-level"
+      },
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "gas_used",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "is_mc",
+            "value_types": ["Int"]
+          }
+        ],
+        "registers": [
+          {
+            "type": "constant",
+            "index": 7
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "price",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "GETFORWARDFEESIMPLE": {
+    "description": {
+      "short": "",
+      "long": "Same as `GETFORWARDFEE`, but without lump price (just (`bits*bit_price + cells*cell_price) / 2^16`).",
+      "doc_links": {
+        "Low-level fees overview": "https://docs.ton.org/develop/howto/fees-low-level"
+      },
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "cells",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "bits",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "is_mc",
+            "value_types": ["Int"]
+          }
+        ],
+        "registers": [
+          {
+            "type": "constant",
+            "index": 7
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "price",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "GETPARAM": {
+    "description": {
+      "short": "",
+      "long": "Returns the `i`-th parameter from the _Tuple_ provided at `c7`.",
+      "operands": ["i"],
+      "other_implementations": [
+        {
+          "exact": true,
+          "instructions": ["c7 PUSHCTR", "FIRST", "[i] INDEX"]
+        }
+      ],
+      "exit_codes": [
+        {
+          "errno": "7",
+          "condition": "Value in `c7` is not a Tuple."
+        },
+        {
+          "errno": "5",
+          "condition": "Index `i` is greater than or equal to tuple from `c7` length."
+        }
+      ]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": [
+          {
+            "type": "constant",
+            "index": 7
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "GETPARAMLONG": {
+    "description": {
+      "short": "Gets a parameter from the c7 tuple with extended range.",
+      "long": "Same as `x GETPARAM`, but x is in range `[0..254]`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "param_value",
+            "value_types": ["Any"]
+          }
+        ],
+        "registers": []
+      }
+    }
+  },
+  "INMSGPARAMS": {
+    "description": {
+      "short": "Returns the tuple with inbound message parameters.",
+      "long": "Returns the 17th element of the c7 tuple, which contains inbound message parameters. The tuple includes: bounce (boolean), bounced (boolean), src_addr (slice), fwd_fee (int), created_lt (int), created_at (int), orig_value (int), value (int), value_extra (cell or null), state_init (cell or null). For external messages, tick-tock transactions and get methods: bounce, bounced, fwd_fee, created_lt, created_at, orig_value, value are 0, value_extra is null. For tick-tock transactions and get methods: src_addr is addr_none.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "msg_params",
+            "value_types": ["Tuple"]
+          }
+        ],
+        "registers": []
+      }
+    }
+  },
+  "GETPARAMLONG2": {
+    "description": {
+      "short": "Gets a parameter from the c7 tuple with extended range.",
+      "long": "Same as `x GETPARAM`, but x is in range `[0..254]`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "param_value",
+            "value_types": ["Any"]
+          }
+        ],
+        "registers": []
+      }
+    }
+  },
+  "INMSG_BOUNCE": {
+    "description": {
+      "short": "Returns the bounce field from the inbound message parameters.",
+      "long": "Alias for `0 INMSGPARAM`. Returns the `bounce` field (boolean) from the inbound message parameters tuple.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "bounce",
+            "value_types": ["Bool"]
+          }
+        ],
+        "registers": []
+      }
+    }
+  },
+  "INMSG_BOUNCED": {
+    "description": {
+      "short": "Returns the bounced field from the inbound message parameters.",
+      "long": "Alias for `1 INMSGPARAM`. Returns the `bounced` field (boolean) from the inbound message parameters tuple.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "bounced",
+            "value_types": ["Bool"]
+          }
+        ],
+        "registers": []
+      }
+    }
+  },
+  "INMSG_SRC": {
+    "description": {
+      "short": "Returns the source address from the inbound message parameters.",
+      "long": "Alias for `2 INMSGPARAM`. Returns the `src_addr` field (slice) from the inbound message parameters tuple. For tick-tock transactions and get methods, this is addr_none.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "src",
+            "value_types": ["Slice"]
+          }
+        ],
+        "registers": []
+      }
+    }
+  },
+  "INMSG_FWDFEE": {
+    "description": {
+      "short": "Returns the forward fee from the inbound message parameters.",
+      "long": "Alias for `3 INMSGPARAM`. Returns the `fwd_fee` field (int) from the inbound message parameters tuple. For external messages, tick-tock transactions and get methods, this is 0.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "fwd_fee",
+            "value_types": ["Int"]
+          }
+        ],
+        "registers": []
+      }
+    }
+  },
+  "INMSG_LT": {
+    "description": {
+      "short": "Returns the logical time from the inbound message parameters.",
+      "long": "Alias for `4 INMSGPARAM`. Returns the `created_lt` field (int) from the inbound message parameters tuple. For external messages, tick-tock transactions and get methods, this is 0.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "created_lt",
+            "value_types": ["Int"]
+          }
+        ],
+        "registers": []
+      }
+    }
+  },
+  "INMSG_UTIME": {
+    "description": {
+      "short": "Returns the creation time from the inbound message parameters.",
+      "long": "Alias for `5 INMSGPARAM`. Returns the `created_at` field (int) from the inbound message parameters tuple. For external messages, tick-tock transactions and get methods, this is 0.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "created_at",
+            "value_types": ["Int"]
+          }
+        ],
+        "registers": []
+      }
+    }
+  },
+  "INMSG_ORIGVALUE": {
+    "description": {
+      "short": "Returns the original value from the inbound message parameters.",
+      "long": "Alias for `6 INMSGPARAM`. Returns the `orig_value` field (int) from the inbound message parameters tuple. This is sometimes different from the value in `INCOMINGVALUE` and TVM stack because of storage fees. For external messages, tick-tock transactions and get methods, this is 0.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "orig_value",
+            "value_types": ["Int"]
+          }
+        ],
+        "registers": []
+      }
+    }
+  },
+  "INMSG_VALUE": {
+    "description": {
+      "short": "Returns the value from the inbound message parameters.",
+      "long": "Alias for `7 INMSGPARAM`. Returns the `value` field (int) from the inbound message parameters tuple. This is the same as in `INCOMINGVALUE` and TVM stack. For external messages, tick-tock transactions and get methods, this is 0.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "value",
+            "value_types": ["Int"]
+          }
+        ],
+        "registers": []
+      }
+    }
+  },
+  "INMSG_VALUEEXTRA": {
+    "description": {
+      "short": "Returns the extra value from the inbound message parameters.",
+      "long": "Alias for `8 INMSGPARAM`. Returns the `value_extra` field (cell or null) from the inbound message parameters tuple. This is the same as in `INCOMINGVALUE`. For external messages, tick-tock transactions and get methods, this is null.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "value_extra",
+            "value_types": ["Cell", "Null"]
+          }
+        ],
+        "registers": []
+      }
+    }
+  },
+  "INMSG_STATEINIT": {
+    "description": {
+      "short": "Returns the state init from the inbound message parameters.",
+      "long": "Alias for `9 INMSGPARAM`. Returns the `state_init` field (cell or null) from the inbound message parameters tuple.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "state_init",
+            "value_types": ["Cell", "Null"]
+          }
+        ],
+        "registers": []
+      }
+    }
+  },
+  "INMSGPARAM": {
+    "description": {
+      "short": "Returns a specific parameter from the inbound message parameters tuple.",
+      "long": "Returns a specific parameter from the inbound message parameters tuple.",
+      "operands": ["x"],
+      "other_implementations": [
+        {
+          "exact": true,
+          "instructions": ["INMSGPARAMS", "x INDEX"]
+        }
+      ]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "param_value",
+            "value_types": ["Any"]
+          }
+        ],
+        "registers": []
+      }
+    }
+  }
+}

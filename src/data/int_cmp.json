@@ -1,0 +1,720 @@
+{
+  "SGN": {
+    "description": {
+      "short": "",
+      "long": "Computes the sign of an integer `x`:\n`-1` if `x < 0`, `0` if `x == 0`, `1` if `x > 0`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "LESS": {
+    "description": {
+      "short": "Compares `x` and `y` for less than and returns `-1` if true and `0` otherwise.",
+      "tags": ["comparisons"],
+      "exit_codes": [
+        {
+          "errno": "2",
+          "condition": "Stack contains less than 2 elements."
+        },
+        {
+          "errno": "5",
+          "condition": "Top or second element is not an Int."
+        }
+      ],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "presentation": "x < y",
+            "value_types": ["Bool"]
+          }
+        ]
+      }
+    }
+  },
+  "EQUAL": {
+    "description": {
+      "short": "Compares `x` and `y` for equality and returns `-1` if equal and `0` otherwise.",
+      "tags": ["comparisons"],
+      "exit_codes": [
+        {
+          "errno": "2",
+          "condition": "Stack contains less than 2 elements."
+        },
+        {
+          "errno": "5",
+          "condition": "Top or second element is not an Int."
+        }
+      ],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "presentation": "x == y",
+            "value_types": ["Bool"]
+          }
+        ]
+      }
+    }
+  },
+  "LEQ": {
+    "description": {
+      "short": "Compares `x` and `y` for less than or equal to and returns `-1` if true and `0` otherwise.",
+      "tags": ["comparisons"],
+      "exit_codes": [
+        {
+          "errno": "2",
+          "condition": "Stack contains less than 2 elements."
+        },
+        {
+          "errno": "5",
+          "condition": "Top or second element is not an Int."
+        }
+      ],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "presentation": "x <= y",
+            "value_types": ["Bool"]
+          }
+        ]
+      }
+    }
+  },
+  "GREATER": {
+    "description": {
+      "short": "Compares `x` and `y` for greater than and returns `-1` if true and `0` otherwise.",
+      "tags": ["comparisons"],
+      "exit_codes": [
+        {
+          "errno": "2",
+          "condition": "Stack contains less than 2 elements."
+        },
+        {
+          "errno": "5",
+          "condition": "Top or second element is not an Int."
+        }
+      ],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "presentation": "x >= y",
+            "value_types": ["Bool"]
+          }
+        ]
+      }
+    }
+  },
+  "NEQ": {
+    "description": {
+      "short": "Compares `x` and `y` for inequality and returns `-1` if true and `0` otherwise.",
+      "tags": ["comparisons"],
+      "exit_codes": [
+        {
+          "errno": "2",
+          "condition": "Stack contains less than 2 elements."
+        },
+        {
+          "errno": "5",
+          "condition": "Top or second element is not an Int."
+        }
+      ],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "presentation": "x != y",
+            "value_types": ["Bool"]
+          }
+        ]
+      }
+    }
+  },
+  "GEQ": {
+    "description": {
+      "short": "Compares `x` and `y` for greater than or equal to and returns `-1` if true and `0` otherwise.",
+      "tags": ["comparisons"],
+      "exit_codes": [
+        {
+          "errno": "2",
+          "condition": "Stack contains less than 2 elements."
+        },
+        {
+          "errno": "5",
+          "condition": "Top or second element is not an Int."
+        }
+      ],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "presentation": "x >= y",
+            "value_types": ["Bool"]
+          }
+        ]
+      }
+    }
+  },
+  "CMP": {
+    "description": {
+      "short": "",
+      "long": "Computes the sign of `x-y`:\n`-1` if `x<y`, `0` if `x=y`, `1` if `x>y`.\nNo integer overflow can occur here unless `x` or `y` is a `NaN`.",
+      "tags": ["comparisons"],
+      "exit_codes": [
+        {
+          "errno": "2",
+          "condition": "Stack contains less than 2 elements."
+        },
+        {
+          "errno": "5",
+          "condition": "Top or second element is not an Int."
+        }
+      ],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "ISNAN": {
+    "description": {
+      "short": "",
+      "long": "Checks whether `x` is a `NaN`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Bool"]
+          }
+        ]
+      }
+    }
+  },
+  "CHKNAN": {
+    "description": {
+      "short": "",
+      "long": "Throws an arithmetic overflow exception if `x` is a `NaN`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "QSGN": {
+    "description": {
+      "short": "",
+      "long": ""
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "QLESS": {
+    "description": {
+      "short": "",
+      "long": ""
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "QEQUAL": {
+    "description": {
+      "short": "",
+      "long": ""
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "QLEQ": {
+    "description": {
+      "short": "",
+      "long": ""
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "QGREATER": {
+    "description": {
+      "short": "",
+      "long": ""
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "QNEQ": {
+    "description": {
+      "short": "",
+      "long": ""
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "QGEQ": {
+    "description": {
+      "short": "",
+      "long": ""
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "QCMP": {
+    "description": {
+      "short": "",
+      "long": ""
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "EQINT": {
+    "description": {
+      "short": "Compares `x` from stack and `y` from arguments for equality and returns `-1` if equal and `0` otherwise.",
+      "exit_codes": [
+        {
+          "errno": "2",
+          "condition": "Stack contains less than 1 element."
+        },
+        {
+          "errno": "7",
+          "condition": "Top element is not an Int."
+        }
+      ],
+      "operands": ["y"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Bool"]
+          }
+        ]
+      }
+    }
+  },
+  "LESSINT": {
+    "description": {
+      "short": "Compares `x` from stack and `y` from arguments for less than and returns `-1` if true and `0` otherwise.",
+      "exit_codes": [
+        {
+          "errno": "2",
+          "condition": "Stack contains less than 1 element."
+        },
+        {
+          "errno": "7",
+          "condition": "Top element is not an Int."
+        }
+      ],
+      "operands": ["y"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Bool"]
+          }
+        ]
+      }
+    }
+  },
+  "GTINT": {
+    "description": {
+      "short": "Compares `x` from stack and `y` from arguments for greater than and returns `-1` if true and `0` otherwise.",
+      "exit_codes": [
+        {
+          "errno": "2",
+          "condition": "Stack contains less than 1 element."
+        },
+        {
+          "errno": "7",
+          "condition": "Top element is not an Int."
+        }
+      ],
+      "operands": ["y"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Bool"]
+          }
+        ]
+      }
+    }
+  },
+  "NEQINT": {
+    "description": {
+      "short": "Compares `x` from stack and `y` from arguments for inequality and returns `-1` if true and `0` otherwise.",
+      "exit_codes": [
+        {
+          "errno": "2",
+          "condition": "Stack contains less than 1 element."
+        },
+        {
+          "errno": "7",
+          "condition": "Top element is not an Int."
+        }
+      ],
+      "operands": ["y"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Bool"]
+          }
+        ]
+      }
+    }
+  },
+  "QEQINT": {
+    "description": {
+      "short": "",
+      "long": ""
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "QLESSINT": {
+    "description": {
+      "short": "",
+      "long": ""
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "QGTINT": {
+    "description": {
+      "short": "",
+      "long": ""
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "QNEQINT": {
+    "description": {
+      "short": "",
+      "long": ""
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  }
+}

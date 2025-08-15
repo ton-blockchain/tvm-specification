@@ -1,0 +1,386 @@
+{
+  "TRY": {
+    "description": {
+      "short": "",
+      "long": "Sets `c2` to `c'`, first saving the old value of `c2` both into the savelist of `c'` and into the savelist of the current continuation, which is stored into `c.c0` and `c'.c0`. Then runs `c` similarly to `EXECUTE`. If `c` does not throw any exceptions, the original value of `c2` is automatically restored on return from `c`. If an exception occurs, the execution is transferred to `c'`, but the original value of `c2` is restored in the process, so that `c'` can re-throw the exception by `THROWANY` if it cannot handle it by itself.",
+      "tags": ["exception_handling", "control_flow"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "body",
+            "value_types": ["Continuation"]
+          },
+          {
+            "type": "simple",
+            "name": "handler",
+            "value_types": ["Continuation"]
+          }
+        ]
+      }
+    }
+  },
+  "THROWANY": {
+    "description": {
+      "short": "Throws an exception with error code `num` and parameter set to zero. Parameter represents the additional information passed to the exception handler.",
+      "tags": ["exception_handling", "throw", "control_flow"],
+      "other_implementations": [
+        {
+          "exact": false,
+          "instructions": ["ZERO", "SWAP", "THROWARGANY"]
+        }
+      ],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "num",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "THROWARGANY": {
+    "description": {
+      "short": "Throws an exception with error code `num` and parameter set to `x`. Parameter represents the additional information passed to the exception handler.",
+      "tags": ["exception_handling", "throw", "control_flow"],
+      "other_implementations": [
+        {
+          "exact": false,
+          "instructions": ["PUSHCTR 2", "JMPXARGS 2"]
+        }
+      ],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "num",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "THROWANYIFNOT": {
+    "description": {
+      "short": "Throws an exception with error code `num` and parameter set to zero only if `cond` is EQUAL to 0. Parameter represents the additional information passed to the exception handler.",
+      "tags": ["exception_handling", "throw", "control_flow"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "num",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "cond",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "THROWARGANYIFNOT": {
+    "description": {
+      "short": "Throws an exception with error code `num` and parameter set to `x` taken from the stack only if `cond` is EQUAL to 0. Parameter represents the additional information passed to the exception handler.",
+      "tags": ["exception_handling", "throw", "control_flow"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "num",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "cond",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "TRYARGS": {
+    "description": {
+      "short": "",
+      "long": "Similar to `TRY`, but with `[p] [r] CALLXARGS` internally used instead of `EXECUTE`.\nIn this way, all but the top `0 <= p <= 15` stack elements will be saved into current continuation's stack, and then restored upon return from either `c` or `c'`, with the top `0 <= r <= 15` values of the resulting stack of `c` or `c'` copied as return values.",
+      "tags": ["exception_handling", "control_flow"],
+      "operands": ["p", "r"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "array",
+            "name": "args",
+            "length_var": "r",
+            "array_entry": [
+              {
+                "type": "simple",
+                "name": "arg"
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "body",
+            "value_types": ["Continuation"]
+          },
+          {
+            "type": "simple",
+            "name": "handler",
+            "value_types": ["Continuation"]
+          }
+        ]
+      }
+    }
+  },
+  "THROWARG": {
+    "description": {
+      "short": "Throws an exception with exit code `x` taken from the stack.",
+      "tags": ["exception_handling", "throw", "control_flow"],
+      "operands": ["num"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "THROWARGIF": {
+    "description": {
+      "short": "Conditionally throws an exception with error code `x` taken from stack if `cond` is NOT EQUAL to 0.",
+      "tags": ["exception_handling", "throw", "control_flow"],
+      "operands": ["num"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "cond",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "THROWARGIFNOT": {
+    "description": {
+      "short": "Conditionally throws an exception with error code `x` taken from stack if `cond` is EQUAL to 0.",
+      "tags": ["exception_handling", "throw", "control_flow"],
+      "operands": ["num"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "cond",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "THROWANYIF": {
+    "description": {
+      "short": "Throws an exception with error code `num` and parameter set to zero only if `cond` is NOT EQUAL to 0. Parameter represents the additional information passed to the exception handler.",
+      "tags": ["exception_handling", "throw", "control_flow"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "num",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "cond",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "THROWARGANYIF": {
+    "description": {
+      "short": "Throws an exception with error code `num` and parameter set to `x` taken from the stack only if `cond` is NOT EQUAL to 0. Parameter represents the additional information passed to the exception handler.",
+      "tags": ["exception_handling", "throw", "control_flow"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "num",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "cond",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "THROW_SHORT": {
+    "description": {
+      "short": "Throws an exception with error code `num`.",
+      "tags": ["exception_handling", "throw", "control_flow"],
+      "operands": ["num"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "THROW": {
+    "description": {
+      "short": "Throws an exception with error code `num`.",
+      "tags": ["exception_handling", "throw", "control_flow"],
+      "operands": ["num"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "THROWIF_SHORT": {
+    "description": {
+      "short": "Conditionally throws an exception with error code `num` if `cond` is NOT EQUAL to 0.",
+      "tags": ["exception_handling", "throw", "control_flow"],
+      "operands": ["num"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "cond",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "THROWIF": {
+    "description": {
+      "short": "Conditionally throws an exception with error code `num` if `cond` is NOT EQUAL to 0.",
+      "tags": ["exception_handling", "throw", "control_flow"],
+      "operands": ["num"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "cond",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "THROWIFNOT_SHORT": {
+    "description": {
+      "short": "Conditionally throws an exception with error code `num` if `cond` is EQUAL to 0.",
+      "tags": ["exception_handling", "throw", "control_flow"],
+      "operands": ["num"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "cond",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "THROWIFNOT": {
+    "description": {
+      "short": "Conditionally throws an exception with error code `num` if `cond` is EQUAL to 0.",
+      "tags": ["exception_handling", "throw", "control_flow"],
+      "operands": ["num"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "cond",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  }
+}

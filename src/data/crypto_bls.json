@@ -1,0 +1,779 @@
+{
+  "BLS_VERIFY": {
+    "description": {
+      "short": "",
+      "long": "Checks BLS signature, return true on success, false otherwise.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "pk",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "msg",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "sgn",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "BLS_AGGREGATE": {
+    "description": {
+      "short": "",
+      "long": "Aggregates signatures. `n>0`. Throw exception if `n=0` or if some `sig_i` is not a valid signature.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "array",
+            "name": "signatures",
+            "length_var": "n",
+            "array_entry": [
+              {
+                "type": "simple",
+                "name": "sig",
+                "value_types": ["Slice"]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "n",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "BLS_FASTAGGREGATEVERIFY": {
+    "description": {
+      "short": "",
+      "long": "Checks aggregated BLS signature for keys `pk_1...pk_n` and message `msg`. Return true on success, false otherwise. Return false if `n=0`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "array",
+            "name": "public_keys",
+            "length_var": "n",
+            "array_entry": [
+              {
+                "type": "simple",
+                "name": "pk",
+                "value_types": ["Slice"]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "n",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "msg",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "sig",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "BLS_AGGREGATEVERIFY": {
+    "description": {
+      "short": "",
+      "long": "Checks aggregated BLS signature for key-message pairs `pk_1 msg_1...pk_n msg_n`. Return true on success, false otherwise. Return false if `n=0`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "array",
+            "name": "key_message_pairs",
+            "length_var": "n",
+            "array_entry": [
+              {
+                "type": "simple",
+                "name": "pk",
+                "value_types": ["Slice"]
+              },
+              {
+                "type": "simple",
+                "name": "msg",
+                "value_types": ["Slice"]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "n",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "sgn",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "BLS_G1_ADD": {
+    "description": {
+      "short": "",
+      "long": "Addition on G1.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "BLS_G1_SUB": {
+    "description": {
+      "short": "",
+      "long": "Subtraction on G1.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "BLS_G1_NEG": {
+    "description": {
+      "short": "",
+      "long": "Negation on G1.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "BLS_G1_MUL": {
+    "description": {
+      "short": "",
+      "long": "Multiplies G1 point `x` by scalar `s`. Any `s` is valid, including negative.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "BLS_G1_MULTIEXP": {
+    "description": {
+      "short": "",
+      "long": "Calculates `x_1*s_1+...+x_n*s_n` for G1 points `x_i` and scalars `s_i`. Returns zero point if `n=0`. Any `s_i` is valid, including negative.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "array",
+            "name": "components",
+            "length_var": "n",
+            "array_entry": [
+              {
+                "type": "simple",
+                "name": "x",
+                "value_types": ["Slice"]
+              },
+              {
+                "type": "simple",
+                "name": "s",
+                "value_types": ["Int"]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "n",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "BLS_G1_ZERO": {
+    "description": {
+      "short": "",
+      "long": "Pushes zero point in G1.",
+      "operands": []
+    },
+    "signature": {
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "zero",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "BLS_MAP_TO_G1": {
+    "description": {
+      "short": "",
+      "long": "Converts FP element `f` to a G1 point.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "f",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "BLS_G1_INGROUP": {
+    "description": {
+      "short": "",
+      "long": "Checks that slice `x` represents a valid element of G1.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "BLS_G1_ISZERO": {
+    "description": {
+      "short": "",
+      "long": "Checks that G1 point `x` is equal to zero.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "BLS_G2_ADD": {
+    "description": {
+      "short": "",
+      "long": "Addition on G2.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "BLS_G2_SUB": {
+    "description": {
+      "short": "",
+      "long": "Subtraction on G2.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "BLS_G2_NEG": {
+    "description": {
+      "short": "",
+      "long": "Negation on G2.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "BLS_G2_MUL": {
+    "description": {
+      "short": "",
+      "long": "Multiplies G2 point `x` by scalar `s`. Any `s` is valid, including negative.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "BLS_G2_MULTIEXP": {
+    "description": {
+      "short": "",
+      "long": "Calculates `x_1*s_1+...+x_n*s_n` for G2 points `x_i` and scalars `s_i`. Returns zero point if `n=0`. Any `s_i` is valid, including negative.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "array",
+            "name": "components",
+            "length_var": "n",
+            "array_entry": [
+              {
+                "type": "simple",
+                "name": "x",
+                "value_types": ["Slice"]
+              },
+              {
+                "type": "simple",
+                "name": "s",
+                "value_types": ["Int"]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "n",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "BLS_G2_ZERO": {
+    "description": {
+      "short": "",
+      "long": "Pushes zero point in G2.",
+      "operands": []
+    },
+    "signature": {
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "zero",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "BLS_MAP_TO_G2": {
+    "description": {
+      "short": "",
+      "long": "Converts FP2 element `f` to a G2 point.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "f",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "BLS_G2_INGROUP": {
+    "description": {
+      "short": "",
+      "long": "Checks that slice `x` represents a valid element of G2.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "BLS_G2_ISZERO": {
+    "description": {
+      "short": "",
+      "long": "Checks that G2 point `x` is equal to zero.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "BLS_PAIRING": {
+    "description": {
+      "short": "",
+      "long": "Given G1 points `x_i` and G2 points `y_i`, calculates and multiply pairings of `x_i,y_i`. Returns true if the result is the multiplicative identity in FP12, false otherwise. Returns false if `n=0`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "array",
+            "name": "components",
+            "length_var": "n",
+            "array_entry": [
+              {
+                "type": "simple",
+                "name": "x",
+                "value_types": ["Slice"]
+              },
+              {
+                "type": "simple",
+                "name": "y",
+                "value_types": ["Slice"]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "n",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "BLS_PUSHR": {
+    "description": {
+      "short": "",
+      "long": "Pushes the order of G1 and G2 (approx. `2^255`).",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": [
+          {
+            "type": "special",
+            "name": "r"
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  }
+}

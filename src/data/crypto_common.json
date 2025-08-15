@@ -1,0 +1,389 @@
+{
+  "HASHCU": {
+    "description": {
+      "short": "",
+      "long": "Computes the representation hash of a _Cell_ `c` and returns it as a 256-bit unsigned integer `hash`. Useful for signing and checking signatures of arbitrary entities represented by a tree of cells.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "c",
+            "value_types": ["Cell"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "hash",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "HASHSU": {
+    "description": {
+      "short": "",
+      "long": "Computes the hash of a _Slice_ `s` and returns it as a 256-bit unsigned integer `hash`. The result is the same as if an ordinary cell containing only data and references from `s` had been created and its hash computed by `HASHCU`.",
+      "operands": [],
+      "other_implementations": [
+        {
+          "exact": true,
+          "instructions": ["ENDC", "HASHCU"]
+        }
+      ]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "hash",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "SHA256U": {
+    "description": {
+      "short": "",
+      "long": "Computes `Sha` of the data bits of _Slice_ `s`. If the bit length of `s` is not divisible by eight, throws a cell underflow exception. The hash value is returned as a 256-bit unsigned integer `hash`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "hash",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "CHKSIGNU": {
+    "description": {
+      "short": "",
+      "long": "Checks the Ed25519-signature `s` of a hash `h` (a 256-bit unsigned integer, usually computed as the hash of some data) using public key `k` (also represented by a 256-bit unsigned integer).\nThe signature `s` must be a _Slice_ containing at least 512 data bits; only the first 512 bits are used. The result is `-1` if the signature is valid, `0` otherwise.\nNotice that `CHKSIGNU` is equivalent to `ROT` `NEWC` `256 STU` `ENDC` `ROTREV` `CHKSIGNS`, i.e., to `CHKSIGNS` with the first argument `d` set to 256-bit _Slice_ containing `h`. Therefore, if `h` is computed as the hash of some data, these data are hashed _twice_, the second hashing occurring inside `CHKSIGNS`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "h",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "k",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Bool"]
+          }
+        ]
+      }
+    }
+  },
+  "CHKSIGNS": {
+    "description": {
+      "short": "",
+      "long": "Checks whether `s` is a valid Ed25519-signature of the data portion of _Slice_ `d` using public key `k`, similarly to `CHKSIGNU`. If the bit length of _Slice_ `d` is not divisible by eight, throws a cell underflow exception. The verification of Ed25519 signatures is the standard one, with `Sha` used to reduce `d` to the 256-bit number that is actually signed.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "d",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "k",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Bool"]
+          }
+        ]
+      }
+    }
+  },
+  "ECRECOVER": {
+    "description": {
+      "short": "",
+      "long": "Recovers public key from signature, identical to Bitcoin/Ethereum operations. Takes 32-byte hash as uint256 `hash`; 65-byte signature as uint8 `v` and uint256 `r`, `s`. Returns `0` on failure, public key and `-1` on success. 65-byte public key is returned as uint8 `h`, uint256 `x1`, `x2`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "hash",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "v",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": []
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "h",
+                    "value_types": ["Int"]
+                  },
+                  {
+                    "type": "simple",
+                    "name": "x1",
+                    "value_types": ["Int"]
+                  },
+                  {
+                    "type": "simple",
+                    "name": "x2",
+                    "value_types": ["Int"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "SECP256K1_XONLY_PUBKEY_TWEAK_ADD": {
+    "description": {
+      "short": "",
+      "long": ""
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "P256_CHKSIGNU": {
+    "description": {
+      "short": "",
+      "long": "Checks seck256r1-signature `sig` of a number `h` (a 256-bit unsigned integer, usually computed as the hash of some data) and public key `k`. Returns -1 on success, 0 on failure. Public key is a 33-byte slice (encoded according to Sec. 2.3.4 point 2 of [SECG SEC 1](https://www.secg.org/sec1-v2.pdf)). Signature `sig` is a 64-byte slice (two 256-bit unsigned integers `r` and `s`).",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "d",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "sig",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "k",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Bool"]
+          }
+        ]
+      }
+    }
+  },
+  "P256_CHKSIGNS": {
+    "description": {
+      "short": "",
+      "long": "Checks seck256r1-signature `sig` of data portion of slice `d` and public key `k`. Returns -1 on success, 0 on failure. Public key is a 33-byte slice (encoded according to Sec. 2.3.4 point 2 of [SECG SEC 1](https://www.secg.org/sec1-v2.pdf)). Signature `sig` is a 64-byte slice (two 256-bit unsigned integers `r` and `s`).",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "d",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "sig",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "k",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Bool"]
+          }
+        ]
+      }
+    }
+  },
+  "HASHEXT": {
+    "description": {
+      "short": "",
+      "long": ""
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "HASHEXTR": {
+    "description": {
+      "short": "",
+      "long": ""
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "HASHEXTA": {
+    "description": {
+      "short": "",
+      "long": ""
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  },
+  "HASHEXTAR": {
+    "description": {
+      "short": "",
+      "long": ""
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
+  }
+}

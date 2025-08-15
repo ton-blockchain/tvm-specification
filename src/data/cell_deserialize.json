@@ -1,0 +1,3815 @@
+{
+  "CTOS": {
+    "description": {
+      "short": "Converts a _Cell_ into a _Slice_.",
+      "long": "`c` must be either an ordinary cell, or an exotic cell. If cell is exotic, it is automatically loaded to yield an ordinary cell `c'` and converted into a _Slice_ afterwards.",
+      "exit_codes": [],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "c",
+            "value_types": ["Cell"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "ENDS": {
+    "description": {
+      "short": "Removes a _Slice_ `s` from the stack. Throws an exception if it is not empty.",
+      "exit_codes": [
+        {
+          "errno": "9",
+          "condition": "Slice is not empty."
+        }
+      ],
+      "examples": [
+        {
+          "instructions": [
+            {
+              "instruction": "NEWC",
+              "comment": "Create an empty builder"
+            },
+            {
+              "instruction": "ENDC",
+              "comment": "Convert builder to cell"
+            },
+            {
+              "instruction": "CTOS",
+              "comment": "Convert cell to slice (empty slice)"
+            },
+            {
+              "instruction": "ENDS",
+              "comment": "Remove the empty slice from the stack"
+            }
+          ],
+          "stack": {
+            "input": ["Slice{empty}"],
+            "output": []
+          }
+        },
+        {
+          "instructions": [
+            {
+              "instruction": "PUSHINT_4 123"
+            },
+            {
+              "instruction": "NEWC"
+            },
+            {
+              "instruction": "STU 8",
+              "comment": "Store 123 as an 8-bit unsigned integer"
+            },
+            {
+              "instruction": "ENDC"
+            },
+            {
+              "instruction": "CTOS",
+              "comment": "Convert to slice (non-empty slice)"
+            },
+            {
+              "instruction": "ENDS",
+              "comment": "Try to remove a non-empty slice"
+            }
+          ],
+          "exit_code": 9,
+          "stack": {
+            "input": ["Slice{123}"],
+            "output": ["Slice{123}"]
+          }
+        }
+      ],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "LDREF": {
+    "description": {
+      "short": "",
+      "long": "Loads a cell reference `c` from `s`.",
+      "tags": ["slice parsing"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "c",
+            "value_types": ["Cell"]
+          },
+          {
+            "type": "simple",
+            "name": "s'",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "LDREFRTOS": {
+    "description": {
+      "short": "",
+      "long": "Loads a cell reference `c` from `s`, converts it to _Slice_ and returns the _Slice_ and remainder.",
+      "tags": ["slice parsing"],
+      "operands": [],
+      "other_implementations": [
+        {
+          "exact": true,
+          "instructions": ["LDREF", "SWAP", "CTOS"]
+        }
+      ]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s'",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "loaded",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "SDCUTFIRST": {
+    "description": {
+      "short": "",
+      "long": "Returns the first `0 <= length <= 1023` bits of `s`.",
+      "tags": ["slice parsing"],
+      "operands": [],
+      "other_implementations": [
+        {
+          "exact": false,
+          "instructions": ["PLDSLICEX"]
+        }
+      ]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "length",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s2",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "SDSKIPFIRST": {
+    "description": {
+      "short": "",
+      "long": "Returns all but the first `0 <= length <= 1023` bits of `s`.",
+      "tags": ["slice parsing"],
+      "operands": [],
+      "other_implementations": [
+        {
+          "exact": false,
+          "instructions": ["LDSLICEX", "NIP"]
+        }
+      ]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "length",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s'",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "SDCUTLAST": {
+    "description": {
+      "short": "",
+      "long": "Returns the last `0 <= length <= 1023` bits of `s`.",
+      "tags": ["slice parsing"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "length",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s2",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "SDSKIPLAST": {
+    "description": {
+      "short": "",
+      "long": "Returns all but the last `0 <= length <= 1023` bits of `s`.",
+      "tags": ["slice parsing"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "length",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s2",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "SDSUBSTR": {
+    "description": {
+      "short": "",
+      "long": "Returns `0 <= l' <= 1023` bits of `s` starting from offset `0 <= length <= 1023`, thus extracting a bit substring out of the data of `s`.",
+      "tags": ["slice parsing"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "length",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "l2",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s2",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "SCUTFIRST": {
+    "description": {
+      "short": "",
+      "long": "Returns the first `0 <= length <= 1023` bits and first `0 <= refs <= 4` references of `s`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "length",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "refs",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s'",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "SSKIPFIRST": {
+    "description": {
+      "short": "",
+      "long": "Returns all but the first `length` bits of `s` and `refs` references of `s`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "length",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "refs",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s'",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "SCUTLAST": {
+    "description": {
+      "short": "",
+      "long": "Returns the last `0 <= length <= 1023` data bits and last `0 <= refs <= 4` references of `s`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "length",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "refs",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s'",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "SSKIPLAST": {
+    "description": {
+      "short": "",
+      "long": "Returns all but the last `length` bits of `s` and `refs` references of `s`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "length",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "refs",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s'",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "SUBSLICE": {
+    "description": {
+      "short": "",
+      "long": "Returns `0 <= l' <= 1023` bits and `0 <= r' <= 4` references from _Slice_ `s`, after skipping the first `0 <= length <= 1023` bits and first `0 <= r <= 4` references.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "length",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "l2",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r2",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s2",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "SPLIT": {
+    "description": {
+      "short": "",
+      "long": "Splits the first `0 <= length <= 1023` data bits and first `0 <= r <= 4` references from `s` into `s'`, returning the remainder of `s` as `s''`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "l",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s2",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "s3",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "SPLITQ": {
+    "description": {
+      "short": "",
+      "long": "Splits the first `0 <= length <= 1023` data bits and first `0 <= r <= 4` references from `s` into `s'`, returning the remainder of `s` as `s''`. This is a quiet version of `SPLIT` which means that instead of throwing an exception, it pushes a status flag to the stack: 0 if the operation fails, -1 if the operation succeeds.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "l",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "s",
+                    "value_types": ["Slice"]
+                  }
+                ]
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "s2",
+                    "value_types": ["Slice"]
+                  },
+                  {
+                    "type": "simple",
+                    "name": "s3",
+                    "value_types": ["Slice"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "XCTOS": {
+    "description": {
+      "short": "",
+      "long": "Transforms an ordinary or exotic cell into a _Slice_, as if it were an ordinary cell. A flag is returned indicating whether `c` is exotic. If that be the case, its type can later be deserialized from the first eight bits of `s`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "c",
+            "value_types": ["Cell"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "flag",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "XLOAD": {
+    "description": {
+      "short": "",
+      "long": "Loads an exotic cell `c` and returns an ordinary cell `c'`. If `c` is already ordinary, does nothing. If `c` cannot be loaded, throws an exception.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "c",
+            "value_types": ["Cell"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "c2",
+            "value_types": ["Cell"]
+          }
+        ]
+      }
+    }
+  },
+  "XLOADQ": {
+    "description": {
+      "short": "",
+      "long": "Loads an exotic cell `c` and returns an ordinary cell `c'`. If `c` is already ordinary, does nothing. If `c` cannot be loaded, returns 0.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "c",
+            "value_types": ["Cell"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "c",
+                    "value_types": ["Cell"]
+                  }
+                ]
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "c2",
+                    "value_types": ["Cell"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "SCHKBITS": {
+    "description": {
+      "short": "",
+      "long": "Checks whether there are at least `length` data bits in _Slice_ `s`. If this is not the case, throws a cell deserialisation (i.e., cell underflow) exception.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "length",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "SCHKREFS": {
+    "description": {
+      "short": "",
+      "long": "Checks whether there are at least `r` references in _Slice_ `s`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "SCHKBITREFS": {
+    "description": {
+      "short": "",
+      "long": "Checks whether there are at least `length` data bits and `r` references in _Slice_ `s`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "length",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "SCHKBITSQ": {
+    "description": {
+      "short": "",
+      "long": "Checks whether there are at least `length` data bits in _Slice_ `s`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "length",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "SCHKREFSQ": {
+    "description": {
+      "short": "",
+      "long": "Checks whether there are at least `r` references in _Slice_ `s`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "SCHKBITREFSQ": {
+    "description": {
+      "short": "",
+      "long": "Checks whether there are at least `length` data bits and `r` references in _Slice_ `s`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "length",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "PLDREFVAR": {
+    "description": {
+      "short": "",
+      "long": "Returns the `n`-th cell reference of _Slice_ `s` for `0 <= n <= 3`.",
+      "tags": ["slice parsing"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "n",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "c",
+            "value_types": ["Cell"]
+          }
+        ]
+      }
+    }
+  },
+  "SBITS": {
+    "description": {
+      "short": "",
+      "long": "Returns the number of data bits in _Slice_ `s`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "length",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "SREFS": {
+    "description": {
+      "short": "",
+      "long": "Returns the number of references in _Slice_ `s`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "SBITREFS": {
+    "description": {
+      "short": "",
+      "long": "Returns both the number of data bits and the number of references in `s`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "length",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "LDZEROES": {
+    "description": {
+      "short": "",
+      "long": "Returns the count `n` of leading zero bits in `s`, and removes these bits from `s`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "n",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "s2",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "LDONES": {
+    "description": {
+      "short": "",
+      "long": "Returns the count `n` of leading one bits in `s`, and removes these bits from `s`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "n",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "s2",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "LDSAME": {
+    "description": {
+      "short": "",
+      "long": "Returns the count `n` of leading bits equal to `0 <= x <= 1` in `s`, and removes these bits from `s`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "n",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "s2",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "SDEPTH": {
+    "description": {
+      "short": "",
+      "long": "Returns the depth of _Slice_ `s`. If `s` has no references, then `x == 0`; otherwise `x` is one plus the maximum of depths of cells referred to from `s`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "CDEPTH": {
+    "description": {
+      "short": "",
+      "long": "Returns the depth of _Cell_ `c`. If `c` has no references, then `x == 0`; otherwise `x` is one plus the maximum of depths of cells referred to from `c`. If `c` is a _Null_ instead of a _Cell_, returns zero.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "c",
+            "value_types": ["Cell"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "CLEVEL": {
+    "description": {
+      "short": "",
+      "long": "Returns level of the cell.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "cell",
+            "value_types": ["Cell"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "level",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "CLEVELMASK": {
+    "description": {
+      "short": "",
+      "long": "Returns level mask of the cell.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "cell",
+            "value_types": ["Cell"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "level_mask",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "CHASHIX": {
+    "description": {
+      "short": "",
+      "long": "Returns `i`th hash of the cell.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "cell",
+            "value_types": ["Cell"]
+          },
+          {
+            "type": "simple",
+            "name": "i",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "hash",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "CDEPTHIX": {
+    "description": {
+      "short": "",
+      "long": "Returns `i`th depth of the cell.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "cell",
+            "value_types": ["Cell"]
+          },
+          {
+            "type": "simple",
+            "name": "i",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "depth",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "LDGRAMS": {
+    "description": {
+      "short": "",
+      "long": "Loads a `Gram` or `VarUInteger 16` amount from _Slice_ `s`, and returns the amount as _Integer_ `x` along with the remainder `s'` of `s`. The expected serialization of `x` consists of a 4-bit unsigned big-endian integer `l`, followed by an `8l`-bit unsigned big-endian representation of `x`.",
+      "tags": ["variable-size integer", "slice parsing"],
+      "operands": [],
+      "other_implementations": [
+        {
+          "exact": false,
+          "instructions": ["4 LDU", "SWAP", "3 LSHIFT#", "LDUX"]
+        }
+      ]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "s2",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "LDVARINT16": {
+    "description": {
+      "short": "",
+      "long": "Loads a `VarInteger 16` amount from _Slice_ `s`, and returns the amount as _Integer_ `x` along with the remainder `s'` of `s`. The expected serialization of `x` consists of a 4-bit unsigned big-endian integer `l`, followed by an `8l`-bit signed big-endian representation of `x`.",
+      "tags": ["variable-size integer", "slice parsing"],
+      "operands": [],
+      "other_implementations": [
+        {
+          "exact": false,
+          "instructions": ["4 LDU", "SWAP", "3 LSHIFT#", "LDIX"]
+        }
+      ]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "s2",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "LDVARUINT32": {
+    "description": {
+      "short": "",
+      "long": "Loads a `VarUInteger 32` amount from _Slice_ `s`, and returns the amount as _Integer_ `x` along with the remainder `s'` of `s`. The expected serialization of `x` consists of a 5-bit unsigned big-endian integer `l`, followed by an `8l`-bit unsigned big-endian representation of `x`.",
+      "tags": ["variable-size integer", "slice parsing"],
+      "operands": [],
+      "other_implementations": [
+        {
+          "exact": false,
+          "instructions": ["4 LDU", "SWAP", "3 LSHIFT#", "LDUX"]
+        }
+      ]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "s2",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "LDVARINT32": {
+    "description": {
+      "short": "",
+      "long": "Loads a `VarInteger 32` amount from _Slice_ `s`, and returns the amount as _Integer_ `x` along with the remainder `s'` of `s`. The expected serialization of `x` consists of a 5-bit unsigned big-endian integer `l`, followed by an `8l`-bit signed big-endian representation of `x`.",
+      "tags": ["variable-size integer", "slice parsing"],
+      "operands": [],
+      "other_implementations": [
+        {
+          "exact": false,
+          "instructions": ["5 LDU", "SWAP", "3 LSHIFT#", "LDIX"]
+        }
+      ]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "s2",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "LDMSGADDR": {
+    "description": {
+      "short": "",
+      "long": "Loads a valid `MsgAddress` from _Slice_ `s` and pushes the loaded `addr` value onto the stack along with _Slice_ `s'` with the remaining data.",
+      "tags": ["address", "slice parsing"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s'",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "addr",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "LDMSGADDRQ": {
+    "description": {
+      "short": "",
+      "long": "A quiet version of `LDMSGADDR`: on success, pushes an extra `-1`; on failure, pushes the original `s` and a zero.",
+      "tags": ["address", "slice parsing"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "s",
+                    "value_types": ["Slice"]
+                  }
+                ]
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "s'",
+                    "value_types": ["Slice"]
+                  },
+                  {
+                    "type": "simple",
+                    "name": "addr",
+                    "value_types": ["Slice"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "LDIX": {
+    "description": {
+      "short": "",
+      "long": "Loads a signed `width`-bit (`0 <= width <= 257`) integer `x` from _Slice_ `s`, and returns the remainder of `s` as `s'`.",
+      "tags": ["slice parsing"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "width",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "s'",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "LDUX": {
+    "description": {
+      "short": "",
+      "long": "Loads an unsigned `width`-bit integer `x` from (the first `width` bits of) `s`, with `0 <= width <= 256`.",
+      "tags": ["slice parsing"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "width",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "s'",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "PLDIX": {
+    "description": {
+      "short": "",
+      "long": "Preloads a signed `width`-bit integer from _Slice_ `s`, for `0 <= width <= 257`.",
+      "tags": ["slice parsing", "preload"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "width",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "PLDUX": {
+    "description": {
+      "short": "",
+      "long": "Preloads an unsigned `width`-bit integer from `s`, for `0 <= width <= 256`.",
+      "tags": ["slice parsing", "preload"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "width",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "LDIXQ": {
+    "description": {
+      "short": "",
+      "long": "Quiet version of `LDIX`: loads a signed `width`-bit integer from `s` similarly to `LDIX`, but returns a success flag, equal to `-1` on success or to `0` on failure (if `s` does not have `width` bits), instead of throwing a cell underflow exception.",
+      "tags": ["slice parsing"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "width",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "s",
+                    "value_types": ["Slice"]
+                  }
+                ]
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "x",
+                    "value_types": ["Int"]
+                  },
+                  {
+                    "type": "simple",
+                    "name": "s'",
+                    "value_types": ["Slice"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "LDUXQ": {
+    "description": {
+      "short": "",
+      "long": "Loads an unsigned `width`-bit integer `x` from (the first `width` bits of) `s`, with `0 <= width <= 256`. This is a quiet version of `LDUX` which means that instead of throwing an exception, it pushes a status flag to the stack: 0 if the operation fails, -1 if the operation succeeds.",
+      "tags": ["slice parsing"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "width",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "s",
+                    "value_types": ["Slice"]
+                  }
+                ]
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "x",
+                    "value_types": ["Int"]
+                  },
+                  {
+                    "type": "simple",
+                    "name": "s'",
+                    "value_types": ["Slice"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "PLDIXQ": {
+    "description": {
+      "short": "",
+      "long": "Preloads a signed `width`-bit integer from _Slice_ `s`, for `0 <= width <= 257`. This is a quiet version of `PLDIX` which means that instead of throwing an exception, it pushes a status flag to the stack: 0 if the operation fails, -1 if the operation succeeds.",
+      "tags": ["slice parsing", "preload"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "width",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": []
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "x",
+                    "value_types": ["Int"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "PLDUXQ": {
+    "description": {
+      "short": "",
+      "long": "Preloads an unsigned `width`-bit integer from `s`, for `0 <= width <= 256`. This is a quiet version of `PLDUX` which means that instead of throwing an exception, it pushes a status flag to the stack: 0 if the operation fails, -1 if the operation succeeds.",
+      "tags": ["slice parsing", "preload"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "width",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": []
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "x",
+                    "value_types": ["Int"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "LDSLICEX": {
+    "description": {
+      "short": "",
+      "long": "Loads the first `0 <= width <= 1023` bits from _Slice_ `s` into a separate _Slice_ `loaded`, returning the remainder of `s` as `s'`.",
+      "tags": ["slice parsing"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "width",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "loaded",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "s'",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "PLDSLICEX": {
+    "description": {
+      "short": "",
+      "long": "Returns the first `0 <= width <= 1023` bits of `s` as `loaded`.",
+      "tags": ["slice parsing", "preload"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "width",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "loaded",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "LDSLICEXQ": {
+    "description": {
+      "short": "",
+      "long": "Loads the first `0 <= width <= 1023` bits from _Slice_ `s` into a separate _Slice_ `loaded`, returning the remainder of `s` as `s'`. This is a quiet version of `LDSLICEX` which means that instead of throwing an exception, it pushes a status flag to the stack: 0 if the operation fails, -1 if the operation succeeds.",
+      "tags": ["slice parsing"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "width",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "s",
+                    "value_types": ["Slice"]
+                  }
+                ]
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "loaded",
+                    "value_types": ["Slice"]
+                  },
+                  {
+                    "type": "simple",
+                    "name": "s'",
+                    "value_types": ["Slice"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "PLDSLICEXQ": {
+    "description": {
+      "short": "",
+      "long": "Returns the first `0 <= width <= 1023` bits of `s` as `loaded`. This is a quiet version of `PLDSLICEX` which means that instead of throwing an exception, it pushes a status flag to the stack: 0 if the operation fails, -1 if the operation succeeds.",
+      "tags": ["slice parsing", "preload"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "width",
+            "value_types": ["Int"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": []
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "s'",
+                    "value_types": ["Slice"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "LDILE4": {
+    "description": {
+      "short": "",
+      "long": "Loads a little-endian signed 32-bit integer.",
+      "tags": ["slice parsing"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "s2",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "LDULE4": {
+    "description": {
+      "short": "",
+      "long": "Loads a little-endian unsigned 32-bit integer.",
+      "tags": ["slice parsing"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "s2",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "LDILE8": {
+    "description": {
+      "short": "",
+      "long": "Loads a little-endian signed 64-bit integer.",
+      "tags": ["slice parsing"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "s2",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "LDULE8": {
+    "description": {
+      "short": "",
+      "long": "Loads a little-endian unsigned 64-bit integer.",
+      "tags": ["slice parsing"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "s2",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "PLDILE4": {
+    "description": {
+      "short": "",
+      "long": "Preloads a little-endian signed 32-bit integer.",
+      "tags": ["slice parsing", "preload"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "PLDULE4": {
+    "description": {
+      "short": "",
+      "long": "Preloads a little-endian unsigned 32-bit integer.",
+      "tags": ["slice parsing", "preload"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "PLDILE8": {
+    "description": {
+      "short": "",
+      "long": "Preloads a little-endian signed 64-bit integer.",
+      "tags": ["slice parsing", "preload"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "PLDULE8": {
+    "description": {
+      "short": "",
+      "long": "Preloads a little-endian unsigned 64-bit integer.",
+      "tags": ["slice parsing", "preload"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "LDILE4Q": {
+    "description": {
+      "short": "",
+      "long": "Quietly loads a little-endian signed 32-bit integer.",
+      "tags": ["slice parsing"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "s",
+                    "value_types": ["Slice"]
+                  }
+                ]
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "x",
+                    "value_types": ["Int"]
+                  },
+                  {
+                    "type": "simple",
+                    "name": "s2",
+                    "value_types": ["Slice"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "LDULE4Q": {
+    "description": {
+      "short": "",
+      "long": "Quietly loads a little-endian unsigned 32-bit integer.",
+      "tags": ["slice parsing"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "s",
+                    "value_types": ["Slice"]
+                  }
+                ]
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "x",
+                    "value_types": ["Int"]
+                  },
+                  {
+                    "type": "simple",
+                    "name": "s2",
+                    "value_types": ["Slice"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "LDILE8Q": {
+    "description": {
+      "short": "",
+      "long": "Quietly loads a little-endian signed 64-bit integer.",
+      "tags": ["slice parsing"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "s",
+                    "value_types": ["Slice"]
+                  }
+                ]
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "x",
+                    "value_types": ["Int"]
+                  },
+                  {
+                    "type": "simple",
+                    "name": "s2",
+                    "value_types": ["Slice"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "LDULE8Q": {
+    "description": {
+      "short": "",
+      "long": "Quietly loads a little-endian unsigned 64-bit integer.",
+      "tags": ["slice parsing"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "s",
+                    "value_types": ["Slice"]
+                  }
+                ]
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "x",
+                    "value_types": ["Int"]
+                  },
+                  {
+                    "type": "simple",
+                    "name": "s2",
+                    "value_types": ["Slice"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "PLDILE4Q": {
+    "description": {
+      "short": "",
+      "long": "Quietly preloads a little-endian signed 32-bit integer.",
+      "tags": ["slice parsing", "preload"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": []
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "x",
+                    "value_types": ["Int"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "PLDULE4Q": {
+    "description": {
+      "short": "",
+      "long": "Quietly preloads a little-endian unsigned 32-bit integer.",
+      "tags": ["slice parsing", "preload"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": []
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "x",
+                    "value_types": ["Int"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "PLDILE8Q": {
+    "description": {
+      "short": "",
+      "long": "Quietly preloads a little-endian signed 64-bit integer.",
+      "tags": ["slice parsing"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": []
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "x",
+                    "value_types": ["Int"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "PLDULE8Q": {
+    "description": {
+      "short": "",
+      "long": "Quietly preloads a little-endian unsigned 64-bit integer.",
+      "tags": ["slice parsing"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": []
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "x",
+                    "value_types": ["Int"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "PLDREFIDX": {
+    "description": {
+      "short": "",
+      "long": "Returns the `n`-th cell reference of _Slice_ `s`, where `0 <= n <= 3`.",
+      "tags": ["slice parsing"],
+      "operands": ["n"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "c",
+            "value_types": ["Cell"]
+          }
+        ]
+      }
+    }
+  },
+  "CHASHI": {
+    "description": {
+      "short": "",
+      "long": "Returns `i`th hash of the cell.",
+      "operands": ["n"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "cell",
+            "value_types": ["Cell"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "hash",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "CDEPTHI": {
+    "description": {
+      "short": "",
+      "long": "Returns `i`th depth of the cell.",
+      "operands": ["n"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "cell",
+            "value_types": ["Cell"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "depth",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "PLDI": {
+    "description": {
+      "short": "",
+      "long": "Preloads a signed `width`-bit integer from _Slice_ `s`.",
+      "tags": ["slice parsing", "preload"],
+      "operands": ["width"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "PLDU": {
+    "description": {
+      "short": "",
+      "long": "Preloads an unsigned `width`-bit integer from `s`.",
+      "tags": ["slice parsing", "preload"],
+      "operands": ["width"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "LDIQ": {
+    "description": {
+      "short": "",
+      "long": "Loads a signed `width`-bit integer `x` from _Slice_ `s` and pushes loaded value on stack along with _Slice_ with remainder data. This is a quiet version of `LDI` which means that instead of throwing an exception, it pushes a status flag to the stack: 0 if the operation fails, -1 if the operation succeeds.",
+      "tags": ["slice parsing"],
+      "operands": ["width"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "s",
+                    "value_types": ["Slice"]
+                  }
+                ]
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "x",
+                    "value_types": ["Int"]
+                  },
+                  {
+                    "type": "simple",
+                    "name": "s'",
+                    "value_types": ["Slice"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "LDUQ": {
+    "description": {
+      "short": "",
+      "long": "Loads an unsigned `width`-bit integer `x` from _Slice_ `s` and pushes loaded value on stack along with _Slice_ with remainder data. This is a quiet version of `LDU` which means that instead of throwing an exception, it pushes a status flag to the stack: 0 if the operation fails, -1 if the operation succeeds.",
+      "tags": ["slice parsing"],
+      "operands": ["width"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "s",
+                    "value_types": ["Slice"]
+                  }
+                ]
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "x",
+                    "value_types": ["Int"]
+                  },
+                  {
+                    "type": "simple",
+                    "name": "s'",
+                    "value_types": ["Slice"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "PLDIQ": {
+    "description": {
+      "short": "",
+      "long": "Preloads a signed `width`-bit integer from _Slice_ `s`. This is a quiet version of `PLDI` which means that instead of throwing an exception, it pushes a status flag to the stack: 0 if the operation fails, -1 if the operation succeeds.",
+      "tags": ["slice parsing", "preload"],
+      "operands": ["width"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": []
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "x",
+                    "value_types": ["Int"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "PLDUQ": {
+    "description": {
+      "short": "",
+      "long": "Preloads an unsigned `cc+1`-bit integer from `s`. This is a quiet version of `PLDU` which means that instead of throwing an exception, it pushes a status flag to the stack: 0 if the operation fails, -1 if the operation succeeds.",
+      "tags": ["slice parsing", "preload"],
+      "operands": ["c"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": []
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "x",
+                    "value_types": ["Int"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "PLDUZ": {
+    "description": {
+      "short": "",
+      "long": "Preloads the first `32(c+1)` bits of _Slice_ `s` into an unsigned integer `x`, for `0 <= c <= 7`. If `s` is shorter than necessary, missing bits are assumed to be zero. This operation is intended to be used along with `IFBITJMP` and similar instructions.",
+      "tags": ["slice parsing", "preload"],
+      "operands": ["c"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "PLDSLICE": {
+    "description": {
+      "short": "",
+      "long": "Returns the first `0 < c+1 <= 256` bits of `s` as `loaded`.",
+      "tags": ["slice parsing", "preload"],
+      "operands": ["c"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "loaded",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "LDSLICEQ": {
+    "description": {
+      "short": "",
+      "long": "Cuts the next `c + 1` bits of `s` into a separate _Slice_ `loaded`. This is a quiet version of `LDSLICE` which means that instead of throwing an exception, it pushes a status flag to the stack: 0 if the operation fails, -1 if the operation succeeds.",
+      "tags": ["slice parsing"],
+      "operands": ["c"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "s",
+                    "value_types": ["Slice"]
+                  }
+                ]
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "loaded",
+                    "value_types": ["Slice"]
+                  },
+                  {
+                    "type": "simple",
+                    "name": "s'",
+                    "value_types": ["Slice"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "PLDSLICEQ": {
+    "description": {
+      "short": "",
+      "long": "Returns the first `0 < c+1 <= 256` bits of `s` as `loaded`. This is a quiet version of `PLDSLICE` which means that instead of throwing an exception, it pushes a status flag to the stack: 0 if the operation fails, -1 if the operation succeeds.",
+      "tags": ["slice parsing", "preload"],
+      "operands": ["c"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": []
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "loaded",
+                    "value_types": ["Slice"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "SDBEGINSX": {
+    "description": {
+      "short": "",
+      "long": "Checks whether `s` begins with (the data bits of) `search`, and removes `search` from `s` on success. On failure throws a cell deserialization exception. Primitive `SDPFXREV` can be considered a quiet version of `SDBEGINSX`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "search",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s'",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "SDBEGINSXQ": {
+    "description": {
+      "short": "",
+      "long": "Checks whether `s` begins with (the data bits of) `search`, and removes `search` from `s` on success. This is a quiet version of `SDBEGINSX` which means it pushes a status flag onto the stack: 0 if `s` does not begin with `search`, -1 if it does.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "search",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "s",
+                    "value_types": ["Slice"]
+                  }
+                ]
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "s'",
+                    "value_types": ["Slice"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "SDBEGINS": {
+    "description": {
+      "short": "",
+      "long": "Checks whether `s` begins with constant bitstring `search` of length `8x+3` (with continuation bit assumed), where `0 <= x <= 127`, and removes `search` from `s` on success.",
+      "operands": ["search"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s'",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "SDBEGINSQ": {
+    "description": {
+      "short": "",
+      "long": "Checks whether `s` begins with constant bitstring `search` of length `8x+3` (with continuation bit assumed), where `0 <= x <= 127`, and removes `search` from `s` on success. This is a quiet version of `SDBEGINS` which means it pushes a status flag onto the stack: 0 if `s` does not begin with `search`, -1 if it does.",
+      "operands": ["search"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "s",
+                    "value_types": ["Slice"]
+                  }
+                ]
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "s'",
+                    "value_types": ["Slice"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "LDI": {
+    "description": {
+      "short": "Loads a signed `width`-bit integer `x` from _Slice_ `s` and pushes loaded value on stack along with _Slice_ with remainder data.",
+      "tags": ["slice parsing"],
+      "exit_codes": [
+        {
+          "errno": "2",
+          "condition": "Stack contains less than 2 elements."
+        },
+        {
+          "errno": "7",
+          "condition": "Top element is not an Int."
+        },
+        {
+          "errno": "7",
+          "condition": "Second element is not a Slice."
+        },
+        {
+          "errno": "9",
+          "condition": "Slice doesn't contain enough bits."
+        }
+      ],
+      "examples": [
+        {
+          "instructions": [
+            {
+              "instruction": "PUSHINT_4 -1"
+            },
+            {
+              "instruction": "NEWC"
+            },
+            {
+              "instruction": "STI 4",
+              "comment": "store -1 as signed 4-bit number"
+            },
+            {
+              "instruction": "ENDC"
+            },
+            {
+              "instruction": "CTOS",
+              "comment": "convert Cell to Slice"
+            },
+            {
+              "instruction": "LDI 4",
+              "comment": "load previously stored 4-bit number"
+            }
+          ],
+          "stack": {
+            "input": ["Slice{-1}"],
+            "output": ["Slice{empty}", "-1"]
+          }
+        }
+      ],
+      "operands": ["width"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "s'",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "LDI_ALT": {
+    "description": {
+      "short": "",
+      "long": "Loads a signed `width`-bit integer `x` from _Slice_ `s` and pushes loaded value on stack along with _Slice_ with remainder data. This is a longer encoding of `LDI`.",
+      "tags": ["slice parsing"],
+      "operands": ["width"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "s'",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "LDU": {
+    "description": {
+      "short": "Loads an unsigned `width`-bit integer `x` from _Slice_ `s` and pushes loaded value on stack along with _Slice_ with remainder data.",
+      "tags": ["slice parsing"],
+      "exit_codes": [
+        {
+          "errno": "2",
+          "condition": "Stack contains less than 2 elements."
+        },
+        {
+          "errno": "7",
+          "condition": "Top element is not an Int."
+        },
+        {
+          "errno": "7",
+          "condition": "Second element is not a Slice."
+        },
+        {
+          "errno": "9",
+          "condition": "Slice doesn't contain enough bits."
+        }
+      ],
+      "examples": [
+        {
+          "instructions": [
+            {
+              "instruction": "PUSHINT_4 10"
+            },
+            {
+              "instruction": "NEWC"
+            },
+            {
+              "instruction": "STU 4",
+              "comment": "store 10 as unsigned 4-bit number"
+            },
+            {
+              "instruction": "ENDC"
+            },
+            {
+              "instruction": "CTOS",
+              "comment": "convert Cell to Slice"
+            },
+            {
+              "instruction": "LDU 4",
+              "comment": "load previously stored 4-bit number"
+            }
+          ],
+          "stack": {
+            "input": ["Slice{10}"],
+            "output": ["Slice{empty}", "10"]
+          }
+        }
+      ],
+      "operands": ["width"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "s'",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "LDU_ALT": {
+    "description": {
+      "short": "",
+      "long": "Loads an unsigned `width`-bit integer `x` from _Slice_ `s` and pushes loaded value on stack along with _Slice_ with remainder data. This is a longer encoding of `LDU`.",
+      "tags": ["slice parsing"],
+      "operands": ["width"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "s'",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "LDSLICE": {
+    "description": {
+      "short": "",
+      "long": "Cuts the next `c + 1` bits of `s` into a separate _Slice_ `loaded`.",
+      "tags": ["slice parsing"],
+      "operands": ["c"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "loaded",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "s'",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "LDSLICE_ALT": {
+    "description": {
+      "short": "",
+      "long": "Cuts the next `c + 1` bits of `s` into a separate _Slice_ `loaded`. This is a longer encoding of `LDSLICE`.",
+      "tags": ["slice parsing"],
+      "operands": ["c"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "loaded",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "s2",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,244 @@
+{
+  "PARSEMSGADDR": {
+    "description": {
+      "short": "",
+      "long": "Decomposes _Slice_ `s` containing a valid `MsgAddress` into a _Tuple_ `t` with separate fields of this `MsgAddress`. If `s` is not a valid `MsgAddress`, a cell deserialization exception is thrown.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "t",
+            "value_types": ["Tuple"]
+          }
+        ]
+      }
+    }
+  },
+  "PARSEMSGADDRQ": {
+    "description": {
+      "short": "",
+      "long": "A quiet version of `PARSEMSGADDR`: returns a zero on error instead of throwing an exception.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": []
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "t",
+                    "value_types": ["Tuple"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "REWRITESTDADDR": {
+    "description": {
+      "short": "",
+      "long": "Parses _Slice_ `s` containing a valid `MsgAddressInt` (usually a `msg_addr_std`), applies rewriting from the `anycast` (if present) to the same-length prefix of the address, and returns both the `workchain` and the 256-bit address `hash` as integers. If the address is not 256-bit, or if `s` is not a valid serialization of `MsgAddressInt`, throws a cell deserialization exception.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "workchain",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "hash",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "REWRITESTDADDRQ": {
+    "description": {
+      "short": "",
+      "long": "A quiet version of primitive `REWRITESTDADDR`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": []
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "hash",
+                    "value_types": ["Int"]
+                  },
+                  {
+                    "type": "simple",
+                    "name": "workchain",
+                    "value_types": ["Int"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "REWRITEVARADDR": {
+    "description": {
+      "short": "",
+      "long": "A variant of `REWRITESTDADDR` that returns the (rewritten) address as a _Slice_ `s`, even if it is not exactly 256 bit long (represented by a `msg_addr_var`).",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "s2",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "REWRITEVARADDRQ": {
+    "description": {
+      "short": "",
+      "long": "A quiet version of primitive `REWRITEVARADDR`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": []
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "x",
+                    "value_types": ["Int"]
+                  },
+                  {
+                    "type": "simple",
+                    "name": "s'",
+                    "value_types": ["Slice"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  }
+}

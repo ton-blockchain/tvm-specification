@@ -1,0 +1,140 @@
+{
+  "RANDU256": {
+    "description": {
+      "short": "",
+      "long": "Generates a new pseudo-random unsigned 256-bit _Integer_ `x`. The algorithm is as follows: if `r` is the old value of the random seed, considered as a 32-byte array (by constructing the big-endian representation of an unsigned 256-bit integer), then its `sha512(r)` is computed; the first 32 bytes of this hash are stored as the new value `r'` of the random seed, and the remaining 32 bytes are returned as the next random value `x`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": [
+          {
+            "type": "constant",
+            "index": 7
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ],
+        "registers": [
+          {
+            "type": "constant",
+            "index": 7
+          }
+        ]
+      }
+    }
+  },
+  "RAND": {
+    "description": {
+      "short": "",
+      "long": "Generates a new pseudo-random integer `z` in the range `0...y-1` (or `y...-1`, if `y<0`). More precisely, an unsigned random value `x` is generated as in `RAND256U`; then `z:=floor(x*y/2^256)` is computed.\nEquivalent to `RANDU256` `256 MULRSHIFT`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ],
+        "registers": [
+          {
+            "type": "constant",
+            "index": 7
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ],
+        "registers": [
+          {
+            "type": "constant",
+            "index": 7
+          }
+        ]
+      }
+    }
+  },
+  "SETRAND": {
+    "description": {
+      "short": "",
+      "long": "Sets the random seed to unsigned 256-bit _Integer_ `x`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ],
+        "registers": [
+          {
+            "type": "constant",
+            "index": 7
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [],
+        "registers": [
+          {
+            "type": "constant",
+            "index": 7
+          }
+        ]
+      }
+    }
+  },
+  "ADDRAND": {
+    "description": {
+      "short": "",
+      "long": "Mixes unsigned 256-bit _Integer_ `x` into the random seed `r` by setting the random seed to `Sha` of the concatenation of two 32-byte strings: the first with the big-endian representation of the old seed `r`, and the second with the big-endian representation of `x`.",
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ],
+        "registers": [
+          {
+            "type": "constant",
+            "index": 7
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [],
+        "registers": [
+          {
+            "type": "constant",
+            "index": 7
+          }
+        ]
+      }
+    }
+  }
+}
