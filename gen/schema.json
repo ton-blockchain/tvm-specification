@@ -1,0 +1,602 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "Specification": {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "instructions": {
+          "$ref": "#/definitions/Record%3Cstring%2CInstruction%3E"
+        }
+      },
+      "required": ["schema", "version", "instructions"],
+      "additionalProperties": false
+    },
+    "Record<string,Instruction>": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/Instruction"
+      }
+    },
+    "Instruction": {
+      "type": "object",
+      "properties": {
+        "category": {
+          "type": "string"
+        },
+        "sub_category": {
+          "type": "string"
+        },
+        "description": {
+          "$ref": "#/definitions/Description"
+        },
+        "layout": {
+          "$ref": "#/definitions/Layout"
+        },
+        "effects": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "signature": {
+          "$ref": "#/definitions/InstructionSignature"
+        }
+      },
+      "required": ["category", "sub_category", "description", "layout", "signature"],
+      "additionalProperties": false
+    },
+    "Description": {
+      "type": "object",
+      "properties": {
+        "short": {
+          "type": "string"
+        },
+        "long": {
+          "type": "string"
+        },
+        "operands": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "exit_codes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExitCode"
+          }
+        },
+        "other_implementations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OtherImplementation"
+          }
+        },
+        "examples": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Example"
+          }
+        }
+      },
+      "required": ["short", "long", "operands"],
+      "additionalProperties": false
+    },
+    "ExitCode": {
+      "type": "object",
+      "properties": {
+        "errno": {
+          "type": "string"
+        },
+        "condition": {
+          "type": "string"
+        }
+      },
+      "required": ["errno", "condition"],
+      "additionalProperties": false
+    },
+    "OtherImplementation": {
+      "type": "object",
+      "properties": {
+        "exact": {
+          "type": "boolean"
+        },
+        "instructions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": ["exact", "instructions"],
+      "additionalProperties": false
+    },
+    "Example": {
+      "type": "object",
+      "properties": {
+        "instructions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExampleInstruction"
+          }
+        },
+        "stack": {
+          "$ref": "#/definitions/ExampleStack"
+        },
+        "exit_code": {
+          "type": "number"
+        }
+      },
+      "required": ["instructions", "stack"],
+      "additionalProperties": false
+    },
+    "ExampleInstruction": {
+      "type": "object",
+      "properties": {
+        "instruction": {
+          "type": "string"
+        },
+        "comment": {
+          "type": "string"
+        },
+        "is_main": {
+          "type": "boolean"
+        }
+      },
+      "required": ["instruction"],
+      "additionalProperties": false
+    },
+    "ExampleStack": {
+      "type": "object",
+      "properties": {
+        "input": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "output": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": ["input", "output"],
+      "additionalProperties": false
+    },
+    "Layout": {
+      "type": "object",
+      "properties": {
+        "min": {
+          "type": "number"
+        },
+        "max": {
+          "type": "number"
+        },
+        "checkLen": {
+          "type": "number"
+        },
+        "skipLen": {
+          "type": "number"
+        },
+        "args": {
+          "$ref": "#/definitions/Args"
+        },
+        "exec": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string",
+          "enum": ["ext", "ext-range", "fixed", "fixed-range", "simple"]
+        },
+        "prefix": {
+          "type": "number"
+        },
+        "prefix_str": {
+          "type": "string"
+        },
+        "version": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "min",
+        "max",
+        "checkLen",
+        "skipLen",
+        "args",
+        "exec",
+        "kind",
+        "prefix",
+        "prefix_str"
+      ],
+      "additionalProperties": false
+    },
+    "Args": {
+      "type": "object",
+      "properties": {
+        "$": {
+          "type": "string",
+          "enum": ["dictpush", "simpleArgs", "xchgArgs"]
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Child"
+          }
+        },
+        "range": {
+          "$ref": "#/definitions/ArgRange"
+        }
+      },
+      "required": ["$"],
+      "additionalProperties": false
+    },
+    "Child": {
+      "type": "object",
+      "properties": {
+        "$": {
+          "type": "string"
+        },
+        "len": {
+          "type": "number"
+        },
+        "range": {
+          "$ref": "#/definitions/ArgRange"
+        },
+        "delta": {
+          "type": "number"
+        },
+        "arg": {
+          "$ref": "#/definitions/Arg"
+        },
+        "refs": {
+          "$ref": "#/definitions/Refs"
+        },
+        "bits": {
+          "$ref": "#/definitions/Arg"
+        },
+        "pad": {
+          "type": "number"
+        }
+      },
+      "required": ["$"],
+      "additionalProperties": false
+    },
+    "ArgRange": {
+      "type": "object",
+      "properties": {
+        "min": {
+          "type": "string"
+        },
+        "max": {
+          "type": "string"
+        }
+      },
+      "required": ["min", "max"],
+      "additionalProperties": false
+    },
+    "Arg": {
+      "type": "object",
+      "properties": {
+        "$": {
+          "type": "string",
+          "enum": ["stack", "uint"]
+        },
+        "len": {
+          "type": "number"
+        },
+        "range": {
+          "$ref": "#/definitions/ArgRange"
+        }
+      },
+      "required": ["$", "len", "range"],
+      "additionalProperties": false
+    },
+    "Refs": {
+      "type": "object",
+      "properties": {
+        "$": {
+          "type": "string"
+        },
+        "count": {
+          "type": "number"
+        },
+        "delta": {
+          "type": "number"
+        },
+        "arg": {
+          "$ref": "#/definitions/Arg"
+        },
+        "len": {
+          "type": "number"
+        },
+        "range": {
+          "$ref": "#/definitions/ArgRange"
+        }
+      },
+      "required": ["$"],
+      "additionalProperties": false
+    },
+    "InstructionSignature": {
+      "type": "object",
+      "properties": {
+        "stack_string": {
+          "type": "string"
+        },
+        "inputs": {
+          "$ref": "#/definitions/InstructionInputs"
+        },
+        "outputs": {
+          "$ref": "#/definitions/InstructionOutputs"
+        }
+      },
+      "additionalProperties": false,
+      "description": "Information related to usage of stack and registers by instruction."
+    },
+    "InstructionInputs": {
+      "type": "object",
+      "properties": {
+        "stack": {
+          "$ref": "#/definitions/StackValues"
+        },
+        "registers": {
+          "$ref": "#/definitions/RegisterValues"
+        }
+      },
+      "required": [],
+      "additionalProperties": false,
+      "description": "Incoming values constraints."
+    },
+    "StackValues": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/StackEntry"
+      },
+      "description": "Stack constraints. Top of stack is the last value."
+    },
+    "StackEntry": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "simple"
+            },
+            "name": {
+              "$ref": "#/definitions/VariableName"
+            },
+            "presentation": {
+              "type": "string"
+            },
+            "value_types": {
+              "$ref": "#/definitions/PossibleValueTypes"
+            },
+            "mutations": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Mutation"
+              }
+            }
+          },
+          "required": ["type", "name"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "const"
+            },
+            "value_type": {
+              "$ref": "#/definitions/ConstantType"
+            },
+            "value": {
+              "$ref": "#/definitions/ConstantValue"
+            }
+          },
+          "required": ["type", "value_type", "value"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "conditional"
+            },
+            "name": {
+              "$ref": "#/definitions/VariableName1"
+            },
+            "match": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/MatchArm"
+              }
+            },
+            "else": {
+              "$ref": "#/definitions/StackValues"
+            }
+          },
+          "required": ["type", "name", "match"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "array"
+            },
+            "name": {
+              "$ref": "#/definitions/VariableName"
+            },
+            "length_var": {
+              "$ref": "#/definitions/VariableName2"
+            },
+            "array_entry": {
+              "$ref": "#/definitions/ArraySingleEntryDefinition"
+            }
+          },
+          "required": ["type", "name", "length_var", "array_entry"],
+          "additionalProperties": false
+        }
+      ],
+      "description": "Representation of stack entry or group of stack entries"
+    },
+    "VariableName": {
+      "type": "string",
+      "description": "Allowed chars are `a-zA-Z0-9_`, must not begin with digit or underscore and must not end with underscore."
+    },
+    "PossibleValueTypes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["Int", "Bool", "Cell", "Builder", "Slice", "Tuple", "Continuation", "Null"]
+      }
+    },
+    "Mutation": {
+      "type": "object",
+      "properties": {
+        "length": {
+          "type": "object",
+          "properties": {
+            "amount_arg": {
+              "type": "number"
+            },
+            "stack_amount_arg": {
+              "type": "number"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": ["length"],
+      "additionalProperties": false
+    },
+    "ConstantType": {
+      "type": "string",
+      "enum": ["Int", "Null"]
+    },
+    "ConstantValue": {
+      "type": ["number", "null", "string"]
+    },
+    "VariableName1": {
+      "type": "string",
+      "description": "Allowed chars are `a-zA-Z0-9_`, must not begin with digit or underscore and must not end with underscore."
+    },
+    "MatchArm": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "$ref": "#/definitions/ArmValue"
+        },
+        "stack": {
+          "$ref": "#/definitions/StackValues"
+        }
+      },
+      "required": ["value", "stack"],
+      "additionalProperties": false
+    },
+    "ArmValue": {
+      "type": "number"
+    },
+    "VariableName2": {
+      "type": "string",
+      "description": "Allowed chars are `a-zA-Z0-9_`, must not begin with digit or underscore and must not end with underscore."
+    },
+    "ArraySingleEntryDefinition": {
+      "$ref": "#/definitions/StackValues",
+      "description": "Array is a structure like `x1 y1 z1 x2 y2 z2 ... x_n y_n z_n n` which contains `n` entries of `x_i y_i z_i`. This property defines the structure of a single entry."
+    },
+    "RegisterValues": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Register"
+      }
+    },
+    "Register": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "constant"
+            },
+            "index": {
+              "type": "number"
+            }
+          },
+          "required": ["type", "index"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "variable"
+            },
+            "var_name": {
+              "$ref": "#/definitions/VariableName"
+            }
+          },
+          "required": ["type", "var_name"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "special"
+            },
+            "name": {
+              "type": "string",
+              "enum": ["gas", "cstate", "r"]
+            }
+          },
+          "required": ["type", "name"],
+          "additionalProperties": false
+        }
+      ],
+      "description": "Represents read/write access to a register"
+    },
+    "InstructionOutputs": {
+      "type": "object",
+      "properties": {
+        "stack": {
+          "$ref": "#/definitions/StackValues"
+        },
+        "registers": {
+          "$ref": "#/definitions/RegisterValues"
+        }
+      },
+      "required": [],
+      "additionalProperties": false,
+      "description": "Outgoing values constraints."
+    }
+  },
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "instructions": {
+      "name": "Instructions",
+      "description": "Instruction list.",
+      "type": "object",
+      "additionalProperties": {"$ref": "#/definitions/Instruction"}
+    }
+  },
+  "required": ["instructions"]
+}

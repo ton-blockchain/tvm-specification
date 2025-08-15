@@ -64,6 +64,7 @@ const main = () => {
     const version = JSON.parse(fs.readFileSync(`${__dirname}/../../package.json`, "utf8")).version
 
     const spec: Specification = {
+        $schema: "./schema.json",
         version,
         instructions: allInstructions,
     }
