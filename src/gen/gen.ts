@@ -61,8 +61,10 @@ const main = () => {
         }
     }
 
+    const version = JSON.parse(fs.readFileSync(`${__dirname}/../../package.json`, "utf8")).version
+
     const spec: Specification = {
-        version: "0.0.1",
+        version,
         instructions: allInstructions,
     }
 
