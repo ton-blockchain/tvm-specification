@@ -1,4 +1,4 @@
-import type {InstructionSignature} from "ton-assembly/dist/runtime/stack-signatures-schema"
+import type {InstructionSignature} from "./stack-signatures-schema"
 
 export interface Specification {
     readonly version: string

@@ -1,9 +1,11 @@
 {
     "name": "tvm-specification",
+    "version": "0.0.1",
     "scripts": {
+        "build": "tsc --declaration",
         "fmt": "prettier --write -l --cache .",
         "fmt:check": "prettier --check --cache .",
-        "generate": "ts-node ./src/gen.ts && yarn fmt"
+        "generate": "ts-node src/gen/gen.ts && yarn fmt"
     },
     "devDependencies": {
         "@ton/core": "^0.61.0",
@@ -13,6 +15,12 @@
         "ts-node": "^10.9.2",
         "typescript": "^5.8.2"
     },
+    "files": [
+        "dist/",
+        "!dist/gen/**",
+        "!*.d.ts.map",
+        "!*.js.map"
+    ],
     "prettier": {
         "arrowParens": "avoid",
         "bracketSpacing": false,
@@ -25,11 +33,7 @@
         "overrides": [
             {
                 "files": [
-                    "src/**/*.json",
-                    "gen/**/*.json",
-                    "app/**/*.ts",
-                    "app/**/*.tsx",
-                    "app/**/*.css",
+                    "data/**/*.json",
                     "*.yaml",
                     "*.yml"
                 ],

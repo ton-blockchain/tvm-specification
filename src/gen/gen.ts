@@ -1,8 +1,6 @@
-import {instructions} from "ton-assembly/dist/generator/instructions"
 import * as fs from "node:fs"
-import type {InstructionSignature} from "ton-assembly/dist/runtime/stack-signatures-schema"
-import {signatureString} from "ton-assembly/dist/runtime"
-import {Description, Instruction, Layout, Specification} from "./types/types"
+import {Description, Instruction, Layout, Specification, InstructionSignature} from "../types"
+import {instructions, signatureString} from "../instructions"
 
 export interface InstructionEntry {
     readonly name?: string
@@ -13,11 +11,11 @@ export interface InstructionEntry {
 const main = () => {
     const entries: Record<string, InstructionEntry> = {}
 
-    const files = fs.readdirSync(`${__dirname}/data`)
+    const files = fs.readdirSync(`${__dirname}/../../data`)
 
     for (const filename of files) {
         const descriptions = JSON.parse(
-            fs.readFileSync(`${__dirname}/data/${filename}`, "utf8"),
+            fs.readFileSync(`${__dirname}/../../data/${filename}`, "utf8"),
         ) as Record<string, InstructionEntry>
 
         for (const [name, desc] of Object.entries(descriptions)) {
@@ -76,7 +74,7 @@ const main = () => {
     }
 
     fs.writeFileSync(
-        `${__dirname}/gen/tvm-specification.json`,
+        `${__dirname}/../../gen/tvm-specification.json`,
         JSON.stringify(spec, bigintReplacer(), 2),
     )
 }
