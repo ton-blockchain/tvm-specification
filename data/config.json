@@ -2,7 +2,9 @@
   "NOW": {
     "description": {
       "short": "",
-      "long": ""
+      "long": "",
+      "tags": [],
+      "operands": []
     },
     "signature": {
       "inputs": {
@@ -18,7 +20,9 @@
   "BLOCKLT": {
     "description": {
       "short": "",
-      "long": ""
+      "long": "",
+      "tags": [],
+      "operands": []
     },
     "signature": {
       "inputs": {
@@ -34,7 +38,9 @@
   "LTIME": {
     "description": {
       "short": "",
-      "long": ""
+      "long": "",
+      "tags": [],
+      "operands": []
     },
     "signature": {
       "inputs": {
@@ -50,7 +56,9 @@
   "RANDSEED": {
     "description": {
       "short": "",
-      "long": ""
+      "long": "",
+      "tags": [],
+      "operands": []
     },
     "signature": {
       "inputs": {
@@ -66,7 +74,9 @@
   "BALANCE": {
     "description": {
       "short": "",
-      "long": ""
+      "long": "",
+      "tags": [],
+      "operands": []
     },
     "signature": {
       "inputs": {
@@ -82,7 +92,9 @@
   "MYADDR": {
     "description": {
       "short": "",
-      "long": ""
+      "long": "",
+      "tags": [],
+      "operands": []
     },
     "signature": {
       "inputs": {
@@ -98,7 +110,9 @@
   "CONFIGROOT": {
     "description": {
       "short": "",
-      "long": ""
+      "long": "",
+      "tags": [],
+      "operands": []
     },
     "signature": {
       "inputs": {
@@ -114,7 +128,9 @@
   "MYCODE": {
     "description": {
       "short": "",
-      "long": ""
+      "long": "",
+      "tags": [],
+      "operands": []
     },
     "signature": {
       "inputs": {
@@ -130,7 +146,9 @@
   "INCOMINGVALUE": {
     "description": {
       "short": "",
-      "long": ""
+      "long": "",
+      "tags": [],
+      "operands": []
     },
     "signature": {
       "inputs": {
@@ -146,7 +164,9 @@
   "STORAGEFEES": {
     "description": {
       "short": "",
-      "long": ""
+      "long": "",
+      "tags": [],
+      "operands": []
     },
     "signature": {
       "inputs": {
@@ -162,7 +182,9 @@
   "PREVBLOCKSINFOTUPLE": {
     "description": {
       "short": "",
-      "long": ""
+      "long": "",
+      "tags": [],
+      "operands": []
     },
     "signature": {
       "inputs": {
@@ -178,7 +200,9 @@
   "UNPACKEDCONFIGTUPLE": {
     "description": {
       "short": "",
-      "long": ""
+      "long": "",
+      "tags": [],
+      "operands": []
     },
     "signature": {
       "inputs": {
@@ -194,7 +218,9 @@
   "DUEPAYMENT": {
     "description": {
       "short": "",
-      "long": ""
+      "long": "",
+      "tags": [],
+      "operands": []
     },
     "signature": {
       "inputs": {
@@ -211,6 +237,7 @@
     "description": {
       "short": "",
       "long": "Returns the global configuration dictionary along with its key length (32).\nEquivalent to `CONFIGROOT` `32 PUSHINT`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -243,6 +270,7 @@
     "description": {
       "short": "",
       "long": "Returns the value of the global configuration parameter with integer index `i` as a _Cell_ `c`, and a flag to indicate success.\nEquivalent to `CONFIGDICT` `DICTIGETREF`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -296,6 +324,7 @@
     "description": {
       "short": "",
       "long": "Returns the value of the global configuration parameter with integer index `i` as a _Maybe Cell_ `c^?`.\nEquivalent to `CONFIGDICT` `DICTIGETOPTREF`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -329,6 +358,7 @@
     "description": {
       "short": "",
       "long": "Retrives `last_mc_blocks` part of `PrevBlocksInfo` from c7 (parameter 13).",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -356,6 +386,7 @@
     "description": {
       "short": "",
       "long": "Retrives `prev_key_block` part of `PrevBlocksInfo` from c7 (parameter 13).",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -383,6 +414,7 @@
     "description": {
       "short": "",
       "long": "Retrives `last_mc_blocks` part of `PrevBlocksInfo` from c7 (parameter 13).",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -410,6 +442,7 @@
     "description": {
       "short": "",
       "long": "Retrieves `global_id` from 19 network config.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -437,6 +470,7 @@
     "description": {
       "short": "",
       "long": "Calculates gas fee (amount in nanotoncoin to be paid) for a transaction which consumed `gas_used` gas units.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -475,6 +509,7 @@
     "description": {
       "short": "",
       "long": "Calculates storage fees (amount in nanotoncoin to be paid, only current StoragePrices entry is used) for storing a contract of provided size for `seconds`, `bits` and `cells` represent contract state (`code` + `data`).",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -523,6 +558,7 @@
     "description": {
       "short": "",
       "long": "Calculates amount of nanotoncoin that must be paid to send a message of the specified size.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -566,6 +602,7 @@
     "description": {
       "short": "",
       "long": "Returns gas usage for the current contract if it is precompiled, `null` otherwise.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -593,6 +630,7 @@
     "description": {
       "short": "",
       "long": "Calculate `fwd_fee * 2^16 / first_frac`. Can be used to get the original `fwd_fee` of the message.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -631,9 +669,7 @@
     "description": {
       "short": "",
       "long": "Same as `GETGASFEE`, but without flat price (just `(gas_used * price) / 2^16)`.",
-      "doc_links": {
-        "Low-level fees overview": "https://docs.ton.org/develop/howto/fees-low-level"
-      },
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -672,9 +708,7 @@
     "description": {
       "short": "",
       "long": "Same as `GETFORWARDFEE`, but without lump price (just (`bits*bit_price + cells*cell_price) / 2^16`).",
-      "doc_links": {
-        "Low-level fees overview": "https://docs.ton.org/develop/howto/fees-low-level"
-      },
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -718,13 +752,8 @@
     "description": {
       "short": "",
       "long": "Returns the `i`-th parameter from the _Tuple_ provided at `c7`.",
+      "tags": [],
       "operands": ["i"],
-      "other_implementations": [
-        {
-          "exact": true,
-          "instructions": ["c7 PUSHCTR", "FIRST", "[i] INDEX"]
-        }
-      ],
       "exit_codes": [
         {
           "errno": "7",
@@ -733,6 +762,12 @@
         {
           "errno": "5",
           "condition": "Index `i` is greater than or equal to tuple from `c7` length."
+        }
+      ],
+      "other_implementations": [
+        {
+          "exact": true,
+          "instructions": ["c7 PUSHCTR", "FIRST", "[i] INDEX"]
         }
       ]
     },
@@ -761,6 +796,7 @@
     "description": {
       "short": "Gets a parameter from the c7 tuple with extended range.",
       "long": "Same as `x GETPARAM`, but x is in range `[0..254]`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -790,6 +826,7 @@
     "description": {
       "short": "Returns the tuple with inbound message parameters.",
       "long": "Returns the 17th element of the c7 tuple, which contains inbound message parameters. The tuple includes: bounce (boolean), bounced (boolean), src_addr (slice), fwd_fee (int), created_lt (int), created_at (int), orig_value (int), value (int), value_extra (cell or null), state_init (cell or null). For external messages, tick-tock transactions and get methods: bounce, bounced, fwd_fee, created_lt, created_at, orig_value, value are 0, value_extra is null. For tick-tock transactions and get methods: src_addr is addr_none.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -813,6 +850,7 @@
     "description": {
       "short": "Gets a parameter from the c7 tuple with extended range.",
       "long": "Same as `x GETPARAM`, but x is in range `[0..254]`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -842,6 +880,7 @@
     "description": {
       "short": "Returns the bounce field from the inbound message parameters.",
       "long": "Alias for `0 INMSGPARAM`. Returns the `bounce` field (boolean) from the inbound message parameters tuple.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -865,6 +904,7 @@
     "description": {
       "short": "Returns the bounced field from the inbound message parameters.",
       "long": "Alias for `1 INMSGPARAM`. Returns the `bounced` field (boolean) from the inbound message parameters tuple.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -888,6 +928,7 @@
     "description": {
       "short": "Returns the source address from the inbound message parameters.",
       "long": "Alias for `2 INMSGPARAM`. Returns the `src_addr` field (slice) from the inbound message parameters tuple. For tick-tock transactions and get methods, this is addr_none.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -911,6 +952,7 @@
     "description": {
       "short": "Returns the forward fee from the inbound message parameters.",
       "long": "Alias for `3 INMSGPARAM`. Returns the `fwd_fee` field (int) from the inbound message parameters tuple. For external messages, tick-tock transactions and get methods, this is 0.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -934,6 +976,7 @@
     "description": {
       "short": "Returns the logical time from the inbound message parameters.",
       "long": "Alias for `4 INMSGPARAM`. Returns the `created_lt` field (int) from the inbound message parameters tuple. For external messages, tick-tock transactions and get methods, this is 0.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -957,6 +1000,7 @@
     "description": {
       "short": "Returns the creation time from the inbound message parameters.",
       "long": "Alias for `5 INMSGPARAM`. Returns the `created_at` field (int) from the inbound message parameters tuple. For external messages, tick-tock transactions and get methods, this is 0.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -980,6 +1024,7 @@
     "description": {
       "short": "Returns the original value from the inbound message parameters.",
       "long": "Alias for `6 INMSGPARAM`. Returns the `orig_value` field (int) from the inbound message parameters tuple. This is sometimes different from the value in `INCOMINGVALUE` and TVM stack because of storage fees. For external messages, tick-tock transactions and get methods, this is 0.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -1003,6 +1048,7 @@
     "description": {
       "short": "Returns the value from the inbound message parameters.",
       "long": "Alias for `7 INMSGPARAM`. Returns the `value` field (int) from the inbound message parameters tuple. This is the same as in `INCOMINGVALUE` and TVM stack. For external messages, tick-tock transactions and get methods, this is 0.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -1026,6 +1072,7 @@
     "description": {
       "short": "Returns the extra value from the inbound message parameters.",
       "long": "Alias for `8 INMSGPARAM`. Returns the `value_extra` field (cell or null) from the inbound message parameters tuple. This is the same as in `INCOMINGVALUE`. For external messages, tick-tock transactions and get methods, this is null.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -1049,6 +1096,7 @@
     "description": {
       "short": "Returns the state init from the inbound message parameters.",
       "long": "Alias for `9 INMSGPARAM`. Returns the `state_init` field (cell or null) from the inbound message parameters tuple.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -1072,6 +1120,7 @@
     "description": {
       "short": "Returns a specific parameter from the inbound message parameters tuple.",
       "long": "Returns a specific parameter from the inbound message parameters tuple.",
+      "tags": [],
       "operands": ["x"],
       "other_implementations": [
         {

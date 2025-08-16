@@ -3,6 +3,7 @@
     "description": {
       "short": "",
       "long": "Performs a `RET`, but only if integer `cond` is non-zero. If `cond` is a `NaN`, throws an integer overflow exception.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -21,6 +22,7 @@
     "description": {
       "short": "",
       "long": "Performs a `RET`, but only if integer `cond` is zero.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -39,6 +41,8 @@
     "description": {
       "short": "",
       "long": "Performs `EXECUTE` for `body` (i.e., _executes_ `body`), but only if integer `cond` is non-zero. Otherwise simply discards both values.",
+      "tags": [],
+      "operands": [],
       "examples": [
         {
           "instructions": [
@@ -80,8 +84,7 @@
             "output": []
           }
         }
-      ],
-      "operands": []
+      ]
     },
     "signature": {
       "inputs": {
@@ -104,6 +107,7 @@
     "description": {
       "short": "",
       "long": "Executes continuation `body`, but only if integer `cond` is zero. Otherwise simply discards both values.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -125,8 +129,10 @@
   },
   "IFJMP": {
     "description": {
+      "short": "",
       "long": "Transfers control to `body` if `cond` is non-zero. The remainder of the current continuation is discarded which means that after `body` completes, control will not return to instruction immediately following the `IFJMP`. Instead, it will return to the instruction immediately following the instruction that started current continuation. If such continuation is not present, the program will exit.",
       "tags": ["control_flow"],
+      "operands": [],
       "examples": [
         {
           "instructions": [
@@ -152,8 +158,7 @@
             "output": []
           }
         }
-      ],
-      "operands": []
+      ]
     },
     "signature": {
       "inputs": {
@@ -176,6 +181,7 @@
     "description": {
       "short": "",
       "long": "Jumps to `body` (similarly to `JMPX`), but only if `cond` is zero.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -199,6 +205,7 @@
     "description": {
       "short": "",
       "long": "If integer `cond` is non-zero, executes `body`, otherwise executes `else`",
+      "tags": [],
       "operands": [],
       "other_implementations": [
         {
@@ -233,6 +240,7 @@
     "description": {
       "short": "",
       "long": "If integer `f` is non-zero, returns `x`, otherwise returns `y`. Notice that no type checks are performed on `x` and `y`; as such, it is more like a conditional stack operation. Roughly equivalent to `ROT` `ISZERO` `INC` `ROLLX` `NIP`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -267,6 +275,7 @@
     "description": {
       "short": "",
       "long": "Same as `CONDSEL`, but first checks whether `x` and `y` have the same type.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -301,6 +310,7 @@
     "description": {
       "short": "",
       "long": "Performs `RETALT` if integer `cond != 0`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -319,6 +329,7 @@
     "description": {
       "short": "",
       "long": "Performs `RETALT` if integer `cond == 0`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -337,6 +348,7 @@
     "description": {
       "short": "",
       "long": "Checks whether bit `0 <= num <= 31` is set in integer `x`, and if so, performs `JMPX` to continuation `body`. Value `x` is left in the stack.",
+      "tags": [],
       "operands": ["num"]
     },
     "signature": {
@@ -369,6 +381,7 @@
     "description": {
       "short": "",
       "long": "Jumps to `body` if bit `0 <= num <= 31` is not set in integer `x`.",
+      "tags": [],
       "operands": ["num"]
     },
     "signature": {
@@ -401,6 +414,7 @@
     "description": {
       "short": "",
       "long": "Executes the continuation stored in cell reference `body` if integer `cond` is non-zero. Optimized so that the cell reference is not actually loaded into a _Slice_ and then converted into an ordinary _Continuation_ if `cond == 0`.\nGas consumption of this primitive depends on whether `cond == 0` and whether the reference was loaded before.\nSimilar remarks apply other primitives that accept a continuation as a reference.",
+      "tags": [],
       "operands": ["body"],
       "other_implementations": [
         {
@@ -425,6 +439,7 @@
     "description": {
       "short": "",
       "long": "Executes the continuation stored in cell reference `body`, but only if integer `cond` is zero.",
+      "tags": [],
       "operands": ["body"],
       "other_implementations": [
         {
@@ -449,6 +464,7 @@
     "description": {
       "short": "",
       "long": "Transfers control to the continuation stored in cell reference `body` if `cond` is non-zero. The remainder of the current continuation is discarded which means that after `body` completes, control will not return to instruction immediately following the `IFJMPREF`. Instead, it will return to the instruction immediately following the instruction that started current continuation. If such continuation is not present, the program will exit.",
+      "tags": [],
       "operands": ["body"],
       "other_implementations": [
         {
@@ -473,6 +489,7 @@
     "description": {
       "short": "",
       "long": "Transfers control to the continuation stored in cell reference `body` if `cond` is zero.",
+      "tags": [],
       "operands": ["body"],
       "other_implementations": [
         {
@@ -497,6 +514,7 @@
     "description": {
       "short": "",
       "long": "If integer `cond` is non-zero, executes the continuation stored in cell reference `c`, otherwise executes `else`. Optimized so that the cell reference is not actually loaded into a _Slice_ and then converted into an ordinary _Continuation_ if `f=0`. Similar remarks apply to the next two primitives: cells are converted into continuations only when necessary.",
+      "tags": [],
       "operands": ["c"],
       "other_implementations": [
         {
@@ -526,6 +544,7 @@
     "description": {
       "short": "",
       "long": "If integer `cond` is non-zero, executes `body`, otherwise executes the continuation stored in cell reference `c`.",
+      "tags": [],
       "operands": ["c"],
       "other_implementations": [
         {
@@ -555,6 +574,7 @@
     "description": {
       "short": "",
       "long": "If integer `cond` is non-zero, executes the continuation stored in cell reference `body`, otherwise executes the continuation stored in cell reference `else`.",
+      "tags": [],
       "operands": ["body", "else"],
       "other_implementations": [
         {
@@ -579,6 +599,7 @@
     "description": {
       "short": "",
       "long": "Performs a `JMPREF` if bit `0 <= num <= 31` is set in integer `x`.",
+      "tags": [],
       "operands": ["num", "body"]
     },
     "signature": {
@@ -606,6 +627,7 @@
     "description": {
       "short": "",
       "long": "Performs a `JMPREF` if bit `0 <= num <= 31` is not set in integer `x`.",
+      "tags": [],
       "operands": ["num", "body"]
     },
     "signature": {

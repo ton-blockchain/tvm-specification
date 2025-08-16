@@ -3,6 +3,7 @@
     "description": {
       "short": "",
       "long": "Computes the minimum of two integers `x` and `y`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -35,6 +36,7 @@
     "description": {
       "short": "",
       "long": "Computes the maximum of two integers `x` and `y`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -67,6 +69,7 @@
     "description": {
       "short": "",
       "long": "Sorts two integers.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -104,6 +107,7 @@
     "description": {
       "short": "",
       "long": "Computes the absolute value of an integer `x`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -130,7 +134,9 @@
   "QMIN": {
     "description": {
       "short": "",
-      "long": "Computes the minimum of two integers `x` and `y`. Returns `NaN` if any of the arguments is `NaN`."
+      "long": "Computes the minimum of two integers `x` and `y`. Returns `NaN` if any of the arguments is `NaN`.",
+      "tags": [],
+      "operands": []
     },
     "signature": {
       "inputs": {
@@ -161,7 +167,9 @@
   "QMAX": {
     "description": {
       "short": "",
-      "long": "Computes the maximum of two integers `x` and `y`. Returns `NaN` if any of the arguments is `NaN`."
+      "long": "Computes the maximum of two integers `x` and `y`. Returns `NaN` if any of the arguments is `NaN`.",
+      "tags": [],
+      "operands": []
     },
     "signature": {
       "inputs": {
@@ -192,7 +200,9 @@
   "QMINMAX": {
     "description": {
       "short": "",
-      "long": "Sorts two integers. Returns two `NaN` if any of the arguments is `NaN`."
+      "long": "Sorts two integers. Returns two `NaN` if any of the arguments is `NaN`.",
+      "tags": [],
+      "operands": []
     },
     "signature": {
       "inputs": {
@@ -228,7 +238,9 @@
   "QABS": {
     "description": {
       "short": "",
-      "long": ""
+      "long": "",
+      "tags": [],
+      "operands": []
     },
     "signature": {
       "inputs": {

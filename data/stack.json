@@ -3,6 +3,7 @@
     "description": {
       "short": "",
       "long": "Does nothing.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -21,6 +22,7 @@
       "short": "",
       "long": "Exchanges the top two stack items. Takes two elements from the stack and pushes them back in reverse order.",
       "tags": ["stack"],
+      "operands": [],
       "exit_codes": [
         {
           "errno": "2",
@@ -64,6 +66,7 @@
       "short": "",
       "long": "Duplicates the top stack item. Copies the top element of the stack and pushes the copy on top of the stack.",
       "tags": ["stack"],
+      "operands": [],
       "exit_codes": [
         {
           "errno": "2",
@@ -104,6 +107,7 @@
       "short": "",
       "long": "Copies the second stack item to the top. Takes the second element from the stack and pushes a copy of it on top of the stack, leaving the original element in place.",
       "tags": ["stack"],
+      "operands": [],
       "exit_codes": [
         {
           "errno": "2",
@@ -147,6 +151,7 @@
       "short": "",
       "long": "Removes the top element from the stack. Discards the top element without using it.",
       "tags": ["stack"],
+      "operands": [],
       "exit_codes": [
         {
           "errno": "2",
@@ -190,6 +195,7 @@
       "short": "",
       "long": "Removes the second element from the stack.",
       "tags": ["stack"],
+      "operands": [],
       "exit_codes": [
         {
           "errno": "2",
@@ -232,6 +238,8 @@
     "description": {
       "short": "",
       "long": "Rearranges the top three elements. Moves the third element to the top of the stack: `1 2 3 -> 2 3 1`",
+      "tags": [],
+      "operands": [],
       "other_implementations": [
         {
           "exact": true,
@@ -264,8 +272,7 @@
             "output": ["2", "3", "1"]
           }
         }
-      ],
-      "operands": []
+      ]
     },
     "signature": {
       "inputs": {
@@ -282,6 +289,7 @@
     "description": {
       "short": "",
       "long": "Rearranges the top three elements. Places the top element below the first two following elements.: `1 2 3 -> 3 1 2`",
+      "tags": [],
       "operands": [],
       "other_implementations": [
         {
@@ -332,6 +340,7 @@
     "description": {
       "short": "",
       "long": "Pops integer `i` from the stack, then performs `s[i] PUSH`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -349,7 +358,26 @@
     "description": {
       "short": "",
       "long": "Takes integer `x` from the top of the stack and moves the `x`-th element from the top to the top of the stack. For example, `ROLL 2` is equivalent to `ROT` (`1 2 3 -> 2 3 1`).",
+      "tags": [],
       "operands": [],
+      "exit_codes": [
+        {
+          "errno": "2",
+          "condition": "Stack contains less than 1 element."
+        },
+        {
+          "errno": "7",
+          "condition": "Top element is not an `Int`."
+        },
+        {
+          "errno": "5",
+          "condition": "Integer is out of range."
+        },
+        {
+          "errno": "2",
+          "condition": "Stack contains less than `x + 1` elements."
+        }
+      ],
       "examples": [
         {
           "instructions": [
@@ -376,24 +404,6 @@
             "output": ["2", "3", "1"]
           }
         }
-      ],
-      "exit_codes": [
-        {
-          "errno": "2",
-          "condition": "Stack contains less than 1 element."
-        },
-        {
-          "errno": "7",
-          "condition": "Top element is not an `Int`."
-        },
-        {
-          "errno": "5",
-          "condition": "Integer is out of range."
-        },
-        {
-          "errno": "2",
-          "condition": "Stack contains less than `x + 1` elements."
-        }
       ]
     },
     "signature": {
@@ -411,7 +421,26 @@
     "description": {
       "short": "",
       "long": "Takes integer `x` from the top of the stack and moves the top element to position `x` from the top. For example, `ROLLREV 2` is equivalent to `ROTREV` (`1 2 3 -> 3 1 2`).",
+      "tags": [],
       "operands": [],
+      "exit_codes": [
+        {
+          "errno": "2",
+          "condition": "Stack contains less than 1 element."
+        },
+        {
+          "errno": "7",
+          "condition": "Top element is not an `Int`."
+        },
+        {
+          "errno": "5",
+          "condition": "Integer is out of range."
+        },
+        {
+          "errno": "2",
+          "condition": "Stack contains less than `x + 1` elements."
+        }
+      ],
       "examples": [
         {
           "instructions": [
@@ -438,24 +467,6 @@
             "output": ["3", "1", "2"]
           }
         }
-      ],
-      "exit_codes": [
-        {
-          "errno": "2",
-          "condition": "Stack contains less than 1 element."
-        },
-        {
-          "errno": "7",
-          "condition": "Top element is not an `Int`."
-        },
-        {
-          "errno": "5",
-          "condition": "Integer is out of range."
-        },
-        {
-          "errno": "2",
-          "condition": "Stack contains less than `x + 1` elements."
-        }
       ]
     },
     "signature": {
@@ -473,6 +484,7 @@
     "description": {
       "short": "",
       "long": "Pops integers `i`,`j` from the stack, then performs `[i] [j] BLKSWAP`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -490,6 +502,7 @@
     "description": {
       "short": "",
       "long": "Pops integers `i`,`j` from the stack, then performs `[i] [j] REVERSE`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -507,6 +520,7 @@
     "description": {
       "short": "",
       "long": "Pops integer `i` from the stack, then performs `[i] BLKDROP`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -524,6 +538,7 @@
     "description": {
       "short": "",
       "long": "Equivalent to `SWAP` `OVER` or to `s1 s1 XCPU`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -541,6 +556,7 @@
     "description": {
       "short": "",
       "long": "Pops integer `i` from the stack, then performs `s[i] XCHG`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -558,6 +574,8 @@
     "description": {
       "short": "",
       "long": "Pushes the current depth of the stack.",
+      "tags": [],
+      "operands": [],
       "examples": [
         {
           "instructions": [
@@ -580,8 +598,7 @@
             "output": ["1", "2", "3", "3"]
           }
         }
-      ],
-      "operands": []
+      ]
     },
     "signature": {
       "outputs": {
@@ -599,6 +616,7 @@
     "description": {
       "short": "",
       "long": "Pops integer `i` from the stack, then checks whether there are at least `i` elements, generating a stack underflow exception otherwise.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -617,6 +635,7 @@
     "description": {
       "short": "",
       "long": "Pops integer `i` from the stack, then removes all but the top `i` elements.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -634,6 +653,7 @@
     "description": {
       "short": "",
       "long": "Pops integer `i` from the stack, then leaves only the bottom `i` elements.",
+      "tags": [],
       "operands": [],
       "other_implementations": [
         {
@@ -657,6 +677,7 @@
     "description": {
       "short": "",
       "long": "Removes the top `i` elements from the stack. Equivalent to `DROP` performed `i` times.",
+      "tags": [],
       "operands": ["i"]
     },
     "signature": {
@@ -674,6 +695,7 @@
     "description": {
       "short": "",
       "long": "Equivalent to `s[i] s[j] XCHG2` `s[k] PUSH`.",
+      "tags": [],
       "operands": ["i", "j", "k"]
     },
     "signature": {
@@ -691,6 +713,7 @@
     "description": {
       "short": "",
       "long": "Equivalent to `s[i] XCHG0` `s[j] s[k] PUSH2`.",
+      "tags": [],
       "operands": ["i", "j", "k"]
     },
     "signature": {
@@ -708,6 +731,7 @@
     "description": {
       "short": "",
       "long": "Equivalent to `s[i] PUSH` `s[j+1] s[k+1] PUSH2`.",
+      "tags": [],
       "operands": ["i", "j", "k"]
     },
     "signature": {
@@ -725,6 +749,7 @@
     "description": {
       "short": "",
       "long": "Equivalent to `s1 s[i] XCHG` `s[j] XCHG0`.",
+      "tags": [],
       "operands": ["i", "j"]
     },
     "signature": {
@@ -742,6 +767,7 @@
     "description": {
       "short": "",
       "long": "Equivalent to `s[i] XCHG0` `s[j] PUSH`.",
+      "tags": [],
       "operands": ["i", "j"]
     },
     "signature": {
@@ -759,6 +785,7 @@
     "description": {
       "short": "",
       "long": "Equivalent to `s[i] PUSH` `s[j+1] PUSH`.",
+      "tags": [],
       "operands": ["i", "j"]
     },
     "signature": {
@@ -776,6 +803,7 @@
     "description": {
       "short": "",
       "long": "Equivalent to `s[i] PUSH` `SWAP` `s[j] XCHG0`.",
+      "tags": [],
       "operands": ["i", "j"]
     },
     "signature": {
@@ -793,6 +821,7 @@
     "description": {
       "short": "",
       "long": "Equivalent to `s1 s[i] XCHG` `s[j] s[k-1] PUXC`.",
+      "tags": [],
       "operands": ["i", "j", "k"]
     },
     "signature": {
@@ -810,6 +839,7 @@
     "description": {
       "short": "",
       "long": "Equivalent to `s[i] PUSH` `s2 XCHG0` `s[j] s[k] XCHG2`.",
+      "tags": [],
       "operands": ["i", "j", "k"]
     },
     "signature": {
@@ -827,6 +857,7 @@
     "description": {
       "short": "",
       "long": "Equivalent to `s[i] s[j-1] PUXC` `s[k] PUSH`.",
+      "tags": [],
       "operands": ["i", "j", "k"]
     },
     "signature": {
@@ -844,6 +875,7 @@
     "description": {
       "short": "",
       "long": "Equivalent to `s[i] PUSH` `SWAP` `s[j] s[k-1] PUXC`.",
+      "tags": [],
       "operands": ["i", "j", "k"]
     },
     "signature": {
@@ -861,6 +893,7 @@
     "description": {
       "short": "",
       "long": "Permutes two blocks `s[j+i+1] ... s[j+1]` and `s[j] ... s0`.",
+      "tags": [],
       "operands": ["i", "j"],
       "other_implementations": [
         {
@@ -884,6 +917,7 @@
     "description": {
       "short": "",
       "long": "Reverses the order of `s[j+i+1] ... s[j]`.",
+      "tags": [],
       "operands": ["i", "j"]
     },
     "signature": {
@@ -901,6 +935,7 @@
     "description": {
       "short": "",
       "long": "Equivalent to `PUSH s(j)` performed `i` times.",
+      "tags": [],
       "operands": ["i", "j"]
     },
     "signature": {
@@ -918,6 +953,7 @@
     "description": {
       "short": "",
       "long": "Drops `i` stack elements under the top `j` elements.",
+      "tags": [],
       "operands": ["i", "j"],
       "other_implementations": [
         {
@@ -941,6 +977,7 @@
     "description": {
       "short": "",
       "long": "Equivalent to `2 2 BLKSWAP` or to `s3 s2 XCHG2`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -958,6 +995,7 @@
     "description": {
       "short": "",
       "long": "Equivalent to `DROP` `DROP`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -975,6 +1013,8 @@
     "description": {
       "short": "",
       "long": "Equivalent to `s1 s0 PUSH2`.",
+      "tags": [],
+      "operands": [],
       "examples": [
         {
           "instructions": [
@@ -994,8 +1034,7 @@
             "output": ["1", "2", "1", "2"]
           }
         }
-      ],
-      "operands": []
+      ]
     },
     "signature": {
       "inputs": {
@@ -1012,6 +1051,7 @@
     "description": {
       "short": "",
       "long": "Equivalent to `s3 s2 PUSH2`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -1029,6 +1069,7 @@
     "description": {
       "short": "",
       "long": "Equivalent to `s2 s[i] XCHG` `s1 s[j] XCHG` `s[k] XCHG0`.",
+      "tags": [],
       "operands": ["i", "j", "k"]
     },
     "signature": {
@@ -1046,6 +1087,7 @@
     "description": {
       "short": "",
       "long": "Long form of `XCHG3`.",
+      "tags": [],
       "operands": ["i", "j", "k"]
     },
     "signature": {
@@ -1064,14 +1106,14 @@
       "short": "Interchanges top element with element at index `i`.",
       "long": "This instruction is equivalent to `XCHG_0I` except that it operates on a integer value with bigger range.",
       "tags": ["stack"],
-      "related_instructions": ["XCHG_0I"],
+      "operands": ["i"],
       "exit_codes": [
         {
           "errno": "2",
           "condition": "Count of elements on the stack is less or equal to `i`"
         }
       ],
-      "operands": ["i"]
+      "related_instructions": ["XCHG_0I"]
     },
     "signature": {
       "inputs": {
@@ -1087,14 +1129,16 @@
   "XCHG_0I": {
     "description": {
       "short": "Interchanges top element with element at index `i`.",
-      "related_instructions": ["XCHG_0I_LONG"],
+      "long": "",
       "tags": ["stack"],
+      "operands": ["i"],
       "exit_codes": [
         {
           "errno": "2",
           "condition": "Count of elements on the stack is less or equal to `i`"
         }
       ],
+      "related_instructions": ["XCHG_0I_LONG"],
       "examples": [
         {
           "instructions": [
@@ -1136,8 +1180,7 @@
             "output": ["1", "2"]
           }
         }
-      ],
-      "operands": ["i"]
+      ]
     },
     "signature": {
       "inputs": {
@@ -1153,14 +1196,15 @@
   "XCHG_IJ": {
     "description": {
       "short": "Interchanges elements at indices `i` and `j`.",
+      "long": "",
       "tags": ["stack"],
+      "operands": ["i", "j"],
       "exit_codes": [
         {
           "errno": "2",
           "condition": "Count of elements on the stack is less or equal to `i` or `j`"
         }
-      ],
-      "operands": ["i", "j"]
+      ]
     },
     "signature": {
       "inputs": {
@@ -1176,7 +1220,9 @@
   "XCHG_1I": {
     "description": {
       "short": "Interchanges second element with element at index `i`.",
+      "long": "",
       "tags": ["stack"],
+      "operands": ["i"],
       "exit_codes": [
         {
           "errno": "2",
@@ -1186,8 +1232,7 @@
           "errno": "2",
           "condition": "Count of elements on the stack is less or equal to `i`"
         }
-      ],
-      "operands": ["i"]
+      ]
     },
     "signature": {
       "inputs": {
@@ -1203,13 +1248,16 @@
   "PUSH": {
     "description": {
       "short": "Copy value of `s(i)` and pushes it onto the stack.",
+      "long": "",
       "tags": ["stack"],
+      "operands": ["i"],
       "exit_codes": [
         {
           "errno": "2",
           "condition": "Count of elements on the stack is less or equal to `i`"
         }
       ],
+      "related_instructions": ["PUSH_LONG"],
       "examples": [
         {
           "instructions": [
@@ -1248,9 +1296,7 @@
             "output": ["1", "2"]
           }
         }
-      ],
-      "related_instructions": ["PUSH_LONG"],
-      "operands": ["i"]
+      ]
     },
     "signature": {
       "inputs": {
@@ -1268,14 +1314,14 @@
       "short": "Copy value of `s(i)` and pushes it onto the stack.",
       "long": "Copy value of `s(i)` and pushes it onto the stack. This instruction is equivalent to `PUSH` except that it operates on a integer value with bigger range.",
       "tags": ["stack"],
+      "operands": ["i"],
       "exit_codes": [
         {
           "errno": "2",
           "condition": "Count of elements on the stack is less or equal to `i`"
         }
       ],
-      "related_instructions": ["PUSH"],
-      "operands": ["i"]
+      "related_instructions": ["PUSH"]
     },
     "signature": {
       "inputs": {
@@ -1291,13 +1337,16 @@
   "POP": {
     "description": {
       "short": "Removes the top element from the stack and stores it in `s(i)`. If `i` equal to 0, POP is effectively a `DROP`, i.e. the top element is removed from the stack.",
+      "long": "",
       "tags": ["stack"],
+      "operands": ["i"],
       "exit_codes": [
         {
           "errno": "2",
           "condition": "Count of elements on the stack is less or equal to `i`"
         }
       ],
+      "related_instructions": ["POP_LONG"],
       "examples": [
         {
           "instructions": [
@@ -1336,9 +1385,7 @@
             "output": ["1"]
           }
         }
-      ],
-      "related_instructions": ["POP_LONG"],
-      "operands": ["i"]
+      ]
     },
     "signature": {
       "inputs": {
@@ -1356,14 +1403,14 @@
       "short": "Removes the top element from the stack and stores it in `s(i).`",
       "long": "Removes the top element from the stack and stores it in `s(i)`. If `i` equal to 0, `POP_LONG` is effectively a `DROP`, i.e. the top element is removed from the stack. This instruction is equivalent to `POP` except that it operates on a integer value with bigger range.",
       "tags": ["stack"],
+      "operands": ["i"],
       "exit_codes": [
         {
           "errno": "2",
           "condition": "Count of elements on the stack is less or equal to `i`"
         }
       ],
-      "related_instructions": ["POP"],
-      "operands": ["i"]
+      "related_instructions": ["POP"]
     },
     "signature": {
       "inputs": {

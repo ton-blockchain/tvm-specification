@@ -3,6 +3,7 @@
     "description": {
       "short": "Raises 2 to the power of `$x` and pushes the result back onto the stack.",
       "long": "Pops an integer from the stack, raises 2 to the power of it and pushes the result back onto the stack.",
+      "tags": [],
       "operands": [],
       "exit_codes": [
         {
@@ -50,6 +51,8 @@
     "description": {
       "short": "Bitwise AND of two signed integers `$x` and `$y`, sign-extended to infinity and pushes the result back onto the stack.",
       "long": "Pops two signed integers from the stack, performs a bitwise AND operation on them and pushes the result back onto the stack.",
+      "tags": [],
+      "operands": [],
       "exit_codes": [
         {
           "errno": "2",
@@ -59,8 +62,7 @@
           "errno": "7",
           "condition": "Top or second element is not an Int."
         }
-      ],
-      "operands": []
+      ]
     },
     "signature": {
       "inputs": {
@@ -92,6 +94,8 @@
     "description": {
       "short": "Bitwise OR of two signed integers `$x` and `$y`, sign-extended to infinity and pushes the result back onto the stack.",
       "long": "Pops two signed integers from the stack, performs a bitwise OR operation on them and pushes the result back onto the stack.",
+      "tags": [],
+      "operands": [],
       "exit_codes": [
         {
           "errno": "2",
@@ -101,8 +105,7 @@
           "errno": "7",
           "condition": "Top or second element is not an Int."
         }
-      ],
-      "operands": []
+      ]
     },
     "signature": {
       "inputs": {
@@ -134,6 +137,8 @@
     "description": {
       "short": "Bitwise XOR of two signed integers `$x` and `$y`, sign-extended to infinity and pushes the result back onto the stack.",
       "long": "Pops two signed integers from the stack, performs a bitwise XOR operation on them and pushes the result back onto the stack.",
+      "tags": [],
+      "operands": [],
       "exit_codes": [
         {
           "errno": "2",
@@ -143,8 +148,7 @@
           "errno": "7",
           "condition": "Top or second element is not an Int."
         }
-      ],
-      "operands": []
+      ]
     },
     "signature": {
       "inputs": {
@@ -176,6 +180,8 @@
     "description": {
       "short": "Bitwise NOT of an integer, sign-extended to infinity and pushes the result back onto the stack.",
       "long": "Pops an integer from the stack, performs a bitwise NOT operation on it and pushes the result back onto the stack.",
+      "tags": [],
+      "operands": [],
       "exit_codes": [
         {
           "errno": "2",
@@ -185,8 +191,7 @@
           "errno": "7",
           "condition": "Top element is not an Int."
         }
-      ],
-      "operands": []
+      ]
     },
     "signature": {
       "inputs": {
@@ -213,6 +218,7 @@
     "description": {
       "short": "",
       "long": "Checks whether `x` is a `c`-bit signed integer for `0 <= c <= 1023`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -245,6 +251,7 @@
     "description": {
       "short": "",
       "long": "Checks whether `x` is a `c`-bit unsigned integer for `0 <= c <= 1023`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -277,6 +284,7 @@
     "description": {
       "short": "",
       "long": "Computes smallest `c >= 0` such that `x` fits into a `c`-bit signed integer (`-2^(c-1) <= c < 2^(c-1)`).",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -304,6 +312,7 @@
     "description": {
       "short": "",
       "long": "Computes smallest `c >= 0` such that `x` fits into a `c`-bit unsigned integer (`0 <= x < 2^c`), or throws a range check exception.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -331,6 +340,7 @@
     "description": {
       "short": "",
       "long": "",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -358,6 +368,7 @@
     "description": {
       "short": "",
       "long": "",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -390,6 +401,7 @@
     "description": {
       "short": "",
       "long": "",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -422,6 +434,7 @@
     "description": {
       "short": "",
       "long": "",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -454,6 +467,7 @@
     "description": {
       "short": "",
       "long": "",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -481,6 +495,7 @@
     "description": {
       "short": "",
       "long": "Replaces `x` with a `NaN` if x is not a `width`-bit signed integer, leaves it intact otherwise.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -513,6 +528,7 @@
     "description": {
       "short": "",
       "long": "Replaces `x` with a `NaN` if x is not a `width`-bit unsigned integer, leaves it intact otherwise.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -544,7 +560,9 @@
   "QBITSIZE": {
     "description": {
       "short": "",
-      "long": ""
+      "long": "",
+      "tags": [],
+      "operands": []
     },
     "signature": {
       "inputs": {
@@ -560,7 +578,9 @@
   "QUBITSIZE": {
     "description": {
       "short": "",
-      "long": ""
+      "long": "",
+      "tags": [],
+      "operands": []
     },
     "signature": {
       "inputs": {
@@ -577,6 +597,7 @@
     "description": {
       "short": "",
       "long": "Checks whether `x` is a `cc+1`-bit signed integer for `0 <= cc <= 255` (i.e., whether `-2^cc <= x < 2^cc`).\nIf not, either triggers an integer overflow exception, or replaces `x` with a `NaN` (quiet version).",
+      "tags": [],
       "operands": ["c"]
     },
     "signature": {
@@ -604,6 +625,7 @@
     "description": {
       "short": "",
       "long": "Checks whether `x` is a `cc+1`-bit unsigned integer for `0 <= cc <= 255` (i.e., whether `0 <= x < 2^(cc+1)`).",
+      "tags": [],
       "operands": ["c"]
     },
     "signature": {
@@ -631,6 +653,7 @@
     "description": {
       "short": "",
       "long": "Replaces `x` with a `NaN` if x is not a `width`-bit signed integer, leaves it intact otherwise.",
+      "tags": [],
       "operands": ["width"]
     },
     "signature": {
@@ -658,6 +681,7 @@
     "description": {
       "short": "",
       "long": "Replaces `x` with a `NaN` if x is not a `width`-bit unsigned integer, leaves it intact otherwise.",
+      "tags": [],
       "operands": ["width"]
     },
     "signature": {
@@ -685,6 +709,7 @@
     "description": {
       "short": "",
       "long": "Shift the top element of the stack left by a number of bits equal to the second element of the stack.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -721,6 +746,7 @@
     "description": {
       "short": "",
       "long": "Shift the top element of the stack left by `c` bits.",
+      "tags": [],
       "operands": ["c"]
     },
     "signature": {
@@ -748,6 +774,7 @@
     "description": {
       "short": "",
       "long": "",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -780,6 +807,7 @@
     "description": {
       "short": "",
       "long": "",
+      "tags": [],
       "operands": ["c"]
     },
     "signature": {
@@ -812,6 +840,7 @@
     "description": {
       "short": "",
       "long": "Shift the top element of the stack right by a number of bits equal to the second element of the stack.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -848,6 +877,7 @@
     "description": {
       "short": "",
       "long": "Shift the top element of the stack right by `c` bits.",
+      "tags": [],
       "operands": ["c"]
     },
     "signature": {
@@ -875,6 +905,7 @@
     "description": {
       "short": "",
       "long": "",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -907,6 +938,7 @@
     "description": {
       "short": "",
       "long": "",
+      "tags": [],
       "operands": ["c"]
     },
     "signature": {

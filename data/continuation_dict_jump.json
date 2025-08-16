@@ -3,6 +3,7 @@
     "description": {
       "short": "",
       "long": "Jumps to the continuation in `c3`, pushing integer `0 <= n < 2^14` as its argument.",
+      "tags": [],
       "operands": ["n"],
       "other_implementations": [
         {
@@ -36,6 +37,7 @@
     "description": {
       "short": "",
       "long": "Equivalent to `n PUSHINT` `c3 PUSHCTR`, for `0 <= n < 2^14`.\nOne might use, for instance, `CALLXARGS` or `CALLCC` instead of `EXECUTE` here.",
+      "tags": [],
       "operands": ["n"],
       "other_implementations": [
         {
@@ -74,6 +76,7 @@
     "description": {
       "short": "",
       "long": "Calls the continuation in `c3`, pushing integer `num` into its stack as an argument.",
+      "tags": [],
       "operands": ["num"],
       "other_implementations": [
         {
@@ -107,6 +110,7 @@
     "description": {
       "short": "",
       "long": "For `0 <= n < 2^14`, an encoding of `[n] CALL` for larger values of `n`.",
+      "tags": [],
       "operands": ["n"]
     },
     "signature": {

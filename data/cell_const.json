@@ -3,6 +3,7 @@
     "description": {
       "short": "",
       "long": "Pushes the reference `ref` onto the stack.\n_Details:_ Pushes the first reference of `cc.code` onto the stack as a _Cell_ (and removes this reference from the current continuation).",
+      "tags": [],
       "operands": ["c"]
     },
     "signature": {
@@ -21,6 +22,7 @@
     "description": {
       "short": "",
       "long": "Similar to `PUSHREF`, but converts the cell into a _Slice_.",
+      "tags": [],
       "operands": ["c"]
     },
     "signature": {
@@ -39,6 +41,7 @@
     "description": {
       "short": "",
       "long": "Similar to `PUSHREFSLICE`, but makes a simple ordinary _Continuation_ out of the cell.",
+      "tags": [],
       "operands": ["c"]
     },
     "signature": {
@@ -57,6 +60,7 @@
     "description": {
       "short": "Pushes the `slice` onto the stack.",
       "long": "Pushes the slice `slice` onto the stack.\n_Details:_ Pushes the (prefix) subslice of `cc.code` consisting of its first `8x+4` bits and no references (i.e., essentially a bitstring), where `0 <= x <= 15`.\nA completion tag is assumed, meaning that all trailing zeroes and the last binary one (if present) are removed from this bitstring.\nIf the original bitstring consists only of zeroes, an empty slice will be pushed.",
+      "tags": [],
       "operands": ["s"]
     },
     "signature": {
@@ -75,6 +79,7 @@
     "description": {
       "short": "",
       "long": "Pushes the `slice` onto the stack.\n_Details:_ Pushes the (prefix) subslice of `cc.code` consisting of its first `1 <= r+1 <= 4` references and up to first `8xx+1` bits of data, with `0 <= xx <= 31`.\nA completion tag is also assumed.",
+      "tags": [],
       "operands": ["slice"]
     },
     "signature": {
@@ -93,6 +98,7 @@
     "description": {
       "short": "Pushes the `slice` onto the stack.",
       "long": "Pushes the `slice` onto the stack.\n_Details:_ Pushes the subslice of `cc.code` consisting of `0 <= r <= 4` references and up to `8xx+6` bits of data, with `0 <= xx <= 127`.\nA completion tag is assumed.",
+      "tags": [],
       "operands": ["slice"]
     },
     "signature": {
@@ -112,9 +118,9 @@
       "short": "Pushes a continuation onto the stack.",
       "long": "Fetches a simple ordinary continuation from the current code slice and pushes it onto the stack. The length of the continuation is at most 127 * 8 bits and 3 references.",
       "tags": ["stack", "continuation"],
+      "operands": ["c"],
       "exit_codes": [],
-      "related_instructions": ["PUSHCONT_SHORT"],
-      "operands": ["c"]
+      "related_instructions": ["PUSHCONT_SHORT"]
     },
     "signature": {
       "outputs": {
@@ -133,9 +139,9 @@
       "short": "Pushes a short continuation onto the stack.",
       "long": "Fetches a simple ordinary continuation from the current code slice and pushes it onto the stack. The length of the continuation is at most 15 * 8 bits.",
       "tags": ["stack", "continuation"],
+      "operands": ["c"],
       "exit_codes": [],
-      "related_instructions": ["PUSHCONT"],
-      "operands": ["c"]
+      "related_instructions": ["PUSHCONT"]
     },
     "signature": {
       "outputs": {

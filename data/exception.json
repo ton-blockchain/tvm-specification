@@ -26,14 +26,15 @@
   "THROWANY": {
     "description": {
       "short": "Throws an exception with error code `num` and parameter set to zero. Parameter represents the additional information passed to the exception handler.",
+      "long": "",
       "tags": ["exception_handling", "throw", "control_flow"],
+      "operands": [],
       "other_implementations": [
         {
           "exact": false,
           "instructions": ["ZERO", "SWAP", "THROWARGANY"]
         }
-      ],
-      "operands": []
+      ]
     },
     "signature": {
       "inputs": {
@@ -50,14 +51,15 @@
   "THROWARGANY": {
     "description": {
       "short": "Throws an exception with error code `num` and parameter set to `x`. Parameter represents the additional information passed to the exception handler.",
+      "long": "",
       "tags": ["exception_handling", "throw", "control_flow"],
+      "operands": [],
       "other_implementations": [
         {
           "exact": false,
           "instructions": ["PUSHCTR 2", "JMPXARGS 2"]
         }
-      ],
-      "operands": []
+      ]
     },
     "signature": {
       "inputs": {
@@ -79,6 +81,7 @@
   "THROWANYIFNOT": {
     "description": {
       "short": "Throws an exception with error code `num` and parameter set to zero only if `cond` is EQUAL to 0. Parameter represents the additional information passed to the exception handler.",
+      "long": "",
       "tags": ["exception_handling", "throw", "control_flow"],
       "operands": []
     },
@@ -102,6 +105,7 @@
   "THROWARGANYIFNOT": {
     "description": {
       "short": "Throws an exception with error code `num` and parameter set to `x` taken from the stack only if `cond` is EQUAL to 0. Parameter represents the additional information passed to the exception handler.",
+      "long": "",
       "tags": ["exception_handling", "throw", "control_flow"],
       "operands": []
     },
@@ -165,6 +169,7 @@
   "THROWARG": {
     "description": {
       "short": "Throws an exception with exit code `x` taken from the stack.",
+      "long": "",
       "tags": ["exception_handling", "throw", "control_flow"],
       "operands": ["num"]
     },
@@ -183,6 +188,7 @@
   "THROWARGIF": {
     "description": {
       "short": "Conditionally throws an exception with error code `x` taken from stack if `cond` is NOT EQUAL to 0.",
+      "long": "",
       "tags": ["exception_handling", "throw", "control_flow"],
       "operands": ["num"]
     },
@@ -206,6 +212,7 @@
   "THROWARGIFNOT": {
     "description": {
       "short": "Conditionally throws an exception with error code `x` taken from stack if `cond` is EQUAL to 0.",
+      "long": "",
       "tags": ["exception_handling", "throw", "control_flow"],
       "operands": ["num"]
     },
@@ -229,6 +236,7 @@
   "THROWANYIF": {
     "description": {
       "short": "Throws an exception with error code `num` and parameter set to zero only if `cond` is NOT EQUAL to 0. Parameter represents the additional information passed to the exception handler.",
+      "long": "",
       "tags": ["exception_handling", "throw", "control_flow"],
       "operands": []
     },
@@ -252,6 +260,7 @@
   "THROWARGANYIF": {
     "description": {
       "short": "Throws an exception with error code `num` and parameter set to `x` taken from the stack only if `cond` is NOT EQUAL to 0. Parameter represents the additional information passed to the exception handler.",
+      "long": "",
       "tags": ["exception_handling", "throw", "control_flow"],
       "operands": []
     },
@@ -280,6 +289,7 @@
   "THROW_SHORT": {
     "description": {
       "short": "Throws an exception with error code `num`.",
+      "long": "",
       "tags": ["exception_handling", "throw", "control_flow"],
       "operands": ["num"]
     },
@@ -297,6 +307,7 @@
   "THROW": {
     "description": {
       "short": "Throws an exception with error code `num`.",
+      "long": "",
       "tags": ["exception_handling", "throw", "control_flow"],
       "operands": ["num"]
     },
@@ -314,6 +325,7 @@
   "THROWIF_SHORT": {
     "description": {
       "short": "Conditionally throws an exception with error code `num` if `cond` is NOT EQUAL to 0.",
+      "long": "",
       "tags": ["exception_handling", "throw", "control_flow"],
       "operands": ["num"]
     },
@@ -332,6 +344,7 @@
   "THROWIF": {
     "description": {
       "short": "Conditionally throws an exception with error code `num` if `cond` is NOT EQUAL to 0.",
+      "long": "",
       "tags": ["exception_handling", "throw", "control_flow"],
       "operands": ["num"]
     },
@@ -350,6 +363,7 @@
   "THROWIFNOT_SHORT": {
     "description": {
       "short": "Conditionally throws an exception with error code `num` if `cond` is EQUAL to 0.",
+      "long": "",
       "tags": ["exception_handling", "throw", "control_flow"],
       "operands": ["num"]
     },
@@ -368,6 +382,7 @@
   "THROWIFNOT": {
     "description": {
       "short": "Conditionally throws an exception with error code `num` if `cond` is EQUAL to 0.",
+      "long": "",
       "tags": ["exception_handling", "throw", "control_flow"],
       "operands": ["num"]
     },

@@ -3,6 +3,7 @@
     "description": {
       "short": "",
       "long": "Pushes a `null`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -21,13 +22,14 @@
     "description": {
       "short": "Checks whether `x` is a _Null_.",
       "long": "Pops an element from the stack and checks whether it is a _Null_, pushing `-1` or `0` accordingly.",
+      "tags": [],
+      "operands": [],
       "exit_codes": [
         {
           "errno": "2",
           "condition": "Stack contains less than 1 element."
         }
-      ],
-      "operands": []
+      ]
     },
     "signature": {
       "inputs": {
@@ -54,6 +56,7 @@
     "description": {
       "short": "",
       "long": "Creates a new _Tuple_ `t` of length `n` similarly to `TUPLE`, but with `n` taken from the stack.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -96,13 +99,14 @@
     "description": {
       "short": "",
       "long": "Returns the `k`-th element of a _Tuple_ `t`, where `k` is taken from the stack rather than specified in the instruction.",
+      "tags": [],
+      "operands": [],
       "exit_codes": [
         {
           "errno": "7",
           "condition": "Top element is not a Tuple."
         }
-      ],
-      "operands": []
+      ]
     },
     "signature": {
       "inputs": {
@@ -137,6 +141,8 @@
     "description": {
       "short": "",
       "long": "Unpacks a _Tuple_ `t=(x_1,...,x_n)` of length equal to `0 <= n <= 15`, where `n` is taken from the stack rather than specified in the instruction.",
+      "tags": [],
+      "operands": [],
       "exit_codes": [
         {
           "errno": "7",
@@ -146,8 +152,7 @@
           "errno": "7",
           "condition": "Tuple length is not equal to n."
         }
-      ],
-      "operands": []
+      ]
     },
     "signature": {
       "inputs": {
@@ -189,13 +194,14 @@
     "description": {
       "short": "",
       "long": "Unpacks first `k` elements of a _Tuple_ `t`, where `k` is taken from the stack rather than specified in the instruction.",
+      "tags": [],
+      "operands": [],
       "exit_codes": [
         {
           "errno": "7",
           "condition": "Tuple length is less than k."
         }
-      ],
-      "operands": []
+      ]
     },
     "signature": {
       "inputs": {
@@ -237,13 +243,14 @@
     "description": {
       "short": "",
       "long": "Unpacks a _Tuple_ `t=(x_1,...,x_m)` and returns its length `m`, but only if `m <= n <= 15`, where `n` is taken from the stack rather than specified in the instruction.",
+      "tags": [],
+      "operands": [],
       "exit_codes": [
         {
           "errno": "7",
           "condition": "Tuple length is greater than n or greater than 15."
         }
-      ],
-      "operands": []
+      ]
     },
     "signature": {
       "inputs": {
@@ -290,13 +297,14 @@
     "description": {
       "short": "",
       "long": "Computes _Tuple_ `t'` that differs from `t` only at position `t'_{k+1}`, which is set to `x`, where `k` is taken from the stack rather than specified in the instruction.",
+      "tags": [],
+      "operands": [],
       "exit_codes": [
         {
           "errno": "7",
           "condition": "Index k is greater than or equal to tuple length."
         }
-      ],
-      "operands": []
+      ]
     },
     "signature": {
       "inputs": {
@@ -336,6 +344,7 @@
     "description": {
       "short": "",
       "long": "Returns the `k`-th element of a _Tuple_ `t`, where `k` is taken from the stack rather than specified in the instruction. In other words, returns `x_{k+1}` if `t=(x_1,...,x_n)`. If `k>=n`, or if `t` is _Null_, returns a _Null_ instead of `x`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -371,13 +380,14 @@
     "description": {
       "short": "",
       "long": "Sets the `k`-th component of _Tuple_ `t` to `x`, and returns the resulting _Tuple_ `t'`, where `k` is taken from the stack rather than specified in the instruction. If `|t| <= k`, first extends the original _Tuple_ to length `n'=k+1` by setting all new components to _Null_. If the original value of `t` is _Null_, treats it as an empty _Tuple_. If `x` is _Null_ and either `|t| <= k` or `t` is _Null_, then always returns `t'=t` (and does not consume tuple creation gas).",
+      "tags": [],
+      "operands": [],
       "exit_codes": [
         {
           "errno": "7",
           "condition": "Top element is neither a Tuple nor Null."
         }
-      ],
-      "operands": []
+      ]
     },
     "signature": {
       "inputs": {
@@ -417,6 +427,7 @@
     "description": {
       "short": "",
       "long": "Returns the length of a _Tuple_.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -444,6 +455,7 @@
     "description": {
       "short": "",
       "long": "Returns the length of a _Tuple_ `t` if `t` is a _Tuple_, but returns `-1` if `t` is not a _Tuple_. Unlike `TLEN` which throws an exception when `t` is not a _Tuple_, this instruction provides a way to safely check if a value is a _Tuple_ and get its length in one operation.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -492,6 +504,7 @@
     "description": {
       "short": "",
       "long": "Returns `-1` or `0` depending on whether `t` is a _Tuple_.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -519,6 +532,7 @@
     "description": {
       "short": "",
       "long": "Returns the last element of a non-empty _Tuple_ `t`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -545,6 +559,8 @@
     "description": {
       "short": "",
       "long": "Appends a value `x` to a _Tuple_ `t=(x_1,...,x_n)`, but only if the resulting _Tuple_ `t'=(x_1,...,x_n,x)` is of length at most 255.",
+      "tags": [],
+      "operands": [],
       "exit_codes": [
         {
           "errno": "7",
@@ -601,8 +617,7 @@
             "output": ["123", "456"]
           }
         }
-      ],
-      "operands": []
+      ]
     },
     "signature": {
       "inputs": {
@@ -633,6 +648,7 @@
     "description": {
       "short": "",
       "long": "Detaches the last element `x=x_n` from a non-empty _Tuple_ `t=(x_1,...,x_n)`, and returns both the resulting _Tuple_ `t'=(x_1,...,x_{n-1})` and the original last element `x`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -664,6 +680,7 @@
     "description": {
       "short": "",
       "long": "Pushes a _Null_ under the topmost _Integer_ `x`, but only if `x != 0`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -708,6 +725,7 @@
     "description": {
       "short": "",
       "long": "Pushes a _Null_ under the topmost _Integer_ `x`, but only if `x == 0`. May be used for stack alignment after quiet primitives such as `PLDUXQ`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -752,6 +770,7 @@
     "description": {
       "short": "",
       "long": "Pushes a _Null_ under the second stack entry from the top, but only if the topmost _Integer_ `y` is non-zero.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -804,6 +823,7 @@
     "description": {
       "short": "",
       "long": "Pushes a _Null_ under the second stack entry from the top, but only if the topmost _Integer_ `y` is zero. May be used for stack alignment after quiet primitives such as `LDUXQ`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -856,6 +876,7 @@
     "description": {
       "short": "",
       "long": "Pushes two nulls under the topmost _Integer_ `x`, but only if `x != 0`.\nEquivalent to `NULLSWAPIF` `NULLSWAPIF`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -905,6 +926,7 @@
     "description": {
       "short": "",
       "long": "Pushes two nulls under the topmost _Integer_ `x`, but only if `x == 0`.\nEquivalent to `NULLSWAPIFNOT` `NULLSWAPIFNOT`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -954,6 +976,7 @@
     "description": {
       "short": "",
       "long": "Pushes two nulls under the second stack entry from the top, but only if the topmost _Integer_ `y` is non-zero.\nEquivalent to `NULLROTRIF` `NULLROTRIF`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -1011,6 +1034,7 @@
     "description": {
       "short": "",
       "long": "Pushes two nulls under the second stack entry from the top, but only if the topmost _Integer_ `y` is zero.\nEquivalent to `NULLROTRIFNOT` `NULLROTRIFNOT`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -1068,6 +1092,8 @@
     "description": {
       "short": "",
       "long": "Creates a new _Tuple_ from the first `n` values from the stack.",
+      "tags": [],
+      "operands": ["n"],
       "examples": [
         {
           "instructions": [
@@ -1090,8 +1116,7 @@
             "output": ["(1, 2, 3)"]
           }
         }
-      ],
-      "operands": ["n"]
+      ]
     },
     "signature": {
       "inputs": {
@@ -1124,6 +1149,8 @@
     "description": {
       "short": "",
       "long": "Returns the `$k`-th element of a _Tuple_ `$t`.",
+      "tags": [],
+      "operands": ["k"],
       "exit_codes": [
         {
           "errno": "7",
@@ -1173,8 +1200,7 @@
             "output": ["123"]
           }
         }
-      ],
-      "operands": ["k"]
+      ]
     },
     "signature": {
       "inputs": {
@@ -1200,6 +1226,8 @@
     "description": {
       "short": "",
       "long": "Unpacks a _Tuple_ `t=(x_1,...,x_n)` of length equal to `0 <= n <= 15`.",
+      "tags": [],
+      "operands": ["n"],
       "exit_codes": [
         {
           "errno": "7",
@@ -1276,8 +1304,7 @@
             "output": ["(1,2)"]
           }
         }
-      ],
-      "operands": ["n"]
+      ]
     },
     "signature": {
       "inputs": {
@@ -1310,13 +1337,14 @@
     "description": {
       "short": "",
       "long": "Unpacks first `k` elements of a _Tuple_ `t`.",
+      "tags": [],
+      "operands": ["k"],
       "exit_codes": [
         {
           "errno": "7",
           "condition": "Tuple length is less than `k`."
         }
-      ],
-      "operands": ["k"]
+      ]
     },
     "signature": {
       "inputs": {
@@ -1349,13 +1377,14 @@
     "description": {
       "short": "",
       "long": "Unpacks a _Tuple_ `$t=(x_1,...,x_$tuple_len)` and returns its `$length`, but only if `$length <= $tuple_len <= 15`.",
+      "tags": [],
+      "operands": ["length"],
       "exit_codes": [
         {
           "errno": "7",
           "condition": "Tuple length is greater than `tuple_len` or greater than 15."
         }
-      ],
-      "operands": ["length"]
+      ]
     },
     "signature": {
       "inputs": {
@@ -1393,13 +1422,14 @@
     "description": {
       "short": "",
       "long": "Computes _Tuple_ `t'` that differs from `t` only at position `t'_{k+1}`, which is set to `x`.",
+      "tags": [],
+      "operands": ["k"],
       "exit_codes": [
         {
           "errno": "7",
           "condition": "Index `k` is greater than or equal to tuple length."
         }
-      ],
-      "operands": ["k"]
+      ]
     },
     "signature": {
       "inputs": {
@@ -1430,6 +1460,7 @@
     "description": {
       "short": "",
       "long": "Returns the `k`-th element of a _Tuple_ `t`. In other words, returns `x_{k+1}` if `t=(x_1,...,x_n)`. If `k>=n`, or if `t` is _Null_, returns a _Null_ instead of `x`.",
+      "tags": [],
       "operands": ["k"]
     },
     "signature": {
@@ -1456,13 +1487,14 @@
     "description": {
       "short": "",
       "long": "Sets the `k`-th component of _Tuple_ `t` to `x`, and returns the resulting _Tuple_ `t'`.\nIf `|t| <= k`, first extends the original _Tuple_ to length `n'=k+1` by setting all new components to _Null_. If the original value of `t` is _Null_, treats it as an empty _Tuple_. If `x` is _Null_ and either `|t| <= k` or `t` is _Null_, then always returns `t'=t` (and does not consume tuple creation gas).",
+      "tags": [],
+      "operands": ["k"],
       "exit_codes": [
         {
           "errno": "7",
           "condition": "Top element is neither a Tuple nor Null."
         }
-      ],
-      "operands": ["k"]
+      ]
     },
     "signature": {
       "inputs": {
@@ -1493,13 +1525,14 @@
     "description": {
       "short": "",
       "long": "Returns `t[i][j]`.",
+      "tags": [],
+      "operands": ["i", "j"],
       "exit_codes": [
         {
           "errno": "7",
           "condition": "Element at index i is not a Tuple."
         }
       ],
-      "operands": ["i", "j"],
       "other_implementations": [
         {
           "exact": true,
@@ -1531,6 +1564,8 @@
     "description": {
       "short": "",
       "long": "Returns `t[i][j][k]`.",
+      "tags": [],
+      "operands": ["i", "j", "k"],
       "exit_codes": [
         {
           "errno": "7",
@@ -1541,7 +1576,6 @@
           "condition": "Element at index j of t[i] is not a Tuple."
         }
       ],
-      "operands": ["i", "j", "k"],
       "other_implementations": [
         {
           "exact": true,

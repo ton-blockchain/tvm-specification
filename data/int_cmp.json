@@ -3,6 +3,7 @@
     "description": {
       "short": "",
       "long": "Computes the sign of an integer `x`:\n`-1` if `x < 0`, `0` if `x == 0`, `1` if `x > 0`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -29,7 +30,9 @@
   "LESS": {
     "description": {
       "short": "Compares `x` and `y` for less than and returns `-1` if true and `0` otherwise.",
+      "long": "",
       "tags": ["comparisons"],
+      "operands": [],
       "exit_codes": [
         {
           "errno": "2",
@@ -39,8 +42,7 @@
           "errno": "5",
           "condition": "Top or second element is not an Int."
         }
-      ],
-      "operands": []
+      ]
     },
     "signature": {
       "inputs": {
@@ -72,7 +74,9 @@
   "EQUAL": {
     "description": {
       "short": "Compares `x` and `y` for equality and returns `-1` if equal and `0` otherwise.",
+      "long": "",
       "tags": ["comparisons"],
+      "operands": [],
       "exit_codes": [
         {
           "errno": "2",
@@ -82,8 +86,7 @@
           "errno": "5",
           "condition": "Top or second element is not an Int."
         }
-      ],
-      "operands": []
+      ]
     },
     "signature": {
       "inputs": {
@@ -115,7 +118,9 @@
   "LEQ": {
     "description": {
       "short": "Compares `x` and `y` for less than or equal to and returns `-1` if true and `0` otherwise.",
+      "long": "",
       "tags": ["comparisons"],
+      "operands": [],
       "exit_codes": [
         {
           "errno": "2",
@@ -125,8 +130,7 @@
           "errno": "5",
           "condition": "Top or second element is not an Int."
         }
-      ],
-      "operands": []
+      ]
     },
     "signature": {
       "inputs": {
@@ -158,7 +162,9 @@
   "GREATER": {
     "description": {
       "short": "Compares `x` and `y` for greater than and returns `-1` if true and `0` otherwise.",
+      "long": "",
       "tags": ["comparisons"],
+      "operands": [],
       "exit_codes": [
         {
           "errno": "2",
@@ -168,8 +174,7 @@
           "errno": "5",
           "condition": "Top or second element is not an Int."
         }
-      ],
-      "operands": []
+      ]
     },
     "signature": {
       "inputs": {
@@ -201,7 +206,9 @@
   "NEQ": {
     "description": {
       "short": "Compares `x` and `y` for inequality and returns `-1` if true and `0` otherwise.",
+      "long": "",
       "tags": ["comparisons"],
+      "operands": [],
       "exit_codes": [
         {
           "errno": "2",
@@ -211,8 +218,7 @@
           "errno": "5",
           "condition": "Top or second element is not an Int."
         }
-      ],
-      "operands": []
+      ]
     },
     "signature": {
       "inputs": {
@@ -244,7 +250,9 @@
   "GEQ": {
     "description": {
       "short": "Compares `x` and `y` for greater than or equal to and returns `-1` if true and `0` otherwise.",
+      "long": "",
       "tags": ["comparisons"],
+      "operands": [],
       "exit_codes": [
         {
           "errno": "2",
@@ -254,8 +262,7 @@
           "errno": "5",
           "condition": "Top or second element is not an Int."
         }
-      ],
-      "operands": []
+      ]
     },
     "signature": {
       "inputs": {
@@ -289,6 +296,7 @@
       "short": "",
       "long": "Computes the sign of `x-y`:\n`-1` if `x<y`, `0` if `x=y`, `1` if `x>y`.\nNo integer overflow can occur here unless `x` or `y` is a `NaN`.",
       "tags": ["comparisons"],
+      "operands": [],
       "exit_codes": [
         {
           "errno": "2",
@@ -298,8 +306,7 @@
           "errno": "5",
           "condition": "Top or second element is not an Int."
         }
-      ],
-      "operands": []
+      ]
     },
     "signature": {
       "inputs": {
@@ -331,6 +338,7 @@
     "description": {
       "short": "",
       "long": "Checks whether `x` is a `NaN`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -358,6 +366,7 @@
     "description": {
       "short": "",
       "long": "Throws an arithmetic overflow exception if `x` is a `NaN`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -384,7 +393,9 @@
   "QSGN": {
     "description": {
       "short": "",
-      "long": ""
+      "long": "",
+      "tags": [],
+      "operands": []
     },
     "signature": {
       "inputs": {
@@ -400,7 +411,9 @@
   "QLESS": {
     "description": {
       "short": "",
-      "long": ""
+      "long": "",
+      "tags": [],
+      "operands": []
     },
     "signature": {
       "inputs": {
@@ -416,7 +429,9 @@
   "QEQUAL": {
     "description": {
       "short": "",
-      "long": ""
+      "long": "",
+      "tags": [],
+      "operands": []
     },
     "signature": {
       "inputs": {
@@ -432,7 +447,9 @@
   "QLEQ": {
     "description": {
       "short": "",
-      "long": ""
+      "long": "",
+      "tags": [],
+      "operands": []
     },
     "signature": {
       "inputs": {
@@ -448,7 +465,9 @@
   "QGREATER": {
     "description": {
       "short": "",
-      "long": ""
+      "long": "",
+      "tags": [],
+      "operands": []
     },
     "signature": {
       "inputs": {
@@ -464,7 +483,9 @@
   "QNEQ": {
     "description": {
       "short": "",
-      "long": ""
+      "long": "",
+      "tags": [],
+      "operands": []
     },
     "signature": {
       "inputs": {
@@ -480,7 +501,9 @@
   "QGEQ": {
     "description": {
       "short": "",
-      "long": ""
+      "long": "",
+      "tags": [],
+      "operands": []
     },
     "signature": {
       "inputs": {
@@ -496,7 +519,9 @@
   "QCMP": {
     "description": {
       "short": "",
-      "long": ""
+      "long": "",
+      "tags": [],
+      "operands": []
     },
     "signature": {
       "inputs": {
@@ -512,6 +537,9 @@
   "EQINT": {
     "description": {
       "short": "Compares `x` from stack and `y` from arguments for equality and returns `-1` if equal and `0` otherwise.",
+      "long": "",
+      "tags": [],
+      "operands": ["y"],
       "exit_codes": [
         {
           "errno": "2",
@@ -521,8 +549,7 @@
           "errno": "7",
           "condition": "Top element is not an Int."
         }
-      ],
-      "operands": ["y"]
+      ]
     },
     "signature": {
       "inputs": {
@@ -548,6 +575,9 @@
   "LESSINT": {
     "description": {
       "short": "Compares `x` from stack and `y` from arguments for less than and returns `-1` if true and `0` otherwise.",
+      "long": "",
+      "tags": [],
+      "operands": ["y"],
       "exit_codes": [
         {
           "errno": "2",
@@ -557,8 +587,7 @@
           "errno": "7",
           "condition": "Top element is not an Int."
         }
-      ],
-      "operands": ["y"]
+      ]
     },
     "signature": {
       "inputs": {
@@ -584,6 +613,9 @@
   "GTINT": {
     "description": {
       "short": "Compares `x` from stack and `y` from arguments for greater than and returns `-1` if true and `0` otherwise.",
+      "long": "",
+      "tags": [],
+      "operands": ["y"],
       "exit_codes": [
         {
           "errno": "2",
@@ -593,8 +625,7 @@
           "errno": "7",
           "condition": "Top element is not an Int."
         }
-      ],
-      "operands": ["y"]
+      ]
     },
     "signature": {
       "inputs": {
@@ -620,6 +651,9 @@
   "NEQINT": {
     "description": {
       "short": "Compares `x` from stack and `y` from arguments for inequality and returns `-1` if true and `0` otherwise.",
+      "long": "",
+      "tags": [],
+      "operands": ["y"],
       "exit_codes": [
         {
           "errno": "2",
@@ -629,8 +663,7 @@
           "errno": "7",
           "condition": "Top element is not an Int."
         }
-      ],
-      "operands": ["y"]
+      ]
     },
     "signature": {
       "inputs": {
@@ -656,7 +689,9 @@
   "QEQINT": {
     "description": {
       "short": "",
-      "long": ""
+      "long": "",
+      "tags": [],
+      "operands": []
     },
     "signature": {
       "inputs": {
@@ -672,7 +707,9 @@
   "QLESSINT": {
     "description": {
       "short": "",
-      "long": ""
+      "long": "",
+      "tags": [],
+      "operands": []
     },
     "signature": {
       "inputs": {
@@ -688,7 +725,9 @@
   "QGTINT": {
     "description": {
       "short": "",
-      "long": ""
+      "long": "",
+      "tags": [],
+      "operands": []
     },
     "signature": {
       "inputs": {
@@ -704,7 +743,9 @@
   "QNEQINT": {
     "description": {
       "short": "",
-      "long": ""
+      "long": "",
+      "tags": [],
+      "operands": []
     },
     "signature": {
       "inputs": {

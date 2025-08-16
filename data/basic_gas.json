@@ -3,9 +3,7 @@
     "description": {
       "short": "",
       "long": "Sets current gas limit `g_l` to its maximal allowed value `g_m`, and resets the gas credit `g_c` to zero, decreasing the value of `g_r` by `g_c` in the process.\nIn other words, the current smart contract agrees to buy some gas to finish the current transaction. This action is required to process external messages, which bring no value (hence no gas) with themselves.",
-      "doc_links": {
-        "accept_message effects": "https://docs.ton.org/develop/smart-contracts/guidelines/accept"
-      },
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -33,6 +31,7 @@
     "description": {
       "short": "",
       "long": "Sets current gas limit `g_l` to the minimum of `g` and `g_m`, and resets the gas credit `g_c` to zero. If the gas consumed so far (including the present instruction) exceeds the resulting value of `g_l`, an (unhandled) out of gas exception is thrown before setting new gas limits. Notice that `SETGASLIMIT` with an argument `g >= 2^63-1` is equivalent to `ACCEPT`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -66,6 +65,7 @@
     "description": {
       "short": "",
       "long": "Returns gas consumed by VM so far (including this instruction) in current Computation Phase.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -90,6 +90,7 @@
     "description": {
       "short": "",
       "long": "Commits the current state of registers `c4` ('persistent data') and `c5` ('actions') so that the current execution is considered 'successful' with the saved values even if an exception is thrown later.",
+      "tags": [],
       "operands": []
     },
     "signature": {

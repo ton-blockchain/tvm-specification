@@ -3,6 +3,8 @@
     "description": {
       "short": "Adds two integers and pushes the result back onto the stack.",
       "long": "Pops two integers from the stack, adds them and pushes the result back onto the stack.",
+      "tags": [],
+      "operands": [],
       "exit_codes": [
         {
           "errno": "2",
@@ -12,8 +14,7 @@
           "errno": "7",
           "condition": "Top or second element is not an Int."
         }
-      ],
-      "operands": []
+      ]
     },
     "signature": {
       "inputs": {
@@ -46,6 +47,8 @@
     "description": {
       "short": "Subtracts two integers and pushes the result back onto the stack.",
       "long": "Pops two integers from the stack, subtracts the second one from the first one and pushes the result back onto the stack.",
+      "tags": [],
+      "operands": [],
       "exit_codes": [
         {
           "errno": "2",
@@ -55,8 +58,7 @@
           "errno": "7",
           "condition": "Top or second element is not an Int."
         }
-      ],
-      "operands": []
+      ]
     },
     "signature": {
       "inputs": {
@@ -89,6 +91,8 @@
     "description": {
       "short": "Subtracts two integers in reverse order and pushes the result back onto the stack.",
       "long": "Pops two integers from the stack, subtracts the first one from the second one and pushes the result back onto the stack.",
+      "tags": [],
+      "operands": [],
       "exit_codes": [
         {
           "errno": "2",
@@ -104,8 +108,7 @@
           "exact": true,
           "instructions": ["SWAP", "SUB"]
         }
-      ],
-      "operands": []
+      ]
     },
     "signature": {
       "inputs": {
@@ -137,6 +140,9 @@
   "NEGATE": {
     "description": {
       "short": "Negates an integer and pushes the result back onto the stack.",
+      "long": "",
+      "tags": [],
+      "operands": [],
       "exit_codes": [
         {
           "errno": "2",
@@ -160,8 +166,7 @@
           "exact": true,
           "instructions": ["ZERO", "SUBR"]
         }
-      ],
-      "operands": []
+      ]
     },
     "signature": {
       "inputs": {
@@ -189,6 +194,8 @@
     "description": {
       "short": "Increments an integer and pushes the result back onto the stack.",
       "long": "Pops an integer from the stack, increments it by 1 and pushes the result back onto the stack.",
+      "tags": [],
+      "operands": [],
       "exit_codes": [
         {
           "errno": "2",
@@ -198,8 +205,7 @@
           "errno": "7",
           "condition": "Top element is not an Int."
         }
-      ],
-      "operands": []
+      ]
     },
     "signature": {
       "inputs": {
@@ -227,6 +233,8 @@
     "description": {
       "short": "Decrements an integer and pushes the result back onto the stack.",
       "long": "Pops an integer from the stack, decrements it by 1 and pushes the result back onto the stack.",
+      "tags": [],
+      "operands": [],
       "exit_codes": [
         {
           "errno": "2",
@@ -236,8 +244,7 @@
           "errno": "7",
           "condition": "Top element is not an Int."
         }
-      ],
-      "operands": []
+      ]
     },
     "signature": {
       "inputs": {
@@ -265,6 +272,8 @@
     "description": {
       "short": "Multiplies two integers and pushes the result back onto the stack.",
       "long": "Pops two integers from the stack, multiplies them and pushes the result back onto the stack.",
+      "tags": [],
+      "operands": [],
       "exit_codes": [
         {
           "errno": "2",
@@ -274,8 +283,7 @@
           "errno": "7",
           "condition": "Top or second element is not an Int."
         }
-      ],
-      "operands": []
+      ]
     },
     "signature": {
       "inputs": {
@@ -308,6 +316,7 @@
     "description": {
       "short": "",
       "long": "",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -340,6 +349,7 @@
     "description": {
       "short": "",
       "long": "",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -372,6 +382,7 @@
     "description": {
       "short": "",
       "long": "",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -404,6 +415,7 @@
     "description": {
       "short": "",
       "long": "",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -431,6 +443,7 @@
     "description": {
       "short": "",
       "long": "",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -458,6 +471,7 @@
     "description": {
       "short": "",
       "long": "",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -485,6 +499,7 @@
     "description": {
       "short": "",
       "long": "",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -516,7 +531,9 @@
   "ADDINT": {
     "description": {
       "short": "",
-      "long": ""
+      "long": "",
+      "tags": [],
+      "operands": []
     },
     "signature": {
       "inputs": {
@@ -532,7 +549,9 @@
   "MULINT": {
     "description": {
       "short": "",
-      "long": ""
+      "long": "",
+      "tags": [],
+      "operands": []
     },
     "signature": {
       "inputs": {
@@ -548,7 +567,9 @@
   "QADDINT": {
     "description": {
       "short": "",
-      "long": ""
+      "long": "",
+      "tags": [],
+      "operands": []
     },
     "signature": {
       "inputs": {
@@ -564,7 +585,9 @@
   "QMULINT": {
     "description": {
       "short": "",
-      "long": ""
+      "long": "",
+      "tags": [],
+      "operands": []
     },
     "signature": {
       "inputs": {

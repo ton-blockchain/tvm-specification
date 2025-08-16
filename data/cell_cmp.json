@@ -3,6 +3,7 @@
     "description": {
       "short": "",
       "long": "Checks whether a _Slice_ `s` is empty (i.e., contains no bits of data and no cell references).",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -30,6 +31,7 @@
     "description": {
       "short": "",
       "long": "Checks whether _Slice_ `s` has no bits of data.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -57,6 +59,7 @@
     "description": {
       "short": "",
       "long": "Checks whether _Slice_ `s` has no references.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -84,6 +87,7 @@
     "description": {
       "short": "",
       "long": "Checks whether the first bit of _Slice_ `s` is a one.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -111,6 +115,7 @@
     "description": {
       "short": "",
       "long": "Compares the data of `s` lexicographically with the data of `s'`, returning `-1`, 0, or 1 depending on the result.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -143,6 +148,7 @@
     "description": {
       "short": "",
       "long": "Checks if the data parts of `s` and `s'` are bitwise equal.",
+      "tags": [],
       "operands": [],
       "other_implementations": [
         {
@@ -181,6 +187,7 @@
     "description": {
       "short": "",
       "long": "Checks whether `s` is a prefix of `s'`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -213,6 +220,7 @@
     "description": {
       "short": "",
       "long": "Checks whether `s'` is a prefix of `s`, equivalent to `SWAP` `SDPFX`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -245,6 +253,7 @@
     "description": {
       "short": "",
       "long": "Checks whether `s` is a proper prefix of `s'` (i.e., a prefix distinct from `s'`).",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -277,6 +286,7 @@
     "description": {
       "short": "",
       "long": "Checks whether `s'` is a proper prefix of `s`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -309,6 +319,7 @@
     "description": {
       "short": "",
       "long": "Checks whether `s` is a suffix of `s'`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -341,6 +352,7 @@
     "description": {
       "short": "",
       "long": "Checks whether `s'` is a suffix of `s`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -373,6 +385,7 @@
     "description": {
       "short": "",
       "long": "Checks whether `s` is a proper suffix of `s'`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -405,6 +418,7 @@
     "description": {
       "short": "",
       "long": "Checks whether `s'` is a proper suffix of `s`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -437,6 +451,7 @@
     "description": {
       "short": "",
       "long": "Returns the number of leading zeroes in `s`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -464,6 +479,7 @@
     "description": {
       "short": "",
       "long": "Returns the number of leading ones in `s`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -491,6 +507,7 @@
     "description": {
       "short": "",
       "long": "Returns the number of trailing zeroes in `s`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -518,6 +535,7 @@
     "description": {
       "short": "",
       "long": "Returns the number of trailing ones in `s`.",
+      "tags": [],
       "operands": []
     },
     "signature": {

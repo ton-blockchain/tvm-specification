@@ -3,6 +3,7 @@
     "description": {
       "short": "",
       "long": "Checks BLS signature, return true on success, false otherwise.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -40,6 +41,7 @@
     "description": {
       "short": "",
       "long": "Aggregates signatures. `n>0`. Throw exception if `n=0` or if some `sig_i` is not a valid signature.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -79,6 +81,7 @@
     "description": {
       "short": "",
       "long": "Checks aggregated BLS signature for keys `pk_1...pk_n` and message `msg`. Return true on success, false otherwise. Return false if `n=0`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -128,6 +131,7 @@
     "description": {
       "short": "",
       "long": "Checks aggregated BLS signature for key-message pairs `pk_1 msg_1...pk_n msg_n`. Return true on success, false otherwise. Return false if `n=0`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -177,6 +181,7 @@
     "description": {
       "short": "",
       "long": "Addition on G1.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -209,6 +214,7 @@
     "description": {
       "short": "",
       "long": "Subtraction on G1.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -241,6 +247,7 @@
     "description": {
       "short": "",
       "long": "Negation on G1.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -268,6 +275,7 @@
     "description": {
       "short": "",
       "long": "Multiplies G1 point `x` by scalar `s`. Any `s` is valid, including negative.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -300,6 +308,7 @@
     "description": {
       "short": "",
       "long": "Calculates `x_1*s_1+...+x_n*s_n` for G1 points `x_i` and scalars `s_i`. Returns zero point if `n=0`. Any `s_i` is valid, including negative.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -344,6 +353,7 @@
     "description": {
       "short": "",
       "long": "Pushes zero point in G1.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -362,6 +372,7 @@
     "description": {
       "short": "",
       "long": "Converts FP element `f` to a G1 point.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -389,6 +400,7 @@
     "description": {
       "short": "",
       "long": "Checks that slice `x` represents a valid element of G1.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -416,6 +428,7 @@
     "description": {
       "short": "",
       "long": "Checks that G1 point `x` is equal to zero.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -443,6 +456,7 @@
     "description": {
       "short": "",
       "long": "Addition on G2.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -475,6 +489,7 @@
     "description": {
       "short": "",
       "long": "Subtraction on G2.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -507,6 +522,7 @@
     "description": {
       "short": "",
       "long": "Negation on G2.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -534,6 +550,7 @@
     "description": {
       "short": "",
       "long": "Multiplies G2 point `x` by scalar `s`. Any `s` is valid, including negative.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -566,6 +583,7 @@
     "description": {
       "short": "",
       "long": "Calculates `x_1*s_1+...+x_n*s_n` for G2 points `x_i` and scalars `s_i`. Returns zero point if `n=0`. Any `s_i` is valid, including negative.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -610,6 +628,7 @@
     "description": {
       "short": "",
       "long": "Pushes zero point in G2.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -628,6 +647,7 @@
     "description": {
       "short": "",
       "long": "Converts FP2 element `f` to a G2 point.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -655,6 +675,7 @@
     "description": {
       "short": "",
       "long": "Checks that slice `x` represents a valid element of G2.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -682,6 +703,7 @@
     "description": {
       "short": "",
       "long": "Checks that G2 point `x` is equal to zero.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -709,6 +731,7 @@
     "description": {
       "short": "",
       "long": "Given G1 points `x_i` and G2 points `y_i`, calculates and multiply pairings of `x_i,y_i`. Returns true if the result is the multiplicative identity in FP12, false otherwise. Returns false if `n=0`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -753,6 +776,7 @@
     "description": {
       "short": "",
       "long": "Pushes the order of G1 and G2 (approx. `2^255`).",
+      "tags": [],
       "operands": []
     },
     "signature": {

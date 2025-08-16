@@ -3,6 +3,7 @@
     "description": {
       "short": "",
       "long": "_Calls_, or _executes_, continuation `c`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -21,6 +22,7 @@
     "description": {
       "short": "",
       "long": "_Jumps_, or transfers control, to continuation `c`.\nThe remainder of the previous current continuation `cс` is discarded.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -39,6 +41,7 @@
     "description": {
       "short": "",
       "long": "_Returns_ to the continuation at `c0`. The remainder of the current continuation `cc` is discarded.",
+      "tags": [],
       "operands": [],
       "other_implementations": [
         {
@@ -62,6 +65,7 @@
     "description": {
       "short": "",
       "long": "_Returns_ to the continuation at `c1`. The remainder of the current continuation `cc` is discarded.",
+      "tags": [],
       "operands": [],
       "other_implementations": [
         {
@@ -84,7 +88,9 @@
   "RETBOOL": {
     "description": {
       "short": "",
-      "long": ""
+      "long": "",
+      "tags": [],
+      "operands": []
     },
     "signature": {
       "inputs": {
@@ -101,6 +107,7 @@
     "description": {
       "short": "",
       "long": "_Call with current continuation_, transfers control to `c`, pushing the old value of `c` into `c`'s stack (instead of discarding it or writing it into new `c0`).",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -119,6 +126,7 @@
     "description": {
       "short": "",
       "long": "_Transfers control_ to continuation `c`, converting the remainder of the current continuation (the old value of `cс`) into a _Slice_ before pushing it onto the stack of `c`. Unlike `CALLCC` which pushes the old continuation as is, this instruction converts it to a _Slice_ first.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -137,6 +145,7 @@
     "description": {
       "short": "",
       "long": "_Calls_ continuation `c` with parameters and expected return values, but unlike `CALLXARGS` which takes these values from the instruction itself, this instruction takes `-1 <= p,r <= 254` from the stack. Here `p` represents the number of parameters to pass to the continuation, and `r` represents the number of expected return values. The next three operations (`RETVARARGS`, `JMPXVARARGS`, `CALLCCVARARGS`) also take `p` and `r` from the stack, both in the range `-1...254`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -176,6 +185,7 @@
     "description": {
       "short": "",
       "long": "_Returns_ to the continuation at `c0`, but unlike `RETARGS` which takes the number of return values from the instruction itself, this instruction takes the number of return values `0 <= r <= 255` from the stack. The top `r` values from the current stack are passed as return values to `c0`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -210,6 +220,7 @@
     "description": {
       "short": "",
       "long": "_Jumps_ to continuation `c`, but unlike `JMPXARGS` which takes the number of parameters from the instruction itself, this instruction takes the number of parameters `0 <= p <= 254` from the stack. Only the top `p` values from the current stack are passed to the continuation, and the remainder of the current stack is discarded. The remainder of the current continuation is also discarded.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -249,6 +260,7 @@
     "description": {
       "short": "",
       "long": "_Calls_ continuation `c` with parameters and pushes the old value of the current continuation, but unlike `CALLCCARGS` which takes the number of parameters and return values from the instruction itself, this instruction takes `-1 <= p,r <= 254` from the stack. The old value of the current continuation `cс` (along with the top `p` values from the original stack) is pushed onto the stack of the newly-invoked continuation `c`, setting `cc.nargs` to `r`. This allows the called continuation to later return to the caller with the specified number of return values.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -288,6 +300,7 @@
     "description": {
       "short": "",
       "long": "Returns to the continuation at `c0`, converting the remainder of the current continuation into a _Slice_ and pushing it onto the stack of `c0`.",
+      "tags": [],
       "operands": [],
       "other_implementations": [
         {
@@ -311,6 +324,7 @@
     "description": {
       "short": "",
       "long": "Runs child VM with code `code` and stack `x_1...x_n`. Returns the resulting stack `x'_1...x'_m` and exitcode. Other arguments and return values are enabled by flags.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -328,6 +342,7 @@
     "description": {
       "short": "",
       "long": "_Calls_ continuation `c` with `p` parameters, but unlike `CALLXARGS` which only passes parameters, this instruction also pushes the old value of the current continuation `cс` (along with the top `0 <= p <= 15` values from the original stack) onto the stack of newly-invoked continuation `c`, setting `cc.nargs` to `-1 <= r <= 14`. This allows the called continuation to later return to the caller with the specified number of return values.",
+      "tags": [],
       "operands": ["p", "r"]
     },
     "signature": {
@@ -357,6 +372,7 @@
     "description": {
       "short": "",
       "long": "_Jumps_ to continuation `c`, passing only the top `0 <= p <= 15` values from the current stack to it (the remainder of the current stack is discarded).",
+      "tags": [],
       "operands": ["p"]
     },
     "signature": {
@@ -386,6 +402,7 @@
     "description": {
       "short": "",
       "long": "_Returns_ to `c0`, with `0 <= r <= 15` return values taken from the current stack.",
+      "tags": [],
       "operands": ["r"]
     },
     "signature": {
@@ -410,6 +427,7 @@
     "description": {
       "short": "",
       "long": "Calls the continuation stored in cell reference `ref`.",
+      "tags": [],
       "operands": ["ref"],
       "other_implementations": [
         {
@@ -433,6 +451,7 @@
     "description": {
       "short": "",
       "long": "Jumps to the continuation stored in cell reference `c`.",
+      "tags": [],
       "operands": ["c"],
       "other_implementations": [
         {
@@ -456,6 +475,7 @@
     "description": {
       "short": "",
       "long": "Jumps to the continuation stored in cell reference `c`, converting the remainder of the current continuation into a _Slice_ before pushing it onto the stack of `c`.",
+      "tags": [],
       "operands": ["c"],
       "other_implementations": [
         {
@@ -479,6 +499,7 @@
     "description": {
       "short": "",
       "long": "Runs child VM with code `code` and stack `x_1...x_n`. Returns the resulting stack `x'_1...x'_m` and exitcode. Other arguments and return values are enabled by flags.",
+      "tags": [],
       "operands": ["flags"]
     },
     "signature": {
@@ -496,6 +517,7 @@
     "description": {
       "short": "",
       "long": "_Calls_ continuation `c` with `p` parameters and expecting `r` return values\n`0 <= p <= 15`, `0 <= r <= 15`",
+      "tags": [],
       "operands": ["p", "r"]
     },
     "signature": {
@@ -524,7 +546,9 @@
   "CALLXARGS_1": {
     "description": {
       "short": "",
-      "long": ""
+      "long": "",
+      "tags": [],
+      "operands": []
     },
     "signature": {
       "inputs": {

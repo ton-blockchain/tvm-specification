@@ -3,6 +3,7 @@
     "description": {
       "short": "",
       "long": "Outputs passed string to VM logs.",
+      "tags": [],
       "operands": ["s"]
     },
     "signature": {
@@ -19,7 +20,9 @@
   "DUMPSTK": {
     "description": {
       "short": "",
-      "long": ""
+      "long": "",
+      "tags": [],
+      "operands": []
     },
     "signature": {
       "inputs": {
@@ -36,6 +39,7 @@
     "description": {
       "short": "",
       "long": "",
+      "tags": [],
       "operands": ["i", "j"]
     },
     "signature": {
@@ -52,7 +56,9 @@
   "STRDUMP": {
     "description": {
       "short": "",
-      "long": ""
+      "long": "",
+      "tags": [],
+      "operands": []
     },
     "signature": {
       "inputs": {
@@ -68,7 +74,9 @@
   "DEBUG_1": {
     "description": {
       "short": "",
-      "long": ""
+      "long": "",
+      "tags": [],
+      "operands": []
     },
     "signature": {
       "inputs": {
@@ -84,7 +92,9 @@
   "DUMP": {
     "description": {
       "short": "",
-      "long": ""
+      "long": "",
+      "tags": [],
+      "operands": []
     },
     "signature": {
       "inputs": {
@@ -100,7 +110,9 @@
   "DEBUG_2": {
     "description": {
       "short": "",
-      "long": ""
+      "long": "",
+      "tags": [],
+      "operands": []
     },
     "signature": {
       "inputs": {

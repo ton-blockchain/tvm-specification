@@ -2,8 +2,10 @@
   "NEWC": {
     "description": {
       "short": "Creates a new empty _Builder_.",
-      "exit_codes": [],
-      "operands": []
+      "long": "",
+      "tags": [],
+      "operands": [],
+      "exit_codes": []
     },
     "signature": {
       "outputs": {
@@ -21,8 +23,9 @@
     "description": {
       "short": "Converts a _Builder_ into an ordinary _Cell_.",
       "long": "Pops a _Builder_ from the stack and converts it into an ordinary _Cell_.",
-      "exit_codes": [],
-      "operands": []
+      "tags": [],
+      "operands": [],
+      "exit_codes": []
     },
     "signature": {
       "inputs": {
@@ -48,7 +51,9 @@
   "ENDCST": {
     "description": {
       "short": "",
-      "long": ""
+      "long": "",
+      "tags": [],
+      "operands": []
     },
     "signature": {
       "inputs": {
@@ -805,6 +810,7 @@
     "description": {
       "short": "Creates an exotic or ordinary _Cell_ from _Builder_.",
       "long": "If ` x!= 0`, creates a _special_ or _exotic_ cell from _Builder_ `b`.\nThe type of the exotic cell must be stored in the first 8 bits of `b`.\nIf `x == 0`, it is equivalent to `ENDC`. Otherwise some validity checks on the data and references of `b` are performed before creating the exotic cell.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -837,6 +843,7 @@
     "description": {
       "short": "",
       "long": "Returns the depth of _Builder_ `b`. If no cell references are stored in `b`, then `x == 0`; otherwise `x` is one plus the maximum of depths of cells referred to from `b`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -864,6 +871,7 @@
     "description": {
       "short": "",
       "long": "Returns the number of data bits already stored in _Builder_ `b`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -891,6 +899,7 @@
     "description": {
       "short": "",
       "long": "Returns the number of cell references already stored in `b`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -918,6 +927,7 @@
     "description": {
       "short": "",
       "long": "Returns the numbers of both data bits and cell references in `b`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -950,6 +960,7 @@
     "description": {
       "short": "",
       "long": "Returns the number of data bits that can still be stored in `b`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -977,6 +988,7 @@
     "description": {
       "short": "",
       "long": "Returns the number of references that can still be stored in `b`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -1004,6 +1016,7 @@
     "description": {
       "short": "",
       "long": "Returns the numbers of both data bits and references that can still be stored in `b`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -1036,6 +1049,7 @@
     "description": {
       "short": "",
       "long": "Checks whether `y` references can be stored into `b`, `0 <= y <= 7`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -1059,6 +1073,7 @@
     "description": {
       "short": "",
       "long": "Checks whether `x` bits and `y` references can be stored into `b`, `0 <= x <= 1023`, `0 <= y <= 7`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -1087,6 +1102,7 @@
     "description": {
       "short": "",
       "long": "Checks whether `y` references can be stored into `b`, `0 <= y <= 7`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -1119,6 +1135,7 @@
     "description": {
       "short": "",
       "long": "Checks whether `x` bits and `y` references can be stored into `b`, `0 <= x <= 1023`, `0 <= y <= 7`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -2039,7 +2056,9 @@
   "STIR": {
     "description": {
       "short": "Stores a signed `width`-bit integer `x` into _Builder_ `b` and returns the resulting _Builder_ `b'`.",
+      "long": "",
       "tags": ["builder building"],
+      "operands": ["width"],
       "exit_codes": [
         {
           "errno": "2",
@@ -2058,7 +2077,6 @@
           "condition": "Second element is not a Builder."
         }
       ],
-      "operands": ["width"],
       "other_implementations": [
         {
           "exact": true,
@@ -2102,7 +2120,9 @@
   "STUR": {
     "description": {
       "short": "Stores an unsigned `width`-bit integer `x` into _Builder_ `b` and returns the resulting _Builder_ `b'`.",
+      "long": "",
       "tags": ["builder building"],
+      "operands": ["width"],
       "exit_codes": [
         {
           "errno": "2",
@@ -2121,7 +2141,6 @@
           "condition": "Second element is not a Builder."
         }
       ],
-      "operands": ["width"],
       "other_implementations": [
         {
           "exact": true,
@@ -2695,7 +2714,9 @@
   "STI": {
     "description": {
       "short": "Stores a signed `width`-bit integer `x` into _Builder_ `b` and returns the resulting _Builder_ `b'`.",
+      "long": "",
       "tags": ["builder building"],
+      "operands": ["width"],
       "exit_codes": [
         {
           "errno": "2",
@@ -2713,8 +2734,7 @@
           "errno": "7",
           "condition": "Second element is not a Builder."
         }
-      ],
-      "operands": ["width"]
+      ]
     },
     "signature": {
       "inputs": {
@@ -2752,7 +2772,9 @@
   "STI_ALT": {
     "description": {
       "short": "Stores a signed `width`-bit integer `x` into _Builder_ `b` and returns the resulting _Builder_ `b'`. A longer version of `[c+1] STI`.",
+      "long": "",
       "tags": ["builder building"],
+      "operands": ["width"],
       "exit_codes": [
         {
           "errno": "2",
@@ -2770,8 +2792,7 @@
           "errno": "7",
           "condition": "Second element is not a Builder."
         }
-      ],
-      "operands": ["width"]
+      ]
     },
     "signature": {
       "inputs": {
@@ -2809,7 +2830,9 @@
   "STU": {
     "description": {
       "short": "Stores an unsigned `width`-bit integer `x` into _Builder_ `b` and returns the resulting _Builder_ `b'`.",
+      "long": "",
       "tags": ["builder building"],
+      "operands": ["width"],
       "exit_codes": [
         {
           "errno": "2",
@@ -2827,8 +2850,7 @@
           "errno": "7",
           "condition": "Second element is not a Builder."
         }
-      ],
-      "operands": ["width"]
+      ]
     },
     "signature": {
       "inputs": {
@@ -2866,7 +2888,9 @@
   "STU_ALT": {
     "description": {
       "short": "Stores an unsigned `width`-bit integer `x` into _Builder_ `b` and returns the resulting _Builder_ `b'`. A longer version of `[c+1] STU`.",
+      "long": "",
       "tags": ["builder building"],
+      "operands": ["width"],
       "exit_codes": [
         {
           "errno": "2",
@@ -2884,8 +2908,7 @@
           "errno": "7",
           "condition": "Second element is not a Builder."
         }
-      ],
-      "operands": ["width"]
+      ]
     },
     "signature": {
       "inputs": {
@@ -2924,6 +2947,7 @@
     "description": {
       "short": "",
       "long": "Checks whether `x` bits can be stored into `b`, `0 <= x <= 1023`. If there is no space for `x` more bits in `b`, or if `x` is not within the range `0...1023`, throws an exception.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -2947,6 +2971,7 @@
     "description": {
       "short": "",
       "long": "Checks whether `cc+1` bits can be stored into `b`, where `0 <= cc <= 255`.",
+      "tags": [],
       "operands": ["c"]
     },
     "signature": {
@@ -2965,6 +2990,7 @@
     "description": {
       "short": "",
       "long": "Checks whether `x` bits can be stored into `b`, `0 <= x <= 1023`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -2997,6 +3023,7 @@
     "description": {
       "short": "",
       "long": "Checks whether `cc+1` bits can be stored into `b`, where `0 <= cc <= 255`.",
+      "tags": [],
       "operands": ["c"]
     },
     "signature": {

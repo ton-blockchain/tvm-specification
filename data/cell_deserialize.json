@@ -3,8 +3,9 @@
     "description": {
       "short": "Converts a _Cell_ into a _Slice_.",
       "long": "`c` must be either an ordinary cell, or an exotic cell. If cell is exotic, it is automatically loaded to yield an ordinary cell `c'` and converted into a _Slice_ afterwards.",
-      "exit_codes": [],
-      "operands": []
+      "tags": [],
+      "operands": [],
+      "exit_codes": []
     },
     "signature": {
       "inputs": {
@@ -30,6 +31,9 @@
   "ENDS": {
     "description": {
       "short": "Removes a _Slice_ `s` from the stack. Throws an exception if it is not empty.",
+      "long": "",
+      "tags": [],
+      "operands": [],
       "exit_codes": [
         {
           "errno": "9",
@@ -91,8 +95,7 @@
             "output": ["Slice{123}"]
           }
         }
-      ],
-      "operands": []
+      ]
     },
     "signature": {
       "inputs": {
@@ -364,6 +367,7 @@
     "description": {
       "short": "",
       "long": "Returns the first `0 <= length <= 1023` bits and first `0 <= refs <= 4` references of `s`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -401,6 +405,7 @@
     "description": {
       "short": "",
       "long": "Returns all but the first `length` bits of `s` and `refs` references of `s`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -438,6 +443,7 @@
     "description": {
       "short": "",
       "long": "Returns the last `0 <= length <= 1023` data bits and last `0 <= refs <= 4` references of `s`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -475,6 +481,7 @@
     "description": {
       "short": "",
       "long": "Returns all but the last `length` bits of `s` and `refs` references of `s`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -512,6 +519,7 @@
     "description": {
       "short": "",
       "long": "Returns `0 <= l' <= 1023` bits and `0 <= r' <= 4` references from _Slice_ `s`, after skipping the first `0 <= length <= 1023` bits and first `0 <= r <= 4` references.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -559,6 +567,7 @@
     "description": {
       "short": "",
       "long": "Splits the first `0 <= length <= 1023` data bits and first `0 <= r <= 4` references from `s` into `s'`, returning the remainder of `s` as `s''`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -601,6 +610,7 @@
     "description": {
       "short": "",
       "long": "Splits the first `0 <= length <= 1023` data bits and first `0 <= r <= 4` references from `s` into `s'`, returning the remainder of `s` as `s''`. This is a quiet version of `SPLIT` which means that instead of throwing an exception, it pushes a status flag to the stack: 0 if the operation fails, -1 if the operation succeeds.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -669,6 +679,7 @@
     "description": {
       "short": "",
       "long": "Transforms an ordinary or exotic cell into a _Slice_, as if it were an ordinary cell. A flag is returned indicating whether `c` is exotic. If that be the case, its type can later be deserialized from the first eight bits of `s`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -701,6 +712,7 @@
     "description": {
       "short": "",
       "long": "Loads an exotic cell `c` and returns an ordinary cell `c'`. If `c` is already ordinary, does nothing. If `c` cannot be loaded, throws an exception.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -728,6 +740,7 @@
     "description": {
       "short": "",
       "long": "Loads an exotic cell `c` and returns an ordinary cell `c'`. If `c` is already ordinary, does nothing. If `c` cannot be loaded, returns 0.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -781,6 +794,7 @@
     "description": {
       "short": "",
       "long": "Checks whether there are at least `length` data bits in _Slice_ `s`. If this is not the case, throws a cell deserialisation (i.e., cell underflow) exception.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -804,6 +818,7 @@
     "description": {
       "short": "",
       "long": "Checks whether there are at least `r` references in _Slice_ `s`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -827,6 +842,7 @@
     "description": {
       "short": "",
       "long": "Checks whether there are at least `length` data bits and `r` references in _Slice_ `s`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -855,6 +871,7 @@
     "description": {
       "short": "",
       "long": "Checks whether there are at least `length` data bits in _Slice_ `s`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -887,6 +904,7 @@
     "description": {
       "short": "",
       "long": "Checks whether there are at least `r` references in _Slice_ `s`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -919,6 +937,7 @@
     "description": {
       "short": "",
       "long": "Checks whether there are at least `length` data bits and `r` references in _Slice_ `s`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -989,6 +1008,7 @@
     "description": {
       "short": "",
       "long": "Returns the number of data bits in _Slice_ `s`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -1016,6 +1036,7 @@
     "description": {
       "short": "",
       "long": "Returns the number of references in _Slice_ `s`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -1043,6 +1064,7 @@
     "description": {
       "short": "",
       "long": "Returns both the number of data bits and the number of references in `s`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -1075,6 +1097,7 @@
     "description": {
       "short": "",
       "long": "Returns the count `n` of leading zero bits in `s`, and removes these bits from `s`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -1107,6 +1130,7 @@
     "description": {
       "short": "",
       "long": "Returns the count `n` of leading one bits in `s`, and removes these bits from `s`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -1139,6 +1163,7 @@
     "description": {
       "short": "",
       "long": "Returns the count `n` of leading bits equal to `0 <= x <= 1` in `s`, and removes these bits from `s`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -1176,6 +1201,7 @@
     "description": {
       "short": "",
       "long": "Returns the depth of _Slice_ `s`. If `s` has no references, then `x == 0`; otherwise `x` is one plus the maximum of depths of cells referred to from `s`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -1203,6 +1229,7 @@
     "description": {
       "short": "",
       "long": "Returns the depth of _Cell_ `c`. If `c` has no references, then `x == 0`; otherwise `x` is one plus the maximum of depths of cells referred to from `c`. If `c` is a _Null_ instead of a _Cell_, returns zero.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -1230,6 +1257,7 @@
     "description": {
       "short": "",
       "long": "Returns level of the cell.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -1257,6 +1285,7 @@
     "description": {
       "short": "",
       "long": "Returns level mask of the cell.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -1284,6 +1313,7 @@
     "description": {
       "short": "",
       "long": "Returns `i`th hash of the cell.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -1316,6 +1346,7 @@
     "description": {
       "short": "",
       "long": "Returns `i`th depth of the cell.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -2860,6 +2891,7 @@
     "description": {
       "short": "",
       "long": "Returns `i`th hash of the cell.",
+      "tags": [],
       "operands": ["n"]
     },
     "signature": {
@@ -2887,6 +2919,7 @@
     "description": {
       "short": "",
       "long": "Returns `i`th depth of the cell.",
+      "tags": [],
       "operands": ["n"]
     },
     "signature": {
@@ -3352,6 +3385,7 @@
     "description": {
       "short": "",
       "long": "Checks whether `s` begins with (the data bits of) `search`, and removes `search` from `s` on success. On failure throws a cell deserialization exception. Primitive `SDPFXREV` can be considered a quiet version of `SDBEGINSX`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -3384,6 +3418,7 @@
     "description": {
       "short": "",
       "long": "Checks whether `s` begins with (the data bits of) `search`, and removes `search` from `s` on success. This is a quiet version of `SDBEGINSX` which means it pushes a status flag onto the stack: 0 if `s` does not begin with `search`, -1 if it does.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -3442,6 +3477,7 @@
     "description": {
       "short": "",
       "long": "Checks whether `s` begins with constant bitstring `search` of length `8x+3` (with continuation bit assumed), where `0 <= x <= 127`, and removes `search` from `s` on success.",
+      "tags": [],
       "operands": ["search"]
     },
     "signature": {
@@ -3469,6 +3505,7 @@
     "description": {
       "short": "",
       "long": "Checks whether `s` begins with constant bitstring `search` of length `8x+3` (with continuation bit assumed), where `0 <= x <= 127`, and removes `search` from `s` on success. This is a quiet version of `SDBEGINS` which means it pushes a status flag onto the stack: 0 if `s` does not begin with `search`, -1 if it does.",
+      "tags": [],
       "operands": ["search"]
     },
     "signature": {
@@ -3521,7 +3558,9 @@
   "LDI": {
     "description": {
       "short": "Loads a signed `width`-bit integer `x` from _Slice_ `s` and pushes loaded value on stack along with _Slice_ with remainder data.",
+      "long": "",
       "tags": ["slice parsing"],
+      "operands": ["width"],
       "exit_codes": [
         {
           "errno": "2",
@@ -3570,8 +3609,7 @@
             "output": ["Slice{empty}", "-1"]
           }
         }
-      ],
-      "operands": ["width"]
+      ]
     },
     "signature": {
       "inputs": {
@@ -3635,7 +3673,9 @@
   "LDU": {
     "description": {
       "short": "Loads an unsigned `width`-bit integer `x` from _Slice_ `s` and pushes loaded value on stack along with _Slice_ with remainder data.",
+      "long": "",
       "tags": ["slice parsing"],
+      "operands": ["width"],
       "exit_codes": [
         {
           "errno": "2",
@@ -3684,8 +3724,7 @@
             "output": ["Slice{empty}", "10"]
           }
         }
-      ],
-      "operands": ["width"]
+      ]
     },
     "signature": {
       "inputs": {

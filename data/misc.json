@@ -3,6 +3,7 @@
     "description": {
       "short": "",
       "long": "Recursively computes the count of distinct cells `x`, data bits `y`, and cell references `z` in the dag rooted at _Cell_ `c`, effectively returning the total storage used by this dag taking into account the identification of equal cells. The values of `x`, `y`, and `z` are computed by a depth-first traversal of this dag, with a hash table of visited cell hashes used to prevent visits of already-visited cells. The total count of visited cells `x` cannot exceed non-negative _Integer_ `n`; otherwise the computation is aborted before visiting the `(n+1)`-st cell and a zero is returned to indicate failure. If `c` is _Null_, returns `x=y=z=0`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -65,6 +66,7 @@
     "description": {
       "short": "",
       "long": "A non-quiet version of `CDATASIZEQ` that throws a cell overflow exception (8) on failure.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -107,6 +109,7 @@
     "description": {
       "short": "",
       "long": "Recursively computes the count of distinct cells `x`, data bits `y`, and cell references `z` in the dag rooted at _Slice_ `s`, effectively returning the total storage used by this dag taking into account the identification of equal cells. The values of `x`, `y`, and `z` are computed by a depth-first traversal of this dag, with a hash table of visited cell hashes used to prevent visits of already-visited cells. The total count of visited cells `x` cannot exceed non-negative _Integer_ `n`; otherwise the computation is aborted before visiting the `(n+1)`-st cell and a zero is returned to indicate failure. The returned value of `x` does not take into account the cell that contains the slice `s` itself; however, the data bits and the cell references of `s` are accounted for in `y` and `z`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -169,6 +172,7 @@
     "description": {
       "short": "",
       "long": "A non-quiet version of `SDATASIZEQ` that throws a cell overflow exception (8) on failure.",
+      "tags": [],
       "operands": []
     },
     "signature": {

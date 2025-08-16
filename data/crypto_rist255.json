@@ -3,6 +3,7 @@
     "description": {
       "short": "",
       "long": "Deterministically generates a valid point `x` from a 512-bit hash (given as two 256-bit integers).",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -35,6 +36,7 @@
     "description": {
       "short": "",
       "long": "Checks that integer `x` is a valid representation of some curve point. Throws range_chk on error.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -53,6 +55,7 @@
     "description": {
       "short": "",
       "long": "Addition of two points on a curve.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -85,6 +88,7 @@
     "description": {
       "short": "",
       "long": "Subtraction of two points on curve.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -117,6 +121,7 @@
     "description": {
       "short": "",
       "long": "Multiplies point `x` by a scalar `n`. Any `n` is valid, including negative.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -149,6 +154,7 @@
     "description": {
       "short": "",
       "long": "Multiplies the generator point `g` by a scalar `n`. Any `n` is valid, including negative.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -176,6 +182,7 @@
     "description": {
       "short": "",
       "long": "Pushes integer l=2^252+27742317777372353535851937790883648493, which is the order of the group.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -194,6 +201,7 @@
     "description": {
       "short": "",
       "long": "Checks that integer `x` is a valid representation of some curve point. Returns -1 on success and 0 on failure.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -221,6 +229,7 @@
     "description": {
       "short": "",
       "long": "Addition of two points on a curve. Returns -1 on success and 0 on failure.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -273,6 +282,7 @@
     "description": {
       "short": "",
       "long": "Subtraction of two points on curve. Returns -1 on success and 0 on failure.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -325,6 +335,7 @@
     "description": {
       "short": "",
       "long": "Multiplies point `x` by a scalar `n`. Any `n` is valid, including negative. Returns -1 on success and 0 on failure.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -377,6 +388,7 @@
     "description": {
       "short": "",
       "long": "Multiplies the generator point `g` by a scalar `n`. Any `n` is valid, including negative.",
+      "tags": [],
       "operands": []
     },
     "signature": {

@@ -3,6 +3,7 @@
     "description": {
       "short": "",
       "long": "Pushes a `NaN`.",
+      "tags": [],
       "operands": []
     },
     "signature": {
@@ -21,6 +22,7 @@
     "description": {
       "short": "",
       "long": "Pushes `(2 ^ x) - 1`.",
+      "tags": [],
       "operands": ["x"]
     },
     "signature": {
@@ -39,6 +41,7 @@
     "description": {
       "short": "",
       "long": "Pushes `-2 ^ x`.",
+      "tags": [],
       "operands": ["x"]
     },
     "signature": {
@@ -57,6 +60,7 @@
     "description": {
       "short": "Quietly pushes `2 ^ x`.",
       "long": "Note that `2^256` is a `NaN`.",
+      "tags": [],
       "operands": ["x"]
     },
     "signature": {
@@ -74,8 +78,10 @@
   "PUSHINT_4": {
     "description": {
       "short": "Pushes tiny signed integer `x` onto the stack. Note that the instruction does not have the usual 4-bit range for the argument, but `-5 <= x <= 10`!",
-      "exit_codes": [],
-      "operands": ["i"]
+      "long": "",
+      "tags": [],
+      "operands": ["i"],
+      "exit_codes": []
     },
     "signature": {
       "outputs": {
@@ -92,8 +98,10 @@
   "PUSHINT_8": {
     "description": {
       "short": "Pushes small 8-bit signed integer `x` onto the stack.",
-      "exit_codes": [],
-      "operands": ["x"]
+      "long": "",
+      "tags": [],
+      "operands": ["x"],
+      "exit_codes": []
     },
     "signature": {
       "outputs": {
@@ -110,8 +118,10 @@
   "PUSHINT_16": {
     "description": {
       "short": "Pushes 16-bit signed integer `x` onto the stack.",
-      "exit_codes": [],
-      "operands": ["x"]
+      "long": "",
+      "tags": [],
+      "operands": ["x"],
+      "exit_codes": []
     },
     "signature": {
       "outputs": {
@@ -128,8 +138,10 @@
   "PUSHINT_LONG": {
     "description": {
       "short": "Pushes big signed integer `x`.",
-      "exit_codes": [],
-      "operands": ["x"]
+      "long": "",
+      "tags": [],
+      "operands": ["x"],
+      "exit_codes": []
     },
     "signature": {
       "outputs": {
