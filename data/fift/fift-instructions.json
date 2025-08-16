@@ -23,6 +23,16 @@
     "arguments": [1],
     "description": "Pushes integer 1 onto the stack"
   },
+  "TWO": {
+    "actual_name": "PUSHINT_4",
+    "arguments": [2],
+    "description": "Pushes integer 2 onto the stack"
+  },
+  "TEN": {
+    "actual_name": "PUSHINT_4",
+    "arguments": [10],
+    "description": "Pushes integer 10 onto the stack"
+  },
   "FIRST": {
     "actual_name": "INDEX",
     "arguments": [0],
@@ -50,24 +60,24 @@
   },
   "SKIPOPTREF": {
     "actual_name": "SKIPDICT",
-    "description": "Skips a dictionary in the slice, used for optional references"
+    "description": "Skips a dictionary or any cell or null in the slice, used for optional references"
   },
   "LDOPTREF": {
     "actual_name": "LDDICT",
-    "description": "Loads a dictionary from the slice as an optional reference"
+    "description": "Loads a dictionary or any cell or null from the slice as an optional reference"
   },
   "PLDOPTREF": {
     "actual_name": "PLDDICT",
-    "description": "Preloads a dictionary from the slice as an optional reference, leaving the slice unchanged"
+    "description": "Preloads a dictionary or any cell or null from the slice as an optional reference, leaving the slice unchanged"
   },
   "STOPTREF": {
     "actual_name": "STDICT",
-    "description": "Stores a dictionary in the builder as an optional reference"
+    "description": "Stores a dictionary or any cell or null in the builder as an optional reference"
   },
   "PLDREF": {
     "actual_name": "PLDREFIDX",
     "arguments": [0],
-    "description": "Preloads the first reference from the slice, leaving the slice unchanged"
+    "description": "Preloads the first optional reference from the slice, leaving the slice unchanged"
   },
   "SETCONTMANY": {
     "actual_name": "SETCONTCTRMANY",
@@ -133,6 +143,41 @@
     "arguments": [0],
     "description": "Pushes integer 0 onto the stack"
   },
+  "CHKTUPLE": {
+    "actual_name": "UNPACKFIRST",
+    "arguments": [0],
+    "description": "Checks whether `t` is a _Tuple_. If not, throws a type check exception"
+  },
+  "SETFIRST": {
+    "actual_name": "SETINDEX",
+    "arguments": [0],
+    "description": "Sets the first component of _Tuple_ `t` to `x` and returns the resulting _Tuple_ `t'`"
+  },
+  "SETSECOND": {
+    "actual_name": "SETINDEX",
+    "arguments": [1],
+    "description": "Sets the first component of _Tuple_ `t` to `x` and returns the resulting _Tuple_ `t'`"
+  },
+  "SETTHIRD": {
+    "actual_name": "SETINDEX",
+    "arguments": [2],
+    "description": "Sets the first component of _Tuple_ `t` to `x` and returns the resulting _Tuple_ `t'`"
+  },
+  "SETFIRSTQ": {
+    "actual_name": "SETINDEXQ",
+    "arguments": [0],
+    "description": "Sets the first component of _Tuple_ `t` to `x` and returns the resulting _Tuple_ `t'`"
+  },
+  "SETSECONDQ": {
+    "actual_name": "SETINDEXQ",
+    "arguments": [1],
+    "description": "Sets the first component of _Tuple_ `t` to `x` and returns the resulting _Tuple_ `t'`"
+  },
+  "SETTHIRDQ": {
+    "actual_name": "SETINDEXQ",
+    "arguments": [2],
+    "description": "Sets the first component of _Tuple_ `t` to `x` and returns the resulting _Tuple_ `t'`"
+  },
   "UNCONS": {
     "actual_name": "UNTUPLE",
     "arguments": [2],
@@ -147,6 +192,26 @@
     "actual_name": "INDEXQ",
     "arguments": [0],
     "description": "Returns the first element of a tuple if it exists, or null if not or the tuple is null"
+  },
+  "CADR": {
+    "actual_name": "INDEX2",
+    "description": "Returns `t[1][0]`",
+    "arguments": [1, 0]
+  },
+  "CDDR": {
+    "actual_name": "INDEX2",
+    "description": "Returns `t[1][1]`",
+    "arguments": [1, 1]
+  },
+  "CADDR": {
+    "actual_name": "INDEX3",
+    "description": "Returns `t[1][1][0]`",
+    "arguments": [1, 1, 0]
+  },
+  "CDDDR": {
+    "actual_name": "INDEX3",
+    "description": "Returns `t[1][1][1]`",
+    "arguments": [1, 1, 1]
   },
   "FIRSTQ": {
     "actual_name": "INDEXQ",
@@ -203,6 +268,31 @@
     "actual_name": "BOOLAND",
     "description": "Performs logical AND operation on two boolean values"
   },
+  "ISZERO": {
+    "actual_name": "EQINT",
+    "arguments": [0],
+    "description": "Checks whether an integer is zero"
+  },
+  "ISNEG": {
+    "actual_name": "LESSINT",
+    "arguments": ["$args[0]", 0],
+    "description": "Checks whether an integer is negative"
+  },
+  "ISNNEG": {
+    "actual_name": "GTINT",
+    "arguments": ["$args[0]", -1],
+    "description": "Checks whether an integer is non-negative"
+  },
+  "ISNPOS": {
+    "actual_name": "LESSINT",
+    "arguments": ["$args[0]", 1],
+    "description": "Checks whether an integer is non-positive"
+  },
+  "ISPOS": {
+    "actual_name": "LESSINT",
+    "arguments": ["$args[0]", 0],
+    "description": "Checks whether an integer is positive"
+  },
   "LEQINT": {
     "actual_name": "LESSINT",
     "arguments": ["$args[0] + 1"],
@@ -227,6 +317,26 @@
     "actual_name": "ADDINT",
     "arguments": ["- $args[0]"],
     "description": "Subtracts one integer from another"
+  },
+  "CHKBOOL": {
+    "actual_name": "FITS",
+    "arguments": [0],
+    "description": "Checks whether `x` is a \"boolean value\" (i.e., either 0 or -1)"
+  },
+  "CHKBIT": {
+    "actual_name": "UFITS",
+    "arguments": [0],
+    "description": "Checks whether `x` is a binary digit (i.e., 0 or 1)"
+  },
+  "STZERO": {
+    "actual_name": "STSLICECONST",
+    "arguments": ["b{0}"],
+    "description": "Stores one binary zero"
+  },
+  "STONE": {
+    "actual_name": "STSLICECONST",
+    "arguments": ["b{1}"],
+    "description": "Stores one binary one"
   },
   "SLICE": {
     "actual_name": "PUSHSLICE",
@@ -329,101 +439,101 @@
   "HASHEXT_SHA256": {
     "actual_name": "HASHEXT",
     "arguments": [0],
-    "description": "Calculates and returns `SHA-256` hash of the concatenation of slices or builders `s_1`...`s_length`."
+    "description": "Calculates and returns `SHA-256` hash of the concatenation of slices or builders `s_1`...`s_length`"
   },
   "HASHEXT_SHA512": {
     "actual_name": "HASHEXT",
     "arguments": [1],
-    "description": "Calculates and returns `SHA-512` hash of the concatenation of slices or builders `s_1`...`s_length`."
+    "description": "Calculates and returns `SHA-512` hash of the concatenation of slices or builders `s_1`...`s_length`"
   },
   "HASHEXT_BLAKE2B": {
     "actual_name": "HASHEXT",
     "arguments": [2],
-    "description": "Calculates and returns `BLAKE2B` hash of the concatenation of slices or builders `s_1`...`s_length`."
+    "description": "Calculates and returns `BLAKE2B` hash of the concatenation of slices or builders `s_1`...`s_length`"
   },
   "HASHEXT_KECCAK256": {
     "actual_name": "HASHEXT",
     "arguments": [3],
-    "description": "Calculates and returns `KECCAK-256` hash of the concatenation of slices or builders `s_1`...`s_length`."
+    "description": "Calculates and returns `KECCAK-256` hash of the concatenation of slices or builders `s_1`...`s_length`"
   },
   "HASHEXT_KECCAK512": {
     "actual_name": "HASHEXT",
     "arguments": [4],
-    "description": "Calculates and returns `KECCAK-512` hash of the concatenation of slices or builders `s_1`...`s_length`."
+    "description": "Calculates and returns `KECCAK-512` hash of the concatenation of slices or builders `s_1`...`s_length`"
   },
   "HASHEXTR_SHA256": {
     "actual_name": "HASHEXTR",
     "arguments": [0],
-    "description": "Calculates and returns ` SHA-256` hash of the concatenation of slices or builders `s_1`...`s_length` in reverse order."
+    "description": "Calculates and returns ` SHA-256` hash of the concatenation of slices or builders `s_1`...`s_length` in reverse order"
   },
   "HASHEXTR_SHA512": {
     "actual_name": "HASHEXTR",
     "arguments": [1],
-    "description": "Calculates and returns ` SHA-512` hash of the concatenation of slices or builders `s_1`...`s_length` in reverse order."
+    "description": "Calculates and returns ` SHA-512` hash of the concatenation of slices or builders `s_1`...`s_length` in reverse order"
   },
   "HASHEXTR_BLAKE2B": {
     "actual_name": "HASHEXTR",
     "arguments": [2],
-    "description": "Calculates and returns ` BLAKE2B` hash of the concatenation of slices or builders `s_1`...`s_length` in reverse order."
+    "description": "Calculates and returns ` BLAKE2B` hash of the concatenation of slices or builders `s_1`...`s_length` in reverse order"
   },
   "HASHEXTR_KECCAK256": {
     "actual_name": "HASHEXTR",
     "arguments": [3],
-    "description": "Calculates and returns ` KECCAK-256` hash of the concatenation of slices or builders `s_1`...`s_length` in reverse order."
+    "description": "Calculates and returns ` KECCAK-256` hash of the concatenation of slices or builders `s_1`...`s_length` in reverse order"
   },
   "HASHEXTR_KECCAK512": {
     "actual_name": "HASHEXTR",
     "arguments": [4],
-    "description": "Calculates and returns ` KECCAK-512` hash of the concatenation of slices or builders `s_1`...`s_length` in reverse order."
+    "description": "Calculates and returns ` KECCAK-512` hash of the concatenation of slices or builders `s_1`...`s_length` in reverse order"
   },
   "HASHEXTA_SHA256": {
     "actual_name": "HASHEXTA",
     "arguments": [0],
-    "description": "Calculates `SHA-256` hash of the concatenation of slices (or builders) `s_1`...`s_length` and appends the resulting hash to a builder `b`."
+    "description": "Calculates `SHA-256` hash of the concatenation of slices (or builders) `s_1`...`s_length` and appends the resulting hash to a builder `b`"
   },
   "HASHEXTA_SHA512": {
     "actual_name": "HASHEXTA",
     "arguments": [1],
-    "description": "Calculates `SHA-512` hash of the concatenation of slices (or builders) `s_1`...`s_length` and appends the resulting hash to a builder `b`."
+    "description": "Calculates `SHA-512` hash of the concatenation of slices (or builders) `s_1`...`s_length` and appends the resulting hash to a builder `b`"
   },
   "HASHEXTA_BLAKE2B": {
     "actual_name": "HASHEXTA",
     "arguments": [2],
-    "description": "Calculates `BLAKE2B` hash of the concatenation of slices (or builders) `s_1`...`s_length` and appends the resulting hash to a builder `b`."
+    "description": "Calculates `BLAKE2B` hash of the concatenation of slices (or builders) `s_1`...`s_length` and appends the resulting hash to a builder `b`"
   },
   "HASHEXTA_KECCAK256": {
     "actual_name": "HASHEXTA",
     "arguments": [3],
-    "description": "Calculates `KECCAK-256` hash of the concatenation of slices (or builders) `s_1`...`s_length` and appends the resulting hash to a builder `b`."
+    "description": "Calculates `KECCAK-256` hash of the concatenation of slices (or builders) `s_1`...`s_length` and appends the resulting hash to a builder `b`"
   },
   "HASHEXTA_KECCAK512": {
     "actual_name": "HASHEXTA",
     "arguments": [4],
-    "description": "Calculates `KECCAK-512` hash of the concatenation of slices (or builders) `s_1`...`s_length` and appends the resulting hash to a builder `b`."
+    "description": "Calculates `KECCAK-512` hash of the concatenation of slices (or builders) `s_1`...`s_length` and appends the resulting hash to a builder `b`"
   },
   "HASHEXTAR_SHA256": {
     "actual_name": "HASHEXTAR",
     "arguments": [0],
-    "description": "Calculates and returns `SHA-256` hash of the concatenation of slices or builders `s_1`...`s_length` in reverse order and appends the resulting hash to a builder `b`."
+    "description": "Calculates and returns `SHA-256` hash of the concatenation of slices or builders `s_1`...`s_length` in reverse order and appends the resulting hash to a builder `b`"
   },
   "HASHEXTAR_SHA512": {
     "actual_name": "HASHEXTAR",
     "arguments": [1],
-    "description": "Calculates and returns `SHA-512` hash of the concatenation of slices or builders `s_1`...`s_length` in reverse order and appends the resulting hash to a builder `b`."
+    "description": "Calculates and returns `SHA-512` hash of the concatenation of slices or builders `s_1`...`s_length` in reverse order and appends the resulting hash to a builder `b`"
   },
   "HASHEXTAR_BLAKE2B": {
     "actual_name": "HASHEXTAR",
     "arguments": [2],
-    "description": "Calculates and returns `BLAKE2B` hash of the concatenation of slices or builders `s_1`...`s_length` in reverse order and appends the resulting hash to a builder `b`."
+    "description": "Calculates and returns `BLAKE2B` hash of the concatenation of slices or builders `s_1`...`s_length` in reverse order and appends the resulting hash to a builder `b`"
   },
   "HASHEXTAR_KECCAK256": {
     "actual_name": "HASHEXTAR",
     "arguments": [3],
-    "description": "Calculates and returns `KECCAK-256` hash of the concatenation of slices or builders `s_1`...`s_length` in reverse order and appends the resulting hash to a builder `b`."
+    "description": "Calculates and returns `KECCAK-256` hash of the concatenation of slices or builders `s_1`...`s_length` in reverse order and appends the resulting hash to a builder `b`"
   },
   "HASHEXTAR_KECCAK512": {
     "actual_name": "HASHEXTAR",
     "arguments": [4],
-    "description": "Calculates and returns `KECCAK-512` hash of the concatenation of slices or builders `s_1`...`s_length` in reverse order and appends the resulting hash to a builder `b`."
+    "description": "Calculates and returns `KECCAK-512` hash of the concatenation of slices or builders `s_1`...`s_length` in reverse order and appends the resulting hash to a builder `b`"
   }
 }
