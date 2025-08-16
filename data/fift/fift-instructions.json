@@ -275,22 +275,22 @@
   },
   "ISNEG": {
     "actual_name": "LESSINT",
-    "arguments": ["$args[0]", 0],
+    "arguments": [0],
     "description": "Checks whether an integer is negative"
   },
   "ISNNEG": {
     "actual_name": "GTINT",
-    "arguments": ["$args[0]", -1],
+    "arguments": [-1],
     "description": "Checks whether an integer is non-negative"
   },
   "ISNPOS": {
     "actual_name": "LESSINT",
-    "arguments": ["$args[0]", 1],
+    "arguments": [1],
     "description": "Checks whether an integer is non-positive"
   },
   "ISPOS": {
     "actual_name": "LESSINT",
-    "arguments": ["$args[0]", 0],
+    "arguments": [0],
     "description": "Checks whether an integer is positive"
   },
   "LEQINT": {
