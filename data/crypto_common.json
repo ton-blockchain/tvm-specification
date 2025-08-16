@@ -335,17 +335,41 @@
   "HASHEXT": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates and returns hash of the concatenation of slices or builders `s_1`...`s_length`.\n\nHash ID can be one of the following:\n- `0` - **SHA256** (1/33 gas per byte)\n- `1` - **SHA512** (1/16 gas per byte)\n- `2` - **BLAKE2B** (1/19 gas per byte)\n- `3` - **KECCAK256** (1/11 gas per byte)\n- `4` - **KECCAK512** (1/6 gas per byte)",
       "tags": [],
-      "operands": []
+      "operands": ["hash_id"]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "array",
+            "name": "tuple_elements",
+            "length_var": "length",
+            "array_entry": [
+              {
+                "type": "simple",
+                "name": "s",
+                "value_types": ["Slice", "Builder"]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "length",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "hash",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
@@ -353,17 +377,41 @@
   "HASHEXTR": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates and returns hash of the concatenation of slices or builders `s_1`...`s_length` in reverse order.\n\nHash ID can be one of the following:\n- `0` - **SHA256** (1/33 gas per byte)\n- `1` - **SHA512** (1/16 gas per byte)\n- `2` - **BLAKE2B** (1/19 gas per byte)\n- `3` - **KECCAK256** (1/11 gas per byte)\n- `4` - **KECCAK512** (1/6 gas per byte)",
       "tags": [],
-      "operands": []
+      "operands": ["hash_id"]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "array",
+            "name": "tuple_elements",
+            "length_var": "length",
+            "array_entry": [
+              {
+                "type": "simple",
+                "name": "s",
+                "value_types": ["Slice", "Builder"]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "length",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "hash",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
@@ -371,17 +419,46 @@
   "HASHEXTA": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates hash of the concatenation of slices (or builders) `s_1`...`s_length` and appends the resulting hash to a builder `b`.\n\nHash ID can be one of the following:\n- `0` - **SHA256** (1/33 gas per byte)\n- `1` - **SHA512** (1/16 gas per byte)\n- `2` - **BLAKE2B** (1/19 gas per byte)\n- `3` - **KECCAK256** (1/11 gas per byte)\n- `4` - **KECCAK512** (1/6 gas per byte)",
       "tags": [],
-      "operands": []
+      "operands": ["hash_id"]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          },
+          {
+            "type": "array",
+            "name": "tuple_elements",
+            "length_var": "length",
+            "array_entry": [
+              {
+                "type": "simple",
+                "name": "s",
+                "value_types": ["Slice", "Builder"]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "length",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b'",
+            "value_types": ["Builder"]
+          }
+        ],
         "registers": []
       }
     }
@@ -389,17 +466,46 @@
   "HASHEXTAR": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates and returns hash of the concatenation of slices or builders `s_1`...`s_length` in reverse order and appends the resulting hash to a builder `b`.\n\nHash ID can be one of the following:\n- `0` - **SHA256** (1/33 gas per byte)\n- `1` - **SHA512** (1/16 gas per byte)\n- `2` - **BLAKE2B** (1/19 gas per byte)\n- `3` - **KECCAK256** (1/11 gas per byte)\n- `4` - **KECCAK512** (1/6 gas per byte)",
       "tags": [],
-      "operands": []
+      "operands": ["hash_id"]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          },
+          {
+            "type": "array",
+            "name": "tuple_elements",
+            "length_var": "length",
+            "array_entry": [
+              {
+                "type": "simple",
+                "name": "s",
+                "value_types": ["Slice", "Builder"]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "length",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b'",
+            "value_types": ["Builder"]
+          }
+        ],
         "registers": []
       }
     }

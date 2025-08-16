@@ -531,17 +531,36 @@
   "ADDINT": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Adds `x` from stack and `y` from arguments and pushes the result back onto the stack.",
       "tags": [],
-      "operands": []
+      "operands": ["y"],
+      "exit_codes": [
+        {
+          "errno": "4",
+          "condition": "Top element is a NaN."
+        }
+      ]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "presentation": "x + y",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
@@ -549,17 +568,36 @@
   "MULINT": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Multiplies `x` from stack and `y` from arguments and pushes the result back onto the stack.",
       "tags": [],
-      "operands": []
+      "operands": ["y"],
+      "exit_codes": [
+        {
+          "errno": "4",
+          "condition": "Top element is a NaN."
+        }
+      ]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "presentation": "x * y",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
@@ -567,17 +605,30 @@
   "QADDINT": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Adds `x` from stack and `y` from arguments and pushes the result back onto the stack. If stack element is a `NaN`, returns `NaN`.",
       "tags": [],
-      "operands": []
+      "operands": ["y"]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "presentation": "x + y",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
@@ -585,17 +636,30 @@
   "QMULINT": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Multiplies `x` from stack and `y` from arguments and pushes the result back onto the stack. If stack element is a `NaN`, returns `NaN`.",
       "tags": [],
-      "operands": []
+      "operands": ["y"]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "presentation": "x * y",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }

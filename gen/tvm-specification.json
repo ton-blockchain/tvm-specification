@@ -38828,9 +38828,15 @@
       "sub_category": "add_mul",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Adds `x` from stack and `y` from arguments and pushes the result back onto the stack.",
         "tags": [],
-        "operands": []
+        "operands": ["y"],
+        "exit_codes": [
+          {
+            "errno": "4",
+            "condition": "Top element is a NaN."
+          }
+        ]
       },
       "layout": {
         "min": 10878976,
@@ -38856,13 +38862,26 @@
         "prefix_str": "A6"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Int -> result:Int",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "result",
+              "presentation": "x + y",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         }
       }
@@ -38872,9 +38891,15 @@
       "sub_category": "add_mul",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Multiplies `x` from stack and `y` from arguments and pushes the result back onto the stack.",
         "tags": [],
-        "operands": []
+        "operands": ["y"],
+        "exit_codes": [
+          {
+            "errno": "4",
+            "condition": "Top element is a NaN."
+          }
+        ]
       },
       "layout": {
         "min": 10944512,
@@ -38900,13 +38925,26 @@
         "prefix_str": "A7"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Int -> result:Int",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "result",
+              "presentation": "x * y",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         }
       }
@@ -38916,9 +38954,9 @@
       "sub_category": "add_mul",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Adds `x` from stack and `y` from arguments and pushes the result back onto the stack. If stack element is a `NaN`, returns `NaN`.",
         "tags": [],
-        "operands": []
+        "operands": ["y"]
       },
       "layout": {
         "min": 12035584,
@@ -38944,13 +38982,26 @@
         "prefix_str": "B7A6"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Int -> result:Int",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "result",
+              "presentation": "x + y",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         }
       }
@@ -38960,9 +39011,9 @@
       "sub_category": "add_mul",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Multiplies `x` from stack and `y` from arguments and pushes the result back onto the stack. If stack element is a `NaN`, returns `NaN`.",
         "tags": [],
-        "operands": []
+        "operands": ["y"]
       },
       "layout": {
         "min": 12035840,
@@ -38988,13 +39039,26 @@
         "prefix_str": "B7A7"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Int -> result:Int",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "result",
+              "presentation": "x * y",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         }
       }
@@ -47764,9 +47828,9 @@
       "sub_category": "crypto_common",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates and returns hash of the concatenation of slices or builders `s_1`...`s_length`.\n\nHash ID can be one of the following:\n- `0` - **SHA256** (1/33 gas per byte)\n- `1` - **SHA512** (1/16 gas per byte)\n- `2` - **BLAKE2B** (1/19 gas per byte)\n- `3` - **KECCAK256** (1/11 gas per byte)\n- `4` - **KECCAK512** (1/6 gas per byte)",
         "tags": [],
-        "operands": []
+        "operands": ["hash_id"]
       },
       "layout": {
         "min": 16319488,
@@ -47788,13 +47852,37 @@
         "prefix_str": "F904"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x_1...x_length length:Int -> hash:Int",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "array",
+              "name": "tuple_elements",
+              "length_var": "length",
+              "array_entry": [
+                {
+                  "type": "simple",
+                  "name": "s",
+                  "value_types": ["Slice", "Builder"]
+                }
+              ]
+            },
+            {
+              "type": "simple",
+              "name": "length",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "hash",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         }
       }
@@ -47804,9 +47892,9 @@
       "sub_category": "crypto_common",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates and returns hash of the concatenation of slices or builders `s_1`...`s_length` in reverse order.\n\nHash ID can be one of the following:\n- `0` - **SHA256** (1/33 gas per byte)\n- `1` - **SHA512** (1/16 gas per byte)\n- `2` - **BLAKE2B** (1/19 gas per byte)\n- `3` - **KECCAK256** (1/11 gas per byte)\n- `4` - **KECCAK512** (1/6 gas per byte)",
         "tags": [],
-        "operands": []
+        "operands": ["hash_id"]
       },
       "layout": {
         "min": 16319744,
@@ -47828,13 +47916,37 @@
         "prefix_str": "F905"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x_1...x_length length:Int -> hash:Int",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "array",
+              "name": "tuple_elements",
+              "length_var": "length",
+              "array_entry": [
+                {
+                  "type": "simple",
+                  "name": "s",
+                  "value_types": ["Slice", "Builder"]
+                }
+              ]
+            },
+            {
+              "type": "simple",
+              "name": "length",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "hash",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         }
       }
@@ -47844,9 +47956,9 @@
       "sub_category": "crypto_common",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates hash of the concatenation of slices (or builders) `s_1`...`s_length` and appends the resulting hash to a builder `b`.\n\nHash ID can be one of the following:\n- `0` - **SHA256** (1/33 gas per byte)\n- `1` - **SHA512** (1/16 gas per byte)\n- `2` - **BLAKE2B** (1/19 gas per byte)\n- `3` - **KECCAK256** (1/11 gas per byte)\n- `4` - **KECCAK512** (1/6 gas per byte)",
         "tags": [],
-        "operands": []
+        "operands": ["hash_id"]
       },
       "layout": {
         "min": 16320000,
@@ -47868,13 +47980,42 @@
         "prefix_str": "F906"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "b:Builder x_1...x_length length:Int -> b':Builder",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "b",
+              "value_types": ["Builder"]
+            },
+            {
+              "type": "array",
+              "name": "tuple_elements",
+              "length_var": "length",
+              "array_entry": [
+                {
+                  "type": "simple",
+                  "name": "s",
+                  "value_types": ["Slice", "Builder"]
+                }
+              ]
+            },
+            {
+              "type": "simple",
+              "name": "length",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "b'",
+              "value_types": ["Builder"]
+            }
+          ],
           "registers": []
         }
       }
@@ -47884,9 +48025,9 @@
       "sub_category": "crypto_common",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates and returns hash of the concatenation of slices or builders `s_1`...`s_length` in reverse order and appends the resulting hash to a builder `b`.\n\nHash ID can be one of the following:\n- `0` - **SHA256** (1/33 gas per byte)\n- `1` - **SHA512** (1/16 gas per byte)\n- `2` - **BLAKE2B** (1/19 gas per byte)\n- `3` - **KECCAK256** (1/11 gas per byte)\n- `4` - **KECCAK512** (1/6 gas per byte)",
         "tags": [],
-        "operands": []
+        "operands": ["hash_id"]
       },
       "layout": {
         "min": 16320256,
@@ -47908,13 +48049,42 @@
         "prefix_str": "F907"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "b:Builder x_1...x_length length:Int -> b':Builder",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "b",
+              "value_types": ["Builder"]
+            },
+            {
+              "type": "array",
+              "name": "tuple_elements",
+              "length_var": "length",
+              "array_entry": [
+                {
+                  "type": "simple",
+                  "name": "s",
+                  "value_types": ["Slice", "Builder"]
+                }
+              ]
+            },
+            {
+              "type": "simple",
+              "name": "length",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "b'",
+              "value_types": ["Builder"]
+            }
+          ],
           "registers": []
         }
       }
