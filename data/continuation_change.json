@@ -1023,7 +1023,7 @@
   "SAVEALTCTR": {
     "description": {
       "short": "",
-      "long": "Similar to `c[i] SAVE`, but saves the current value of `c[i]` into the savelist of `c1`, not `c0`.",
+      "long": "Similar to `c(i) SAVE`, but saves the current value of `c(i)` into the savelist of `c1`, not `c0`.",
       "tags": [],
       "operands": ["i"]
     },
@@ -1055,9 +1055,15 @@
   "SAVEBOTHCTR": {
     "description": {
       "short": "",
-      "long": "Equivalent to `c[i] SAVE` `c[i] SAVEALT`.",
+      "long": "Saves the current value of `c(i)` into the savelist of both `c0` and `c1`.",
       "tags": [],
-      "operands": ["i"]
+      "operands": ["i"],
+      "other_implementations": [
+        {
+          "exact": true,
+          "instructions": ["c(i) SAVE", "c(i) SAVEALT"]
+        }
+      ]
     },
     "signature": {
       "inputs": {

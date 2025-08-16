@@ -1,7 +1,6 @@
 {
   "-ROT": {
-    "actual_name": "ROTREV",
-    "description": "Rearranges the top three elements. Places the top element below the first two following elements: `1 2 3 -> 3 1 2`"
+    "actual_name": "ROTREV"
   },
   "-ROLL": {
     "actual_name": "BLKSWAP",
@@ -80,16 +79,13 @@
     "description": "Preloads the first optional reference from the slice, leaving the slice unchanged"
   },
   "SETCONTMANY": {
-    "actual_name": "SETCONTCTRMANY",
-    "description": "Sets multiple continuation parameters in control registers"
+    "actual_name": "SETCONTCTRMANY"
   },
   "LDVARUINT16": {
-    "actual_name": "LDGRAMS",
-    "description": "Loads a variable-length unsigned 16-bit integer (grams) from the slice"
+    "actual_name": "LDGRAMS"
   },
   "STVARUINT16": {
-    "actual_name": "STGRAMS",
-    "description": "Stores a variable-length unsigned 16-bit integer (grams) into the builder"
+    "actual_name": "STGRAMS"
   },
   "NIL": {
     "actual_name": "TUPLE",
@@ -127,16 +123,13 @@
     "description": "Alternative name for 2ROT, rotates three pairs of stack elements"
   },
   "PUSHX": {
-    "actual_name": "PICK",
-    "description": "Copies the stack value at specified depth to the top of stack"
+    "actual_name": "PICK"
   },
   "-ROLLX": {
-    "actual_name": "ROLLREV",
-    "description": "Moves the top element to a specified position in reverse order"
+    "actual_name": "ROLLREV"
   },
   "NULL": {
-    "actual_name": "PUSHNULL",
-    "description": "Pushes a null value onto the stack"
+    "actual_name": "PUSHNULL"
   },
   "ZERO": {
     "actual_name": "PUSHINT_4",
@@ -229,44 +222,34 @@
     "description": "Returns the second element of a tuple if it exists, or null if not or the tuple is null"
   },
   "COMMA": {
-    "actual_name": "TPUSH",
-    "description": "Adds an element to a tuple"
+    "actual_name": "TPUSH"
   },
   "INTSORT2": {
-    "actual_name": "MINMAX",
-    "description": "Sorts two integers on the stack in ascending order"
+    "actual_name": "MINMAX"
   },
   "BCONCAT": {
-    "actual_name": "STBR",
-    "description": "Concatenates two builders"
+    "actual_name": "STBR"
   },
   "BCONCATQ": {
-    "actual_name": "STBRQ",
-    "description": "Concatenates two builders if the second one exists, otherwise returns the first one"
+    "actual_name": "STBRQ"
   },
   "CALLX": {
-    "actual_name": "EXECUTE",
-    "description": "Executes a continuation from the stack"
+    "actual_name": "EXECUTE"
   },
   "RETTRUE": {
-    "actual_name": "RET",
-    "description": "Returns from the current continuation with success status"
+    "actual_name": "RET"
   },
   "RETFALSE": {
-    "actual_name": "RETALT",
-    "description": "Returns from the current continuation with failure status"
+    "actual_name": "RETALT"
   },
   "BRANCH": {
-    "actual_name": "RETBOOL",
-    "description": "Returns from the current continuation with a boolean condition"
+    "actual_name": "RETBOOL"
   },
   "COMPOSALT": {
-    "actual_name": "BOOLOR",
-    "description": "Performs logical OR operation on two boolean values"
+    "actual_name": "BOOLOR"
   },
   "COMPOS": {
-    "actual_name": "BOOLAND",
-    "description": "Performs logical AND operation on two boolean values"
+    "actual_name": "BOOLAND"
   },
   "ISZERO": {
     "actual_name": "EQINT",
@@ -339,24 +322,19 @@
     "description": "Stores one binary one"
   },
   "SLICE": {
-    "actual_name": "PUSHSLICE",
-    "description": "Pushes a slice onto the stack"
+    "actual_name": "PUSHSLICE"
   },
   "CONT": {
-    "actual_name": "PUSHCONT",
-    "description": "Pushes a continuation onto the stack"
+    "actual_name": "PUSHCONT"
   },
   "CALL": {
-    "actual_name": "CALLDICT",
-    "description": "Calls a function from the dictionary"
+    "actual_name": "CALLDICT"
   },
   "JMP": {
-    "actual_name": "JMPDICT",
-    "description": "Jumps to a function in the dictionary"
+    "actual_name": "JMPDICT"
   },
   "PREPARE": {
-    "actual_name": "PREPAREDICT",
-    "description": "Prepares a dictionary for execution"
+    "actual_name": "PREPAREDICT"
   },
   "INLINECALL": {
     "actual_name": "none",
@@ -367,74 +345,59 @@
     "description": "Instead of a call instruction, the function is inlined into the code"
   },
   "PFXDICTCONSTGETJMP": {
-    "actual_name": "PFXDICTSWITCH",
-    "description": "Performs a switch operation based on dictionary prefix"
+    "actual_name": "PFXDICTSWITCH"
   },
   "PUSHINT": {
-    "actual_name": "PUSHINT_LONG",
-    "description": "Pushes a long integer onto the stack"
+    "actual_name": "PUSHINT_LONG"
   },
   "INT": {
-    "actual_name": "PUSHINT_LONG",
-    "description": "Alternative name for PUSHINT, pushes a long integer onto the stack"
+    "actual_name": "PUSHINT_LONG"
   },
   "INTX": {
-    "actual_name": "PUSHINT_LONG",
-    "description": "Alternative name for PUSHINT, pushes a long integer onto the stack"
+    "actual_name": "PUSHINT_LONG"
   },
   "NEWDICT": {
-    "actual_name": "PUSHNULL",
-    "description": "Creates a new empty dictionary"
+    "actual_name": "PUSHNULL"
   },
   "DICTEMPTY": {
-    "actual_name": "ISNULL",
-    "description": "Checks if a dictionary is empty"
+    "actual_name": "ISNULL"
   },
   "STDICTS": {
-    "actual_name": "STSLICE",
-    "description": "Stores a slice into a builder"
+    "actual_name": "STSLICE"
   },
   "SETNUMARGS": {
     "actual_name": "SETCONTARGS",
-    "arguments": [0, "$args"],
+    "arguments": [0, "$args[1]"],
     "description": "Sets the number of arguments for a continuation"
   },
   "BLESSNUMARGS": {
     "actual_name": "BLESSARGS",
-    "arguments": [0, "$args"],
+    "arguments": [0, "$args[1]"],
     "description": "Blesses a continuation with a specified number of arguments"
   },
   "DUMPTOSFMT": {
-    "actual_name": "DEBUGSTR",
-    "description": "Outputs a debug string to the console"
+    "actual_name": "DEBUGSTR"
   },
   "LOGSTR": {
-    "actual_name": "DEBUGSTR",
-    "description": "Outputs a log string to the console"
+    "actual_name": "DEBUGSTR"
   },
   "PRINTSTR": {
-    "actual_name": "DEBUGSTR",
-    "description": "Outputs a string to the console"
+    "actual_name": "DEBUGSTR"
   },
   "SAVEBOTH": {
-    "actual_name": "SAVEBOTHCTR",
-    "description": "Saves both the current and alternative continuations"
+    "actual_name": "SAVEBOTHCTR"
   },
   "SAVEALT": {
-    "actual_name": "SAVEALTCTR",
-    "description": "Saves the alternative continuation"
+    "actual_name": "SAVEALTCTR"
   },
   "SAVE": {
-    "actual_name": "SAVECTR",
-    "description": "Saves the current continuation"
+    "actual_name": "SAVECTR"
   },
   "SETCONT": {
-    "actual_name": "SETCONTCTR",
-    "description": "Sets the current continuation"
+    "actual_name": "SETCONTCTR"
   },
   "POPCTRSAVE": {
-    "actual_name": "POPSAVE",
-    "description": "Pops and saves the current continuation"
+    "actual_name": "POPSAVE"
   },
   "HASHEXT_SHA256": {
     "actual_name": "HASHEXT",

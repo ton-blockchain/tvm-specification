@@ -12,7 +12,7 @@ export type FiftArgument = number | string
 export interface FiftInstruction {
     readonly actual_name: string
     readonly arguments: readonly FiftArgument[]
-    readonly description: string
+    readonly description?: string
 }
 
 export interface Instruction {

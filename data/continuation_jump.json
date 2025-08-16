@@ -88,13 +88,19 @@
   "RETBOOL": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Pop `cond` from the stack and perform a `RET` or `RETALT` depending on the value of `cond` (-1 for `RET`, 0 for `RETALT`).",
       "tags": [],
       "operands": []
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "cond",
+            "value_types": ["Bool"]
+          }
+        ],
         "registers": []
       },
       "outputs": {

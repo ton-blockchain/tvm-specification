@@ -26,11 +26,11 @@
         },
         "description": {
           "type": "string",
-          "description": "Description of what the instruction does",
-          "markdownDescription": "Description of what the instruction does"
+          "description": "Optional description of what the instruction does",
+          "markdownDescription": "Optional description of what the instruction does"
         }
       },
-      "required": ["actual_name", "description"],
+      "required": ["actual_name"],
       "additionalProperties": false
     },
     "Specification": {
