@@ -50384,7 +50384,8 @@
             "errno": "2",
             "condition": "Count of elements on the stack is less or equal to `i`"
           }
-        ]
+        ],
+        "related_instructions": ["XCHG_0I"]
       },
       "layout": {
         "min": 1114112,
@@ -50435,6 +50436,7 @@
             "condition": "Count of elements on the stack is less or equal to `i`"
           }
         ],
+        "related_instructions": ["XCHG_0I_LONG"],
         "examples": [
           {
             "instructions": [
@@ -50926,6 +50928,7 @@
             "condition": "Count of elements on the stack is less or equal to `i`"
           }
         ],
+        "related_instructions": ["PUSH_LONG"],
         "examples": [
           {
             "instructions": [
@@ -51014,7 +51017,8 @@
             "errno": "2",
             "condition": "Count of elements on the stack is less or equal to `i`"
           }
-        ]
+        ],
+        "related_instructions": ["PUSH"]
       },
       "layout": {
         "min": 5636096,
@@ -51123,6 +51127,7 @@
             "condition": "Count of elements on the stack is less or equal to `i`"
           }
         ],
+        "related_instructions": ["POP_LONG"],
         "examples": [
           {
             "instructions": [
@@ -51211,7 +51216,8 @@
             "errno": "2",
             "condition": "Count of elements on the stack is less or equal to `i`"
           }
-        ]
+        ],
+        "related_instructions": ["POP"]
       },
       "layout": {
         "min": 5701632,
@@ -51538,7 +51544,8 @@
         "long": "Fetches a simple ordinary continuation from the current code slice and pushes it onto the stack. The length of the continuation is at most 127 * 8 bits and 3 references.",
         "tags": ["stack", "continuation"],
         "operands": ["c"],
-        "exit_codes": []
+        "exit_codes": [],
+        "related_instructions": ["PUSHCONT_SHORT"]
       },
       "layout": {
         "min": 9306112,
@@ -51595,7 +51602,8 @@
         "long": "Fetches a simple ordinary continuation from the current code slice and pushes it onto the stack. The length of the continuation is at most 15 * 8 bits.",
         "tags": ["stack", "continuation"],
         "operands": ["c"],
-        "exit_codes": []
+        "exit_codes": [],
+        "related_instructions": ["PUSHCONT"]
       },
       "layout": {
         "min": 9437184,

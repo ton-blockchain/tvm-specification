@@ -56,6 +56,7 @@ const main = () => {
                 operands: instr.description.operands ?? [],
                 exit_codes: instr.description.exit_codes,
                 other_implementations: instr.description.other_implementations,
+                related_instructions: instr.description.related_instructions,
                 examples: instr.description.examples,
             },
             layout: layout,

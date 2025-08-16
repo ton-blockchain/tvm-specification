@@ -7,7 +7,7 @@ interface Spec {
 interface InstructionData {
     name?: string
     readonly category: string
-    readonly subCategory: string
+    readonly sub_category: string
     readonly description: object
     readonly layout: object
     readonly signature: {
@@ -27,13 +27,15 @@ interface InstructionDescription {
 }
 
 const main = () => {
-    const data = JSON.parse(fs.readFileSync(`${__dirname}/tvm-specification.json`, "utf8")) as Spec
+    const data = JSON.parse(
+        fs.readFileSync(`${__dirname}/../../gen/tvm-specification.json`, "utf8"),
+    ) as Spec
 
     const instructionsByCategory: Map<string, InstructionData[]> = new Map()
 
     for (const [name, instr] of Object.entries(data.instructions)) {
         instr.name = name
-        const category = instr.subCategory ? instr.subCategory : instr.category
+        const category = instr.sub_category ? instr.sub_category : instr.category
         const iss = instructionsByCategory.get(category)
         if (iss === undefined) {
             instructionsByCategory.set(category, [instr])
@@ -61,7 +63,10 @@ const main = () => {
                 name: undefined,
             }
         })
-        fs.writeFileSync(`${__dirname}/data/${category}.json`, JSON.stringify(mapping, null, 2))
+        fs.writeFileSync(
+            `${__dirname}/../../data/${category}.json`,
+            JSON.stringify(mapping, null, 2),
+        )
     })
 }
 

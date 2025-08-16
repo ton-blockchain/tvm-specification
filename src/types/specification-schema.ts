@@ -49,6 +49,7 @@ export interface Description {
     readonly operands: readonly string[]
     readonly exit_codes?: readonly ExitCode[]
     readonly other_implementations?: readonly OtherImplementation[]
+    readonly related_instructions?: readonly string[]
     readonly examples?: readonly Example[]
 }
 

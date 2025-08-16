@@ -84,6 +84,12 @@
             "$ref": "#/definitions/OtherImplementation"
           }
         },
+        "related_instructions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
         "examples": {
           "type": "array",
           "items": {
