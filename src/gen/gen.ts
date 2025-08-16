@@ -4,7 +4,7 @@ import {instructions, signatureString} from "../instructions"
 
 export interface InstructionEntry {
     readonly name?: string
-    readonly description: Description
+    readonly description: Partial<Description>
     readonly signature: InstructionSignature
 }
 
@@ -49,7 +49,15 @@ const main = () => {
         allInstructions[name] = {
             category: opcode.category,
             sub_category: opcode.subCategory,
-            description: instr.description,
+            description: {
+                short: instr.description.short ?? "",
+                long: instr.description.long ?? "",
+                tags: instr.description.tags ?? [],
+                operands: instr.description.operands ?? [],
+                exit_codes: instr.description.exit_codes,
+                other_implementations: instr.description.other_implementations,
+                examples: instr.description.examples,
+            },
             layout: layout,
             effects: opcode.effects?.map(it => it.$),
             signature: signature

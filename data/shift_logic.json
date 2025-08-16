@@ -29,8 +29,7 @@
             "name": "x",
             "range": {
               "min": 0,
-              "max": 1023,
-              "todo": "check"
+              "max": 1023
             },
             "value_types": ["Int"]
           }
@@ -701,8 +700,7 @@
             "name": "y",
             "range": {
               "min": 0,
-              "max": 1023,
-              "todo": "check"
+              "max": 1023
             },
             "value_types": ["Int"]
           }
@@ -829,8 +827,7 @@
             "name": "y",
             "range": {
               "min": 0,
-              "max": 1023,
-              "todo": "check"
+              "max": 1023
             },
             "value_types": ["Int"]
           }

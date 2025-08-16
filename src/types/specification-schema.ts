@@ -45,6 +45,7 @@ export interface Example {
 export interface Description {
     readonly short: string
     readonly long: string
+    readonly tags: readonly string[]
     readonly operands: readonly string[]
     readonly exit_codes?: readonly ExitCode[]
     readonly other_implementations?: readonly OtherImplementation[]

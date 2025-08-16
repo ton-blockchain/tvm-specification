@@ -2,6 +2,10 @@
  * Allowed chars are `a-zA-Z0-9_`, must not begin with digit or underscore and must not end with underscore.
  */
 export type VariableName = string
+export type Range = {
+    min: number
+    max: number
+}
 /**
  * Representation of stack entry or group of stack entries
  */
@@ -9,6 +13,7 @@ export type StackEntry =
     | {
           type: "simple"
           name: VariableName
+          range?: Range
           presentation: string
           value_types?: PossibleValueTypes
           mutations?: Mutation[]
@@ -163,6 +168,7 @@ export interface InstructionSignature {
     inputs?: InstructionInputs
     outputs?: InstructionOutputs
 }
+
 /**
  * Incoming values constraints.
  */
@@ -170,10 +176,12 @@ export interface InstructionInputs {
     stack?: StackValues
     registers: RegisterValues
 }
+
 export interface MatchArm {
     value: ArmValue
     stack: StackValues
 }
+
 /**
  * Outgoing values constraints.
  */
@@ -181,6 +189,7 @@ export interface InstructionOutputs {
     stack?: StackValues
     registers: RegisterValues
 }
+
 /**
  * Values of saved control flow registers c0-c3
  */

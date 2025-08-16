@@ -66,6 +66,12 @@
             "type": "string"
           }
         },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
         "exit_codes": {
           "type": "array",
           "items": {
@@ -374,6 +380,9 @@
             "name": {
               "$ref": "#/definitions/VariableName"
             },
+            "range": {
+              "$ref": "#/definitions/Range"
+            },
             "presentation": {
               "type": "string"
             },
@@ -461,8 +470,21 @@
       "type": "array",
       "items": {
         "type": "string",
-        "enum": ["Int", "Bool", "Cell", "Builder", "Slice", "Tuple", "Continuation", "Null"]
+        "enum": ["Int", "Bool", "Cell", "Builder", "Slice", "Tuple", "Continuation", "Null", "Any"]
       }
+    },
+    "Range": {
+      "type": "object",
+      "properties": {
+        "min": {
+          "type": "number"
+        },
+        "max": {
+          "type": "number"
+        }
+      },
+      "required": ["min", "max"],
+      "additionalProperties": false
     },
     "Mutation": {
       "type": "object",
