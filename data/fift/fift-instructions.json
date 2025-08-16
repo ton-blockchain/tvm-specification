@@ -303,12 +303,12 @@
   },
   "CHKBOOL": {
     "actual_name": "FITS",
-    "arguments": [0],
+    "arguments": [1],
     "description": "Checks whether `x` is a \"boolean value\" (i.e., either 0 or -1)"
   },
   "CHKBIT": {
     "actual_name": "UFITS",
-    "arguments": [0],
+    "arguments": [1],
     "description": "Checks whether `x` is a binary digit (i.e., 0 or 1)"
   },
   "STZERO": {
