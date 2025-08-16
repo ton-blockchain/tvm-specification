@@ -724,6 +724,9 @@
     "$schema": {
       "type": "string"
     },
+    "version": {
+      "type": "string"
+    },
     "instructions": {
       "name": "Instructions",
       "description": "Instruction list.",
@@ -732,5 +735,6 @@
       "additionalProperties": {"$ref": "#/definitions/Instruction"}
     }
   },
-  "required": ["instructions"]
+  "additionalProperties": false,
+  "required": ["$schema", "version", "instructions"]
 }
