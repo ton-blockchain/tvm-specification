@@ -1,16 +1,18 @@
 import * as fs from "node:fs"
-import {Description, Instruction, Layout, Specification, InstructionSignature} from "../types"
+import {
+    Description,
+    Instruction,
+    Layout,
+    Specification,
+    InstructionSignature,
+    FiftInstruction,
+} from "../types"
 import {instructions, signatureString} from "../instructions"
 
 export interface InstructionEntry {
     readonly name?: string
     readonly description: Description
     readonly signature: InstructionSignature
-}
-
-export interface FiftEntry {
-    readonly actual_name: string
-    readonly arguments?: (number | string)[]
 }
 
 const main = () => {
@@ -70,11 +72,9 @@ const main = () => {
 
     const fiftInstructions = JSON.parse(
         fs.readFileSync(`${__dirname}/../../data/fift/fift-instructions.json`, "utf8"),
-    ) as Record<string, FiftEntry>
+    ) as Record<string, FiftInstruction>
 
     validateFiftInstructions(fiftInstructions, allInstructions)
-
-    console.log(fiftInstructions)
 
     const version = JSON.parse(fs.readFileSync(`${__dirname}/../../package.json`, "utf8")).version
 
@@ -82,6 +82,7 @@ const main = () => {
         $schema: "./schema.json",
         version,
         instructions: allInstructions,
+        fift_instructions: fiftInstructions,
     }
 
     const bigintReplacer = () => (_key: unknown, value: unknown) => {
@@ -98,7 +99,7 @@ const main = () => {
 }
 
 const validateFiftInstructions = (
-    fiftInstructions: Record<string, FiftEntry>,
+    fiftInstructions: Record<string, FiftInstruction>,
     allInstructions: Record<string, Instruction>,
 ) => {
     for (const [name, instr] of Object.entries(fiftInstructions)) {

@@ -18,6 +18,7 @@ language.
 - With other implementations description: **70**
 - Without any text description: **203**
 - With empty stack signature: **155**
+- Fift instructions count: **116**
 
 ## Development
 

@@ -1,6 +1,38 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "definitions": {
+    "FiftArgument": {
+      "type": ["number", "string"],
+      "description": "Argument for a Fift instruction",
+      "markdownDescription": "Argument for a Fift instruction"
+    },
+    "FiftInstruction": {
+      "type": "object",
+      "description": "Represents a Fift instruction with its actual TVM instruction name and arguments",
+      "markdownDescription": "Represents a Fift instruction with its actual TVM instruction name and arguments",
+      "properties": {
+        "actual_name": {
+          "type": "string",
+          "description": "The actual TVM instruction name",
+          "markdownDescription": "The actual TVM instruction name"
+        },
+        "arguments": {
+          "type": "array",
+          "description": "List of arguments for the instruction",
+          "markdownDescription": "List of arguments for the instruction",
+          "items": {
+            "$ref": "#/definitions/FiftArgument"
+          }
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of what the instruction does",
+          "markdownDescription": "Description of what the instruction does"
+        }
+      },
+      "required": ["actual_name", "description"],
+      "additionalProperties": false
+    },
     "Specification": {
       "type": "object",
       "properties": {
@@ -733,8 +765,15 @@
       "markdownDescription": "Instruction list.",
       "type": "object",
       "additionalProperties": {"$ref": "#/definitions/Instruction"}
+    },
+    "fift_instructions": {
+      "name": "Fift Instructions",
+      "description": "Fift Instruction list.",
+      "markdownDescription": "Fift Instruction list.",
+      "type": "object",
+      "additionalProperties": {"$ref": "#/definitions/FiftInstruction"}
     }
   },
   "additionalProperties": false,
-  "required": ["$schema", "version", "instructions"]
+  "required": ["$schema", "version", "instructions", "fift_instructions"]
 }

@@ -8,6 +8,7 @@ interface Stats {
     withOtherImplementations: number
     withoutAnyTextDescription: number
     withoutAEmptySignature: number
+    fiftInstructions: number
 }
 
 const main = () => {
@@ -22,6 +23,7 @@ const main = () => {
         withOtherImplementations: 0,
         withoutAnyTextDescription: 0,
         withoutAEmptySignature: 0,
+        fiftInstructions: Object.keys(data.fift_instructions).length,
     }
 
     for (const [, instr] of Object.entries(data.instructions)) {
@@ -54,6 +56,7 @@ const main = () => {
     console.log(`- With other implementations description: **${stats.withOtherImplementations}**`)
     console.log(`- Without any text description: **${stats.withoutAnyTextDescription}**`)
     console.log(`- With empty stack signature: **${stats.withoutAEmptySignature}**`)
+    console.log(`- Fift instructions count: **${stats.fiftInstructions}**`)
 }
 
 void main()

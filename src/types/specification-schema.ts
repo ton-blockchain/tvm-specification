@@ -4,6 +4,15 @@ export interface Specification {
     readonly $schema: string
     readonly version: string
     readonly instructions: Record<string, Instruction>
+    readonly fift_instructions: Record<string, FiftInstruction>
+}
+
+export type FiftArgument = number | string
+
+export interface FiftInstruction {
+    readonly actual_name: string
+    readonly arguments: readonly FiftArgument[]
+    readonly description: string
 }
 
 export interface Instruction {
