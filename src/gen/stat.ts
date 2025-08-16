@@ -38,7 +38,12 @@ const main = () => {
         if (instr.description.other_implementations) {
             stats.withOtherImplementations++
         }
-        if (!instr.signature.inputs?.stack?.length && !instr.signature.outputs?.stack?.length) {
+        if (
+            !instr.signature.inputs?.stack?.length &&
+            !instr.signature.inputs?.registers?.length &&
+            !instr.signature.outputs?.stack?.length &&
+            !instr.signature.outputs?.registers?.length
+        ) {
             stats.withoutAEmptySignature++
         }
     }

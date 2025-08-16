@@ -189,7 +189,7 @@
   "PUSHCTRX": {
     "description": {
       "short": "",
-      "long": "Pushes the current value of control register `c(i)` onto the stack, where `i`, `0 <= i <= 255`, is taken from the stack. Unlike `c[i] PUSHCTR` which takes the register index from the instruction itself, this instruction takes this index from the stack. If the control register is not supported in the current codepage, or if it does not have a value, an exception is triggered.\nNotice that this primitive is one of the few ''exotic'' primitives, which are not polymorphic like stack manipulation primitives, and at the same time do not have well-defined types of parameters and return values, because the type of `x` depends on `i`.",
+      "long": "Pushes the current value of control register `c(i)` onto the stack, where `i`, `0 <= i <= 255`, is taken from the stack. Unlike `c(i) PUSHCTR` which takes the register index from the instruction itself, this instruction takes this index from the stack. If the control register is not supported in the current codepage, or if it does not have a value, an exception is triggered.\nNotice that this primitive is one of the few ''exotic'' primitives, which are not polymorphic like stack manipulation primitives, and at the same time do not have well-defined types of parameters and return values, because the type of `x` depends on `i`.",
       "tags": [],
       "operands": []
     },
@@ -222,7 +222,7 @@
   "POPCTRX": {
     "description": {
       "short": "",
-      "long": "Pops a value `x` from the stack and stores it into control register `c(i)`, where `i`, `0 <= i <= 255`, is taken from the stack. Unlike `c[i] POPCTR` which takes the register index from the instruction itself, this instruction takes this index from the stack. If the control register is not supported in the current codepage, or if it only accepts values of a specific type and `x` is not of that type, an exception is triggered.",
+      "long": "Pops a value `x` from the stack and stores it into control register `c(i)`, where `i`, `0 <= i <= 255`, is taken from the stack. Unlike `c(i) POPCTR` which takes the register index from the instruction itself, this instruction takes this index from the stack. If the control register is not supported in the current codepage, or if it only accepts values of a specific type and `x` is not of that type, an exception is triggered.",
       "tags": [],
       "operands": []
     },
@@ -254,7 +254,7 @@
   "SETCONTCTRX": {
     "description": {
       "short": "",
-      "long": "Stores value `x` into the savelist of continuation `c` as `c(i)`, and returns the resulting continuation `c'`, where `i`, `0 <= i <= 255`, is taken from the stack. Unlike `c[i] SETCONTCTR` which takes the register index from the instruction itself, this instruction takes this index from the stack. Almost all operations with continuations may be expressed in terms of this primitive, along with `POPCTRX` and `PUSHCTRX`.",
+      "long": "Stores value `x` into the savelist of continuation `c` as `c(i)`, and returns the resulting continuation `c'`, where `i`, `0 <= i <= 255`, is taken from the stack. Unlike `c(i) SETCONTCTR` which takes the register index from the instruction itself, this instruction takes this index from the stack. Almost all operations with continuations may be expressed in terms of this primitive, along with `POPCTRX` and `PUSHCTRX`.",
       "tags": [],
       "operands": []
     },
@@ -309,17 +309,26 @@
   "BOOLAND": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Computes the composition `compose0(c, c')`, which has the meaning of \"perform `c`, and, if successful, perform `c'`\" (if `c` is a boolean circuit) or simply \"perform `c`, then `c'`\".",
       "tags": [],
-      "operands": []
+      "operands": [],
+      "other_implementations": [
+        {
+          "exact": true,
+          "instructions": ["SWAP", "c0 SETCONT"]
+        }
+      ]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {"type": "simple", "name": "c", "value_types": ["Continuation"]},
+          {"type": "simple", "name": "c'", "value_types": ["Continuation"]}
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [{"type": "simple", "name": "c3", "value_types": ["Continuation"]}],
         "registers": []
       }
     }
@@ -327,17 +336,26 @@
   "BOOLOR": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Computes the alternative composition `compose1(c, c')`, which has the meaning of \"perform `c`, and, if not successful, perform `c'`\" (if `c` is a boolean circuit).",
       "tags": [],
-      "operands": []
+      "operands": [],
+      "other_implementations": [
+        {
+          "exact": true,
+          "instructions": ["SWAP", "c1 SETCONT"]
+        }
+      ]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {"type": "simple", "name": "c", "value_types": ["Continuation"]},
+          {"type": "simple", "name": "c'", "value_types": ["Continuation"]}
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [{"type": "simple", "name": "c3", "value_types": ["Continuation"]}],
         "registers": []
       }
     }
@@ -728,17 +746,40 @@
   "SETCONTARGS": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Pushes `0 <= r <= 15` values `x_1...x_r` into the stack of (a copy of) the continuation `c`, starting with `x_1`. When `n` is 15 (-1 in Fift notation), does nothing with `c.nargs`. For `0 <= n <= 14`, sets `c.nargs` to the final size of the stack of `c'` plus `n`. In other words, transforms `c` into a _closure_ or a _partially applied function_, with `0 <= n <= 14` arguments missing.",
       "tags": [],
-      "operands": []
+      "operands": ["r", "n"]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "array",
+            "name": "args",
+            "length_var": "r",
+            "array_entry": [
+              {
+                "type": "simple",
+                "name": "x"
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "c",
+            "value_types": ["Continuation"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "c2",
+            "value_types": ["Continuation"]
+          }
+        ],
         "registers": []
       }
     }
@@ -823,13 +864,13 @@
   "SETRETCTR": {
     "description": {
       "short": "",
-      "long": "Stores the value from control register `c[i]` into the savelist of continuation `c0`.",
+      "long": "Stores the value from control register `c(i)` into the savelist of continuation `c0`.",
       "tags": [],
       "operands": ["i"],
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["c0 PUSHCTR", "c[i] SETCONTCTR", "c0 POPCTR"]
+          "instructions": ["c0 PUSHCTR", "c(i) SETCONTCTR", "c0 POPCTR"]
         }
       ]
     },
@@ -862,13 +903,13 @@
   "SETALTCTR": {
     "description": {
       "short": "",
-      "long": "Stores the value from control register `c[i]` into the savelist of continuation `c1`.",
+      "long": "Stores the value from control register `c(i)` into the savelist of continuation `c1`.",
       "tags": [],
       "operands": ["i"],
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["c1 PUSHCTR", "c[i] SETCONTCTR", "c1 POPCTR"]
+          "instructions": ["c1 PUSHCTR", "c(i) SETCONTCTR", "c1 POPCTR"]
         }
       ]
     },
@@ -901,13 +942,13 @@
   "POPSAVE": {
     "description": {
       "short": "",
-      "long": "Pops a value from the stack and stores it into control register `c[i]`, but also saves the old value of `c[i]` into continuation `c0`.",
+      "long": "Pops a value from the stack and stores it into control register `c(i)`, but also saves the old value of `c(i)` into continuation `c0`.",
       "tags": [],
       "operands": ["i"],
       "other_implementations": [
         {
           "exact": false,
-          "instructions": ["c[i] SAVECTR", "c[i] POPCTR"]
+          "instructions": ["c(i) SAVECTR", "c(i) POPCTR"]
         }
       ]
     },
@@ -944,54 +985,95 @@
   "SAVECTR": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Saves the current value of `c(i)` into the savelist of continuation `c0`. If an entry for `c(i)` is already present in the savelist of `c0`, nothing is done.",
       "tags": [],
-      "operands": []
+      "operands": ["i"],
+      "other_implementations": [
+        {
+          "exact": true,
+          "instructions": ["c(i) PUSHCTR", "c(i) SETRETCTR"]
+        }
+      ]
     },
     "signature": {
       "inputs": {
         "stack": [],
-        "registers": []
+        "registers": [
+          {
+            "type": "variable",
+            "var_name": "i"
+          },
+          {
+            "type": "constant",
+            "index": 0
+          }
+        ]
       },
       "outputs": {
         "stack": [],
-        "registers": []
+        "registers": [
+          {
+            "type": "constant",
+            "index": 0
+          }
+        ]
       }
     }
   },
   "SAVEALTCTR": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Similar to `c[i] SAVE`, but saves the current value of `c[i]` into the savelist of `c1`, not `c0`.",
       "tags": [],
-      "operands": []
+      "operands": ["i"]
     },
     "signature": {
       "inputs": {
         "stack": [],
-        "registers": []
+        "registers": [
+          {
+            "type": "variable",
+            "var_name": "i"
+          },
+          {
+            "type": "constant",
+            "index": 1
+          }
+        ]
       },
       "outputs": {
         "stack": [],
-        "registers": []
+        "registers": [
+          {
+            "type": "constant",
+            "index": 1
+          }
+        ]
       }
     }
   },
   "SAVEBOTHCTR": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Equivalent to `c[i] SAVE` `c[i] SAVEALT`.",
       "tags": [],
-      "operands": []
+      "operands": ["i"]
     },
     "signature": {
       "inputs": {
         "stack": [],
-        "registers": []
+        "registers": [
+          {"type": "variable", "var_name": "i"},
+          {"type": "constant", "index": 0},
+          {"type": "constant", "index": 1}
+        ]
       },
       "outputs": {
         "stack": [],
-        "registers": []
+        "registers": [
+          {"type": "constant", "index": 0},
+          {"type": "constant", "index": 1}
+        ]
       }
     }
   },
