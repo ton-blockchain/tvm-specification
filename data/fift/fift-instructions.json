@@ -1,0 +1,323 @@
+{
+  "-ROT": {
+    "actual_name": "ROTREV"
+  },
+  "-ROLL": {
+    "actual_name": "BLKSWAP",
+    "arguments": ["$args[0]", 1]
+  },
+  "FALSE": {
+    "actual_name": "PUSHINT_4",
+    "arguments": [0]
+  },
+  "TRUE": {
+    "actual_name": "PUSHINT_4",
+    "arguments": [-1]
+  },
+  "ONE": {
+    "actual_name": "PUSHINT_4",
+    "arguments": [1]
+  },
+  "FIRST": {
+    "actual_name": "INDEX",
+    "arguments": [0]
+  },
+  "SECOND": {
+    "actual_name": "INDEX",
+    "arguments": [1]
+  },
+  "THIRD": {
+    "actual_name": "INDEX",
+    "arguments": [2]
+  },
+  "PUSHROOT": {
+    "actual_name": "PUSHCTR",
+    "arguments": [4]
+  },
+  "POPROOT": {
+    "actual_name": "POPCTR",
+    "arguments": [4]
+  },
+  "SKIPOPTREF": {
+    "actual_name": "SKIPDICT"
+  },
+  "LDOPTREF": {
+    "actual_name": "LDDICT"
+  },
+  "PLDOPTREF": {
+    "actual_name": "PLDDICT"
+  },
+  "STOPTREF": {
+    "actual_name": "STDICT"
+  },
+  "PLDREF": {
+    "actual_name": "PLDREFIDX",
+    "arguments": [0]
+  },
+  "SETCONTMANY": {
+    "actual_name": "SETCONTCTRMANY"
+  },
+  "LDVARUINT16": {
+    "actual_name": "LDGRAMS"
+  },
+  "STVARUINT16": {
+    "actual_name": "STGRAMS"
+  },
+  "PAIR": {
+    "actual_name": "TUPLE",
+    "arguments": [2]
+  },
+  "CONS": {
+    "actual_name": "TUPLE",
+    "arguments": [2]
+  },
+  "2ROT": {
+    "actual_name": "BLKSWAP",
+    "arguments": [1, 3]
+  },
+  "ROT2": {
+    "actual_name": "BLKSWAP",
+    "arguments": [1, 3]
+  },
+  "PUSHX": {
+    "actual_name": "PICK"
+  },
+  "-ROLLX": {
+    "actual_name": "ROLLREV"
+  },
+  "NULL": {
+    "actual_name": "PUSHNULL"
+  },
+  "ZERO": {
+    "actual_name": "PUSHINT_4",
+    "arguments": [0]
+  },
+  "UNCONS": {
+    "actual_name": "UNTUPLE",
+    "arguments": [2]
+  },
+  "UNPAIR": {
+    "actual_name": "UNTUPLE",
+    "arguments": [2]
+  },
+  "CARQ": {
+    "actual_name": "INDEXQ",
+    "arguments": [0]
+  },
+  "FIRSTQ": {
+    "actual_name": "INDEXQ",
+    "arguments": [1]
+  },
+  "CDRQ": {
+    "actual_name": "INDEXQ",
+    "arguments": [1]
+  },
+  "SECONDQ": {
+    "actual_name": "INDEXQ",
+    "arguments": [1]
+  },
+  "COMMA": {
+    "actual_name": "TPUSH"
+  },
+  "INTSORT2": {
+    "actual_name": "MINMAX"
+  },
+  "BCONCAT": {
+    "actual_name": "STBR"
+  },
+  "BCONCATQ": {
+    "actual_name": "STBRQ"
+  },
+  "CALLX": {
+    "actual_name": "EXECUTE"
+  },
+  "RETTRUE": {
+    "actual_name": "RET"
+  },
+  "RETFALSE": {
+    "actual_name": "RETALT"
+  },
+  "BRANCH": {
+    "actual_name": "RETBOOL"
+  },
+  "COMPOSALT": {
+    "actual_name": "BOOLOR"
+  },
+  "COMPOS": {
+    "actual_name": "BOOLAND"
+  },
+  "LEQINT": {
+    "actual_name": "LESSINT",
+    "arguments": ["$args[0] + 1"]
+  },
+  "GEQINT": {
+    "actual_name": "GTINT",
+    "arguments": ["$args[0] - 1"]
+  },
+  "ADDCONST": {
+    "actual_name": "ADDINT",
+    "arguments": ["- $args[0]"]
+  },
+  "SUBCONST": {
+    "actual_name": "ADDINT",
+    "arguments": ["- $args[0]"]
+  },
+  "SUBINT": {
+    "actual_name": "ADDINT",
+    "arguments": ["- $args[0]"]
+  },
+  "SLICE": {
+    "actual_name": "PUSHSLICE"
+  },
+  "CONT": {
+    "actual_name": "PUSHCONT"
+  },
+  "CALL": {
+    "actual_name": "CALLDICT"
+  },
+  "JMP": {
+    "actual_name": "JMPDICT"
+  },
+  "PREPARE": {
+    "actual_name": "PREPAREDICT"
+  },
+  "INLINECALL": {
+    "actual_name": "none"
+  },
+  "INLINECALLDICT": {
+    "actual_name": "none"
+  },
+  "PFXDICTCONSTGETJMP": {
+    "actual_name": "PFXDICTSWITCH"
+  },
+  "PUSHINT": {
+    "actual_name": "PUSHINT_LONG"
+  },
+  "INT": {
+    "actual_name": "PUSHINT_LONG"
+  },
+  "INTX": {
+    "actual_name": "PUSHINT_LONG"
+  },
+  "NEWDICT": {
+    "actual_name": "PUSHNULL"
+  },
+  "DICTEMPTY": {
+    "actual_name": "ISNULL"
+  },
+  "STDICTS": {
+    "actual_name": "STSLICE"
+  },
+  "SETNUMARGS": {
+    "actual_name": "SETCONTARGS",
+    "arguments": [0, "$args"]
+  },
+  "BLESSNUMARGS": {
+    "actual_name": "BLESSARGS",
+    "arguments": [0, "$args"]
+  },
+  "DUMPTOSFMT": {
+    "actual_name": "DEBUGSTR"
+  },
+  "LOGSTR": {
+    "actual_name": "DEBUGSTR"
+  },
+  "PRINTSTR": {
+    "actual_name": "DEBUGSTR"
+  },
+  "SAVEBOTH": {
+    "actual_name": "SAVEBOTHCTR"
+  },
+  "SAVEALT": {
+    "actual_name": "SAVEALTCTR"
+  },
+  "SAVE": {
+    "actual_name": "SAVECTR"
+  },
+  "SETCONT": {
+    "actual_name": "SETCONTCTR"
+  },
+  "POPCTRSAVE": {
+    "actual_name": "POPSAVE"
+  },
+  "HASHEXT_SHA256": {
+    "actual_name": "HASHEXT",
+    "arguments": [0]
+  },
+  "HASHEXT_SHA512": {
+    "actual_name": "HASHEXT",
+    "arguments": [1]
+  },
+  "HASHEXT_BLAKE2B": {
+    "actual_name": "HASHEXT",
+    "arguments": [2]
+  },
+  "HASHEXT_KECCAK256": {
+    "actual_name": "HASHEXT",
+    "arguments": [3]
+  },
+  "HASHEXT_KECCAK512": {
+    "actual_name": "HASHEXT",
+    "arguments": [4]
+  },
+  "HASHEXTR_SHA256": {
+    "actual_name": "HASHEXTR",
+    "arguments": [0]
+  },
+  "HASHEXTR_SHA512": {
+    "actual_name": "HASHEXTR",
+    "arguments": [1]
+  },
+  "HASHEXTR_BLAKE2B": {
+    "actual_name": "HASHEXTR",
+    "arguments": [2]
+  },
+  "HASHEXTR_KECCAK256": {
+    "actual_name": "HASHEXTR",
+    "arguments": [3]
+  },
+  "HASHEXTR_KECCAK512": {
+    "actual_name": "HASHEXTR",
+    "arguments": [4]
+  },
+  "HASHEXTA_SHA256": {
+    "actual_name": "HASHEXTA",
+    "arguments": [0]
+  },
+  "HASHEXTA_SHA512": {
+    "actual_name": "HASHEXTA",
+    "arguments": [1]
+  },
+  "HASHEXTA_BLAKE2B": {
+    "actual_name": "HASHEXTA",
+    "arguments": [2]
+  },
+  "HASHEXTA_KECCAK256": {
+    "actual_name": "HASHEXTA",
+    "arguments": [3]
+  },
+  "HASHEXTA_KECCAK512": {
+    "actual_name": "HASHEXTA",
+    "arguments": [4]
+  },
+  "HASHEXTAR_SHA256": {
+    "actual_name": "HASHEXTAR",
+    "arguments": [0]
+  },
+  "HASHEXTAR_SHA512": {
+    "actual_name": "HASHEXTAR",
+    "arguments": [1]
+  },
+  "HASHEXTAR_BLAKE2B": {
+    "actual_name": "HASHEXTAR",
+    "arguments": [2]
+  },
+  "HASHEXTAR_KECCAK256": {
+    "actual_name": "HASHEXTAR",
+    "arguments": [3]
+  },
+  "HASHEXTAR_KECCAK512": {
+    "actual_name": "HASHEXTAR",
+    "arguments": [4]
+  }
+}

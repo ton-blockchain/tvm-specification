@@ -1421,37 +1421,21 @@ export const instructionList = (): [string, Opcode][] => {
 
 export const fiftInstructionList = (): [string, Opcode][] => {
     return [
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         ["fPUSHINT", infoOf("PUSHINT_LONG")!],
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         ["fPUSHSLICE", infoOf("fPUSHSLICE")!],
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         ["fPUSHCONT", infoOf("fPUSHCONT")!],
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         ["fSTSLICECONST", infoOf("fSTSLICECONST")!],
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         ["fXCHG", infoOf("fXCHG")!],
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         ["fPUSHINTX", infoOf("fPUSHINTX")!],
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         ["fSDBEGINS", infoOf("fSDBEGINS")!],
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         ["fSDBEGINSQ", infoOf("fSDBEGINSQ")!],
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         ["fCALLXARGS", infoOf("fCALLXARGS")!],
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         ["fCALLDICT", infoOf("fCALLDICT")!],
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         ["fJMPDICT", infoOf("fJMPDICT")!],
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         ["fPREPAREDICT", infoOf("fPREPAREDICT")!],
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         ["fTHROW", infoOf("fTHROW")!],
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         ["fTHROWIF", infoOf("fTHROWIF")!],
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         ["fTHROWIFNOT", infoOf("fTHROWIFNOT")!],
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         ["fIF", infoOf("fIF")!],
     ]
 }

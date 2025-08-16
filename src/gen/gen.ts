@@ -8,12 +8,19 @@ export interface InstructionEntry {
     readonly signature: InstructionSignature
 }
 
+export interface FiftEntry {
+    readonly actual_name: string
+    readonly arguments?: (number | string)[]
+}
+
 const main = () => {
     const entries: Record<string, InstructionEntry> = {}
 
     const files = fs.readdirSync(`${__dirname}/../../data`)
 
     for (const filename of files) {
+        if (filename === "fift") continue
+
         const descriptions = JSON.parse(
             fs.readFileSync(`${__dirname}/../../data/${filename}`, "utf8"),
         ) as Record<string, InstructionEntry>
@@ -61,6 +68,14 @@ const main = () => {
         }
     }
 
+    const fiftInstructions = JSON.parse(
+        fs.readFileSync(`${__dirname}/../../data/fift/fift-instructions.json`, "utf8"),
+    ) as Record<string, FiftEntry>
+
+    validateFiftInstructions(fiftInstructions, allInstructions)
+
+    console.log(fiftInstructions)
+
     const version = JSON.parse(fs.readFileSync(`${__dirname}/../../package.json`, "utf8")).version
 
     const spec: Specification = {
@@ -80,6 +95,36 @@ const main = () => {
         `${__dirname}/../../gen/tvm-specification.json`,
         JSON.stringify(spec, bigintReplacer(), 2),
     )
+}
+
+const validateFiftInstructions = (
+    fiftInstructions: Record<string, FiftEntry>,
+    allInstructions: Record<string, Instruction>,
+) => {
+    for (const [name, instr] of Object.entries(fiftInstructions)) {
+        if (Object.keys(instructions).includes(name)) {
+            throw new Error(`Alias name ${name} is actual instruction name`)
+        }
+
+        if (instr.actual_name === "none") continue
+
+        if (!Object.keys(instructions).includes(instr.actual_name)) {
+            throw new Error(`Aliased instruction ${instr.actual_name} doesn't exist`)
+        }
+
+        const aliasedInstr = allInstructions[instr.actual_name]
+        if (!aliasedInstr) {
+            throw new Error(`Aliased instruction ${instr.actual_name} doesn't exist`)
+        }
+
+        if (instr.arguments) {
+            if (instr.arguments.length !== aliasedInstr.description.operands.length) {
+                throw new Error(
+                    `Count operands mismatch for ${name}:\n  alias: ${instr.arguments.length}\n  instr: ${aliasedInstr.description.operands.length}`,
+                )
+            }
+        }
+    }
 }
 
 void main()
