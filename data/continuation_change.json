@@ -634,7 +634,7 @@
   "BOOLEVAL": {
     "description": {
       "short": "",
-      "long": "Performs `cc:=compose1(compose0(c, compose0(-1 PUSHINT, cc)), compose0(0 PUSHINT, cc))`. If `c` represents a boolean circuit, the net effect is to evaluate it and push either `-1` or `0` onto the stack before continuing.",
+      "long": "Performs `cc := compose1(compose0(c, compose0(-1 PUSHINT, cc)), compose0(0 PUSHINT, cc))`. If `c` represents a boolean circuit, the net effect is to evaluate it and push either `-1` or `0` onto the stack before continuing.",
       "tags": [],
       "operands": []
     },

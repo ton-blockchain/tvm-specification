@@ -10612,7 +10612,7 @@
       "sub_category": "continuation_change",
       "description": {
         "short": "",
-        "long": "Performs `cc:=compose1(compose0(c, compose0(-1 PUSHINT, cc)), compose0(0 PUSHINT, cc))`. If `c` represents a boolean circuit, the net effect is to evaluate it and push either `-1` or `0` onto the stack before continuing.",
+        "long": "Performs `cc := compose1(compose0(c, compose0(-1 PUSHINT, cc)), compose0(0 PUSHINT, cc))`. If `c` represents a boolean circuit, the net effect is to evaluate it and push either `-1` or `0` onto the stack before continuing.",
         "tags": [],
         "operands": []
       },
@@ -44001,9 +44001,9 @@
       "sub_category": "cell_deserialize",
       "description": {
         "short": "",
-        "long": "Preloads an unsigned `cc+1`-bit integer from `s`. This is a quiet version of `PLDU` which means that instead of throwing an exception, it pushes a status flag to the stack: 0 if the operation fails, -1 if the operation succeeds.",
+        "long": "Preloads an unsigned `width`-bit integer from `s`. This is a quiet version of `PLDU` which means that instead of throwing an exception, it pushes a status flag to the stack: 0 if the operation fails, -1 if the operation succeeds.",
         "tags": ["slice parsing", "preload"],
-        "operands": ["c"]
+        "operands": ["width"]
       },
       "layout": {
         "min": 14094080,
@@ -50555,9 +50555,9 @@
       "sub_category": "cell_serialize",
       "description": {
         "short": "",
-        "long": "Checks whether `cc+1` bits can be stored into `b`, where `0 <= cc <= 255`.",
+        "long": "Checks whether `count` bits can be stored into `b`, where `0 <= count <= 255`.",
         "tags": [],
-        "operands": ["c"]
+        "operands": ["count"]
       },
       "layout": {
         "min": 13580288,
@@ -50655,9 +50655,9 @@
       "sub_category": "cell_serialize",
       "description": {
         "short": "",
-        "long": "Checks whether `cc+1` bits can be stored into `b`, where `0 <= cc <= 255`.",
+        "long": "Checks whether `count` bits can be stored into `b`, where `0 <= count <= 255`.",
         "tags": [],
-        "operands": ["c"]
+        "operands": ["count"]
       },
       "layout": {
         "min": 13581312,
@@ -52017,15 +52017,9 @@
         "prefix_str": "FE2"
       },
       "signature": {
-        "stack_string": "x:Any -> ∅",
+        "stack_string": "∅ -> ∅",
         "inputs": {
-          "stack": [
-            {
-              "type": "simple",
-              "name": "x",
-              "value_types": ["Any"]
-            }
-          ],
+          "stack": [],
           "registers": []
         },
         "outputs": {
@@ -52949,9 +52943,9 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Selects TVM codepage `0 <= nn < 240`. If the codepage is not supported, throws an invalid opcode exception.",
+        "long": "Selects TVM codepage `0 <= num < 240`. If the codepage is not supported, throws an invalid opcode exception.",
         "tags": [],
-        "operands": ["n"]
+        "operands": ["num"]
       },
       "layout": {
         "min": 16711680,
@@ -52988,7 +52982,7 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Selects codepage `c` with `-2^15 <= c < 2^15` passed in the top of the stack.",
+        "long": "Selects codepage `num` with `-2^15 <= num < 2^15` passed in the top of the stack.",
         "tags": [],
         "operands": []
       },
@@ -53007,12 +53001,12 @@
         "prefix_str": "FFF0"
       },
       "signature": {
-        "stack_string": "c:Int -> ∅",
+        "stack_string": "num:Int -> ∅",
         "inputs": {
           "stack": [
             {
               "type": "simple",
-              "name": "c",
+              "name": "num",
               "value_types": ["Int"]
             }
           ]
@@ -53024,9 +53018,9 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Selects TVM codepage `z-16` for `1 <= z <= 15`. Negative codepages `-13...-1` are reserved for restricted versions of TVM needed to validate runs of TVM in other codepages. Negative codepage `-14` is reserved for experimental codepages, not necessarily compatible between different TVM implementations, and should be disabled in the production versions of TVM.",
+        "long": "Selects TVM codepage `num` for `1 <= num <= 15`. Negative codepages `-13...-1` are reserved for restricted versions of TVM needed to validate runs of TVM in other codepages. Negative codepage `-14` is reserved for experimental codepages, not necessarily compatible between different TVM implementations, and should be disabled in the production versions of TVM.",
         "tags": [],
-        "operands": []
+        "operands": ["num"]
       },
       "layout": {
         "min": 16773376,

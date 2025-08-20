@@ -2991,9 +2991,9 @@
   "BCHKBITS": {
     "description": {
       "short": "",
-      "long": "Checks whether `cc+1` bits can be stored into `b`, where `0 <= cc <= 255`.",
+      "long": "Checks whether `count` bits can be stored into `b`, where `0 <= count <= 255`.",
       "tags": [],
-      "operands": ["c"]
+      "operands": ["count"]
     },
     "signature": {
       "inputs": {
@@ -3043,9 +3043,9 @@
   "BCHKBITSQ": {
     "description": {
       "short": "",
-      "long": "Checks whether `cc+1` bits can be stored into `b`, where `0 <= cc <= 255`.",
+      "long": "Checks whether `count` bits can be stored into `b`, where `0 <= count <= 255`.",
       "tags": [],
-      "operands": ["c"]
+      "operands": ["count"]
     },
     "signature": {
       "inputs": {

@@ -3168,9 +3168,9 @@
   "PLDUQ": {
     "description": {
       "short": "",
-      "long": "Preloads an unsigned `cc+1`-bit integer from `s`. This is a quiet version of `PLDU` which means that instead of throwing an exception, it pushes a status flag to the stack: 0 if the operation fails, -1 if the operation succeeds.",
+      "long": "Preloads an unsigned `width`-bit integer from `s`. This is a quiet version of `PLDU` which means that instead of throwing an exception, it pushes a status flag to the stack: 0 if the operation fails, -1 if the operation succeeds.",
       "tags": ["slice parsing", "preload"],
-      "operands": ["c"]
+      "operands": ["width"]
     },
     "signature": {
       "inputs": {
