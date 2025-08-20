@@ -72,6 +72,30 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "special",
+          "name": "repeat",
+          "args": {
+            "count": "n",
+            "body": {
+              "type": "variable",
+              "var_name": "c"
+            },
+            "after": {
+              "type": "cc",
+              "save": {
+                "c0": {
+                  "type": "register",
+                  "index": 0
+                }
+              }
+            }
+          }
+        }
+      ]
     }
   },
   "REPEATEND": {
@@ -91,6 +115,24 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "special",
+          "name": "repeat",
+          "args": {
+            "count": "n",
+            "body": {
+              "type": "cc"
+            },
+            "after": {
+              "type": "register",
+              "index": 0
+            }
+          }
+        }
+      ]
     }
   },
   "UNTIL": {
@@ -110,6 +152,35 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "variable",
+          "var_name": "c",
+          "save": {
+            "c0": {
+              "type": "special",
+              "name": "until",
+              "args": {
+                "body": {
+                  "type": "variable",
+                  "var_name": "c"
+                },
+                "after": {
+                  "type": "cc",
+                  "save": {
+                    "c0": {
+                      "type": "register",
+                      "index": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
     }
   },
   "UNTILEND": {
@@ -128,6 +199,28 @@
         "stack": [],
         "registers": []
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "cc",
+          "save": {
+            "c0": {
+              "type": "special",
+              "name": "until",
+              "args": {
+                "body": {
+                  "type": "cc"
+                },
+                "after": {
+                  "type": "register",
+                  "index": 0
+                }
+              }
+            }
+          }
+        }
+      ]
     }
   },
   "WHILE": {
@@ -178,6 +271,39 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "variable",
+          "var_name": "c2",
+          "save": {
+            "c0": {
+              "type": "special",
+              "name": "while",
+              "args": {
+                "cond": {
+                  "type": "variable",
+                  "var_name": "c2"
+                },
+                "body": {
+                  "type": "variable",
+                  "var_name": "c"
+                },
+                "after": {
+                  "type": "cc",
+                  "save": {
+                    "c0": {
+                      "type": "register",
+                      "index": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
     }
   },
   "WHILEEND": {
@@ -197,6 +323,33 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "variable",
+          "var_name": "c2",
+          "save": {
+            "c0": {
+              "type": "special",
+              "name": "while",
+              "args": {
+                "cond": {
+                  "type": "variable",
+                  "var_name": "c2"
+                },
+                "body": {
+                  "type": "cc"
+                },
+                "after": {
+                  "type": "register",
+                  "index": 0
+                }
+              }
+            }
+          }
+        }
+      ]
     }
   },
   "AGAIN": {
@@ -216,6 +369,20 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "special",
+          "name": "again",
+          "args": {
+            "body": {
+              "type": "variable",
+              "var_name": "c"
+            }
+          }
+        }
+      ]
     }
   },
   "AGAINEND": {
@@ -234,6 +401,19 @@
         "stack": [],
         "registers": []
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "special",
+          "name": "again",
+          "args": {
+            "body": {
+              "type": "cc"
+            }
+          }
+        }
+      ]
     }
   },
   "REPEATBRK": {
@@ -258,6 +438,49 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "special",
+          "name": "repeat",
+          "args": {
+            "count": "n",
+            "body": {
+              "type": "variable",
+              "var_name": "c",
+              "save": {
+                "c1": {
+                  "type": "cc",
+                  "save": {
+                    "c0": {
+                      "type": "register",
+                      "index": 0
+                    },
+                    "c1": {
+                      "type": "register",
+                      "index": 1
+                    }
+                  }
+                }
+              }
+            },
+            "after": {
+              "type": "cc",
+              "save": {
+                "c0": {
+                  "type": "register",
+                  "index": 0
+                },
+                "c1": {
+                  "type": "register",
+                  "index": 1
+                }
+              }
+            }
+          }
+        }
+      ]
     }
   },
   "REPEATENDBRK": {
@@ -283,6 +506,30 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "special",
+          "name": "repeat",
+          "args": {
+            "count": "n",
+            "body": {
+              "type": "cc",
+              "save": {
+                "c1": {
+                  "type": "register",
+                  "index": 0
+                }
+              }
+            },
+            "after": {
+              "type": "register",
+              "index": 0
+            }
+          }
+        }
+      ]
     }
   },
   "UNTILBRK": {
@@ -302,6 +549,67 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "variable",
+          "var_name": "c",
+          "save": {
+            "c0": {
+              "type": "special",
+              "name": "until",
+              "args": {
+                "body": {
+                  "type": "variable",
+                  "var_name": "c",
+                  "save": {
+                    "c1": {
+                      "type": "cc",
+                      "save": {
+                        "c0": {
+                          "type": "register",
+                          "index": 0
+                        },
+                        "c1": {
+                          "type": "register",
+                          "index": 1
+                        }
+                      }
+                    }
+                  }
+                },
+                "after": {
+                  "type": "cc",
+                  "save": {
+                    "c0": {
+                      "type": "register",
+                      "index": 0
+                    },
+                    "c1": {
+                      "type": "register",
+                      "index": 1
+                    }
+                  }
+                }
+              }
+            },
+            "c1": {
+              "type": "cc",
+              "save": {
+                "c0": {
+                  "type": "register",
+                  "index": 0
+                },
+                "c1": {
+                  "type": "register",
+                  "index": 1
+                }
+              }
+            }
+          }
+        }
+      ]
     }
   },
   "UNTILENDBRK": {
@@ -326,6 +634,38 @@
         "stack": [],
         "registers": []
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "cc",
+          "save": {
+            "c0": {
+              "type": "special",
+              "name": "until",
+              "args": {
+                "body": {
+                  "type": "cc",
+                  "save": {
+                    "c1": {
+                      "type": "register",
+                      "index": 0
+                    }
+                  }
+                },
+                "after": {
+                  "type": "register",
+                  "index": 0
+                }
+              }
+            },
+            "c1": {
+              "type": "register",
+              "index": 0
+            }
+          }
+        }
+      ]
     }
   },
   "WHILEBRK": {
@@ -350,6 +690,43 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "variable",
+          "var_name": "c2",
+          "save": {
+            "c0": {
+              "type": "special",
+              "name": "while",
+              "args": {
+                "cond": {
+                  "type": "variable",
+                  "var_name": "c2"
+                },
+                "body": {
+                  "type": "variable",
+                  "var_name": "c"
+                },
+                "after": {
+                  "type": "cc",
+                  "save": {
+                    "c0": {
+                      "type": "register",
+                      "index": 0
+                    },
+                    "c1": {
+                      "type": "register",
+                      "index": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
     }
   },
   "WHILEENDBRK": {

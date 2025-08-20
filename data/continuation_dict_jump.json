@@ -32,6 +32,14 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "register",
+          "index": 3
+        }
+      ]
     }
   },
   "PREPAREDICT": {
@@ -107,6 +115,25 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "register",
+          "index": 3,
+          "save": {
+            "c0": {
+              "type": "cc",
+              "save": {
+                "c0": {
+                  "type": "register",
+                  "index": 0
+                }
+              }
+            }
+          }
+        }
+      ]
     }
   },
   "CALLDICT_LONG": {
@@ -136,6 +163,25 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "register",
+          "index": 3,
+          "save": {
+            "c0": {
+              "type": "cc",
+              "save": {
+                "c0": {
+                  "type": "register",
+                  "index": 0
+                }
+              }
+            }
+          }
+        }
+      ]
     }
   }
 }

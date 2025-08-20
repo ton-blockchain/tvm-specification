@@ -22,6 +22,7 @@ export interface Instruction {
     readonly layout: Layout
     readonly effects?: readonly string[]
     readonly signature: InstructionSignature
+    readonly control_flow?: ControlFlowOfInstruction
 }
 
 export interface ExitCode {
@@ -110,4 +111,72 @@ export interface Refs {
     readonly arg?: Arg
     readonly len?: number
     readonly range?: ArgRange
+}
+
+export interface ControlFlowOfInstruction {
+    readonly branches: Continuation[]
+}
+
+export type Continuation =
+    | {
+          readonly type: "cc"
+          readonly save?: ContinuationSavelist
+      }
+    | {
+          readonly type: "variable"
+          readonly var_name: string
+          readonly save?: ContinuationSavelist
+      }
+    | {
+          readonly type: "register"
+          readonly index: number
+          readonly save?: ContinuationSavelist
+      }
+    | {
+          readonly type: "special"
+          readonly name: "until"
+          readonly args: {
+              readonly body: Continuation
+              readonly after: Continuation
+          }
+      }
+    | {
+          readonly type: "special"
+          readonly name: "while"
+          readonly args: {
+              readonly cond: Continuation
+              readonly body: Continuation
+              readonly after: Continuation
+          }
+      }
+    | {
+          readonly type: "special"
+          readonly name: "again"
+          readonly args: {
+              readonly body: Continuation
+          }
+      }
+    | {
+          readonly type: "special"
+          readonly name: "repeat"
+          readonly args: {
+              readonly count: string
+              readonly body: Continuation
+              readonly after: Continuation
+          }
+      }
+    | {
+          readonly type: "special"
+          readonly name: "pushint"
+          readonly args: {
+              readonly value: number
+              readonly next: Continuation
+          }
+      }
+
+export interface ContinuationSavelist {
+    readonly c0?: Continuation
+    readonly c1?: Continuation
+    readonly c2?: Continuation
+    readonly c3?: Continuation
 }

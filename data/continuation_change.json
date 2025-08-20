@@ -189,7 +189,7 @@
   "PUSHCTRX": {
     "description": {
       "short": "",
-      "long": "Pushes the current value of control register `c(i)` onto the stack, where `i`, `0 <= i <= 255`, is taken from the stack. Unlike `c(i) PUSHCTR` which takes the register index from the instruction itself, this instruction takes this index from the stack. If the control register is not supported in the current codepage, or if it does not have a value, an exception is triggered.\nNotice that this primitive is one of the few ''exotic'' primitives, which are not polymorphic like stack manipulation primitives, and at the same time do not have well-defined types of parameters and return values, because the type of `x` depends on `i`.",
+      "long": "Pushes the current value of control register `c(i)` onto the stack, where `i`, `0 <= i <= 255`, is taken from the stack. Unlike `c(i) PUSHCTR` which takes the register index from the instruction itself, this instruction takes this index from the stack. If the control register is not supported in the current codepage, or if it does not have a value, an exception is triggered.\nNotice that this primitive is one of the few \"exotic\" primitives, which are not polymorphic like stack manipulation primitives, and at the same time do not have well-defined types of parameters and return values, because the type of `x` depends on `i`.",
       "tags": [],
       "operands": []
     },
@@ -350,13 +350,27 @@
     "signature": {
       "inputs": {
         "stack": [
-          {"type": "simple", "name": "c", "value_types": ["Continuation"]},
-          {"type": "simple", "name": "c'", "value_types": ["Continuation"]}
+          {
+            "type": "simple",
+            "name": "c",
+            "value_types": ["Continuation"]
+          },
+          {
+            "type": "simple",
+            "name": "c'",
+            "value_types": ["Continuation"]
+          }
         ],
         "registers": []
       },
       "outputs": {
-        "stack": [{"type": "simple", "name": "c3", "value_types": ["Continuation"]}],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "c3",
+            "value_types": ["Continuation"]
+          }
+        ],
         "registers": []
       }
     }
@@ -377,13 +391,27 @@
     "signature": {
       "inputs": {
         "stack": [
-          {"type": "simple", "name": "c", "value_types": ["Continuation"]},
-          {"type": "simple", "name": "c'", "value_types": ["Continuation"]}
+          {
+            "type": "simple",
+            "name": "c",
+            "value_types": ["Continuation"]
+          },
+          {
+            "type": "simple",
+            "name": "c'",
+            "value_types": ["Continuation"]
+          }
         ],
         "registers": []
       },
       "outputs": {
-        "stack": [{"type": "simple", "name": "c3", "value_types": ["Continuation"]}],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "c3",
+            "value_types": ["Continuation"]
+          }
+        ],
         "registers": []
       }
     }
@@ -391,7 +419,7 @@
   "COMPOSBOTH": {
     "description": {
       "short": "",
-      "long": "Computes composition `compose1(compose0(c, c'), c')`, which has the meaning of ''compute boolean circuit `c`, then compute `c'`, regardless of the result of `c`''.",
+      "long": "Computes composition `compose1(compose0(c, c'), c')`, which has the meaning of \"compute boolean circuit `c`, then compute `c'`, regardless of the result of `c`\".",
       "tags": [],
       "operands": []
     },
@@ -657,6 +685,56 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "variable",
+          "var_name": "c",
+          "save": {
+            "c0": {
+              "type": "special",
+              "name": "pushint",
+              "args": {
+                "next": {
+                  "type": "cc",
+                  "save": {
+                    "c0": {
+                      "type": "register",
+                      "index": 0
+                    },
+                    "c1": {
+                      "type": "register",
+                      "index": 1
+                    }
+                  }
+                },
+                "value": -1
+              }
+            },
+            "c1": {
+              "type": "special",
+              "name": "pushint",
+              "args": {
+                "next": {
+                  "type": "cc",
+                  "save": {
+                    "c0": {
+                      "type": "register",
+                      "index": 0
+                    },
+                    "c1": {
+                      "type": "register",
+                      "index": 1
+                    }
+                  }
+                },
+                "value": 0
+              }
+            }
+          }
+        }
+      ]
     }
   },
   "SAMEALT": {
@@ -678,7 +756,7 @@
         "registers": [
           {
             "type": "constant",
-            "index": 0
+            "index": 1
           }
         ]
       },
@@ -837,8 +915,8 @@
   },
   "BLESSARGS": {
     "description": {
-      "short": "",
-      "long": "Transforms a _Slice_ into a simple ordinary continuation and sets `r` arguments and `n` missing arguments.\nThe value of `n` is represented inside the instruction by the 4-bit integer `n mod 16`.",
+      "short": "Transforms a _Slice_ into a simple ordinary continuation and sets `r` arguments and `n` missing arguments.",
+      "long": "The value of `n` is represented inside the instruction by the 4-bit integer `n mod 16`.",
       "tags": [],
       "operands": ["r", "n"],
       "other_implementations": [
@@ -1120,16 +1198,31 @@
       "inputs": {
         "stack": [],
         "registers": [
-          {"type": "variable", "var_name": "i"},
-          {"type": "constant", "index": 0},
-          {"type": "constant", "index": 1}
+          {
+            "type": "variable",
+            "var_name": "i"
+          },
+          {
+            "type": "constant",
+            "index": 0
+          },
+          {
+            "type": "constant",
+            "index": 1
+          }
         ]
       },
       "outputs": {
         "stack": [],
         "registers": [
-          {"type": "constant", "index": 0},
-          {"type": "constant", "index": 1}
+          {
+            "type": "constant",
+            "index": 0
+          },
+          {
+            "type": "constant",
+            "index": 1
+          }
         ]
       }
     }

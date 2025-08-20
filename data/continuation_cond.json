@@ -14,8 +14,22 @@
             "name": "cond",
             "value_types": ["Int"]
           }
+        ],
+        "registers": [
+          {
+            "type": "constant",
+            "index": 0
+          }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "register",
+          "index": 0
+        }
+      ]
     }
   },
   "IFNOTRET": {
@@ -33,8 +47,22 @@
             "name": "cond",
             "value_types": ["Int"]
           }
+        ],
+        "registers": [
+          {
+            "type": "constant",
+            "index": 0
+          }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "register",
+          "index": 0
+        }
+      ]
     }
   },
   "IF": {
@@ -101,6 +129,25 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "variable",
+          "var_name": "c",
+          "save": {
+            "c0": {
+              "type": "cc",
+              "save": {
+                "c0": {
+                  "type": "register",
+                  "index": 0
+                }
+              }
+            }
+          }
+        }
+      ]
     }
   },
   "IFNOT": {
@@ -125,6 +172,25 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "variable",
+          "var_name": "c",
+          "save": {
+            "c0": {
+              "type": "cc",
+              "save": {
+                "c0": {
+                  "type": "register",
+                  "index": 0
+                }
+              }
+            }
+          }
+        }
+      ]
     }
   },
   "IFJMP": {
@@ -175,12 +241,20 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "variable",
+          "var_name": "c"
+        }
+      ]
     }
   },
   "IFNOTJMP": {
     "description": {
       "short": "",
-      "long": "Jumps to `body` (similarly to `JMPX`), but only if `cond` is zero.",
+      "long": "Transfers control to `body` if `cond` is zero. The remainder of the current continuation is discarded which means that after `body` completes, control will not return to instruction immediately following the `IFJMP`. Instead, it will return to the instruction immediately following the instruction that started current continuation. If such continuation is not present, the program will exit.",
       "tags": [],
       "operands": []
     },
@@ -199,6 +273,14 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "variable",
+          "var_name": "c"
+        }
+      ]
     }
   },
   "IFELSE": {
@@ -234,14 +316,54 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "variable",
+          "var_name": "c",
+          "save": {
+            "c0": {
+              "type": "cc",
+              "save": {
+                "c0": {
+                  "type": "register",
+                  "index": 0
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "variable",
+          "var_name": "c2",
+          "save": {
+            "c0": {
+              "type": "cc",
+              "save": {
+                "c0": {
+                  "type": "register",
+                  "index": 0
+                }
+              }
+            }
+          }
+        }
+      ]
     }
   },
   "CONDSEL": {
     "description": {
       "short": "",
-      "long": "If integer `f` is non-zero, returns `x`, otherwise returns `y`. Notice that no type checks are performed on `x` and `y`; as such, it is more like a conditional stack operation. Roughly equivalent to `ROT` `ISZERO` `INC` `ROLLX` `NIP`.",
+      "long": "If integer `f` is non-zero, returns `x`, otherwise returns `y`. Notice that no type checks are performed on `x` and `y`, so, it is more like a conditional stack operation.",
       "tags": [],
-      "operands": []
+      "operands": [],
+      "other_implementations": [
+        {
+          "exact": false,
+          "instructions": ["ROT", "ISZERO", "INC", "ROLLX", "NIP"]
+        }
+      ]
     },
     "signature": {
       "inputs": {
@@ -274,7 +396,7 @@
   "CONDSELCHK": {
     "description": {
       "short": "",
-      "long": "Same as `CONDSEL`, but first checks whether `x` and `y` have the same type.",
+      "long": "If integer `f` is non-zero, returns `x`, otherwise returns `y`. Unlike `CONDSEL` this instruction checks whether `x` and `y` have the same type.",
       "tags": [],
       "operands": []
     },
@@ -321,8 +443,22 @@
             "name": "cond",
             "value_types": ["Int"]
           }
+        ],
+        "registers": [
+          {
+            "type": "constant",
+            "index": 1
+          }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "register",
+          "index": 1
+        }
+      ]
     }
   },
   "IFNOTRETALT": {
@@ -340,8 +476,22 @@
             "name": "cond",
             "value_types": ["Int"]
           }
+        ],
+        "registers": [
+          {
+            "type": "constant",
+            "index": 1
+          }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "register",
+          "index": 1
+        }
+      ]
     }
   },
   "IFBITJMP": {
@@ -375,6 +525,14 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "variable",
+          "var_name": "c"
+        }
+      ]
     }
   },
   "IFNBITJMP": {
@@ -408,6 +566,14 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "variable",
+          "var_name": "c"
+        }
+      ]
     }
   },
   "IFREF": {
@@ -433,6 +599,25 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "variable",
+          "var_name": "c",
+          "save": {
+            "c0": {
+              "type": "cc",
+              "save": {
+                "c0": {
+                  "type": "register",
+                  "index": 0
+                }
+              }
+            }
+          }
+        }
+      ]
     }
   },
   "IFNOTREF": {
@@ -458,6 +643,25 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "variable",
+          "var_name": "c",
+          "save": {
+            "c0": {
+              "type": "cc",
+              "save": {
+                "c0": {
+                  "type": "register",
+                  "index": 0
+                }
+              }
+            }
+          }
+        }
+      ]
     }
   },
   "IFJMPREF": {
@@ -483,6 +687,14 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "variable",
+          "var_name": "c"
+        }
+      ]
     }
   },
   "IFNOTJMPREF": {
@@ -508,6 +720,14 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "variable",
+          "var_name": "c"
+        }
+      ]
     }
   },
   "IFREFELSE": {
@@ -538,6 +758,40 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "variable",
+          "var_name": "c",
+          "save": {
+            "c0": {
+              "type": "cc",
+              "save": {
+                "c0": {
+                  "type": "register",
+                  "index": 0
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "variable",
+          "var_name": "c2",
+          "save": {
+            "c0": {
+              "type": "cc",
+              "save": {
+                "c0": {
+                  "type": "register",
+                  "index": 0
+                }
+              }
+            }
+          }
+        }
+      ]
     }
   },
   "IFELSEREF": {
@@ -568,6 +822,40 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "variable",
+          "var_name": "c",
+          "save": {
+            "c0": {
+              "type": "cc",
+              "save": {
+                "c0": {
+                  "type": "register",
+                  "index": 0
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "variable",
+          "var_name": "c2",
+          "save": {
+            "c0": {
+              "type": "cc",
+              "save": {
+                "c0": {
+                  "type": "register",
+                  "index": 0
+                }
+              }
+            }
+          }
+        }
+      ]
     }
   },
   "IFREFELSEREF": {
@@ -593,6 +881,40 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "variable",
+          "var_name": "c1",
+          "save": {
+            "c0": {
+              "type": "cc",
+              "save": {
+                "c0": {
+                  "type": "register",
+                  "index": 0
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "variable",
+          "var_name": "c2",
+          "save": {
+            "c0": {
+              "type": "cc",
+              "save": {
+                "c0": {
+                  "type": "register",
+                  "index": 0
+                }
+              }
+            }
+          }
+        }
+      ]
     }
   },
   "IFBITJMPREF": {
@@ -621,6 +943,14 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "variable",
+          "var_name": "c"
+        }
+      ]
     }
   },
   "IFNBITJMPREF": {
@@ -649,6 +979,14 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "variable",
+          "var_name": "c"
+        }
+      ]
     }
   }
 }

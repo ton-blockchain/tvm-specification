@@ -85,6 +85,9 @@
         },
         "signature": {
           "$ref": "#/definitions/InstructionSignature"
+        },
+        "control_flow": {
+          "$ref": "#/definitions/ControlFlow"
         }
       },
       "required": ["category", "sub_category", "description", "layout", "signature"],
@@ -750,6 +753,163 @@
       "additionalProperties": false,
       "description": "Outgoing values constraints.",
       "markdownDescription": "Outgoing values constraints."
+    },
+    "ControlFlow": {
+      "type": "object",
+      "title": "Control flow of instruction",
+      "description": "Information related to current cc modification by instruction",
+      "additionalProperties": false,
+      "required": ["branches"],
+      "properties": {
+        "branches": {
+          "type": "array",
+          "title": "Possible branches of an instruction",
+          "description": "Array of current continuation possible values after current instruction execution",
+          "items": {"$ref": "#/definitions/Continuation"},
+          "additionalItems": false
+        }
+      }
+    },
+    "Continuation": {
+      "title": "Continuation",
+      "description": "Description of a continuation with static savelist",
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type"],
+          "properties": {
+            "type": {"const": "cc"},
+            "save": {"$ref": "#/definitions/savelist"}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "var_name"],
+          "properties": {
+            "type": {"const": "variable"},
+            "var_name": {
+              "$ref": "#/definitions/VariableName",
+              "title": "Continuation variable name"
+            },
+            "save": {"$ref": "#/definitions/savelist"}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "index"],
+          "properties": {
+            "type": {"const": "register"},
+            "index": {"type": "integer", "title": "Register number (0-3)"},
+            "save": {"$ref": "#/definitions/savelist"}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "name", "args"],
+          "properties": {
+            "type": {"const": "special"},
+            "name": {"const": "until"},
+            "args": {
+              "type": "object",
+              "required": ["body", "after"],
+              "additionalProperties": false,
+              "properties": {
+                "body": {"$ref": "#/definitions/Continuation"},
+                "after": {"$ref": "#/definitions/Continuation"}
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "name", "args"],
+          "properties": {
+            "type": {"const": "special"},
+            "name": {"const": "while"},
+            "args": {
+              "type": "object",
+              "required": ["cond", "body", "after"],
+              "additionalProperties": false,
+              "properties": {
+                "cond": {"$ref": "#/definitions/Continuation"},
+                "body": {"$ref": "#/definitions/Continuation"},
+                "after": {"$ref": "#/definitions/Continuation"}
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "name", "args"],
+          "properties": {
+            "type": {"const": "special"},
+            "name": {"const": "again"},
+            "args": {
+              "type": "object",
+              "required": ["body"],
+              "additionalProperties": false,
+              "properties": {
+                "body": {"$ref": "#/definitions/Continuation"}
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "name", "args"],
+          "properties": {
+            "type": {"const": "special"},
+            "name": {"const": "repeat"},
+            "args": {
+              "type": "object",
+              "required": ["count", "body", "after"],
+              "additionalProperties": false,
+              "properties": {
+                "count": {"$ref": "#/definitions/VariableName", "title": "Variable name"},
+                "body": {"$ref": "#/definitions/Continuation"},
+                "after": {"$ref": "#/definitions/Continuation"}
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "name", "args"],
+          "properties": {
+            "type": {"const": "special"},
+            "name": {"const": "pushint"},
+            "args": {
+              "type": "object",
+              "required": ["next", "value"],
+              "additionalProperties": false,
+              "properties": {
+                "value": {"type": "integer", "title": "Integer to push to stack"},
+                "next": {"$ref": "#/definitions/Continuation"}
+              }
+            }
+          }
+        }
+      ]
+    },
+    "savelist": {
+      "title": "Continuation savelist",
+      "description": "Values of saved control flow registers c0-c3",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "c0": {"$ref": "#/definitions/Continuation"},
+        "c1": {"$ref": "#/definitions/Continuation"},
+        "c2": {"$ref": "#/definitions/Continuation"},
+        "c3": {"$ref": "#/definitions/Continuation"}
+      }
     }
   },
   "properties": {

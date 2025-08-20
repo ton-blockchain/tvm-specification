@@ -6,6 +6,7 @@ import {
     Specification,
     InstructionSignature,
     FiftInstruction,
+    ControlFlowOfInstruction,
 } from "../types"
 import {instructions, signatureString} from "../instructions"
 
@@ -13,6 +14,7 @@ export interface InstructionEntry {
     readonly name?: string
     readonly description: Description
     readonly signature: InstructionSignature
+    readonly control_flow?: ControlFlowOfInstruction
 }
 
 const main = () => {
@@ -67,6 +69,7 @@ const main = () => {
                       ...signature,
                   }
                 : {},
+            control_flow: instr.control_flow,
         }
     }
 

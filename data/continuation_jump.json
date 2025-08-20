@@ -16,6 +16,25 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "variable",
+          "var_name": "c",
+          "save": {
+            "c0": {
+              "type": "cc",
+              "save": {
+                "c0": {
+                  "type": "register",
+                  "index": 0
+                }
+              }
+            }
+          }
+        }
+      ]
     }
   },
   "JMPX": {
@@ -35,6 +54,14 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "variable",
+          "var_name": "c"
+        }
+      ]
     }
   },
   "RET": {
@@ -53,12 +80,25 @@
     "signature": {
       "inputs": {
         "stack": [],
-        "registers": []
+        "registers": [
+          {
+            "type": "constant",
+            "index": 0
+          }
+        ]
       },
       "outputs": {
         "stack": [],
         "registers": []
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "register",
+          "index": 0
+        }
+      ]
     }
   },
   "RETALT": {
@@ -77,12 +117,25 @@
     "signature": {
       "inputs": {
         "stack": [],
-        "registers": []
+        "registers": [
+          {
+            "type": "constant",
+            "index": 1
+          }
+        ]
       },
       "outputs": {
         "stack": [],
         "registers": []
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "register",
+          "index": 1
+        }
+      ]
     }
   },
   "RETBOOL": {
@@ -101,7 +154,16 @@
             "value_types": ["Bool"]
           }
         ],
-        "registers": []
+        "registers": [
+          {
+            "type": "constant",
+            "index": 0
+          },
+          {
+            "type": "constant",
+            "index": 1
+          }
+        ]
       },
       "outputs": {
         "stack": [],
@@ -126,6 +188,14 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "variable",
+          "var_name": "c"
+        }
+      ]
     }
   },
   "JMPXDATA": {
@@ -145,6 +215,14 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "variable",
+          "var_name": "c"
+        }
+      ]
     }
   },
   "CALLXVARARGS": {
@@ -185,6 +263,25 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "variable",
+          "var_name": "c",
+          "save": {
+            "c0": {
+              "type": "cc",
+              "save": {
+                "c0": {
+                  "type": "register",
+                  "index": 0
+                }
+              }
+            }
+          }
+        }
+      ]
     }
   },
   "RETVARARGS": {
@@ -220,6 +317,25 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "variable",
+          "var_name": "c",
+          "save": {
+            "c0": {
+              "type": "cc",
+              "save": {
+                "c0": {
+                  "type": "register",
+                  "index": 0
+                }
+              }
+            }
+          }
+        }
+      ]
     }
   },
   "JMPXVARARGS": {
@@ -260,6 +376,14 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "variable",
+          "var_name": "c"
+        }
+      ]
     }
   },
   "CALLCCVARARGS": {
@@ -300,6 +424,14 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "variable",
+          "var_name": "c"
+        }
+      ]
     }
   },
   "RETDATA": {
@@ -318,18 +450,31 @@
     "signature": {
       "inputs": {
         "stack": [],
-        "registers": []
+        "registers": [
+          {
+            "type": "constant",
+            "index": 0
+          }
+        ]
       },
       "outputs": {
         "stack": [],
         "registers": []
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "register",
+          "index": 0
+        }
+      ]
     }
   },
   "RUNVMX": {
     "description": {
       "short": "",
-      "long": "Runs child VM with code `code` and stack `x_1...x_n`. Returns the resulting stack `x'_1...x'_m` and exitcode. Other arguments and return values are enabled by flags.",
+      "long": "Runs child VM with `code` and stack `x_1...x_n`. Returns the resulting stack `x'_1...x'_m` and exitcode. Other arguments and return values are enabled by flags.",
       "tags": [],
       "operands": []
     },
@@ -372,6 +517,14 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "variable",
+          "var_name": "c"
+        }
+      ]
     }
   },
   "JMPXARGS": {
@@ -402,6 +555,14 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "variable",
+          "var_name": "c"
+        }
+      ]
     }
   },
   "RETARGS": {
@@ -425,8 +586,22 @@
               }
             ]
           }
+        ],
+        "registers": [
+          {
+            "type": "constant",
+            "index": 0
+          }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "register",
+          "index": 0
+        }
+      ]
     }
   },
   "CALLREF": {
@@ -451,6 +626,25 @@
         "stack": [],
         "registers": []
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "variable",
+          "var_name": "c",
+          "save": {
+            "c0": {
+              "type": "cc",
+              "save": {
+                "c0": {
+                  "type": "register",
+                  "index": 0
+                }
+              }
+            }
+          }
+        }
+      ]
     }
   },
   "JMPREF": {
@@ -475,6 +669,14 @@
         "stack": [],
         "registers": []
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "variable",
+          "var_name": "c"
+        }
+      ]
     }
   },
   "JMPREFDATA": {
@@ -499,12 +701,20 @@
         "stack": [],
         "registers": []
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "variable",
+          "var_name": "c"
+        }
+      ]
     }
   },
   "RUNVM": {
     "description": {
       "short": "",
-      "long": "Runs child VM with code `code` and stack `x_1...x_n`. Returns the resulting stack `x'_1...x'_m` and exitcode. Other arguments and return values are enabled by flags.",
+      "long": "Runs child VM with `code` and stack `x_1...x_n`. Returns the resulting stack `x'_1...x'_m` and exitcode. Other arguments and return values are enabled by flags.",
       "tags": [],
       "operands": ["flags"]
     },
@@ -548,6 +758,25 @@
         ],
         "registers": []
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "variable",
+          "var_name": "c",
+          "save": {
+            "c0": {
+              "type": "cc",
+              "save": {
+                "c0": {
+                  "type": "register",
+                  "index": 0
+                }
+              }
+            }
+          }
+        }
+      ]
     }
   },
   "CALLXARGS_1": {

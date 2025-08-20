@@ -728,6 +728,14 @@
         "stack": [],
         "registers": []
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "variable",
+          "var_name": "x"
+        }
+      ]
     }
   },
   "PFXDICTGETEXEC": {
@@ -777,6 +785,25 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "variable",
+          "var_name": "x",
+          "save": {
+            "c0": {
+              "type": "cc",
+              "save": {
+                "c0": {
+                  "type": "register",
+                  "index": 0
+                }
+              }
+            }
+          }
+        }
+      ]
     }
   },
   "DICTIGETJMP": {
@@ -806,6 +833,14 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "variable",
+          "var_name": "x"
+        }
+      ]
     }
   },
   "DICTUGETJMP": {
@@ -835,6 +870,14 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "variable",
+          "var_name": "x"
+        }
+      ]
     }
   },
   "DICTIGETEXEC": {
@@ -864,6 +907,25 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "variable",
+          "var_name": "x",
+          "save": {
+            "c0": {
+              "type": "cc",
+              "save": {
+                "c0": {
+                  "type": "register",
+                  "index": 0
+                }
+              }
+            }
+          }
+        }
+      ]
     }
   },
   "DICTUGETEXEC": {
@@ -893,6 +955,25 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "variable",
+          "var_name": "x",
+          "save": {
+            "c0": {
+              "type": "cc",
+              "save": {
+                "c0": {
+                  "type": "register",
+                  "index": 0
+                }
+              }
+            }
+          }
+        }
+      ]
     }
   },
   "DICTIGETJMPZ": {
@@ -911,6 +992,14 @@
         "stack": [],
         "registers": []
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "variable",
+          "var_name": "x"
+        }
+      ]
     }
   },
   "DICTUGETJMPZ": {
@@ -929,6 +1018,14 @@
         "stack": [],
         "registers": []
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "variable",
+          "var_name": "x"
+        }
+      ]
     }
   },
   "DICTIGETEXECZ": {
@@ -947,6 +1044,25 @@
         "stack": [],
         "registers": []
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "variable",
+          "var_name": "x",
+          "save": {
+            "c0": {
+              "type": "cc",
+              "save": {
+                "c0": {
+                  "type": "register",
+                  "index": 0
+                }
+              }
+            }
+          }
+        }
+      ]
     }
   },
   "DICTUGETEXECZ": {
@@ -965,6 +1081,25 @@
         "stack": [],
         "registers": []
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "variable",
+          "var_name": "x",
+          "save": {
+            "c0": {
+              "type": "cc",
+              "save": {
+                "c0": {
+                  "type": "register",
+                  "index": 0
+                }
+              }
+            }
+          }
+        }
+      ]
     }
   },
   "DICTGET": {
@@ -6965,7 +7100,7 @@
   "DICTIDEL": {
     "description": {
       "short": "",
-      "long": "A version of `DICTDEL` with the key represented by a signed `n`-bit _Integer_ `i`. If `i` does not fit into `n` bits, simply returns `D` `0` (''key not found, dictionary unmodified'').",
+      "long": "A version of `DICTDEL` with the key represented by a signed `n`-bit _Integer_ `i`. If `i` does not fit into `n` bits, simply returns `D` `0` (\"key not found, dictionary unmodified\").",
       "tags": [],
       "operands": []
     },
@@ -7029,7 +7164,7 @@
   "DICTUDEL": {
     "description": {
       "short": "",
-      "long": "Deletes `n`-bit key, represented by an unsigned `n`-bit _Integer_ `i`, from dictionary `D`. If the key is present, returns the modified dictionary `D'` and the success flag `-1`. Otherwise, returns the original dictionary `D` and `0`. If `i` does not fit into `n` bits, simply returns `D` `0` (''key not found, dictionary unmodified'').",
+      "long": "Deletes `n`-bit key, represented by an unsigned `n`-bit _Integer_ `i`, from dictionary `D`. If the key is present, returns the modified dictionary `D'` and the success flag `-1`. Otherwise, returns the original dictionary `D` and `0`. If `i` does not fit into `n` bits, simply returns `D` `0` (\"key not found, dictionary unmodified\").",
       "tags": [],
       "operands": []
     },
