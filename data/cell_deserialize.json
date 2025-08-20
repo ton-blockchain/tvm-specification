@@ -974,7 +974,7 @@
   "PLDREFVAR": {
     "description": {
       "short": "",
-      "long": "Returns the `n`-th cell reference of _Slice_ `s` for `0 <= n <= 3`.",
+      "long": "Returns the `n`-th cell reference of _Slice_ `s`.",
       "tags": ["slice parsing"],
       "operands": []
     },
@@ -1312,7 +1312,7 @@
   "CHASHIX": {
     "description": {
       "short": "",
-      "long": "Returns `i`th hash of the cell.",
+      "long": "Returns `i`-th hash of the cell.",
       "tags": [],
       "operands": []
     },
@@ -1345,7 +1345,7 @@
   "CDEPTHIX": {
     "description": {
       "short": "",
-      "long": "Returns `i`th depth of the cell.",
+      "long": "Returns `i`-th depth of the cell.",
       "tags": [],
       "operands": []
     },
@@ -2862,7 +2862,7 @@
   "PLDREFIDX": {
     "description": {
       "short": "",
-      "long": "Returns the `n`-th cell reference of _Slice_ `s`, where `0 <= n <= 3`.",
+      "long": "Returns the `n`-th cell reference of _Slice_ `s`.",
       "tags": ["slice parsing"],
       "operands": ["n"]
     },
@@ -2890,7 +2890,7 @@
   "CHASHI": {
     "description": {
       "short": "",
-      "long": "Returns `i`th hash of the cell.",
+      "long": "Returns `i`-th hash of the cell.",
       "tags": [],
       "operands": ["n"]
     },
@@ -2918,7 +2918,7 @@
   "CDEPTHI": {
     "description": {
       "short": "",
-      "long": "Returns `i`th depth of the cell.",
+      "long": "Returns `i`-th depth of the cell.",
       "tags": [],
       "operands": ["n"]
     },
@@ -3216,7 +3216,7 @@
   "PLDUZ": {
     "description": {
       "short": "",
-      "long": "Preloads the first `32(c+1)` bits of _Slice_ `s` into an unsigned integer `x`, for `0 <= c <= 7`. If `s` is shorter than necessary, missing bits are assumed to be zero. This operation is intended to be used along with `IFBITJMP` and similar instructions.",
+      "long": "Preloads the first `32 * (c + 1)` bits of _Slice_ `s` into an unsigned integer `x`, for `0 <= c <= 7`. If `s` is shorter than necessary, missing bits are assumed to be zero. This operation is intended to be used along with `IFBITJMP` and similar instructions.",
       "tags": ["slice parsing", "preload"],
       "operands": ["c"]
     },
@@ -3788,9 +3788,9 @@
   "LDSLICE": {
     "description": {
       "short": "",
-      "long": "Cuts the next `c + 1` bits of `s` into a separate _Slice_ `loaded`.",
+      "long": "Cuts the next `count` bits of `s` into a separate _Slice_ `loaded`.",
       "tags": ["slice parsing"],
-      "operands": ["c"]
+      "operands": ["count"]
     },
     "signature": {
       "inputs": {

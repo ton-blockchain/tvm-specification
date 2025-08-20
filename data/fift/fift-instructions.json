@@ -149,12 +149,12 @@
   "SETSECOND": {
     "actual_name": "SETINDEX",
     "arguments": [1],
-    "description": "Sets the first component of _Tuple_ `t` to `x` and returns the resulting _Tuple_ `t'`"
+    "description": "Sets the second component of _Tuple_ `t` to `x` and returns the resulting _Tuple_ `t'`"
   },
   "SETTHIRD": {
     "actual_name": "SETINDEX",
     "arguments": [2],
-    "description": "Sets the first component of _Tuple_ `t` to `x` and returns the resulting _Tuple_ `t'`"
+    "description": "Sets the third component of _Tuple_ `t` to `x` and returns the resulting _Tuple_ `t'`"
   },
   "SETFIRSTQ": {
     "actual_name": "SETINDEXQ",
@@ -164,12 +164,12 @@
   "SETSECONDQ": {
     "actual_name": "SETINDEXQ",
     "arguments": [1],
-    "description": "Sets the first component of _Tuple_ `t` to `x` and returns the resulting _Tuple_ `t'`"
+    "description": "Sets the second component of _Tuple_ `t` to `x` and returns the resulting _Tuple_ `t'`"
   },
   "SETTHIRDQ": {
     "actual_name": "SETINDEXQ",
     "arguments": [2],
-    "description": "Sets the first component of _Tuple_ `t` to `x` and returns the resulting _Tuple_ `t'`"
+    "description": "Sets the third component of _Tuple_ `t` to `x` and returns the resulting _Tuple_ `t'`"
   },
   "UNCONS": {
     "actual_name": "UNTUPLE",
@@ -348,22 +348,28 @@
     "actual_name": "PFXDICTSWITCH"
   },
   "PUSHINT": {
-    "actual_name": "PUSHINT_LONG"
+    "actual_name": "PUSHINT_LONG",
+    "description": "Pushes integer `num` onto the stack."
   },
   "INT": {
-    "actual_name": "PUSHINT_LONG"
+    "actual_name": "PUSHINT_LONG",
+    "description": "Pushes integer `num` onto the stack."
   },
   "INTX": {
-    "actual_name": "PUSHINT_LONG"
+    "actual_name": "PUSHINT_LONG",
+    "description": "Pushes integer `num` onto the stack."
   },
   "NEWDICT": {
-    "actual_name": "PUSHNULL"
+    "actual_name": "PUSHNULL",
+    "description": "Creates a new empty dictionary which is a null value"
   },
   "DICTEMPTY": {
-    "actual_name": "ISNULL"
+    "actual_name": "ISNULL",
+    "description": "Checks whether dictionary is empty, i.e. is null"
   },
   "STDICTS": {
-    "actual_name": "STSLICE"
+    "actual_name": "STSLICE",
+    "description": "Stores the dictionary represented as a slice into _Builder_ `b`"
   },
   "SETNUMARGS": {
     "actual_name": "SETCONTARGS",

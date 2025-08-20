@@ -238,18 +238,28 @@
   "QABS": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Computes the absolute value of an integer `x`. Returns `NaN` if any of the arguments is `NaN`.",
       "tags": [],
       "operands": []
     },
     "signature": {
       "inputs": {
-        "stack": [],
-        "registers": []
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ]
       },
       "outputs": {
-        "stack": [],
-        "registers": []
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ]
       }
     }
   }

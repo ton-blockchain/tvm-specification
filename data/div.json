@@ -261,7 +261,7 @@
   "MOD": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Divides two integers and pushes the remainder back onto the stack.",
       "tags": [],
       "operands": []
     },
@@ -295,7 +295,7 @@
   "MODR": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Divides two integers (in reverse order) and pushes the remainder back onto the stack.",
       "tags": [],
       "operands": []
     },
@@ -361,7 +361,7 @@
   "DIVMOD": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Divides two integers and pushes the quotient and remainder back onto the stack.",
       "tags": [],
       "operands": []
     },
@@ -399,7 +399,7 @@
   "DIVMODR": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Divides two integers (in reverse order) and pushes the quotient and remainder back onto the stack.",
       "tags": [],
       "operands": []
     },

@@ -2,7 +2,7 @@
   "EXECUTE": {
     "description": {
       "short": "",
-      "long": "_Calls_, or _executes_, continuation `c`.",
+      "long": "_Calls_ or _executes_, continuation `c` from the stack. After the call old `cc` is restored and execution continues.",
       "tags": [],
       "operands": []
     },
@@ -21,7 +21,7 @@
   "JMPX": {
     "description": {
       "short": "",
-      "long": "_Jumps_, or transfers control, to continuation `c`.\nThe remainder of the previous current continuation `cс` is discarded.",
+      "long": "_Jumps_, or transfers control, to continuation `c` from the stack.\nThe remainder of the previous current continuation `cc` is discarded.",
       "tags": [],
       "operands": []
     },
@@ -40,7 +40,7 @@
   "RET": {
     "description": {
       "short": "",
-      "long": "_Returns_ to the continuation at `c0`. The remainder of the current continuation `cc` is discarded.",
+      "long": "_Returns_ to the continuation from `c0`. The remainder of the current continuation `cc` is discarded.",
       "tags": [],
       "operands": [],
       "other_implementations": [
@@ -64,7 +64,7 @@
   "RETALT": {
     "description": {
       "short": "",
-      "long": "_Returns_ to the continuation at `c1`. The remainder of the current continuation `cc` is discarded.",
+      "long": "_Returns_ to the continuation from `c1`. The remainder of the current continuation `cc` is discarded.",
       "tags": [],
       "operands": [],
       "other_implementations": [
@@ -112,7 +112,7 @@
   "CALLCC": {
     "description": {
       "short": "",
-      "long": "_Call with current continuation_, transfers control to `c`, pushing the old value of `c` into `c`'s stack (instead of discarding it or writing it into new `c0`).",
+      "long": "_Call with current continuation_, transfers control to `c` from the stack, pushing the old value of `cc` into `c`'s stack (instead of discarding it or writing it into new `c0`).",
       "tags": [],
       "operands": []
     },
@@ -131,7 +131,7 @@
   "JMPXDATA": {
     "description": {
       "short": "",
-      "long": "_Transfers control_ to continuation `c`, converting the remainder of the current continuation (the old value of `cс`) into a _Slice_ before pushing it onto the stack of `c`. Unlike `CALLCC` which pushes the old continuation as is, this instruction converts it to a _Slice_ first.",
+      "long": "_Transfers control_ to continuation `c` from the stack, converting the remainder of the current continuation (the old value of `cc`) into a _Slice_ before pushing it onto the stack of `c`. Unlike `CALLCC` which pushes the old continuation as is, this instruction converts it to a _Slice_ first.",
       "tags": [],
       "operands": []
     },
@@ -377,7 +377,7 @@
   "JMPXARGS": {
     "description": {
       "short": "",
-      "long": "_Jumps_ to continuation `c`, passing only the top `0 <= p <= 15` values from the current stack to it (the remainder of the current stack is discarded).",
+      "long": "_Jumps_ to continuation `c`, passing only the top `0 <= p <= 15` values from the current stack to it, the remainder of the current stack is discarded.",
       "tags": [],
       "operands": ["p"]
     },
@@ -522,7 +522,38 @@
   "CALLXARGS": {
     "description": {
       "short": "",
-      "long": "_Calls_ continuation `c` with `p` parameters and expecting `r` return values\n`0 <= p <= 15`, `0 <= r <= 15`",
+      "long": "_Calls_ continuation `c` with `0 <= p <= 15` parameters, expecting an arbitrary number of return values.",
+      "tags": [],
+      "operands": ["p"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "array",
+            "name": "args",
+            "length_var": "p",
+            "array_entry": [
+              {
+                "type": "simple",
+                "name": "arg"
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "c",
+            "value_types": ["Continuation"]
+          }
+        ],
+        "registers": []
+      }
+    }
+  },
+  "CALLXARGS_1": {
+    "description": {
+      "short": "",
+      "long": "_Calls_ continuation `c` with `p` parameters and expecting `r` return values.",
       "tags": [],
       "operands": ["p", "r"]
     },
@@ -545,20 +576,7 @@
             "name": "c",
             "value_types": ["Continuation"]
           }
-        ]
-      }
-    }
-  },
-  "CALLXARGS_1": {
-    "description": {
-      "short": "",
-      "long": "",
-      "tags": [],
-      "operands": []
-    },
-    "signature": {
-      "inputs": {
-        "stack": [],
+        ],
         "registers": []
       },
       "outputs": {

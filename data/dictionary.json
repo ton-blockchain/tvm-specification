@@ -1092,7 +1092,7 @@
       "exit_codes": [
         {
           "errno": "5",
-          "condition": "Integer is NaN."
+          "condition": "Integer is `NaN`."
         }
       ]
     },
@@ -1214,7 +1214,7 @@
       "exit_codes": [
         {
           "errno": "5",
-          "condition": "Integer is NaN."
+          "condition": "Integer is `NaN`."
         }
       ]
     },
@@ -1278,7 +1278,7 @@
       "exit_codes": [
         {
           "errno": "5",
-          "condition": "Integer is NaN."
+          "condition": "Integer is `NaN`."
         }
       ]
     },
@@ -8376,8 +8376,8 @@
   },
   "DICTPUSHCONST": {
     "description": {
-      "short": "",
-      "long": "Pushes a non-empty constant dictionary `D` (as a `Cell^?`) along with its key length `0 <= n <= 1023`, stored as a part of the instruction. The dictionary itself is created from the first of remaining references of the current continuation. In this way, the complete `DICTPUSHCONST` instruction can be obtained by first serializing `xF4A4_`, then the non-empty dictionary itself (one `1` bit and a `Cell` reference), and then the unsigned 10-bit integer `n` (as if by a `STU 10` instruction). An empty dictionary can be pushed by a `NEWDICT` primitive instead.",
+      "short": "Pushes a non-empty constant dictionary `D` (as a `Cell^?`) along with its key length `0 <= n <= 1023`, stored as a part of the instruction. An empty dictionary can be pushed by a `PUSHNULL` instruction instead.",
+      "long": "The dictionary itself is created from the first of remaining references of the current continuation. In this way, the complete `DICTPUSHCONST` instruction can be obtained by first serializing `xF4A4_`, then the non-empty dictionary itself (one `1` bit and a `Cell` reference), and then the unsigned 10-bit integer `n` (as if by a `STU 10` instruction).",
       "tags": [],
       "operands": ["d", "n"]
     },

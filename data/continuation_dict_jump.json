@@ -2,13 +2,14 @@
   "JMPDICT": {
     "description": {
       "short": "",
-      "long": "Jumps to the continuation in `c3`, pushing integer `0 <= n < 2^14` as its argument.",
+      "long": "Jumps to the continuation in `c3`, pushing integer `num` as its argument. Essentially it's a jump to method with `num` ID in the dictionary.",
       "tags": [],
-      "operands": ["n"],
+      "related_instructions": ["CALLDICT"],
+      "operands": ["num"],
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["n PUSHINT", "c3 PUSHCTR", "JMPX"]
+          "instructions": ["num PUSHINT", "c3 PUSHCTR", "JMPX"]
         }
       ]
     },
@@ -26,7 +27,7 @@
         "stack": [
           {
             "type": "simple",
-            "name": "n",
+            "name": "num",
             "value_types": ["Int"]
           }
         ]
@@ -36,13 +37,14 @@
   "PREPAREDICT": {
     "description": {
       "short": "",
-      "long": "Equivalent to `n PUSHINT` `c3 PUSHCTR`, for `0 <= n < 2^14`.\nOne might use, for instance, `CALLXARGS` or `CALLCC` instead of `EXECUTE` here.",
+      "long": "Prepares the continuation in `c3` for execution along with the integer `num` as an argument. Useful if you want to call continuation with `CALLXARGS` or `CALLCC` instead of `EXECUTE` as `CALLDICT` does. Essentially it's a preparation for method call with `num` ID in the dictionary.",
       "tags": [],
-      "operands": ["n"],
+      "related_instructions": ["CALLDICT"],
+      "operands": ["num"],
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["n PUSHINT", "c3 PUSHCTR"]
+          "instructions": ["num PUSHINT", "c3 PUSHCTR"]
         }
       ]
     },
@@ -60,7 +62,7 @@
         "stack": [
           {
             "type": "simple",
-            "name": "n",
+            "name": "num",
             "value_types": ["Int"]
           },
           {
@@ -75,13 +77,14 @@
   "CALLDICT": {
     "description": {
       "short": "",
-      "long": "Calls the continuation in `c3`, pushing integer `num` into its stack as an argument.",
+      "long": "Calls the continuation in `c3`, pushing integer `num` into its stack as an argument. Essentially it's a call to method with `num` ID in the dictionary.",
       "tags": [],
+      "related_instructions": ["CALLDICT_LONG"],
       "operands": ["num"],
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["[n] PUSHINT", "c3 PUSHCTR", "EXECUTE"]
+          "instructions": ["[num] PUSHINT", "c3 PUSHCTR", "EXECUTE"]
         }
       ]
     },
@@ -109,9 +112,10 @@
   "CALLDICT_LONG": {
     "description": {
       "short": "",
-      "long": "For `0 <= n < 2^14`, an encoding of `[n] CALL` for larger values of `n`.",
+      "long": "Calls the continuation in `c3`, pushing integer `num` into its stack as an argument. Long version of `CALLDICT` where `0 <= num < 2^14`. Essentially it's a call to method with `num` ID in the dictionary.",
       "tags": [],
-      "operands": ["n"]
+      "related_instructions": ["CALLDICT"],
+      "operands": ["num"]
     },
     "signature": {
       "inputs": {
@@ -127,7 +131,7 @@
         "stack": [
           {
             "type": "simple",
-            "name": "n",
+            "name": "num",
             "value_types": ["Int"]
           }
         ]

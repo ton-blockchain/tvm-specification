@@ -380,7 +380,7 @@
   "IFNBITJMP": {
     "description": {
       "short": "",
-      "long": "Jumps to `body` if bit `0 <= num <= 31` is not set in integer `x`.",
+      "long": "Checks whether bit `0 <= num <= 31` is NOT set in integer `x`, and if so, performs `JMPX` to continuation `body`. Value `x` is left in the stack.",
       "tags": [],
       "operands": ["num"]
     },
@@ -598,7 +598,7 @@
   "IFBITJMPREF": {
     "description": {
       "short": "",
-      "long": "Performs a `JMPREF` if bit `0 <= num <= 31` is set in integer `x`.",
+      "long": "Performs a `JMPREF` if bit `0 <= num <= 31` is set in integer `x`. Value `x` is left in the stack.",
       "tags": [],
       "operands": ["num", "body"]
     },
@@ -626,7 +626,7 @@
   "IFNBITJMPREF": {
     "description": {
       "short": "",
-      "long": "Performs a `JMPREF` if bit `0 <= num <= 31` is not set in integer `x`.",
+      "long": "Performs a `JMPREF` if bit `0 <= num <= 31` is NOT set in integer `x`. Value `x` is left in the stack.",
       "tags": [],
       "operands": ["num", "body"]
     },

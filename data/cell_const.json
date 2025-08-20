@@ -21,7 +21,7 @@
   "PUSHREFSLICE": {
     "description": {
       "short": "",
-      "long": "Similar to `PUSHREF`, but converts the cell into a _Slice_.",
+      "long": "Pushes the reference `ref` onto the stack and converts the pushed cell into a _Slice_.",
       "tags": [],
       "operands": ["c"]
     },
@@ -40,7 +40,7 @@
   "PUSHREFCONT": {
     "description": {
       "short": "",
-      "long": "Similar to `PUSHREFSLICE`, but makes a simple ordinary _Continuation_ out of the cell.",
+      "long": "Pushes the reference `ref` onto the stack and converts the pushed cell into a _Continuation_.",
       "tags": [],
       "operands": ["c"]
     },
@@ -61,7 +61,7 @@
       "short": "Pushes the `slice` onto the stack.",
       "long": "Pushes the slice `slice` onto the stack.\n_Details:_ Pushes the (prefix) subslice of `cc.code` consisting of its first `8x+4` bits and no references (i.e., essentially a bitstring), where `0 <= x <= 15`.\nA completion tag is assumed, meaning that all trailing zeroes and the last binary one (if present) are removed from this bitstring.\nIf the original bitstring consists only of zeroes, an empty slice will be pushed.",
       "tags": [],
-      "operands": ["s"]
+      "operands": ["slice"]
     },
     "signature": {
       "outputs": {

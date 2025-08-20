@@ -51,18 +51,39 @@
   "ENDCST": {
     "description": {
       "short": "",
-      "long": "",
-      "tags": [],
-      "operands": []
+      "long": "Converts a _Builder_ to _Cell_ and stores a reference to it into another _Builder_.",
+      "tags": ["builder building"],
+      "operands": [],
+      "other_implementations": [
+        {
+          "exact": true,
+          "instructions": ["ENDC", "SWAP", "STREF"]
+        }
+      ]
     },
     "signature": {
       "inputs": {
-        "stack": [],
-        "registers": []
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          },
+          {
+            "type": "simple",
+            "name": "child",
+            "value_types": ["Builder"]
+          }
+        ]
       },
       "outputs": {
-        "stack": [],
-        "registers": []
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b'",
+            "value_types": ["Builder"]
+          }
+        ]
       }
     }
   },

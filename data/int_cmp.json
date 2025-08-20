@@ -392,144 +392,281 @@
   },
   "QSGN": {
     "description": {
-      "short": "",
-      "long": "",
+      "short": "Computes the sign of an integer `x`. Returns `NaN` if operand is `NaN`.",
+      "long": "Computes the sign of an integer `x`:\n`-1` if `x < 0`, `0` if `x == 0`, `1` if `x > 0`. If the operand is `NaN`, returns `NaN` instead of throwing an exception.",
       "tags": [],
       "operands": []
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
   },
   "QLESS": {
     "description": {
-      "short": "",
-      "long": "",
-      "tags": [],
+      "short": "Compares `x` and `y` for less than and returns `-1` if true and `0` otherwise. Returns `NaN` if any operand is `NaN`.",
+      "long": "Compares two integers from the stack for less than and returns `-1` if true and `0` otherwise. If any of the operands is `NaN`, returns `NaN` instead of throwing an exception.",
+      "tags": ["comparisons"],
       "operands": []
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "presentation": "x < y",
+            "value_types": ["Bool"]
+          }
+        ],
         "registers": []
       }
     }
   },
   "QEQUAL": {
     "description": {
-      "short": "",
-      "long": "",
-      "tags": [],
+      "short": "Compares `x` and `y` for equality and returns `-1` if equal and `0` otherwise. Returns `NaN` if any operand is `NaN`.",
+      "long": "Compares two integers from the stack for equality and returns `-1` if equal and `0` otherwise. If any of the operands is `NaN`, returns `NaN` instead of throwing an exception.",
+      "tags": ["comparisons"],
       "operands": []
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "presentation": "x == y",
+            "value_types": ["Bool"]
+          }
+        ],
         "registers": []
       }
     }
   },
   "QLEQ": {
     "description": {
-      "short": "",
-      "long": "",
-      "tags": [],
+      "short": "Compares `x` and `y` for less than or equal to and returns `-1` if true and `0` otherwise. Returns `NaN` if any operand is `NaN`.",
+      "long": "Compares two integers from the stack for less than or equal to and returns `-1` if true and `0` otherwise. If any of the operands is `NaN`, returns `NaN` instead of throwing an exception.",
+      "tags": ["comparisons"],
       "operands": []
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "presentation": "x <= y",
+            "value_types": ["Bool"]
+          }
+        ],
         "registers": []
       }
     }
   },
   "QGREATER": {
     "description": {
-      "short": "",
-      "long": "",
-      "tags": [],
+      "short": "Compares `x` and `y` for greater than and returns `-1` if true and `0` otherwise. Returns `NaN` if any operand is `NaN`.",
+      "long": "Compares two integers from the stack for greater than and returns `-1` if true and `0` otherwise. If any of the operands is `NaN`, returns `NaN` instead of throwing an exception.",
+      "tags": ["comparisons"],
       "operands": []
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "presentation": "x >= y",
+            "value_types": ["Bool"]
+          }
+        ],
         "registers": []
       }
     }
   },
   "QNEQ": {
     "description": {
-      "short": "",
-      "long": "",
-      "tags": [],
+      "short": "Compares `x` and `y` for inequality and returns `-1` if true and `0` otherwise. Returns `NaN` if any operand is `NaN`.",
+      "long": "Compares two integers from the stack for inequality and returns `-1` if true and `0` otherwise. If any of the operands is `NaN`, returns `NaN` instead of throwing an exception.",
+      "tags": ["comparisons"],
       "operands": []
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "presentation": "x != y",
+            "value_types": ["Bool"]
+          }
+        ],
         "registers": []
       }
     }
   },
   "QGEQ": {
     "description": {
-      "short": "",
-      "long": "",
-      "tags": [],
+      "short": "Compares `x` and `y` for greater than or equal to and returns `-1` if true and `0` otherwise. Returns `NaN` if any operand is `NaN`.",
+      "long": "Compares two integers from the stack for greater than or equal to and returns `-1` if true and `0` otherwise. If any of the operands is `NaN`, returns `NaN` instead of throwing an exception.",
+      "tags": ["comparisons"],
       "operands": []
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "presentation": "x >= y",
+            "value_types": ["Bool"]
+          }
+        ],
         "registers": []
       }
     }
   },
   "QCMP": {
     "description": {
-      "short": "",
-      "long": "",
-      "tags": [],
+      "short": "Computes the sign of `x-y`. Returns `NaN` if any operand is `NaN`.",
+      "long": "Computes the sign of `x-y`:\n`-1` if `x<y`, `0` if `x=y`, `1` if `x>y`. If any of the operands is `NaN`, returns `NaN` instead of throwing an exception.",
+      "tags": ["comparisons"],
       "operands": []
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
@@ -688,72 +825,120 @@
   },
   "QEQINT": {
     "description": {
-      "short": "",
-      "long": "",
+      "short": "Compares `x` from stack and `y` from arguments for equality and returns `-1` if equal and `0` otherwise. Returns `NaN` if operand is `NaN`.",
+      "long": "Compares integer from stack with argument for equality and returns `-1` if equal and `0` otherwise. If the operand is `NaN`, returns `NaN` instead of throwing an exception.",
       "tags": [],
-      "operands": []
+      "operands": ["y"]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Bool"]
+          }
+        ],
         "registers": []
       }
     }
   },
   "QLESSINT": {
     "description": {
-      "short": "",
-      "long": "",
+      "short": "Compares `x` from stack and `y` from arguments for less than and returns `-1` if true and `0` otherwise. Returns `NaN` if operand is `NaN`.",
+      "long": "Compares integer from stack with argument for less than and returns `-1` if true and `0` otherwise. If the operand is `NaN`, returns `NaN` instead of throwing an exception.",
       "tags": [],
-      "operands": []
+      "operands": ["y"]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Bool"]
+          }
+        ],
         "registers": []
       }
     }
   },
   "QGTINT": {
     "description": {
-      "short": "",
-      "long": "",
+      "short": "Compares `x` from stack and `y` from arguments for greater than and returns `-1` if true and `0` otherwise. Returns `NaN` if operand is `NaN`.",
+      "long": "Compares integer from stack with argument for greater than and returns `-1` if true and `0` otherwise. If the operand is `NaN`, returns `NaN` instead of throwing an exception.",
       "tags": [],
-      "operands": []
+      "operands": ["y"]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Bool"]
+          }
+        ],
         "registers": []
       }
     }
   },
   "QNEQINT": {
     "description": {
-      "short": "",
-      "long": "",
+      "short": "Compares `x` from stack and `y` from arguments for inequality and returns `-1` if true and `0` otherwise. Returns `NaN` if operand is `NaN`.",
+      "long": "Compares integer from stack with argument for inequality and returns `-1` if true and `0` otherwise. If the operand is `NaN`, returns `NaN` instead of throwing an exception.",
       "tags": [],
-      "operands": []
+      "operands": ["y"]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Bool"]
+          }
+        ],
         "registers": []
       }
     }

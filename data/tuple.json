@@ -533,7 +533,13 @@
       "short": "",
       "long": "Returns the last element of a non-empty _Tuple_ `t`.",
       "tags": [],
-      "operands": []
+      "operands": [],
+      "exit_codes": [
+        {
+          "errno": "7",
+          "condition": "Tuple is empty."
+        }
+      ]
     },
     "signature": {
       "inputs": {

@@ -857,9 +857,15 @@
   "CHKDEPTH": {
     "description": {
       "short": "",
-      "long": "Pops integer `i` from the stack, then checks whether there are at least `i` elements, generating a stack underflow exception otherwise.",
+      "long": "Pops integer `i` from the stack and checks whether there are at least `i` elements, generating a stack underflow exception otherwise.",
       "tags": ["stack"],
-      "operands": []
+      "operands": [],
+      "exit_codes": [
+        {
+          "errno": "2",
+          "condition": "Stack contains less than `i` elements."
+        }
+      ]
     },
     "signature": {
       "inputs": {

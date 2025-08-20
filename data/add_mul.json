@@ -140,7 +140,7 @@
   "NEGATE": {
     "description": {
       "short": "Negates an integer and pushes the result back onto the stack.",
-      "long": "",
+      "long": "Pops an integer from the stack, negates it and pushes the result back onto the stack.",
       "tags": [],
       "operands": [],
       "exit_codes": [
@@ -314,8 +314,8 @@
   },
   "QADD": {
     "description": {
-      "short": "",
-      "long": "",
+      "short": "Adds two integers and pushes the result back onto the stack. Returns `NaN` if any operand is `NaN`.",
+      "long": "Pops two integers from the stack, adds them and pushes the result back onto the stack. If any of the operands is `NaN`, returns `NaN` instead of throwing an exception.",
       "tags": [],
       "operands": []
     },
@@ -347,8 +347,8 @@
   },
   "QSUB": {
     "description": {
-      "short": "",
-      "long": "",
+      "short": "Subtracts two integers and pushes the result back onto the stack. Returns `NaN` if any operand is `NaN`.",
+      "long": "Pops two integers from the stack, subtracts the second one from the first one and pushes the result back onto the stack. If any of the operands is `NaN`, returns `NaN` instead of throwing an exception.",
       "tags": [],
       "operands": []
     },
@@ -380,8 +380,8 @@
   },
   "QSUBR": {
     "description": {
-      "short": "",
-      "long": "",
+      "short": "Subtracts two integers in reverse order and pushes the result back onto the stack. Returns `NaN` if any operand is `NaN`.",
+      "long": "Pops two integers from the stack, subtracts the first one from the second one and pushes the result back onto the stack. If any of the operands is `NaN`, returns `NaN` instead of throwing an exception.",
       "tags": [],
       "operands": []
     },
@@ -413,8 +413,8 @@
   },
   "QNEGATE": {
     "description": {
-      "short": "",
-      "long": "",
+      "short": "Negates an integer and pushes the result back onto the stack. Returns `NaN` if operand is `NaN`.",
+      "long": "Pops an integer from the stack, negates it and pushes the result back onto the stack. If the operand is `NaN`, returns `NaN` instead of throwing an exception.",
       "tags": [],
       "operands": []
     },
@@ -441,8 +441,8 @@
   },
   "QINC": {
     "description": {
-      "short": "",
-      "long": "",
+      "short": "Increments an integer and pushes the result back onto the stack. Returns `NaN` if operand is `NaN`.",
+      "long": "Pops an integer from the stack, increments it by 1 and pushes the result back onto the stack. If the operand is `NaN`, returns `NaN` instead of throwing an exception.",
       "tags": [],
       "operands": []
     },
@@ -469,8 +469,8 @@
   },
   "QDEC": {
     "description": {
-      "short": "",
-      "long": "",
+      "short": "Decrements an integer and pushes the result back onto the stack. Returns `NaN` if operand is `NaN`.",
+      "long": "Pops an integer from the stack, decrements it by 1 and pushes the result back onto the stack. If the operand is `NaN`, returns `NaN` instead of throwing an exception.",
       "tags": [],
       "operands": []
     },
@@ -497,8 +497,8 @@
   },
   "QMUL": {
     "description": {
-      "short": "",
-      "long": "",
+      "short": "Multiplies two integers and pushes the result back onto the stack. Returns `NaN` if any operand is `NaN`.",
+      "long": "Pops two integers from the stack, multiplies them and pushes the result back onto the stack. If any of the operands is `NaN`, returns `NaN` instead of throwing an exception.",
       "tags": [],
       "operands": []
     },
@@ -537,7 +537,7 @@
       "exit_codes": [
         {
           "errno": "4",
-          "condition": "Top element is a NaN."
+          "condition": "Top element is a `NaN`."
         }
       ]
     },
@@ -574,7 +574,7 @@
       "exit_codes": [
         {
           "errno": "4",
-          "condition": "Top element is a NaN."
+          "condition": "Top element is a `NaN`."
         }
       ]
     },
