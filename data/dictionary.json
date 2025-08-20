@@ -209,7 +209,7 @@
   "LDDICTQ": {
     "description": {
       "short": "",
-      "long": "A quiet version of `LDDICT`.",
+      "long": "Loads a dictionary `D` from _Slice_ `s`, and returns the remainder of `s` as `s'`. May be applied to dictionaries or to values of arbitrary `(^Y)?` types. This is a quiet version of `LDDICT` which means that instead of throwing an exception, it pushes a status flag to the stack: 0 if the operation fails, -1 if the operation succeeds.",
       "tags": [],
       "operands": []
     },
@@ -231,13 +231,7 @@
             "match": [
               {
                 "value": 0,
-                "stack": [
-                  {
-                    "type": "simple",
-                    "name": "s",
-                    "value_types": ["Int"]
-                  }
-                ]
+                "stack": []
               },
               {
                 "value": -1,
@@ -249,7 +243,7 @@
                   },
                   {
                     "type": "simple",
-                    "name": "s2",
+                    "name": "s'",
                     "value_types": ["Slice"]
                   }
                 ]
@@ -721,7 +715,23 @@
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "D",
+            "value_types": ["Cell", "Null"]
+          },
+          {
+            "type": "simple",
+            "name": "n",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
@@ -985,8 +995,23 @@
     },
     "signature": {
       "inputs": {
-        "stack": [],
-        "registers": []
+        "stack": [
+          {
+            "type": "simple",
+            "name": "i",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "D",
+            "value_types": ["Cell", "Null"]
+          },
+          {
+            "type": "simple",
+            "name": "n",
+            "value_types": ["Int"]
+          }
+        ]
       },
       "outputs": {
         "stack": [],
@@ -1011,7 +1036,23 @@
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "i",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "D",
+            "value_types": ["Cell", "Null"]
+          },
+          {
+            "type": "simple",
+            "name": "n",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {

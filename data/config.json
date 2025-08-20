@@ -864,7 +864,7 @@
           {
             "type": "simple",
             "name": "x",
-            "value_types": ["Int"]
+            "value_types": ["Any"]
           }
         ]
       }

@@ -11489,7 +11489,7 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Sets `c2` to `c'`, first saving the old value of `c2` both into the savelist of `c'` and into the savelist of the current continuation, which is stored into `c.c0` and `c'.c0`. Then runs `c` similarly to `EXECUTE`. If `c` does not throw any exceptions, the original value of `c2` is automatically restored on return from `c`. If an exception occurs, the execution is transferred to `c'`, but the original value of `c2` is restored in the process, so that `c'` can re-throw the exception by `THROWANY` if it cannot handle it by itself.",
+        "long": "Sets `c2` to `handler`, first saving the old value of `c2` both into the savelist of `handler` and into the savelist of the current continuation `cc`, which is stored into `body.c0` and `handler.c0`. Then runs `body` similarly to `EXECUTE`. If `body` does not throw any exceptions, the original value of `c2` is automatically restored on return from `body`. If an exception occurs, the execution is transferred to `handler`, but the original value of `c2` is restored in the process, so that `handler` can re-throw the exception by `THROWANY` if it cannot handle it by itself.",
         "tags": ["exception_handling", "control_flow"],
         "operands": []
       },
@@ -11893,7 +11893,7 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "A quiet version of `LDDICT`.",
+        "long": "Loads a dictionary `D` from _Slice_ `s`, and returns the remainder of `s` as `s'`. May be applied to dictionaries or to values of arbitrary `(^Y)?` types. This is a quiet version of `LDDICT` which means that instead of throwing an exception, it pushes a status flag to the stack: 0 if the operation fails, -1 if the operation succeeds.",
         "tags": [],
         "operands": []
       },
@@ -11912,7 +11912,7 @@
         "prefix_str": "F406"
       },
       "signature": {
-        "stack_string": "s:Slice -> (s:Int 0)|(D:Cell|Null s2:Slice -1) status:Int",
+        "stack_string": "s:Slice -> (∅ 0)|(D:Cell|Null s':Slice -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -11930,13 +11930,7 @@
               "match": [
                 {
                   "value": 0,
-                  "stack": [
-                    {
-                      "type": "simple",
-                      "name": "s",
-                      "value_types": ["Int"]
-                    }
-                  ]
+                  "stack": []
                 },
                 {
                   "value": -1,
@@ -11948,7 +11942,7 @@
                     },
                     {
                       "type": "simple",
-                      "name": "s2",
+                      "name": "s'",
                       "value_types": ["Slice"]
                     }
                   ]
@@ -12554,9 +12548,25 @@
         "prefix_str": "F4AA"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "s:Slice D:Cell|Null n:Int -> ∅",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "s",
+              "value_types": ["Slice"]
+            },
+            {
+              "type": "simple",
+              "name": "D",
+              "value_types": ["Cell", "Null"]
+            },
+            {
+              "type": "simple",
+              "name": "n",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
@@ -30605,10 +30615,25 @@
         "prefix_str": "F4BC"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "i:Int D:Cell|Null n:Int -> ∅",
         "inputs": {
-          "stack": [],
-          "registers": []
+          "stack": [
+            {
+              "type": "simple",
+              "name": "i",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "D",
+              "value_types": ["Cell", "Null"]
+            },
+            {
+              "type": "simple",
+              "name": "n",
+              "value_types": ["Int"]
+            }
+          ]
         },
         "outputs": {
           "stack": [],
@@ -30648,9 +30673,25 @@
         "prefix_str": "F4BD"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "i:Int D:Cell|Null n:Int -> ∅",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "i",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "D",
+              "value_types": ["Cell", "Null"]
+            },
+            {
+              "type": "simple",
+              "name": "n",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
@@ -41564,7 +41605,7 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Similar to `TRY`, but with `[p] [r] CALLXARGS` internally used instead of `EXECUTE`.\nIn this way, all but the top `0 <= p <= 15` stack elements will be saved into current continuation's stack, and then restored upon return from either `c` or `c'`, with the top `0 <= r <= 15` values of the resulting stack of `c` or `c'` copied as return values.",
+        "long": "Similar to `TRY`, but with `[p] [r] CALLXARGS` internally used instead of `EXECUTE`.\nIn this way, all but the top `0 <= p <= 15` stack elements will be saved into current continuation's stack, and then restored upon return from either `body` or `handler`, with the top `0 <= r <= 15` values of the resulting stack of `body` or `handler` copied as return values.",
         "tags": ["exception_handling", "control_flow"],
         "operands": ["p", "r"]
       },
