@@ -830,7 +830,7 @@
   "ENDXC": {
     "description": {
       "short": "Creates an exotic or ordinary _Cell_ from _Builder_.",
-      "long": "If ` x!= 0`, creates a _special_ or _exotic_ cell from _Builder_ `b`.\nThe type of the exotic cell must be stored in the first 8 bits of `b`.\nIf `x == 0`, it is equivalent to `ENDC`. Otherwise some validity checks on the data and references of `b` are performed before creating the exotic cell.",
+      "long": "If `x != 0`, creates a _special_ or _exotic_ cell from _Builder_ `b`.\nThe type of the exotic cell must be stored in the first 8 bits of `b`.\nIf `x == 0`, it is equivalent to `ENDC`. Otherwise some validity checks on the data and references of `b` are performed before creating the exotic cell.",
       "tags": [],
       "operands": []
     },
@@ -2101,7 +2101,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["SWAP [c+1]", "STI"]
+          "instructions": ["SWAP", "STI"]
         }
       ]
     },
@@ -2165,7 +2165,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["SWAP [c+1]", "STU"]
+          "instructions": ["SWAP", "STU"]
         }
       ]
     },
@@ -2792,7 +2792,7 @@
   },
   "STI_ALT": {
     "description": {
-      "short": "Stores a signed `width`-bit integer `x` into _Builder_ `b` and returns the resulting _Builder_ `b'`. A longer version of `[c+1] STI`.",
+      "short": "Stores a signed `width`-bit integer `x` into _Builder_ `b` and returns the resulting _Builder_ `b'`. A longer version of `[width] STI`.",
       "long": "",
       "tags": ["builder building"],
       "operands": ["width"],
@@ -2908,7 +2908,7 @@
   },
   "STU_ALT": {
     "description": {
-      "short": "Stores an unsigned `width`-bit integer `x` into _Builder_ `b` and returns the resulting _Builder_ `b'`. A longer version of `[c+1] STU`.",
+      "short": "Stores an unsigned `width`-bit integer `x` into _Builder_ `b` and returns the resulting _Builder_ `b'`. A longer version of `[width] STU`.",
       "long": "",
       "tags": ["builder building"],
       "operands": ["width"],
