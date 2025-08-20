@@ -11679,7 +11679,7 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Exchanges the top two stack items. Takes two elements from the stack and pushes them back in reverse order.",
+        "long": "Interchanges the top two stack items. Takes two elements from the stack and pushes them back in reverse order.",
         "tags": ["stack"],
         "operands": [],
         "exit_codes": [
@@ -11724,13 +11724,35 @@
         "prefix_str": "1"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Any y:Any -> y:Any x:Any",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Any"]
+            },
+            {
+              "type": "simple",
+              "name": "y",
+              "value_types": ["Any"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "y",
+              "value_types": ["Any"]
+            },
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Any"]
+            }
+          ],
           "registers": []
         }
       }
@@ -11782,13 +11804,30 @@
         "prefix_str": "20"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Any -> x:Any x:Any",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Any"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Any"]
+            },
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Any"]
+            }
+          ],
           "registers": []
         }
       }
@@ -11843,13 +11882,40 @@
         "prefix_str": "21"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "y:Any x:Any -> y:Any x:Any y:Any",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "y",
+              "value_types": ["Any"]
+            },
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Any"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "y",
+              "value_types": ["Any"]
+            },
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Any"]
+            },
+            {
+              "type": "simple",
+              "name": "y",
+              "value_types": ["Any"]
+            }
+          ],
           "registers": []
         }
       }
@@ -11904,9 +11970,15 @@
         "prefix_str": "30"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Any -> ∅",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Any"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
@@ -11965,13 +12037,30 @@
         "prefix_str": "31"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "y:Any x:Any -> x:Any",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "y",
+              "value_types": ["Any"]
+            },
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Any"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Any"]
+            }
+          ],
           "registers": []
         }
       }
@@ -11982,7 +12071,7 @@
       "description": {
         "short": "",
         "long": "Rearranges the top three elements. Moves the third element to the top of the stack: `1 2 3 -> 2 3 1`",
-        "tags": [],
+        "tags": ["stack"],
         "operands": [],
         "other_implementations": [
           {
@@ -12033,13 +12122,45 @@
         "prefix_str": "58"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "z:Any y:Any x:Any -> y:Any x:Any z:Any",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "z",
+              "value_types": ["Any"]
+            },
+            {
+              "type": "simple",
+              "name": "y",
+              "value_types": ["Any"]
+            },
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Any"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "y",
+              "value_types": ["Any"]
+            },
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Any"]
+            },
+            {
+              "type": "simple",
+              "name": "z",
+              "value_types": ["Any"]
+            }
+          ],
           "registers": []
         }
       }
@@ -12050,7 +12171,7 @@
       "description": {
         "short": "",
         "long": "Rearranges the top three elements. Places the top element below the first two following elements.: `1 2 3 -> 3 1 2`",
-        "tags": [],
+        "tags": ["stack"],
         "operands": [],
         "other_implementations": [
           {
@@ -12101,13 +12222,45 @@
         "prefix_str": "59"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "z:Any y:Any x:Any -> x:Any z:Any y:Any",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "z",
+              "value_types": ["Any"]
+            },
+            {
+              "type": "simple",
+              "name": "y",
+              "value_types": ["Any"]
+            },
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Any"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Any"]
+            },
+            {
+              "type": "simple",
+              "name": "z",
+              "value_types": ["Any"]
+            },
+            {
+              "type": "simple",
+              "name": "y",
+              "value_types": ["Any"]
+            }
+          ],
           "registers": []
         }
       }
@@ -12117,8 +12270,8 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Pops integer `i` from the stack, then performs `s[i] PUSH`.",
-        "tags": [],
+        "long": "Pops integer `i` from the stack, then performs `s(i) PUSH`.",
+        "tags": ["stack"],
         "operands": []
       },
       "layout": {
@@ -12136,9 +12289,15 @@
         "prefix_str": "60"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "i:Int -> ∅",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "i",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
@@ -12153,7 +12312,7 @@
       "description": {
         "short": "",
         "long": "Takes integer `x` from the top of the stack and moves the `x`-th element from the top to the top of the stack. For example, `ROLL 2` is equivalent to `ROT` (`1 2 3 -> 2 3 1`).",
-        "tags": [],
+        "tags": ["stack"],
         "operands": [],
         "exit_codes": [
           {
@@ -12216,9 +12375,15 @@
         "prefix_str": "61"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Int -> ∅",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
@@ -12296,9 +12461,15 @@
         "prefix_str": "62"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Int -> ∅",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
@@ -12313,7 +12484,7 @@
       "description": {
         "short": "",
         "long": "Pops integers `i`,`j` from the stack, then performs `[i] [j] BLKSWAP`.",
-        "tags": [],
+        "tags": ["stack"],
         "operands": []
       },
       "layout": {
@@ -12331,9 +12502,20 @@
         "prefix_str": "63"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "i:Int j:Int -> ∅",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "i",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "j",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
@@ -12348,7 +12530,7 @@
       "description": {
         "short": "",
         "long": "Pops integers `i`,`j` from the stack, then performs `[i] [j] REVERSE`.",
-        "tags": [],
+        "tags": ["stack"],
         "operands": []
       },
       "layout": {
@@ -12366,9 +12548,20 @@
         "prefix_str": "64"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "i:Int j:Int -> ∅",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "i",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "j",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
@@ -12383,7 +12576,7 @@
       "description": {
         "short": "",
         "long": "Pops integer `i` from the stack, then performs `[i] BLKDROP`.",
-        "tags": [],
+        "tags": ["stack"],
         "operands": []
       },
       "layout": {
@@ -12401,9 +12594,15 @@
         "prefix_str": "65"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "i:Int -> ∅",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "i",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
@@ -12417,9 +12616,19 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Equivalent to `SWAP` `OVER` or to `s1 s1 XCPU`.",
-        "tags": [],
-        "operands": []
+        "long": "Copies the top stack item below the second item. For example, `1 2 -> 2 1 2`.",
+        "tags": ["stack"],
+        "operands": [],
+        "other_implementations": [
+          {
+            "exact": true,
+            "instructions": ["SWAP", "OVER"]
+          },
+          {
+            "exact": true,
+            "instructions": ["s1", "s1", "XCPU"]
+          }
+        ]
       },
       "layout": {
         "min": 6684672,
@@ -12436,13 +12645,40 @@
         "prefix_str": "66"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "y:Any x:Any -> x:Any y:Any x:Any",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "y",
+              "value_types": ["Any"]
+            },
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Any"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Any"]
+            },
+            {
+              "type": "simple",
+              "name": "y",
+              "value_types": ["Any"]
+            },
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Any"]
+            }
+          ],
           "registers": []
         }
       }
@@ -12452,8 +12688,8 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Pops integer `i` from the stack, then performs `s[i] XCHG`.",
-        "tags": [],
+        "long": "Pops integer `i` from the stack, then performs `s(i) XCHG`.",
+        "tags": ["stack"],
         "operands": []
       },
       "layout": {
@@ -12471,9 +12707,15 @@
         "prefix_str": "67"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "i:Int -> ∅",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "i",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
@@ -12547,7 +12789,7 @@
       "description": {
         "short": "",
         "long": "Pops integer `i` from the stack, then checks whether there are at least `i` elements, generating a stack underflow exception otherwise.",
-        "tags": [],
+        "tags": ["stack"],
         "operands": []
       },
       "layout": {
@@ -12574,7 +12816,12 @@
               "name": "i",
               "value_types": ["Int"]
             }
-          ]
+          ],
+          "registers": []
+        },
+        "outputs": {
+          "stack": [],
+          "registers": []
         }
       }
     },
@@ -12584,7 +12831,7 @@
       "description": {
         "short": "",
         "long": "Pops integer `i` from the stack, then removes all but the top `i` elements.",
-        "tags": [],
+        "tags": ["stack"],
         "operands": []
       },
       "layout": {
@@ -12602,9 +12849,15 @@
         "prefix_str": "6A"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "i:Int -> ∅",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "i",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
@@ -12619,7 +12872,7 @@
       "description": {
         "short": "",
         "long": "Pops integer `i` from the stack, then leaves only the bottom `i` elements.",
-        "tags": [],
+        "tags": ["stack"],
         "operands": [],
         "other_implementations": [
           {
@@ -12643,9 +12896,15 @@
         "prefix_str": "6B"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "i:Int -> ∅",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "i",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
@@ -41357,9 +41616,15 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Equivalent to `s[i] s[j] XCHG2` `s[k] PUSH`.",
-        "tags": [],
-        "operands": ["i", "j", "k"]
+        "long": "Performs a double exchange (`s(i) s(j) XCHG2`) followed by pushing a value (`s(k) PUSH`).",
+        "tags": ["stack"],
+        "operands": ["i", "j", "k"],
+        "other_implementations": [
+          {
+            "exact": true,
+            "instructions": ["s(i) s(j) XCHG2", "s(k) PUSH"]
+          }
+        ]
       },
       "layout": {
         "min": 5509120,
@@ -41417,9 +41682,15 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Equivalent to `s[i] XCHG0` `s[j] s[k] PUSH2`.",
-        "tags": [],
-        "operands": ["i", "j", "k"]
+        "long": "Exchanges `i`-th element with top (`s(i) XCHG0`) and pushes two values (`s(j) s(k) PUSH2`).",
+        "tags": ["stack"],
+        "operands": ["i", "j", "k"],
+        "other_implementations": [
+          {
+            "exact": true,
+            "instructions": ["s(i) XCHG0", "s(j) s(k) PUSH2"]
+          }
+        ]
       },
       "layout": {
         "min": 5517312,
@@ -41477,9 +41748,15 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Equivalent to `s[i] PUSH` `s[j+1] s[k+1] PUSH2`.",
-        "tags": [],
-        "operands": ["i", "j", "k"]
+        "long": "Pushes three values from different stack positions (`s(i) PUSH`, `s[j+1] s[k+1] PUSH2`).",
+        "tags": ["stack"],
+        "operands": ["i", "j", "k"],
+        "other_implementations": [
+          {
+            "exact": true,
+            "instructions": ["s(i) PUSH", "s[j+1] s[k+1] PUSH2"]
+          }
+        ]
       },
       "layout": {
         "min": 5533696,
@@ -41537,9 +41814,15 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Equivalent to `s1 s[i] XCHG` `s[j] XCHG0`.",
-        "tags": [],
-        "operands": ["i", "j"]
+        "long": "Performs two stack element exchanges in sequence (`s1 s(i) XCHG`, `s(j) XCHG0`).",
+        "tags": ["stack"],
+        "operands": ["i", "j"],
+        "other_implementations": [
+          {
+            "exact": true,
+            "instructions": ["s1 s(i) XCHG", "s(j) XCHG0"]
+          }
+        ]
       },
       "layout": {
         "min": 5242880,
@@ -41589,9 +41872,15 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Equivalent to `s[i] XCHG0` `s[j] PUSH`.",
-        "tags": [],
-        "operands": ["i", "j"]
+        "long": "Exchanges `i`-th element with top (`s(i) XCHG0`) and pushes `j`-th element (`s(j) PUSH`).",
+        "tags": ["stack"],
+        "operands": ["i", "j"],
+        "other_implementations": [
+          {
+            "exact": true,
+            "instructions": ["s(i) XCHG0", "s(j) PUSH"]
+          }
+        ]
       },
       "layout": {
         "min": 5308416,
@@ -41641,9 +41930,15 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Equivalent to `s[i] PUSH` `s[j+1] PUSH`.",
-        "tags": [],
-        "operands": ["i", "j"]
+        "long": "Pushes two values from `i`-th and `j`-th positions (`s(i) PUSH`, `s[j+1] PUSH`).",
+        "tags": ["stack"],
+        "operands": ["i", "j"],
+        "other_implementations": [
+          {
+            "exact": true,
+            "instructions": ["s(i) PUSH", "s[j+1] PUSH"]
+          }
+        ]
       },
       "layout": {
         "min": 5439488,
@@ -41693,9 +41988,15 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Equivalent to `s[i] PUSH` `SWAP` `s[j] XCHG0`.",
-        "tags": [],
-        "operands": ["i", "j"]
+        "long": "Pushes `i`-th element, swaps it, and exchanges with `j`-th element (`s(i) PUSH`, `SWAP`, `s(j) XCHG0`).",
+        "tags": ["stack"],
+        "operands": ["i", "j"],
+        "other_implementations": [
+          {
+            "exact": true,
+            "instructions": ["s(i) PUSH", "SWAP", "s(j) XCHG0"]
+          }
+        ]
       },
       "layout": {
         "min": 5373952,
@@ -41749,9 +42050,15 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Equivalent to `s1 s[i] XCHG` `s[j] s[k-1] PUXC`.",
-        "tags": [],
-        "operands": ["i", "j", "k"]
+        "long": "Exchanges second with `i`-th element, then performs PUXC with `j` and `k-1` (`s1 s(i) XCHG`, `s(j) s[k-1] PUXC`).",
+        "tags": ["stack"],
+        "operands": ["i", "j", "k"],
+        "other_implementations": [
+          {
+            "exact": true,
+            "instructions": ["s1 s(i) XCHG", "s(j) s[k-1] PUXC"]
+          }
+        ]
       },
       "layout": {
         "min": 5513216,
@@ -41813,9 +42120,15 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Equivalent to `s[i] PUSH` `s2 XCHG0` `s[j] s[k] XCHG2`.",
-        "tags": [],
-        "operands": ["i", "j", "k"]
+        "long": "Pushes `i`-th element, exchanges with third, then performs XCHG2 with `j` and `k` (`s(i) PUSH`, `s2 XCHG0`, `s(j) s(k) XCHG2`).",
+        "tags": ["stack"],
+        "operands": ["i", "j", "k"],
+        "other_implementations": [
+          {
+            "exact": true,
+            "instructions": ["s(i) PUSH", "s2 XCHG0", "s(j) s(k) XCHG2"]
+          }
+        ]
       },
       "layout": {
         "min": 5521408,
@@ -41881,9 +42194,15 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Equivalent to `s[i] s[j-1] PUXC` `s[k] PUSH`.",
-        "tags": [],
-        "operands": ["i", "j", "k"]
+        "long": "Performs PUXC with `i` and `j-1`, then pushes `k`-th element (`s(i) s[j-1] PUXC`, `s(k) PUSH`).",
+        "tags": ["stack"],
+        "operands": ["i", "j", "k"],
+        "other_implementations": [
+          {
+            "exact": true,
+            "instructions": ["s(i) s[j-1] PUXC", "s(k) PUSH"]
+          }
+        ]
       },
       "layout": {
         "min": 5525504,
@@ -41949,9 +42268,15 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Equivalent to `s[i] PUSH` `SWAP` `s[j] s[k-1] PUXC`.",
-        "tags": [],
-        "operands": ["i", "j", "k"]
+        "long": "Pushes `i`-th element, swaps it, then performs PUXC with `j` and `k-1` (`s(i) PUSH`, `SWAP`, `s(j) s[k-1] PUXC`).",
+        "tags": ["stack"],
+        "operands": ["i", "j", "k"],
+        "other_implementations": [
+          {
+            "exact": true,
+            "instructions": ["s(i) PUSH", "SWAP", "s(j) s[k-1] PUXC"]
+          }
+        ]
       },
       "layout": {
         "min": 5529600,
@@ -42017,7 +42342,7 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Permutes two blocks `s[j+i+1] ... s[j+1]` and `s[j] ... s0`.",
+        "long": "Permutes two blocks `s[j+i+1] ... s[j+1]` and `s(j) ... s0`.",
         "tags": [],
         "operands": ["i", "j"],
         "other_implementations": [
@@ -42083,7 +42408,7 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Reverses the order of `s[j+i+1] ... s[j]`.",
+        "long": "Reverses the order of `s[j+i+1] ... s(j)`.",
         "tags": [],
         "operands": ["i", "j"]
       },
@@ -43983,7 +44308,7 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Equivalent to `PUSH s(j)` performed `i` times.",
+        "long": "Performs `PUSH s(j)` `i` times.",
         "tags": [],
         "operands": ["i", "j"]
       },
@@ -46080,9 +46405,19 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Equivalent to `2 2 BLKSWAP` or to `s3 s2 XCHG2`.",
-        "tags": [],
-        "operands": []
+        "long": "Swaps two pairs of stack elements like `2 2 BLKSWAP` or `s3 s2 XCHG2`.",
+        "tags": ["stack"],
+        "operands": [],
+        "other_implementations": [
+          {
+            "exact": true,
+            "instructions": ["2", "2", "BLKSWAP"]
+          },
+          {
+            "exact": true,
+            "instructions": ["s3", "s2", "XCHG2"]
+          }
+        ]
       },
       "layout": {
         "min": 5898240,
@@ -46099,13 +46434,55 @@
         "prefix_str": "5A"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "z:Any y:Any x:Any k:Any -> x:Any k:Any z:Any y:Any",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "z",
+              "value_types": ["Any"]
+            },
+            {
+              "type": "simple",
+              "name": "y",
+              "value_types": ["Any"]
+            },
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Any"]
+            },
+            {
+              "type": "simple",
+              "name": "k",
+              "value_types": ["Any"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Any"]
+            },
+            {
+              "type": "simple",
+              "name": "k",
+              "value_types": ["Any"]
+            },
+            {
+              "type": "simple",
+              "name": "z",
+              "value_types": ["Any"]
+            },
+            {
+              "type": "simple",
+              "name": "y",
+              "value_types": ["Any"]
+            }
+          ],
           "registers": []
         }
       }
@@ -46115,9 +46492,15 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Equivalent to `DROP` `DROP`.",
-        "tags": [],
-        "operands": []
+        "long": "Removes top two elements from the stack.",
+        "tags": ["stack"],
+        "operands": [],
+        "other_implementations": [
+          {
+            "exact": true,
+            "instructions": ["DROP", "DROP"]
+          }
+        ]
       },
       "layout": {
         "min": 5963776,
@@ -46134,9 +46517,20 @@
         "prefix_str": "5B"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "y:Any x:Any -> ∅",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "y",
+              "value_types": ["Any"]
+            },
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Any"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
@@ -46150,9 +46544,15 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Equivalent to `s1 s0 PUSH2`.",
-        "tags": [],
+        "long": "Duplicates top two stack elements.",
+        "tags": ["stack"],
         "operands": [],
+        "other_implementations": [
+          {
+            "exact": true,
+            "instructions": ["s1", "s0", "PUSH2"]
+          }
+        ],
         "examples": [
           {
             "instructions": [
@@ -46189,13 +46589,45 @@
         "prefix_str": "5C"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "y:Any x:Any -> y:Any x:Any y:Any x:Any",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "y",
+              "value_types": ["Any"]
+            },
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Any"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "y",
+              "value_types": ["Any"]
+            },
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Any"]
+            },
+            {
+              "type": "simple",
+              "name": "y",
+              "value_types": ["Any"]
+            },
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Any"]
+            }
+          ],
           "registers": []
         }
       }
@@ -46205,9 +46637,15 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Equivalent to `s3 s2 PUSH2`.",
-        "tags": [],
-        "operands": []
+        "long": "Copies third and fourth stack elements to the top.",
+        "tags": ["stack"],
+        "operands": [],
+        "other_implementations": [
+          {
+            "exact": true,
+            "instructions": ["s3", "s2", "PUSH2"]
+          }
+        ]
       },
       "layout": {
         "min": 6094848,
@@ -46224,13 +46662,65 @@
         "prefix_str": "5D"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "z:Any y:Any x:Any k:Any -> z:Any y:Any x:Any k:Any z:Any y:Any",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "z",
+              "value_types": ["Any"]
+            },
+            {
+              "type": "simple",
+              "name": "y",
+              "value_types": ["Any"]
+            },
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Any"]
+            },
+            {
+              "type": "simple",
+              "name": "k",
+              "value_types": ["Any"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "z",
+              "value_types": ["Any"]
+            },
+            {
+              "type": "simple",
+              "name": "y",
+              "value_types": ["Any"]
+            },
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Any"]
+            },
+            {
+              "type": "simple",
+              "name": "k",
+              "value_types": ["Any"]
+            },
+            {
+              "type": "simple",
+              "name": "z",
+              "value_types": ["Any"]
+            },
+            {
+              "type": "simple",
+              "name": "y",
+              "value_types": ["Any"]
+            }
+          ],
           "registers": []
         }
       }
@@ -48457,9 +48947,16 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Equivalent to `s2 s[i] XCHG` `s1 s[j] XCHG` `s[k] XCHG0`.",
+        "long": "Performs `s2 s(i) XCHG`, `s1 s(j) XCHG`, and finally `s(k) XCHG0`.",
         "tags": [],
-        "operands": ["i", "j", "k"]
+        "operands": ["i", "j", "k"],
+        "related_instructions": ["XCHG3_ALT"],
+        "other_implementations": [
+          {
+            "exact": true,
+            "instructions": ["s2 s(i) XCHG", "s1 s(j) XCHG", "s(k) XCHG0"]
+          }
+        ]
       },
       "layout": {
         "min": 4194304,
@@ -48517,9 +49014,16 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Long form of `XCHG3`.",
+        "long": "Performs `s2 s(i) XCHG`, `s1 s(j) XCHG`, and finally `s(k) XCHG0`. This is a long form of `XCHG3`.",
         "tags": [],
-        "operands": ["i", "j", "k"]
+        "operands": ["i", "j", "k"],
+        "related_instructions": ["XCHG3"],
+        "other_implementations": [
+          {
+            "exact": false,
+            "instructions": ["s2 s(i) XCHG", "s1 s(j) XCHG", "s(k) XCHG0"]
+          }
+        ]
       },
       "layout": {
         "min": 5505024,
