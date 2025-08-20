@@ -13634,7 +13634,7 @@
         "prefix_str": "F82A"
       },
       "signature": {
-        "stack_string": "∅ -> value:Int",
+        "stack_string": "∅ -> value:Cell",
         "inputs": {
           "stack": [],
           "registers": []
@@ -13644,7 +13644,7 @@
             {
               "type": "simple",
               "name": "value",
-              "value_types": ["Int"]
+              "value_types": ["Cell"]
             }
           ],
           "registers": []

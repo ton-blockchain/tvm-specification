@@ -184,7 +184,7 @@
           {
             "type": "simple",
             "name": "value",
-            "value_types": ["Int"]
+            "value_types": ["Cell"]
           }
         ],
         "registers": []
