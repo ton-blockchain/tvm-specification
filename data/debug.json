@@ -19,9 +19,9 @@
   },
   "DUMPSTK": {
     "description": {
-      "short": "",
-      "long": "",
-      "tags": [],
+      "short": "Dumps the entire contents of the stack for debugging.",
+      "long": "Outputs the entire contents of the stack to debug output without modifying the stack. Useful for debugging and stack inspection.",
+      "tags": ["debug", "stack"],
       "operands": []
     },
     "signature": {
@@ -55,14 +55,20 @@
   },
   "STRDUMP": {
     "description": {
-      "short": "",
-      "long": "",
-      "tags": [],
+      "short": "Dumps slice value as a UTF-8 encoded string to debug output.",
+      "long": "Takes a string value as a slice from the stack and outputs it to debug output. The string is interpreted as a UTF-8 encoded text.",
+      "tags": ["debug", "string"],
       "operands": []
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "str",
+            "value_types": ["Slice"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
@@ -91,10 +97,10 @@
   },
   "DUMP": {
     "description": {
-      "short": "",
-      "long": "",
-      "tags": [],
-      "operands": []
+      "short": "Dumps a `i`-th value from stack to debug output.",
+      "long": "Takes a value from the stack at position `i` and outputs it to debug output. The value is formatted according to its type.",
+      "tags": ["debug", "stack"],
+      "operands": ["i"]
     },
     "signature": {
       "inputs": {

@@ -315,9 +315,9 @@
   },
   "PFXDICTSET": {
     "description": {
-      "short": "",
-      "long": "",
-      "tags": [],
+      "short": "Sets or updates a key-value pair in a prefix dictionary.",
+      "long": "Sets or updates a value `x` for key `k` in prefix dictionary `D` with key length `n`. If the key already exists, its value is updated. Returns the modified dictionary and a status flag.",
+      "tags": ["dictionary", "prefix"],
       "operands": []
     },
     "signature": {
@@ -384,9 +384,9 @@
   },
   "PFXDICTREPLACE": {
     "description": {
-      "short": "",
-      "long": "",
-      "tags": [],
+      "short": "Replaces a value in prefix dictionary if key exists.",
+      "long": "Replaces the value `x` for key `k` in prefix dictionary `D` with key length `n`. Operation succeeds only if the key already exists. Returns the modified dictionary and a status flag.",
+      "tags": ["dictionary", "prefix"],
       "operands": []
     },
     "signature": {
@@ -453,9 +453,9 @@
   },
   "PFXDICTADD": {
     "description": {
-      "short": "",
-      "long": "",
-      "tags": [],
+      "short": "Adds a new key-value pair to prefix dictionary.",
+      "long": "Adds a new value `x` for key `k` in prefix dictionary `D` with key length `n`. Operation succeeds only if the key does not exist. Returns the modified dictionary and a status flag.",
+      "tags": ["dictionary", "prefix"],
       "operands": []
     },
     "signature": {
@@ -522,9 +522,9 @@
   },
   "PFXDICTDEL": {
     "description": {
-      "short": "",
-      "long": "",
-      "tags": [],
+      "short": "Deletes a key-value pair from prefix dictionary.",
+      "long": "Removes the key-value pair with key `k` from prefix dictionary `D` with key length `n`. Returns the modified dictionary and a status flag indicating success or failure.",
+      "tags": ["dictionary", "prefix"],
       "operands": []
     },
     "signature": {
@@ -8400,9 +8400,9 @@
   },
   "PFXDICTSWITCH": {
     "description": {
-      "short": "",
-      "long": "",
-      "tags": [],
+      "short": "Performs prefix dictionary lookup and control transfer.",
+      "long": "Looks up a prefix in dictionary `D` and if found, transfers control to the corresponding continuation. Similar to PFXDICTGETJMP but with predefined dictionary and key length.",
+      "tags": ["dictionary", "prefix", "control"],
       "operands": []
     },
     "signature": {

@@ -1,9 +1,9 @@
 {
   "NOW": {
     "description": {
-      "short": "",
-      "long": "",
-      "tags": [],
+      "short": "Returns current Unix timestamp.",
+      "long": "Returns the current Unix timestamp in seconds since epoch. This value is taken from the parameter 3 of the c7 tuple.",
+      "tags": ["time"],
       "operands": []
     },
     "signature": {
@@ -12,16 +12,22 @@
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "timestamp",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
   },
   "BLOCKLT": {
     "description": {
-      "short": "",
-      "long": "",
-      "tags": [],
+      "short": "Returns current block's logical time.",
+      "long": "Returns the logical time of the current block. This value is taken from the parameter 4 of the c7 tuple.",
+      "tags": ["time"],
       "operands": []
     },
     "signature": {
@@ -30,16 +36,22 @@
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "lt",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
   },
   "LTIME": {
     "description": {
-      "short": "",
-      "long": "",
-      "tags": [],
+      "short": "Returns current transaction's logical time.",
+      "long": "Returns the logical time of the current transaction. This value is taken from the parameter 5 of the c7 tuple.",
+      "tags": ["time"],
       "operands": []
     },
     "signature": {
@@ -48,16 +60,22 @@
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "lt",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
   },
   "RANDSEED": {
     "description": {
-      "short": "",
-      "long": "",
-      "tags": [],
+      "short": "Returns current random seed.",
+      "long": "Returns the current random seed used for PRNG operations. This value is taken from the parameter 6 of the c7 tuple.",
+      "tags": ["random"],
       "operands": []
     },
     "signature": {
@@ -66,16 +84,22 @@
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "seed",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
   },
   "BALANCE": {
     "description": {
-      "short": "",
-      "long": "",
-      "tags": [],
+      "short": "Returns current smart contract balance.",
+      "long": "Returns the current balance of the smart contract in nanotons. This value is taken from the parameter 7 of the c7 tuple.",
+      "tags": ["balance"],
       "operands": []
     },
     "signature": {
@@ -84,16 +108,22 @@
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "balance",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
   },
   "MYADDR": {
     "description": {
-      "short": "",
-      "long": "",
-      "tags": [],
+      "short": "Returns current smart contract address.",
+      "long": "Returns the address of the current smart contract as a _Slice_. This is the same address that is used for sending messages to this contract. This value is taken from the parameter 8 of the c7 tuple.",
+      "tags": ["address"],
       "operands": []
     },
     "signature": {
@@ -102,16 +132,22 @@
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "address",
+            "value_types": ["Slice"]
+          }
+        ],
         "registers": []
       }
     }
   },
   "CONFIGROOT": {
     "description": {
-      "short": "",
-      "long": "",
-      "tags": [],
+      "short": "Returns global configuration dictionary.",
+      "long": "Returns the root cell of the global configuration dictionary. This dictionary contains various blockchain parameters and settings. This value is taken from the parameter 9 of the c7 tuple.",
+      "tags": ["config"],
       "operands": []
     },
     "signature": {
@@ -120,16 +156,22 @@
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "config",
+            "value_types": ["Cell"]
+          }
+        ],
         "registers": []
       }
     }
   },
   "MYCODE": {
     "description": {
-      "short": "",
-      "long": "",
-      "tags": [],
+      "short": "Returns current smart contract code.",
+      "long": "Returns the code of the current smart contract as a _Cell_. This is the same code that is currently being executed. This value is taken from the parameter 10 of the c7 tuple.",
+      "tags": ["code"],
       "operands": []
     },
     "signature": {
@@ -138,16 +180,22 @@
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "value",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
   },
   "INCOMINGVALUE": {
     "description": {
-      "short": "",
-      "long": "",
-      "tags": [],
+      "short": "Returns value attached to incoming message.",
+      "long": "Returns the amount of nanotons attached to the incoming message that initiated this transaction. For external messages and tick-tock transactions returns 0. This value is taken from the parameter 11 of the c7 tuple.",
+      "tags": ["message", "value"],
       "operands": []
     },
     "signature": {
@@ -156,16 +204,22 @@
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "value",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
   },
   "STORAGEFEES": {
     "description": {
-      "short": "",
-      "long": "",
-      "tags": [],
+      "short": "Returns accumulated storage fees.",
+      "long": "Returns the amount of storage fees that have been accumulated since the last transaction. This value is deducted from the contract's balance during transaction execution. This value is taken from the parameter 12 of the c7 tuple.",
+      "tags": ["fees"],
       "operands": []
     },
     "signature": {
@@ -174,16 +228,22 @@
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "fees",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
   },
   "PREVBLOCKSINFOTUPLE": {
     "description": {
-      "short": "",
-      "long": "",
-      "tags": [],
+      "short": "Returns information about previous blocks.",
+      "long": "Returns a tuple containing information about previous blocks in the blockchain. This includes masterchain blocks and the previous key block. This value is taken from the parameter 13 of the c7 tuple.",
+      "tags": ["block", "info"],
       "operands": []
     },
     "signature": {
@@ -192,16 +252,22 @@
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "info",
+            "value_types": ["Tuple"]
+          }
+        ],
         "registers": []
       }
     }
   },
   "UNPACKEDCONFIGTUPLE": {
     "description": {
-      "short": "",
-      "long": "",
-      "tags": [],
+      "short": "Returns unpacked configuration parameters.",
+      "long": "Returns a tuple containing unpacked global configuration parameters. This provides easier access to commonly used configuration values without manual dictionary lookup. This value is taken from the parameter 14 of the c7 tuple.",
+      "tags": ["config"],
       "operands": []
     },
     "signature": {
@@ -210,16 +276,22 @@
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "info",
+            "value_types": ["Tuple"]
+          }
+        ],
         "registers": []
       }
     }
   },
   "DUEPAYMENT": {
     "description": {
-      "short": "",
-      "long": "",
-      "tags": [],
+      "short": "Returns required payment amount.",
+      "long": "Returns the amount of nanotons that must be paid for the current operation. This value is taken from the parameter 15 of the c7 tuple.",
+      "tags": ["payment"],
       "operands": []
     },
     "signature": {
@@ -228,7 +300,13 @@
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "payment",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }

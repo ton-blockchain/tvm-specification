@@ -290,18 +290,46 @@
   },
   "SETCONTCTRMANYX": {
     "description": {
-      "short": "",
-      "long": "",
-      "tags": [],
+      "short": "Sets multiple control registers in a continuation.",
+      "long": "Takes a list of values and their corresponding control register indices from the stack and stores them into the savelist of continuation `c`. Returns the modified continuation. This is a more efficient version of multiple `SETCONTCTRX` calls.",
+      "tags": ["continuation", "control"],
       "operands": []
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "array",
+            "name": "values",
+            "length_var": "count",
+            "array_entry": [
+              {
+                "type": "simple",
+                "name": "x"
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "count",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "c",
+            "value_types": ["Continuation"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "c'",
+            "value_types": ["Continuation"]
+          }
+        ],
         "registers": []
       }
     }
@@ -709,18 +737,41 @@
   },
   "SETCONTCTRMANY": {
     "description": {
-      "short": "",
-      "long": "",
-      "tags": [],
-      "operands": []
+      "short": "Sets multiple control registers in a continuation with fixed indices.",
+      "long": "Takes a list of values from the stack and stores them into the savelist of continuation `c` using predefined control register indices. Returns the modified continuation. This is similar to `SETCONTCTRMANYX` but uses fixed indices specified in the instruction.",
+      "tags": ["continuation", "control"],
+      "operands": ["count"]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "array",
+            "name": "values",
+            "length_var": "count",
+            "array_entry": [
+              {
+                "type": "simple",
+                "name": "x"
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "c",
+            "value_types": ["Continuation"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "c'",
+            "value_types": ["Continuation"]
+          }
+        ],
         "registers": []
       }
     }

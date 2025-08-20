@@ -16,8 +16,8 @@ language.
 - With exit code description: **82**
 - With examples: **25**
 - With other implementations description: **90**
-- Without any text description: **165**
-- With empty stack signature: **116**
+- Without any text description: **4**, with arithmetic: **142**
+- With empty stack signature: **99**
 - Fift instructions count: **116**
 
 ## Development
