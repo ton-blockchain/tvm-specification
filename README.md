@@ -14,7 +14,7 @@ language.
 
 - Instructions count: **908**
 - With exit code description: **82**
-- With examples: **25**
+- With examples: **27**
 - With other implementations description: **100**
 - Without any text description: **4**, with arithmetic: **142**
 - With empty stack signature: **93**
