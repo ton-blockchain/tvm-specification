@@ -8534,8 +8534,8 @@
       "category": "continuation",
       "sub_category": "continuation_jump",
       "description": {
-        "short": "",
-        "long": "Runs child VM with `code` and stack `x_1...x_n`. Returns the resulting stack `x'_1...x'_m` and exitcode. Other arguments and return values are enabled by flags.",
+        "short": "Runs child VM with `code` and stack `x_1...x_n`. Returns the resulting stack `x'_1...x'_m` and exitcode. Other arguments and return values are enabled by flags taken from the stack.",
+        "long": "Flags:\n\n- **+1** — same_c3 (set c3 to code)\n- **+2** — push_0 (push an implicit 0 before running the code); only works with +1 enabled\n- **+4** — load c4 (persistent data) from stack and return its final value\n- **+8** — load gas limit from stack and return consumed gas\n- **+16** — load c7 (smart-contract context)\n- **+32** — return c5 (actions)\n- **+64** — pop hard gas limit (enabled by ACCEPT) from stack as well\n- **+128** — isolated gas consumption (separate set of visited cells, reset chksgn counter)\n- **+256** — pop number N, return exactly N values from stack (only if res=0 or 1; if not enough then res=stk_und)",
         "tags": [],
         "operands": []
       },
@@ -8555,9 +8555,15 @@
         "prefix_str": "DB50"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "flags:Int -> ∅",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "flags",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
@@ -48064,8 +48070,8 @@
       "category": "continuation",
       "sub_category": "continuation_jump",
       "description": {
-        "short": "",
-        "long": "Runs child VM with `code` and stack `x_1...x_n`. Returns the resulting stack `x'_1...x'_m` and exitcode. Other arguments and return values are enabled by flags.",
+        "short": "Runs child VM with `code` and stack `x_1...x_n`. Returns the resulting stack `x'_1...x'_m` and exitcode. Other arguments and return values are enabled by flags.",
+        "long": "Flags:\n\n- **+1** — same_c3 (set c3 to code)\n- **+2** — push_0 (push an implicit 0 before running the code); only works with +1 enabled\n- **+4** — load c4 (persistent data) from stack and return its final value\n- **+8** — load gas limit from stack and return consumed gas\n- **+16** — load c7 (smart-contract context)\n- **+32** — return c5 (actions)\n- **+64** — pop hard gas limit (enabled by ACCEPT) from stack as well\n- **+128** — isolated gas consumption (separate set of visited cells, reset chksgn counter)\n- **+256** — pop number N, return exactly N values from stack (only if res=0 or 1; if not enough then res=stk_und)",
         "tags": [],
         "operands": ["flags"]
       },
