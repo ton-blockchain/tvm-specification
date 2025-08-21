@@ -328,7 +328,7 @@
   "SDSUBSTR": {
     "description": {
       "short": "",
-      "long": "Returns `0 <= l' <= 1023` bits of `s` starting from offset `0 <= length <= 1023`, thus extracting a bit substring out of the data of `s`.",
+      "long": "Returns `0 <= length <= 1023` bits of `s` starting from offset `0 <= offset <= 1023`, thus extracting a bit substring out of the data of `s`.",
       "tags": ["slice parsing"],
       "operands": []
     },
@@ -342,12 +342,12 @@
           },
           {
             "type": "simple",
-            "name": "length",
+            "name": "offset",
             "value_types": ["Int"]
           },
           {
             "type": "simple",
-            "name": "l2",
+            "name": "length",
             "value_types": ["Int"]
           }
         ]
