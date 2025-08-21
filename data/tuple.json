@@ -881,9 +881,15 @@
   "NULLSWAPIF2": {
     "description": {
       "short": "",
-      "long": "Pushes two nulls under the topmost _Integer_ `x`, but only if `x != 0`.\nEquivalent to `NULLSWAPIF` `NULLSWAPIF`.",
+      "long": "Pushes two nulls under the topmost _Integer_ `x`, but only if `x != 0`.",
       "tags": [],
-      "operands": []
+      "operands": [],
+      "other_implementations": [
+        {
+          "exact": true,
+          "instructions": ["NULLSWAPIF", "NULLSWAPIF"]
+        }
+      ]
     },
     "signature": {
       "inputs": {
@@ -931,9 +937,15 @@
   "NULLSWAPIFNOT2": {
     "description": {
       "short": "",
-      "long": "Pushes two nulls under the topmost _Integer_ `x`, but only if `x == 0`.\nEquivalent to `NULLSWAPIFNOT` `NULLSWAPIFNOT`.",
+      "long": "Pushes two nulls under the topmost _Integer_ `x`, but only if `x == 0`.",
       "tags": [],
-      "operands": []
+      "operands": [],
+      "other_implementations": [
+        {
+          "exact": true,
+          "instructions": ["NULLSWAPIFNOT", "NULLSWAPIFNOT"]
+        }
+      ]
     },
     "signature": {
       "inputs": {
@@ -981,9 +993,15 @@
   "NULLROTRIF2": {
     "description": {
       "short": "",
-      "long": "Pushes two nulls under the second stack entry from the top, but only if the topmost _Integer_ `y` is non-zero.\nEquivalent to `NULLROTRIF` `NULLROTRIF`.",
+      "long": "Pushes two nulls under the second stack entry from the top, but only if the topmost _Integer_ `y` is non-zero.",
       "tags": [],
-      "operands": []
+      "operands": [],
+      "other_implementations": [
+        {
+          "exact": true,
+          "instructions": ["NULLROTRIF", "NULLROTRIF"]
+        }
+      ]
     },
     "signature": {
       "inputs": {
@@ -1039,9 +1057,15 @@
   "NULLROTRIFNOT2": {
     "description": {
       "short": "",
-      "long": "Pushes two nulls under the second stack entry from the top, but only if the topmost _Integer_ `y` is zero.\nEquivalent to `NULLROTRIFNOT` `NULLROTRIFNOT`.",
+      "long": "Pushes two nulls under the second stack entry from the top, but only if the topmost _Integer_ `y` is zero.",
       "tags": [],
-      "operands": []
+      "operands": [],
+      "other_implementations": [
+        {
+          "exact": true,
+          "instructions": ["NULLROTRIFNOT", "NULLROTRIFNOT"]
+        }
+      ]
     },
     "signature": {
       "inputs": {

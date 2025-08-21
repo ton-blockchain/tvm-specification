@@ -314,9 +314,15 @@
   "CONFIGDICT": {
     "description": {
       "short": "",
-      "long": "Returns the global configuration dictionary along with its key length (32).\nEquivalent to `CONFIGROOT` `32 PUSHINT`.",
+      "long": "Returns the global configuration dictionary along with its key length (32).",
       "tags": [],
-      "operands": []
+      "operands": [],
+      "other_implementations": [
+        {
+          "exact": true,
+          "instructions": ["CONFIGROOT", "32 PUSHINT"]
+        }
+      ]
     },
     "signature": {
       "inputs": {
@@ -347,9 +353,15 @@
   "CONFIGPARAM": {
     "description": {
       "short": "",
-      "long": "Returns the value of the global configuration parameter with integer index `i` as a _Cell_ `c`, and a flag to indicate success.\nEquivalent to `CONFIGDICT` `DICTIGETREF`.",
+      "long": "Returns the value of the global configuration parameter with integer index `i` as a _Cell_ `c`, and a flag to indicate success.",
       "tags": [],
-      "operands": []
+      "operands": [],
+      "other_implementations": [
+        {
+          "exact": true,
+          "instructions": ["CONFIGDICT", "DICTIGETREF"]
+        }
+      ]
     },
     "signature": {
       "inputs": {
@@ -401,9 +413,15 @@
   "CONFIGOPTPARAM": {
     "description": {
       "short": "",
-      "long": "Returns the value of the global configuration parameter with integer index `i` as a _Maybe Cell_ `c^?`.\nEquivalent to `CONFIGDICT` `DICTIGETOPTREF`.",
+      "long": "Returns the value of the global configuration parameter with integer index `i` as a _Maybe Cell_ `c^?`.",
       "tags": [],
-      "operands": []
+      "operands": [],
+      "other_implementations": [
+        {
+          "exact": true,
+          "instructions": ["CONFIGDICT", "DICTIGETOPTREF"]
+        }
+      ]
     },
     "signature": {
       "inputs": {

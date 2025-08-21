@@ -36,9 +36,15 @@
   "RAND": {
     "description": {
       "short": "",
-      "long": "Generates a new pseudo-random integer `z` in the range `0...y-1` (or `y...-1`, if `y<0`). More precisely, an unsigned random value `x` is generated as in `RAND256U`; then `z:=floor(x*y/2^256)` is computed.\nEquivalent to `RANDU256` `256 MULRSHIFT`.",
+      "long": "Generates a new pseudo-random integer `z` in the range `0...y-1` (or `y...-1`, if `y<0`). More precisely, an unsigned random value `x` is generated as in `RAND256U`; then `z:=floor(x*y/2^256)` is computed.",
       "tags": [],
-      "operands": []
+      "operands": [],
+      "other_implementations": [
+        {
+          "exact": true,
+          "instructions": ["RANDU256", "256 MULRSHIFT"]
+        }
+      ]
     },
     "signature": {
       "inputs": {

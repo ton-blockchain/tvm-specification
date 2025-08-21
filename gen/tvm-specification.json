@@ -3447,9 +3447,15 @@
       "sub_category": "cell_cmp",
       "description": {
         "short": "",
-        "long": "Checks whether `s'` is a prefix of `s`, equivalent to `SWAP` `SDPFX`.",
+        "long": "Checks whether `s'` is a prefix of `s`.",
         "tags": [],
-        "operands": []
+        "operands": [],
+        "other_implementations": [
+          {
+            "exact": true,
+            "instructions": ["SWAP", "SDPFX"]
+          }
+        ]
       },
       "layout": {
         "min": 13043968,
@@ -3466,7 +3472,7 @@
         "prefix_str": "C709"
       },
       "signature": {
-        "stack_string": "s:Slice s2:Slice -> result:Bool",
+        "stack_string": "s:Slice s':Slice -> result:Bool",
         "inputs": {
           "stack": [
             {
@@ -3476,7 +3482,7 @@
             },
             {
               "type": "simple",
-              "name": "s2",
+              "name": "s'",
               "value_types": ["Slice"]
             }
           ]
@@ -14674,9 +14680,15 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Returns the global configuration dictionary along with its key length (32).\nEquivalent to `CONFIGROOT` `32 PUSHINT`.",
+        "long": "Returns the global configuration dictionary along with its key length (32).",
         "tags": [],
-        "operands": []
+        "operands": [],
+        "other_implementations": [
+          {
+            "exact": true,
+            "instructions": ["CONFIGROOT", "32 PUSHINT"]
+          }
+        ]
       },
       "layout": {
         "min": 16265216,
@@ -14724,9 +14736,15 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Returns the value of the global configuration parameter with integer index `i` as a _Cell_ `c`, and a flag to indicate success.\nEquivalent to `CONFIGDICT` `DICTIGETREF`.",
+        "long": "Returns the value of the global configuration parameter with integer index `i` as a _Cell_ `c`, and a flag to indicate success.",
         "tags": [],
-        "operands": []
+        "operands": [],
+        "other_implementations": [
+          {
+            "exact": true,
+            "instructions": ["CONFIGDICT", "DICTIGETREF"]
+          }
+        ]
       },
       "layout": {
         "min": 16265728,
@@ -14795,9 +14813,15 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Returns the value of the global configuration parameter with integer index `i` as a _Maybe Cell_ `c^?`.\nEquivalent to `CONFIGDICT` `DICTIGETOPTREF`.",
+        "long": "Returns the value of the global configuration parameter with integer index `i` as a _Maybe Cell_ `c^?`.",
         "tags": [],
-        "operands": []
+        "operands": [],
+        "other_implementations": [
+          {
+            "exact": true,
+            "instructions": ["CONFIGDICT", "DICTIGETOPTREF"]
+          }
+        ]
       },
       "layout": {
         "min": 16265984,
@@ -15606,9 +15630,15 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Generates a new pseudo-random integer `z` in the range `0...y-1` (or `y...-1`, if `y<0`). More precisely, an unsigned random value `x` is generated as in `RAND256U`; then `z:=floor(x*y/2^256)` is computed.\nEquivalent to `RANDU256` `256 MULRSHIFT`.",
+        "long": "Generates a new pseudo-random integer `z` in the range `0...y-1` (or `y...-1`, if `y<0`). More precisely, an unsigned random value `x` is generated as in `RAND256U`; then `z:=floor(x*y/2^256)` is computed.",
         "tags": [],
-        "operands": []
+        "operands": [],
+        "other_implementations": [
+          {
+            "exact": true,
+            "instructions": ["RANDU256", "256 MULRSHIFT"]
+          }
+        ]
       },
       "layout": {
         "min": 16257280,
@@ -20938,9 +20968,15 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Pushes two nulls under the topmost _Integer_ `x`, but only if `x != 0`.\nEquivalent to `NULLSWAPIF` `NULLSWAPIF`.",
+        "long": "Pushes two nulls under the topmost _Integer_ `x`, but only if `x != 0`.",
         "tags": [],
-        "operands": []
+        "operands": [],
+        "other_implementations": [
+          {
+            "exact": true,
+            "instructions": ["NULLSWAPIF", "NULLSWAPIF"]
+          }
+        ]
       },
       "layout": {
         "min": 7316480,
@@ -21005,9 +21041,15 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Pushes two nulls under the topmost _Integer_ `x`, but only if `x == 0`.\nEquivalent to `NULLSWAPIFNOT` `NULLSWAPIFNOT`.",
+        "long": "Pushes two nulls under the topmost _Integer_ `x`, but only if `x == 0`.",
         "tags": [],
-        "operands": []
+        "operands": [],
+        "other_implementations": [
+          {
+            "exact": true,
+            "instructions": ["NULLSWAPIFNOT", "NULLSWAPIFNOT"]
+          }
+        ]
       },
       "layout": {
         "min": 7316736,
@@ -21072,9 +21114,15 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Pushes two nulls under the second stack entry from the top, but only if the topmost _Integer_ `y` is non-zero.\nEquivalent to `NULLROTRIF` `NULLROTRIF`.",
+        "long": "Pushes two nulls under the second stack entry from the top, but only if the topmost _Integer_ `y` is non-zero.",
         "tags": [],
-        "operands": []
+        "operands": [],
+        "other_implementations": [
+          {
+            "exact": true,
+            "instructions": ["NULLROTRIF", "NULLROTRIF"]
+          }
+        ]
       },
       "layout": {
         "min": 7316992,
@@ -21147,9 +21195,15 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Pushes two nulls under the second stack entry from the top, but only if the topmost _Integer_ `y` is zero.\nEquivalent to `NULLROTRIFNOT` `NULLROTRIFNOT`.",
+        "long": "Pushes two nulls under the second stack entry from the top, but only if the topmost _Integer_ `y` is zero.",
         "tags": [],
-        "operands": []
+        "operands": [],
+        "other_implementations": [
+          {
+            "exact": true,
+            "instructions": ["NULLROTRIFNOT", "NULLROTRIFNOT"]
+          }
+        ]
       },
       "layout": {
         "min": 7317248,
@@ -46025,7 +46079,7 @@
         "prefix_str": "F820"
       },
       "signature": {
-        "stack_string": "∅ -> x:Int",
+        "stack_string": "∅ -> x:Any",
         "inputs": {
           "stack": [],
           "registers": [
@@ -46040,7 +46094,7 @@
             {
               "type": "simple",
               "name": "x",
-              "value_types": ["Int"]
+              "value_types": ["Any"]
             }
           ]
         }

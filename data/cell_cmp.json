@@ -219,9 +219,15 @@
   "SDPFXREV": {
     "description": {
       "short": "",
-      "long": "Checks whether `s'` is a prefix of `s`, equivalent to `SWAP` `SDPFX`.",
+      "long": "Checks whether `s'` is a prefix of `s`.",
       "tags": [],
-      "operands": []
+      "operands": [],
+      "other_implementations": [
+        {
+          "exact": true,
+          "instructions": ["SWAP", "SDPFX"]
+        }
+      ]
     },
     "signature": {
       "inputs": {
@@ -233,7 +239,7 @@
           },
           {
             "type": "simple",
-            "name": "s2",
+            "name": "s'",
             "value_types": ["Slice"]
           }
         ]
