@@ -12098,7 +12098,7 @@
         "prefix_str": "F470"
       },
       "signature": {
-        "stack_string": "x:Slice k:Slice D:Cell|Null n:Int -> (D:Slice|Null 0)|(D':Cell|Null -1) status:Int",
+        "stack_string": "x:Slice k:Slice D:Cell|Null n:Int -> (D:Cell|Null 0)|(D':Cell|Null -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -12135,7 +12135,7 @@
                     {
                       "type": "simple",
                       "name": "D",
-                      "value_types": ["Slice", "Null"]
+                      "value_types": ["Cell", "Null"]
                     }
                   ]
                 },
@@ -12184,7 +12184,7 @@
         "prefix_str": "F471"
       },
       "signature": {
-        "stack_string": "x:Slice k:Slice D:Cell|Null n:Int -> (D:Slice|Null 0)|(D':Cell|Null -1) status:Int",
+        "stack_string": "x:Slice k:Slice D:Cell|Null n:Int -> (D:Cell|Null 0)|(D':Cell|Null -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -12221,7 +12221,7 @@
                     {
                       "type": "simple",
                       "name": "D",
-                      "value_types": ["Slice", "Null"]
+                      "value_types": ["Cell", "Null"]
                     }
                   ]
                 },
@@ -12270,7 +12270,7 @@
         "prefix_str": "F472"
       },
       "signature": {
-        "stack_string": "x:Slice k:Slice D:Cell|Null n:Int -> (D:Slice|Null 0)|(D':Cell|Null -1) status:Int",
+        "stack_string": "x:Slice k:Slice D:Cell|Null n:Int -> (D:Cell|Null 0)|(D':Cell|Null -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -12307,7 +12307,7 @@
                     {
                       "type": "simple",
                       "name": "D",
-                      "value_types": ["Slice", "Null"]
+                      "value_types": ["Cell", "Null"]
                     }
                   ]
                 },
@@ -12356,7 +12356,7 @@
         "prefix_str": "F473"
       },
       "signature": {
-        "stack_string": "k:Slice D:Cell|Null n:Int -> (D:Slice|Null 0)|(D':Cell|Null -1) status:Int",
+        "stack_string": "k:Slice D:Cell|Null n:Int -> (D:Cell|Null 0)|(D':Cell|Null -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -12388,7 +12388,7 @@
                     {
                       "type": "simple",
                       "name": "D",
-                      "value_types": ["Slice", "Null"]
+                      "value_types": ["Cell", "Null"]
                     }
                   ]
                 },
@@ -32467,7 +32467,7 @@
         "prefix_str": "F422"
       },
       "signature": {
-        "stack_string": "x:Slice k:Slice D:Cell|Null n:Int -> (D:Slice|Null 0)|(D':Cell -1) status:Int",
+        "stack_string": "x:Slice k:Slice D:Cell|Null n:Int -> (D:Cell|Null 0)|(D':Cell -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -32504,7 +32504,7 @@
                     {
                       "type": "simple",
                       "name": "D",
-                      "value_types": ["Slice", "Null"]
+                      "value_types": ["Cell", "Null"]
                     }
                   ]
                 },
@@ -32553,7 +32553,7 @@
         "prefix_str": "F423"
       },
       "signature": {
-        "stack_string": "c:Cell k:Slice D:Cell|Null n:Int -> (D:Slice|Null 0)|(D':Cell -1) status:Int",
+        "stack_string": "c:Cell k:Slice D:Cell|Null n:Int -> (D:Cell|Null 0)|(D':Cell -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -32590,7 +32590,7 @@
                     {
                       "type": "simple",
                       "name": "D",
-                      "value_types": ["Slice", "Null"]
+                      "value_types": ["Cell", "Null"]
                     }
                   ]
                 },
@@ -32639,7 +32639,7 @@
         "prefix_str": "F424"
       },
       "signature": {
-        "stack_string": "x:Slice i:Int D:Cell|Null n:Int -> (D:Slice|Null 0)|(D':Cell -1) status:Int",
+        "stack_string": "x:Slice i:Int D:Cell|Null n:Int -> (D:Cell|Null 0)|(D':Cell -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -32676,7 +32676,7 @@
                     {
                       "type": "simple",
                       "name": "D",
-                      "value_types": ["Slice", "Null"]
+                      "value_types": ["Cell", "Null"]
                     }
                   ]
                 },
@@ -32725,7 +32725,7 @@
         "prefix_str": "F425"
       },
       "signature": {
-        "stack_string": "c:Cell i:Int D:Cell|Null n:Int -> (D:Slice|Null 0)|(D':Cell -1) status:Int",
+        "stack_string": "c:Cell i:Int D:Cell|Null n:Int -> (D:Cell|Null 0)|(D':Cell -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -32762,7 +32762,7 @@
                     {
                       "type": "simple",
                       "name": "D",
-                      "value_types": ["Slice", "Null"]
+                      "value_types": ["Cell", "Null"]
                     }
                   ]
                 },
@@ -32811,7 +32811,7 @@
         "prefix_str": "F426"
       },
       "signature": {
-        "stack_string": "x:Slice i:Int D:Cell|Null n:Int -> (D:Slice|Null 0)|(D':Cell -1) status:Int",
+        "stack_string": "x:Slice i:Int D:Cell|Null n:Int -> (D:Cell|Null 0)|(D':Cell -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -32848,7 +32848,7 @@
                     {
                       "type": "simple",
                       "name": "D",
-                      "value_types": ["Slice", "Null"]
+                      "value_types": ["Cell", "Null"]
                     }
                   ]
                 },
@@ -32897,7 +32897,7 @@
         "prefix_str": "F427"
       },
       "signature": {
-        "stack_string": "c:Cell i:Int D:Cell|Null n:Int -> (D:Slice|Null 0)|(D':Cell -1) status:Int",
+        "stack_string": "c:Cell i:Int D:Cell|Null n:Int -> (D:Cell|Null 0)|(D':Cell -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -32934,7 +32934,7 @@
                     {
                       "type": "simple",
                       "name": "D",
-                      "value_types": ["Slice", "Null"]
+                      "value_types": ["Cell", "Null"]
                     }
                   ]
                 },
@@ -32983,7 +32983,7 @@
         "prefix_str": "F42A"
       },
       "signature": {
-        "stack_string": "x:Slice k:Slice D:Cell|Null n:Int -> (D:Slice|Null 0)|(D':Cell y:Slice -1) status:Int",
+        "stack_string": "x:Slice k:Slice D:Cell|Null n:Int -> (D:Cell|Null 0)|(D':Cell y:Slice -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -33020,7 +33020,7 @@
                     {
                       "type": "simple",
                       "name": "D",
-                      "value_types": ["Slice", "Null"]
+                      "value_types": ["Cell", "Null"]
                     }
                   ]
                 },
@@ -33074,7 +33074,7 @@
         "prefix_str": "F42B"
       },
       "signature": {
-        "stack_string": "c:Cell k:Slice D:Cell|Null n:Int -> (D:Slice|Null 0)|(D':Cell c2:Cell -1) status:Int",
+        "stack_string": "c:Cell k:Slice D:Cell|Null n:Int -> (D:Cell|Null 0)|(D':Cell c2:Cell -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -33111,7 +33111,7 @@
                     {
                       "type": "simple",
                       "name": "D",
-                      "value_types": ["Slice", "Null"]
+                      "value_types": ["Cell", "Null"]
                     }
                   ]
                 },
@@ -33165,7 +33165,7 @@
         "prefix_str": "F42C"
       },
       "signature": {
-        "stack_string": "x:Slice i:Int D:Cell|Null n:Int -> (D:Slice|Null 0)|(D':Cell y:Slice -1) status:Int",
+        "stack_string": "x:Slice i:Int D:Cell|Null n:Int -> (D:Cell|Null 0)|(D':Cell y:Slice -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -33202,7 +33202,7 @@
                     {
                       "type": "simple",
                       "name": "D",
-                      "value_types": ["Slice", "Null"]
+                      "value_types": ["Cell", "Null"]
                     }
                   ]
                 },
@@ -33256,7 +33256,7 @@
         "prefix_str": "F42D"
       },
       "signature": {
-        "stack_string": "c:Cell i:Int D:Cell|Null n:Int -> (D:Slice|Null 0)|(D':Cell c2:Cell -1) status:Int",
+        "stack_string": "c:Cell i:Int D:Cell|Null n:Int -> (D:Cell|Null 0)|(D':Cell c2:Cell -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -33293,7 +33293,7 @@
                     {
                       "type": "simple",
                       "name": "D",
-                      "value_types": ["Slice", "Null"]
+                      "value_types": ["Cell", "Null"]
                     }
                   ]
                 },
@@ -33347,7 +33347,7 @@
         "prefix_str": "F42E"
       },
       "signature": {
-        "stack_string": "x:Slice i:Int D:Cell|Null n:Int -> (D:Slice|Null 0)|(D':Cell y:Slice -1) status:Int",
+        "stack_string": "x:Slice i:Int D:Cell|Null n:Int -> (D:Cell|Null 0)|(D':Cell y:Slice -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -33384,7 +33384,7 @@
                     {
                       "type": "simple",
                       "name": "D",
-                      "value_types": ["Slice", "Null"]
+                      "value_types": ["Cell", "Null"]
                     }
                   ]
                 },
@@ -33438,7 +33438,7 @@
         "prefix_str": "F42F"
       },
       "signature": {
-        "stack_string": "c:Cell i:Int D:Cell|Null n:Int -> (D:Slice|Null 0)|(D':Cell c2:Cell -1) status:Int",
+        "stack_string": "c:Cell i:Int D:Cell|Null n:Int -> (D:Cell|Null 0)|(D':Cell c2:Cell -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -33475,7 +33475,7 @@
                     {
                       "type": "simple",
                       "name": "D",
-                      "value_types": ["Slice", "Null"]
+                      "value_types": ["Cell", "Null"]
                     }
                   ]
                 },
@@ -34591,7 +34591,7 @@
         "prefix_str": "F462"
       },
       "signature": {
-        "stack_string": "k:Slice D:Cell|Null n:Int -> (D:Slice|Null 0)|(D':Cell|Null x:Slice -1) status:Int",
+        "stack_string": "k:Slice D:Cell|Null n:Int -> (D:Cell|Null 0)|(D':Cell|Null x:Slice -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -34623,7 +34623,7 @@
                     {
                       "type": "simple",
                       "name": "D",
-                      "value_types": ["Slice", "Null"]
+                      "value_types": ["Cell", "Null"]
                     }
                   ]
                 },
@@ -34677,7 +34677,7 @@
         "prefix_str": "F463"
       },
       "signature": {
-        "stack_string": "k:Slice D:Cell|Null n:Int -> (D:Slice|Null 0)|(D':Cell|Null c:Cell -1) status:Int",
+        "stack_string": "k:Slice D:Cell|Null n:Int -> (D:Cell|Null 0)|(D':Cell|Null c:Cell -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -34709,7 +34709,7 @@
                     {
                       "type": "simple",
                       "name": "D",
-                      "value_types": ["Slice", "Null"]
+                      "value_types": ["Cell", "Null"]
                     }
                   ]
                 },
@@ -34763,7 +34763,7 @@
         "prefix_str": "F464"
       },
       "signature": {
-        "stack_string": "i:Int D:Cell|Null n:Int -> (D:Slice|Null 0)|(D':Cell|Null x:Slice -1) status:Int",
+        "stack_string": "i:Int D:Cell|Null n:Int -> (D:Cell|Null 0)|(D':Cell|Null x:Slice -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -34795,7 +34795,7 @@
                     {
                       "type": "simple",
                       "name": "D",
-                      "value_types": ["Slice", "Null"]
+                      "value_types": ["Cell", "Null"]
                     }
                   ]
                 },
@@ -34849,7 +34849,7 @@
         "prefix_str": "F465"
       },
       "signature": {
-        "stack_string": "i:Int D:Cell|Null n:Int -> (D:Slice|Null 0)|(D':Cell|Null c:Cell -1) status:Int",
+        "stack_string": "i:Int D:Cell|Null n:Int -> (D:Cell|Null 0)|(D':Cell|Null c:Cell -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -34881,7 +34881,7 @@
                     {
                       "type": "simple",
                       "name": "D",
-                      "value_types": ["Slice", "Null"]
+                      "value_types": ["Cell", "Null"]
                     }
                   ]
                 },
@@ -34935,7 +34935,7 @@
         "prefix_str": "F466"
       },
       "signature": {
-        "stack_string": "i:Int D:Cell|Null n:Int -> (D:Slice|Null 0)|(D':Cell|Null x:Slice -1) status:Int",
+        "stack_string": "i:Int D:Cell|Null n:Int -> (D:Cell|Null 0)|(D':Cell|Null x:Slice -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -34967,7 +34967,7 @@
                     {
                       "type": "simple",
                       "name": "D",
-                      "value_types": ["Slice", "Null"]
+                      "value_types": ["Cell", "Null"]
                     }
                   ]
                 },
@@ -35021,7 +35021,7 @@
         "prefix_str": "F467"
       },
       "signature": {
-        "stack_string": "i:Int D:Cell|Null n:Int -> (D:Slice|Null 0)|(D':Cell|Null c:Cell -1) status:Int",
+        "stack_string": "i:Int D:Cell|Null n:Int -> (D:Cell|Null 0)|(D':Cell|Null c:Cell -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -35053,7 +35053,7 @@
                     {
                       "type": "simple",
                       "name": "D",
-                      "value_types": ["Slice", "Null"]
+                      "value_types": ["Cell", "Null"]
                     }
                   ]
                 },
@@ -36007,7 +36007,7 @@
         "prefix_str": "F492"
       },
       "signature": {
-        "stack_string": "D:Cell|Null n:Int -> (D:Slice|Null 0)|(D':Cell|Null x:Slice k:Slice -1) status:Int",
+        "stack_string": "D:Cell|Null n:Int -> (D:Cell|Null 0)|(D':Cell|Null x:Slice k:Slice -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -36034,7 +36034,7 @@
                     {
                       "type": "simple",
                       "name": "D",
-                      "value_types": ["Slice", "Null"]
+                      "value_types": ["Cell", "Null"]
                     }
                   ]
                 },
@@ -36093,7 +36093,7 @@
         "prefix_str": "F493"
       },
       "signature": {
-        "stack_string": "D:Cell|Null n:Int -> (D:Slice|Null 0)|(D':Cell|Null c:Cell k:Slice -1) status:Int",
+        "stack_string": "D:Cell|Null n:Int -> (D:Cell|Null 0)|(D':Cell|Null c:Cell k:Slice -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -36120,7 +36120,7 @@
                     {
                       "type": "simple",
                       "name": "D",
-                      "value_types": ["Slice", "Null"]
+                      "value_types": ["Cell", "Null"]
                     }
                   ]
                 },
@@ -36179,7 +36179,7 @@
         "prefix_str": "F494"
       },
       "signature": {
-        "stack_string": "D:Cell|Null n:Int -> (D:Slice|Null 0)|(D':Cell|Null x:Slice i:Int -1) status:Int",
+        "stack_string": "D:Cell|Null n:Int -> (D:Cell|Null 0)|(D':Cell|Null x:Slice i:Int -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -36206,7 +36206,7 @@
                     {
                       "type": "simple",
                       "name": "D",
-                      "value_types": ["Slice", "Null"]
+                      "value_types": ["Cell", "Null"]
                     }
                   ]
                 },
@@ -36265,7 +36265,7 @@
         "prefix_str": "F495"
       },
       "signature": {
-        "stack_string": "D:Cell|Null n:Int -> (D:Slice|Null 0)|(D':Cell|Null c:Cell i:Int -1) status:Int",
+        "stack_string": "D:Cell|Null n:Int -> (D:Cell|Null 0)|(D':Cell|Null c:Cell i:Int -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -36292,7 +36292,7 @@
                     {
                       "type": "simple",
                       "name": "D",
-                      "value_types": ["Slice", "Null"]
+                      "value_types": ["Cell", "Null"]
                     }
                   ]
                 },
@@ -36351,7 +36351,7 @@
         "prefix_str": "F496"
       },
       "signature": {
-        "stack_string": "D:Cell|Null n:Int -> (D:Slice|Null 0)|(D':Cell|Null x:Slice i:Int -1) status:Int",
+        "stack_string": "D:Cell|Null n:Int -> (D:Cell|Null 0)|(D':Cell|Null x:Slice i:Int -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -36378,7 +36378,7 @@
                     {
                       "type": "simple",
                       "name": "D",
-                      "value_types": ["Slice", "Null"]
+                      "value_types": ["Cell", "Null"]
                     }
                   ]
                 },
@@ -36437,7 +36437,7 @@
         "prefix_str": "F497"
       },
       "signature": {
-        "stack_string": "D:Cell|Null n:Int -> (D:Slice|Null 0)|(D':Cell|Null c:Cell i:Int -1) status:Int",
+        "stack_string": "D:Cell|Null n:Int -> (D:Cell|Null 0)|(D':Cell|Null c:Cell i:Int -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -36464,7 +36464,7 @@
                     {
                       "type": "simple",
                       "name": "D",
-                      "value_types": ["Slice", "Null"]
+                      "value_types": ["Cell", "Null"]
                     }
                   ]
                 },
@@ -36523,7 +36523,7 @@
         "prefix_str": "F49A"
       },
       "signature": {
-        "stack_string": "D:Cell|Null n:Int -> (D:Slice|Null 0)|(D':Cell|Null x:Slice k:Slice -1) status:Int",
+        "stack_string": "D:Cell|Null n:Int -> (D:Cell|Null 0)|(D':Cell|Null x:Slice k:Slice -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -36550,7 +36550,7 @@
                     {
                       "type": "simple",
                       "name": "D",
-                      "value_types": ["Slice", "Null"]
+                      "value_types": ["Cell", "Null"]
                     }
                   ]
                 },
@@ -36609,7 +36609,7 @@
         "prefix_str": "F49B"
       },
       "signature": {
-        "stack_string": "D:Cell|Null n:Int -> (D:Slice|Null 0)|(D':Cell|Null c:Cell k:Slice -1) status:Int",
+        "stack_string": "D:Cell|Null n:Int -> (D:Cell|Null 0)|(D':Cell|Null c:Cell k:Slice -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -36636,7 +36636,7 @@
                     {
                       "type": "simple",
                       "name": "D",
-                      "value_types": ["Slice", "Null"]
+                      "value_types": ["Cell", "Null"]
                     }
                   ]
                 },
@@ -36695,7 +36695,7 @@
         "prefix_str": "F49C"
       },
       "signature": {
-        "stack_string": "D:Cell|Null n:Int -> (D:Slice|Null 0)|(D':Cell|Null x:Slice i:Int -1) status:Int",
+        "stack_string": "D:Cell|Null n:Int -> (D:Cell|Null 0)|(D':Cell|Null x:Slice i:Int -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -36722,7 +36722,7 @@
                     {
                       "type": "simple",
                       "name": "D",
-                      "value_types": ["Slice", "Null"]
+                      "value_types": ["Cell", "Null"]
                     }
                   ]
                 },
@@ -36781,7 +36781,7 @@
         "prefix_str": "F49D"
       },
       "signature": {
-        "stack_string": "D:Cell|Null n:Int -> (D:Slice|Null 0)|(D':Cell|Null c:Cell i:Int -1) status:Int",
+        "stack_string": "D:Cell|Null n:Int -> (D:Cell|Null 0)|(D':Cell|Null c:Cell i:Int -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -36808,7 +36808,7 @@
                     {
                       "type": "simple",
                       "name": "D",
-                      "value_types": ["Slice", "Null"]
+                      "value_types": ["Cell", "Null"]
                     }
                   ]
                 },
@@ -36867,7 +36867,7 @@
         "prefix_str": "F49E"
       },
       "signature": {
-        "stack_string": "D:Cell|Null n:Int -> (D:Slice|Null 0)|(D':Cell|Null x:Slice i:Int -1) status:Int",
+        "stack_string": "D:Cell|Null n:Int -> (D:Cell|Null 0)|(D':Cell|Null x:Slice i:Int -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -36894,7 +36894,7 @@
                     {
                       "type": "simple",
                       "name": "D",
-                      "value_types": ["Slice", "Null"]
+                      "value_types": ["Cell", "Null"]
                     }
                   ]
                 },
@@ -36953,7 +36953,7 @@
         "prefix_str": "F49F"
       },
       "signature": {
-        "stack_string": "D:Cell|Null n:Int -> (D:Slice|Null 0)|(D':Cell|Null c:Cell i:Int -1) status:Int",
+        "stack_string": "D:Cell|Null n:Int -> (D:Cell|Null 0)|(D':Cell|Null c:Cell i:Int -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -36980,7 +36980,7 @@
                     {
                       "type": "simple",
                       "name": "D",
-                      "value_types": ["Slice", "Null"]
+                      "value_types": ["Cell", "Null"]
                     }
                   ]
                 },
@@ -38554,7 +38554,7 @@
         "prefix_str": "F459"
       },
       "signature": {
-        "stack_string": "k:Slice D:Cell|Null n:Int -> (D:Slice|Null 0)|(D':Cell|Null -1) status:Int",
+        "stack_string": "k:Slice D:Cell|Null n:Int -> (D:Cell|Null 0)|(D':Cell|Null -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -38586,7 +38586,7 @@
                     {
                       "type": "simple",
                       "name": "D",
-                      "value_types": ["Slice", "Null"]
+                      "value_types": ["Cell", "Null"]
                     }
                   ]
                 },
@@ -38635,7 +38635,7 @@
         "prefix_str": "F45A"
       },
       "signature": {
-        "stack_string": "i:Int D:Cell|Null n:Int -> (D:Slice|Null 0)|(D':Cell|Null -1) status:Int",
+        "stack_string": "i:Int D:Cell|Null n:Int -> (D:Cell|Null 0)|(D':Cell|Null -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -38667,7 +38667,7 @@
                     {
                       "type": "simple",
                       "name": "D",
-                      "value_types": ["Slice", "Null"]
+                      "value_types": ["Cell", "Null"]
                     }
                   ]
                 },
@@ -38716,7 +38716,7 @@
         "prefix_str": "F45B"
       },
       "signature": {
-        "stack_string": "i:Int D:Cell|Null n:Int -> (D:Slice|Null 0)|(D':Cell|Null -1) status:Int",
+        "stack_string": "i:Int D:Cell|Null n:Int -> (D:Cell|Null 0)|(D':Cell|Null -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -38748,7 +38748,7 @@
                     {
                       "type": "simple",
                       "name": "D",
-                      "value_types": ["Slice", "Null"]
+                      "value_types": ["Cell", "Null"]
                     }
                   ]
                 },
