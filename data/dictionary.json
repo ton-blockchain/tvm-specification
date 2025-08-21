@@ -819,7 +819,7 @@
   "DICTIGETJMP": {
     "description": {
       "short": "",
-      "long": "Looks up key represented by a signed (big-endian) `n`-bit _Integer_ `i` in dictionary `D`. On success, `BLESS`es the value found into a continuation and transfers control to it as if by a `JMPX`. On failure, does nothing. This is useful for implementing `switch`/`case` constructions.",
+      "long": "Looks up key represented by a signed (big-endian) `n`-bit _Integer_ `i` in dictionary `D`. On success, `BLESS`es the found value into a continuation and transfers control to it as if by a `JMPX`. On failure, does nothing. This is useful for implementing `switch`/`case` constructions.",
       "tags": [],
       "operands": []
     },
@@ -856,7 +856,7 @@
   "DICTUGETJMP": {
     "description": {
       "short": "",
-      "long": "Looks up key represented by an unsigned (big-endian) `n`-bit _Integer_ `i` in dictionary `D`. On success, `BLESS`es the value found into a continuation and transfers control to it as if by a `JMPX`. On failure, does nothing. This is useful for implementing `switch`/`case` constructions.",
+      "long": "Looks up key represented by an unsigned (big-endian) `n`-bit _Integer_ `i` in dictionary `D`. On success, `BLESS`es the found value into a continuation and transfers control to it as if by a `JMPX`. On failure, does nothing. This is useful for implementing `switch`/`case` constructions.",
       "tags": [],
       "operands": []
     },
@@ -893,7 +893,7 @@
   "DICTIGETEXEC": {
     "description": {
       "short": "",
-      "long": "Looks up key represented by a signed (big-endian) `n`-bit _Integer_ `i` in dictionary `D`. On success, `BLESS`es the value found into a continuation and executes it as if by `EXECUTE`. On failure, does nothing. This is useful for implementing `switch`/`case` constructions.",
+      "long": "Looks up key represented by a signed (big-endian) `n`-bit _Integer_ `i` in dictionary `D`. On success, `BLESS`es the found value into a continuation and executes it as if by `EXECUTE`. On failure, does nothing. This is useful for implementing `switch`/`case` constructions.",
       "tags": [],
       "operands": []
     },
@@ -941,7 +941,7 @@
   "DICTUGETEXEC": {
     "description": {
       "short": "",
-      "long": "Looks up key represented by an unsigned (big-endian) `n`-bit _Integer_ `i` in dictionary `D`. On success, `BLESS`es the value found into a continuation and executes it as if by `EXECUTE`. On failure, does nothing. This is useful for implementing `switch`/`case` constructions.",
+      "long": "Looks up key represented by an unsigned (big-endian) `n`-bit _Integer_ `i` in dictionary `D`. On success, `BLESS`es the found value into a continuation and executes it as if by `EXECUTE`. On failure, does nothing. This is useful for implementing `switch`/`case` constructions.",
       "tags": [],
       "operands": []
     },
@@ -989,7 +989,7 @@
   "DICTIGETJMPZ": {
     "description": {
       "short": "",
-      "long": "Looks up key represented by a signed (big-endian) `n`-bit _Integer_ `i` in dictionary `D`. On success, `BLESS`es the value found into a continuation and transfers control to it as if by a `JMPX`. On failure, returns the index `i` and continues execution. This is useful for implementing `switch`/`case` constructions with a default case.",
+      "long": "Looks up key represented by a signed (big-endian) `n`-bit _Integer_ `i` in dictionary `D`. On success, `BLESS`es the found value into a continuation and transfers control to it as if by a `JMPX`. On failure, returns the index `i` and continues execution. This is useful for implementing `switch`/`case` constructions with a default case.",
       "tags": [],
       "operands": []
     },
@@ -1030,7 +1030,7 @@
   "DICTUGETJMPZ": {
     "description": {
       "short": "",
-      "long": "Looks up key represented by an unsigned (big-endian) `n`-bit _Integer_ `i` in dictionary `D`. On success, `BLESS`es the value found into a continuation and transfers control to it as if by a `JMPX`. On failure, returns the index `i` and continues execution. This is useful for implementing `switch`/`case` constructions with a default case.",
+      "long": "Looks up key represented by an unsigned (big-endian) `n`-bit _Integer_ `i` in dictionary `D`. On success, `BLESS`es the found value into a continuation and transfers control to it as if by a `JMPX`. On failure, returns the index `i` and continues execution. This is useful for implementing `switch`/`case` constructions with a default case.",
       "tags": [],
       "operands": []
     },
@@ -1072,7 +1072,7 @@
   "DICTIGETEXECZ": {
     "description": {
       "short": "",
-      "long": "Looks up key represented by a signed (big-endian) `n`-bit _Integer_ `i` in dictionary `D`. On success, `BLESS`es the value found into a continuation and executes it as if by `EXECUTE`. On failure, returns the index `i` and continues execution. This is useful for implementing function dispatch with a default handler.",
+      "long": "Looks up key represented by a signed (big-endian) `n`-bit _Integer_ `i` in dictionary `D`. On success, `BLESS`es the found value into a continuation and executes it as if by `EXECUTE`. On failure, returns the index `i` and continues execution. This is useful for implementing function dispatch with a default handler.",
       "tags": [],
       "operands": []
     },
@@ -1109,7 +1109,7 @@
   "DICTUGETEXECZ": {
     "description": {
       "short": "",
-      "long": "Looks up key represented by an unsigned (big-endian) `n`-bit _Integer_ `i` in dictionary `D`. On success, `BLESS`es the value found into a continuation and executes it as if by `EXECUTE`. On failure, returns the index `i` and continues execution. This is useful for implementing function dispatch with a default handler.",
+      "long": "Looks up key represented by an unsigned (big-endian) `n`-bit _Integer_ `i` in dictionary `D`. On success, `BLESS`es the found value into a continuation and executes it as if by `EXECUTE`. On failure, returns the index `i` and continues execution. This is useful for implementing function dispatch with a default handler.",
       "tags": [],
       "operands": []
     },
@@ -1146,7 +1146,7 @@
   "DICTGET": {
     "description": {
       "short": "",
-      "long": "Looks up key `k` (represented by a _Slice_, the first `0 <= n <= 1023` data bits of which are used as a key) in dictionary `D` of type `HashmapE(n,X)` with `n`-bit keys.\nOn success, returns the value found as a _Slice_ `x`.",
+      "long": "Looks up key `k` (represented by a _Slice_, the first `0 <= n <= 1023` data bits of which are used as a key) in dictionary `D` of type `HashmapE(n,X)` with `n`-bit keys.\nOn success, returns the found value as a _Slice_ `x`.",
       "tags": [],
       "operands": []
     },
@@ -1204,7 +1204,7 @@
   "DICTGETREF": {
     "description": {
       "short": "",
-      "long": "Looks up key `k` (represented by a _Slice_, the first `0 <= n <= 1023` data bits of which are used as a key) in dictionary `D` of type `HashmapE(n,X)` with `n`-bit keys. On success, applies `LDREF` `ENDS` to the value found, returning a _Cell_ `c` instead of a _Slice_.\nThis operation is useful for dictionaries of type `HashmapE(n,^Y)`.",
+      "long": "Looks up key `k` (represented by a _Slice_, the first `0 <= n <= 1023` data bits of which are used as a key) in dictionary `D` of type `HashmapE(n,X)` with `n`-bit keys. On success, applies `LDREF` `ENDS` to the found value, returning a _Cell_ `c` instead of a _Slice_.\nThis operation is useful for dictionaries of type `HashmapE(n,^Y)`.",
       "tags": [],
       "operands": []
     },
@@ -1262,7 +1262,7 @@
   "DICTIGET": {
     "description": {
       "short": "",
-      "long": "Looks up key represented by a signed (big-endian) `n`-bit _Integer_ `i` in dictionary `D` of type `HashmapE(n,X)` with `n`-bit keys. On success, returns the value found as a _Slice_ `x`. If `i` does not fit into `n` bits, returns `0`.",
+      "long": "Looks up key represented by a signed (big-endian) `n`-bit _Integer_ `i` in dictionary `D` of type `HashmapE(n,X)` with `n`-bit keys. On success, returns the found value as a _Slice_ `x`. If `i` does not fit into `n` bits, returns `0`.",
       "tags": [],
       "operands": [],
       "exit_codes": [
@@ -1384,7 +1384,7 @@
   "DICTUGET": {
     "description": {
       "short": "",
-      "long": "Looks up key represented by an unsigned (big-endian) `n`-bit _Integer_ `i` in dictionary `D` of type `HashmapE(n,X)` with `n`-bit keys. On success, returns the value found as a _Slice_ `x`. If `i` does not fit into `n` bits, returns `0`.",
+      "long": "Looks up key represented by an unsigned (big-endian) `n`-bit _Integer_ `i` in dictionary `D` of type `HashmapE(n,X)` with `n`-bit keys. On success, returns the found value as a _Slice_ `x`. If `i` does not fit into `n` bits, returns `0`.",
       "tags": [],
       "operands": [],
       "exit_codes": [
@@ -1448,7 +1448,7 @@
   "DICTUGETREF": {
     "description": {
       "short": "",
-      "long": "Looks up key represented by an unsigned (big-endian) `n`-bit _Integer_ `i` in dictionary `D` of type `HashmapE(n,X)` with `n`-bit keys. On success, applies `LDREF` `ENDS` to the value found, returning a _Cell_ `c` instead of a _Slice_. If `i` does not fit into `n` bits, returns `0`.",
+      "long": "Looks up key represented by an unsigned (big-endian) `n`-bit _Integer_ `i` in dictionary `D` of type `HashmapE(n,X)` with `n`-bit keys. On success, applies `LDREF` `ENDS` to the found value, returning a _Cell_ `c` instead of a _Slice_. If `i` does not fit into `n` bits, returns `0`.",
       "tags": [],
       "operands": [],
       "exit_codes": [
@@ -7307,7 +7307,7 @@
   "DICTIGETOPTREF": {
     "description": {
       "short": "",
-      "long": "Looks up key represented by a signed (big-endian) `n`-bit _Integer_ `i` in dictionary `D`. Returns _Null_ if the key `i` is absent from dictionary `D` or if `i` is out of range. Otherwise, returns the value found as a _Cell_ `c`.",
+      "long": "Looks up key represented by a signed (big-endian) `n`-bit _Integer_ `i` in dictionary `D`. Returns _Null_ if the key `i` is absent from dictionary `D` or if `i` is out of range. Otherwise, returns the found value as a _Cell_ `c`.",
       "tags": [],
       "operands": []
     },
@@ -7345,7 +7345,7 @@
   "DICTUGETOPTREF": {
     "description": {
       "short": "",
-      "long": "Looks up key represented by an unsigned (big-endian) `n`-bit _Integer_ `i` in dictionary `D`. Returns _Null_ if the key `i` is absent from dictionary `D` or if `i` is out of range. Otherwise, returns the value found as a _Cell_ `c`.",
+      "long": "Looks up key represented by an unsigned (big-endian) `n`-bit _Integer_ `i` in dictionary `D`. Returns _Null_ if the key `i` is absent from dictionary `D` or if `i` is out of range. Otherwise, returns the found value as a _Cell_ `c`.",
       "tags": [],
       "operands": []
     },

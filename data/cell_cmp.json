@@ -128,7 +128,7 @@
           },
           {
             "type": "simple",
-            "name": "s2",
+            "name": "s'",
             "value_types": ["Slice"]
           }
         ]
@@ -200,7 +200,7 @@
           },
           {
             "type": "simple",
-            "name": "s2",
+            "name": "s'",
             "value_types": ["Slice"]
           }
         ]
@@ -219,7 +219,7 @@
   "SDPFXREV": {
     "description": {
       "short": "",
-      "long": "Checks whether `s'` is a prefix of `s`.",
+      "long": "Checks whether `s'` is a prefix of `s`. Same as `SDPFX`, but with arguments in a reverse order.",
       "tags": [],
       "operands": [],
       "other_implementations": [
@@ -357,7 +357,7 @@
   "SDSFXREV": {
     "description": {
       "short": "",
-      "long": "Checks whether `s'` is a suffix of `s`.",
+      "long": "Checks whether `s'` is a suffix of `s`. Same as `SDSFX`, but with arguments in a reverse order.",
       "tags": [],
       "operands": []
     },
@@ -423,7 +423,7 @@
   "SDPSFXREV": {
     "description": {
       "short": "",
-      "long": "Checks whether `s'` is a proper suffix of `s`.",
+      "long": "Checks whether `s'` is a proper suffix of `s`. Same as `SDPSFX`, but with arguments in a reverse order.",
       "tags": [],
       "operands": []
     },

@@ -129,7 +129,7 @@
   "STB": {
     "description": {
       "short": "",
-      "long": "Appends all data from _Builder_ `b'` to _Builder_ `b`.",
+      "long": "Appends all data from _Builder_ `from` to _Builder_ `to`.",
       "tags": ["builder building"],
       "operands": []
     },
@@ -152,7 +152,7 @@
         "stack": [
           {
             "type": "simple",
-            "name": "b'",
+            "name": "from'",
             "value_types": ["Builder"]
           }
         ]

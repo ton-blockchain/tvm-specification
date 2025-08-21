@@ -3310,7 +3310,7 @@
         "prefix_str": "C704"
       },
       "signature": {
-        "stack_string": "s:Slice s2:Slice -> result:Int",
+        "stack_string": "s:Slice s':Slice -> result:Int",
         "inputs": {
           "stack": [
             {
@@ -3320,7 +3320,7 @@
             },
             {
               "type": "simple",
-              "name": "s2",
+              "name": "s'",
               "value_types": ["Slice"]
             }
           ]
@@ -3416,7 +3416,7 @@
         "prefix_str": "C708"
       },
       "signature": {
-        "stack_string": "s:Slice s2:Slice -> result:Bool",
+        "stack_string": "s:Slice s':Slice -> result:Bool",
         "inputs": {
           "stack": [
             {
@@ -3426,7 +3426,7 @@
             },
             {
               "type": "simple",
-              "name": "s2",
+              "name": "s'",
               "value_types": ["Slice"]
             }
           ]
@@ -3447,7 +3447,7 @@
       "sub_category": "cell_cmp",
       "description": {
         "short": "",
-        "long": "Checks whether `s'` is a prefix of `s`.",
+        "long": "Checks whether `s'` is a prefix of `s`. Same as `SDPFX`, but with arguments in a reverse order.",
         "tags": [],
         "operands": [],
         "other_implementations": [
@@ -3653,7 +3653,7 @@
       "sub_category": "cell_cmp",
       "description": {
         "short": "",
-        "long": "Checks whether `s'` is a suffix of `s`.",
+        "long": "Checks whether `s'` is a suffix of `s`. Same as `SDSFX`, but with arguments in a reverse order.",
         "tags": [],
         "operands": []
       },
@@ -3753,7 +3753,7 @@
       "sub_category": "cell_cmp",
       "description": {
         "short": "",
-        "long": "Checks whether `s'` is a proper suffix of `s`.",
+        "long": "Checks whether `s'` is a proper suffix of `s`. Same as `SDPSFX`, but with arguments in a reverse order.",
         "tags": [],
         "operands": []
       },
@@ -4181,7 +4181,7 @@
       "sub_category": "cell_serialize",
       "description": {
         "short": "",
-        "long": "Appends all data from _Builder_ `b'` to _Builder_ `b`.",
+        "long": "Appends all data from _Builder_ `from` to _Builder_ `to`.",
         "tags": ["builder building"],
         "operands": []
       },
@@ -4200,7 +4200,7 @@
         "prefix_str": "CF13"
       },
       "signature": {
-        "stack_string": "from:Builder to:Builder -> b':Builder",
+        "stack_string": "from:Builder to:Builder -> from':Builder",
         "inputs": {
           "stack": [
             {
@@ -4219,7 +4219,7 @@
           "stack": [
             {
               "type": "simple",
-              "name": "b'",
+              "name": "from'",
               "value_types": ["Builder"]
             }
           ]
@@ -10984,7 +10984,7 @@
       "sub_category": "continuation_change",
       "description": {
         "short": "",
-        "long": "Sets `c0` to `compose0(c, c0)`. In other words, `c` will be executed before exiting current subroutine.",
+        "long": "Sets `c0` to `compose0(c, c0)`. In other words, `c` will be executed before exiting current continuation.",
         "tags": [],
         "operands": []
       },
@@ -11035,7 +11035,7 @@
       "sub_category": "continuation_change",
       "description": {
         "short": "",
-        "long": "Sets `c1` to `compose1(c, c1)`. In other words, `c` will be executed before exiting current subroutine by its alternative return path.",
+        "long": "Sets `c1` to `compose1(c, c1)`. In other words, `c` will be executed before exiting current continuation by its alternative return path.",
         "tags": [],
         "operands": []
       },
@@ -20458,7 +20458,7 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Returns `-1` or `0` depending on whether `t` is a _Tuple_.",
+        "long": "Returns `-1` (true) or `0` (false) depending on whether `t` is a _Tuple_.",
         "tags": [],
         "operands": []
       },
@@ -30418,7 +30418,7 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Looks up key represented by a signed (big-endian) `n`-bit _Integer_ `i` in dictionary `D`. On success, `BLESS`es the value found into a continuation and transfers control to it as if by a `JMPX`. On failure, does nothing. This is useful for implementing `switch`/`case` constructions.",
+        "long": "Looks up key represented by a signed (big-endian) `n`-bit _Integer_ `i` in dictionary `D`. On success, `BLESS`es the found value into a continuation and transfers control to it as if by a `JMPX`. On failure, does nothing. This is useful for implementing `switch`/`case` constructions.",
         "tags": [],
         "operands": []
       },
@@ -30472,7 +30472,7 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Looks up key represented by an unsigned (big-endian) `n`-bit _Integer_ `i` in dictionary `D`. On success, `BLESS`es the value found into a continuation and transfers control to it as if by a `JMPX`. On failure, does nothing. This is useful for implementing `switch`/`case` constructions.",
+        "long": "Looks up key represented by an unsigned (big-endian) `n`-bit _Integer_ `i` in dictionary `D`. On success, `BLESS`es the found value into a continuation and transfers control to it as if by a `JMPX`. On failure, does nothing. This is useful for implementing `switch`/`case` constructions.",
         "tags": [],
         "operands": []
       },
@@ -30526,7 +30526,7 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Looks up key represented by a signed (big-endian) `n`-bit _Integer_ `i` in dictionary `D`. On success, `BLESS`es the value found into a continuation and executes it as if by `EXECUTE`. On failure, does nothing. This is useful for implementing `switch`/`case` constructions.",
+        "long": "Looks up key represented by a signed (big-endian) `n`-bit _Integer_ `i` in dictionary `D`. On success, `BLESS`es the found value into a continuation and executes it as if by `EXECUTE`. On failure, does nothing. This is useful for implementing `switch`/`case` constructions.",
         "tags": [],
         "operands": []
       },
@@ -30591,7 +30591,7 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Looks up key represented by an unsigned (big-endian) `n`-bit _Integer_ `i` in dictionary `D`. On success, `BLESS`es the value found into a continuation and executes it as if by `EXECUTE`. On failure, does nothing. This is useful for implementing `switch`/`case` constructions.",
+        "long": "Looks up key represented by an unsigned (big-endian) `n`-bit _Integer_ `i` in dictionary `D`. On success, `BLESS`es the found value into a continuation and executes it as if by `EXECUTE`. On failure, does nothing. This is useful for implementing `switch`/`case` constructions.",
         "tags": [],
         "operands": []
       },
@@ -30656,7 +30656,7 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Looks up key represented by a signed (big-endian) `n`-bit _Integer_ `i` in dictionary `D`. On success, `BLESS`es the value found into a continuation and transfers control to it as if by a `JMPX`. On failure, returns the index `i` and continues execution. This is useful for implementing `switch`/`case` constructions with a default case.",
+        "long": "Looks up key represented by a signed (big-endian) `n`-bit _Integer_ `i` in dictionary `D`. On success, `BLESS`es the found value into a continuation and transfers control to it as if by a `JMPX`. On failure, returns the index `i` and continues execution. This is useful for implementing `switch`/`case` constructions with a default case.",
         "tags": [],
         "operands": []
       },
@@ -30714,7 +30714,7 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Looks up key represented by an unsigned (big-endian) `n`-bit _Integer_ `i` in dictionary `D`. On success, `BLESS`es the value found into a continuation and transfers control to it as if by a `JMPX`. On failure, returns the index `i` and continues execution. This is useful for implementing `switch`/`case` constructions with a default case.",
+        "long": "Looks up key represented by an unsigned (big-endian) `n`-bit _Integer_ `i` in dictionary `D`. On success, `BLESS`es the found value into a continuation and transfers control to it as if by a `JMPX`. On failure, returns the index `i` and continues execution. This is useful for implementing `switch`/`case` constructions with a default case.",
         "tags": [],
         "operands": []
       },
@@ -30773,7 +30773,7 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Looks up key represented by a signed (big-endian) `n`-bit _Integer_ `i` in dictionary `D`. On success, `BLESS`es the value found into a continuation and executes it as if by `EXECUTE`. On failure, returns the index `i` and continues execution. This is useful for implementing function dispatch with a default handler.",
+        "long": "Looks up key represented by a signed (big-endian) `n`-bit _Integer_ `i` in dictionary `D`. On success, `BLESS`es the found value into a continuation and executes it as if by `EXECUTE`. On failure, returns the index `i` and continues execution. This is useful for implementing function dispatch with a default handler.",
         "tags": [],
         "operands": []
       },
@@ -30827,7 +30827,7 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Looks up key represented by an unsigned (big-endian) `n`-bit _Integer_ `i` in dictionary `D`. On success, `BLESS`es the value found into a continuation and executes it as if by `EXECUTE`. On failure, returns the index `i` and continues execution. This is useful for implementing function dispatch with a default handler.",
+        "long": "Looks up key represented by an unsigned (big-endian) `n`-bit _Integer_ `i` in dictionary `D`. On success, `BLESS`es the found value into a continuation and executes it as if by `EXECUTE`. On failure, returns the index `i` and continues execution. This is useful for implementing function dispatch with a default handler.",
         "tags": [],
         "operands": []
       },
@@ -30881,7 +30881,7 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Looks up key `k` (represented by a _Slice_, the first `0 <= n <= 1023` data bits of which are used as a key) in dictionary `D` of type `HashmapE(n,X)` with `n`-bit keys.\nOn success, returns the value found as a _Slice_ `x`.",
+        "long": "Looks up key `k` (represented by a _Slice_, the first `0 <= n <= 1023` data bits of which are used as a key) in dictionary `D` of type `HashmapE(n,X)` with `n`-bit keys.\nOn success, returns the found value as a _Slice_ `x`.",
         "tags": [],
         "operands": []
       },
@@ -30956,7 +30956,7 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Looks up key `k` (represented by a _Slice_, the first `0 <= n <= 1023` data bits of which are used as a key) in dictionary `D` of type `HashmapE(n,X)` with `n`-bit keys. On success, applies `LDREF` `ENDS` to the value found, returning a _Cell_ `c` instead of a _Slice_.\nThis operation is useful for dictionaries of type `HashmapE(n,^Y)`.",
+        "long": "Looks up key `k` (represented by a _Slice_, the first `0 <= n <= 1023` data bits of which are used as a key) in dictionary `D` of type `HashmapE(n,X)` with `n`-bit keys. On success, applies `LDREF` `ENDS` to the found value, returning a _Cell_ `c` instead of a _Slice_.\nThis operation is useful for dictionaries of type `HashmapE(n,^Y)`.",
         "tags": [],
         "operands": []
       },
@@ -31031,7 +31031,7 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Looks up key represented by a signed (big-endian) `n`-bit _Integer_ `i` in dictionary `D` of type `HashmapE(n,X)` with `n`-bit keys. On success, returns the value found as a _Slice_ `x`. If `i` does not fit into `n` bits, returns `0`.",
+        "long": "Looks up key represented by a signed (big-endian) `n`-bit _Integer_ `i` in dictionary `D` of type `HashmapE(n,X)` with `n`-bit keys. On success, returns the found value as a _Slice_ `x`. If `i` does not fit into `n` bits, returns `0`.",
         "tags": [],
         "operands": [],
         "exit_codes": [
@@ -31187,7 +31187,7 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Looks up key represented by an unsigned (big-endian) `n`-bit _Integer_ `i` in dictionary `D` of type `HashmapE(n,X)` with `n`-bit keys. On success, returns the value found as a _Slice_ `x`. If `i` does not fit into `n` bits, returns `0`.",
+        "long": "Looks up key represented by an unsigned (big-endian) `n`-bit _Integer_ `i` in dictionary `D` of type `HashmapE(n,X)` with `n`-bit keys. On success, returns the found value as a _Slice_ `x`. If `i` does not fit into `n` bits, returns `0`.",
         "tags": [],
         "operands": [],
         "exit_codes": [
@@ -31268,7 +31268,7 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Looks up key represented by an unsigned (big-endian) `n`-bit _Integer_ `i` in dictionary `D` of type `HashmapE(n,X)` with `n`-bit keys. On success, applies `LDREF` `ENDS` to the value found, returning a _Cell_ `c` instead of a _Slice_. If `i` does not fit into `n` bits, returns `0`.",
+        "long": "Looks up key represented by an unsigned (big-endian) `n`-bit _Integer_ `i` in dictionary `D` of type `HashmapE(n,X)` with `n`-bit keys. On success, applies `LDREF` `ENDS` to the found value, returning a _Cell_ `c` instead of a _Slice_. If `i` does not fit into `n` bits, returns `0`.",
         "tags": [],
         "operands": [],
         "exit_codes": [
@@ -38640,7 +38640,7 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Looks up key represented by a signed (big-endian) `n`-bit _Integer_ `i` in dictionary `D`. Returns _Null_ if the key `i` is absent from dictionary `D` or if `i` is out of range. Otherwise, returns the value found as a _Cell_ `c`.",
+        "long": "Looks up key represented by a signed (big-endian) `n`-bit _Integer_ `i` in dictionary `D`. Returns _Null_ if the key `i` is absent from dictionary `D` or if `i` is out of range. Otherwise, returns the found value as a _Cell_ `c`.",
         "tags": [],
         "operands": []
       },
@@ -38695,7 +38695,7 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Looks up key represented by an unsigned (big-endian) `n`-bit _Integer_ `i` in dictionary `D`. Returns _Null_ if the key `i` is absent from dictionary `D` or if `i` is out of range. Otherwise, returns the value found as a _Cell_ `c`.",
+        "long": "Looks up key represented by an unsigned (big-endian) `n`-bit _Integer_ `i` in dictionary `D`. Returns _Null_ if the key `i` is absent from dictionary `D` or if `i` is out of range. Otherwise, returns the found value as a _Cell_ `c`.",
         "tags": [],
         "operands": []
       },
@@ -53442,7 +53442,7 @@
       "sub_category": "continuation_change",
       "description": {
         "short": "",
-        "long": "Pushes the current value of control register `c(i)`. If the control register is not supported in the current codepage, or if it does not have a value, an exception is triggered.",
+        "long": "Pushes the current value of control register `c(i)`. If the control register is not supported in the current codepage, or if it does not have a value, throws an exception.",
         "tags": [],
         "operands": ["i"]
       },

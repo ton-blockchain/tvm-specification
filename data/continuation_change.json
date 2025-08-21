@@ -452,7 +452,7 @@
   "ATEXIT": {
     "description": {
       "short": "",
-      "long": "Sets `c0` to `compose0(c, c0)`. In other words, `c` will be executed before exiting current subroutine.",
+      "long": "Sets `c0` to `compose0(c, c0)`. In other words, `c` will be executed before exiting current continuation.",
       "tags": [],
       "operands": []
     },
@@ -486,7 +486,7 @@
   "ATEXITALT": {
     "description": {
       "short": "",
-      "long": "Sets `c1` to `compose1(c, c1)`. In other words, `c` will be executed before exiting current subroutine by its alternative return path.",
+      "long": "Sets `c1` to `compose1(c, c1)`. In other words, `c` will be executed before exiting current continuation by its alternative return path.",
       "tags": [],
       "operands": []
     },
@@ -1230,7 +1230,7 @@
   "PUSHCTR": {
     "description": {
       "short": "",
-      "long": "Pushes the current value of control register `c(i)`. If the control register is not supported in the current codepage, or if it does not have a value, an exception is triggered.",
+      "long": "Pushes the current value of control register `c(i)`. If the control register is not supported in the current codepage, or if it does not have a value, throws an exception.",
       "tags": [],
       "operands": ["i"]
     },

@@ -503,7 +503,7 @@
   "ISTUPLE": {
     "description": {
       "short": "",
-      "long": "Returns `-1` or `0` depending on whether `t` is a _Tuple_.",
+      "long": "Returns `-1` (true) or `0` (false) depending on whether `t` is a _Tuple_.",
       "tags": [],
       "operands": []
     },
