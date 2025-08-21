@@ -891,20 +891,19 @@
   "GETPARAMLONG": {
     "description": {
       "short": "Gets a parameter from the c7 tuple with extended range.",
-      "long": "Same as `x GETPARAM`, but x is in range `[0..254]`.",
+      "long": "Same as `i GETPARAM`, but `i` is in range `[0..254]`.",
       "tags": [],
-      "operands": []
+      "operands": ["i"]
     },
     "signature": {
       "inputs": {
-        "stack": [
+        "stack": [],
+        "registers": [
           {
-            "type": "simple",
-            "name": "x",
-            "value_types": ["Int"]
+            "type": "constant",
+            "index": 7
           }
-        ],
-        "registers": []
+        ]
       },
       "outputs": {
         "stack": [
@@ -945,20 +944,19 @@
   "GETPARAMLONG2": {
     "description": {
       "short": "Gets a parameter from the c7 tuple with extended range.",
-      "long": "Same as `x GETPARAM`, but x is in range `[0..254]`.",
+      "long": "Same as `i GETPARAM`, but `i` is in range `[0..254]`.",
       "tags": [],
-      "operands": []
+      "operands": ["i"]
     },
     "signature": {
       "inputs": {
-        "stack": [
+        "stack": [],
+        "registers": [
           {
-            "type": "simple",
-            "name": "x",
-            "value_types": ["Int"]
+            "type": "constant",
+            "index": 7
           }
-        ],
-        "registers": []
+        ]
       },
       "outputs": {
         "stack": [
@@ -1214,7 +1212,7 @@
   },
   "INMSGPARAM": {
     "description": {
-      "short": "Returns a specific parameter from the inbound message parameters tuple.",
+      "short": "",
       "long": "Returns a specific parameter from the inbound message parameters tuple.",
       "tags": [],
       "operands": ["x"],
@@ -1227,13 +1225,7 @@
     },
     "signature": {
       "inputs": {
-        "stack": [
-          {
-            "type": "simple",
-            "name": "x",
-            "value_types": ["Int"]
-          }
-        ],
+        "stack": [],
         "registers": []
       },
       "outputs": {

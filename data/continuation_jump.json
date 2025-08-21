@@ -458,7 +458,13 @@
         ]
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "prev_cc",
+            "value_types": ["Slice"]
+          }
+        ],
         "registers": []
       }
     },

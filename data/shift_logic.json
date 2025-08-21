@@ -849,11 +849,6 @@
             "type": "simple",
             "name": "x",
             "value_types": ["Int"]
-          },
-          {
-            "type": "simple",
-            "name": "y",
-            "value_types": ["Int"]
           }
         ]
       },
@@ -979,11 +974,6 @@
           {
             "type": "simple",
             "name": "x",
-            "value_types": ["Int"]
-          },
-          {
-            "type": "simple",
-            "name": "y",
             "value_types": ["Int"]
           }
         ]

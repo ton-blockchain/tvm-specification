@@ -22,6 +22,6 @@
         "noUnusedParameters": false,
         "noUncheckedIndexedAccess": true
     },
-    "include": ["src/**/*"],
+    "include": ["src/**/*", "validity/**/*"],
     "exclude": ["node_modules"]
 }

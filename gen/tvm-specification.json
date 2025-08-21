@@ -8550,7 +8550,7 @@
         "prefix_str": "DB3F"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "∅ -> prev_cc:Slice",
         "inputs": {
           "stack": [],
           "registers": [
@@ -8561,7 +8561,13 @@
           ]
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "prev_cc",
+              "value_types": ["Slice"]
+            }
+          ],
           "registers": []
         }
       },
@@ -10797,8 +10803,8 @@
       "category": "continuation",
       "sub_category": "continuation_change",
       "description": {
-        "short": "Sets multiple control registers in a continuation.",
-        "long": "Takes a list of values and their corresponding control register indices from the stack and stores them into the savelist of continuation `c`. Returns the modified continuation. This is a more efficient version of multiple `SETCONTCTRX` calls.",
+        "short": "Sets multiple control registers in a continuation by a `mask`.",
+        "long": "Takes a `mask` that describes which control registers of the current continuation should be copied and set in continuation `c`. This is a more efficient version of multiple `SETCONTCTRX` calls.",
         "tags": ["continuation", "control"],
         "operands": []
       },
@@ -10818,29 +10824,18 @@
         "prefix_str": "EDE4"
       },
       "signature": {
-        "stack_string": "x_1...x_count count:Int c:Continuation -> c':Continuation",
+        "stack_string": "c:Continuation mask:Int -> c':Continuation",
         "inputs": {
           "stack": [
-            {
-              "type": "array",
-              "name": "values",
-              "length_var": "count",
-              "array_entry": [
-                {
-                  "type": "simple",
-                  "name": "x"
-                }
-              ]
-            },
-            {
-              "type": "simple",
-              "name": "count",
-              "value_types": ["Int"]
-            },
             {
               "type": "simple",
               "name": "c",
               "value_types": ["Continuation"]
+            },
+            {
+              "type": "simple",
+              "name": "mask",
+              "value_types": ["Int"]
             }
           ],
           "registers": []
@@ -25206,7 +25201,7 @@
         "prefix_str": "A9A0"
       },
       "signature": {
-        "stack_string": "x:Int y:Int w:Int z:Int -> result:Int",
+        "stack_string": "x:Int y:Int w:Int z:Int -> result:Int result2:Int",
         "inputs": {
           "stack": [
             {
@@ -25236,6 +25231,11 @@
             {
               "type": "simple",
               "name": "result",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "result2",
               "value_types": ["Int"]
             }
           ]
@@ -25267,7 +25267,7 @@
         "prefix_str": "A9A1"
       },
       "signature": {
-        "stack_string": "x:Int y:Int w:Int z:Int -> result:Int",
+        "stack_string": "x:Int y:Int w:Int z:Int -> result:Int result2:Int",
         "inputs": {
           "stack": [
             {
@@ -25297,6 +25297,11 @@
             {
               "type": "simple",
               "name": "result",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "result2",
               "value_types": ["Int"]
             }
           ]
@@ -25328,7 +25333,7 @@
         "prefix_str": "A9A2"
       },
       "signature": {
-        "stack_string": "x:Int y:Int w:Int z:Int -> result:Int",
+        "stack_string": "x:Int y:Int w:Int z:Int -> result:Int result2:Int",
         "inputs": {
           "stack": [
             {
@@ -25358,6 +25363,11 @@
             {
               "type": "simple",
               "name": "result",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "result2",
               "value_types": ["Int"]
             }
           ]
@@ -25718,7 +25728,7 @@
         "prefix_str": "A9AC"
       },
       "signature": {
-        "stack_string": "x:Int y:Int z:Int -> result:Int",
+        "stack_string": "x:Int y:Int z:Int -> result:Int result2:Int",
         "inputs": {
           "stack": [
             {
@@ -25743,6 +25753,11 @@
             {
               "type": "simple",
               "name": "result",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "result2",
               "value_types": ["Int"]
             }
           ]
@@ -25773,7 +25788,7 @@
         "prefix_str": "A9AD"
       },
       "signature": {
-        "stack_string": "x:Int y:Int z:Int -> result:Int",
+        "stack_string": "x:Int y:Int z:Int -> result:Int result2:Int",
         "inputs": {
           "stack": [
             {
@@ -25798,6 +25813,11 @@
             {
               "type": "simple",
               "name": "result",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "result2",
               "value_types": ["Int"]
             }
           ]
@@ -25828,7 +25848,7 @@
         "prefix_str": "A9AE"
       },
       "signature": {
-        "stack_string": "x:Int y:Int z:Int -> result:Int",
+        "stack_string": "x:Int y:Int z:Int -> result:Int result2:Int",
         "inputs": {
           "stack": [
             {
@@ -25853,6 +25873,11 @@
             {
               "type": "simple",
               "name": "result",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "result2",
               "value_types": ["Int"]
             }
           ]
@@ -25884,7 +25909,7 @@
         "prefix_str": "B7A9A0"
       },
       "signature": {
-        "stack_string": "x:Int y:Int w:Int z:Int -> result:Int",
+        "stack_string": "x:Int y:Int w:Int z:Int -> result:Int result2:Int",
         "inputs": {
           "stack": [
             {
@@ -25914,6 +25939,11 @@
             {
               "type": "simple",
               "name": "result",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "result2",
               "value_types": ["Int"]
             }
           ]
@@ -25945,7 +25975,7 @@
         "prefix_str": "B7A9A1"
       },
       "signature": {
-        "stack_string": "x:Int y:Int w:Int z:Int -> result:Int",
+        "stack_string": "x:Int y:Int w:Int z:Int -> result:Int result2:Int",
         "inputs": {
           "stack": [
             {
@@ -25975,6 +26005,11 @@
             {
               "type": "simple",
               "name": "result",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "result2",
               "value_types": ["Int"]
             }
           ]
@@ -26006,7 +26041,7 @@
         "prefix_str": "B7A9A2"
       },
       "signature": {
-        "stack_string": "x:Int y:Int w:Int z:Int -> result:Int",
+        "stack_string": "x:Int y:Int w:Int z:Int -> result:Int result2:Int",
         "inputs": {
           "stack": [
             {
@@ -26036,6 +26071,11 @@
             {
               "type": "simple",
               "name": "result",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "result2",
               "value_types": ["Int"]
             }
           ]
@@ -26396,7 +26436,7 @@
         "prefix_str": "B7A9AC"
       },
       "signature": {
-        "stack_string": "x:Int y:Int z:Int -> result:Int",
+        "stack_string": "x:Int y:Int z:Int -> result:Int result2:Int",
         "inputs": {
           "stack": [
             {
@@ -26421,6 +26461,11 @@
             {
               "type": "simple",
               "name": "result",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "result2",
               "value_types": ["Int"]
             }
           ]
@@ -26451,7 +26496,7 @@
         "prefix_str": "B7A9AD"
       },
       "signature": {
-        "stack_string": "x:Int y:Int z:Int -> result:Int",
+        "stack_string": "x:Int y:Int z:Int -> result:Int result2:Int",
         "inputs": {
           "stack": [
             {
@@ -26476,6 +26521,11 @@
             {
               "type": "simple",
               "name": "result",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "result2",
               "value_types": ["Int"]
             }
           ]
@@ -26506,7 +26556,7 @@
         "prefix_str": "B7A9AE"
       },
       "signature": {
-        "stack_string": "x:Int y:Int z:Int -> result:Int",
+        "stack_string": "x:Int y:Int z:Int -> result:Int result2:Int",
         "inputs": {
           "stack": [
             {
@@ -26531,6 +26581,11 @@
             {
               "type": "simple",
               "name": "result",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "result2",
               "value_types": ["Int"]
             }
           ]
@@ -26562,7 +26617,7 @@
         "prefix_str": "A9C0"
       },
       "signature": {
-        "stack_string": "x:Int w:Int z:Int y:Int -> result:Int",
+        "stack_string": "x:Int w:Int z:Int y:Int -> result:Int result2:Int",
         "inputs": {
           "stack": [
             {
@@ -26592,6 +26647,11 @@
             {
               "type": "simple",
               "name": "result",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "result2",
               "value_types": ["Int"]
             }
           ]
@@ -26623,7 +26683,7 @@
         "prefix_str": "A9C1"
       },
       "signature": {
-        "stack_string": "x:Int w:Int z:Int y:Int -> result:Int",
+        "stack_string": "x:Int w:Int z:Int y:Int -> result:Int result2:Int",
         "inputs": {
           "stack": [
             {
@@ -26653,6 +26713,11 @@
             {
               "type": "simple",
               "name": "result",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "result2",
               "value_types": ["Int"]
             }
           ]
@@ -26684,7 +26749,7 @@
         "prefix_str": "A9C2"
       },
       "signature": {
-        "stack_string": "x:Int w:Int z:Int y:Int -> result:Int",
+        "stack_string": "x:Int w:Int z:Int y:Int -> result:Int result2:Int",
         "inputs": {
           "stack": [
             {
@@ -26714,6 +26779,11 @@
             {
               "type": "simple",
               "name": "result",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "result2",
               "value_types": ["Int"]
             }
           ]
@@ -27074,7 +27144,7 @@
         "prefix_str": "A9CC"
       },
       "signature": {
-        "stack_string": "x:Int y:Int z:Int -> result:Int",
+        "stack_string": "x:Int y:Int z:Int -> result:Int result2:Int",
         "inputs": {
           "stack": [
             {
@@ -27099,6 +27169,11 @@
             {
               "type": "simple",
               "name": "result",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "result2",
               "value_types": ["Int"]
             }
           ]
@@ -27129,7 +27204,7 @@
         "prefix_str": "A9CD"
       },
       "signature": {
-        "stack_string": "x:Int y:Int z:Int -> result:Int",
+        "stack_string": "x:Int y:Int z:Int -> result:Int result2:Int",
         "inputs": {
           "stack": [
             {
@@ -27154,6 +27229,11 @@
             {
               "type": "simple",
               "name": "result",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "result2",
               "value_types": ["Int"]
             }
           ]
@@ -27184,7 +27264,7 @@
         "prefix_str": "A9CE"
       },
       "signature": {
-        "stack_string": "x:Int y:Int z:Int -> result:Int",
+        "stack_string": "x:Int y:Int z:Int -> result:Int result2:Int",
         "inputs": {
           "stack": [
             {
@@ -27209,6 +27289,11 @@
             {
               "type": "simple",
               "name": "result",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "result2",
               "value_types": ["Int"]
             }
           ]
@@ -27240,7 +27325,7 @@
         "prefix_str": "B7A9C0"
       },
       "signature": {
-        "stack_string": "x:Int w:Int z:Int y:Int -> result:Int",
+        "stack_string": "x:Int w:Int z:Int y:Int -> result:Int result2:Int",
         "inputs": {
           "stack": [
             {
@@ -27270,6 +27355,11 @@
             {
               "type": "simple",
               "name": "result",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "result2",
               "value_types": ["Int"]
             }
           ]
@@ -27301,7 +27391,7 @@
         "prefix_str": "B7A9C1"
       },
       "signature": {
-        "stack_string": "x:Int w:Int z:Int y:Int -> result:Int",
+        "stack_string": "x:Int w:Int z:Int y:Int -> result:Int result2:Int",
         "inputs": {
           "stack": [
             {
@@ -27331,6 +27421,11 @@
             {
               "type": "simple",
               "name": "result",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "result2",
               "value_types": ["Int"]
             }
           ]
@@ -27362,7 +27457,7 @@
         "prefix_str": "B7A9C2"
       },
       "signature": {
-        "stack_string": "x:Int w:Int z:Int y:Int -> result:Int",
+        "stack_string": "x:Int w:Int z:Int y:Int -> result:Int result2:Int",
         "inputs": {
           "stack": [
             {
@@ -27392,6 +27487,11 @@
             {
               "type": "simple",
               "name": "result",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "result2",
               "value_types": ["Int"]
             }
           ]
@@ -27752,7 +27852,7 @@
         "prefix_str": "B7A9CC"
       },
       "signature": {
-        "stack_string": "x:Int y:Int z:Int -> result:Int",
+        "stack_string": "x:Int y:Int z:Int -> result:Int result2:Int",
         "inputs": {
           "stack": [
             {
@@ -27777,6 +27877,11 @@
             {
               "type": "simple",
               "name": "result",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "result2",
               "value_types": ["Int"]
             }
           ]
@@ -27807,7 +27912,7 @@
         "prefix_str": "B7A9CD"
       },
       "signature": {
-        "stack_string": "x:Int y:Int z:Int -> result:Int",
+        "stack_string": "x:Int y:Int z:Int -> result:Int result2:Int",
         "inputs": {
           "stack": [
             {
@@ -27832,6 +27937,11 @@
             {
               "type": "simple",
               "name": "result",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "result2",
               "value_types": ["Int"]
             }
           ]
@@ -27862,7 +27972,7 @@
         "prefix_str": "B7A9CE"
       },
       "signature": {
-        "stack_string": "x:Int y:Int z:Int -> result:Int",
+        "stack_string": "x:Int y:Int z:Int -> result:Int result2:Int",
         "inputs": {
           "stack": [
             {
@@ -27887,6 +27997,11 @@
             {
               "type": "simple",
               "name": "result",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "result2",
               "value_types": ["Int"]
             }
           ]
@@ -30719,7 +30834,7 @@
         "prefix_str": "F4BC"
       },
       "signature": {
-        "stack_string": "i:Int D:Cell|Null n:Int -> ∅",
+        "stack_string": "i:Int D:Cell|Null n:Int -> (i:Int 0)",
         "inputs": {
           "stack": [
             {
@@ -30740,7 +30855,24 @@
           ]
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "conditional",
+              "name": "is_found",
+              "match": [
+                {
+                  "value": 0,
+                  "stack": [
+                    {
+                      "type": "simple",
+                      "name": "i",
+                      "value_types": ["Int"]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
           "registers": []
         }
       },
@@ -30777,7 +30909,7 @@
         "prefix_str": "F4BD"
       },
       "signature": {
-        "stack_string": "i:Int D:Cell|Null n:Int -> ∅",
+        "stack_string": "i:Int D:Cell|Null n:Int -> (i:Int 0)",
         "inputs": {
           "stack": [
             {
@@ -30799,7 +30931,24 @@
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "conditional",
+              "name": "is_found",
+              "match": [
+                {
+                  "value": 0,
+                  "stack": [
+                    {
+                      "type": "simple",
+                      "name": "i",
+                      "value_types": ["Int"]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
           "registers": []
         }
       },
@@ -41564,10 +41713,10 @@
       "category": "continuation",
       "sub_category": "continuation_change",
       "description": {
-        "short": "Sets multiple control registers in a continuation with fixed indices.",
-        "long": "Takes a list of values from the stack and stores them into the savelist of continuation `c` using predefined control register indices. Returns the modified continuation. This is similar to `SETCONTCTRMANYX` but uses fixed indices specified in the instruction.",
+        "short": "Sets multiple control registers in a continuation by a `mask`.",
+        "long": "Takes a `mask` that describes which control registers of the current continuation should be copied and set in continuation `c`. Returns the modified continuation. This is similar to `SETCONTCTRMANYX` but uses fixed `mask` specified in the instruction.",
         "tags": ["continuation", "control"],
-        "operands": ["count"]
+        "operands": ["mask"]
       },
       "layout": {
         "min": 15590144,
@@ -41598,20 +41747,9 @@
         "prefix_str": "EDE3"
       },
       "signature": {
-        "stack_string": "x_1...x_count c:Continuation -> c':Continuation",
+        "stack_string": "c:Continuation -> c':Continuation",
         "inputs": {
           "stack": [
-            {
-              "type": "array",
-              "name": "values",
-              "length_var": "count",
-              "array_entry": [
-                {
-                  "type": "simple",
-                  "name": "x"
-                }
-              ]
-            },
             {
               "type": "simple",
               "name": "c",
@@ -51853,17 +51991,12 @@
         "prefix_str": "B7AA"
       },
       "signature": {
-        "stack_string": "x:Int y:Int -> result:Int",
+        "stack_string": "x:Int -> result:Int",
         "inputs": {
           "stack": [
             {
               "type": "simple",
               "name": "x",
-              "value_types": ["Int"]
-            },
-            {
-              "type": "simple",
-              "name": "y",
               "value_types": ["Int"]
             }
           ]
@@ -52313,17 +52446,12 @@
         "prefix_str": "B7AB"
       },
       "signature": {
-        "stack_string": "x:Int y:Int -> result:Int",
+        "stack_string": "x:Int -> result:Int",
         "inputs": {
           "stack": [
             {
               "type": "simple",
               "name": "x",
-              "value_types": ["Int"]
-            },
-            {
-              "type": "simple",
-              "name": "y",
               "value_types": ["Int"]
             }
           ]
@@ -53332,7 +53460,7 @@
         "prefix_str": "FE14"
       },
       "signature": {
-        "stack_string": "str:Slice -> ∅",
+        "stack_string": "str:Slice -> str:Slice",
         "inputs": {
           "stack": [
             {
@@ -53344,7 +53472,13 @@
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "str",
+              "value_types": ["Slice"]
+            }
+          ],
           "registers": []
         }
       }
@@ -54489,9 +54623,9 @@
       "sub_category": "",
       "description": {
         "short": "Gets a parameter from the c7 tuple with extended range.",
-        "long": "Same as `x GETPARAM`, but x is in range `[0..254]`.",
+        "long": "Same as `i GETPARAM`, but `i` is in range `[0..254]`.",
         "tags": [],
-        "operands": []
+        "operands": ["i"]
       },
       "layout": {
         "min": 16285952,
@@ -54518,16 +54652,15 @@
         "prefix_str": "F88100"
       },
       "signature": {
-        "stack_string": "x:Int -> param_value:Any",
+        "stack_string": "∅ -> param_value:Any",
         "inputs": {
-          "stack": [
+          "stack": [],
+          "registers": [
             {
-              "type": "simple",
-              "name": "x",
-              "value_types": ["Int"]
+              "type": "constant",
+              "index": 7
             }
-          ],
-          "registers": []
+          ]
         },
         "outputs": {
           "stack": [
@@ -54588,9 +54721,9 @@
       "sub_category": "",
       "description": {
         "short": "Gets a parameter from the c7 tuple with extended range.",
-        "long": "Same as `x GETPARAM`, but x is in range `[0..254]`.",
+        "long": "Same as `i GETPARAM`, but `i` is in range `[0..254]`.",
         "tags": [],
-        "operands": []
+        "operands": ["i"]
       },
       "layout": {
         "min": 16285970,
@@ -54617,16 +54750,15 @@
         "prefix_str": "F88112"
       },
       "signature": {
-        "stack_string": "x:Int -> param_value:Any",
+        "stack_string": "∅ -> param_value:Any",
         "inputs": {
-          "stack": [
+          "stack": [],
+          "registers": [
             {
-              "type": "simple",
-              "name": "x",
-              "value_types": ["Int"]
+              "type": "constant",
+              "index": 7
             }
-          ],
-          "registers": []
+          ]
         },
         "outputs": {
           "stack": [
@@ -55064,7 +55196,7 @@
       "category": "config",
       "sub_category": "",
       "description": {
-        "short": "Returns a specific parameter from the inbound message parameters tuple.",
+        "short": "",
         "long": "Returns a specific parameter from the inbound message parameters tuple.",
         "tags": [],
         "operands": ["x"],
@@ -55100,15 +55232,9 @@
         "prefix_str": "F89A"
       },
       "signature": {
-        "stack_string": "x:Int -> param_value:Any",
+        "stack_string": "∅ -> param_value:Any",
         "inputs": {
-          "stack": [
-            {
-              "type": "simple",
-              "name": "x",
-              "value_types": ["Int"]
-            }
-          ],
+          "stack": [],
           "registers": []
         },
         "outputs": {

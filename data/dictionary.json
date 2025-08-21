@@ -1014,7 +1014,24 @@
         ]
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "is_found",
+            "match": [
+              {
+                "value": 0,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "i",
+                    "value_types": ["Int"]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
         "registers": []
       }
     },
@@ -1056,7 +1073,24 @@
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "is_found",
+            "match": [
+              {
+                "value": 0,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "i",
+                    "value_types": ["Int"]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
         "registers": []
       }
     },

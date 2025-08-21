@@ -72,7 +72,13 @@
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "str",
+            "value_types": ["Slice"]
+          }
+        ],
         "registers": []
       }
     }

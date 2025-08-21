@@ -5,11 +5,16 @@
         "build": "tsc --declaration",
         "fmt": "prettier --write -l --cache .",
         "fmt:check": "prettier --check --cache .",
-        "generate": "ts-node src/gen/gen.ts && yarn fmt"
+        "generate": "ts-node src/gen/gen.ts && yarn fmt",
+        "validate": "ts-node ./validity/input-instr-signature.ts",
+        "precommit": "yarn fmt && yarn generate && yarn validate"
     },
     "devDependencies": {
         "@ton/core": "^0.61.0",
         "@ton/crypto": "^3.3.0",
+        "@ton/sandbox": "^0.36.0",
+        "@ton/test-utils": "^0.11.0",
+        "jest": "^30.0.5",
         "prettier": "^3.5.3",
         "ton-assembly": "^0.2.6",
         "ts-node": "^10.9.2",

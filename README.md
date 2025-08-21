@@ -20,6 +20,13 @@ language.
 - With empty stack signature: **93**
 - Fift instructions count: **116**
 
+## Validity
+
+This repository contains scripts that check the validity of instruction descriptions:
+
+- [input-instr-signature.ts](validity/input-instr-signature.ts) — checks the validity of instruction signatures and
+  operands (currently 825 instructions are automatically checked (90%))
+
 ## Development
 
 [`data/`](data) directory contains a set of files with description for all instructions. This description doesn't
@@ -33,6 +40,14 @@ To generate latest specification run:
 ```
 yarn gen
 ```
+
+Before commit run:
+
+```
+yarn precommit
+```
+
+To format, build and validate changes.
 
 # License
 
