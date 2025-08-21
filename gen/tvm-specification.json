@@ -11969,7 +11969,7 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "A quiet version of `PLDDICT`.",
+        "long": "Preloads a dictionary `D` from _Slice_ `s`. This is a quiet version of `PLDDICT` which means that instead of throwing an exception, it pushes a status flag to the stack: 0 if the operation fails, -1 if the operation succeeds.",
         "tags": [],
         "operands": []
       },
@@ -18922,7 +18922,7 @@
       "sub_category": "cell_deserialize",
       "description": {
         "short": "",
-        "long": "A quiet version of `LDMSGADDR`: on success, pushes an extra `-1`; on failure, pushes the original `s` and a zero.",
+        "long": "Loads a valid `MsgAddress` from _Slice_ `s` and pushes the loaded `addr` value onto the stack along with _Slice_ `s'` with the remaining data. This is a quiet version of `LDMSGADDR` which means that instead of throwing an exception, it pushes a status flag to the stack: 0 if the operation fails, -1 if the operation succeeds.",
         "tags": ["address", "slice parsing"],
         "operands": []
       },
@@ -19043,7 +19043,7 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "A quiet version of `PARSEMSGADDR`: returns a zero on error instead of throwing an exception.",
+        "long": "Decomposes _Slice_ `s` containing a valid `MsgAddress` into a _Tuple_ `t` with separate fields of this `MsgAddress`. If `s` is not a valid `MsgAddress`, returns a zero instead throwing an exception as for `PARSEMSGADDR`.",
         "tags": [],
         "operands": []
       },
@@ -28096,7 +28096,7 @@
       "sub_category": "cell_serialize",
       "description": {
         "short": "",
-        "long": "A quiet version of `STIX`. If there is no space in `b`, sets `b'=b` and `f=-1`.\nIf `x` does not fit into `width` bits, sets `b'=b` and `f=1`.\nIf the operation succeeds, `b'` is the new _Builder_ and `f=0`.\nHowever, `0 <= width <= 257`, with a range check exception if this is not so.",
+        "long": "Stores a signed `width`-bit integer `x` into `b` for `0 <= width <= 257`. If there is no space in `b`, sets `b' = b` and `f = -1`.\nIf `x` does not fit into `width` bits, sets `b' = b` and `f = 1`.\nIf the operation succeeds, `b'` is the new _Builder_ and `f=0`.\nHowever, `0 <= width <= 257`, with a range check exception if this is not so.",
         "tags": ["builder building"],
         "operands": []
       },
@@ -28910,7 +28910,7 @@
       "sub_category": "cell_deserialize",
       "description": {
         "short": "",
-        "long": "Quiet version of `LDIX`: loads a signed `width`-bit integer from `s` similarly to `LDIX`, but returns a success flag, equal to `-1` on success or to `0` on failure (if `s` does not have `width` bits), instead of throwing a cell underflow exception.",
+        "long": "Loads a signed `width`-bit (`0 <= width <= 257`) integer `x` from _Slice_ `s`, and returns the remainder of `s` as `s'`. This is a quiet version of `LDIX` which means that instead of throwing an exception, it pushes a status flag to the stack: 0 if the operation fails, -1 if the operation succeeds.",
         "tags": ["slice parsing"],
         "operands": []
       },

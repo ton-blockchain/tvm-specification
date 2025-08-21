@@ -1567,7 +1567,7 @@
   "LDMSGADDRQ": {
     "description": {
       "short": "",
-      "long": "A quiet version of `LDMSGADDR`: on success, pushes an extra `-1`; on failure, pushes the original `s` and a zero.",
+      "long": "Loads a valid `MsgAddress` from _Slice_ `s` and pushes the loaded `addr` value onto the stack along with _Slice_ `s'` with the remaining data. This is a quiet version of `LDMSGADDR` which means that instead of throwing an exception, it pushes a status flag to the stack: 0 if the operation fails, -1 if the operation succeeds.",
       "tags": ["address", "slice parsing"],
       "operands": []
     },
@@ -1768,7 +1768,7 @@
   "LDIXQ": {
     "description": {
       "short": "",
-      "long": "Quiet version of `LDIX`: loads a signed `width`-bit integer from `s` similarly to `LDIX`, but returns a success flag, equal to `-1` on success or to `0` on failure (if `s` does not have `width` bits), instead of throwing a cell underflow exception.",
+      "long": "Loads a signed `width`-bit (`0 <= width <= 257`) integer `x` from _Slice_ `s`, and returns the remainder of `s` as `s'`. This is a quiet version of `LDIX` which means that instead of throwing an exception, it pushes a status flag to the stack: 0 if the operation fails, -1 if the operation succeeds.",
       "tags": ["slice parsing"],
       "operands": []
     },

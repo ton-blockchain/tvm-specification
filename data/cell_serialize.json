@@ -1609,7 +1609,7 @@
   "STIXQ": {
     "description": {
       "short": "",
-      "long": "A quiet version of `STIX`. If there is no space in `b`, sets `b'=b` and `f=-1`.\nIf `x` does not fit into `width` bits, sets `b'=b` and `f=1`.\nIf the operation succeeds, `b'` is the new _Builder_ and `f=0`.\nHowever, `0 <= width <= 257`, with a range check exception if this is not so.",
+      "long": "Stores a signed `width`-bit integer `x` into `b` for `0 <= width <= 257`. If there is no space in `b`, sets `b' = b` and `f = -1`.\nIf `x` does not fit into `width` bits, sets `b' = b` and `f = 1`.\nIf the operation succeeds, `b'` is the new _Builder_ and `f=0`.\nHowever, `0 <= width <= 257`, with a range check exception if this is not so.",
       "tags": ["builder building"],
       "operands": []
     },

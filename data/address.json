@@ -30,7 +30,7 @@
   "PARSEMSGADDRQ": {
     "description": {
       "short": "",
-      "long": "A quiet version of `PARSEMSGADDR`: returns a zero on error instead of throwing an exception.",
+      "long": "Decomposes _Slice_ `s` containing a valid `MsgAddress` into a _Tuple_ `t` with separate fields of this `MsgAddress`. If `s` is not a valid `MsgAddress`, returns a zero instead throwing an exception as for `PARSEMSGADDR`.",
       "tags": [],
       "operands": []
     },

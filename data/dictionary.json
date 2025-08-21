@@ -262,7 +262,7 @@
   "PLDDICTQ": {
     "description": {
       "short": "",
-      "long": "A quiet version of `PLDDICT`.",
+      "long": "Preloads a dictionary `D` from _Slice_ `s`. This is a quiet version of `PLDDICT` which means that instead of throwing an exception, it pushes a status flag to the stack: 0 if the operation fails, -1 if the operation succeeds.",
       "tags": [],
       "operands": []
     },
