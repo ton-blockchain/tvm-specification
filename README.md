@@ -38,7 +38,7 @@ file which contains bit-level specification for each instruction.
 To generate latest specification run:
 
 ```
-yarn gen
+yarn generate
 ```
 
 Before commit run:
