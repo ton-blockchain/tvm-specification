@@ -1,23 +1,8 @@
-/**
- * Minimal stack-VM type checker (step 1)
- * -------------------------------------------------------------
- * Goal: super simple, readable start.
- * - Stack is an array of types, bottom -> top.
- * - Each instruction has a "stack effect schema": inputs[] -> outputs[]
- *   (both are written bottom -> top as well).
- * - We implement just a few basics: PUSH_i32, PUSH_f32, POP, DUP, SWAP, ADD (polymorphic numeric, same-type).
- * - No control-flow yet; we type-check a straight-line sequence.
- *
- * We'll extend this later with: constraints, index variables, vectors, CFG, merges, etc.
- */
-
-// ---------- Types ----------
-
 export type BaseName = 'i32' | 'i64' | 'f32' | 'f64' | 'bool' | 'byte';
 
 export interface TBase { tag: 'base'; name: BaseName }
 export interface TVar  { tag: 'var';  id: number; hint?: string }
-export interface TCont { tag: 'cont'; body: readonly Op[] }         // NEW: continuation type carries its body
+export interface TCont { tag: 'cont'; body: readonly Op[] }
 export type Type = TBase | TVar | TCont;
 
 export const tBase = (name: BaseName): TBase => ({ tag: 'base', name });
@@ -31,16 +16,13 @@ const freshVars = (n: number, prefix = 'τ'): TVar[] =>
 
 export const showType = (t: Type): string => {
     if (t.tag === 'base') return t.name;
-    if (t.tag === 'cont') return 'cont'; // don't print body here
+    if (t.tag === 'cont') return 'cont';
     return t.hint ? `${t.hint}${t.id}` : `α${t.id}`;
 };
-
-// ---------- Substitution / Unification ----------
 
 /** Map var-id -> Type (can point to base or another var). */
 export type Subst = Map<number, Type>;
 
-/** Deep copy of substitution. */
 export const cloneSubst = (s: Subst): Subst => new Map(s);
 
 /** Deref through the substitution until we reach a non-var or an unbound var. */
@@ -83,7 +65,7 @@ export const unify = (a: Type, b: Type, s: Subst) => {
         if (aa.name !== bb.name) {
             throw new TypeError(`Type mismatch: ${aa.name} vs ${bb.name}`);
         }
-        return
+        return;
     }
 
     throw new TypeError(`Type mismatch: ${showType(aa)} vs ${showType(bb)}`);
@@ -101,11 +83,9 @@ export const asBase = (t: Type, s: Subst): TBase => {
     return tt;
 };
 
-// ---------- Instruction schemas ----------
-
 export interface Alt {
-    readonly out: Type[];                // стек на выходе этой альтернативы
-    readonly guard?: string;             // метка (например 'ok' | 'overflow'), опционально
+    readonly out: Type[];
+    readonly guard?: string;
 }
 
 /**
@@ -115,7 +95,7 @@ export interface Alt {
 export interface Schema {
     readonly name: string;
     readonly in: Type[];   // bottom -> top
-    readonly alts: Alt[];                // >=1 альтернатив
+    readonly alts: Alt[];
     readonly check?: (s: Subst) => void; // extra constraints after unification
 }
 
@@ -124,7 +104,6 @@ export const isNumeric = (t: TBase): boolean => (
     t.name === 'i32' || t.name === 'i64' || t.name === 'f32' || t.name === 'f64'
 );
 
-/** Helpers to create schemas with fresh vars each time. */
 export const SCHEMAS = {
     PUSH_i32(): Schema {
         return { name: 'PUSH_i32', in: [], alts: [ {out: [tBase('i32')] }]};
@@ -142,11 +121,11 @@ export const SCHEMAS = {
         if (!Number.isInteger(k) || k < 0) {
             throw new TypeError(`PUSH_k: k must be non-negative integer, got ${k}`);
         }
-        const vs = freshVars(k + 1);         // [α0..αk], αk — это и есть «k-й от вершины»
+        const vs = freshVars(k + 1);         // [α0..αk], αk
         return {
             name: `PUSH_k(${k})`,
             in: vs,
-            alts: [{ out: [...vs, vs[vs.length - 1 - k]!] }],  // вернуть все снятые + дубликат αk
+            alts: [{ out: [...vs, vs[vs.length - 1 - k]!] }],
         };
     },
     XCHG_IJ(i: number, j: number): Schema {
@@ -154,11 +133,10 @@ export const SCHEMAS = {
             throw new TypeError(`XCHG_IJ: indices must be non-negative integers, got (${i}, ${j})`);
         }
         const N = Math.max(i, j);
-        const m = N + 1;                   // сколько верхних элементов трогаем
+        const m = N + 1;
         const vs = freshVars(m, 'χ');      // [χ0 .. χN], bottom -> top для среза
 
-        // Считаем индексы внутри массива vs (они bottom->top)
-        const p_i = m - 1 - i;             // позиция элемента с индексом i от вершины
+        const p_i = m - 1 - i;
         const p_j = m - 1 - j;
 
         const out = vs.slice();
@@ -226,14 +204,12 @@ export const SCHEMAS = {
     }
 };
 
-// ---------- VM instruction set (surface) ----------
-
 export type Op =
     | { readonly op: 'PUSH_i32' }
     | { readonly op: 'PUSH_i64' }
     | { readonly op: 'PUSH_f32' }
     | { readonly op: 'PUSH_byte' }
-    | { readonly op: 'PUSH_cont', readonly body: readonly Op[] } // NEW
+    | { readonly op: 'PUSH_cont', readonly body: readonly Op[] }
     | { readonly op: 'PUSH_k', readonly k: number }
     | { readonly op: 'XCHG_IJ', readonly i: number, readonly j: number }
     | { readonly op: 'IF' }
@@ -266,14 +242,13 @@ export const makeSchema = (op: Op): Schema => {
     }
 };
 
-// ---------- Type checker for a straight-line program ----------
-
 export interface CheckOptions {
-    readonly dedupe?: boolean
+    readonly dedupe?: boolean;
+    readonly logContEffects?: boolean;
 }
 
 export interface CheckResult {
-    readonly finalStates: State[]; // resulting set of states after the whole program
+    readonly finalStates: State[];
 }
 
 export class StackUnderflowError extends Error {
@@ -335,19 +310,50 @@ const dedupeStates = (arr: State[]): State[] => {
     return out;
 };
 
+/** Human-friendly list of types (applies current substitution). */
+const describeTypes = (ts: Type[], s: Subst): string => (
+    ts.length ? ts.map(t => showType(applySubst(t, s))).join(' ') : '∅'
+);
+
+/** Longest common prefix length between base and out (bottom -> top), under substitution. */
+const commonPrefixLen = (base: Type[], out: Type[], s: Subst): number => {
+    const n = Math.min(base.length, out.length);
+    for (let i = 0; i < n; i++) {
+        const a = applySubst(base[i]!, s);
+        const b = applySubst(out[i]!, s);
+        if (showType(a) !== showType(b)) return i;
+    }
+    return n;
+};
+
+/**
+ * Summarize continuation body effects relative to a base stack:
+ * returns a string like: "σ → σ • i32" or union: "σ → σ • i32  |  σ → σ • i32 • f32".
+ */
+const summarizeContEffects = (base: Type[], outs: State[]): string => {
+    const seen = new Set<string>();
+    const parts: string[] = [];
+    for (const st of outs) {
+        const p = commonPrefixLen(base, st.stack, st.subst);
+        const suffix = st.stack.slice(p);
+        const suffixStr = suffix.length ? ' • ' + describeTypes(suffix, st.subst) : '';
+        const s = `σ → σ${suffixStr}`;
+        if (!seen.has(s)) { seen.add(s); parts.push(s); }
+    }
+    return parts.join('  |  ');
+};
+
 const runSequence = (init: State[], prog: readonly Op[], opts: CheckOptions): State[] => {
     let states = init;
 
     for (let i = 0; i < prog.length; i++) {
         const op = prog[i];
-        if (!op) throw new Error("unreachable")
+        if (!op) throw new Error("unreachable");
 
-        // Special ops that aren't plain schemas
         if (op.op === 'PUSH_cont') {
             const next: State[] = [];
             for (let si = 0; si < states.length; si++) {
-                const st = states[si];
-                if (!st) throw new Error("unreachable")
+                const st = states[si]!;
                 const stack2 = st.stack.slice();
                 stack2.push(tCont(op.body));
                 next.push({ stack: stack2, subst: st.subst, guards: st.guards.slice() });
@@ -357,11 +363,10 @@ const runSequence = (init: State[], prog: readonly Op[], opts: CheckOptions): St
         }
 
         if (op.op === 'IFELSE') {
-            // Order (bottom -> top): i64, cont_else, cont_true
+            // Order (bottom -> top): i64, cont_true, cont_else
             const next: State[] = [];
             for (let si = 0; si < states.length; si++) {
-                const st = states[si];
-                if (!st) throw new Error("unreachable")
+                const st = states[si]!;
 
                 const need = 3;
                 if (st.stack.length < need) {
@@ -378,11 +383,12 @@ const runSequence = (init: State[], prog: readonly Op[], opts: CheckOptions): St
                         new TypeError(`condition must be i64, got ${showType(applySubst(args[0]!, st.subst))}`),
                         si, st.guards);
                 }
-                const cElse = applySubst(args[2]!, st.subst);
+
                 const cTrue = applySubst(args[1]!, st.subst);
+                const cElse = applySubst(args[2]!, st.subst);
                 if (cElse.tag !== 'cont' || cTrue.tag !== 'cont') {
                     throw new EffectTypeError('IFELSE', i,
-                        new TypeError(`expected (cont_true, cont_else) on top of stack, got (${showType(cElse)}, ${showType(cTrue)})`),
+                        new TypeError(`expected (cont_true, cont_else) on top of stack, got (${showType(cTrue)}, ${showType(cElse)})`),
                         si, st.guards);
                 }
                 const base = st.stack.slice(0, st.stack.length - need);
@@ -390,10 +396,17 @@ const runSequence = (init: State[], prog: readonly Op[], opts: CheckOptions): St
                 // true branch
                 const stTrueInit: State = { stack: base.slice(), subst: cloneSubst(st.subst), guards: [...st.guards, 'if_true'] };
                 const outTrue = runSequence([stTrueInit], cTrue.body, opts);
+                if (opts.logContEffects) {
+                    console.log(`[IFELSE] true-cont effect: ${summarizeContEffects(base, outTrue)}`);
+                }
 
                 // else branch
                 const stElseInit: State = { stack: base.slice(), subst: cloneSubst(st.subst), guards: [...st.guards, 'if_false'] };
                 const outElse = runSequence([stElseInit], cElse.body, opts);
+                if (opts.logContEffects) {
+                    console.log(`[IFELSE] else-cont effect: ${summarizeContEffects(base, outElse)}`);
+                }
+
                 next.push(...outTrue, ...outElse);
             }
             states = opts.dedupe ? dedupeStates(next) : next;
@@ -403,8 +416,7 @@ const runSequence = (init: State[], prog: readonly Op[], opts: CheckOptions): St
         if (op.op === 'IF') {
             const next: State[] = [];
             for (let si = 0; si < states.length; si++) {
-                const st = states[si];
-                if (!st) throw new Error("unreachable")
+                const st = states[si]!;
 
                 // Need top two: i64 (below), cont (top)
                 const need = 2;
@@ -415,7 +427,7 @@ const runSequence = (init: State[], prog: readonly Op[], opts: CheckOptions): St
                 try {
                     // unify cond with i64
                     unify(tBase('i64'), args[0]!, st.subst);
-                } catch (e) {
+                } catch {
                     throw new EffectTypeError('IF', i, new TypeError(`condition must be i64, got ${showType(applySubst(args[0]!, st.subst))}`), si, st.guards);
                 }
                 const contVal = applySubst(args[1]!, st.subst);
@@ -432,6 +444,9 @@ const runSequence = (init: State[], prog: readonly Op[], opts: CheckOptions): St
                 // True path: run cont body on base stack
                 const trueInit: State = { stack: baseStack.slice(), subst: cloneSubst(st.subst), guards: [...st.guards, 'if_true'] };
                 const trueOut = runSequence([trueInit], contVal.body, opts);
+                if (opts.logContEffects) {
+                    console.log(`[IF] cont effect: ${summarizeContEffects(baseStack, trueOut)}`);
+                }
                 next.push(...trueOut);
             }
             states = opts.dedupe ? dedupeStates(next) : next;
@@ -441,8 +456,7 @@ const runSequence = (init: State[], prog: readonly Op[], opts: CheckOptions): St
         if (op.op === 'UNTIL') {
             const next: State[] = [];
             for (let si = 0; si < states.length; si++) {
-                const st = states[si];
-                if (!st) throw new Error("unreachable")
+                const st = states[si]!;
 
                 // need top: cont
                 const need = 1;
@@ -471,8 +485,7 @@ const runSequence = (init: State[], prog: readonly Op[], opts: CheckOptions): St
                 }
 
                 for (let oi = 0; oi < outs.length; oi++) {
-                    const out = outs[oi];
-                    if (!out) throw new Error("unreachable")
+                    const out = outs[oi]!;
 
                     // body must leave an i64 flag on top
                     if (out.stack.length < 1) {
@@ -494,7 +507,7 @@ const runSequence = (init: State[], prog: readonly Op[], opts: CheckOptions): St
                     // invariant: post must unify with base (so next iteration is well-typed)
                     try {
                         unifyStacks(post, base, out.subst);
-                    } catch (e) {
+                    } catch {
                         throw new EffectTypeError('UNTIL', i,
                             new TypeError(
                                 `loop body must preserve stack shape after popping flag.\n  before: ${showStack(base, out.subst)}\n  after : ${showStack(post, out.subst)}`
@@ -514,14 +527,12 @@ const runSequence = (init: State[], prog: readonly Op[], opts: CheckOptions): St
             continue;
         }
 
-
         // Regular schema-based op (may have alternatives)
         const schema = makeSchema(op);
         const nextStates: State[] = [];
 
         for (let si = 0; si < states.length; si++) {
-            const st = states[si];
-            if (!st) throw new Error("unreachable")
+            const st = states[si]!;
 
             // 1) Check underflow
             const need = schema.in.length;
@@ -552,7 +563,7 @@ const runSequence = (init: State[], prog: readonly Op[], opts: CheckOptions): St
 
         states = opts.dedupe ? dedupeStates(nextStates) : nextStates;
 
-        // Optional: debug trace
+        // Debug trace
         console.log(`#${i} ${op.op} =>`);
         states.forEach((st, k) => console.log(`  [${k}] ${showStack(st.stack, st.subst)}  guards=[${st.guards.join(',')}]`));
     }
@@ -560,69 +571,69 @@ const runSequence = (init: State[], prog: readonly Op[], opts: CheckOptions): St
     return states;
 };
 
-// ---------- Public API ----------
-
 export const checkProgram = (prog: Op[], opts: CheckOptions = {}): CheckResult => {
     const start: State = { stack: [], subst: new Map(), guards: [] };
     const finalStates = runSequence([start], prog, opts);
     return { finalStates };
 };
 
-
-// ---------- Tiny demo ----------
-// Demo 1: IF with a cont that pushes a value
 const prog1: Op[] = [
-    { op: 'PUSH_i64' },          // condition (type-only here)
-    { op: 'PUSH_cont', body: [   // true-branch pushes an i32
-        { op: 'PUSH_i32' },
-    ] },
-    { op: 'IF' },                // false: ∅, true: i32
-];
+    {op: "PUSH_i64"},
+    {
+        op: "PUSH_cont", body: [
+            {op: "PUSH_i32"},
+        ],
+    },
+    {op: "IF"},
+]
 
-// After IF, trying to DUP would be invalid (since false path has empty stack)
-const prog1_bad: Op[] = [
-    ...prog1,
-    { op: 'DUP' },               // ERROR: not valid for false path
-];
-
-// Demo 2: combine with ADDQ inside continuation
 const prog2: Op[] = [
-    { op: 'PUSH_i64' },
-    { op: 'PUSH_cont', body: [
-        { op: 'PUSH_byte' },
-        { op: 'PUSH_byte' },
-        { op: 'ADDQ' },            // alt: i32 | i32 byte (status then maybe result)
-    ] },
-    { op: 'IF' },                // false: ∅ ; true: i32 | i32 byte
-];
+    {op: "PUSH_i64"},
+    {
+        op: "PUSH_cont", body: [
+            {op: "PUSH_byte"},
+            {op: "PUSH_byte"},
+            {op: "ADDQ"},
+        ],
+    },
+    {op: "IF"},
+]
 
 const prog3: Op[] = [
-    { op: 'PUSH_i32' },
-    { op: 'PUSH_f32' },
-    { op: 'PUSH_byte' },
-    { op: 'PUSH_i64' },
-    { op: 'PUSH_cont', body: [ // true branch: push i32
-        { op: 'PUSH_k', k: 1 },
-    ] },
-    { op: 'PUSH_cont', body: [ // else branch: push i32 and DUP
-        { op: 'PUSH_k', k: 1 },
-    ] },
-    { op: 'IFELSE' }, // union of {i32 i32} and {i32}
-];
+    {op: "PUSH_i32"},
+    {op: "PUSH_f32"},
+    {op: "PUSH_byte"},
+    {op: "PUSH_i64"},
+    {
+        op: "PUSH_cont", body: [
+            {op: "POP"},
+            {op: "PUSH_k", k: 1},
+        ],
+    },
+    {
+        op: "PUSH_cont", body: [
+            {op: "POP"},
+            {op: "PUSH_k", k: 1},
+        ],
+    },
+    {op: "IFELSE"},
+]
 
 const progUntil: Op[] = [
-    { op: 'PUSH_i32' },                    // стартовое значение
-    { op: 'PUSH_cont', body: [
-        { op: 'DUP' },
-        { op: 'ADD' },        // ... i32 -> ... i32
-        { op: 'PUSH_i64' },                  // флаг
-    ]},
-    { op: 'UNTIL' },                       // проверка инварианта: стек после тела (без флага)
-];
+    {op: "PUSH_i32"},
+    {
+        op: "PUSH_cont", body: [
+            {op: "DUP"},
+            {op: "ADD"},
+            {op: "PUSH_i64"},
+        ],
+    },
+    {op: "UNTIL"},
+]
 
 const run = (label: string, p: Op[]) => {
     try {
-        const r = checkProgram(p, { dedupe: true });
+        const r = checkProgram(p, { dedupe: true, logContEffects: true });
         console.log(label);
         r.finalStates.forEach((st, i) => {
             console.log(`  [${i}] ${showStack(st.stack, st.subst)} | guards=[${st.guards.join(',')}]`);
