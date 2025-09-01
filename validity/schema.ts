@@ -332,6 +332,26 @@ export const SCHEMAS = {
             alts: [{out: []}], // удаляем все
         }
     },
+    ROT(): Schema {
+        const a = freshVar("α")
+        const b = freshVar("β")
+        const c = freshVar("γ")
+        return {
+            name: "ROT",
+            in: [a, b, c],
+            alts: [{out: [b, c, a]}],
+        }
+    },
+    ROTREV(): Schema {
+        const a = freshVar("α")
+        const b = freshVar("β")
+        const c = freshVar("γ")
+        return {
+            name: "ROTREV",
+            in: [a, b, c],
+            alts: [{out: [c, a, b]}],
+        }
+    },
     POP(): Schema {
         const a = freshVar("α")
         return {name: "POP", in: [a], alts: [{out: []}]}
@@ -453,6 +473,10 @@ export const makeSchema = (op: Instr): Schema => {
             return SCHEMAS.OVER()
         case "BLKDROP":
             return SCHEMAS.BLKDROP(op.arg0)
+        case "ROT":
+            return SCHEMAS.ROT()
+        case "ROTREV":
+            return SCHEMAS.ROTREV()
         default:
             const instrInfo = findInstruction(spec, op.$)
 
