@@ -21,6 +21,53 @@ export interface Schema {
 
 export const isNumeric = (t: TBase): boolean => t.name === "int"
 
+function areTypesEqual(types1: Type[], types2: Type[]): boolean {
+    if (types1.length !== types2.length) {
+        return false
+    }
+
+    for (let i = 0; i < types1.length; i++) {
+        const t1 = types1[i]!
+        const t2 = types2[i]!
+
+        if (t1.kind !== t2.kind) {
+            return false
+        }
+
+        if (t1.kind === "base" && t2.kind === "base") {
+            if (t1.name !== t2.name) {
+                return false
+            }
+        } else if (t1.kind === "var" && t2.kind === "var") {
+            if (t1.name !== t2.name) {
+                return false
+            }
+        }
+    }
+
+    return true
+}
+
+function mergeAlts(alts: Alt[]): Alt[] {
+    const merged: Alt[] = []
+
+    for (const alt of alts) {
+        const existing = merged.find(existing => areTypesEqual(existing.out, alt.out))
+
+        if (existing) {
+            if (existing.guard && alt.guard) {
+                existing.guard = `(${existing.guard}) || (${alt.guard})`
+            } else if (alt.guard) {
+                existing.guard = alt.guard
+            }
+        } else {
+            merged.push({...alt})
+        }
+    }
+
+    return merged
+}
+
 export const SCHEMAS = {
     PUSHINT_4(): Schema {
         return {name: "PUSHINT_4", in: [], alts: [{out: [tBase("int")]}]}
@@ -405,10 +452,11 @@ export const makeSchema = (op: Instr): Schema => {
                         }),
                     )
 
+                    const mergedStacks = mergeAlts(finalStacks)
                     return {
                         name: op.$,
                         in: inputsVars,
-                        alts: finalStacks,
+                        alts: mergedStacks,
                     }
                 }
 
