@@ -40,10 +40,42 @@ export class EffectTypeError extends Error {
     }
 }
 
-/** Pretty-print a stack with current substitution applied. */
+const typeColors = {
+    int: "\x1b[36m", // cyan
+    cell: "\x1b[32m", // green
+    slice: "\x1b[33m", // yellow
+    builder: "\x1b[35m", // magenta
+    tuple: "\x1b[34m", // blue
+    cont: "\x1b[31m", // red
+    any: "\x1b[37m", // white
+    var: "\x1b[90m", // gray
+    null: "\x1b[90m", // gray
+    reset: "\x1b[0m", // reset
+}
+
+const getTypeColor = (typeName: string): string => {
+    const baseType = typeName.split("<")[0]?.toLowerCase() || typeName.toLowerCase()
+
+    if (baseType in typeColors) {
+        return typeColors[baseType as keyof typeof typeColors]
+    }
+
+    if (typeName.match(/^[α-ωΑ-Ωχδ]/)) {
+        return typeColors.var
+    }
+
+    return typeColors.any
+}
+
+const showTypeColored = (t: Type, s: Subst): string => {
+    const typeStr = showType(applySubst(t, s))
+    const color = getTypeColor(typeStr)
+    return `${color}${typeStr}${typeColors.reset}`
+}
+
 export const showStack = (stk: Type[], s: Subst): string => {
     if (stk.length === 0) return "∅"
-    return stk.map(t => showType(applySubst(t, s))).join(" ")
+    return stk.map(t => showTypeColored(t, s)).join(" ")
 }
 
 /** Utility: apply effect (pop inputs, push outputs) on a cloned stack. */
@@ -72,7 +104,6 @@ export interface State {
     readonly guards: string[] // path labels encountered so far
 }
 
-/** Optional structural deduplication by stringifying stack+guards. */
 const keyOfState = (st: State): string => {
     const types = st.stack.map(t => showType(applySubst(t, st.subst))).join("|")
     const guards = st.guards.join(">")
@@ -92,11 +123,9 @@ const dedupeStates = (arr: State[]): State[] => {
     return out
 }
 
-/** Merge states with identical stack types but different guards */
 const mergeStatesByStack = (arr: State[]): State[] => {
     const stackGroups = new Map<string, State[]>()
 
-    // Group states by stack type signature
     for (const st of arr) {
         const stackKey = st.stack.map(t => showType(applySubst(t, st.subst))).join("|")
         if (!stackGroups.has(stackKey)) {
@@ -107,16 +136,13 @@ const mergeStatesByStack = (arr: State[]): State[] => {
 
     const merged: State[] = []
 
-    // For each stack type group, merge states with same stack
     for (const [stackKey, states] of stackGroups) {
         if (states.length === 1) {
             merged.push(states[0]!)
         } else {
-            // Merge multiple states with same stack type
             const first = states[0]!
             const allGuards = states.flatMap(st => st.guards)
 
-            // Use the substitution from the first state (they should be compatible)
             merged.push({
                 stack: first.stack,
                 subst: first.subst,
@@ -149,7 +175,7 @@ const processStates = (arr: State[], opts: CheckOptions): State[] => {
 
 /** Human-friendly list of types (applies current substitution). */
 const describeTypes = (ts: Type[], s: Subst): string =>
-    ts.length ? ts.map(t => showType(applySubst(t, s))).join(" ") : "∅"
+    ts.length ? ts.map(t => showTypeColored(t, s)).join(" ") : "∅"
 
 /** Longest common prefix length between base and out (bottom -> top), under substitution. */
 const commonPrefixLen = (base: Type[], out: Type[], s: Subst): number => {
