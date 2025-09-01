@@ -1,6 +1,6 @@
 import {Instr} from "ton-assembly/dist/runtime"
 
-export type BaseName = "int" | "slice" | "cell" | "builder" | "tuple" | "any"
+export type BaseName = "int" | "slice" | "cell" | "builder" | "tuple" | "any" | "null"
 
 export interface TBase {
     readonly tag: "base"

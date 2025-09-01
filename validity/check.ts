@@ -131,7 +131,7 @@ const runSequence = (init: State[], prog: readonly Instr[], opts: CheckOptions):
         const op = prog[i]
         if (!op) throw new Error("unreachable")
 
-        if (op.$ === "PUSHCONT") {
+        if (op.$ === "PUSHCONT" || op.$ === "PUSHCONT_SHORT") {
             const next: State[] = []
             for (let si = 0; si < states.length; si++) {
                 const st = states[si]!
@@ -143,8 +143,88 @@ const runSequence = (init: State[], prog: readonly Instr[], opts: CheckOptions):
             continue
         }
 
+        if (op.$ === "IFELSEREF") {
+            // Order (bottom -> top): int, cont_true
+            const next: State[] = []
+            for (let si = 0; si < states.length; si++) {
+                const st = states[si]!
+
+                const need = 2
+                if (st.stack.length < need) {
+                    throw new EffectTypeError(
+                        "IFELSEREF",
+                        i,
+                        new StackUnderflowError(need, st.stack.length, i, "IFELSEREF"),
+                        si,
+                        st.guards,
+                    )
+                }
+
+                const args = st.stack.slice(st.stack.length - need) // [int, cont_true]
+                // cond: int
+                try {
+                    unify(tBase("int"), args[0]!, st.subst)
+                } catch {
+                    throw new EffectTypeError(
+                        "IFELSEREF",
+                        i,
+                        new TypeError(
+                            `condition must be int, got ${showType(applySubst(args[0]!, st.subst))}`,
+                        ),
+                        si,
+                        st.guards,
+                    )
+                }
+
+                const cTrue = applySubst(args[1]!, st.subst)
+                const cElse = tCont((op.arg0 as Instructions).instructions)
+                if (cElse.tag !== "cont" || cTrue.tag !== "cont") {
+                    throw new EffectTypeError(
+                        "IFELSEREF",
+                        i,
+                        new TypeError(
+                            `expected (cont_true, cont_else) on top of stack, got (${showType(cTrue)}, ${showType(cElse)})`,
+                        ),
+                        si,
+                        st.guards,
+                    )
+                }
+                const base = st.stack.slice(0, st.stack.length - need)
+
+                // true branch
+                const stTrueInit: State = {
+                    stack: base.slice(),
+                    subst: cloneSubst(st.subst),
+                    guards: [...st.guards, "if_true"],
+                }
+                const outTrue = runSequence([stTrueInit], cTrue.body, opts)
+                if (opts.logContEffects) {
+                    console.log(
+                        `[IFELSEREF] true-cont effect: ${summarizeContEffects(base, outTrue)}`,
+                    )
+                }
+
+                // else branch
+                const stElseInit: State = {
+                    stack: base.slice(),
+                    subst: cloneSubst(st.subst),
+                    guards: [...st.guards, "if_false"],
+                }
+                const outElse = runSequence([stElseInit], cElse.body, opts)
+                if (opts.logContEffects) {
+                    console.log(
+                        `[IFELSEREF] else-cont effect: ${summarizeContEffects(base, outElse)}`,
+                    )
+                }
+
+                next.push(...outTrue, ...outElse)
+            }
+            states = opts.dedupe ? dedupeStates(next) : next
+            continue
+        }
+
         if (op.$ === "IFELSE") {
-            // Order (bottom -> top): i64, cont_true, cont_else
+            // Order (bottom -> top): int, cont_true, cont_else
             const next: State[] = []
             for (let si = 0; si < states.length; si++) {
                 const st = states[si]!
@@ -160,8 +240,8 @@ const runSequence = (init: State[], prog: readonly Instr[], opts: CheckOptions):
                     )
                 }
 
-                const args = st.stack.slice(st.stack.length - need) // [i64, cont_true, cont_else]
-                // cond: i64
+                const args = st.stack.slice(st.stack.length - need) // [int, cont_true, cont_else]
+                // cond: int
                 try {
                     unify(tBase("int"), args[0]!, st.subst)
                 } catch {
@@ -169,7 +249,7 @@ const runSequence = (init: State[], prog: readonly Instr[], opts: CheckOptions):
                         "IFELSE",
                         i,
                         new TypeError(
-                            `condition must be i64, got ${showType(applySubst(args[0]!, st.subst))}`,
+                            `condition must be int, got ${showType(applySubst(args[0]!, st.subst))}`,
                         ),
                         si,
                         st.guards,
@@ -219,12 +299,12 @@ const runSequence = (init: State[], prog: readonly Instr[], opts: CheckOptions):
             continue
         }
 
-        if (op.$ === "IF") {
+        if (op.$ === "IF" || op.$ === "IFJMP" || op.$ === "IFNOT" || op.$ === "IFNOTJMP") {
             const next: State[] = []
             for (let si = 0; si < states.length; si++) {
                 const st = states[si]!
 
-                // Need top two: i64 (below), cont (top)
+                // Need top two: int (below), cont (top)
                 const need = 2
                 if (st.stack.length < need) {
                     throw new EffectTypeError(
@@ -235,16 +315,16 @@ const runSequence = (init: State[], prog: readonly Instr[], opts: CheckOptions):
                         st.guards,
                     )
                 }
-                const args = st.stack.slice(st.stack.length - need) // [i64, cont]
+                const args = st.stack.slice(st.stack.length - need) // [int, cont]
                 try {
-                    // unify cond with i64
+                    // unify cond with int
                     unify(tBase("int"), args[0]!, st.subst)
                 } catch {
                     throw new EffectTypeError(
                         "IF",
                         i,
                         new TypeError(
-                            `condition must be i64, got ${showType(applySubst(args[0]!, st.subst))}`,
+                            `condition must be int, got ${showType(applySubst(args[0]!, st.subst))}`,
                         ),
                         si,
                         st.guards,
@@ -283,7 +363,48 @@ const runSequence = (init: State[], prog: readonly Instr[], opts: CheckOptions):
                 if (opts.logContEffects) {
                     console.log(`[IF] cont effect: ${summarizeContEffects(baseStack, trueOut)}`)
                 }
-                next.push(...trueOut)
+
+                if (op.$ === "IF" || op.$ === "IFNOT") {
+                    // don't add true state for IFJMP since we don't return from IFJMP
+                    next.push(...trueOut)
+                }
+            }
+            states = opts.dedupe ? dedupeStates(next) : next
+            continue
+        }
+
+        if (op.$ === "PUSHREFCONT") {
+            const next: State[] = []
+            for (let si = 0; si < states.length; si++) {
+                const st = states[si]!
+
+                const contVal = tCont((op.arg0 as Instructions).instructions)
+
+                next.push({
+                    stack: [...st.stack.slice(), contVal],
+                    subst: st.subst,
+                    guards: [...st.guards],
+                })
+            }
+            states = opts.dedupe ? dedupeStates(next) : next
+            continue
+        }
+
+        if (op.$ === "CALLREF" || op.$ === "PSEUDO_PUSHREF") {
+            const next: State[] = []
+            for (let si = 0; si < states.length; si++) {
+                const st = states[si]!
+
+                const contVal = tCont((op.arg0 as Instructions).instructions)
+
+                const trueInit: State = {
+                    stack: st.stack.slice(),
+                    subst: cloneSubst(st.subst),
+                    guards: [...st.guards],
+                }
+                const out = runSequence([trueInit], contVal.body, opts)
+
+                next.push(...out)
             }
             states = opts.dedupe ? dedupeStates(next) : next
             continue
@@ -343,13 +464,13 @@ const runSequence = (init: State[], prog: readonly Instr[], opts: CheckOptions):
                 for (let oi = 0; oi < outs.length; oi++) {
                     const out = outs[oi]!
 
-                    // body must leave an i64 flag on top
+                    // body must leave an int flag on top
                     if (out.stack.length < 1) {
                         throw new EffectTypeError(
                             "UNTIL",
                             i,
                             new TypeError(
-                                `loop body must leave an i64 flag on top (got empty stack)`,
+                                `loop body must leave an int flag on top (got empty stack)`,
                             ),
                             si,
                             out.guards,
@@ -362,7 +483,7 @@ const runSequence = (init: State[], prog: readonly Instr[], opts: CheckOptions):
                             "UNTIL",
                             i,
                             new TypeError(
-                                `loop body must leave i64 flag, got ${showType(applySubst(out.stack[out.stack.length - 1]!, out.subst))}`,
+                                `loop body must leave int flag, got ${showType(applySubst(out.stack[out.stack.length - 1]!, out.subst))}`,
                             ),
                             si,
                             out.guards,

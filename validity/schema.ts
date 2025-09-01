@@ -245,6 +245,23 @@ export const SCHEMAS = {
             alts: [{out}],
         }
     },
+    DROP(): Schema {
+        const a = freshVar("α")
+        return {
+            name: "DROP",
+            in: [a],
+            alts: [{out: []}],
+        }
+    },
+    DROP2(): Schema {
+        const a = freshVar("α")
+        const b = freshVar("β")
+        return {
+            name: "DROP2",
+            in: [a, b],
+            alts: [{out: []}],
+        }
+    },
     POP(): Schema {
         const a = freshVar("α")
         return {name: "POP", in: [a], alts: [{out: []}]}
@@ -288,6 +305,14 @@ function findInstruction(spec: Specification, name: string) {
 }
 
 function signatureValueToType(entry: StackEntry): Type {
+    if (entry.type === "const") {
+        if (entry.value_type === "Null") {
+            return tBase("null")
+        }
+
+        throw new Error(`not supported yet: ${entry.value_type}`)
+    }
+
     if (entry.type !== "simple") {
         throw new Error(`not supported yet: ${entry.type}`)
     }
@@ -350,6 +375,10 @@ export const makeSchema = (op: Instr): Schema => {
             return SCHEMAS.SWAP()
         case "ADD":
             return SCHEMAS.ADD()
+        case "DROP":
+            return SCHEMAS.DROP()
+        case "DROP2":
+            return SCHEMAS.DROP2()
         default:
             const instrInfo = findInstruction(spec, op.$)
 
