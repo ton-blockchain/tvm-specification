@@ -58,7 +58,12 @@ import {Instr} from "ton-assembly/dist/runtime"
 
 const run = (label: string, p: Instr[]) => {
     try {
-        const r = checkProgram(p, {dedupe: true, logContEffects: false})
+        const r = checkProgram(p, {
+            dedupe: true,
+            logContEffects: false,
+            mergeStacks: true,
+            showGuards: false,
+        })
         console.log(label)
         r.finalStates.forEach((st, i) => {
             console.log(

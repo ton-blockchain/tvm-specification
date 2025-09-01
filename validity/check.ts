@@ -6,6 +6,8 @@ import {Instructions} from "ton-assembly/dist/runtime/util"
 export interface CheckOptions {
     readonly dedupe?: boolean
     readonly logContEffects?: boolean
+    readonly mergeStacks?: boolean
+    readonly showGuards?: boolean
 }
 
 export interface CheckResult {
@@ -90,6 +92,61 @@ const dedupeStates = (arr: State[]): State[] => {
     return out
 }
 
+/** Merge states with identical stack types but different guards */
+const mergeStatesByStack = (arr: State[]): State[] => {
+    const stackGroups = new Map<string, State[]>()
+
+    // Group states by stack type signature
+    for (const st of arr) {
+        const stackKey = st.stack.map(t => showType(applySubst(t, st.subst))).join("|")
+        if (!stackGroups.has(stackKey)) {
+            stackGroups.set(stackKey, [])
+        }
+        stackGroups.get(stackKey)!.push(st)
+    }
+
+    const merged: State[] = []
+
+    // For each stack type group, merge states with same stack
+    for (const [stackKey, states] of stackGroups) {
+        if (states.length === 1) {
+            merged.push(states[0]!)
+        } else {
+            // Merge multiple states with same stack type
+            const first = states[0]!
+            const allGuards = states.flatMap(st => st.guards)
+
+            // Use the substitution from the first state (they should be compatible)
+            merged.push({
+                stack: first.stack,
+                subst: first.subst,
+                guards: allGuards,
+            })
+        }
+    }
+
+    return merged
+}
+
+/** Apply deduplication strategy based on options */
+const processStates = (arr: State[], opts: CheckOptions): State[] => {
+    if (!opts.dedupe && !opts.mergeStacks) {
+        return arr
+    }
+
+    let result = arr
+
+    if (opts.mergeStacks) {
+        result = mergeStatesByStack(result)
+    }
+
+    if (opts.dedupe) {
+        result = dedupeStates(result)
+    }
+
+    return result
+}
+
 /** Human-friendly list of types (applies current substitution). */
 const describeTypes = (ts: Type[], s: Subst): string =>
     ts.length ? ts.map(t => showType(applySubst(t, s))).join(" ") : "∅"
@@ -125,7 +182,12 @@ const summarizeContEffects = (base: Type[], outs: State[]): string => {
     return parts.join("  |  ")
 }
 
-const runSequence = (init: State[], prog: readonly Instr[], opts: CheckOptions): State[] => {
+const runSequence = (
+    init: State[],
+    prog: readonly Instr[],
+    opts: CheckOptions,
+    nestingLevel: number = 0,
+): State[] => {
     let states = init
 
     for (let i = 0; i < prog.length; i++) {
@@ -140,11 +202,14 @@ const runSequence = (init: State[], prog: readonly Instr[], opts: CheckOptions):
                 stack2.push(tCont((op.arg0 as Instructions).instructions))
                 next.push({stack: stack2, subst: st.subst, guards: st.guards.slice()})
             }
-            states = opts.dedupe ? dedupeStates(next) : next
+            states = processStates(next, opts)
             continue
         }
 
         if (op.$ === "IFELSEREF") {
+            const indent = "--".repeat(nestingLevel)
+            console.log(`${indent}#${i} ${op.$} at ${op.loc?.line} =>`)
+
             // Order (bottom -> top): int, cont_true
             const next: State[] = []
             for (let si = 0; si < states.length; si++) {
@@ -201,7 +266,7 @@ const runSequence = (init: State[], prog: readonly Instr[], opts: CheckOptions):
                     subst: cloneSubst(st.subst),
                     guards: [...st.guards, "if_true"],
                 }
-                const outTrue = runSequence([stTrueInit], cTrue.body, opts)
+                const outTrue = runSequence([stTrueInit], cTrue.body, opts, nestingLevel + 1)
                 if (opts.logContEffects) {
                     console.log(
                         `[IFELSEREF] true-cont effect: ${summarizeContEffects(base, outTrue)}`,
@@ -214,7 +279,7 @@ const runSequence = (init: State[], prog: readonly Instr[], opts: CheckOptions):
                     subst: cloneSubst(st.subst),
                     guards: [...st.guards, "if_false"],
                 }
-                const outElse = runSequence([stElseInit], cElse.body, opts)
+                const outElse = runSequence([stElseInit], cElse.body, opts, nestingLevel + 1)
                 if (opts.logContEffects) {
                     console.log(
                         `[IFELSEREF] else-cont effect: ${summarizeContEffects(base, outElse)}`,
@@ -223,11 +288,14 @@ const runSequence = (init: State[], prog: readonly Instr[], opts: CheckOptions):
 
                 next.push(...outTrue, ...outElse)
             }
-            states = opts.dedupe ? dedupeStates(next) : next
+            states = processStates(next, opts)
             continue
         }
 
         if (op.$ === "IFELSE") {
+            const indent = "--".repeat(nestingLevel)
+            console.log(`${indent}#${i} ${op.$} at ${op.loc?.line} =>`)
+
             // Order (bottom -> top): int, cont_true, cont_else
             const next: State[] = []
             for (let si = 0; si < states.length; si++) {
@@ -284,7 +352,7 @@ const runSequence = (init: State[], prog: readonly Instr[], opts: CheckOptions):
                     subst: cloneSubst(st.subst),
                     guards: [...st.guards, "if_true"],
                 }
-                const outTrue = runSequence([stTrueInit], cTrue.body, opts)
+                const outTrue = runSequence([stTrueInit], cTrue.body, opts, nestingLevel + 1)
                 if (opts.logContEffects) {
                     console.log(`[IFELSE] true-cont effect: ${summarizeContEffects(base, outTrue)}`)
                 }
@@ -295,18 +363,21 @@ const runSequence = (init: State[], prog: readonly Instr[], opts: CheckOptions):
                     subst: cloneSubst(st.subst),
                     guards: [...st.guards, "if_false"],
                 }
-                const outElse = runSequence([stElseInit], cElse.body, opts)
+                const outElse = runSequence([stElseInit], cElse.body, opts, nestingLevel + 1)
                 if (opts.logContEffects) {
                     console.log(`[IFELSE] else-cont effect: ${summarizeContEffects(base, outElse)}`)
                 }
 
                 next.push(...outTrue, ...outElse)
             }
-            states = opts.dedupe ? dedupeStates(next) : next
+            states = processStates(next, opts)
             continue
         }
 
         if (op.$ === "IF" || op.$ === "IFJMP" || op.$ === "IFNOT" || op.$ === "IFNOTJMP") {
+            const indent = "--".repeat(nestingLevel)
+            console.log(`${indent}#${i} ${op.$} at ${op.loc?.line} =>`)
+
             const next: State[] = []
             for (let si = 0; si < states.length; si++) {
                 const st = states[si]!
@@ -369,7 +440,7 @@ const runSequence = (init: State[], prog: readonly Instr[], opts: CheckOptions):
                     subst: cloneSubst(st.subst),
                     guards: [...st.guards, "if_true"],
                 }
-                const trueOut = runSequence([trueInit], contVal.body, opts)
+                const trueOut = runSequence([trueInit], contVal.body, opts, nestingLevel + 1)
                 if (opts.logContEffects) {
                     console.log(`[IF] cont effect: ${summarizeContEffects(baseStack, trueOut)}`)
                 }
@@ -379,11 +450,14 @@ const runSequence = (init: State[], prog: readonly Instr[], opts: CheckOptions):
                     next.push(...trueOut)
                 }
             }
-            states = opts.dedupe ? dedupeStates(next) : next
+            states = processStates(next, opts)
             continue
         }
 
         if (op.$ === "PUSHREFCONT") {
+            const indent = "--".repeat(nestingLevel)
+            console.log(`${indent}#${i} ${op.$} at ${op.loc?.line} =>`)
+
             const next: State[] = []
             for (let si = 0; si < states.length; si++) {
                 const st = states[si]!
@@ -396,11 +470,14 @@ const runSequence = (init: State[], prog: readonly Instr[], opts: CheckOptions):
                     guards: [...st.guards],
                 })
             }
-            states = opts.dedupe ? dedupeStates(next) : next
+            states = processStates(next, opts)
             continue
         }
 
         if (op.$ === "CALLREF" || op.$ === "PSEUDO_PUSHREF") {
+            const indent = "--".repeat(nestingLevel)
+            console.log(`${indent}#${i} ${op.$} at ${op.loc?.line} =>`)
+
             const next: State[] = []
             for (let si = 0; si < states.length; si++) {
                 const st = states[si]!
@@ -412,15 +489,18 @@ const runSequence = (init: State[], prog: readonly Instr[], opts: CheckOptions):
                     subst: cloneSubst(st.subst),
                     guards: [...st.guards],
                 }
-                const out = runSequence([trueInit], contVal.body, opts)
+                const out = runSequence([trueInit], contVal.body, opts, nestingLevel + 1)
 
                 next.push(...out)
             }
-            states = opts.dedupe ? dedupeStates(next) : next
+            states = processStates(next, opts)
             continue
         }
 
         if (op.$ === "UNTIL") {
+            const indent = "--".repeat(nestingLevel)
+            console.log(`${indent}#${i} ${op.$} at ${op.loc?.line} =>`)
+
             const next: State[] = []
             for (let si = 0; si < states.length; si++) {
                 const st = states[si]!
@@ -461,7 +541,7 @@ const runSequence = (init: State[], prog: readonly Instr[], opts: CheckOptions):
                     subst: cloneSubst(st.subst),
                     guards: [...st.guards, "until_body"],
                 }
-                const outs = runSequence([iterInit], top.body, opts)
+                const outs = runSequence([iterInit], top.body, opts, nestingLevel + 1)
 
                 if (outs.length === 0) {
                     throw new EffectTypeError(
@@ -532,7 +612,7 @@ const runSequence = (init: State[], prog: readonly Instr[], opts: CheckOptions):
                     })
                 }
             }
-            states = opts.dedupe ? dedupeStates(next) : next
+            states = processStates(next, opts)
             continue
         }
 
@@ -577,15 +657,16 @@ const runSequence = (init: State[], prog: readonly Instr[], opts: CheckOptions):
             }
         }
 
-        states = opts.dedupe ? dedupeStates(nextStates) : nextStates
+        states = processStates(nextStates, opts)
 
         // Debug trace
-        console.log(`#${i} ${op.$} =>`)
-        states.forEach((st, k) =>
-            console.log(
-                `  [${k}] ${showStack(st.stack, st.subst)}  guards=[${st.guards.join(",")}]`,
-            ),
-        )
+        const indent = "  ".repeat(nestingLevel)
+        console.log(`${indent}#${i} ${op.$} at ${op.loc?.line} =>`)
+        states.forEach((st, k) => {
+            const stackStr = showStack(st.stack, st.subst)
+            const guardsStr = opts.showGuards !== false ? `  guards=[${st.guards.join(",")}]` : ""
+            console.log(`${indent}  [${k}] ${stackStr}${guardsStr}`)
+        })
     }
 
     return states

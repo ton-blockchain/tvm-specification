@@ -309,6 +309,29 @@ export const SCHEMAS = {
             alts: [{out: []}],
         }
     },
+    OVER(): Schema {
+        const a = freshVar("α")
+        const b = freshVar("β")
+        return {
+            name: "OVER",
+            in: [a, b], // [y, x] - bottom -> top
+            alts: [{out: [a, b, a]}], // [y, x, y] - копируем второй элемент на верх
+        }
+    },
+    BLKDROP(i: number): Schema {
+        if (!Number.isInteger(i) || i < 0) {
+            throw new TypeError(`BLKDROP: count must be non-negative integer, got ${i}`)
+        }
+
+        // Создаем i переменных для элементов, которые нужно удалить
+        const vars = freshVars(i, "δ")
+
+        return {
+            name: `BLKDROP ${i}`,
+            in: vars, // принимаем i элементов
+            alts: [{out: []}], // удаляем все
+        }
+    },
     POP(): Schema {
         const a = freshVar("α")
         return {name: "POP", in: [a], alts: [{out: []}]}
@@ -426,12 +449,20 @@ export const makeSchema = (op: Instr): Schema => {
             return SCHEMAS.DROP()
         case "DROP2":
             return SCHEMAS.DROP2()
+        case "OVER":
+            return SCHEMAS.OVER()
+        case "BLKDROP":
+            return SCHEMAS.BLKDROP(op.arg0)
         default:
             const instrInfo = findInstruction(spec, op.$)
 
             if (instrInfo) {
                 const inputs = instrInfo?.signature?.inputs?.stack ?? []
                 const outputs = instrInfo?.signature?.outputs?.stack ?? []
+
+                if (inputs.length === 0 && outputs.length === 0 && instrInfo.category === "stack") {
+                    throw new Error(`stack instruction ${op.$} with no signature`)
+                }
 
                 const inputsVars = inputs.map(it => signatureValueToType(it))
 
