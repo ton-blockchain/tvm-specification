@@ -4,23 +4,36 @@ import {Instr} from "ton-assembly/dist/runtime"
 import {Instructions} from "ton-assembly/dist/runtime/util"
 
 export interface CheckOptions {
-    readonly dedupe?: boolean;
-    readonly logContEffects?: boolean;
+    readonly dedupe?: boolean
+    readonly logContEffects?: boolean
 }
 
 export interface CheckResult {
-    readonly finalStates: State[];
+    readonly finalStates: State[]
 }
 
 export class StackUnderflowError extends Error {
-    constructor(public need: number, public have: number, public at: number, public override name: string) {
+    constructor(
+        public need: number,
+        public have: number,
+        public at: number,
+        public override name: string,
+    ) {
         super(`${name}: needs ${need} stack item(s), but only ${have} available (at #${at})`)
     }
 }
 
 export class EffectTypeError extends Error {
-    constructor(public instr: string, public index: number, public override cause: unknown, public stateIdx?: number, public guards?: string[]) {
-        super(`${instr} @ #${index}${stateIdx !== undefined ? ` (state ${stateIdx}${guards && guards.length ? `; guards=[${guards.join(",")}]` : ""})` : ""}: ${cause instanceof Error ? cause.message : String(cause)}`)
+    constructor(
+        public instr: string,
+        public index: number,
+        public override cause: unknown,
+        public stateIdx?: number,
+        public guards?: string[],
+    ) {
+        super(
+            `${instr} @ #${index}${stateIdx !== undefined ? ` (state ${stateIdx}${guards && guards.length ? `; guards=[${guards.join(",")}]` : ""})` : ""}: ${cause instanceof Error ? cause.message : String(cause)}`,
+        )
     }
 }
 
@@ -41,7 +54,9 @@ const applyEffect = (stack: Type[], need: number, outs: Type[], s: Subst): Type[
 
 const unifyStacks = (a: Type[], b: Type[], s: Subst) => {
     if (a.length !== b.length) {
-        throw new TypeError(`loop body must preserve stack length: got ${a.length}, expected ${b.length}`)
+        throw new TypeError(
+            `loop body must preserve stack length: got ${a.length}, expected ${b.length}`,
+        )
     }
     for (let i = 0; i < a.length; i++) {
         unify(a[i]!, b[i]!, s)
@@ -49,9 +64,9 @@ const unifyStacks = (a: Type[], b: Type[], s: Subst) => {
 }
 
 export interface State {
-    readonly stack: Type[]; // bottom -> top
-    readonly subst: Subst; // var bindings
-    readonly guards: string[]; // path labels encountered so far
+    readonly stack: Type[] // bottom -> top
+    readonly subst: Subst // var bindings
+    readonly guards: string[] // path labels encountered so far
 }
 
 /** Optional structural deduplication by stringifying stack+guards. */
@@ -75,9 +90,8 @@ const dedupeStates = (arr: State[]): State[] => {
 }
 
 /** Human-friendly list of types (applies current substitution). */
-const describeTypes = (ts: Type[], s: Subst): string => (
+const describeTypes = (ts: Type[], s: Subst): string =>
     ts.length ? ts.map(t => showType(applySubst(t, s))).join(" ") : "∅"
-)
 
 /** Longest common prefix length between base and out (bottom -> top), under substitution. */
 const commonPrefixLen = (base: Type[], out: Type[], s: Subst): number => {
@@ -137,9 +151,13 @@ const runSequence = (init: State[], prog: readonly Instr[], opts: CheckOptions):
 
                 const need = 3
                 if (st.stack.length < need) {
-                    throw new EffectTypeError("IFELSE", i,
+                    throw new EffectTypeError(
+                        "IFELSE",
+                        i,
                         new StackUnderflowError(need, st.stack.length, i, "IFELSE"),
-                        si, st.guards)
+                        si,
+                        st.guards,
+                    )
                 }
 
                 const args = st.stack.slice(st.stack.length - need) // [i64, cont_true, cont_else]
@@ -147,17 +165,29 @@ const runSequence = (init: State[], prog: readonly Instr[], opts: CheckOptions):
                 try {
                     unify(tBase("int"), args[0]!, st.subst)
                 } catch {
-                    throw new EffectTypeError("IFELSE", i,
-                        new TypeError(`condition must be i64, got ${showType(applySubst(args[0]!, st.subst))}`),
-                        si, st.guards)
+                    throw new EffectTypeError(
+                        "IFELSE",
+                        i,
+                        new TypeError(
+                            `condition must be i64, got ${showType(applySubst(args[0]!, st.subst))}`,
+                        ),
+                        si,
+                        st.guards,
+                    )
                 }
 
                 const cTrue = applySubst(args[1]!, st.subst)
                 const cElse = applySubst(args[2]!, st.subst)
                 if (cElse.tag !== "cont" || cTrue.tag !== "cont") {
-                    throw new EffectTypeError("IFELSE", i,
-                        new TypeError(`expected (cont_true, cont_else) on top of stack, got (${showType(cTrue)}, ${showType(cElse)})`),
-                        si, st.guards)
+                    throw new EffectTypeError(
+                        "IFELSE",
+                        i,
+                        new TypeError(
+                            `expected (cont_true, cont_else) on top of stack, got (${showType(cTrue)}, ${showType(cElse)})`,
+                        ),
+                        si,
+                        st.guards,
+                    )
                 }
                 const base = st.stack.slice(0, st.stack.length - need)
 
@@ -197,25 +227,51 @@ const runSequence = (init: State[], prog: readonly Instr[], opts: CheckOptions):
                 // Need top two: i64 (below), cont (top)
                 const need = 2
                 if (st.stack.length < need) {
-                    throw new EffectTypeError("IF", i, new StackUnderflowError(need, st.stack.length, i, "IF"), si, st.guards)
+                    throw new EffectTypeError(
+                        "IF",
+                        i,
+                        new StackUnderflowError(need, st.stack.length, i, "IF"),
+                        si,
+                        st.guards,
+                    )
                 }
                 const args = st.stack.slice(st.stack.length - need) // [i64, cont]
                 try {
                     // unify cond with i64
                     unify(tBase("int"), args[0]!, st.subst)
                 } catch {
-                    throw new EffectTypeError("IF", i, new TypeError(`condition must be i64, got ${showType(applySubst(args[0]!, st.subst))}`), si, st.guards)
+                    throw new EffectTypeError(
+                        "IF",
+                        i,
+                        new TypeError(
+                            `condition must be i64, got ${showType(applySubst(args[0]!, st.subst))}`,
+                        ),
+                        si,
+                        st.guards,
+                    )
                 }
                 const contVal = applySubst(args[1]!, st.subst)
                 if (contVal.tag !== "cont") {
-                    throw new EffectTypeError("IF", i, new TypeError(`expected continuation on top of stack, got ${showType(contVal)}`), si, st.guards)
+                    throw new EffectTypeError(
+                        "IF",
+                        i,
+                        new TypeError(
+                            `expected continuation on top of stack, got ${showType(contVal)}`,
+                        ),
+                        si,
+                        st.guards,
+                    )
                 }
 
                 // Base stack is everything below those two
                 const baseStack = st.stack.slice(0, st.stack.length - need)
 
                 // False path: skip continuation
-                next.push({stack: baseStack.slice(), subst: st.subst, guards: [...st.guards, "if_false"]})
+                next.push({
+                    stack: baseStack.slice(),
+                    subst: st.subst,
+                    guards: [...st.guards, "if_false"],
+                })
 
                 // True path: run cont body on base stack
                 const trueInit: State = {
@@ -241,16 +297,26 @@ const runSequence = (init: State[], prog: readonly Instr[], opts: CheckOptions):
                 // need top: cont
                 const need = 1
                 if (st.stack.length < need) {
-                    throw new EffectTypeError("UNTIL", i,
+                    throw new EffectTypeError(
+                        "UNTIL",
+                        i,
                         new StackUnderflowError(need, st.stack.length, i, "UNTIL"),
-                        si, st.guards)
+                        si,
+                        st.guards,
+                    )
                 }
 
                 const top = applySubst(st.stack[st.stack.length - 1]!, st.subst)
                 if (top.tag !== "cont") {
-                    throw new EffectTypeError("UNTIL", i,
-                        new TypeError(`expected continuation on top of stack, got ${showType(top)}`),
-                        si, st.guards)
+                    throw new EffectTypeError(
+                        "UNTIL",
+                        i,
+                        new TypeError(
+                            `expected continuation on top of stack, got ${showType(top)}`,
+                        ),
+                        si,
+                        st.guards,
+                    )
                 }
 
                 // base stack is below cont
@@ -265,7 +331,13 @@ const runSequence = (init: State[], prog: readonly Instr[], opts: CheckOptions):
                 const outs = runSequence([iterInit], top.body, opts)
 
                 if (outs.length === 0) {
-                    throw new EffectTypeError("UNTIL", i, new TypeError(`loop body produced no states`), si, st.guards)
+                    throw new EffectTypeError(
+                        "UNTIL",
+                        i,
+                        new TypeError(`loop body produced no states`),
+                        si,
+                        st.guards,
+                    )
                 }
 
                 for (let oi = 0; oi < outs.length; oi++) {
@@ -273,16 +345,28 @@ const runSequence = (init: State[], prog: readonly Instr[], opts: CheckOptions):
 
                     // body must leave an i64 flag on top
                     if (out.stack.length < 1) {
-                        throw new EffectTypeError("UNTIL", i,
-                            new TypeError(`loop body must leave an i64 flag on top (got empty stack)`),
-                            si, out.guards)
+                        throw new EffectTypeError(
+                            "UNTIL",
+                            i,
+                            new TypeError(
+                                `loop body must leave an i64 flag on top (got empty stack)`,
+                            ),
+                            si,
+                            out.guards,
+                        )
                     }
                     try {
                         unify(tBase("int"), out.stack[out.stack.length - 1]!, out.subst)
                     } catch {
-                        throw new EffectTypeError("UNTIL", i,
-                            new TypeError(`loop body must leave i64 flag, got ${showType(applySubst(out.stack[out.stack.length - 1]!, out.subst))}`),
-                            si, out.guards)
+                        throw new EffectTypeError(
+                            "UNTIL",
+                            i,
+                            new TypeError(
+                                `loop body must leave i64 flag, got ${showType(applySubst(out.stack[out.stack.length - 1]!, out.subst))}`,
+                            ),
+                            si,
+                            out.guards,
+                        )
                     }
 
                     // pop the flag
@@ -292,11 +376,15 @@ const runSequence = (init: State[], prog: readonly Instr[], opts: CheckOptions):
                     try {
                         unifyStacks(post, base, out.subst)
                     } catch {
-                        throw new EffectTypeError("UNTIL", i,
+                        throw new EffectTypeError(
+                            "UNTIL",
+                            i,
                             new TypeError(
                                 `loop body must preserve stack shape after popping flag.\n  before: ${showStack(base, out.subst)}\n  after : ${showStack(post, out.subst)}`,
                             ),
-                            si, out.guards)
+                            si,
+                            out.guards,
+                        )
                     }
 
                     // exit effect: stack equals post (now unified with base)
@@ -321,7 +409,13 @@ const runSequence = (init: State[], prog: readonly Instr[], opts: CheckOptions):
             // 1) Check underflow
             const need = schema.in.length
             if (st.stack.length < need) {
-                throw new EffectTypeError(schema.name, i, new StackUnderflowError(need, st.stack.length, i, schema.name), si, st.guards)
+                throw new EffectTypeError(
+                    schema.name,
+                    i,
+                    new StackUnderflowError(need, st.stack.length, i, schema.name),
+                    si,
+                    st.guards,
+                )
             }
 
             // 2) Unify inputs
@@ -349,7 +443,11 @@ const runSequence = (init: State[], prog: readonly Instr[], opts: CheckOptions):
 
         // Debug trace
         console.log(`#${i} ${op.$} =>`)
-        states.forEach((st, k) => console.log(`  [${k}] ${showStack(st.stack, st.subst)}  guards=[${st.guards.join(",")}]`))
+        states.forEach((st, k) =>
+            console.log(
+                `  [${k}] ${showStack(st.stack, st.subst)}  guards=[${st.guards.join(",")}]`,
+            ),
+        )
     }
 
     return states

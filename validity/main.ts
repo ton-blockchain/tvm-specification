@@ -58,15 +58,17 @@ import {Instr} from "ton-assembly/dist/runtime"
 
 const run = (label: string, p: Instr[]) => {
     try {
-        const r = checkProgram(p, { dedupe: true, logContEffects: false });
-        console.log(label);
+        const r = checkProgram(p, {dedupe: true, logContEffects: false})
+        console.log(label)
         r.finalStates.forEach((st, i) => {
-            console.log(`  [${i}] ${showStack(st.stack, st.subst)} | guards=[${st.guards.join(',')}]`);
-        });
+            console.log(
+                `  [${i}] ${showStack(st.stack, st.subst)} | guards=[${st.guards.join(",")}]`,
+            )
+        })
     } catch (e) {
-        console.error(label, 'ERROR:', e);
+        console.error(label, "ERROR:", e)
     }
-};
+}
 
 const program = `
 PUSHSLICE x{} // prepare
@@ -158,7 +160,7 @@ const main = () => {
     //     })
     // }
 
-    run('Prog1', res.instructions);
+    run("Prog1", res.instructions)
 }
 
-main();
+main()

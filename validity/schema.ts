@@ -4,8 +4,8 @@ import fs from "node:fs"
 import {MatchArm, Specification, StackEntry} from "../src/types"
 
 export interface Alt {
-    readonly out: Type[];
-    readonly guard?: string;
+    readonly out: Type[]
+    readonly guard?: string
 }
 
 /**
@@ -13,10 +13,10 @@ export interface Alt {
  * All arrays are bottom -> top order. Example: [α, α] means two items, top is the last α.
  */
 export interface Schema {
-    readonly name: string;
-    readonly in: Type[];   // bottom -> top
-    readonly alts: Alt[];
-    readonly check?: (s: Subst) => void; // extra constraints after unification
+    readonly name: string
+    readonly in: Type[] // bottom -> top
+    readonly alts: Alt[]
+    readonly check?: (s: Subst) => void // extra constraints after unification
 }
 
 export const isNumeric = (t: TBase): boolean => t.name === "int"
@@ -38,7 +38,7 @@ export const SCHEMAS = {
         if (!Number.isInteger(i) || i < 0) {
             throw new TypeError(`PUSH: i must be non-negative integer, got ${i}`)
         }
-        const vs = freshVars(i + 1)         // [α0..αi], αi
+        const vs = freshVars(i + 1) // [α0..αi], αi
         return {
             name: `PUSH s${i}`,
             in: vs,
@@ -51,7 +51,7 @@ export const SCHEMAS = {
         }
         const N = Math.max(i, j)
         const m = N + 1
-        const vs = freshVars(m, "χ")      // [χ0 .. χN], bottom -> top для среза
+        const vs = freshVars(m, "χ") // [χ0 .. χN], bottom -> top для среза
 
         const p_i = m - 1 - i
         const p_j = m - 1 - j
@@ -73,7 +73,7 @@ export const SCHEMAS = {
         }
         const N = Math.max(i, 0)
         const m = N + 1
-        const vs = freshVars(m, "χ")      // [χ0 .. χN], bottom -> top для среза
+        const vs = freshVars(m, "χ") // [χ0 .. χN], bottom -> top для среза
 
         const p_i = m - 1 - i
         const p_j = m - 1
@@ -90,23 +90,157 @@ export const SCHEMAS = {
         }
     },
     XCHG3(i: number, j: number, k: number): Schema {
-        if (!Number.isInteger(i) || !Number.isInteger(j) || !Number.isInteger(k) || i < 0) {
-            throw new TypeError(`XCHG3: indices must be non-negative integers, got (${i}, ${j}, ${k})`)
+        if (
+            !Number.isInteger(i) ||
+            !Number.isInteger(j) ||
+            !Number.isInteger(k) ||
+            i < 0 ||
+            j < 0 ||
+            k < 0
+        ) {
+            throw new TypeError(
+                `XCHG3: indices must be non-negative integers, got (${i}, ${j}, ${k})`,
+            )
         }
-        const N = Math.max(i, 0)
-        const m = N + 1
-        const vs = freshVars(m, "χ")      // [χ0 .. χN], bottom -> top для среза
 
-        const p_i = m - 1 - i
-        const p_j = m - 1
+        // Находим максимальный индекс для определения размера стека
+        const N = Math.max(i, j, k, 2) // минимум 3 элемента (s0, s1, s2)
+        const m = N + 1
+        const vs = freshVars(m, "χ") // [χ0 .. χN], bottom -> top
 
         const out = vs.slice()
-        const tmp = out[p_i]!
-        out[p_i] = out[p_j]!
-        out[p_j] = tmp
+
+        // Выполняем последовательность обменов как описано в спецификации:
+        // s2 s(i) XCHG, s1 s(j) XCHG, s(k) XCHG0
+
+        // s2 s(i) XCHG
+        const p_2 = m - 1 - 2 // позиция s2
+        const p_i = m - 1 - i // позиция s(i)
+        if (p_2 !== p_i) {
+            const tmp = out[p_2]!
+            out[p_2] = out[p_i]!
+            out[p_i] = tmp
+        }
+
+        // s1 s(j) XCHG
+        const p_1 = m - 1 - 1 // позиция s1
+        const p_j = m - 1 - j // позиция s(j)
+        if (p_1 !== p_j) {
+            const tmp = out[p_1]!
+            out[p_1] = out[p_j]!
+            out[p_j] = tmp
+        }
+
+        // s(k) XCHG0
+        const p_0 = m - 1 // позиция s0 (top)
+        const p_k = m - 1 - k // позиция s(k)
+        if (p_0 !== p_k) {
+            const tmp = out[p_0]!
+            out[p_0] = out[p_k]!
+            out[p_k] = tmp
+        }
 
         return {
             name: `XCHG3 s${i} s${j} s${k}`,
+            in: vs,
+            alts: [{out}],
+        }
+    },
+    XCPU(i: number, j: number): Schema {
+        if (!Number.isInteger(i) || !Number.isInteger(j) || i < 0 || j < 0) {
+            throw new TypeError(`XCPU: indices must be non-negative integers, got (${i}, ${j})`)
+        }
+
+        // Находим максимальный индекс для определения размера стека
+        const N = Math.max(i, j)
+        const m = N + 1
+        const vs = freshVars(m, "χ") // [χ0 .. χN], bottom -> top
+
+        const out = vs.slice()
+
+        // Выполняем последовательность операций:
+        // 1. s(i) XCHG0 - обменяем i-й элемент с верхним (s0)
+        const p_0 = m - 1 // позиция s0 (top)
+        const p_i = m - 1 - i // позиция s(i)
+        if (p_0 !== p_i) {
+            const tmp = out[p_0]!
+            out[p_0] = out[p_i]!
+            out[p_i] = tmp
+        }
+
+        // 2. s(j) PUSH - пушим j-й элемент на верх стека
+        const p_j = m - 1 - j // позиция s(j)
+        const elementToPush = out[p_j]!
+        out.push(elementToPush)
+
+        return {
+            name: `XCPU s${i} s${j}`,
+            in: vs,
+            alts: [{out}],
+        }
+    },
+    XCHG2(i: number, j: number): Schema {
+        if (!Number.isInteger(i) || !Number.isInteger(j) || i < 0 || j < 0) {
+            throw new TypeError(`XCHG2: indices must be non-negative integers, got (${i}, ${j})`)
+        }
+
+        // Находим максимальный индекс для определения размера стека
+        // Нужно минимум 2 элемента для s1 и s0
+        const N = Math.max(i, j, 1)
+        const m = N + 1
+        const vs = freshVars(m, "χ") // [χ0 .. χN], bottom -> top
+
+        const out = vs.slice()
+
+        // Выполняем последовательность операций:
+        // 1. s1 s(i) XCHG - обменяем второй элемент (s1) с i-м элементом
+        const p_1 = m - 1 - 1 // позиция s1
+        const p_i = m - 1 - i // позиция s(i)
+        if (p_1 !== p_i) {
+            const tmp = out[p_1]!
+            out[p_1] = out[p_i]!
+            out[p_i] = tmp
+        }
+
+        // 2. s(j) XCHG0 - обменяем j-й элемент с верхним (s0)
+        const p_0 = m - 1 // позиция s0 (top)
+        const p_j = m - 1 - j // позиция s(j)
+        if (p_0 !== p_j) {
+            const tmp = out[p_0]!
+            out[p_0] = out[p_j]!
+            out[p_j] = tmp
+        }
+
+        return {
+            name: `XCHG2 s${i} s${j}`,
+            in: vs,
+            alts: [{out}],
+        }
+    },
+    XCHG_1I(i: number): Schema {
+        if (!Number.isInteger(i) || i < 0) {
+            throw new TypeError(`XCHG_1I: index must be non-negative integer, got ${i}`)
+        }
+
+        // Нужно минимум 2 элемента (s0 и s1), плюс элемент на позиции i
+        const N = Math.max(i, 1)
+        const m = N + 1
+        const vs = freshVars(m, "χ") // [χ0 .. χN], bottom -> top
+
+        const out = vs.slice()
+
+        // Обменяем второй элемент (s1) с i-м элементом
+        const p_1 = m - 1 - 1 // позиция s1
+        const p_i = m - 1 - i // позиция s(i)
+
+        if (p_1 !== p_i) {
+            const tmp = out[p_1]!
+            out[p_1] = out[p_i]!
+            out[p_i] = tmp
+        }
+
+        return {
+            name: `XCHG_1I s${i}`,
             in: vs,
             alts: [{out}],
         }
@@ -175,13 +309,12 @@ function signatureValueToType(entry: StackEntry): Type {
         return tBase("tuple")
     }
 
-    if (valueType === undefined) {
+    if (valueType === undefined || valueType === "Any") {
         return tBase("any")
     }
 
     throw new Error(`not supported yet: ${valueType}`)
 }
-
 
 export const makeSchema = (op: Instr): Schema => {
     switch (op.$) {
@@ -199,8 +332,14 @@ export const makeSchema = (op: Instr): Schema => {
             return SCHEMAS.XCHG_IJ(op.arg0, op.arg1)
         case "XCHG_0I":
             return SCHEMAS.XCHG_OI(op.arg0)
+        case "XCHG_1I":
+            return SCHEMAS.XCHG_1I(op.arg1)
         case "XCHG3":
-            return SCHEMAS.XCHG3(op.arg0)
+            return SCHEMAS.XCHG3(op.arg0, op.arg1, op.arg2)
+        case "XCPU":
+            return SCHEMAS.XCPU(op.arg0, op.arg1)
+        case "XCHG2":
+            return SCHEMAS.XCHG2(op.arg0, op.arg1)
         case "POP":
             return SCHEMAS.POP()
         case "NIP":
@@ -230,10 +369,12 @@ export const makeSchema = (op: Instr): Schema => {
                     })
 
                     const otherOutputs = outputs.slice(1)
-                    const finalStacks = stacks.map((alt): Alt => ({
-                        guard: alt.guard,
-                        out: [...alt.out, ...otherOutputs.map(it => signatureValueToType(it))],
-                    }))
+                    const finalStacks = stacks.map(
+                        (alt): Alt => ({
+                            guard: alt.guard,
+                            out: [...alt.out, ...otherOutputs.map(it => signatureValueToType(it))],
+                        }),
+                    )
 
                     return {
                         name: op.$,
@@ -247,9 +388,11 @@ export const makeSchema = (op: Instr): Schema => {
                 return {
                     name: op.$,
                     in: inputsVars,
-                    alts: [{
-                        out: outputVarsVars,
-                    }],
+                    alts: [
+                        {
+                            out: outputVarsVars,
+                        },
+                    ],
                 }
             }
 
