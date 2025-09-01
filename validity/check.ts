@@ -30,9 +30,10 @@ export class EffectTypeError extends Error {
         public override cause: unknown,
         public stateIdx?: number,
         public guards?: string[],
+        public instrObj?: Instr,
     ) {
         super(
-            `${instr} @ #${index}${stateIdx !== undefined ? ` (state ${stateIdx}${guards && guards.length ? `; guards=[${guards.join(",")}]` : ""})` : ""}: ${cause instanceof Error ? cause.message : String(cause)}`,
+            `${instr} at ${instrObj?.loc?.file ?? "unknown"}:${instrObj?.loc?.line ?? -1} @ #${index}${stateIdx !== undefined ? ` (state ${stateIdx}${guards && guards.length ? `; guards=[${guards.join(",")}]` : ""})` : ""}: ${cause instanceof Error ? cause.message : String(cause)}`,
         )
     }
 }
@@ -157,6 +158,7 @@ const runSequence = (init: State[], prog: readonly Instr[], opts: CheckOptions):
                         new StackUnderflowError(need, st.stack.length, i, "IFELSEREF"),
                         si,
                         st.guards,
+                        op,
                     )
                 }
 
@@ -173,6 +175,7 @@ const runSequence = (init: State[], prog: readonly Instr[], opts: CheckOptions):
                         ),
                         si,
                         st.guards,
+                        op,
                     )
                 }
 
@@ -187,6 +190,7 @@ const runSequence = (init: State[], prog: readonly Instr[], opts: CheckOptions):
                         ),
                         si,
                         st.guards,
+                        op,
                     )
                 }
                 const base = st.stack.slice(0, st.stack.length - need)
@@ -237,6 +241,7 @@ const runSequence = (init: State[], prog: readonly Instr[], opts: CheckOptions):
                         new StackUnderflowError(need, st.stack.length, i, "IFELSE"),
                         si,
                         st.guards,
+                        op,
                     )
                 }
 
@@ -253,6 +258,7 @@ const runSequence = (init: State[], prog: readonly Instr[], opts: CheckOptions):
                         ),
                         si,
                         st.guards,
+                        op,
                     )
                 }
 
@@ -267,6 +273,7 @@ const runSequence = (init: State[], prog: readonly Instr[], opts: CheckOptions):
                         ),
                         si,
                         st.guards,
+                        op,
                     )
                 }
                 const base = st.stack.slice(0, st.stack.length - need)
@@ -313,6 +320,7 @@ const runSequence = (init: State[], prog: readonly Instr[], opts: CheckOptions):
                         new StackUnderflowError(need, st.stack.length, i, "IF"),
                         si,
                         st.guards,
+                        op,
                     )
                 }
                 const args = st.stack.slice(st.stack.length - need) // [int, cont]
@@ -328,6 +336,7 @@ const runSequence = (init: State[], prog: readonly Instr[], opts: CheckOptions):
                         ),
                         si,
                         st.guards,
+                        op,
                     )
                 }
                 const contVal = applySubst(args[1]!, st.subst)
@@ -340,6 +349,7 @@ const runSequence = (init: State[], prog: readonly Instr[], opts: CheckOptions):
                         ),
                         si,
                         st.guards,
+                        op,
                     )
                 }
 
@@ -424,6 +434,7 @@ const runSequence = (init: State[], prog: readonly Instr[], opts: CheckOptions):
                         new StackUnderflowError(need, st.stack.length, i, "UNTIL"),
                         si,
                         st.guards,
+                        op,
                     )
                 }
 
@@ -437,6 +448,7 @@ const runSequence = (init: State[], prog: readonly Instr[], opts: CheckOptions):
                         ),
                         si,
                         st.guards,
+                        op,
                     )
                 }
 
@@ -458,6 +470,7 @@ const runSequence = (init: State[], prog: readonly Instr[], opts: CheckOptions):
                         new TypeError(`loop body produced no states`),
                         si,
                         st.guards,
+                        op,
                     )
                 }
 
@@ -474,6 +487,7 @@ const runSequence = (init: State[], prog: readonly Instr[], opts: CheckOptions):
                             ),
                             si,
                             out.guards,
+                            op,
                         )
                     }
                     try {
@@ -487,6 +501,7 @@ const runSequence = (init: State[], prog: readonly Instr[], opts: CheckOptions):
                             ),
                             si,
                             out.guards,
+                            op,
                         )
                     }
 
@@ -505,6 +520,7 @@ const runSequence = (init: State[], prog: readonly Instr[], opts: CheckOptions):
                             ),
                             si,
                             out.guards,
+                            op,
                         )
                     }
 
@@ -536,6 +552,7 @@ const runSequence = (init: State[], prog: readonly Instr[], opts: CheckOptions):
                     new StackUnderflowError(need, st.stack.length, i, schema.name),
                     si,
                     st.guards,
+                    op,
                 )
             }
 
@@ -548,7 +565,7 @@ const runSequence = (init: State[], prog: readonly Instr[], opts: CheckOptions):
                 // 3) Extra checks on inputs
                 if (schema.check) schema.check(st.subst)
             } catch (e) {
-                throw new EffectTypeError(schema.name, i, e, si, st.guards)
+                throw new EffectTypeError(schema.name, i, e, si, st.guards, op)
             }
 
             // 4) Spawn alternatives
