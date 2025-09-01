@@ -484,16 +484,26 @@ const runSequence = (
 
                 const contVal = tCont((op.arg0 as Instructions).instructions)
 
-                const trueInit: State = {
+                const state: State = {
                     stack: st.stack.slice(),
                     subst: cloneSubst(st.subst),
                     guards: [...st.guards],
                 }
-                const out = runSequence([trueInit], contVal.body, opts, nestingLevel + 1)
+                const out = runSequence([state], contVal.body, opts, nestingLevel + 1)
 
                 next.push(...out)
             }
             states = processStates(next, opts)
+            continue
+        }
+
+        if (op.$ === "AGAINEND") {
+            const indent = "--".repeat(nestingLevel)
+            console.log(`${indent}#${i} ${op.$} at ${op.loc?.line} =>`)
+
+            states = []
+
+            console.log(`${indent}  [infinite loop - no output states]`)
             continue
         }
 
