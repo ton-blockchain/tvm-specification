@@ -5,6 +5,7 @@ export type BaseName = "int" | "slice" | "cell" | "builder" | "tuple" | "any" | 
 export interface TBase {
     readonly tag: "base"
     readonly name: BaseName
+    readonly index?: number
 }
 export interface TVar {
     readonly tag: "var"
@@ -17,7 +18,7 @@ export interface TCont {
 }
 export type Type = TBase | TVar | TCont
 
-export const tBase = (name: BaseName): TBase => ({tag: "base", name})
+export const tBase = (name: BaseName, index?: number): TBase => ({tag: "base", name, index})
 export const tCont = (body: readonly Instr[]): TCont => ({tag: "cont", body})
 
 let VAR_COUNTER = 0
@@ -26,8 +27,11 @@ export const freshVar = (hint?: string): TVar => ({tag: "var", id: ++VAR_COUNTER
 export const freshVars = (n: number, prefix = "τ"): TVar[] =>
     Array.from({length: n}, (_, i) => freshVar(`${prefix}${i}`))
 
+let INDEX_COUNTER = 0
+export const freshId = (): number => ++INDEX_COUNTER
+
 export const showType = (t: Type): string => {
-    if (t.tag === "base") return t.name
+    if (t.tag === "base") return t.name + (t.index !== undefined ? ` '${t.index}` : "")
     if (t.tag === "cont") return "cont"
     return t.hint ? `${t.hint}${t.id}` : `α${t.id}`
 }

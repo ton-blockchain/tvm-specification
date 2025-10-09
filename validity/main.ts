@@ -64,12 +64,11 @@ const run = (label: string, p: Instr[]) => {
             mergeStacks: true,
             showGuards: false,
         })
-        console.log(label)
-        r.finalStates.forEach((st, i) => {
+        for (const [i, st] of r.finalStates.entries()) {
             console.log(
                 `  [${i}] ${showStack(st.stack, st.subst)} | guards=[${st.guards.join(",")}]`,
             )
-        })
+        }
     } catch (e) {
         console.error(label, "ERROR:", e)
     }
@@ -757,8 +756,47 @@ ref {
 }
 `
 
+const program3 = `
+PUSHINT_4 1
+PUSHINT_4 10
+PUSHSLICE x{}
+SWAP
+// PUSH s2
+SUB
+
+// PUSHINT_4 0
+// PUSHCONT {
+//     // ADD
+//     PUSHINT_4 1
+// }
+// PUSHCONT {
+//     PUSHINT_4 1
+// }
+// IFELSE
+//
+// ADD
+`
+
+// int msg_value, cell in_msg_cell, slice in_msg
+const program4 = `
+PUSHINT_4 1000 // value
+PUSHREF x{}    // in_msg_cell
+PUSHSLICE x{}  // in_msg
+
+POP s2
+CTOS
+LDU 4
+PUSHINT_4 1
+XCHG_1I s1 s2
+AND
+PUSHCONT_SHORT {
+    DROP2
+}
+IFJMP
+`
+
 const main = () => {
-    const res = text.parse("main.tasm", program)
+    const res = text.parse("main.tasm", program4)
     if (res.$ === "ParseFailure") {
         throw res.error
     }

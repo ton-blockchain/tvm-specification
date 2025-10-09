@@ -54,13 +54,15 @@ const typeColors = {
 }
 
 const getTypeColor = (typeName: string): string => {
-    const baseType = typeName.split("<")[0]?.toLowerCase() || typeName.toLowerCase()
+    const name = typeName.indexOf(" '") !== -1 ? (typeName.split(" '")[0] ?? typeName) : typeName
+
+    const baseType = name.split("<")[0]?.toLowerCase() || name.toLowerCase()
 
     if (baseType in typeColors) {
         return typeColors[baseType as keyof typeof typeColors]
     }
 
-    if (typeName.match(/^[α-ωΑ-Ωχδ]/)) {
+    if (name.match(/^[α-ωΑ-Ωχδ]/)) {
         return typeColors.var
     }
 

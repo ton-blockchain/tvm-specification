@@ -1,4 +1,4 @@
-import {asBase, freshVar, freshVars, Subst, tBase, TBase, Type} from "./types"
+import {asBase, freshId, freshVar, freshVars, Subst, tBase, TBase, Type} from "./types"
 import {Instr} from "ton-assembly/dist/runtime"
 import fs from "node:fs"
 import {MatchArm, Specification, StackEntry} from "../src/types"
@@ -70,16 +70,16 @@ function mergeAlts(alts: Alt[]): Alt[] {
 
 export const SCHEMAS = {
     PUSHINT_4(): Schema {
-        return {name: "PUSHINT_4", in: [], alts: [{out: [tBase("int")]}]}
+        return {name: "PUSHINT_4", in: [], alts: [{out: [tBase("int", freshId())]}]}
     },
     PUSHINT_8(): Schema {
-        return {name: "PUSHINT_8", in: [], alts: [{out: [tBase("int")]}]}
+        return {name: "PUSHINT_8", in: [], alts: [{out: [tBase("int", freshId())]}]}
     },
     PUSHINT_16(): Schema {
-        return {name: "PUSHINT_16", in: [], alts: [{out: [tBase("int")]}]}
+        return {name: "PUSHINT_16", in: [], alts: [{out: [tBase("int", freshId())]}]}
     },
     PUSHINT_LONG(): Schema {
-        return {name: "PUSHINT_LONG", in: [], alts: [{out: [tBase("int")]}]}
+        return {name: "PUSHINT_LONG", in: [], alts: [{out: [tBase("int", freshId())]}]}
     },
     PUSH(i: number): Schema {
         if (!Number.isInteger(i) || i < 0) {
@@ -352,9 +352,27 @@ export const SCHEMAS = {
             alts: [{out: [c, a, b]}],
         }
     },
-    POP(): Schema {
-        const a = freshVar("α")
-        return {name: "POP", in: [a], alts: [{out: []}]}
+    POP(i: number): Schema {
+        if (!Number.isInteger(i) || i < 0) {
+            throw new TypeError(`POP: index must be non-negative integer, got ${i}`)
+        }
+
+        const m = i + 1
+        const vs = freshVars(m, "π") // [π0 .. πi], bottom -> top
+
+        const out = vs.slice(0, -1)
+
+        if (i > 0) {
+            const topElement = vs[vs.length - 1]!
+            const p_i = out.length - i
+            out[p_i] = topElement
+        }
+
+        return {
+            name: `POP s${i}`,
+            in: vs,
+            alts: [{out}],
+        }
     },
     NIP(): Schema {
         const a = freshVar("α")
@@ -397,7 +415,7 @@ function findInstruction(spec: Specification, name: string) {
 function signatureValueToType(entry: StackEntry): Type {
     if (entry.type === "const") {
         if (entry.value_type === "Null") {
-            return tBase("null")
+            return tBase("null", freshId())
         }
 
         throw new Error(`not supported yet: ${entry.value_type}`)
@@ -409,23 +427,23 @@ function signatureValueToType(entry: StackEntry): Type {
 
     const valueType = entry.value_types?.[0]
     if (valueType === "Int" || valueType === "Bool") {
-        return tBase("int")
+        return tBase("int", freshId())
     }
     if (valueType === "Cell") {
-        return tBase("cell")
+        return tBase("cell", freshId())
     }
     if (valueType === "Slice") {
-        return tBase("slice")
+        return tBase("slice", freshId())
     }
     if (valueType === "Builder") {
-        return tBase("builder")
+        return tBase("builder", freshId())
     }
     if (valueType === "Tuple") {
-        return tBase("tuple")
+        return tBase("tuple", freshId())
     }
 
     if (valueType === undefined || valueType === "Any") {
-        return tBase("any")
+        return tBase("any", freshId())
     }
 
     throw new Error(`not supported yet: ${valueType}`)
@@ -456,7 +474,7 @@ export const makeSchema = (op: Instr): Schema => {
         case "XCHG2":
             return SCHEMAS.XCHG2(op.arg0, op.arg1)
         case "POP":
-            return SCHEMAS.POP()
+            return SCHEMAS.POP(op.arg0)
         case "NIP":
             return SCHEMAS.NIP()
         case "DUP":
