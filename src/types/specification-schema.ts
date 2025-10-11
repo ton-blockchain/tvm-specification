@@ -57,6 +57,11 @@ export interface GasConsumptionEntry {
     readonly description: string
 }
 
+export interface DocsLink {
+    readonly name: string
+    readonly url: string
+}
+
 export interface Description {
     readonly short: string
     readonly long: string
@@ -67,6 +72,7 @@ export interface Description {
     readonly related_instructions?: readonly string[]
     readonly examples?: readonly Example[]
     readonly gas?: readonly GasConsumptionEntry[]
+    readonly docs_links?: readonly DocsLink[]
 }
 
 export interface Layout {

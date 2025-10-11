@@ -25,6 +25,25 @@
       "required": ["value", "description"],
       "additionalProperties": false
     },
+    "DocsLink": {
+      "type": "object",
+      "description": "Represents a link to documentation with name and URL",
+      "markdownDescription": "Represents a link to documentation with name and URL",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Display name for the documentation link",
+          "markdownDescription": "Display name for the documentation link"
+        },
+        "url": {
+          "type": "string",
+          "description": "URL to the documentation",
+          "markdownDescription": "URL to the documentation"
+        }
+      },
+      "required": ["name", "url"],
+      "additionalProperties": false
+    },
     "FiftInstruction": {
       "type": "object",
       "description": "Represents a Fift instruction with its actual TVM instruction name and arguments",
@@ -187,6 +206,14 @@
           "markdownDescription": "List of gas consumption entries for this instruction",
           "items": {
             "$ref": "#/definitions/GasConsumptionEntry"
+          }
+        },
+        "docs_links": {
+          "type": "array",
+          "description": "List of documentation links related to this instruction",
+          "markdownDescription": "List of documentation links related to this instruction",
+          "items": {
+            "$ref": "#/definitions/DocsLink"
           }
         }
       },

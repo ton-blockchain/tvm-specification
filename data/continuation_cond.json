@@ -1,10 +1,22 @@
 {
   "IFRET": {
     "description": {
-      "short": "",
-      "long": "Performs a `RET`, but only if integer `cond` is non-zero. If `cond` is a `NaN`, throws an integer overflow exception.",
+      "short": "If `cond` is non-zero, ends the current continuation and returns to `c0`.",
+      "long": "If condition is met, performs `RET` which ends the current continuation and returns to continuation in `c0`. If `c0` holds the initial `quit` continuation (that is, the current execution is in the root continuation), the program exits with code 0.",
       "tags": [],
-      "operands": []
+      "operands": [],
+      "exit_codes": [
+        {
+          "errno": "4",
+          "condition": "If `cond` is a `NaN`."
+        }
+      ],
+      "docs_links": [
+        {
+          "name": "c0 register and normal exit point",
+          "url": "https://txtracer.ton.org/spec/doc/book/continuations/diving-deeper-exit-points-of-continuations/#normal-exit-point-c0"
+        }
+      ]
     },
     "signature": {
       "inputs": {
@@ -34,10 +46,22 @@
   },
   "IFNOTRET": {
     "description": {
-      "short": "",
-      "long": "Performs a `RET`, but only if integer `cond` is zero.",
+      "short": "If `cond` is zero, ends the current continuation and returns to `c0`.",
+      "long": "If condition is met, performs `RET` which ends the current continuation and returns to continuation in `c0`. If `c0` holds the initial `quit` continuation (that is, the current execution is in the root continuation), the program exits with code 0.",
       "tags": [],
-      "operands": []
+      "operands": [],
+      "exit_codes": [
+        {
+          "errno": "4",
+          "condition": "If `cond` is a `NaN`."
+        }
+      ],
+      "docs_links": [
+        {
+          "name": "c0 register and normal exit point",
+          "url": "https://txtracer.ton.org/spec/doc/book/continuations/diving-deeper-exit-points-of-continuations/#normal-exit-point-c0"
+        }
+      ]
     },
     "signature": {
       "inputs": {
@@ -67,15 +91,15 @@
   },
   "IF": {
     "description": {
-      "short": "",
-      "long": "Performs `EXECUTE` for `body` (i.e., _executes_ `body`), but only if integer `cond` is non-zero. Otherwise simply discards both values.",
+      "short": "If `cond` is non-zero, executes `body`, otherwise does nothing.",
+      "long": "If condition is met, performs `EXECUTE` on `body` continuation. After the body is executed, execution will return to the next instruction after the `IF`.",
       "tags": [],
       "operands": [],
       "examples": [
         {
           "instructions": [
             {
-              "instruction": "PUSHINT_4 1",
+              "instruction": "PUSHINT_4 -1",
               "comment": "Condition value (non-zero means true)"
             },
             {
@@ -88,7 +112,7 @@
             }
           ],
           "stack": {
-            "input": ["1", "Continuation"],
+            "input": ["-1", "Continuation"],
             "output": ["30"]
           }
         },
@@ -111,6 +135,12 @@
             "input": ["0", "Continuation"],
             "output": []
           }
+        }
+      ],
+      "docs_links": [
+        {
+          "name": "JMP vs. EXECUTE",
+          "url": "https://txtracer.ton.org/spec/doc/book/continuations/manual-handling-and-jmp-vs-execute/"
         }
       ]
     },
@@ -152,10 +182,58 @@
   },
   "IFNOT": {
     "description": {
-      "short": "",
-      "long": "Executes continuation `body`, but only if integer `cond` is zero. Otherwise simply discards both values.",
+      "short": "If `cond` is zero, executes `body`, otherwise does nothing.",
+      "long": "If condition is met, performs `EXECUTE` on `body` continuation. After the body is executed, execution will return to the next instruction after the `IFNOT`.",
       "tags": [],
-      "operands": []
+      "operands": [],
+      "examples": [
+        {
+          "instructions": [
+            {
+              "instruction": "PUSHINT_4 0",
+              "comment": "Condition value (zero means false)"
+            },
+            {
+              "instruction": "PUSHCONT {\n  PUSHINT_4 10\n  PUSHINT_4 20\n  ADD\n}",
+              "comment": "Continuation body that adds 10 and 20"
+            },
+            {
+              "instruction": "IFNOT",
+              "comment": "Execute the continuation if condition is false"
+            }
+          ],
+          "stack": {
+            "input": ["0", "Continuation"],
+            "output": ["30"]
+          }
+        },
+        {
+          "instructions": [
+            {
+              "instruction": "PUSHINT_4 -1",
+              "comment": "Condition value (non-zero means true)"
+            },
+            {
+              "instruction": "PUSHCONT {\n  PUSHINT_4 10\n  PUSHINT_4 20\n  ADD\n}",
+              "comment": "Continuation body that adds 10 and 20"
+            },
+            {
+              "instruction": "IFNOT",
+              "comment": "Execute the continuation if condition is false"
+            }
+          ],
+          "stack": {
+            "input": ["-1", "Continuation"],
+            "output": []
+          }
+        }
+      ],
+      "docs_links": [
+        {
+          "name": "JMP vs. EXECUTE",
+          "url": "https://txtracer.ton.org/spec/doc/book/continuations/manual-handling-and-jmp-vs-execute/"
+        }
+      ]
     },
     "signature": {
       "inputs": {
@@ -195,19 +273,19 @@
   },
   "IFJMP": {
     "description": {
-      "short": "",
-      "long": "Transfers control to `body` if `cond` is non-zero. The remainder of the current continuation is discarded which means that after `body` completes, control will not return to instruction immediately following the `IFJMP`. Instead, it will return to the instruction immediately following the instruction that started current continuation. If such continuation is not present, the program will exit.",
+      "short": "If `cond` is non-zero, jumps to `body`, otherwise does nothing.",
+      "long": "If condition is met, performs `JMPX` on `body` continuation. The remainder of the current continuation is discarded which means that after `body` completes, control will not return to instruction immediately following the `IFJMP`. Instead, it will return to the instruction immediately following the instruction that started current continuation. If this continuation is default `quit`, the program will exit with code 0.",
       "tags": ["control_flow"],
       "operands": [],
       "examples": [
         {
           "instructions": [
             {
-              "instruction": "PUSHCONT [\n  PUSHINT_4 1\n  PUSHINT_4 2\n  ADD\n  // implicit exit from the continuation\n  // and since there is no grand continuation\n  // the program will exit\n]",
-              "is_main": true
+              "instruction": "PUSHINT -1"
             },
             {
-              "instruction": "PUSHINT 1"
+              "instruction": "PUSHCONT {\n  PUSHINT_4 1\n  PUSHINT_4 2\n  ADD\n  // implicit exit from the continuation\n  // and since grand continuation is default `quit`\n  // the program will exit with code 0\n}",
+              "is_main": true
             },
             {
               "instruction": "IFJMP",
@@ -220,9 +298,15 @@
             }
           ],
           "stack": {
-            "input": ["Continuation", "1"],
+            "input": ["Continuation", "-1"],
             "output": []
           }
+        }
+      ],
+      "docs_links": [
+        {
+          "name": "JMP vs. EXECUTE",
+          "url": "https://txtracer.ton.org/spec/doc/book/continuations/manual-handling-and-jmp-vs-execute/"
         }
       ]
     },
@@ -253,10 +337,42 @@
   },
   "IFNOTJMP": {
     "description": {
-      "short": "",
-      "long": "Transfers control to `body` if `cond` is zero. The remainder of the current continuation is discarded which means that after `body` completes, control will not return to instruction immediately following the `IFJMP`. Instead, it will return to the instruction immediately following the instruction that started current continuation. If such continuation is not present, the program will exit.",
-      "tags": [],
-      "operands": []
+      "short": "If `cond` is zero, jumps to `body`, otherwise does nothing.",
+      "long": "If condition is met, performs `JMPX` on `body` continuation. The remainder of the current continuation is discarded which means that after `body` completes, control will not return to instruction immediately following the `IFNOTJMP`. Instead, it will return to the instruction immediately following the instruction that started current continuation. If this continuation is default `quit`, the program will exit with code 0.",
+      "tags": ["control_flow"],
+      "operands": [],
+      "examples": [
+        {
+          "instructions": [
+            {
+              "instruction": "PUSHINT 0"
+            },
+            {
+              "instruction": "PUSHCONT {\n  PUSHINT_4 1\n  PUSHINT_4 2\n  ADD\n  // implicit exit from the continuation\n  // and since grand continuation is default `quit`\n  // the program will exit with code 0\n}",
+              "is_main": true
+            },
+            {
+              "instruction": "IFNOTJMP",
+              "comment": "Transfers control to the continuation",
+              "is_main": true
+            },
+            {
+              "instruction": "PUSHINT_LONG 999",
+              "comment": "This will never be executed"
+            }
+          ],
+          "stack": {
+            "input": ["Continuation", "0"],
+            "output": []
+          }
+        }
+      ],
+      "docs_links": [
+        {
+          "name": "JMP vs. EXECUTE",
+          "url": "https://txtracer.ton.org/spec/doc/book/continuations/manual-handling-and-jmp-vs-execute/"
+        }
+      ]
     },
     "signature": {
       "inputs": {
@@ -285,14 +401,20 @@
   },
   "IFELSE": {
     "description": {
-      "short": "",
-      "long": "If integer `cond` is non-zero, executes `body`, otherwise executes `else`",
+      "short": "If `cond` is non-zero, executes `body`, otherwise executes `else`.",
+      "long": "If condition is met, performs `EXECUTE` on `body` continuation, otherwise performs `EXECUTE` on `else` continuation. After the either body is executed, execution will return to the next instruction after the `IFELSE`.",
       "tags": [],
       "operands": [],
       "other_implementations": [
         {
           "exact": true,
           "instructions": ["CONDSELCHK", "EXECUTE"]
+        }
+      ],
+      "docs_links": [
+        {
+          "name": "JMP vs. EXECUTE",
+          "url": "https://txtracer.ton.org/spec/doc/book/continuations/manual-handling-and-jmp-vs-execute/"
         }
       ]
     },
@@ -354,8 +476,8 @@
   },
   "CONDSEL": {
     "description": {
-      "short": "",
-      "long": "If integer `f` is non-zero, returns `x`, otherwise returns `y`. Notice that no type checks are performed on `x` and `y`, so, it is more like a conditional stack operation.",
+      "short": "If integer `f` is non-zero, returns `x`, otherwise returns `y`.",
+      "long": "No type checks are performed on `x` and `y`, so this can be thought of as a conditional stack operation.",
       "tags": [],
       "operands": [],
       "other_implementations": [
@@ -395,8 +517,8 @@
   },
   "CONDSELCHK": {
     "description": {
-      "short": "",
-      "long": "If integer `f` is non-zero, returns `x`, otherwise returns `y`. Unlike `CONDSEL` this instruction checks whether `x` and `y` have the same type.",
+      "short": "If integer `f` is non-zero, returns `x`, otherwise returns `y`.",
+      "long": "Checks whether `x` and `y` have the same type, unlike `CONDSEL`.",
       "tags": [],
       "operands": []
     },
@@ -430,10 +552,22 @@
   },
   "IFRETALT": {
     "description": {
-      "short": "",
-      "long": "Performs `RETALT` if integer `cond != 0`.",
+      "short": "If `cond` is non-zero, ends the current continuation and returns to `c1`.",
+      "long": "If condition is met, performs `RETALT` which ends the current continuation and returns to continuation in `c1`. If `c1` holds the initial `quit` continuation (that is, the current execution is in the root continuation), the program exits with code 0.",
       "tags": [],
-      "operands": []
+      "operands": [],
+      "exit_codes": [
+        {
+          "errno": "4",
+          "condition": "If `cond` is a `NaN`."
+        }
+      ],
+      "docs_links": [
+        {
+          "name": "c1 register and alternative exit point",
+          "url": "https://txtracer.ton.org/spec/doc/book/continuations/diving-deeper-exit-points-of-continuations/#alternative-exit-point-c1"
+        }
+      ]
     },
     "signature": {
       "inputs": {
@@ -463,10 +597,22 @@
   },
   "IFNOTRETALT": {
     "description": {
-      "short": "",
-      "long": "Performs `RETALT` if integer `cond == 0`.",
+      "short": "If `cond` is zero, ends the current continuation and returns to `c1`.",
+      "long": "If condition is met, performs `RETALT` which ends the current continuation and returns to continuation in `c1`. If `c1` holds the initial `quit` continuation (that is, the current execution is in the root continuation), the program exits with code 0.",
       "tags": [],
-      "operands": []
+      "operands": [],
+      "exit_codes": [
+        {
+          "errno": "4",
+          "condition": "If `cond` is a `NaN`."
+        }
+      ],
+      "docs_links": [
+        {
+          "name": "c1 register and alternative exit point",
+          "url": "https://txtracer.ton.org/spec/doc/book/continuations/diving-deeper-exit-points-of-continuations/#alternative-exit-point-c1"
+        }
+      ]
     },
     "signature": {
       "inputs": {
@@ -496,10 +642,42 @@
   },
   "IFBITJMP": {
     "description": {
-      "short": "",
-      "long": "Checks whether `i`-th bit is set in integer `x`, and if so, performs `JMPX` to continuation `body`. Value `x` is left in the stack.",
+      "short": "If `i`-th bit is set in integer `x`, jumps to `body`, otherwise does nothing.",
+      "long": "If condition is met, performs `JMPX` on `body` continuation. Value `x` remains on the stack and available in `body` continuation. The remainder of the current continuation is discarded which means that after `body` completes, control will not return to instruction immediately following the `IFBITJMP`. Instead, it will return to the instruction immediately following the instruction that started current continuation. If this continuation is default `quit`, the program will exit with code 0.",
       "tags": [],
-      "operands": ["i"]
+      "operands": ["i"],
+      "examples": [
+        {
+          "instructions": [
+            {
+              "instruction": "PUSHINT 0b001000"
+            },
+            {
+              "instruction": "PUSHCONT {\n  PUSHINT_4 1\n  ADD // sum up 4 and 1\n  // implicit exit from the continuation\n  // and since grand continuation is default `quit`\n  // the program will exit with code 0\n}",
+              "is_main": true
+            },
+            {
+              "instruction": "IFBITJMP 3",
+              "comment": "Check 4th bit of 0b001000",
+              "is_main": true
+            },
+            {
+              "instruction": "PUSHINT_LONG 999",
+              "comment": "This will never be executed"
+            }
+          ],
+          "stack": {
+            "input": ["Continuation", "8"],
+            "output": []
+          }
+        }
+      ],
+      "docs_links": [
+        {
+          "name": "JMP vs. EXECUTE",
+          "url": "https://txtracer.ton.org/spec/doc/book/continuations/manual-handling-and-jmp-vs-execute/"
+        }
+      ]
     },
     "signature": {
       "inputs": {
@@ -537,10 +715,42 @@
   },
   "IFNBITJMP": {
     "description": {
-      "short": "",
-      "long": "Checks whether `i`-th bit is NOT set in integer `x`, and if so, performs `JMPX` to continuation `body`. Value `x` is left in the stack.",
+      "short": "If `i`-th bit is NOT set in integer `x`, jumps to `body`, otherwise does nothing.",
+      "long": "If condition is met, performs `JMPX` on `body` continuation. Value `x` remains on the stack and available in `body` continuation. The remainder of the current continuation is discarded which means that after `body` completes, control will not return to instruction immediately following the `IFNBITJMP`. Instead, it will return to the instruction immediately following the instruction that started current continuation. If this continuation is default `quit`, the program will exit with code 0.",
       "tags": [],
-      "operands": ["i"]
+      "operands": ["i"],
+      "examples": [
+        {
+          "instructions": [
+            {
+              "instruction": "PUSHINT 0b001000"
+            },
+            {
+              "instruction": "PUSHCONT {\n  PUSHINT_4 1\n  ADD // sum up 4 and 1\n  // implicit exit from the continuation\n  // and since grand continuation is default `quit`\n  // the program will exit with code 0\n}",
+              "is_main": true
+            },
+            {
+              "instruction": "IFNBITJMP 2",
+              "comment": "Check 3rd bit of 0b001000",
+              "is_main": true
+            },
+            {
+              "instruction": "PUSHINT_LONG 999",
+              "comment": "This will never be executed"
+            }
+          ],
+          "stack": {
+            "input": ["Continuation", "8"],
+            "output": []
+          }
+        }
+      ],
+      "docs_links": [
+        {
+          "name": "JMP vs. EXECUTE",
+          "url": "https://txtracer.ton.org/spec/doc/book/continuations/manual-handling-and-jmp-vs-execute/"
+        }
+      ]
     },
     "signature": {
       "inputs": {
@@ -578,8 +788,8 @@
   },
   "IFREF": {
     "description": {
-      "short": "",
-      "long": "Executes the continuation stored in cell reference `body` if integer `cond` is non-zero. Optimized so that the cell reference is not actually loaded into a _Slice_ and then converted into an ordinary _Continuation_ if `cond == 0`.\nGas consumption of this primitive depends on whether `cond == 0` and whether the reference was loaded before.\nSimilar remarks apply other primitives that accept a continuation as a reference.",
+      "short": "Executes the continuation stored in cell reference `body` if integer `cond` is non-zero.",
+      "long": "When `cond` is zero, optimized to skip loading the cell reference into a _Slice_ and converting it to an ordinary _Continuation_.\nGas consumption of this primitive depends on whether `cond == 0` and whether the reference was loaded before.\nSimilar remarks apply other primitives that accept a continuation as a reference.",
       "tags": [],
       "operands": ["body"],
       "other_implementations": [
@@ -667,7 +877,7 @@
   "IFJMPREF": {
     "description": {
       "short": "",
-      "long": "Transfers control to the continuation stored in cell reference `body` if `cond` is non-zero. The remainder of the current continuation is discarded which means that after `body` completes, control will not return to instruction immediately following the `IFJMPREF`. Instead, it will return to the instruction immediately following the instruction that started current continuation. If such continuation is not present, the program will exit.",
+      "long": "Transfers control to the continuation stored in cell reference `body` if `cond` is non-zero. The remainder of the current continuation is discarded which means that after `body` completes, control will not return to instruction immediately following the `IFJMPREF`. Instead, it will return to the instruction immediately following the instruction that started current continuation. If this continuation is default `quit`, the program will exit with code 0.",
       "tags": [],
       "operands": ["body"],
       "other_implementations": [
@@ -732,10 +942,10 @@
   },
   "IFREFELSE": {
     "description": {
-      "short": "",
-      "long": "If integer `cond` is non-zero, executes the continuation stored in cell reference `c`, otherwise executes `else`. When `cond` is zero, optimized to skip loading the cell reference for body into a _Slice_ and converting it to an ordinary _Continuation_.",
+      "short": "If integer `cond` is non-zero, executes the continuation stored in cell reference `c`, otherwise executes `else`.",
+      "long": "When `cond` is zero, optimized to skip loading the cell reference for body into a _Slice_ and converting it to an ordinary _Continuation_.",
       "tags": [],
-      "operands": ["c"],
+      "operands": ["body"],
       "other_implementations": [
         {
           "exact": false,
@@ -796,8 +1006,8 @@
   },
   "IFELSEREF": {
     "description": {
-      "short": "",
-      "long": "If integer `cond` is non-zero, executes `body`, otherwise executes the continuation stored in cell reference `c`. When `cond` is non-zero, optimized to skip loading the cell reference for else branch into a _Slice_ and converting it to an ordinary _Continuation_.",
+      "short": "If integer `cond` is non-zero, executes `body`, otherwise executes the continuation stored in cell reference `c`.",
+      "long": "When `cond` is non-zero, optimized to skip loading the cell reference for else branch into a _Slice_ and converting it to an ordinary _Continuation_.",
       "tags": [],
       "operands": ["c"],
       "other_implementations": [
@@ -860,8 +1070,8 @@
   },
   "IFREFELSEREF": {
     "description": {
-      "short": "",
-      "long": "If integer `cond` is non-zero, executes the continuation stored in cell reference `body`, otherwise executes the continuation stored in cell reference `else`.",
+      "short": "If integer `cond` is non-zero, executes the continuation stored in cell reference `body`, otherwise executes the continuation stored in cell reference `else`.",
+      "long": "",
       "tags": [],
       "operands": ["body", "else"],
       "other_implementations": [
