@@ -6,6 +6,25 @@
       "description": "Argument for a Fift instruction",
       "markdownDescription": "Argument for a Fift instruction"
     },
+    "GasConsumptionEntry": {
+      "type": "object",
+      "description": "Represents gas consumption for an instruction with value and description",
+      "markdownDescription": "Represents gas consumption for an instruction with value and description",
+      "properties": {
+        "value": {
+          "type": "number",
+          "description": "The gas consumption value",
+          "markdownDescription": "The gas consumption value"
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of the gas consumption",
+          "markdownDescription": "Description of the gas consumption"
+        }
+      },
+      "required": ["value", "description"],
+      "additionalProperties": false
+    },
     "FiftInstruction": {
       "type": "object",
       "description": "Represents a Fift instruction with its actual TVM instruction name and arguments",
@@ -160,6 +179,14 @@
           "markdownDescription": "List of examples showing how to use this instruction",
           "items": {
             "$ref": "#/definitions/Example"
+          }
+        },
+        "gas": {
+          "type": "array",
+          "description": "List of gas consumption entries for this instruction",
+          "markdownDescription": "List of gas consumption entries for this instruction",
+          "items": {
+            "$ref": "#/definitions/GasConsumptionEntry"
           }
         }
       },

@@ -52,6 +52,11 @@ export interface Example {
     readonly exit_code?: number
 }
 
+export interface GasConsumptionEntry {
+    readonly value: number
+    readonly description: string
+}
+
 export interface Description {
     readonly short: string
     readonly long: string
@@ -61,6 +66,7 @@ export interface Description {
     readonly other_implementations?: readonly OtherImplementation[]
     readonly related_instructions?: readonly string[]
     readonly examples?: readonly Example[]
+    readonly gas?: readonly GasConsumptionEntry[]
 }
 
 export interface Layout {

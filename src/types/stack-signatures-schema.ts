@@ -2,6 +2,7 @@
  * Allowed chars are `a-zA-Z0-9_`, must not begin with digit or underscore and must not end with underscore.
  */
 export type VariableName = string
+
 export type Range = {
     min: number
     max: number

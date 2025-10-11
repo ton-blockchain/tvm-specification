@@ -8,7 +8,11 @@ import {
     FiftInstruction,
     ControlFlowOfInstruction,
 } from "../types"
-import {instructions, signatureString} from "../instructions"
+import {
+    instructions,
+    signatureString,
+    calculateGasConsumptionWithDescription,
+} from "../instructions"
 
 export interface InstructionEntry {
     readonly name?: string
@@ -57,10 +61,18 @@ const main = () => {
             effects: undefined,
             prefix_str: opcode.prefix.toString(16).toUpperCase(),
         }
+
+        const gasCosts = calculateGasConsumptionWithDescription(opcode).filter(
+            it => it.value !== 36,
+        )
+
         allInstructions[name] = {
             category: opcode.category,
             sub_category: opcode.subCategory,
-            description: instr.description,
+            description: {
+                ...instr.description,
+                gas: gasCosts.length > 0 ? gasCosts : undefined,
+            },
             layout: layout,
             effects: opcode.effects?.map(it => it.$),
             signature: signature
