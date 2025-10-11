@@ -1797,7 +1797,11 @@
             },
             {
               "instruction": "PUSH s10",
-              "comment": "Trying to push a value from an index that is out of bounds."
+              "comment": "Trying to push a value from"
+            },
+            {
+              "instruction": "        ",
+              "comment": "an index that is out of bounds."
             }
           ],
           "exit_code": 2,

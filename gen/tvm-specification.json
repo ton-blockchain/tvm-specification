@@ -9924,8 +9924,12 @@
                 "comment": "Condition value (non-zero means true)"
               },
               {
-                "instruction": "PUSHCONT {\n  PUSHINT_4 10\n  PUSHINT_4 20\n  ADD\n}",
-                "comment": "Continuation body that adds 10 and 20"
+                "instruction": "PUSHCONT {",
+                "comment": "Continuation body that adds 5 and 10"
+              },
+              {
+                "instruction": "  PUSHINT_4 5\n  PUSHINT_4 10\n  ADD\n}",
+                "comment": ""
               },
               {
                 "instruction": "IF",
@@ -9934,7 +9938,7 @@
             ],
             "stack": {
               "input": ["-1", "Continuation"],
-              "output": ["30"]
+              "output": ["15"]
             }
           },
           {
@@ -9944,8 +9948,12 @@
                 "comment": "Condition value (zero means false)"
               },
               {
-                "instruction": "PUSHCONT {\n  PUSHINT_4 10\n  PUSHINT_4 20\n  ADD\n}",
-                "comment": "Continuation body that adds 10 and 20"
+                "instruction": "PUSHCONT {",
+                "comment": "Continuation body that adds 5 and 10"
+              },
+              {
+                "instruction": "  PUSHINT_4 5\n  PUSHINT_4 10\n  ADD\n}",
+                "comment": ""
               },
               {
                 "instruction": "IF",
@@ -10044,8 +10052,12 @@
                 "comment": "Condition value (zero means false)"
               },
               {
-                "instruction": "PUSHCONT {\n  PUSHINT_4 10\n  PUSHINT_4 20\n  ADD\n}",
-                "comment": "Continuation body that adds 10 and 20"
+                "instruction": "PUSHCONT {",
+                "comment": "Continuation body that adds 5 and 10"
+              },
+              {
+                "instruction": "  PUSHINT_4 5\n  PUSHINT_4 10\n  ADD\n}",
+                "comment": ""
               },
               {
                 "instruction": "IFNOT",
@@ -10054,7 +10066,7 @@
             ],
             "stack": {
               "input": ["0", "Continuation"],
-              "output": ["30"]
+              "output": ["15"]
             }
           },
           {
@@ -10064,8 +10076,12 @@
                 "comment": "Condition value (non-zero means true)"
               },
               {
-                "instruction": "PUSHCONT {\n  PUSHINT_4 10\n  PUSHINT_4 20\n  ADD\n}",
-                "comment": "Continuation body that adds 10 and 20"
+                "instruction": "PUSHCONT {",
+                "comment": "Continuation body that adds 5 and 10"
+              },
+              {
+                "instruction": "  PUSHINT_4 5\n  PUSHINT_4 10\n  ADD\n}",
+                "comment": ""
               },
               {
                 "instruction": "IFNOT",
@@ -10160,7 +10176,7 @@
           {
             "instructions": [
               {
-                "instruction": "PUSHINT -1"
+                "instruction": "PUSHINT_4 -1"
               },
               {
                 "instruction": "PUSHCONT {\n  PUSHINT_4 1\n  PUSHINT_4 2\n  ADD\n  // implicit exit from the continuation\n  // and since grand continuation is default `quit`\n  // the program will exit with code 0\n}",
@@ -10253,7 +10269,7 @@
           {
             "instructions": [
               {
-                "instruction": "PUSHINT 0"
+                "instruction": "PUSHINT_4 0"
               },
               {
                 "instruction": "PUSHCONT {\n  PUSHINT_4 1\n  PUSHINT_4 2\n  ADD\n  // implicit exit from the continuation\n  // and since grand continuation is default `quit`\n  // the program will exit with code 0\n}",
@@ -10500,8 +10516,8 @@
       "category": "continuation",
       "sub_category": "continuation_cond",
       "description": {
-        "short": "If integer `f` is non-zero, returns `x`, otherwise returns `y`.",
-        "long": "Checks whether `x` and `y` have the same type, unlike `CONDSEL`.",
+        "short": "If integer `f` is non-zero, returns `x`, otherwise returns `y`. Throws if `x` and `y` have different types.",
+        "long": "This instruction checks whether `x` and `y` have the same type, unlike `CONDSEL`.",
         "tags": [],
         "exit_codes": [
           {
@@ -51087,7 +51103,7 @@
           {
             "instructions": [
               {
-                "instruction": "PUSHINT 0b001000"
+                "instruction": "PUSHINT_4 0b001000"
               },
               {
                 "instruction": "PUSHCONT {\n  PUSHINT_4 1\n  ADD // sum up 4 and 1\n  // implicit exit from the continuation\n  // and since grand continuation is default `quit`\n  // the program will exit with code 0\n}",
@@ -51198,7 +51214,7 @@
           {
             "instructions": [
               {
-                "instruction": "PUSHINT 0b001000"
+                "instruction": "PUSHINT_4 0b001000"
               },
               {
                 "instruction": "PUSHCONT {\n  PUSHINT_4 1\n  ADD // sum up 4 and 1\n  // implicit exit from the continuation\n  // and since grand continuation is default `quit`\n  // the program will exit with code 0\n}",
@@ -60299,7 +60315,11 @@
               },
               {
                 "instruction": "PUSH s10",
-                "comment": "Trying to push a value from an index that is out of bounds."
+                "comment": "Trying to push a value from"
+              },
+              {
+                "instruction": "        ",
+                "comment": "an index that is out of bounds."
               }
             ],
             "exit_code": 2,
