@@ -520,7 +520,9 @@
               "$ref": "#/definitions/VariableName"
             },
             "range": {
-              "$ref": "#/definitions/Range"
+              "$ref": "#/definitions/Range",
+              "description": "Optional range constraint for the value, specifying minimum and maximum allowed values",
+              "markdownDescription": "Optional range constraint for the value, specifying minimum and maximum allowed values"
             },
             "presentation": {
               "type": "string"
@@ -616,12 +618,18 @@
     },
     "Range": {
       "type": "object",
+      "description": "Represents a numeric range with minimum and maximum values",
+      "markdownDescription": "Represents a numeric range with minimum and maximum values",
       "properties": {
         "min": {
-          "type": "number"
+          "type": "number",
+          "description": "Minimum allowed value (inclusive)",
+          "markdownDescription": "Minimum allowed value (inclusive)"
         },
         "max": {
-          "type": "number"
+          "type": "number",
+          "description": "Maximum allowed value (inclusive)",
+          "markdownDescription": "Maximum allowed value (inclusive)"
         }
       },
       "required": ["min", "max"],

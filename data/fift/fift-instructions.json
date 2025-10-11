@@ -67,7 +67,7 @@
   },
   "PLDOPTREF": {
     "actual_name": "PLDDICT",
-    "description": "Preloads a dictionary or any cell or null from the slice as an optional reference, leaving the slice unchanged"
+    "description": "Preloads a dictionary or any cell or null from the slice as an optional reference"
   },
   "STOPTREF": {
     "actual_name": "STDICT",
@@ -76,7 +76,7 @@
   "PLDREF": {
     "actual_name": "PLDREFIDX",
     "arguments": [0],
-    "description": "Preloads the first optional reference from the slice, leaving the slice unchanged"
+    "description": "Preloads the first optional reference from the slice"
   },
   "SETCONTMANY": {
     "actual_name": "SETCONTCTRMANY"

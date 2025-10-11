@@ -6017,7 +6017,7 @@
       "sub_category": "cell_deserialize",
       "description": {
         "short": "",
-        "long": "Loads a cell reference `c` from `s`.",
+        "long": "Loads a cell reference `c` from `s` and returns the remainder of `s` as `s''`.",
         "tags": ["slice parsing"],
         "operands": []
       },
@@ -6067,7 +6067,7 @@
       "sub_category": "cell_deserialize",
       "description": {
         "short": "",
-        "long": "Loads a cell reference `c` from `s`, converts it to _Slice_ and returns the _Slice_ and remainder.",
+        "long": "Loads a cell reference `c` from `s`, converts it to _Slice_ and returns that _Slice_ and remainder of `s` as `s''`.",
         "tags": ["slice parsing"],
         "operands": [],
         "other_implementations": [
@@ -6124,7 +6124,7 @@
       "sub_category": "cell_deserialize",
       "description": {
         "short": "",
-        "long": "Returns the first `0 <= length <= 1023` bits of `s`.",
+        "long": "Returns the first `length` bits of `s`.",
         "tags": ["slice parsing"],
         "operands": [],
         "other_implementations": [
@@ -6160,7 +6160,11 @@
             {
               "type": "simple",
               "name": "length",
-              "value_types": ["Int"]
+              "value_types": ["Int"],
+              "range": {
+                "min": 0,
+                "max": 1023
+              }
             }
           ]
         },
@@ -6180,7 +6184,7 @@
       "sub_category": "cell_deserialize",
       "description": {
         "short": "",
-        "long": "Returns all but the first `0 <= length <= 1023` bits of `s`.",
+        "long": "Returns all but the first `length` bits of `s`.",
         "tags": ["slice parsing"],
         "operands": [],
         "other_implementations": [
@@ -6216,7 +6220,11 @@
             {
               "type": "simple",
               "name": "length",
-              "value_types": ["Int"]
+              "value_types": ["Int"],
+              "range": {
+                "min": 0,
+                "max": 1023
+              }
             }
           ]
         },
@@ -6236,7 +6244,7 @@
       "sub_category": "cell_deserialize",
       "description": {
         "short": "",
-        "long": "Returns the last `0 <= length <= 1023` bits of `s`.",
+        "long": "Returns the last `length` bits of `s`.",
         "tags": ["slice parsing"],
         "operands": []
       },
@@ -6266,7 +6274,11 @@
             {
               "type": "simple",
               "name": "length",
-              "value_types": ["Int"]
+              "value_types": ["Int"],
+              "range": {
+                "min": 0,
+                "max": 1023
+              }
             }
           ]
         },
@@ -6286,7 +6298,7 @@
       "sub_category": "cell_deserialize",
       "description": {
         "short": "",
-        "long": "Returns all but the last `0 <= length <= 1023` bits of `s`.",
+        "long": "Returns all but the last `length` bits of `s`.",
         "tags": ["slice parsing"],
         "operands": []
       },
@@ -6316,7 +6328,11 @@
             {
               "type": "simple",
               "name": "length",
-              "value_types": ["Int"]
+              "value_types": ["Int"],
+              "range": {
+                "min": 0,
+                "max": 1023
+              }
             }
           ]
         },
@@ -6336,7 +6352,7 @@
       "sub_category": "cell_deserialize",
       "description": {
         "short": "",
-        "long": "Returns `0 <= length <= 1023` bits of `s` starting from offset `0 <= offset <= 1023`, thus extracting a bit substring out of the data of `s`.",
+        "long": "Returns `length` bits of `s` starting from `offset`, thus extracting a bit substring out of the data of `s`.",
         "tags": ["slice parsing"],
         "operands": []
       },
@@ -6366,12 +6382,20 @@
             {
               "type": "simple",
               "name": "offset",
-              "value_types": ["Int"]
+              "value_types": ["Int"],
+              "range": {
+                "min": 0,
+                "max": 1023
+              }
             },
             {
               "type": "simple",
               "name": "length",
-              "value_types": ["Int"]
+              "value_types": ["Int"],
+              "range": {
+                "min": 0,
+                "max": 1023
+              }
             }
           ]
         },
@@ -6391,7 +6415,7 @@
       "sub_category": "cell_deserialize",
       "description": {
         "short": "",
-        "long": "Returns the first `0 <= length <= 1023` bits and first `0 <= refs <= 4` references of `s`.",
+        "long": "Returns the first `length` bits and first `refs` references of `s`.",
         "tags": [],
         "operands": []
       },
@@ -6421,12 +6445,20 @@
             {
               "type": "simple",
               "name": "length",
-              "value_types": ["Int"]
+              "value_types": ["Int"],
+              "range": {
+                "min": 0,
+                "max": 1023
+              }
             },
             {
               "type": "simple",
               "name": "refs",
-              "value_types": ["Int"]
+              "value_types": ["Int"],
+              "range": {
+                "min": 0,
+                "max": 4
+              }
             }
           ]
         },
@@ -6476,12 +6508,20 @@
             {
               "type": "simple",
               "name": "length",
-              "value_types": ["Int"]
+              "value_types": ["Int"],
+              "range": {
+                "min": 0,
+                "max": 1023
+              }
             },
             {
               "type": "simple",
               "name": "refs",
-              "value_types": ["Int"]
+              "value_types": ["Int"],
+              "range": {
+                "min": 0,
+                "max": 4
+              }
             }
           ]
         },
@@ -6501,7 +6541,7 @@
       "sub_category": "cell_deserialize",
       "description": {
         "short": "",
-        "long": "Returns the last `0 <= length <= 1023` data bits and last `0 <= refs <= 4` references of `s`.",
+        "long": "Returns the last `length` data bits and last `refs` references of `s`.",
         "tags": [],
         "operands": []
       },
@@ -6531,12 +6571,20 @@
             {
               "type": "simple",
               "name": "length",
-              "value_types": ["Int"]
+              "value_types": ["Int"],
+              "range": {
+                "min": 0,
+                "max": 1023
+              }
             },
             {
               "type": "simple",
               "name": "refs",
-              "value_types": ["Int"]
+              "value_types": ["Int"],
+              "range": {
+                "min": 0,
+                "max": 4
+              }
             }
           ]
         },
@@ -6586,12 +6634,20 @@
             {
               "type": "simple",
               "name": "length",
-              "value_types": ["Int"]
+              "value_types": ["Int"],
+              "range": {
+                "min": 0,
+                "max": 1023
+              }
             },
             {
               "type": "simple",
               "name": "refs",
-              "value_types": ["Int"]
+              "value_types": ["Int"],
+              "range": {
+                "min": 0,
+                "max": 4
+              }
             }
           ]
         },
@@ -6611,7 +6667,7 @@
       "sub_category": "cell_deserialize",
       "description": {
         "short": "",
-        "long": "Returns `0 <= l' <= 1023` bits and `0 <= r' <= 4` references from _Slice_ `s`, after skipping the first `0 <= length <= 1023` bits and first `0 <= r <= 4` references.",
+        "long": "Returns `length` bits and `refs` references from _Slice_ `s`, after skipping the first `skip_len` bits and first `skip_refs` references.",
         "tags": [],
         "operands": []
       },
@@ -6630,7 +6686,7 @@
         "prefix_str": "D734"
       },
       "signature": {
-        "stack_string": "s:Slice length:Int r:Int l2:Int r2:Int -> s2:Slice",
+        "stack_string": "s:Slice skip_len:Int skip_refs:Int length:Int refs:Int -> s2:Slice",
         "inputs": {
           "stack": [
             {
@@ -6640,22 +6696,30 @@
             },
             {
               "type": "simple",
+              "name": "skip_len",
+              "value_types": ["Int"],
+              "range": {
+                "min": 0,
+                "max": 1023
+              }
+            },
+            {
+              "type": "simple",
+              "name": "skip_refs",
+              "value_types": ["Int"],
+              "range": {
+                "min": 0,
+                "max": 4
+              }
+            },
+            {
+              "type": "simple",
               "name": "length",
               "value_types": ["Int"]
             },
             {
               "type": "simple",
-              "name": "r",
-              "value_types": ["Int"]
-            },
-            {
-              "type": "simple",
-              "name": "l2",
-              "value_types": ["Int"]
-            },
-            {
-              "type": "simple",
-              "name": "r2",
+              "name": "refs",
               "value_types": ["Int"]
             }
           ]
@@ -6676,7 +6740,7 @@
       "sub_category": "cell_deserialize",
       "description": {
         "short": "",
-        "long": "Splits the first `0 <= length <= 1023` data bits and first `0 <= r <= 4` references from `s` into `s'`, returning the remainder of `s` as `s''`.",
+        "long": "Splits the first `length` data bits and first `refs` references from `s` into `s'`, returning the remainder of `s` as `s''`.",
         "tags": [],
         "operands": []
       },
@@ -6695,7 +6759,7 @@
         "prefix_str": "D736"
       },
       "signature": {
-        "stack_string": "s:Slice l:Int r:Int -> s2:Slice s3:Slice",
+        "stack_string": "s:Slice length:Int refs:Int -> s':Slice s'':Slice",
         "inputs": {
           "stack": [
             {
@@ -6705,13 +6769,21 @@
             },
             {
               "type": "simple",
-              "name": "l",
-              "value_types": ["Int"]
+              "name": "length",
+              "value_types": ["Int"],
+              "range": {
+                "min": 0,
+                "max": 1023
+              }
             },
             {
               "type": "simple",
-              "name": "r",
-              "value_types": ["Int"]
+              "name": "refs",
+              "value_types": ["Int"],
+              "range": {
+                "min": 0,
+                "max": 4
+              }
             }
           ]
         },
@@ -6719,12 +6791,12 @@
           "stack": [
             {
               "type": "simple",
-              "name": "s2",
+              "name": "s'",
               "value_types": ["Slice"]
             },
             {
               "type": "simple",
-              "name": "s3",
+              "name": "s''",
               "value_types": ["Slice"]
             }
           ]
@@ -6736,7 +6808,7 @@
       "sub_category": "cell_deserialize",
       "description": {
         "short": "",
-        "long": "Splits the first `0 <= length <= 1023` data bits and first `0 <= r <= 4` references from `s` into `s'`, returning the remainder of `s` as `s''`. This is a quiet version of `SPLIT` which means that instead of throwing an exception, it pushes a status flag to the stack: 0 if the operation fails, -1 if the operation succeeds.",
+        "long": "Splits the first `length` data bits and first `refs` references from `s` into `s'`, returning the remainder of `s` as `s''`. This is a quiet version of `SPLIT` which means that instead of throwing an exception, it pushes a status flag to the stack: 0 if the operation fails, -1 if the operation succeeds.",
         "tags": [],
         "operands": []
       },
@@ -6755,7 +6827,7 @@
         "prefix_str": "D737"
       },
       "signature": {
-        "stack_string": "s:Slice l:Int r:Int -> (s:Slice 0)|(s2:Slice s3:Slice -1) status:Int",
+        "stack_string": "s:Slice length:Int refs:Int -> (s:Slice 0)|(s':Slice s'':Slice -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -6765,13 +6837,21 @@
             },
             {
               "type": "simple",
-              "name": "l",
-              "value_types": ["Int"]
+              "name": "length",
+              "value_types": ["Int"],
+              "range": {
+                "min": 0,
+                "max": 1023
+              }
             },
             {
               "type": "simple",
-              "name": "r",
-              "value_types": ["Int"]
+              "name": "refs",
+              "value_types": ["Int"],
+              "range": {
+                "min": 0,
+                "max": 4
+              }
             }
           ]
         },
@@ -6796,12 +6876,12 @@
                   "stack": [
                     {
                       "type": "simple",
-                      "name": "s2",
+                      "name": "s'",
                       "value_types": ["Slice"]
                     },
                     {
                       "type": "simple",
-                      "name": "s3",
+                      "name": "s''",
                       "value_types": ["Slice"]
                     }
                   ]
@@ -7274,7 +7354,7 @@
       "sub_category": "cell_deserialize",
       "description": {
         "short": "",
-        "long": "Returns the `n`-th cell reference of _Slice_ `s`.",
+        "long": "Preloads the `n`-th cell reference of _Slice_ `s`.",
         "tags": ["slice parsing"],
         "operands": []
       },
@@ -7564,7 +7644,7 @@
       "sub_category": "cell_deserialize",
       "description": {
         "short": "",
-        "long": "Returns the count `n` of leading bits equal to `0 <= x <= 1` in `s`, and removes these bits from `s`.",
+        "long": "Returns the count `n` of leading bits equal to `x` (0 or 1) in `s`, and removes these bits from `s`.",
         "tags": [],
         "operands": []
       },
@@ -7594,7 +7674,11 @@
             {
               "type": "simple",
               "name": "x",
-              "value_types": ["Int"]
+              "value_types": ["Int"],
+              "range": {
+                "min": 0,
+                "max": 1
+              }
             }
           ]
         },
@@ -28865,7 +28949,7 @@
       "sub_category": "cell_deserialize",
       "description": {
         "short": "",
-        "long": "Loads a signed `width`-bit (`0 <= width <= 257`) integer `x` from _Slice_ `s`, and returns the remainder of `s` as `s'`.",
+        "long": "Loads a signed `width`-bit integer `x` from _Slice_ `s`, and returns the remainder of `s` as `s'`.",
         "tags": ["slice parsing"],
         "operands": []
       },
@@ -28895,7 +28979,11 @@
             {
               "type": "simple",
               "name": "width",
-              "value_types": ["Int"]
+              "value_types": ["Int"],
+              "range": {
+                "min": 0,
+                "max": 257
+              }
             }
           ]
         },
@@ -28920,7 +29008,7 @@
       "sub_category": "cell_deserialize",
       "description": {
         "short": "",
-        "long": "Loads an unsigned `width`-bit integer `x` from (the first `width` bits of) `s`, with `0 <= width <= 256`.",
+        "long": "Loads an unsigned `width`-bit integer `x` from (the first `width` bits of) `s`.",
         "tags": ["slice parsing"],
         "operands": []
       },
@@ -28950,7 +29038,11 @@
             {
               "type": "simple",
               "name": "width",
-              "value_types": ["Int"]
+              "value_types": ["Int"],
+              "range": {
+                "min": 0,
+                "max": 256
+              }
             }
           ]
         },
@@ -28975,7 +29067,7 @@
       "sub_category": "cell_deserialize",
       "description": {
         "short": "",
-        "long": "Preloads a signed `width`-bit integer from _Slice_ `s`, for `0 <= width <= 257`.",
+        "long": "Preloads a signed `width`-bit integer from _Slice_ `s`.",
         "tags": ["slice parsing", "preload"],
         "operands": []
       },
@@ -29005,7 +29097,11 @@
             {
               "type": "simple",
               "name": "width",
-              "value_types": ["Int"]
+              "value_types": ["Int"],
+              "range": {
+                "min": 0,
+                "max": 257
+              }
             }
           ]
         },
@@ -29025,7 +29121,7 @@
       "sub_category": "cell_deserialize",
       "description": {
         "short": "",
-        "long": "Preloads an unsigned `width`-bit integer from `s`, for `0 <= width <= 256`.",
+        "long": "Preloads an unsigned `width`-bit integer from `s`.",
         "tags": ["slice parsing", "preload"],
         "operands": []
       },
@@ -29055,7 +29151,11 @@
             {
               "type": "simple",
               "name": "width",
-              "value_types": ["Int"]
+              "value_types": ["Int"],
+              "range": {
+                "min": 0,
+                "max": 256
+              }
             }
           ]
         },
@@ -29075,7 +29175,7 @@
       "sub_category": "cell_deserialize",
       "description": {
         "short": "",
-        "long": "Loads a signed `width`-bit (`0 <= width <= 257`) integer `x` from _Slice_ `s`, and returns the remainder of `s` as `s'`. This is a quiet version of `LDIX` which means that instead of throwing an exception, it pushes a status flag to the stack: 0 if the operation fails, -1 if the operation succeeds.",
+        "long": "Loads a signed `width`-bit integer `x` from _Slice_ `s`, and returns the remainder of `s` as `s'`. This is a quiet version of `LDIX` which means that instead of throwing an exception, it pushes a status flag to the stack: 0 if the operation fails, -1 if the operation succeeds.",
         "tags": ["slice parsing"],
         "operands": []
       },
@@ -29105,7 +29205,11 @@
             {
               "type": "simple",
               "name": "width",
-              "value_types": ["Int"]
+              "value_types": ["Int"],
+              "range": {
+                "min": 0,
+                "max": 257
+              }
             }
           ]
         },
@@ -29156,7 +29260,7 @@
       "sub_category": "cell_deserialize",
       "description": {
         "short": "",
-        "long": "Loads an unsigned `width`-bit integer `x` from (the first `width` bits of) `s`, with `0 <= width <= 256`. This is a quiet version of `LDUX` which means that instead of throwing an exception, it pushes a status flag to the stack: 0 if the operation fails, -1 if the operation succeeds.",
+        "long": "Loads an unsigned `width`-bit integer `x` from (the first `width` bits of) `s`. This is a quiet version of `LDUX` which means that instead of throwing an exception, it pushes a status flag to the stack: 0 if the operation fails, -1 if the operation succeeds.",
         "tags": ["slice parsing"],
         "operands": []
       },
@@ -29186,7 +29290,11 @@
             {
               "type": "simple",
               "name": "width",
-              "value_types": ["Int"]
+              "value_types": ["Int"],
+              "range": {
+                "min": 0,
+                "max": 256
+              }
             }
           ]
         },
@@ -29237,7 +29345,7 @@
       "sub_category": "cell_deserialize",
       "description": {
         "short": "",
-        "long": "Preloads a signed `width`-bit integer from _Slice_ `s`, for `0 <= width <= 257`. This is a quiet version of `PLDIX` which means that instead of throwing an exception, it pushes a status flag to the stack: 0 if the operation fails, -1 if the operation succeeds.",
+        "long": "Preloads a signed `width`-bit integer from _Slice_ `s`. This is a quiet version of `PLDIX` which means that instead of throwing an exception, it pushes a status flag to the stack: 0 if the operation fails, -1 if the operation succeeds.",
         "tags": ["slice parsing", "preload"],
         "operands": []
       },
@@ -29267,7 +29375,11 @@
             {
               "type": "simple",
               "name": "width",
-              "value_types": ["Int"]
+              "value_types": ["Int"],
+              "range": {
+                "min": 0,
+                "max": 257
+              }
             }
           ]
         },
@@ -29307,7 +29419,7 @@
       "sub_category": "cell_deserialize",
       "description": {
         "short": "",
-        "long": "Preloads an unsigned `width`-bit integer from `s`, for `0 <= width <= 256`. This is a quiet version of `PLDUX` which means that instead of throwing an exception, it pushes a status flag to the stack: 0 if the operation fails, -1 if the operation succeeds.",
+        "long": "Preloads an unsigned `width`-bit integer from `s`. This is a quiet version of `PLDUX` which means that instead of throwing an exception, it pushes a status flag to the stack: 0 if the operation fails, -1 if the operation succeeds.",
         "tags": ["slice parsing", "preload"],
         "operands": []
       },
@@ -29337,7 +29449,11 @@
             {
               "type": "simple",
               "name": "width",
-              "value_types": ["Int"]
+              "value_types": ["Int"],
+              "range": {
+                "min": 0,
+                "max": 256
+              }
             }
           ]
         },
@@ -29377,7 +29493,7 @@
       "sub_category": "cell_deserialize",
       "description": {
         "short": "",
-        "long": "Loads the first `0 <= width <= 1023` bits from _Slice_ `s` into a separate _Slice_ `loaded`, returning the remainder of `s` as `s'`.",
+        "long": "Loads the first `width` bits from _Slice_ `s` into a separate _Slice_ `loaded`, returning the remainder of `s` as `s'`.",
         "tags": ["slice parsing"],
         "operands": []
       },
@@ -29407,7 +29523,11 @@
             {
               "type": "simple",
               "name": "width",
-              "value_types": ["Int"]
+              "value_types": ["Int"],
+              "range": {
+                "min": 0,
+                "max": 1023
+              }
             }
           ]
         },
@@ -29432,7 +29552,7 @@
       "sub_category": "cell_deserialize",
       "description": {
         "short": "",
-        "long": "Returns the first `0 <= width <= 1023` bits of `s` as `loaded`.",
+        "long": "Preloads the first `width` bits of `s` as `loaded`.",
         "tags": ["slice parsing", "preload"],
         "operands": []
       },
@@ -29462,7 +29582,11 @@
             {
               "type": "simple",
               "name": "width",
-              "value_types": ["Int"]
+              "value_types": ["Int"],
+              "range": {
+                "min": 0,
+                "max": 1023
+              }
             }
           ]
         },
@@ -29482,7 +29606,7 @@
       "sub_category": "cell_deserialize",
       "description": {
         "short": "",
-        "long": "Loads the first `0 <= width <= 1023` bits from _Slice_ `s` into a separate _Slice_ `loaded`, returning the remainder of `s` as `s'`. This is a quiet version of `LDSLICEX` which means that instead of throwing an exception, it pushes a status flag to the stack: 0 if the operation fails, -1 if the operation succeeds.",
+        "long": "Loads the first `width` bits from _Slice_ `s` into a separate _Slice_ `loaded`, returning the remainder of `s` as `s'`. This is a quiet version of `LDSLICEX` which means that instead of throwing an exception, it pushes a status flag to the stack: 0 if the operation fails, -1 if the operation succeeds.",
         "tags": ["slice parsing"],
         "operands": []
       },
@@ -29512,7 +29636,11 @@
             {
               "type": "simple",
               "name": "width",
-              "value_types": ["Int"]
+              "value_types": ["Int"],
+              "range": {
+                "min": 0,
+                "max": 1023
+              }
             }
           ]
         },
@@ -29563,7 +29691,7 @@
       "sub_category": "cell_deserialize",
       "description": {
         "short": "",
-        "long": "Returns the first `0 <= width <= 1023` bits of `s` as `loaded`. This is a quiet version of `PLDSLICEX` which means that instead of throwing an exception, it pushes a status flag to the stack: 0 if the operation fails, -1 if the operation succeeds.",
+        "long": "Preloads the first `width` bits of `s` as `loaded`. This is a quiet version of `PLDSLICEX` which means that instead of throwing an exception, it pushes a status flag to the stack: 0 if the operation fails, -1 if the operation succeeds.",
         "tags": ["slice parsing", "preload"],
         "operands": []
       },
@@ -29593,7 +29721,11 @@
             {
               "type": "simple",
               "name": "width",
-              "value_types": ["Int"]
+              "value_types": ["Int"],
+              "range": {
+                "min": 0,
+                "max": 1023
+              }
             }
           ]
         },
@@ -41970,7 +42102,7 @@
       "sub_category": "cell_deserialize",
       "description": {
         "short": "",
-        "long": "Returns the `n`-th cell reference of _Slice_ `s`.",
+        "long": "Preloads the `n`-th cell reference of _Slice_ `s`.",
         "tags": ["slice parsing"],
         "operands": ["n"]
       },
@@ -45365,7 +45497,7 @@
       "sub_category": "cell_deserialize",
       "description": {
         "short": "",
-        "long": "Preloads the first `32 * (c + 1)` bits of _Slice_ `s` into an unsigned integer `x`, for `0 <= c <= 7`. If `s` is shorter than necessary, missing bits are assumed to be zero. This operation is intended to be used along with `IFBITJMP` and similar instructions.",
+        "long": "Preloads the first `32 * (c + 1)` bits of _Slice_ `s` into an unsigned integer `x`. If `s` is shorter than necessary, missing bits are assumed to be zero. This operation is intended to be used along with `IFBITJMP` and similar instructions.",
         "tags": ["slice parsing", "preload"],
         "operands": ["c"]
       },
@@ -45423,9 +45555,9 @@
       "sub_category": "cell_deserialize",
       "description": {
         "short": "",
-        "long": "Returns the first `0 < c+1 <= 256` bits of `s` as `loaded`.",
+        "long": "Preloads the first `width` bits of `s` as `loaded`.",
         "tags": ["slice parsing", "preload"],
-        "operands": ["c"]
+        "operands": ["width"]
       },
       "layout": {
         "min": 14097664,
@@ -45481,9 +45613,9 @@
       "sub_category": "cell_deserialize",
       "description": {
         "short": "",
-        "long": "Cuts the next `c + 1` bits of `s` into a separate _Slice_ `loaded`. This is a quiet version of `LDSLICE` which means that instead of throwing an exception, it pushes a status flag to the stack: 0 if the operation fails, -1 if the operation succeeds.",
+        "long": "Cuts the next `width` bits of `s` into a separate _Slice_ `loaded`. This is a quiet version of `LDSLICE` which means that instead of throwing an exception, it pushes a status flag to the stack: 0 if the operation fails, -1 if the operation succeeds.",
         "tags": ["slice parsing"],
-        "operands": ["c"]
+        "operands": ["width"]
       },
       "layout": {
         "min": 14097920,
@@ -45570,9 +45702,9 @@
       "sub_category": "cell_deserialize",
       "description": {
         "short": "",
-        "long": "Returns the first `0 < c+1 <= 256` bits of `s` as `loaded`. This is a quiet version of `PLDSLICE` which means that instead of throwing an exception, it pushes a status flag to the stack: 0 if the operation fails, -1 if the operation succeeds.",
+        "long": "Preloads the first `width` bits of `s` as `loaded`. This is a quiet version of `PLDSLICE` which means that instead of throwing an exception, it pushes a status flag to the stack: 0 if the operation fails, -1 if the operation succeeds.",
         "tags": ["slice parsing", "preload"],
-        "operands": ["c"]
+        "operands": ["width"]
       },
       "layout": {
         "min": 14098176,
@@ -55319,7 +55451,7 @@
     },
     "PLDOPTREF": {
       "actual_name": "PLDDICT",
-      "description": "Preloads a dictionary or any cell or null from the slice as an optional reference, leaving the slice unchanged"
+      "description": "Preloads a dictionary or any cell or null from the slice as an optional reference"
     },
     "STOPTREF": {
       "actual_name": "STDICT",
@@ -55328,7 +55460,7 @@
     "PLDREF": {
       "actual_name": "PLDREFIDX",
       "arguments": [0],
-      "description": "Preloads the first optional reference from the slice, leaving the slice unchanged"
+      "description": "Preloads the first optional reference from the slice"
     },
     "SETCONTMANY": {
       "actual_name": "SETCONTCTRMANY"
