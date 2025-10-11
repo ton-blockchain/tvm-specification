@@ -95,6 +95,12 @@
       "long": "If condition is met, performs `EXECUTE` on `body` continuation. After the body is executed, execution will return to the next instruction after the `IF`.",
       "tags": [],
       "operands": [],
+      "exit_codes": [
+        {
+          "errno": "4",
+          "condition": "If `cond` is a `NaN`."
+        }
+      ],
       "examples": [
         {
           "instructions": [
@@ -186,6 +192,12 @@
       "long": "If condition is met, performs `EXECUTE` on `body` continuation. After the body is executed, execution will return to the next instruction after the `IFNOT`.",
       "tags": [],
       "operands": [],
+      "exit_codes": [
+        {
+          "errno": "4",
+          "condition": "If `cond` is a `NaN`."
+        }
+      ],
       "examples": [
         {
           "instructions": [
@@ -277,6 +289,12 @@
       "long": "If condition is met, performs `JMPX` on `body` continuation. The remainder of the current continuation is discarded which means that after `body` completes, control will not return to instruction immediately following the `IFJMP`. Instead, it will return to the instruction immediately following the instruction that started current continuation. If this continuation is default `quit`, the program will exit with code 0.",
       "tags": ["control_flow"],
       "operands": [],
+      "exit_codes": [
+        {
+          "errno": "4",
+          "condition": "If `cond` is a `NaN`."
+        }
+      ],
       "examples": [
         {
           "instructions": [
@@ -341,6 +359,12 @@
       "long": "If condition is met, performs `JMPX` on `body` continuation. The remainder of the current continuation is discarded which means that after `body` completes, control will not return to instruction immediately following the `IFNOTJMP`. Instead, it will return to the instruction immediately following the instruction that started current continuation. If this continuation is default `quit`, the program will exit with code 0.",
       "tags": ["control_flow"],
       "operands": [],
+      "exit_codes": [
+        {
+          "errno": "4",
+          "condition": "If `cond` is a `NaN`."
+        }
+      ],
       "examples": [
         {
           "instructions": [
@@ -405,6 +429,12 @@
       "long": "If condition is met, performs `EXECUTE` on `body` continuation, otherwise performs `EXECUTE` on `else` continuation. After the either body is executed, execution will return to the next instruction after the `IFELSE`.",
       "tags": [],
       "operands": [],
+      "exit_codes": [
+        {
+          "errno": "4",
+          "condition": "If `cond` is a `NaN`."
+        }
+      ],
       "other_implementations": [
         {
           "exact": true,
@@ -520,6 +550,12 @@
       "short": "If integer `f` is non-zero, returns `x`, otherwise returns `y`.",
       "long": "Checks whether `x` and `y` have the same type, unlike `CONDSEL`.",
       "tags": [],
+      "exit_codes": [
+        {
+          "errno": "7",
+          "condition": "If `x` and `y` have different types."
+        }
+      ],
       "operands": []
     },
     "signature": {
@@ -646,6 +682,12 @@
       "long": "If condition is met, performs `JMPX` on `body` continuation. Value `x` remains on the stack and available in `body` continuation. The remainder of the current continuation is discarded which means that after `body` completes, control will not return to instruction immediately following the `IFBITJMP`. Instead, it will return to the instruction immediately following the instruction that started current continuation. If this continuation is default `quit`, the program will exit with code 0.",
       "tags": [],
       "operands": ["i"],
+      "exit_codes": [
+        {
+          "errno": "4",
+          "condition": "If `x` is a `NaN`."
+        }
+      ],
       "examples": [
         {
           "instructions": [
@@ -719,6 +761,12 @@
       "long": "If condition is met, performs `JMPX` on `body` continuation. Value `x` remains on the stack and available in `body` continuation. The remainder of the current continuation is discarded which means that after `body` completes, control will not return to instruction immediately following the `IFNBITJMP`. Instead, it will return to the instruction immediately following the instruction that started current continuation. If this continuation is default `quit`, the program will exit with code 0.",
       "tags": [],
       "operands": ["i"],
+      "exit_codes": [
+        {
+          "errno": "4",
+          "condition": "If `x` is a `NaN`."
+        }
+      ],
       "examples": [
         {
           "instructions": [
@@ -792,6 +840,12 @@
       "long": "When `cond` is zero, optimized to skip loading the cell reference into a _Slice_ and converting it to an ordinary _Continuation_.\nGas consumption of this primitive depends on whether `cond == 0` and whether the reference was loaded before.\nSimilar remarks apply other primitives that accept a continuation as a reference.",
       "tags": [],
       "operands": ["body"],
+      "exit_codes": [
+        {
+          "errno": "4",
+          "condition": "If `cond` is a `NaN`."
+        }
+      ],
       "other_implementations": [
         {
           "exact": false,
@@ -836,6 +890,12 @@
       "long": "Executes the continuation stored in cell reference `body`, but only if integer `cond` is zero.",
       "tags": [],
       "operands": ["body"],
+      "exit_codes": [
+        {
+          "errno": "4",
+          "condition": "If `cond` is a `NaN`."
+        }
+      ],
       "other_implementations": [
         {
           "exact": true,
@@ -880,6 +940,12 @@
       "long": "Transfers control to the continuation stored in cell reference `body` if `cond` is non-zero. The remainder of the current continuation is discarded which means that after `body` completes, control will not return to instruction immediately following the `IFJMPREF`. Instead, it will return to the instruction immediately following the instruction that started current continuation. If this continuation is default `quit`, the program will exit with code 0.",
       "tags": [],
       "operands": ["body"],
+      "exit_codes": [
+        {
+          "errno": "4",
+          "condition": "If `cond` is a `NaN`."
+        }
+      ],
       "other_implementations": [
         {
           "exact": true,
@@ -913,6 +979,12 @@
       "long": "Transfers control to the continuation stored in cell reference `body` if `cond` is zero.",
       "tags": [],
       "operands": ["body"],
+      "exit_codes": [
+        {
+          "errno": "4",
+          "condition": "If `cond` is a `NaN`."
+        }
+      ],
       "other_implementations": [
         {
           "exact": true,
@@ -946,6 +1018,12 @@
       "long": "When `cond` is zero, optimized to skip loading the cell reference for body into a _Slice_ and converting it to an ordinary _Continuation_.",
       "tags": [],
       "operands": ["body"],
+      "exit_codes": [
+        {
+          "errno": "4",
+          "condition": "If `cond` is a `NaN`."
+        }
+      ],
       "other_implementations": [
         {
           "exact": false,
@@ -1010,6 +1088,12 @@
       "long": "When `cond` is non-zero, optimized to skip loading the cell reference for else branch into a _Slice_ and converting it to an ordinary _Continuation_.",
       "tags": [],
       "operands": ["c"],
+      "exit_codes": [
+        {
+          "errno": "4",
+          "condition": "If `cond` is a `NaN`."
+        }
+      ],
       "other_implementations": [
         {
           "exact": true,
@@ -1073,6 +1157,12 @@
       "short": "If integer `cond` is non-zero, executes the continuation stored in cell reference `body`, otherwise executes the continuation stored in cell reference `else`.",
       "long": "",
       "tags": [],
+      "exit_codes": [
+        {
+          "errno": "4",
+          "condition": "If `cond` is a `NaN`."
+        }
+      ],
       "operands": ["body", "else"],
       "other_implementations": [
         {
@@ -1132,7 +1222,13 @@
       "short": "",
       "long": "Performs a `JMPREF` if `i`-th bit is set in integer `x`. Value `x` is left in the stack.",
       "tags": [],
-      "operands": ["i", "body"]
+      "operands": ["i", "body"],
+      "exit_codes": [
+        {
+          "errno": "4",
+          "condition": "If `x` is a `NaN`."
+        }
+      ]
     },
     "signature": {
       "inputs": {
@@ -1168,7 +1264,13 @@
       "short": "",
       "long": "Performs a `JMPREF` if `i`-th bit is NOT set in integer `x`. Value `x` is left in the stack.",
       "tags": [],
-      "operands": ["i", "body"]
+      "operands": ["i", "body"],
+      "exit_codes": [
+        {
+          "errno": "4",
+          "condition": "If `x` is a `NaN`."
+        }
+      ]
     },
     "signature": {
       "inputs": {
