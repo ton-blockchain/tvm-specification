@@ -52205,8 +52205,8 @@
       "category": "continuation",
       "sub_category": "continuation_cond",
       "description": {
-        "short": "Executes the continuation stored in cell reference `body` if integer `cond` is non-zero.",
-        "long": "When `cond` is zero, optimized to skip loading the cell reference into a _Slice_ and converting it to an ordinary _Continuation_.\nGas consumption of this primitive depends on whether `cond == 0` and whether the reference was loaded before.\nSimilar remarks apply other primitives that accept a continuation as a reference.",
+        "short": "If `cond` is non-zero, executes `body` stored in code cell reference, otherwise does nothing.",
+        "long": "If condition is met, load reference from the current code cell, transforms it to a _Slice_ and then to an ordinary _Continuation_ and finally transfers execution to it. After the body is executed, execution will return to the next instruction after the `IFREF`. When condition is not met, reference is not loaded, so instruction does not consume extra gas for cell loading.",
         "tags": [],
         "operands": ["body"],
         "exit_codes": [
@@ -52219,6 +52219,12 @@
           {
             "exact": false,
             "instructions": ["PUSHREFCONT", "IF"]
+          }
+        ],
+        "docs_links": [
+          {
+            "name": "JMP vs. EXECUTE",
+            "url": "https://txtracer.ton.org/spec/doc/book/continuations/manual-handling-and-jmp-vs-execute/"
           }
         ],
         "gas": [
@@ -52291,8 +52297,8 @@
       "category": "continuation",
       "sub_category": "continuation_cond",
       "description": {
-        "short": "",
-        "long": "Executes the continuation stored in cell reference `body`, but only if integer `cond` is zero.",
+        "short": "If `cond` is zero, executes `body` stored in code cell reference, otherwise does nothing.",
+        "long": "If condition is met, load reference from the current code cell, transforms it to a _Slice_ and then to an ordinary _Continuation_ and finally transfers execution to it. After the body is executed, execution will return to the next instruction after the `IFNOTREF`. When condition is not met, reference is not loaded, so instruction does not consume extra gas for cell loading.",
         "tags": [],
         "operands": ["body"],
         "exit_codes": [
@@ -52305,6 +52311,12 @@
           {
             "exact": true,
             "instructions": ["PUSHREFCONT", "IFNOT"]
+          }
+        ],
+        "docs_links": [
+          {
+            "name": "JMP vs. EXECUTE",
+            "url": "https://txtracer.ton.org/spec/doc/book/continuations/manual-handling-and-jmp-vs-execute/"
           }
         ],
         "gas": [
@@ -52377,8 +52389,8 @@
       "category": "continuation",
       "sub_category": "continuation_cond",
       "description": {
-        "short": "",
-        "long": "Transfers control to the continuation stored in cell reference `body` if `cond` is non-zero. The remainder of the current continuation is discarded which means that after `body` completes, control will not return to instruction immediately following the `IFJMPREF`. Instead, it will return to the instruction immediately following the instruction that started current continuation. If this continuation is default `quit`, the program will exit with code 0.",
+        "short": "If `cond` is non-zero, jumps to `body` stored in code cell reference, otherwise does nothing.",
+        "long": "If condition is met, load reference from the current code cell, transforms it to a _Slice_ and then to an ordinary _Continuation_ and finally jumps to it. The remainder of the current continuation is discarded which means that after `body` completes, control will not return to instruction immediately following the `IFJMPREF`. Instead, it will return to the instruction immediately following the instruction that started current continuation. If this continuation is default `quit`, the program will exit with code 0. When condition is not met, reference is not loaded, so instruction does not consume extra gas for cell loading.",
         "tags": [],
         "operands": ["body"],
         "exit_codes": [
@@ -52391,6 +52403,12 @@
           {
             "exact": true,
             "instructions": ["PUSHREFCONT", "IFJMP"]
+          }
+        ],
+        "docs_links": [
+          {
+            "name": "JMP vs. EXECUTE",
+            "url": "https://txtracer.ton.org/spec/doc/book/continuations/manual-handling-and-jmp-vs-execute/"
           }
         ],
         "gas": [
@@ -52452,8 +52470,8 @@
       "category": "continuation",
       "sub_category": "continuation_cond",
       "description": {
-        "short": "",
-        "long": "Transfers control to the continuation stored in cell reference `body` if `cond` is zero.",
+        "short": "If `cond` is zero, jumps to `body` stored in code cell reference, otherwise does nothing.",
+        "long": "If condition is met, load reference from the current code cell, transforms it to a _Slice_ and then to an ordinary _Continuation_ and finally jumps to it. The remainder of the current continuation is discarded which means that after `body` completes, control will not return to instruction immediately following the `IFNOTJMPREF`. Instead, it will return to the instruction immediately following the instruction that started current continuation. If this continuation is default `quit`, the program will exit with code 0. When condition is not met, reference is not loaded, so instruction does not consume extra gas for cell loading.",
         "tags": [],
         "operands": ["body"],
         "exit_codes": [
@@ -52466,6 +52484,12 @@
           {
             "exact": true,
             "instructions": ["PUSHREFCONT", "IFNOTJMP"]
+          }
+        ],
+        "docs_links": [
+          {
+            "name": "JMP vs. EXECUTE",
+            "url": "https://txtracer.ton.org/spec/doc/book/continuations/manual-handling-and-jmp-vs-execute/"
           }
         ],
         "gas": [
@@ -52527,8 +52551,8 @@
       "category": "continuation",
       "sub_category": "continuation_cond",
       "description": {
-        "short": "If integer `cond` is non-zero, executes the continuation stored in cell reference `c`, otherwise executes `else`.",
-        "long": "When `cond` is zero, optimized to skip loading the cell reference for body into a _Slice_ and converting it to an ordinary _Continuation_.",
+        "short": "If `cond` is non-zero, executes the continuation stored in cell reference `body`, otherwise executes `else` continuation from the stack.",
+        "long": "If condition is met, load reference from the current code cell, transforms it to a _Slice_ and then to an ordinary _Continuation_ and finally transfers execution to it. Otherwise, performs `EXECUTE` on `else` continuation. After either body is executed, execution will return to the next instruction after the `IFREFELSE`. When condition is not met, reference for `body` is not loaded, so instruction does not consume extra gas for cell loading.",
         "tags": [],
         "operands": ["body"],
         "exit_codes": [
@@ -52541,6 +52565,12 @@
           {
             "exact": false,
             "instructions": ["PUSHREFCONT", "SWAP", "IFELSE"]
+          }
+        ],
+        "docs_links": [
+          {
+            "name": "JMP vs. EXECUTE",
+            "url": "https://txtracer.ton.org/spec/doc/book/continuations/manual-handling-and-jmp-vs-execute/"
           }
         ],
         "gas": [
@@ -52578,7 +52608,7 @@
       },
       "effects": ["ImplicitJumpRef", "CellLoad"],
       "signature": {
-        "stack_string": "cond:Int body:Continuation -> ∅",
+        "stack_string": "cond:Int else:Continuation -> ∅",
         "inputs": {
           "stack": [
             {
@@ -52588,7 +52618,7 @@
             },
             {
               "type": "simple",
-              "name": "body",
+              "name": "else",
               "value_types": ["Continuation"]
             }
           ]
@@ -52633,10 +52663,10 @@
       "category": "continuation",
       "sub_category": "continuation_cond",
       "description": {
-        "short": "If integer `cond` is non-zero, executes `body`, otherwise executes the continuation stored in cell reference `c`.",
-        "long": "When `cond` is non-zero, optimized to skip loading the cell reference for else branch into a _Slice_ and converting it to an ordinary _Continuation_.",
+        "short": "If `cond` is non-zero, executes `body` from the stack, otherwise executes the continuation stored in cell reference `else`.",
+        "long": "If condition is met, performs `EXECUTE` on `body` continuation. Otherwise, load reference from the current code cell, transforms it to a _Slice_ and then to an ordinary _Continuation_ and finally transfers execution to it. After either body is executed, execution will return to the next instruction after the `IFELSEREF`. When condition is met, reference for `else` is not loaded, so instruction does not consume extra gas for cell loading.",
         "tags": [],
-        "operands": ["c"],
+        "operands": ["else"],
         "exit_codes": [
           {
             "errno": "4",
@@ -52647,6 +52677,12 @@
           {
             "exact": true,
             "instructions": ["PUSHREFCONT", "IFELSE"]
+          }
+        ],
+        "docs_links": [
+          {
+            "name": "JMP vs. EXECUTE",
+            "url": "https://txtracer.ton.org/spec/doc/book/continuations/manual-handling-and-jmp-vs-execute/"
           }
         ],
         "gas": [
@@ -52739,8 +52775,8 @@
       "category": "continuation",
       "sub_category": "continuation_cond",
       "description": {
-        "short": "If integer `cond` is non-zero, executes the continuation stored in cell reference `body`, otherwise executes the continuation stored in cell reference `else`.",
-        "long": "",
+        "short": "If `cond` is non-zero, executes the continuation stored in cell reference `body`, otherwise executes the continuation stored in cell reference `else`.",
+        "long": "If condition is met, load first reference from the current code cell, transforms it to a _Slice_ and then to an ordinary _Continuation_ and finally transfers execution to it. Otherwise, load second reference from the current code cell, transforms it to a _Slice_ and then to an ordinary _Continuation_ and finally transfers execution to it. After either body is executed, execution will return to the next instruction after the `IFREFELSEREF`.",
         "tags": [],
         "exit_codes": [
           {
@@ -52753,6 +52789,12 @@
           {
             "exact": true,
             "instructions": ["PUSHREFCONT", "PUSHREFCONT", "IFELSE"]
+          }
+        ],
+        "docs_links": [
+          {
+            "name": "JMP vs. EXECUTE",
+            "url": "https://txtracer.ton.org/spec/doc/book/continuations/manual-handling-and-jmp-vs-execute/"
           }
         ],
         "gas": [
@@ -52839,14 +52881,20 @@
       "category": "continuation",
       "sub_category": "continuation_cond",
       "description": {
-        "short": "",
-        "long": "Performs a `JMPREF` if `i`-th bit is set in integer `x`. Value `x` is left in the stack.",
+        "short": "If `i`-th bit is set in integer `x`, jumps to `body` stored in code cell reference, otherwise does nothing.",
+        "long": "If condition is met, load reference from the current code cell, transforms it to a _Slice_ and then to an ordinary _Continuation_ and finally jumps to it. Value `x` remains on the stack and available in `body` continuation. The remainder of the current continuation is discarded which means that after `body` completes, control will not return to instruction immediately following the `IFBITJMPREF`. Instead, it will return to the instruction immediately following the instruction that started current continuation. If this continuation is default `quit`, the program will exit with code 0. When condition is not met, reference is not loaded, so instruction does not consume extra gas for cell loading.",
         "tags": [],
         "operands": ["i", "body"],
         "exit_codes": [
           {
             "errno": "4",
             "condition": "If `x` is a `NaN`."
+          }
+        ],
+        "docs_links": [
+          {
+            "name": "JMP vs. EXECUTE",
+            "url": "https://txtracer.ton.org/spec/doc/book/continuations/manual-handling-and-jmp-vs-execute/"
           }
         ],
         "gas": [
@@ -52925,14 +52973,20 @@
       "category": "continuation",
       "sub_category": "continuation_cond",
       "description": {
-        "short": "",
-        "long": "Performs a `JMPREF` if `i`-th bit is NOT set in integer `x`. Value `x` is left in the stack.",
+        "short": "If `i`-th bit is NOT set in integer `x`, jumps to `body` stored in code cell reference, otherwise does nothing.",
+        "long": "If condition is met, load reference from the current code cell, transforms it to a _Slice_ and then to an ordinary _Continuation_ and finally jumps to it. Value `x` remains on the stack and available in `body` continuation. The remainder of the current continuation is discarded which means that after `body` completes, control will not return to instruction immediately following the `IFNBITJMPREF`. Instead, it will return to the instruction immediately following the instruction that started current continuation. If this continuation is default `quit`, the program will exit with code 0. When condition is not met, reference is not loaded, so instruction does not consume extra gas for cell loading.",
         "tags": [],
         "operands": ["i", "body"],
         "exit_codes": [
           {
             "errno": "4",
             "condition": "If `x` is a `NaN`."
+          }
+        ],
+        "docs_links": [
+          {
+            "name": "JMP vs. EXECUTE",
+            "url": "https://txtracer.ton.org/spec/doc/book/continuations/manual-handling-and-jmp-vs-execute/"
           }
         ],
         "gas": [
