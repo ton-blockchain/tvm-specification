@@ -733,7 +733,7 @@
   "IFREFELSE": {
     "description": {
       "short": "",
-      "long": "If integer `cond` is non-zero, executes the continuation stored in cell reference `c`, otherwise executes `else`. Optimized so that the cell reference is not actually loaded into a _Slice_ and then converted into an ordinary _Continuation_ if `f=0`. Similar remarks apply to the next two primitives: cells are converted into continuations only when necessary.",
+      "long": "If integer `cond` is non-zero, executes the continuation stored in cell reference `c`, otherwise executes `else`. When `cond` is zero, optimized to skip loading the cell reference for body into a _Slice_ and converting it to an ordinary _Continuation_.",
       "tags": [],
       "operands": ["c"],
       "other_implementations": [
@@ -797,7 +797,7 @@
   "IFELSEREF": {
     "description": {
       "short": "",
-      "long": "If integer `cond` is non-zero, executes `body`, otherwise executes the continuation stored in cell reference `c`.",
+      "long": "If integer `cond` is non-zero, executes `body`, otherwise executes the continuation stored in cell reference `c`. When `cond` is non-zero, optimized to skip loading the cell reference for else branch into a _Slice_ and converting it to an ordinary _Continuation_.",
       "tags": [],
       "operands": ["c"],
       "other_implementations": [
