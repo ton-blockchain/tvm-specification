@@ -497,9 +497,9 @@
   "IFBITJMP": {
     "description": {
       "short": "",
-      "long": "Checks whether bit `0 <= num <= 31` is set in integer `x`, and if so, performs `JMPX` to continuation `body`. Value `x` is left in the stack.",
+      "long": "Checks whether `i`-th bit is set in integer `x`, and if so, performs `JMPX` to continuation `body`. Value `x` is left in the stack.",
       "tags": [],
-      "operands": ["num"]
+      "operands": ["i"]
     },
     "signature": {
       "inputs": {
@@ -538,9 +538,9 @@
   "IFNBITJMP": {
     "description": {
       "short": "",
-      "long": "Checks whether bit `0 <= num <= 31` is NOT set in integer `x`, and if so, performs `JMPX` to continuation `body`. Value `x` is left in the stack.",
+      "long": "Checks whether `i`-th bit is NOT set in integer `x`, and if so, performs `JMPX` to continuation `body`. Value `x` is left in the stack.",
       "tags": [],
-      "operands": ["num"]
+      "operands": ["i"]
     },
     "signature": {
       "inputs": {
@@ -920,9 +920,9 @@
   "IFBITJMPREF": {
     "description": {
       "short": "",
-      "long": "Performs a `JMPREF` if bit `0 <= num <= 31` is set in integer `x`. Value `x` is left in the stack.",
+      "long": "Performs a `JMPREF` if `i`-th bit is set in integer `x`. Value `x` is left in the stack.",
       "tags": [],
-      "operands": ["num", "body"]
+      "operands": ["i", "body"]
     },
     "signature": {
       "inputs": {
@@ -956,9 +956,9 @@
   "IFNBITJMPREF": {
     "description": {
       "short": "",
-      "long": "Performs a `JMPREF` if bit `0 <= num <= 31` is NOT set in integer `x`. Value `x` is left in the stack.",
+      "long": "Performs a `JMPREF` if `i`-th bit is NOT set in integer `x`. Value `x` is left in the stack.",
       "tags": [],
-      "operands": ["num", "body"]
+      "operands": ["i", "body"]
     },
     "signature": {
       "inputs": {

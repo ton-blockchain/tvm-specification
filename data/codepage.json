@@ -15,7 +15,7 @@
   "SETCPX": {
     "description": {
       "short": "",
-      "long": "Selects codepage `num` with `-2^15 <= num < 2^15` passed in the top of the stack.",
+      "long": "Selects codepage `num` with `num` from the top of the stack. If the codepage is not supported, throws an invalid opcode exception.",
       "tags": [],
       "operands": []
     },
@@ -25,7 +25,11 @@
           {
             "type": "simple",
             "name": "num",
-            "value_types": ["Int"]
+            "value_types": ["Int"],
+            "range": {
+              "min": -32768,
+              "max": 32768
+            }
           }
         ]
       }

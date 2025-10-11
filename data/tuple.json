@@ -140,7 +140,7 @@
   "UNTUPLEVAR": {
     "description": {
       "short": "",
-      "long": "Unpacks a _Tuple_ `t=(x_1,...,x_n)` of length equal to `0 <= n <= 15`, where `n` is taken from the stack rather than specified in the instruction.",
+      "long": "Unpacks a _Tuple_ `t=(x_1,...,x_n)` of length equal to `n`, where `n` is taken from the stack rather than specified in the instruction.",
       "tags": [],
       "operands": [],
       "exit_codes": [
@@ -242,7 +242,7 @@
   "EXPLODEVAR": {
     "description": {
       "short": "",
-      "long": "Unpacks a _Tuple_ `t=(x_1,...,x_m)` and returns its length `m`, but only if `m <= n <= 15`, where `n` is taken from the stack rather than specified in the instruction.",
+      "long": "Unpacks a _Tuple_ `t=(x_1,...,x_m)` and returns its length `m`, but only if `m <= n <= 255`, where `n` is taken from the stack rather than specified in the instruction.",
       "tags": [],
       "operands": [],
       "exit_codes": [
@@ -1255,7 +1255,7 @@
   "UNTUPLE": {
     "description": {
       "short": "",
-      "long": "Unpacks a _Tuple_ `t=(x_1,...,x_n)` of length equal to `0 <= n <= 15`.",
+      "long": "Unpacks a _Tuple_ `t=(x_1,...,x_n)` of length equal to `n`.",
       "tags": [],
       "operands": ["n"],
       "exit_codes": [

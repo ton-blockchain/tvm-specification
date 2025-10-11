@@ -228,7 +228,7 @@
   "CALLXVARARGS": {
     "description": {
       "short": "",
-      "long": "_Calls_ continuation `c` with parameters and expected return values, but unlike `CALLXARGS` which takes these values from the instruction itself, this instruction takes `-1 <= p,r <= 254` from the stack. Here `p` represents the number of parameters to pass to the continuation, and `r` represents the number of expected return values. The next three operations (`RETVARARGS`, `JMPXVARARGS`, `CALLCCVARARGS`) also take `p` and `r` from the stack, both in the range `-1...254`.",
+      "long": "_Calls_ continuation `c` with parameters and expected return values, but unlike `CALLXARGS` which takes these values from the instruction itself, this instruction takes `p` and `r` from the stack. Here `p` represents the number of parameters to pass to the continuation, and `r` represents the number of expected return values.",
       "tags": [],
       "operands": []
     },
@@ -254,12 +254,20 @@
           {
             "type": "simple",
             "name": "p",
-            "value_types": ["Int"]
+            "value_types": ["Int"],
+            "range": {
+              "min": -1,
+              "max": 254
+            }
           },
           {
             "type": "simple",
             "name": "r",
-            "value_types": ["Int"]
+            "value_types": ["Int"],
+            "range": {
+              "min": -1,
+              "max": 254
+            }
           }
         ]
       }
@@ -287,7 +295,7 @@
   "RETVARARGS": {
     "description": {
       "short": "",
-      "long": "_Returns_ to the continuation at `c0`, but unlike `RETARGS` which takes the number of return values from the instruction itself, this instruction takes the number of return values `0 <= r <= 255` from the stack. The top `r` values from the current stack are passed as return values to `c0`.",
+      "long": "_Returns_ to the continuation at `c0`, but unlike `RETARGS` which takes the number of return values from the instruction itself, this instruction takes the number of return values `r` from the stack. The top `r` values from the current stack are passed as return values to `c0`.",
       "tags": [],
       "operands": []
     },
@@ -313,7 +321,11 @@
           {
             "type": "simple",
             "name": "r",
-            "value_types": ["Int"]
+            "value_types": ["Int"],
+            "range": {
+              "min": 0,
+              "max": 255
+            }
           }
         ]
       }
@@ -341,7 +353,7 @@
   "JMPXVARARGS": {
     "description": {
       "short": "",
-      "long": "_Jumps_ to continuation `c`, but unlike `JMPXARGS` which takes the number of parameters from the instruction itself, this instruction takes the number of parameters `0 <= p <= 254` from the stack. Only the top `p` values from the current stack are passed to the continuation, and the remainder of the current stack is discarded. The remainder of the current continuation is also discarded.",
+      "long": "_Jumps_ to continuation `c`, but unlike `JMPXARGS` which takes the number of parameters from the instruction itself, this instruction takes the number of parameters `p` from the stack. Only the top `p` values from the current stack are passed to the continuation, and the remainder of the current stack is discarded. The remainder of the current continuation is also discarded.",
       "tags": [],
       "operands": []
     },
@@ -367,7 +379,11 @@
           {
             "type": "simple",
             "name": "p",
-            "value_types": ["Int"]
+            "value_types": ["Int"],
+            "range": {
+              "min": 0,
+              "max": 254
+            }
           },
           {
             "type": "simple",
@@ -389,7 +405,7 @@
   "CALLCCVARARGS": {
     "description": {
       "short": "",
-      "long": "_Calls_ continuation `c` with parameters and pushes the old value of the current continuation, but unlike `CALLCCARGS` which takes the number of parameters and return values from the instruction itself, this instruction takes `-1 <= p,r <= 254` from the stack. The old value of the current continuation `cс` (along with the top `p` values from the original stack) is pushed onto the stack of the newly-invoked continuation `c`, setting `cc.nargs` to `r`. This allows the called continuation to later return to the caller with the specified number of return values.",
+      "long": "_Calls_ continuation `c` with parameters and pushes the old value of the current continuation, but unlike `CALLCCARGS` which takes the number of parameters and return values from the instruction itself, this instruction takes `p` and `r` from the stack. The old value of the current continuation `cc` (along with the top `p` values from the original stack) is pushed onto the stack of the newly-invoked continuation `c`, setting `cc.nargs` to `r`. This allows the called continuation to later return to the caller with the specified number of return values.",
       "tags": [],
       "operands": []
     },
@@ -415,12 +431,20 @@
           {
             "type": "simple",
             "name": "p",
-            "value_types": ["Int"]
+            "value_types": ["Int"],
+            "range": {
+              "min": -1,
+              "max": 254
+            }
           },
           {
             "type": "simple",
             "name": "r",
-            "value_types": ["Int"]
+            "value_types": ["Int"],
+            "range": {
+              "min": -1,
+              "max": 254
+            }
           }
         ]
       }
@@ -504,7 +528,7 @@
   "CALLCCARGS": {
     "description": {
       "short": "",
-      "long": "_Calls_ continuation `c` with `p` parameters, but unlike `CALLXARGS` which only passes parameters, this instruction also pushes the old value of the current continuation `cс` (along with the top `0 <= p <= 15` values from the original stack) onto the stack of newly-invoked continuation `c`, setting `cc.nargs` to `-1 <= r <= 14`. This allows the called continuation to later return to the caller with the specified number of return values.",
+      "long": "_Calls_ continuation `c` with `p` parameters, but unlike `CALLXARGS` which only passes parameters, this instruction also pushes the old value of the current continuation `cc` (along with the top `p` values from the original stack) onto the stack of newly-invoked continuation `c`, setting `cc.nargs` to `r`. This allows the called continuation to later return to the caller with the specified number of return values.",
       "tags": [],
       "operands": ["p", "r"]
     },
@@ -542,7 +566,7 @@
   "JMPXARGS": {
     "description": {
       "short": "",
-      "long": "_Jumps_ to continuation `c`, passing only the top `0 <= p <= 15` values from the current stack to it, the remainder of the current stack is discarded.",
+      "long": "_Jumps_ to continuation `c`, passing only the top `p` values from the current stack to it, the remainder of the current stack is discarded.",
       "tags": [],
       "operands": ["p"]
     },
@@ -580,7 +604,7 @@
   "RETARGS": {
     "description": {
       "short": "",
-      "long": "_Returns_ to `c0`, with `0 <= r <= 15` return values taken from the current stack.",
+      "long": "_Returns_ to `c0`, with `r` return values taken from the current stack.",
       "tags": [],
       "operands": ["r"]
     },
@@ -744,7 +768,7 @@
   "CALLXARGS": {
     "description": {
       "short": "",
-      "long": "_Calls_ continuation `c` with `0 <= p <= 15` parameters, expecting an arbitrary number of return values.",
+      "long": "_Calls_ continuation `c` with `p` parameters, expecting an arbitrary number of return values.",
       "tags": [],
       "operands": ["p"]
     },

@@ -217,7 +217,7 @@
   "FITSX": {
     "description": {
       "short": "",
-      "long": "Checks whether `x` is a `width`-bit signed integer for `0 <= width <= 1023`.",
+      "long": "Checks whether `x` is a `width`-bit signed integer.",
       "tags": [],
       "operands": []
     },
@@ -232,7 +232,11 @@
           {
             "type": "simple",
             "name": "width",
-            "value_types": ["Int"]
+            "value_types": ["Int"],
+            "range": {
+              "min": 0,
+              "max": 1023
+            }
           }
         ]
       },
@@ -250,7 +254,7 @@
   "UFITSX": {
     "description": {
       "short": "",
-      "long": "Checks whether `x` is a `width`-bit unsigned integer for `0 <= width <= 1023`.",
+      "long": "Checks whether `x` is a `width`-bit unsigned integer.",
       "tags": [],
       "operands": []
     },
@@ -265,7 +269,11 @@
           {
             "type": "simple",
             "name": "width",
-            "value_types": ["Int"]
+            "value_types": ["Int"],
+            "range": {
+              "min": 0,
+              "max": 1023
+            }
           }
         ]
       },
@@ -616,7 +624,7 @@
   "FITS": {
     "description": {
       "short": "",
-      "long": "Checks whether `x` is a `width`-bit signed integer for `0 <= width <= 255` (i.e., whether `-2 ^ width <= x < 2 ^ width`).",
+      "long": "Checks whether `x` is a `width`-bit signed integer (i.e., whether `-2 ^ width <= x < 2 ^ width`).",
       "tags": [],
       "operands": ["width"],
       "exit_codes": [
@@ -650,7 +658,7 @@
   "UFITS": {
     "description": {
       "short": "",
-      "long": "Checks whether `x` is a `width`-bit unsigned integer for `0 <= width <= 255` (i.e., whether `0 <= x < 2 ^ width`).",
+      "long": "Checks whether `x` is a `width`-bit unsigned integer (i.e., whether `0 <= x < 2 ^ width`).",
       "tags": [],
       "operands": ["width"],
       "exit_codes": [

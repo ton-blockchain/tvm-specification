@@ -139,7 +139,7 @@
   "CALLDICT_LONG": {
     "description": {
       "short": "",
-      "long": "Calls the continuation in `c3`, pushing integer `num` into its stack as an argument. Long version of `CALLDICT` where `0 <= num < 2^14`. Essentially it's a call to method with `num` ID in the dictionary.",
+      "long": "Calls the continuation in `c3`, pushing integer `num` into its stack as an argument. Essentially it's a call to method with `num` ID in the dictionary.",
       "tags": [],
       "related_instructions": ["CALLDICT"],
       "operands": ["num"]

@@ -2,13 +2,23 @@
   "RETURNVARARGS": {
     "description": {
       "short": "",
-      "long": "Leaves only the top `p` values in the current stack, where `0 <= p <= 255` is taken from the stack. Unlike `RETURNARGS` which takes the number of values to keep from the instruction itself, this instruction takes this number from the stack. All the unused bottom values are not discarded, but saved into continuation `c0` in the same way as `SETCONTARGS` does.",
+      "long": "Leaves only the top `p` values in the current stack, where `p` is taken from the stack. Unlike `RETURNARGS` which takes the number of values to keep from the instruction itself, this instruction takes this number from the stack. All the unused bottom values are not discarded, but saved into continuation `c0` in the same way as `SETCONTARGS` does.",
       "tags": [],
       "operands": []
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "p",
+            "value_types": ["Int"],
+            "range": {
+              "min": 0,
+              "max": 255
+            }
+          }
+        ],
         "registers": []
       },
       "outputs": {
@@ -20,7 +30,7 @@
   "SETCONTVARARGS": {
     "description": {
       "short": "",
-      "long": "Pushes values onto the stack of a continuation and optionally sets the number of missing arguments. Unlike `SETCONTARGS` which takes the number of values to push and the number of missing arguments from the instruction itself, this instruction takes `0 <= r <= 255` and `-1 <= n <= 255` from the stack. It pushes `r` values from the current stack onto the stack of continuation `c`, and for `n` not equal to -1, sets `c.nargs` to the final size of the stack of `c` plus `n`, effectively creating a closure with `n` missing arguments.",
+      "long": "Pushes values onto the stack of a continuation and optionally sets the number of missing arguments. Unlike `SETCONTARGS` which takes the number of values to push and the number of missing arguments from the instruction itself, this instruction takes `r` and `n` from the stack. It pushes `r` values from the current stack onto the stack of continuation `c`, and for `n` not equal to -1, sets `c.nargs` to the final size of the stack of `c` plus `n`, effectively creating a closure with `n` missing arguments.",
       "tags": [],
       "operands": []
     },
@@ -46,12 +56,20 @@
           {
             "type": "simple",
             "name": "r",
-            "value_types": ["Int"]
+            "value_types": ["Int"],
+            "range": {
+              "min": 0,
+              "max": 255
+            }
           },
           {
             "type": "simple",
             "name": "n",
-            "value_types": ["Int"]
+            "value_types": ["Int"],
+            "range": {
+              "min": -1,
+              "max": 255
+            }
           }
         ]
       },
@@ -189,7 +207,7 @@
   "PUSHCTRX": {
     "description": {
       "short": "",
-      "long": "Pushes the current value of control register `c(i)` onto the stack, where `i`, `0 <= i <= 255`, is taken from the stack. Unlike `c(i) PUSHCTR` which takes the register index from the instruction itself, this instruction takes this index from the stack. If the control register is not supported in the current codepage, or if it does not have a value, an exception is triggered.\nNotice that this primitive is one of the few \"exotic\" primitives, which are not polymorphic like stack manipulation primitives, and at the same time do not have well-defined types of parameters and return values, because the type of `x` depends on `i`.",
+      "long": "Pushes the current value of control register `c(i)` onto the stack, where `i` is taken from the stack. Unlike `c(i) PUSHCTR` which takes the register index from the instruction itself, this instruction takes this index from the stack. If the control register is not supported in the current codepage, or if it does not have a value, an exception is triggered.\nNotice that this primitive is one of the few \"exotic\" primitives, which are not polymorphic like stack manipulation primitives, and at the same time do not have well-defined types of parameters and return values, because the type of `x` depends on `i`.",
       "tags": [],
       "operands": []
     },
@@ -199,7 +217,11 @@
           {
             "type": "simple",
             "name": "i",
-            "value_types": ["Int"]
+            "value_types": ["Int"],
+            "range": {
+              "min": 0,
+              "max": 255
+            }
           }
         ],
         "registers": [
@@ -222,7 +244,7 @@
   "POPCTRX": {
     "description": {
       "short": "",
-      "long": "Pops a value `x` from the stack and stores it into control register `c(i)`, where `i`, `0 <= i <= 255`, is taken from the stack. Unlike `c(i) POPCTR` which takes the register index from the instruction itself, this instruction takes this index from the stack. If the control register is not supported in the current codepage, or if it only accepts values of a specific type and `x` is not of that type, an exception is triggered.",
+      "long": "Pops a value `x` from the stack and stores it into control register `c(i)`, where `i` is taken from the stack. Unlike `c(i) POPCTR` which takes the register index from the instruction itself, this instruction takes this index from the stack. If the control register is not supported in the current codepage, or if it only accepts values of a specific type and `x` is not of that type, an exception is triggered.",
       "tags": [],
       "operands": []
     },
@@ -236,7 +258,11 @@
           {
             "type": "simple",
             "name": "i",
-            "value_types": ["Int"]
+            "value_types": ["Int"],
+            "range": {
+              "min": 0,
+              "max": 255
+            }
           }
         ]
       },
@@ -254,7 +280,7 @@
   "SETCONTCTRX": {
     "description": {
       "short": "",
-      "long": "Stores value `x` into the savelist of continuation `c` as `c(i)`, and returns the resulting continuation `c'`, where `i`, `0 <= i <= 255`, is taken from the stack. Unlike `c(i) SETCONTCTR` which takes the register index from the instruction itself, this instruction takes this index from the stack. Almost all operations with continuations may be expressed in terms of this primitive, along with `POPCTRX` and `PUSHCTRX`.",
+      "long": "Stores value `x` into the savelist of continuation `c` as `c(i)`, and returns the resulting continuation `c'`, where `i` is taken from the stack. Unlike `c(i) SETCONTCTR` which takes the register index from the instruction itself, this instruction takes this index from the stack. Almost all operations with continuations may be expressed in terms of this primitive, along with `POPCTRX` and `PUSHCTRX`.",
       "tags": [],
       "operands": []
     },
@@ -273,7 +299,11 @@
           {
             "type": "simple",
             "name": "i",
-            "value_types": ["Int"]
+            "value_types": ["Int"],
+            "range": {
+              "min": 0,
+              "max": 255
+            }
           }
         ]
       },
@@ -835,7 +865,7 @@
   "RETURNARGS": {
     "description": {
       "short": "",
-      "long": "Leaves only the top `0 <= p <= 15` values in the current stack (somewhat similarly to `ONLYTOPX`), with all the unused bottom values not discarded, but saved into continuation `c0` in the same way as `SETCONTARGS` does.",
+      "long": "Leaves only the top `p` values in the current stack (somewhat similarly to `ONLYTOPX`), with all the unused bottom values not discarded, but saved into continuation `c0` in the same way as `SETCONTARGS` does.",
       "tags": [],
       "operands": ["p"]
     },
@@ -853,7 +883,7 @@
   "SETCONTARGS": {
     "description": {
       "short": "",
-      "long": "Pushes `0 <= r <= 15` values `x_1...x_r` into the stack of (a copy of) the continuation `c`, starting with `x_1`. When `n` is 15 (-1 in Fift notation), does nothing with `c.nargs`. For `0 <= n <= 14`, sets `c.nargs` to the final size of the stack of `c'` plus `n`. In other words, transforms `c` into a _closure_ or a _partially applied function_, with `0 <= n <= 14` arguments missing.",
+      "long": "Pushes `r` values `x_1...x_r` into the stack of (a copy of) the continuation `c`, starting with `x_1`. When `n` is 15 (-1 in Fift notation), does nothing with `c.nargs`. For other values of `n`, sets `c.nargs` to the final size of the stack of `c'` plus `n`. In other words, transforms `c` into a _closure_ or a _partially applied function_, with `n` arguments missing.",
       "tags": [],
       "operands": ["r", "n"]
     },
