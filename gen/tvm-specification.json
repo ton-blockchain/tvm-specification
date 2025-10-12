@@ -26664,7 +26664,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "Calculates `q=floor((x+w)/z)` and `r=(x+w)`.",
+        "long": "Calculates `q=floor((x+w)/z)` and `r=(x+w)-zq`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -26737,7 +26737,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "Calculates `q=round((x+w)/z)` and `r=(x+w)`.",
+        "long": "Calculates `q=round((x+w)/z)` and `r=(x+w)-zq`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -26810,7 +26810,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "Calculates `q=ceil((x+w)/z)` and `r=(x+w)`.",
+        "long": "Calculates `q=ceil((x+w)/z)` and `r=(x+w)-zq`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -27488,7 +27488,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "Calculates `q=floor((x+w)/z)` and `r=(x+w)`.",
+        "long": "Calculates `q=floor((x+w)/z)` and `r=(x+w)-zq`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -27561,7 +27561,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "Calculates `q=round((x+w)/z)` and `r=(x+w)`.",
+        "long": "Calculates `q=round((x+w)/z)` and `r=(x+w)-zq`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -27634,7 +27634,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "Calculates `q=ceil((x+w)/z)` and `r=(x+w)`.",
+        "long": "Calculates `q=ceil((x+w)/z)` and `r=(x+w)-zq`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -28280,7 +28280,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "Calculates `q=floor((x+w)/2^z)` and `r=(x+w)`.",
+        "long": "Calculates `q=floor((x+w)/2^z)` and `r=(x+w)-q*2^z`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -28353,7 +28353,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "Calculates `q=round((x+w)/2^z)` and `r=(x+w)`.",
+        "long": "Calculates `q=round((x+w)/2^z)` and `r=(x+w)-q*2^z`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -28426,7 +28426,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "Calculates `q=ceil((x+w)/2^z)` and `r=(x+w)`.",
+        "long": "Calculates `q=ceil((x+w)/2^z)` and `r=(x+w)-q*2^z`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -28809,7 +28809,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "Calculates `q=floor(x/2^y)` and `r=x`.",
+        "long": "Calculates `q=floor(x/2^y)` and `r=x-q*2^y`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -28970,7 +28970,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "Calculates `q=floor((x+w)/2^z)` and `r=(x+w)`.",
+        "long": "Calculates `q=floor((x+w)/2^z)` and `r=(x+w)-q*2^z`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -29043,7 +29043,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "Calculates `q=round((x+w)/2^z)` and `r=(x+w)`.",
+        "long": "Calculates `q=round((x+w)/2^z)` and `r=(x+w)-q*2^z`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -29116,7 +29116,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "Calculates `q=ceil((x+w)/2^z)` and `r=(x+w)`.",
+        "long": "Calculates `q=ceil((x+w)/2^z)` and `r=(x+w)-q*2^z`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -29499,7 +29499,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "Calculates `q=floor(x/2^y)` and `r=x`.",
+        "long": "Calculates `q=floor(x/2^y)` and `r=x-q*2^y`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -29660,7 +29660,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "Calculates `q=floor((xy+w)/z)` and `r=(xy+w)`.",
+        "long": "Calculates `q=floor((xy+w)/z)` and `r=(xy+w)-zq`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -29738,7 +29738,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "Calculates `q=round((xy+w)/z)` and `r=(xy+w)`.",
+        "long": "Calculates `q=round((xy+w)/z)` and `r=(xy+w)-zq`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -29816,7 +29816,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "Calculates `q=ceil((xy+w)/z)` and `r=(xy+w)`.",
+        "long": "Calculates `q=ceil((xy+w)/z)` and `r=(xy+w)-zq`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -30512,7 +30512,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "Calculates `q=floor((xy+w)/z)` and `r=(xy+w)`.",
+        "long": "Calculates `q=floor((xy+w)/z)` and `r=(xy+w)-zq`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -30590,7 +30590,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "Calculates `q=round((xy+w)/z)` and `r=(xy+w)`.",
+        "long": "Calculates `q=round((xy+w)/z)` and `r=(xy+w)-zq`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -30668,7 +30668,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "Calculates `q=ceil((xy+w)/z)` and `r=(xy+w)`.",
+        "long": "Calculates `q=ceil((xy+w)/z)` and `r=(xy+w)-zq`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -31364,7 +31364,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "Calculates `q=floor((xy+w)/2^z)` and `r=(xy+w)`.",
+        "long": "Calculates `q=floor((xy+w)/2^z)` and `r=(xy+w)-q*2^z`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -31442,7 +31442,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "Calculates `q=round((xy+w)/2^z)` and `r=(xy+w)`.",
+        "long": "Calculates `q=round((xy+w)/2^z)` and `r=(xy+w)-q*2^z`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -31520,7 +31520,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "Calculates `q=ceil((xy+w)/2^z)` and `r=(xy+w)`.",
+        "long": "Calculates `q=ceil((xy+w)/2^z)` and `r=(xy+w)-q*2^z`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -32000,7 +32000,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "Calculates `q=floor(x*y/2^z)` and `r=xy`.",
+        "long": "Calculates `q=floor(x*y/2^z)` and `r=xy-q*2^z`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -32072,7 +32072,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "Calculates `q=round(x*y/2^z)` and `r=xy`.",
+        "long": "Calculates `q=round(x*y/2^z)` and `r=xy-q*2^z`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -32144,7 +32144,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "Calculates `q=ceil(x*y/2^z)` and `r=xy`.",
+        "long": "Calculates `q=ceil(x*y/2^z)` and `r=xy-q*2^z`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -32216,7 +32216,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "Calculates `q=floor((xy+w)/2^z)` and `r=(xy+w)`.",
+        "long": "Calculates `q=floor((xy+w)/2^z)` and `r=(xy+w)-q*2^z`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -32294,7 +32294,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "Calculates `q=round((xy+w)/2^z)` and `r=(xy+w)`.",
+        "long": "Calculates `q=round((xy+w)/2^z)` and `r=(xy+w)-q*2^z`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -32372,7 +32372,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "Calculates `q=ceil((xy+w)/2^z)` and `r=(xy+w)`.",
+        "long": "Calculates `q=ceil((xy+w)/2^z)` and `r=(xy+w)-q*2^z`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -32852,7 +32852,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "Calculates `q=floor(x*y/2^z)` and `r=xy`.",
+        "long": "Calculates `q=floor(x*y/2^z)` and `r=xy-q*2^z`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -32924,7 +32924,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "Calculates `q=round(x*y/2^z)` and `r=xy`.",
+        "long": "Calculates `q=round(x*y/2^z)` and `r=xy-q*2^z`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -32996,7 +32996,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "Calculates `q=ceil(x*y/2^z)` and `r=xy`.",
+        "long": "Calculates `q=ceil(x*y/2^z)` and `r=xy-q*2^z`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -33068,7 +33068,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "Calculates `q=floor((x*2^y+w)/z)` and `r=(x*2^y+w)`.",
+        "long": "Calculates `q=floor((x*2^y+w)/z)` and `r=(x*2^y+w)-zq`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -33146,7 +33146,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "Calculates `q=round((x*2^y+w)/z)` and `r=(x*2^y+w)`.",
+        "long": "Calculates `q=round((x*2^y+w)/z)` and `r=(x*2^y+w)-zq`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -33224,7 +33224,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "Calculates `q=round((x*2^y+w)/z)` and `r=(x*2^y+w)`.",
+        "long": "Calculates `q=round((x*2^y+w)/z)` and `r=(x*2^y+w)-zq`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -33704,7 +33704,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "Calculates `q=floor(2^z*x/y)` and `r=2^z*x`.",
+        "long": "Calculates `q=floor(2^z*x/y)` and `r=2^z*x-q*y`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -33776,7 +33776,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "Calculates `q=round(2^z*x/y)` and `r=2^z*x`.",
+        "long": "Calculates `q=round(2^z*x/y)` and `r=2^z*x-q*y`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -33848,7 +33848,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "Calculates `q=ceil(2^z*x/y)` and `r=2^z*x`.",
+        "long": "Calculates `q=ceil(2^z*x/y)` and `r=2^z*x-q*y`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -33920,7 +33920,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "Calculates `q=floor((x*2^y+w)/z)` and `r=(x*2^y+w)`.",
+        "long": "Calculates `q=floor((x*2^y+w)/z)` and `r=(x*2^y+w)-zq`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -33998,7 +33998,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "Calculates `q=round((x*2^y+w)/z)` and `r=(x*2^y+w)`.",
+        "long": "Calculates `q=round((x*2^y+w)/z)` and `r=(x*2^y+w)-zq`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -34076,7 +34076,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "Calculates `q=round((x*2^y+w)/z)` and `r=(x*2^y+w)`.",
+        "long": "Calculates `q=round((x*2^y+w)/z)` and `r=(x*2^y+w)-zq`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -34556,7 +34556,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "Calculates `q=floor(2^z*x/y)` and `r=2^z*x`.",
+        "long": "Calculates `q=floor(2^z*x/y)` and `r=2^z*x-q*y`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -34628,7 +34628,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "Calculates `q=round(2^z*x/y)` and `r=2^z*x`.",
+        "long": "Calculates `q=round(2^z*x/y)` and `r=2^z*x-q*y`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -34700,7 +34700,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "Calculates `q=ceil(2^z*x/y)` and `r=2^z*x`.",
+        "long": "Calculates `q=ceil(2^z*x/y)` and `r=2^z*x-q*y`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -57973,9 +57973,9 @@
       "sub_category": "",
       "description": {
         "short": "Performs prefix dictionary lookup and control transfer.",
-        "long": "Looks up a prefix in dictionary `D` and if found, transfers control to the corresponding continuation. Similar to PFXDICTGETJMP but with predefined dictionary and key length.",
+        "long": "Looks up a `prefix` in dictionary `D` and if found, jumps to the corresponding continuation. Similar to `PFXDICTGETJMP` but with predefined dictionary and key length.",
         "tags": ["dictionary", "prefix", "control"],
-        "operands": [],
+        "operands": ["d", "n"],
         "gas": [
           {
             "value": 34,
@@ -57997,13 +57997,36 @@
         "prefix_str": "3D2B"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "prefix:Slice -> (prefix:Slice 0)",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "prefix",
+              "value_types": ["Slice"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "conditional",
+              "name": "is_found",
+              "match": [
+                {
+                  "value": 0,
+                  "stack": [
+                    {
+                      "type": "simple",
+                      "name": "prefix",
+                      "value_types": ["Slice"]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
           "registers": []
         }
       },
@@ -65962,13 +65985,19 @@
         "prefix_str": "22"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "∅ -> value:Any",
         "inputs": {
           "stack": [],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "value",
+              "value_types": ["Any"]
+            }
+          ],
           "registers": []
         }
       },
@@ -66025,13 +66054,19 @@
         "prefix_str": "56"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "∅ -> value:Any",
         "inputs": {
           "stack": [],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "value",
+              "value_types": ["Any"]
+            }
+          ],
           "registers": []
         }
       },

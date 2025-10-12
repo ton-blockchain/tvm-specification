@@ -8663,17 +8663,40 @@
   "PFXDICTSWITCH": {
     "description": {
       "short": "Performs prefix dictionary lookup and control transfer.",
-      "long": "Looks up a prefix in dictionary `D` and if found, transfers control to the corresponding continuation. Similar to PFXDICTGETJMP but with predefined dictionary and key length.",
+      "long": "Looks up a `prefix` in dictionary `D` and if found, jumps to the corresponding continuation. Similar to `PFXDICTGETJMP` but with predefined dictionary and key length.",
       "tags": ["dictionary", "prefix", "control"],
-      "operands": []
+      "operands": ["d", "n"]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "prefix",
+            "value_types": ["Slice"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "is_found",
+            "match": [
+              {
+                "value": 0,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "prefix",
+                    "value_types": ["Slice"]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
         "registers": []
       }
     }

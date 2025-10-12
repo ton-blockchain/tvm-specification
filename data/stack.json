@@ -1818,7 +1818,13 @@
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "value",
+            "value_types": ["Any"]
+          }
+        ],
         "registers": []
       }
     }
@@ -1843,7 +1849,13 @@
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "value",
+            "value_types": ["Any"]
+          }
+        ],
         "registers": []
       }
     }
