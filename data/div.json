@@ -2,7 +2,7 @@
   "ADDDIVMOD": {
     "description": {
       "short": "",
-      "long": "Calculates `q=floor((x+w)/z)` and `r=(x+w)`.",
+      "long": "Calculates `q=floor((x+w)/z)` and `r=(x+w)-zq`.",
       "tags": [],
       "operands": []
     },
@@ -45,7 +45,7 @@
   "ADDDIVMODR": {
     "description": {
       "short": "",
-      "long": "Calculates `q=round((x+w)/z)` and `r=(x+w)`.",
+      "long": "Calculates `q=round((x+w)/z)` and `r=(x+w)-zq`.",
       "tags": [],
       "operands": []
     },
@@ -88,7 +88,7 @@
   "ADDDIVMODC": {
     "description": {
       "short": "",
-      "long": "Calculates `q=ceil((x+w)/z)` and `r=(x+w)`.",
+      "long": "Calculates `q=ceil((x+w)/z)` and `r=(x+w)-zq`.",
       "tags": [],
       "operands": []
     },
@@ -475,7 +475,7 @@
   "QADDDIVMOD": {
     "description": {
       "short": "",
-      "long": "Calculates `q=floor((x+w)/z)` and `r=(x+w)`.",
+      "long": "Calculates `q=floor((x+w)/z)` and `r=(x+w)-zq`.",
       "tags": [],
       "operands": []
     },
@@ -518,7 +518,7 @@
   "QADDDIVMODR": {
     "description": {
       "short": "",
-      "long": "Calculates `q=round((x+w)/z)` and `r=(x+w)`.",
+      "long": "Calculates `q=round((x+w)/z)` and `r=(x+w)-zq`.",
       "tags": [],
       "operands": []
     },
@@ -561,7 +561,7 @@
   "QADDDIVMODC": {
     "description": {
       "short": "",
-      "long": "Calculates `q=ceil((x+w)/z)` and `r=(x+w)`.",
+      "long": "Calculates `q=ceil((x+w)/z)` and `r=(x+w)-zq`.",
       "tags": [],
       "operands": []
     },
@@ -916,7 +916,7 @@
   "ADDRSHIFTMOD": {
     "description": {
       "short": "",
-      "long": "Calculates `q=floor((x+w)/2^z)` and `r=(x+w)`.",
+      "long": "Calculates `q=floor((x+w)/2^z)` and `r=(x+w)-q*2^z`.",
       "tags": [],
       "operands": []
     },
@@ -959,7 +959,7 @@
   "ADDRSHIFTMODR": {
     "description": {
       "short": "",
-      "long": "Calculates `q=round((x+w)/2^z)` and `r=(x+w)`.",
+      "long": "Calculates `q=round((x+w)/2^z)` and `r=(x+w)-q*2^z`.",
       "tags": [],
       "operands": []
     },
@@ -1002,7 +1002,7 @@
   "ADDRSHIFTMODC": {
     "description": {
       "short": "",
-      "long": "Calculates `q=ceil((x+w)/2^z)` and `r=(x+w)`.",
+      "long": "Calculates `q=ceil((x+w)/2^z)` and `r=(x+w)-q*2^z`.",
       "tags": [],
       "operands": []
     },
@@ -1210,7 +1210,7 @@
   "RSHIFTMOD": {
     "description": {
       "short": "",
-      "long": "Calculates `q=floor(x/2^y)` and `r=x`.",
+      "long": "Calculates `q=floor(x/2^y)` and `r=x-q*2^y`.",
       "tags": [],
       "operands": []
     },
@@ -1284,7 +1284,7 @@
   "QADDRSHIFTMOD": {
     "description": {
       "short": "",
-      "long": "Calculates `q=floor((x+w)/2^z)` and `r=(x+w)`.",
+      "long": "Calculates `q=floor((x+w)/2^z)` and `r=(x+w)-q*2^z`.",
       "tags": [],
       "operands": []
     },
@@ -1327,7 +1327,7 @@
   "QADDRSHIFTMODR": {
     "description": {
       "short": "",
-      "long": "Calculates `q=round((x+w)/2^z)` and `r=(x+w)`.",
+      "long": "Calculates `q=round((x+w)/2^z)` and `r=(x+w)-q*2^z`.",
       "tags": [],
       "operands": []
     },
@@ -1370,7 +1370,7 @@
   "QADDRSHIFTMODC": {
     "description": {
       "short": "",
-      "long": "Calculates `q=ceil((x+w)/2^z)` and `r=(x+w)`.",
+      "long": "Calculates `q=ceil((x+w)/2^z)` and `r=(x+w)-q*2^z`.",
       "tags": [],
       "operands": []
     },
@@ -1578,7 +1578,7 @@
   "QRSHIFTMOD": {
     "description": {
       "short": "",
-      "long": "Calculates `q=floor(x/2^y)` and `r=x`.",
+      "long": "Calculates `q=floor(x/2^y)` and `r=x-q*2^y`.",
       "tags": [],
       "operands": []
     },
@@ -1652,7 +1652,7 @@
   "MULADDDIVMOD": {
     "description": {
       "short": "",
-      "long": "Calculates `q=floor((xy+w)/z)` and `r=(xy+w)`.",
+      "long": "Calculates `q=floor((xy+w)/z)` and `r=(xy+w)-zq`.",
       "tags": [],
       "operands": []
     },
@@ -1700,7 +1700,7 @@
   "MULADDDIVMODR": {
     "description": {
       "short": "",
-      "long": "Calculates `q=round((xy+w)/z)` and `r=(xy+w)`.",
+      "long": "Calculates `q=round((xy+w)/z)` and `r=(xy+w)-zq`.",
       "tags": [],
       "operands": []
     },
@@ -1748,7 +1748,7 @@
   "MULADDDIVMODC": {
     "description": {
       "short": "",
-      "long": "Calculates `q=ceil((xy+w)/z)` and `r=(xy+w)`.",
+      "long": "Calculates `q=ceil((xy+w)/z)` and `r=(xy+w)-zq`.",
       "tags": [],
       "operands": []
     },
@@ -2153,7 +2153,7 @@
   "QMULADDDIVMOD": {
     "description": {
       "short": "",
-      "long": "Calculates `q=floor((xy+w)/z)` and `r=(xy+w)`.",
+      "long": "Calculates `q=floor((xy+w)/z)` and `r=(xy+w)-zq`.",
       "tags": [],
       "operands": []
     },
@@ -2201,7 +2201,7 @@
   "QMULADDDIVMODR": {
     "description": {
       "short": "",
-      "long": "Calculates `q=round((xy+w)/z)` and `r=(xy+w)`.",
+      "long": "Calculates `q=round((xy+w)/z)` and `r=(xy+w)-zq`.",
       "tags": [],
       "operands": []
     },
@@ -2249,7 +2249,7 @@
   "QMULADDDIVMODC": {
     "description": {
       "short": "",
-      "long": "Calculates `q=ceil((xy+w)/z)` and `r=(xy+w)`.",
+      "long": "Calculates `q=ceil((xy+w)/z)` and `r=(xy+w)-zq`.",
       "tags": [],
       "operands": []
     },
@@ -2654,7 +2654,7 @@
   "MULADDRSHIFTMOD": {
     "description": {
       "short": "",
-      "long": "Calculates `q=floor((xy+w)/2^z)` and `r=(xy+w)`.",
+      "long": "Calculates `q=floor((xy+w)/2^z)` and `r=(xy+w)-q*2^z`.",
       "tags": [],
       "operands": []
     },
@@ -2702,7 +2702,7 @@
   "MULADDRSHIFTRMOD": {
     "description": {
       "short": "",
-      "long": "Calculates `q=round((xy+w)/2^z)` and `r=(xy+w)`.",
+      "long": "Calculates `q=round((xy+w)/2^z)` and `r=(xy+w)-q*2^z`.",
       "tags": [],
       "operands": []
     },
@@ -2750,7 +2750,7 @@
   "MULADDRSHIFTCMOD": {
     "description": {
       "short": "",
-      "long": "Calculates `q=ceil((xy+w)/2^z)` and `r=(xy+w)`.",
+      "long": "Calculates `q=ceil((xy+w)/2^z)` and `r=(xy+w)-q*2^z`.",
       "tags": [],
       "operands": []
     },
@@ -3026,7 +3026,7 @@
   "MULRSHIFTMOD": {
     "description": {
       "short": "",
-      "long": "Calculates `q=floor(x*y/2^z)` and `r=xy`.",
+      "long": "Calculates `q=floor(x*y/2^z)` and `r=xy-q*2^z`.",
       "tags": [],
       "operands": []
     },
@@ -3069,7 +3069,7 @@
   "MULRSHIFTRMOD": {
     "description": {
       "short": "",
-      "long": "Calculates `q=round(x*y/2^z)` and `r=xy`.",
+      "long": "Calculates `q=round(x*y/2^z)` and `r=xy-q*2^z`.",
       "tags": [],
       "operands": []
     },
@@ -3112,7 +3112,7 @@
   "MULRSHIFTCMOD": {
     "description": {
       "short": "",
-      "long": "Calculates `q=ceil(x*y/2^z)` and `r=xy`.",
+      "long": "Calculates `q=ceil(x*y/2^z)` and `r=xy-q*2^z`.",
       "tags": [],
       "operands": []
     },
@@ -3155,7 +3155,7 @@
   "QMULADDRSHIFTMOD": {
     "description": {
       "short": "",
-      "long": "Calculates `q=floor((xy+w)/2^z)` and `r=(xy+w)`.",
+      "long": "Calculates `q=floor((xy+w)/2^z)` and `r=(xy+w)-q*2^z`.",
       "tags": [],
       "operands": []
     },
@@ -3203,7 +3203,7 @@
   "QMULADDRSHIFTRMOD": {
     "description": {
       "short": "",
-      "long": "Calculates `q=round((xy+w)/2^z)` and `r=(xy+w)`.",
+      "long": "Calculates `q=round((xy+w)/2^z)` and `r=(xy+w)-q*2^z`.",
       "tags": [],
       "operands": []
     },
@@ -3251,7 +3251,7 @@
   "QMULADDRSHIFTCMOD": {
     "description": {
       "short": "",
-      "long": "Calculates `q=ceil((xy+w)/2^z)` and `r=(xy+w)`.",
+      "long": "Calculates `q=ceil((xy+w)/2^z)` and `r=(xy+w)-q*2^z`.",
       "tags": [],
       "operands": []
     },
@@ -3527,7 +3527,7 @@
   "QMULRSHIFTMOD": {
     "description": {
       "short": "",
-      "long": "Calculates `q=floor(x*y/2^z)` and `r=xy`.",
+      "long": "Calculates `q=floor(x*y/2^z)` and `r=xy-q*2^z`.",
       "tags": [],
       "operands": []
     },
@@ -3570,7 +3570,7 @@
   "QMULRSHIFTRMOD": {
     "description": {
       "short": "",
-      "long": "Calculates `q=round(x*y/2^z)` and `r=xy`.",
+      "long": "Calculates `q=round(x*y/2^z)` and `r=xy-q*2^z`.",
       "tags": [],
       "operands": []
     },
@@ -3613,7 +3613,7 @@
   "QMULRSHIFTCMOD": {
     "description": {
       "short": "",
-      "long": "Calculates `q=ceil(x*y/2^z)` and `r=xy`.",
+      "long": "Calculates `q=ceil(x*y/2^z)` and `r=xy-q*2^z`.",
       "tags": [],
       "operands": []
     },
@@ -3656,7 +3656,7 @@
   "LSHIFTADDDIVMOD": {
     "description": {
       "short": "",
-      "long": "Calculates `q=floor((x*2^y+w)/z)` and `r=(x*2^y+w)`.",
+      "long": "Calculates `q=floor((x*2^y+w)/z)` and `r=(x*2^y+w)-zq`.",
       "tags": [],
       "operands": []
     },
@@ -3704,7 +3704,7 @@
   "LSHIFTADDDIVMODR": {
     "description": {
       "short": "",
-      "long": "Calculates `q=round((x*2^y+w)/z)` and `r=(x*2^y+w)`.",
+      "long": "Calculates `q=round((x*2^y+w)/z)` and `r=(x*2^y+w)-zq`.",
       "tags": [],
       "operands": []
     },
@@ -3752,7 +3752,7 @@
   "LSHIFTADDDIVMODC": {
     "description": {
       "short": "",
-      "long": "Calculates `q=round((x*2^y+w)/z)` and `r=(x*2^y+w)`.",
+      "long": "Calculates `q=round((x*2^y+w)/z)` and `r=(x*2^y+w)-zq`.",
       "tags": [],
       "operands": []
     },
@@ -4028,7 +4028,7 @@
   "LSHIFTDIVMOD": {
     "description": {
       "short": "",
-      "long": "Calculates `q=floor(2^z*x/y)` and `r=2^z*x`.",
+      "long": "Calculates `q=floor(2^z*x/y)` and `r=2^z*x-q*y`.",
       "tags": [],
       "operands": []
     },
@@ -4071,7 +4071,7 @@
   "LSHIFTDIVMODR": {
     "description": {
       "short": "",
-      "long": "Calculates `q=round(2^z*x/y)` and `r=2^z*x`.",
+      "long": "Calculates `q=round(2^z*x/y)` and `r=2^z*x-q*y`.",
       "tags": [],
       "operands": []
     },
@@ -4114,7 +4114,7 @@
   "LSHIFTDIVMODC": {
     "description": {
       "short": "",
-      "long": "Calculates `q=ceil(2^z*x/y)` and `r=2^z*x`.",
+      "long": "Calculates `q=ceil(2^z*x/y)` and `r=2^z*x-q*y`.",
       "tags": [],
       "operands": []
     },
@@ -4157,7 +4157,7 @@
   "QLSHIFTADDDIVMOD": {
     "description": {
       "short": "",
-      "long": "Calculates `q=floor((x*2^y+w)/z)` and `r=(x*2^y+w)`.",
+      "long": "Calculates `q=floor((x*2^y+w)/z)` and `r=(x*2^y+w)-zq`.",
       "tags": [],
       "operands": []
     },
@@ -4205,7 +4205,7 @@
   "QLSHIFTADDDIVMODR": {
     "description": {
       "short": "",
-      "long": "Calculates `q=round((x*2^y+w)/z)` and `r=(x*2^y+w)`.",
+      "long": "Calculates `q=round((x*2^y+w)/z)` and `r=(x*2^y+w)-zq`.",
       "tags": [],
       "operands": []
     },
@@ -4253,7 +4253,7 @@
   "QLSHIFTADDDIVMODC": {
     "description": {
       "short": "",
-      "long": "Calculates `q=round((x*2^y+w)/z)` and `r=(x*2^y+w)`.",
+      "long": "Calculates `q=round((x*2^y+w)/z)` and `r=(x*2^y+w)-zq`.",
       "tags": [],
       "operands": []
     },
@@ -4529,7 +4529,7 @@
   "QLSHIFTDIVMOD": {
     "description": {
       "short": "",
-      "long": "Calculates `q=floor(2^z*x/y)` and `r=2^z*x`.",
+      "long": "Calculates `q=floor(2^z*x/y)` and `r=2^z*x-q*y`.",
       "tags": [],
       "operands": []
     },
@@ -4572,7 +4572,7 @@
   "QLSHIFTDIVMODR": {
     "description": {
       "short": "",
-      "long": "Calculates `q=round(2^z*x/y)` and `r=2^z*x`.",
+      "long": "Calculates `q=round(2^z*x/y)` and `r=2^z*x-q*y`.",
       "tags": [],
       "operands": []
     },
@@ -4615,7 +4615,7 @@
   "QLSHIFTDIVMODC": {
     "description": {
       "short": "",
-      "long": "Calculates `q=ceil(2^z*x/y)` and `r=2^z*x`.",
+      "long": "Calculates `q=ceil(2^z*x/y)` and `r=2^z*x-q*y`.",
       "tags": [],
       "operands": []
     },
