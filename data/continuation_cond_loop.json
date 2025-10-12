@@ -1,10 +1,16 @@
 {
   "REPEAT": {
     "description": {
-      "short": "",
-      "long": "Executes continuation `body` `n` times, if integer `n` is non-negative. If `n >= 2^31` or `n < -2^31`, generates a range check exception.\nNotice that a `RET` inside the code of `body` works as a `continue`, not as a `break`. One should use either alternative (experimental) loops or alternative `RETALT` (along with a `SETEXITALT` before the loop) to `break` out of a loop.",
+      "short": "Executes continuation `body` `n`-times, if integer `n` is non-negative.",
+      "long": "`RET` inside the code of `body` works as a `continue`, not as a `break`. To `break` from the loop, use either alternative loop `REPEATBRK` + `RETALT` or `RETALT`, along with a `SETEXITALT` before the loop.",
       "tags": [],
       "operands": [],
+      "exit_codes": [
+        {
+          "errno": "5",
+          "condition": "If `n >= 2^31` or `n < -2^31`."
+        }
+      ],
       "examples": [
         {
           "instructions": [
@@ -29,31 +35,12 @@
             "input": ["0", "5", "Body"],
             "output": ["50"]
           }
-        },
+        }
+      ],
+      "docs_links": [
         {
-          "instructions": [
-            {
-              "instruction": "PUSHINT_4 0",
-              "comment": "Initialize sum"
-            },
-            {
-              "instruction": "PUSHINT_4 -5",
-              "comment": "Negative number of iterations"
-            },
-            {
-              "instruction": "PUSHCONT {\n  PUSHINT_4 10\n  ADD\n}",
-              "comment": "Body: add 10 to the sum in each iteration"
-            },
-            {
-              "instruction": "REPEAT",
-              "comment": "Try to execute with negative iterations"
-            }
-          ],
-          "exit_code": 4,
-          "stack": {
-            "input": ["0", "-5", "Body"],
-            "output": ["0", "-5", "Body"]
-          }
+          "name": "Exit points of continuations",
+          "url": "https://txtracer.ton.org/spec/doc/book/continuations/diving-deeper-exit-points-of-continuations/"
         }
       ]
     },
@@ -137,10 +124,48 @@
   },
   "UNTIL": {
     "description": {
-      "short": "",
-      "long": "Executes continuation `c`, then pops an integer `x` from the resulting stack. If `x` is zero, performs another iteration of this loop. The actual implementation of this primitive involves an extraordinary continuation `ec_until` with its arguments set to the body of the loop (continuation `c`) and the original current continuation `cс`. This extraordinary continuation is then saved into the savelist of `c` as `c.c0` and the modified `c` is then executed. The other loop primitives are implemented similarly with the aid of suitable extraordinary continuations.",
+      "short": "Executes continuation `body`, then pops an integer `cond` from the resulting stack. If `cond` is **zero**, performs another iteration of this loop, otherwise ends the loop.",
+      "long": "The actual implementation of this primitive involves an extraordinary continuation `ec_until` with its arguments set to the `body` of the loop and the original current continuation `cс`. This extraordinary continuation is then saved into the savelist of `body` as `body.c0` and the modified `body` is then executed. The other loop primitives are implemented similarly with the aid of suitable extraordinary continuations.",
       "tags": [],
-      "operands": []
+      "operands": [],
+      "examples": [
+        {
+          "instructions": [
+            {
+              "instruction": "PUSHINT_8 100"
+            },
+            {
+              "instruction": "PUSHCONT {\n    DEC\n    DUP"
+            },
+            {
+              "instruction": "    EQINT 10",
+              "comment": "Check if counter is ten,"
+            },
+            {
+              "instruction": "            ",
+              "comment": "if true, exit the loop"
+            },
+            {
+              "instruction": "}"
+            },
+            {
+              "instruction": "UNTIL",
+              "comment": "Starts the loop",
+              "is_main": true
+            }
+          ],
+          "stack": {
+            "input": ["Continuation", "100"],
+            "output": ["10"]
+          }
+        }
+      ],
+      "docs_links": [
+        {
+          "name": "Save lists",
+          "url": "https://txtracer.ton.org/spec/doc/book/continuations/basics-register-c0-cc-savelist-if-instruction/"
+        }
+      ]
     },
     "signature": {
       "inputs": {
@@ -225,8 +250,8 @@
   },
   "WHILE": {
     "description": {
-      "short": "",
-      "long": "Executes `c'` and pops an integer `x` from the resulting stack. If `x` is zero, exists the loop and transfers control to the original `c`. If `x` is non-zero, executes `c`, and then begins a new iteration.",
+      "short": "Executes continuation `cond`, then pops an integer `cond` from the resulting stack. If `cond` is **non-zero**, executes `body`, and then begins a new iteration, otherwise ends the loop.",
+      "long": "The actual implementation of this primitive involves an extraordinary continuation `ec_while`.",
       "tags": [],
       "operands": [],
       "examples": [
@@ -241,8 +266,8 @@
               "comment": "Condition: check if counter < 3"
             },
             {
-              "instruction": "PUSHCONT {\n  INC\n  DUP\n}",
-              "comment": "Body: increment counter and duplicate it"
+              "instruction": "PUSHCONT {\n  INC\n}",
+              "comment": "Body: increment counter"
             },
             {
               "instruction": "WHILE",
@@ -354,8 +379,8 @@
   },
   "AGAIN": {
     "description": {
-      "short": "",
-      "long": "Executes continuation `c` infinitely many times. Unlike `REPEAT` which executes a continuation a specified number of times, this instruction creates an infinite loop. A `RET` inside the code of `c` only begins a new iteration of the infinite loop, which can be exited only by an exception, or a `RETALT` (or an explicit `JMPX`).",
+      "short": "Executes continuation `body` infinitely many times.",
+      "long": "Unlike `REPEAT` which executes a continuation a specified number of times, this instruction creates an infinite loop. `RET` inside `body` code starts a new iteration of an infinite loop, rather than breaks from the loop. `AGAIN` loop can be exited only by an exception, `RETALT` with a `SETEXITALT` before the loop, or an explicit `JMPX`. Another way is to use `AGAINBRK`, which also sets `c1` to `cc`, and `RETALT` in the body, which will transfer control to the original `cc` and exit the loop.",
       "tags": [],
       "operands": []
     },
@@ -387,8 +412,8 @@
   },
   "AGAINEND": {
     "description": {
-      "short": "",
-      "long": "Executes the current continuation `cс` infinitely many times. Unlike `AGAIN` which executes a separate continuation in an infinite loop, this instruction uses the current continuation itself as the loop body. A `RET` only begins a new iteration of the infinite loop, which can be exited only by an exception, or a `RETALT` (or an explicit `JMPX`).",
+      "short": "Takes a remainder of the current continuation and executes it infinitely many times.",
+      "long": "Unlike `AGAIN` which executes a separate continuation in an infinite loop, this instruction uses the current continuation itself as the loop body. `RET` inside `body` code starts a new iteration of an infinite loop, rather than breaks from the loop. `AGAINEND` loop can be exited only by an exception, `RETALT` with a `SETEXITALT` before the loop, or an explicit `JMPX`. Another way is to use `AGAINENDBRK`, which also sets `c1` to `cc`, and `RETALT` in the body, which will transfer control to the original `cc` and exit the loop.",
       "tags": [],
       "operands": []
     },
@@ -756,10 +781,16 @@
   },
   "AGAINBRK": {
     "description": {
-      "short": "",
-      "long": "Executes continuation `c` infinitely many times, just like `AGAIN`. Additionally, it sets `c1` to the original continuation after saving the old value of `c1` into the savelist of the original continuation. This modification allows `RETALT` to be used to break out of the infinite loop, providing a way to exit the loop that would otherwise continue indefinitely.",
+      "short": "Store current continuation in `c1` of `body` and executes continuation `body` infinitely many times.",
+      "long": "This instruction sets `c1` to the original continuation after saving the old value of `c1` into the savelist of the original continuation. This modification allows `RETALT` to be used to break out of the infinite loop, providing a way to exit the loop that would otherwise continue indefinitely.",
       "tags": [],
-      "operands": []
+      "operands": [],
+      "docs_links": [
+        {
+          "name": "Exit points of continuations",
+          "url": "https://txtracer.ton.org/spec/doc/book/continuations/diving-deeper-exit-points-of-continuations/"
+        }
+      ]
     },
     "signature": {
       "inputs": {
