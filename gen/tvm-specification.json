@@ -38382,13 +38382,46 @@
         "prefix_str": "F4BE"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "i:Int D:Cell|Null n:Int -> (i:Int 0)",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "i",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "D",
+              "value_types": ["Cell", "Null"]
+            },
+            {
+              "type": "simple",
+              "name": "n",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "conditional",
+              "name": "is_found",
+              "match": [
+                {
+                  "value": 0,
+                  "stack": [
+                    {
+                      "type": "simple",
+                      "name": "i",
+                      "value_types": ["Int"]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
           "registers": []
         }
       },
