@@ -1,8 +1,8 @@
 {
   "TRY": {
     "description": {
-      "short": "",
-      "long": "Sets `c2` to `handler`, first saving the old value of `c2` both into the savelist of `handler` and into the savelist of the current continuation `cc`, which is stored into `body.c0` and `handler.c0`. Then runs `body` similarly to `EXECUTE`. If `body` does not throw any exceptions, the original value of `c2` is automatically restored on return from `body`. If an exception occurs, the execution is transferred to `handler`, but the original value of `c2` is restored in the process, so that `handler` can re-throw the exception by `THROWANY` if it cannot handle it by itself.",
+      "short": "Executes `body` and if it throws an exception, transfers control to `handler`.",
+      "long": "Sets `c2` to `handler`, first saving the old value of `c2` both into the savelist of `handler` and into the savelist of the current continuation `cc`, which is stored into `body.c0` and `handler.c0`. Then performs `EXECUTE` on `body` continuation. If `body` does not throw any exceptions, the original value of `c2` is automatically restored on return from `body`. If an exception occurs, the execution is transferred to `handler`, but the original value of `c2` is restored in the process, so that `handler` can re-throw the exception by `THROWANY` if it cannot handle it by itself.",
       "tags": ["exception_handling", "control_flow"],
       "operands": []
     },
@@ -187,8 +187,8 @@
   },
   "TRYARGS": {
     "description": {
-      "short": "",
-      "long": "Similar to `TRY`, but with `[p] [r] CALLXARGS` internally used instead of `EXECUTE`.\nIn this way, all but the top `p` stack elements will be saved into current continuation's stack, and then restored upon return from either `body` or `handler`, with the top `0 <= r <= 15` values of the resulting stack of `body` or `handler` copied as return values.",
+      "short": "Executes `body` with `p` top elements from the stack and if it throws an exception, transfers control to `handler`, otherwise copies the top `r` stack elements of the resulting stack of `body` as return values.",
+      "long": "This instruction is similar to `TRY`, but with `[p] [r] CALLXARGS` internally used instead of `EXECUTE`.\nIn this way, all but the top `p` stack elements will be saved into current continuation's stack, and then restored upon return from either `body` or `handler`, with the top `0 <= r <= 15` values of the resulting stack of `body` or `handler` copied as return values.",
       "tags": ["exception_handling", "control_flow"],
       "operands": ["p", "r"]
     },
@@ -198,7 +198,7 @@
           {
             "type": "array",
             "name": "args",
-            "length_var": "r",
+            "length_var": "p",
             "array_entry": [
               {
                 "type": "simple",
