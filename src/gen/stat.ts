@@ -28,7 +28,26 @@ const main = () => {
         fiftInstructions: Object.keys(data.fift_instructions).length,
     }
 
-    for (const [, instr] of Object.entries(data.instructions)) {
+    const verifiedInstructionsWithEmptyStackSignature: Set<string> = new Set([
+        "UNTILEND",
+        "AGAINEND",
+        "NOP",
+        "CALLREF",
+        "JMPREF",
+        "JMPREFDATA",
+        "DEBUGSTR",
+        "THROW_SHORT",
+        "THROW",
+        "DUMPSTK",
+        "DEBUG",
+        "DEBUG_1",
+        "DUMP",
+        "DEBUG_2",
+        "SETCP",
+        "SETCP_SHORT",
+    ])
+
+    for (const [name, instr] of Object.entries(data.instructions)) {
         stats.count++
         if (instr.description.short === "" && instr.description.long === "") {
             if (instr.category !== "arithmetic") {
@@ -49,7 +68,8 @@ const main = () => {
             !instr.signature.inputs?.stack?.length &&
             !instr.signature.inputs?.registers?.length &&
             !instr.signature.outputs?.stack?.length &&
-            !instr.signature.outputs?.registers?.length
+            !instr.signature.outputs?.registers?.length &&
+            !verifiedInstructionsWithEmptyStackSignature.has(name)
         ) {
             stats.withoutAEmptySignature++
         }
@@ -62,7 +82,7 @@ const main = () => {
     console.log(
         `- Without any text description: **${stats.withoutAnyTextDescription}**, including arithmetic: **${stats.withoutAnyTextDescriptionFull}**`,
     )
-    console.log(`- With empty stack signature: **${stats.withoutAEmptySignature}**`)
+    console.log(`- With unverified empty stack signature: **${stats.withoutAEmptySignature}**`)
     console.log(`- Fift instructions count: **${stats.fiftInstructions}**`)
 }
 
