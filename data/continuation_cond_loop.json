@@ -87,10 +87,16 @@
   },
   "REPEATEND": {
     "description": {
-      "short": "",
-      "long": "Executes the current continuation `cс` `n` times, if integer `n` is non-negative. This is like `REPEAT` but instead of executing a separate continuation `body`, it repeatedly executes the current continuation. If `n >= 2^31` or `n < -2^31`, generates a range check exception.",
+      "short": "Takes a remainder of the current continuation and executes it `n`-times, if integer `n` is non-negative.",
+      "long": "Unlike `REPEAT` which executes a separate continuation `body` as the loop body, this instruction uses the current continuation itself as the loop body.",
       "tags": [],
-      "operands": []
+      "operands": [],
+      "exit_codes": [
+        {
+          "errno": "5",
+          "condition": "If `n >= 2^31` or `n < -2^31`."
+        }
+      ]
     },
     "signature": {
       "inputs": {
@@ -100,7 +106,12 @@
             "name": "n",
             "value_types": ["Int"]
           }
-        ]
+        ],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
       }
     },
     "control_flow": {
@@ -125,7 +136,7 @@
   "UNTIL": {
     "description": {
       "short": "Executes continuation `body`, then pops an integer `cond` from the resulting stack. If `cond` is **zero**, performs another iteration of this loop, otherwise ends the loop.",
-      "long": "The actual implementation of this primitive involves an extraordinary continuation `ec_until` with its arguments set to the `body` of the loop and the original current continuation `cс`. This extraordinary continuation is then saved into the savelist of `body` as `body.c0` and the modified `body` is then executed. The other loop primitives are implemented similarly with the aid of suitable extraordinary continuations.",
+      "long": "The actual implementation of this primitive involves an extraordinary continuation `ec_until` with its arguments set to the `body` of the loop and the original current continuation `cc`. This extraordinary continuation is then saved into the savelist of `body` as `body.c0` and the modified `body` is then executed. The other loop primitives are implemented similarly with the aid of suitable extraordinary continuations.",
       "tags": [],
       "operands": [],
       "examples": [
@@ -210,8 +221,8 @@
   },
   "UNTILEND": {
     "description": {
-      "short": "",
-      "long": "Executes the current continuation `cс`, then pops an integer `x` from the resulting stack. If `x` is zero, performs another iteration of this loop. Unlike `UNTIL` which executes a separate continuation as the loop body, this instruction uses the current continuation itself as the loop body. When the loop exit condition is satisfied (when `x` is non-zero), performs a `RET`.",
+      "short": "Takes a remainder of the current continuation, executes it, then pops an integer `cond` from the resulting stack. If `cond` is **zero**, performs another iteration of this loop, otherwise ends the loop.",
+      "long": "Unlike `UNTIL` which executes a separate continuation as the loop body, this instruction uses the current continuation itself as the loop body. When the loop exit condition is satisfied (when `cond` is **non-zero**), performs a `RET`.",
       "tags": [],
       "operands": []
     },
@@ -333,8 +344,8 @@
   },
   "WHILEEND": {
     "description": {
-      "short": "",
-      "long": "Executes continuation `c'` and pops an integer `x` from the resulting stack. If `x` is zero, exits the loop and transfers control to the original continuation. If `x` is non-zero, executes the current continuation `cс` as the loop body, and then begins a new iteration. Unlike `WHILE` which uses a separate continuation as the loop body, this instruction uses the current continuation itself as the loop body.",
+      "short": "Executes continuation `cond`, then pops an integer `cond` from the resulting stack. If `cond` is **non-zero**, takes a remainder of the current continuation and executes it as the loop body, then begins a new iteration, otherwise ends the loop.",
+      "long": "Unlike `WHILE` which executes a separate continuation `body` as the loop body, this instruction uses the current continuation itself as the loop body.",
       "tags": [],
       "operands": []
     },
@@ -346,7 +357,12 @@
             "name": "cond",
             "value_types": ["Continuation"]
           }
-        ]
+        ],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
       }
     },
     "control_flow": {
@@ -443,10 +459,16 @@
   },
   "REPEATBRK": {
     "description": {
-      "short": "",
-      "long": "Executes continuation `body` `n` times, if integer `n` is non-negative, just like `REPEAT`. Additionally, it sets `c1` to the original `c` after saving the old value of `c1` into the savelist of the original `c`. This modification allows `RETALT` to be used to break out of the loop body, providing a way to exit the loop before all iterations are completed.",
+      "short": "Stores current continuation in `c1` of `body` and executes continuation `body` `n`-times, if integer `n` is non-negative.",
+      "long": "Just like `REPEAT`, but additionally sets `c1` to the original `c` after saving the old value of `c1` into the savelist of the original `c`. This modification allows `RETALT` to be used to break out of the loop body, providing a way to exit the loop before all iterations are completed.",
       "tags": [],
-      "operands": []
+      "operands": [],
+      "exit_codes": [
+        {
+          "errno": "5",
+          "condition": "If `n >= 2^31` or `n < -2^31`."
+        }
+      ]
     },
     "signature": {
       "inputs": {
@@ -510,10 +532,16 @@
   },
   "REPEATENDBRK": {
     "description": {
-      "short": "",
-      "long": "Executes the current continuation `cс` `n` times, if integer `n` is non-negative, just like `REPEATEND`. Additionally, it sets `c1` to the original `c0` after saving the old value of `c1` into the savelist of the original `c0`. This modification allows `RETALT` to be used to break out of the loop body, providing a way to exit the loop before all iterations are completed.",
+      "short": "Stores current continuation in `c1` and takes a remainder of the current continuation and executes it `n`-times, if integer `n` is non-negative.",
+      "long": "Just like `REPEATEND`, but additionally sets `c1` to the original `c0` after saving the old value of `c1` into the savelist of the original `c0`. This modification allows `RETALT` to be used to break out of the loop body, providing a way to exit the loop before all iterations are completed.",
       "tags": [],
       "operands": [],
+      "exit_codes": [
+        {
+          "errno": "5",
+          "condition": "If `n >= 2^31` or `n < -2^31`."
+        }
+      ],
       "other_implementations": [
         {
           "exact": true,
@@ -529,7 +557,12 @@
             "name": "n",
             "value_types": ["Int"]
           }
-        ]
+        ],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
       }
     },
     "control_flow": {
@@ -559,8 +592,8 @@
   },
   "UNTILBRK": {
     "description": {
-      "short": "",
-      "long": "Executes continuation `c`, then pops an integer `x` from the resulting stack. If `x` is zero, performs another iteration of this loop, just like `UNTIL`. Additionally, it sets `c1` to the original continuation after saving the old value of `c1` into the savelist of the original continuation. This modification allows `RETALT` to be used to break out of the loop body, providing a way to exit the loop before the exit condition is met.",
+      "short": "Stores current continuation in `c1` of `body` and executes continuation `body`, then pops an integer `cond` from the resulting stack. If `cond` is **zero**, performs another iteration of this loop, otherwise ends the loop.",
+      "long": "Just like `UNTIL`, but additionally sets `c1` to the original continuation after saving the old value of `c1` into the savelist of the original continuation. This modification allows `RETALT` to be used to break out of the loop body, providing a way to exit the loop before the exit condition is met.",
       "tags": [],
       "operands": []
     },
@@ -639,8 +672,8 @@
   },
   "UNTILENDBRK": {
     "description": {
-      "short": "",
-      "long": "Executes the current continuation `cс`, then pops an integer `x` from the resulting stack. If `x` is zero, performs another iteration of this loop, just like `UNTILEND`. Additionally, it sets `c1` to the original `c0` after saving the old value of `c1` into the savelist of the original `c0`. This modification allows `RETALT` to be used to break out of the loop body, providing a way to exit the loop before the exit condition is met.",
+      "short": "Stores current continuation in `c1` and takes a remainder of the current continuation, executes it, then pops an integer `cond` from the resulting stack. If `cond` is **zero**, performs another iteration of this loop, otherwise ends the loop.",
+      "long": "Just like `UNTILEND`, but additionally sets `c1` to the original `c0` after saving the old value of `c1` into the savelist of the original `c0`. This modification allows `RETALT` to be used to break out of the loop body, providing a way to exit the loop before the exit condition is met.",
       "tags": [],
       "operands": [],
       "other_implementations": [
@@ -695,8 +728,8 @@
   },
   "WHILEBRK": {
     "description": {
-      "short": "",
-      "long": "Executes continuation `c'` and pops an integer `x` from the resulting stack. If `x` is zero, exits the loop and transfers control to the original continuation. If `x` is non-zero, executes continuation `c`, and then begins a new iteration, just like `WHILE`. Additionally, it sets `c1` to the original continuation after saving the old value of `c1` into the savelist of the original continuation. This modification allows `RETALT` to be used to break out of the loop body, providing a way to exit the loop before the condition becomes false.",
+      "short": "Stores current continuation in `c1` of `body` and executes continuation `cond`, then pops an integer `cond` from the resulting stack. If `cond` is **non-zero**, executes `body`, and then begins a new iteration, otherwise ends the loop.",
+      "long": "Just like `WHILE`, but additionally sets `c1` to the original continuation after saving the old value of `c1` into the savelist of the original continuation. This modification allows `RETALT` to be used to break out of the loop body, providing a way to exit the loop before the condition becomes false.",
       "tags": [],
       "operands": []
     },
@@ -756,8 +789,8 @@
   },
   "WHILEENDBRK": {
     "description": {
-      "short": "",
-      "long": "Executes continuation `c'` and pops an integer `x` from the resulting stack. If `x` is zero, exits the loop and transfers control to the original continuation. If `x` is non-zero, executes the current continuation `cс` as the loop body, and then begins a new iteration, just like `WHILEEND`. Additionally, it sets `c1` to the original `c0` after saving the old value of `c1` into the savelist of the original `c0`. This modification allows `RETALT` to be used to break out of the loop body, providing a way to exit the loop before the condition becomes false.",
+      "short": "Stores current continuation in `c1` and executes continuation `cond`, then pops an integer `cond` from the resulting stack. If `cond` is **non-zero**, takes a remainder of the current continuation and executes it as the loop body, then begins a new iteration, otherwise ends the loop.",
+      "long": "Just like `WHILEEND`, but additionally sets `c1` to the original `c0` after saving the old value of `c1` into the savelist of the original `c0`. This modification allows `RETALT` to be used to break out of the loop body, providing a way to exit the loop before the condition becomes false.",
       "tags": [],
       "operands": [],
       "other_implementations": [
@@ -772,10 +805,15 @@
         "stack": [
           {
             "type": "simple",
-            "name": "c",
+            "name": "cond",
             "value_types": ["Continuation"]
           }
-        ]
+        ],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
       }
     }
   },
@@ -806,8 +844,8 @@
   },
   "AGAINENDBRK": {
     "description": {
-      "short": "",
-      "long": "Executes the current continuation `cс` infinitely many times, just like `AGAINEND`. Additionally, it sets `c1` to the original `c0` after saving the old value of `c1` into the savelist of the original `c0`. This modification allows `RETALT` to be used to break out of the infinite loop, providing a way to exit the loop that would otherwise continue indefinitely.",
+      "short": "Stores current continuation in `c1` and takes a remainder of the current continuation and executes it infinitely many times.",
+      "long": "Just like `AGAINEND`, but additionally sets `c1` to the original `c0` after saving the old value of `c1` into the savelist of the original `c0`. This modification allows `RETALT` to be used to break out of the infinite loop, providing a way to exit the loop that would otherwise continue indefinitely.",
       "tags": [],
       "operands": [],
       "other_implementations": [
