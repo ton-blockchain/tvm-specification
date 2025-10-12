@@ -23013,7 +23013,7 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Computes _Tuple_ `t'` that differs from `t` only at position `t'_{k+1}`, which is set to `x`, where `k` is taken from the stack rather than specified in the instruction.",
+        "long": "Sets the `i`-th component of _Tuple_ `t` to `x` taken from the stack.",
         "tags": [],
         "operands": [],
         "exit_codes": [
@@ -23044,7 +23044,7 @@
         "prefix_str": "6F85"
       },
       "signature": {
-        "stack_string": "t:Tuple x:Any k:Int -> t2:Tuple",
+        "stack_string": "t:Tuple x:Any i:Int -> t2:Tuple",
         "inputs": {
           "stack": [
             {
@@ -23058,7 +23058,7 @@
             },
             {
               "type": "simple",
-              "name": "k",
+              "name": "i",
               "range": {
                 "min": 0,
                 "max": 254
@@ -23083,7 +23083,7 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Returns the `k`-th element of a _Tuple_ `t`, where `k` is taken from the stack rather than specified in the instruction. In other words, returns `x_{k+1}` if `t=(x_1,...,x_n)`. If `k>=n`, or if `t` is _Null_, returns a _Null_ instead of `x`.",
+        "long": "Returns the `i`-th element of a _Tuple_ `t` with `i` taken from the stack. If `t` is _Null_ or `i` is greater than tuple length, returns a _Null_.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -23108,7 +23108,7 @@
         "prefix_str": "6F86"
       },
       "signature": {
-        "stack_string": "t:Tuple|Null k:Int -> x:Any",
+        "stack_string": "t:Tuple|Null i:Int -> x:Any",
         "inputs": {
           "stack": [
             {
@@ -23118,7 +23118,7 @@
             },
             {
               "type": "simple",
-              "name": "k",
+              "name": "i",
               "range": {
                 "min": 0,
                 "max": 254
@@ -23141,8 +23141,8 @@
       "category": "tuple",
       "sub_category": "",
       "description": {
-        "short": "",
-        "long": "Sets the `k`-th component of _Tuple_ `t` to `x`, and returns the resulting _Tuple_ `t'`, where `k` is taken from the stack rather than specified in the instruction. If `|t| <= k`, first extends the original _Tuple_ to length `n'=k+1` by setting all new components to _Null_. If the original value of `t` is _Null_, treats it as an empty _Tuple_. If `x` is _Null_ and either `|t| <= k` or `t` is _Null_, then always returns `t'=t` (and does not consume tuple creation gas).",
+        "short": "Sets the `i`-th component of _Tuple_ `t` to `x` take from the stack. If `i` is bigger than tuple length, extends the tuple with Nulls first.",
+        "long": "If `|t| <= k`, first extends the original _Tuple_ to length `n'=k+1` by setting all new components to _Null_. If the original value of `t` is _Null_, treats it as an empty _Tuple_. If `x` is _Null_ and either `|t| <= k` or `t` is _Null_, then always returns `t'=t` and does not consume tuple creation gas.",
         "tags": [],
         "operands": [],
         "exit_codes": [
@@ -23173,7 +23173,7 @@
         "prefix_str": "6F87"
       },
       "signature": {
-        "stack_string": "t:Tuple|Null x:Any k:Int -> t2:Tuple|Null",
+        "stack_string": "t:Tuple|Null x:Any i:Int -> t2:Tuple|Null",
         "inputs": {
           "stack": [
             {
@@ -23187,7 +23187,7 @@
             },
             {
               "type": "simple",
-              "name": "k",
+              "name": "i",
               "range": {
                 "min": 0,
                 "max": 254
@@ -23262,8 +23262,8 @@
       "category": "tuple",
       "sub_category": "",
       "description": {
-        "short": "",
-        "long": "Returns the length of a _Tuple_ `t` if `t` is a _Tuple_, but returns `-1` if `t` is not a _Tuple_. Unlike `TLEN` which throws an exception when `t` is not a _Tuple_, this instruction provides a way to safely check if a value is a _Tuple_ and get its length in one operation.",
+        "short": "Returns the length of a _Tuple_ `t`. If `t` is not a _Tuple_, returns `-1`.",
+        "long": "Unlike `TLEN` which throws an exception when `t` is not a _Tuple_, this instruction provides a way to safely check if a value is a _Tuple_ and get its length in one operation.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -48434,9 +48434,9 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Computes _Tuple_ `t'` that differs from `t` only at position `t'_{k+1}`, which is set to `x`.",
+        "long": "Sets the `i`-th component of _Tuple_ `t` to `x`.",
         "tags": [],
-        "operands": ["k"],
+        "operands": ["i"],
         "exit_codes": [
           {
             "errno": "7",
@@ -48561,9 +48561,9 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Returns the `k`-th element of a _Tuple_ `t`. In other words, returns `x_{k+1}` if `t=(x_1,...,x_n)`. If `k>=n`, or if `t` is _Null_, returns a _Null_ instead of `x`.",
+        "long": "Returns the `i`-th element of a _Tuple_ `t`. If `t` is _Null_ or `i` is greater than tuple length, returns a _Null_.",
         "tags": [],
-        "operands": ["k"],
+        "operands": ["i"],
         "gas": [
           {
             "value": 26,
@@ -48619,10 +48619,10 @@
       "category": "tuple",
       "sub_category": "",
       "description": {
-        "short": "",
-        "long": "Sets the `k`-th component of _Tuple_ `t` to `x`, and returns the resulting _Tuple_ `t'`.\nIf `|t| <= k`, first extends the original _Tuple_ to length `n'=k+1` by setting all new components to _Null_. If the original value of `t` is _Null_, treats it as an empty _Tuple_. If `x` is _Null_ and either `|t| <= k` or `t` is _Null_, then always returns `t'=t` (and does not consume tuple creation gas).",
+        "short": "Sets the `i`-th component of _Tuple_ `t` to `x`. If `i` is bigger than tuple length, extends the tuple with Nulls first.",
+        "long": "If `|t| <= i`, first extends the original _Tuple_ to length `n'=i+1` by setting all new components to _Null_. If the original value of `t` is _Null_, treats it as an empty _Tuple_. If `i` is _Null_ and either `|t| <= i` or `t` is _Null_, then always returns `t'=t` and does not consume tuple creation gas.",
         "tags": [],
-        "operands": ["k"],
+        "operands": ["i"],
         "exit_codes": [
           {
             "errno": "7",
