@@ -60039,7 +60039,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "Calculates `result = ceil(x*y / 2^t))`.",
+        "long": "Calculates `result = ceil(x / 2^t)`.",
         "tags": [],
         "operands": ["t"],
         "gas": [
@@ -60077,17 +60077,12 @@
         "prefix_str": "A936"
       },
       "signature": {
-        "stack_string": "x:Int y:Int -> result:Int",
+        "stack_string": "x:Int -> result:Int",
         "inputs": {
           "stack": [
             {
               "type": "simple",
               "name": "x",
-              "value_types": ["Int"]
-            },
-            {
-              "type": "simple",
-              "name": "y",
               "value_types": ["Int"]
             }
           ],

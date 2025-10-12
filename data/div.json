@@ -4772,7 +4772,7 @@
   "RSHIFTC#": {
     "description": {
       "short": "",
-      "long": "Calculates `result = ceil(x*y / 2^t))`.",
+      "long": "Calculates `result = ceil(x / 2^t)`.",
       "tags": [],
       "operands": ["t"]
     },
@@ -4782,11 +4782,6 @@
           {
             "type": "simple",
             "name": "x",
-            "value_types": ["Int"]
-          },
-          {
-            "type": "simple",
-            "name": "y",
             "value_types": ["Int"]
           }
         ],

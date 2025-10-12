@@ -126,6 +126,9 @@ const generateInstruction = (name: string): string => {
     if (name === "XCHG_1I") {
         return `XCHG_1I s1 s2`
     }
+    if (name === "PFXDICTSWITCH") {
+        return `PFXDICTSWITCH 50 [ 0 => {} ]`
+    }
     const args = generateArgs(opcode)
     if (name.startsWith("2")) {
         return name.slice(1) + "2 " + args.join(" ")
