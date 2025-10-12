@@ -44,8 +44,8 @@
   },
   "PREPAREDICT": {
     "description": {
-      "short": "",
-      "long": "Prepares the continuation in `c3` for execution along with the integer `num` as an argument. Useful if you want to call continuation with `CALLXARGS` or `CALLCC` instead of `EXECUTE` as `CALLDICT` does. Essentially it's a preparation for method call with `num` ID in the dictionary.",
+      "short": "Prepares the continuation in `c3` for execution along with the integer `num` as an argument. Essentially it's a preparation for method call with `num` ID in the dictionary.",
+      "long": "This instruction is useful if you want to call continuation with `CALLXARGS` or `CALLCC` instead of `EXECUTE` as `CALLDICT` does.",
       "tags": [],
       "related_instructions": ["CALLDICT"],
       "operands": ["num"],
@@ -139,7 +139,7 @@
   "CALLDICT_LONG": {
     "description": {
       "short": "",
-      "long": "Calls the continuation in `c3`, pushing integer `num` into its stack as an argument. Essentially it's a call to method with `num` ID in the dictionary.",
+      "long": "Calls the continuation in `c3`, pushing integer `num` with extended range into its stack as an argument. Essentially it's a call to method with `num` ID in the dictionary.",
       "tags": [],
       "related_instructions": ["CALLDICT"],
       "operands": ["num"]
