@@ -13,10 +13,10 @@ language.
 ## Current state
 
 - Instructions count: **908**
-- With exit code description: **107**
+- With exit code description: **111**
 - With examples: **32**
 - With other implementations description: **100**
-- Without any text description: **4**, with arithmetic: **142**
+- Without any text description: **4**, including arithmetic: **142**
 - With empty stack signature: **90**
 - Fift instructions count: **116**
 

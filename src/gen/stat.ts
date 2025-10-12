@@ -60,7 +60,7 @@ const main = () => {
     console.log(`- With examples: **${stats.withExamples}**`)
     console.log(`- With other implementations description: **${stats.withOtherImplementations}**`)
     console.log(
-        `- Without any text description: **${stats.withoutAnyTextDescription}**, with arithmetic: **${stats.withoutAnyTextDescriptionFull}**`,
+        `- Without any text description: **${stats.withoutAnyTextDescription}**, including arithmetic: **${stats.withoutAnyTextDescriptionFull}**`,
     )
     console.log(`- With empty stack signature: **${stats.withoutAEmptySignature}**`)
     console.log(`- Fift instructions count: **${stats.fiftInstructions}**`)

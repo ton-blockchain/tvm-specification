@@ -4973,7 +4973,7 @@
       "sub_category": "cell_serialize",
       "description": {
         "short": "",
-        "long": "Appends all data from _Builder_ `b'` to _Builder_ `b` with swapped arguments.",
+        "long": "Appends all data from _Builder_ `from` to _Builder_ `to` with swapped arguments.",
         "tags": ["builder building"],
         "operands": [],
         "other_implementations": [
@@ -5004,7 +5004,7 @@
         "prefix_str": "CF17"
       },
       "signature": {
-        "stack_string": "to:Builder from:Builder -> b3:Builder",
+        "stack_string": "to:Builder from:Builder -> res:Builder",
         "inputs": {
           "stack": [
             {
@@ -5023,7 +5023,7 @@
           "stack": [
             {
               "type": "simple",
-              "name": "b3",
+              "name": "res",
               "value_types": ["Builder"]
             }
           ]
@@ -21204,10 +21204,16 @@
       "category": "cell",
       "sub_category": "cell_serialize",
       "description": {
-        "short": "",
-        "long": "Stores an _Integer_ `x` in the range `0...2^120-1` into _Builder_ `b`, and returns the resulting _Builder_ `b'`. The serialization of `x` consists of a 4-bit unsigned big-endian integer `l`, which is the smallest integer `l>=0`, such that `x<2^(8l)`, followed by an `8l`-bit unsigned big-endian representation of `x`. If `x` does not belong to the supported range, a range check exception is thrown.",
+        "short": "Stores an integer `x` into _Builder_ `b` as an 16-bit unsigned variable-length integer.",
+        "long": "Stores an integer `x` in the range `0...2^120-1` into _Builder_ `b`, and returns the resulting _Builder_ `b'`. The serialization of `x` consists of a 4-bit unsigned big-endian integer `l`, which is the smallest integer `l>=0`, such that `x<2^(8l)`, followed by an `8l`-bit unsigned big-endian representation of `x`.",
         "tags": ["variable-size integer", "builder building"],
         "operands": [],
+        "exit_codes": [
+          {
+            "errno": "5",
+            "condition": "If `x` is less than 0 and bigger than 2^120-1"
+          }
+        ],
         "gas": [
           {
             "value": 26,
@@ -21230,7 +21236,7 @@
         "prefix_str": "FA02"
       },
       "signature": {
-        "stack_string": "b:Builder x:Int -> b2:Builder",
+        "stack_string": "b:Builder x:Int -> b':Builder",
         "inputs": {
           "stack": [
             {
@@ -21241,7 +21247,11 @@
             {
               "type": "simple",
               "name": "x",
-              "value_types": ["Int"]
+              "value_types": ["Int"],
+              "range": {
+                "min": 0,
+                "max": 1.329227995784916e36
+              }
             }
           ]
         },
@@ -21249,7 +21259,7 @@
           "stack": [
             {
               "type": "simple",
-              "name": "b2",
+              "name": "b'",
               "value_types": ["Builder"]
             }
           ]
@@ -21260,10 +21270,16 @@
       "category": "cell",
       "sub_category": "cell_serialize",
       "description": {
-        "short": "",
-        "long": "Stores a _signed_ _Integer_ `x` in the range `-2^119...2^119-1` into _Builder_ `b`, and returns the resulting _Builder_ `b'`. The serialization of `x` consists of a 4-bit unsigned big-endian integer `l`, which is the smallest integer `l>=0`, such that `-2^(8l-1) <= x < 2^(8l-1)`, followed by an `8l`-bit signed big-endian representation of `x`. If `x` does not belong to the supported range, a range check exception is thrown.",
+        "short": "Stores an integer `x` into _Builder_ `b` as an 16-bit signed variable-length integer.",
+        "long": "Stores a _signed_ _Integer_ `x` in the range `-2^119...2^119-1` into _Builder_ `b`, and returns the resulting _Builder_ `b'`. The serialization of `x` consists of a 4-bit unsigned big-endian integer `l`, which is the smallest integer `l>=0`, such that `-2^(8l-1) <= x < 2^(8l-1)`, followed by an `8l`-bit signed big-endian representation of `x`.",
         "tags": ["variable-size integer", "builder building"],
         "operands": [],
+        "exit_codes": [
+          {
+            "errno": "5",
+            "condition": "If `x` is less than -2^119 and bigger than 2^119-1"
+          }
+        ],
         "gas": [
           {
             "value": 26,
@@ -21286,7 +21302,7 @@
         "prefix_str": "FA03"
       },
       "signature": {
-        "stack_string": "b:Builder x:Int -> b2:Builder",
+        "stack_string": "b:Builder x:Int -> b':Builder",
         "inputs": {
           "stack": [
             {
@@ -21305,7 +21321,7 @@
           "stack": [
             {
               "type": "simple",
-              "name": "b2",
+              "name": "b'",
               "value_types": ["Builder"]
             }
           ]
@@ -21440,10 +21456,16 @@
       "category": "cell",
       "sub_category": "cell_serialize",
       "description": {
-        "short": "",
-        "long": "Stores an _Integer_ `x` in the range `0...2^248-1` into _Builder_ `b`, and returns the resulting _Builder_ `b'`. The serialization of `x` consists of a 5-bit unsigned big-endian integer `l`, which is the smallest integer `l>=0`, such that `x<2^(8l)`, followed by an `8l`-bit unsigned big-endian representation of `x`. If `x` does not belong to the supported range, a range check exception is thrown.",
+        "short": "Stores an integer `x` into _Builder_ `b` as an 32-bit unsigned variable-length integer.",
+        "long": "Stores an _Integer_ `x` in the range `0...2^248-1` into _Builder_ `b`, and returns the resulting _Builder_ `b'`. The serialization of `x` consists of a 5-bit unsigned big-endian integer `l`, which is the smallest integer `l>=0`, such that `x<2^(8l)`, followed by an `8l`-bit unsigned big-endian representation of `x`.",
         "tags": ["variable-size integer", "builder building"],
         "operands": [],
+        "exit_codes": [
+          {
+            "errno": "5",
+            "condition": "If `x` is less than 0 and bigger than 2^248-1"
+          }
+        ],
         "gas": [
           {
             "value": 26,
@@ -21466,7 +21488,7 @@
         "prefix_str": "FA06"
       },
       "signature": {
-        "stack_string": "b:Builder x:Int -> b2:Builder",
+        "stack_string": "b:Builder x:Int -> b':Builder",
         "inputs": {
           "stack": [
             {
@@ -21485,7 +21507,7 @@
           "stack": [
             {
               "type": "simple",
-              "name": "b2",
+              "name": "b'",
               "value_types": ["Builder"]
             }
           ]
@@ -21496,10 +21518,16 @@
       "category": "cell",
       "sub_category": "cell_serialize",
       "description": {
-        "short": "",
-        "long": "Stores a _signed_ _Integer_ `x` in the range `-2^247...2^247-1` into _Builder_ `b`, and returns the resulting _Builder_ `b'`. The serialization of `x` consists of a 5-bit unsigned big-endian integer `l`, which is the smallest integer `l>=0`, such that `-2^(8l-1) <= x < 2^(8l-1)`, followed by an `8l`-bit signed big-endian representation of `x`. If `x` does not belong to the supported range, a range check exception is thrown.",
+        "short": "Stores an integer `x` into _Builder_ `b` as an 32-bit signed variable-length integer.",
+        "long": "Stores a _signed_ _Integer_ `x` in the range `-2^247...2^247-1` into _Builder_ `b`, and returns the resulting _Builder_ `b'`. The serialization of `x` consists of a 5-bit unsigned big-endian integer `l`, which is the smallest integer `l>=0`, such that `-2^(8l-1) <= x < 2^(8l-1)`, followed by an `8l`-bit signed big-endian representation of `x`.",
         "tags": ["variable-size integer", "builder building"],
         "operands": [],
+        "exit_codes": [
+          {
+            "errno": "5",
+            "condition": "If `x` is less than -2^247 and bigger than 2^247-1"
+          }
+        ],
         "gas": [
           {
             "value": 26,
@@ -21522,7 +21550,7 @@
         "prefix_str": "FA07"
       },
       "signature": {
-        "stack_string": "b:Builder x:Int -> b2:Builder",
+        "stack_string": "b:Builder x:Int -> b':Builder",
         "inputs": {
           "stack": [
             {
@@ -21541,7 +21569,7 @@
           "stack": [
             {
               "type": "simple",
-              "name": "b2",
+              "name": "b'",
               "value_types": ["Builder"]
             }
           ]
