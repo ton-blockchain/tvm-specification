@@ -25,6 +25,35 @@
       "required": ["value", "description"],
       "additionalProperties": false
     },
+    "ImplementationInfo": {
+      "type": "object",
+      "description": "Information about the C++ implementation of the instruction in TON repository",
+      "markdownDescription": "Information about the C++ implementation of the instruction in TON repository",
+      "properties": {
+        "commitHash": {
+          "type": "string",
+          "description": "Git commit hash of the TON repository",
+          "markdownDescription": "Git commit hash of the TON repository"
+        },
+        "filePath": {
+          "type": "string",
+          "description": "Path to the C++ file containing the implementation",
+          "markdownDescription": "Path to the C++ file containing the implementation"
+        },
+        "lineNumber": {
+          "type": "number",
+          "description": "Line number where the function is defined",
+          "markdownDescription": "Line number where the function is defined"
+        },
+        "functionName": {
+          "type": "string",
+          "description": "Name of the C++ function implementing this instruction",
+          "markdownDescription": "Name of the C++ function implementing this instruction"
+        }
+      },
+      "required": ["commitHash", "filePath", "lineNumber", "functionName"],
+      "additionalProperties": false
+    },
     "DocsLink": {
       "type": "object",
       "description": "Represents a link to documentation with name and URL",
@@ -126,6 +155,9 @@
         },
         "control_flow": {
           "$ref": "#/definitions/ControlFlow"
+        },
+        "implementation": {
+          "$ref": "#/definitions/ImplementationInfo"
         }
       },
       "required": ["category", "sub_category", "description", "layout", "signature"],

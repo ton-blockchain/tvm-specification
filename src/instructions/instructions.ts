@@ -584,7 +584,7 @@ export const instructions: Record<string, Opcode> = {
     JMPXVARARGS: cat("continuation_jump", mksimple(0xdb3a, 16, `exec_jmpx_varargs`)),
     CALLCCVARARGS: cat("continuation_jump", mksimple(0xdb3b, 16, `exec_callcc_varargs`)),
     RETDATA: cat("continuation_jump", mksimple(0xdb3f, 16, `exec_ret_data`)),
-    RUNVMX: version(4, cat("continuation_jump", mksimple(0xdb50, 16, ` exec_runvmx`))),
+    RUNVMX: version(4, cat("continuation_jump", mksimple(0xdb50, 16, `exec_runvmx`))),
     IFRET: cat("continuation_cond", mksimple(0xdc, 8, `exec_ifret`)),
     IFNOTRET: cat("continuation_cond", mksimple(0xdd, 8, `exec_ifnotret`)),
     IF: cat("continuation_cond", mksimple(0xde, 8, `exec_if`)),

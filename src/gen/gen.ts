@@ -38,6 +38,22 @@ const main = () => {
         }
     }
 
+    let implementationMapping: Record<string, any> = {}
+    const implementationsPath = `${__dirname}/../../.tmp/implementations.json`
+    if (fs.existsSync(implementationsPath)) {
+        try {
+            implementationMapping = JSON.parse(fs.readFileSync(implementationsPath, "utf-8"))
+            console.log(
+                `Loaded ${Object.keys(implementationMapping).length} implementation mappings`,
+            )
+        } catch (error) {
+            console.warn("Failed to load implementations.json:", error)
+        }
+    } else {
+        console.error("implementations.json not found, forget to run `yarn find-implementations`?")
+        process.exit(1)
+    }
+
     const allInstructions: Record<string, Instruction> = {}
 
     for (const [name, opcode] of Object.entries(instructions)) {
@@ -82,6 +98,7 @@ const main = () => {
                   }
                 : {},
             control_flow: instr.control_flow,
+            implementation: implementationMapping[name],
         }
     }
 

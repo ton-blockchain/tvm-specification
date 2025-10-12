@@ -6,6 +6,7 @@
         "fmt": "prettier --write -l --cache .",
         "fmt:check": "prettier --check --cache .",
         "generate": "ts-node src/gen/gen.ts && yarn fmt",
+        "find-implementations": "ts-node src/gen/implementation-finder.ts",
         "validate": "ts-node ./validity/input-instr-signature.ts",
         "precommit": "yarn fmt && yarn generate && yarn validate"
     },

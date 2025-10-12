@@ -1,4 +1,7 @@
-import type {InstructionSignature} from "./stack-signatures-schema"
+import type {
+    InstructionSignature,
+    Continuation,
+} from "./stack-signatures-schema"
 
 export interface Specification {
     readonly $schema: string
@@ -15,6 +18,13 @@ export interface FiftInstruction {
     readonly description?: string
 }
 
+export interface ImplementationInfo {
+    readonly commitHash: string
+    readonly filePath: string
+    readonly lineNumber: number
+    readonly functionName: string
+}
+
 export interface Instruction {
     readonly category: string
     readonly sub_category: string
@@ -23,6 +33,7 @@ export interface Instruction {
     readonly effects?: readonly string[]
     readonly signature: InstructionSignature
     readonly control_flow?: ControlFlowOfInstruction
+    readonly implementation?: ImplementationInfo
 }
 
 export interface ExitCode {
@@ -127,68 +138,4 @@ export interface Refs {
 
 export interface ControlFlowOfInstruction {
     readonly branches: Continuation[]
-}
-
-export type Continuation =
-    | {
-          readonly type: "cc"
-          readonly save?: ContinuationSavelist
-      }
-    | {
-          readonly type: "variable"
-          readonly var_name: string
-          readonly save?: ContinuationSavelist
-      }
-    | {
-          readonly type: "register"
-          readonly index: number
-          readonly save?: ContinuationSavelist
-      }
-    | {
-          readonly type: "special"
-          readonly name: "until"
-          readonly args: {
-              readonly body: Continuation
-              readonly after: Continuation
-          }
-      }
-    | {
-          readonly type: "special"
-          readonly name: "while"
-          readonly args: {
-              readonly cond: Continuation
-              readonly body: Continuation
-              readonly after: Continuation
-          }
-      }
-    | {
-          readonly type: "special"
-          readonly name: "again"
-          readonly args: {
-              readonly body: Continuation
-          }
-      }
-    | {
-          readonly type: "special"
-          readonly name: "repeat"
-          readonly args: {
-              readonly count: string
-              readonly body: Continuation
-              readonly after: Continuation
-          }
-      }
-    | {
-          readonly type: "special"
-          readonly name: "pushint"
-          readonly args: {
-              readonly value: number
-              readonly next: Continuation
-          }
-      }
-
-export interface ContinuationSavelist {
-    readonly c0?: Continuation
-    readonly c1?: Continuation
-    readonly c2?: Continuation
-    readonly c3?: Continuation
 }

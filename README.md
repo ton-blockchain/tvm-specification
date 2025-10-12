@@ -7,7 +7,7 @@ Full specification as a JSON file can be found in [`gen/tvm-specification.json`]
 TypeScript wrappers can be found in [`types/`](src/types) and used via `tvm-specification` package.
 
 JSON Schema of specifications is available in [`gen/schema.json`](gen/schema.json).
-Generators such as [quicktype.io](https://app.quicktype.io/) can be used to generate wrappers for specific programming
+Generators such as [quicktype.io](https://app.quicktype.io/) can be used to generate wrappers for a specific programming
 language.
 
 ## Current state
@@ -35,13 +35,20 @@ file which contains bit-level specification for each instruction.
 
 ### Generation
 
-To generate latest specification run:
+To generate C++ implementations for each instruction, we need to clone the TON repository. Before the full specification
+generation run the following command to clone TON repository and generate `implementations.json` file.
+
+```
+yarn find-implementations
+```
+
+To generate the full specification, run:
 
 ```
 yarn generate
 ```
 
-Before commit run:
+Before the commit run:
 
 ```
 yarn precommit
