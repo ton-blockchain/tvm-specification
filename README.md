@@ -16,7 +16,7 @@ language.
 - With exit code description: **111**
 - With examples: **33**
 - With other implementations description: **100**
-- Without any text description: **0**, including arithmetic: **132**
+- Without any text description: **0**, including arithmetic: **50**
 - With empty stack signature: **85**
 - Fift instructions count: **116**
 - With C++ implementations: **908**
