@@ -19,6 +19,7 @@ language.
 - Without any text description: **0**, including arithmetic: **138**
 - With empty stack signature: **89**
 - Fift instructions count: **116**
+- With C++ implementations: **908**
 
 ## Validity
 
