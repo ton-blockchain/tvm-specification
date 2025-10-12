@@ -14,10 +14,10 @@ language.
 
 - Instructions count: **908**
 - With exit code description: **111**
-- With examples: **32**
+- With examples: **33**
 - With other implementations description: **100**
-- Without any text description: **4**, including arithmetic: **142**
-- With empty stack signature: **90**
+- Without any text description: **0**, including arithmetic: **138**
+- With empty stack signature: **89**
 - Fift instructions count: **116**
 
 ## Validity

@@ -2,9 +2,27 @@
   "DEBUGSTR": {
     "description": {
       "short": "",
-      "long": "Outputs passed string to VM logs.",
+      "long": "Outputs passed string to debug logs.",
       "tags": [],
-      "operands": ["s"]
+      "operands": ["s"],
+      "examples": [
+        {
+          "instructions": [
+            {
+              "instruction": "",
+              "comment": "Outputs \"hello world\" to logs"
+            },
+            {
+              "instruction": "DEBUGSTR \"hello world\"",
+              "comment": ""
+            }
+          ],
+          "stack": {
+            "input": [],
+            "output": []
+          }
+        }
+      ]
     },
     "signature": {
       "inputs": {
@@ -19,8 +37,8 @@
   },
   "DUMPSTK": {
     "description": {
-      "short": "Dumps the entire contents of the stack for debugging.",
-      "long": "Outputs the entire contents of the stack to debug output without modifying the stack. Useful for debugging and stack inspection.",
+      "short": "Dumps the entire contents of the stack to debug logs.",
+      "long": "Outputs the entire contents of the stack to debug logs without modifying the stack. Useful for debugging and stack inspection.",
       "tags": ["debug", "stack"],
       "operands": []
     },
@@ -37,8 +55,8 @@
   },
   "DEBUG": {
     "description": {
-      "short": "",
-      "long": "",
+      "short": "Base instruction for debugging purposes.",
+      "long": "- With `i=0` and `j=0` this instruction outputs the entire stack as `DUMPSTK`.\n\n- With `i=1` and `j=4` this instruction outputs the string taken from the top of the stack as `STRDUMP`.\n\n- With `i=2` and any `j` this instruction dumps a slice with length divisible by 8 from `j`-th element of the stack as a string as `DUMP`.",
       "tags": [],
       "operands": ["i", "j"]
     },
@@ -55,8 +73,8 @@
   },
   "STRDUMP": {
     "description": {
-      "short": "Dumps slice value as a UTF-8 encoded string to debug output.",
-      "long": "Takes a string value as a slice from the stack and outputs it to debug output. The string is interpreted as a UTF-8 encoded text.",
+      "short": "Dumps slice value as a UTF-8 encoded string to debug logs.",
+      "long": "Takes a string value as a slice from the stack and outputs it to debug logs. The string is interpreted as a UTF-8 encoded text.",
       "tags": ["debug", "string"],
       "operands": []
     },
@@ -86,7 +104,7 @@
   "DEBUG_1": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Padding instruction that does nothing.",
       "tags": [],
       "operands": []
     },
@@ -103,8 +121,8 @@
   },
   "DUMP": {
     "description": {
-      "short": "Dumps a `i`-th value from stack to debug output.",
-      "long": "Takes a value from the stack at position `i` and outputs it to debug output. The value is formatted according to its type.",
+      "short": "Dumps a `i`-th value from stack to debug logs.",
+      "long": "Takes a value from the stack at position `i` and outputs it to debug logs. The value is formatted according to its type.",
       "tags": ["debug", "stack"],
       "operands": ["i"]
     },
@@ -122,7 +140,7 @@
   "DEBUG_2": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Padding instruction that does nothing.",
       "tags": [],
       "operands": []
     },

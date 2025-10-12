@@ -240,18 +240,71 @@
   },
   "SECP256K1_XONLY_PUBKEY_TWEAK_ADD": {
     "description": {
-      "short": "",
-      "long": "",
+      "short": "Performs `secp256k1_xonly_pubkey_tweak_add()`.",
+      "long": "`key` and `tweak` are 256-bit unsigned integers. 65-byte public key is returned as `uint8 f`, `uint256 x, y` as in `ECRECOVER`.",
       "tags": [],
-      "operands": []
+      "operands": [],
+      "docs_links": [
+        {
+          "name": "Implementation of the `secp256k1_xonly_pubkey_tweak_add`",
+          "url": "https://github.com/bitcoin-core/secp256k1/blob/master/include/secp256k1_extrakeys.h#L120"
+        }
+      ]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "key",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "tweak",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": []
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "f",
+                    "value_types": ["Int"]
+                  },
+                  {
+                    "type": "simple",
+                    "name": "x",
+                    "value_types": ["Int"]
+                  },
+                  {
+                    "type": "simple",
+                    "name": "y",
+                    "value_types": ["Int"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
