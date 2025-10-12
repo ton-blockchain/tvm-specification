@@ -38448,9 +38448,25 @@
         "prefix_str": "F4BF"
       },
       "signature": {
-        "stack_string": "∅ -> (i:Int 0)",
+        "stack_string": "i:Int D:Cell|Null n:Int -> (i:Int 0)",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "i",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "D",
+              "value_types": ["Cell", "Null"]
+            },
+            {
+              "type": "simple",
+              "name": "n",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
