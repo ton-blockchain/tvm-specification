@@ -11368,6 +11368,12 @@
             "condition": "If `n >= 2^31` or `n < -2^31`."
           }
         ],
+        "docs_links": [
+          {
+            "name": "Exit points of continuations",
+            "url": "https://txtracer.ton.org/spec/doc/book/continuations/diving-deeper-exit-points-of-continuations/"
+          }
+        ],
         "gas": [
           {
             "value": 26,
@@ -11402,6 +11408,16 @@
               "type": "simple",
               "name": "body",
               "value_types": ["Continuation"]
+            }
+          ],
+          "registers": []
+        },
+        "outputs": {
+          "stack": [],
+          "registers": [
+            {
+              "type": "constant",
+              "index": 1
             }
           ]
         }
@@ -11464,6 +11480,12 @@
             "condition": "If `n >= 2^31` or `n < -2^31`."
           }
         ],
+        "docs_links": [
+          {
+            "name": "Exit points of continuations",
+            "url": "https://txtracer.ton.org/spec/doc/book/continuations/diving-deeper-exit-points-of-continuations/"
+          }
+        ],
         "other_implementations": [
           {
             "exact": true,
@@ -11505,7 +11527,12 @@
         },
         "outputs": {
           "stack": [],
-          "registers": []
+          "registers": [
+            {
+              "type": "constant",
+              "index": 1
+            }
+          ]
         }
       },
       "control_flow": {
@@ -11541,6 +11568,12 @@
         "long": "Just like `UNTIL`, but additionally sets `c1` to the original continuation after saving the old value of `c1` into the savelist of the original continuation. This modification allows `RETALT` to be used to break out of the loop body, providing a way to exit the loop before the exit condition is met.",
         "tags": [],
         "operands": [],
+        "docs_links": [
+          {
+            "name": "Exit points of continuations",
+            "url": "https://txtracer.ton.org/spec/doc/book/continuations/diving-deeper-exit-points-of-continuations/"
+          }
+        ],
         "gas": [
           {
             "value": 26,
@@ -11570,6 +11603,16 @@
               "type": "simple",
               "name": "body",
               "value_types": ["Continuation"]
+            }
+          ],
+          "registers": []
+        },
+        "outputs": {
+          "stack": [],
+          "registers": [
+            {
+              "type": "constant",
+              "index": 1
             }
           ]
         }
@@ -11644,6 +11687,12 @@
         "long": "Just like `UNTILEND`, but additionally sets `c1` to the original `c0` after saving the old value of `c1` into the savelist of the original `c0`. This modification allows `RETALT` to be used to break out of the loop body, providing a way to exit the loop before the exit condition is met.",
         "tags": [],
         "operands": [],
+        "docs_links": [
+          {
+            "name": "Exit points of continuations",
+            "url": "https://txtracer.ton.org/spec/doc/book/continuations/diving-deeper-exit-points-of-continuations/"
+          }
+        ],
         "other_implementations": [
           {
             "exact": true,
@@ -11679,7 +11728,12 @@
         },
         "outputs": {
           "stack": [],
-          "registers": []
+          "registers": [
+            {
+              "type": "constant",
+              "index": 1
+            }
+          ]
         }
       },
       "control_flow": {
@@ -11723,6 +11777,12 @@
         "long": "Just like `WHILE`, but additionally sets `c1` to the original continuation after saving the old value of `c1` into the savelist of the original continuation. This modification allows `RETALT` to be used to break out of the loop body, providing a way to exit the loop before the condition becomes false.",
         "tags": [],
         "operands": [],
+        "docs_links": [
+          {
+            "name": "Exit points of continuations",
+            "url": "https://txtracer.ton.org/spec/doc/book/continuations/diving-deeper-exit-points-of-continuations/"
+          }
+        ],
         "gas": [
           {
             "value": 26,
@@ -11757,6 +11817,16 @@
               "type": "simple",
               "name": "body",
               "value_types": ["Continuation"]
+            }
+          ],
+          "registers": []
+        },
+        "outputs": {
+          "stack": [],
+          "registers": [
+            {
+              "type": "constant",
+              "index": 1
             }
           ]
         }
@@ -11807,6 +11877,12 @@
         "long": "Just like `WHILEEND`, but additionally sets `c1` to the original `c0` after saving the old value of `c1` into the savelist of the original `c0`. This modification allows `RETALT` to be used to break out of the loop body, providing a way to exit the loop before the condition becomes false.",
         "tags": [],
         "operands": [],
+        "docs_links": [
+          {
+            "name": "Exit points of continuations",
+            "url": "https://txtracer.ton.org/spec/doc/book/continuations/diving-deeper-exit-points-of-continuations/"
+          }
+        ],
         "other_implementations": [
           {
             "exact": true,
@@ -11848,7 +11924,12 @@
         },
         "outputs": {
           "stack": [],
-          "registers": []
+          "registers": [
+            {
+              "type": "constant",
+              "index": 1
+            }
+          ]
         }
       }
     },
@@ -11897,6 +11978,15 @@
               "value_types": ["Continuation"]
             }
           ]
+        },
+        "outputs": {
+          "stack": [],
+          "registers": [
+            {
+              "type": "constant",
+              "index": 1
+            }
+          ]
         }
       }
     },
@@ -11908,6 +11998,12 @@
         "long": "Just like `AGAINEND`, but additionally sets `c1` to the original `c0` after saving the old value of `c1` into the savelist of the original `c0`. This modification allows `RETALT` to be used to break out of the infinite loop, providing a way to exit the loop that would otherwise continue indefinitely.",
         "tags": [],
         "operands": [],
+        "docs_links": [
+          {
+            "name": "Exit points of continuations",
+            "url": "https://txtracer.ton.org/spec/doc/book/continuations/diving-deeper-exit-points-of-continuations/"
+          }
+        ],
         "other_implementations": [
           {
             "exact": true,
@@ -11943,7 +12039,12 @@
         },
         "outputs": {
           "stack": [],
-          "registers": []
+          "registers": [
+            {
+              "type": "constant",
+              "index": 1
+            }
+          ]
         }
       }
     },
