@@ -30,28 +30,28 @@
       "description": "Information about the C++ implementation of the instruction in TON repository",
       "markdownDescription": "Information about the C++ implementation of the instruction in TON repository",
       "properties": {
-        "commitHash": {
+        "commit_hash": {
           "type": "string",
           "description": "Git commit hash of the TON repository",
           "markdownDescription": "Git commit hash of the TON repository"
         },
-        "filePath": {
+        "file_path": {
           "type": "string",
           "description": "Path to the C++ file containing the implementation",
           "markdownDescription": "Path to the C++ file containing the implementation"
         },
-        "lineNumber": {
+        "line_number": {
           "type": "number",
           "description": "Line number where the function is defined",
           "markdownDescription": "Line number where the function is defined"
         },
-        "functionName": {
+        "function_name": {
           "type": "string",
           "description": "Name of the C++ function implementing this instruction",
           "markdownDescription": "Name of the C++ function implementing this instruction"
         }
       },
-      "required": ["commitHash", "filePath", "lineNumber", "functionName"],
+      "required": ["commit_hash", "file_path", "line_number", "function_name"],
       "additionalProperties": false
     },
     "DocsLink": {

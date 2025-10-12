@@ -1,7 +1,4 @@
-import type {
-    InstructionSignature,
-    Continuation,
-} from "./stack-signatures-schema"
+import type {InstructionSignature, Continuation} from "./stack-signatures-schema"
 
 export interface Specification {
     readonly $schema: string
@@ -19,10 +16,10 @@ export interface FiftInstruction {
 }
 
 export interface ImplementationInfo {
-    readonly commitHash: string
-    readonly filePath: string
-    readonly lineNumber: number
-    readonly functionName: string
+    readonly commit_hash: string
+    readonly file_path: string
+    readonly line_number: number
+    readonly function_name: string
 }
 
 export interface Instruction {

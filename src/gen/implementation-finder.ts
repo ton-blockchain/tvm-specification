@@ -4,10 +4,10 @@ import {execSync} from "node:child_process"
 import {instructions} from "../instructions"
 
 interface ImplementationInfo {
-    readonly commitHash: string
-    readonly filePath: string
-    readonly lineNumber: number
-    readonly functionName: string
+    readonly commit_hash: string
+    readonly file_path: string
+    readonly line_number: number
+    readonly function_name: string
 }
 
 interface ImplementationMapping {
@@ -134,10 +134,10 @@ function findFunctionDefinition(
                 if (line && functionPattern.test(line)) {
                     const relativePath = path.relative(TON_REPO_PATH, filePath)
                     return {
-                        commitHash: commitHash,
-                        filePath: relativePath,
-                        lineNumber: i + 1,
-                        functionName: functionName,
+                        commit_hash: commitHash,
+                        file_path: relativePath,
+                        line_number: i + 1,
+                        function_name: functionName,
                     }
                 }
             }
