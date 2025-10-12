@@ -28623,7 +28623,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `result = x % (2^y)`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -28648,7 +28648,7 @@
         "prefix_str": "A928"
       },
       "signature": {
-        "stack_string": "x:Int z:Int -> result:Int",
+        "stack_string": "x:Int y:Int -> result:Int",
         "inputs": {
           "stack": [
             {
@@ -28658,7 +28658,7 @@
             },
             {
               "type": "simple",
-              "name": "z",
+              "name": "y",
               "value_types": ["Int"]
             }
           ]
@@ -31598,7 +31598,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `result = (x * y) >> z`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -59806,7 +59806,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `result = floor(x / 2 ^ t)`",
         "tags": [],
         "operands": ["t"],
         "gas": [
@@ -59844,13 +59844,25 @@
         "prefix_str": "A934"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Int -> result:Int",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "result",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         }
       },
@@ -59866,7 +59878,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `result = round(x / 2^tt)`",
         "tags": [],
         "operands": ["t"],
         "gas": [
@@ -59904,13 +59916,25 @@
         "prefix_str": "A935"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Int -> result:Int",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "result",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         }
       },
@@ -59926,7 +59950,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `result = ceil(x*y / 2^t))`.",
         "tags": [],
         "operands": ["t"],
         "gas": [
@@ -59964,13 +59988,30 @@
         "prefix_str": "A936"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Int y:Int -> result:Int",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "y",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "result",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         }
       },
@@ -59986,7 +60027,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `result = x % (2^t)`.",
         "tags": [],
         "operands": ["t"],
         "gas": [
@@ -60024,13 +60065,25 @@
         "prefix_str": "A938"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Int -> result:Int",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "result",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         }
       },

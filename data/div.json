@@ -1111,7 +1111,7 @@
   "MODPOW2": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `result = x % (2^y)`.",
       "tags": [],
       "operands": []
     },
@@ -1125,7 +1125,7 @@
           },
           {
             "type": "simple",
-            "name": "z",
+            "name": "y",
             "value_types": ["Int"]
           }
         ]
@@ -2798,7 +2798,7 @@
   "MULRSHIFT": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `result = (x * y) >> z`.",
       "tags": [],
       "operands": []
     },
@@ -4712,17 +4712,29 @@
   "RSHIFT#": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `result = floor(x / 2 ^ t)`",
       "tags": [],
       "operands": ["t"]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
@@ -4730,17 +4742,29 @@
   "RSHIFTR#": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `result = round(x / 2^tt)`",
       "tags": [],
       "operands": ["t"]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
@@ -4748,17 +4772,34 @@
   "RSHIFTC#": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `result = ceil(x*y / 2^t))`.",
       "tags": [],
       "operands": ["t"]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
@@ -4766,17 +4807,29 @@
   "MODPOW2#": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `result = x % (2^t)`.",
       "tags": [],
       "operands": ["t"]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
