@@ -61,6 +61,40 @@
       }
     }
   },
+  "HASHBU": {
+    "description": {
+      "short": "",
+      "long": "Computes the hash of a _Builder_ `b` and returns it as a 256-bit unsigned integer `hash`. The result is the same as if an ordinary cell containing only data and references from `b` had been created and its hash computed by `HASHCU`.",
+      "tags": [],
+      "operands": [],
+      "other_implementations": [
+        {
+          "exact": true,
+          "instructions": ["ENDC", "HASHCU"]
+        }
+      ]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "hash",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
   "SHA256U": {
     "description": {
       "short": "",

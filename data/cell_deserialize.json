@@ -28,6 +28,41 @@
       }
     }
   },
+  "BTOS": {
+    "description": {
+      "short": "Converts a _Builder_ into a _Slice_.",
+      "long": "This instruction is equivalent to `ENDC`, `CTOS` without extra gas for intermediate Cell creation.",
+      "tags": [],
+      "operands": [],
+      "exit_codes": [],
+      "other_implementations": [
+        {
+          "exact": true,
+          "instructions": ["ENDC", "CTOS"]
+        }
+      ]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
   "ENDS": {
     "description": {
       "short": "Removes a _Slice_ `s` from the stack. Throws an exception if it is not empty.",
