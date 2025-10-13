@@ -3684,7 +3684,7 @@
   "DICTADDGETREF": {
     "description": {
       "short": "",
-      "long": "An _Add_ counterpart of `DICTSETGETREF`.",
+      "long": "Sets the value associated with `n`-bit key `k` in dictionary `D` to a reference to _Cell_ `c`, but only if the key is not already present in `D`. Returns the resulting dictionary `D'` and the reference to _Cell_ `c` on success. If the key was already present, returns the original dictionary `D` and the existing _Cell_ reference without modification.",
       "tags": [],
       "operands": []
     },
