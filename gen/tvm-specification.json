@@ -60877,7 +60877,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `q=floor(x/2^t)` and `r=x-q*2^t`.",
         "tags": [],
         "operands": ["t"],
         "gas": [
@@ -60915,13 +60915,30 @@
         "prefix_str": "A93C"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Int -> q:Int r:Int",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "q",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "r",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         }
       },
@@ -60937,7 +60954,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `q=round(x/2^t)` and `r=x-q*2^t`.",
         "tags": [],
         "operands": ["t"],
         "gas": [
@@ -60975,13 +60992,30 @@
         "prefix_str": "A93D"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Int -> q:Int r:Int",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "q",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "r",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         }
       },
@@ -60997,7 +61031,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `q=ceil(x/2^t)` and `r=x-q*2^t`.",
         "tags": [],
         "operands": ["t"],
         "gas": [
@@ -61035,13 +61069,30 @@
         "prefix_str": "A93E"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Int -> q:Int r:Int",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "q",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "r",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         }
       },
@@ -61321,7 +61372,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `result = (x * y) >> t`.",
         "tags": [],
         "operands": ["t"],
         "gas": [
@@ -61359,13 +61410,30 @@
         "prefix_str": "A9B4"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Int y:Int -> result:Int",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "y",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "result",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         }
       },
@@ -61381,7 +61449,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `result = round(x*y/2^t)`.",
         "tags": [],
         "operands": ["t"],
         "gas": [
@@ -61419,13 +61487,30 @@
         "prefix_str": "A9B5"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Int y:Int -> result:Int",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "y",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "result",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         }
       },
@@ -61441,7 +61526,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `result = ceil(x*y/2^t)`.",
         "tags": [],
         "operands": ["t"],
         "gas": [
@@ -61479,13 +61564,30 @@
         "prefix_str": "A9B6"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Int y:Int -> result:Int",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "y",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "result",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         }
       },
@@ -61501,7 +61603,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `result = x*y mod 2^t`.",
         "tags": [],
         "operands": ["t"],
         "gas": [
@@ -61539,13 +61641,30 @@
         "prefix_str": "A9B8"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Int y:Int -> result:Int",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "y",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "result",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         }
       },
@@ -61561,7 +61680,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `result = x*y mod 2^t`.",
         "tags": [],
         "operands": ["t"],
         "gas": [
@@ -61599,13 +61718,30 @@
         "prefix_str": "A9B9"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Int y:Int -> result:Int",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "y",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "result",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         }
       },
@@ -61621,7 +61757,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `result = x*y mod 2^t`.",
         "tags": [],
         "operands": ["t"],
         "gas": [
@@ -61659,13 +61795,30 @@
         "prefix_str": "A9BA"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Int y:Int -> result:Int",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "y",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "result",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         }
       },
@@ -61681,7 +61834,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `q=floor(x*y/2^t)` and `r=xy-q*2^t`.",
         "tags": [],
         "operands": ["t"],
         "gas": [
@@ -61719,13 +61872,35 @@
         "prefix_str": "A9BC"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Int y:Int -> q:Int r:Int",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "y",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "q",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "r",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         }
       },
@@ -61741,7 +61916,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `q=round(x*y/2^t)` and `r=xy-q*2^t`.",
         "tags": [],
         "operands": ["t"],
         "gas": [
@@ -61779,13 +61954,35 @@
         "prefix_str": "A9BD"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Int y:Int -> q:Int r:Int",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "y",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "q",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "r",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         }
       },
@@ -61801,7 +61998,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `q=ceil(x*y/2^t)` and `r=xy-q*2^t`.",
         "tags": [],
         "operands": ["t"],
         "gas": [
@@ -61839,13 +62036,35 @@
         "prefix_str": "A9BE"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Int y:Int -> q:Int r:Int",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "y",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "q",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "r",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         }
       },
@@ -62125,7 +62344,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `result = floor(2^t*x/y)`.",
         "tags": [],
         "operands": ["t"],
         "gas": [
@@ -62163,13 +62382,30 @@
         "prefix_str": "A9D4"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Int y:Int -> result:Int",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "y",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "result",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         }
       },
@@ -62185,7 +62421,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `result = round(2^t*x/y)`.",
         "tags": [],
         "operands": ["t"],
         "gas": [
@@ -62223,13 +62459,30 @@
         "prefix_str": "A9D5"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Int y:Int -> result:Int",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "y",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "result",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         }
       },
@@ -62245,7 +62498,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `result = ceil(2^t*x/y)`.",
         "tags": [],
         "operands": ["t"],
         "gas": [
@@ -62283,13 +62536,30 @@
         "prefix_str": "A9D6"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Int y:Int -> result:Int",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "y",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "result",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         }
       },
@@ -62305,7 +62575,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `result = 2^t*x mod y`.",
         "tags": [],
         "operands": ["t"],
         "gas": [
@@ -62343,13 +62613,30 @@
         "prefix_str": "A9D8"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Int y:Int -> result:Int",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "y",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "result",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         }
       },
@@ -62365,7 +62652,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `result = 2^t*x mod y`.",
         "tags": [],
         "operands": ["t"],
         "gas": [
@@ -62403,13 +62690,30 @@
         "prefix_str": "A9D9"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Int y:Int -> result:Int",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "y",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "result",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         }
       },
@@ -62425,7 +62729,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `result = 2^t*x mod y`.",
         "tags": [],
         "operands": ["t"],
         "gas": [
@@ -62463,13 +62767,30 @@
         "prefix_str": "A9DA"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Int y:Int -> result:Int",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "y",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "result",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         }
       },
@@ -62485,7 +62806,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `q=floor(2^t*x/y)` and `r=2^t*x-q*y`.",
         "tags": [],
         "operands": ["t"],
         "gas": [
@@ -62523,13 +62844,35 @@
         "prefix_str": "A9DC"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Int y:Int -> q:Int r:Int",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "y",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "q",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "r",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         }
       },
@@ -62545,7 +62888,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `q=round(2^t*x/y)` and `r=2^t*x-q*y`.",
         "tags": [],
         "operands": ["t"],
         "gas": [
@@ -62583,13 +62926,35 @@
         "prefix_str": "A9DD"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Int y:Int -> q:Int r:Int",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "y",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "q",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "r",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         }
       },
@@ -62605,7 +62970,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `q=ceil(2^t*x/y)` and `r=2^t*x-q*y`.",
         "tags": [],
         "operands": ["t"],
         "gas": [
@@ -62643,13 +63008,35 @@
         "prefix_str": "A9DE"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Int y:Int -> q:Int r:Int",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "y",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "q",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "r",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         }
       },

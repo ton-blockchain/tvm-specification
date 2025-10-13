@@ -4934,17 +4934,34 @@
   "RSHIFT#MOD": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `q=floor(x/2^t)` and `r=x-q*2^t`.",
       "tags": [],
       "operands": ["t"]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
@@ -4952,17 +4969,34 @@
   "RSHIFTR#MOD": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `q=round(x/2^t)` and `r=x-q*2^t`.",
       "tags": [],
       "operands": ["t"]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
@@ -4970,17 +5004,34 @@
   "RSHIFTC#MOD": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `q=ceil(x/2^t)` and `r=x-q*2^t`.",
       "tags": [],
       "operands": ["t"]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
@@ -5123,17 +5174,34 @@
   "MULRSHIFT#": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `result = (x * y) >> t`.",
       "tags": [],
       "operands": ["t"]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
@@ -5141,17 +5209,34 @@
   "MULRSHIFTR#": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `result = round(x*y/2^t)`.",
       "tags": [],
       "operands": ["t"]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
@@ -5159,17 +5244,34 @@
   "MULRSHIFTC#": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `result = ceil(x*y/2^t)`.",
       "tags": [],
       "operands": ["t"]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
@@ -5177,17 +5279,34 @@
   "MULMODPOW2#": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `result = x*y mod 2^t`.",
       "tags": [],
       "operands": ["t"]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
@@ -5195,17 +5314,34 @@
   "MULMODPOW2R#": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `result = x*y mod 2^t`.",
       "tags": [],
       "operands": ["t"]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
@@ -5213,17 +5349,34 @@
   "MULMODPOW2C#": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `result = x*y mod 2^t`.",
       "tags": [],
       "operands": ["t"]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
@@ -5231,17 +5384,39 @@
   "MULRSHIFT#MOD": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `q=floor(x*y/2^t)` and `r=xy-q*2^t`.",
       "tags": [],
       "operands": ["t"]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
@@ -5249,17 +5424,39 @@
   "MULRSHIFTR#MOD": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `q=round(x*y/2^t)` and `r=xy-q*2^t`.",
       "tags": [],
       "operands": ["t"]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
@@ -5267,17 +5464,39 @@
   "MULRSHIFTC#MOD": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `q=ceil(x*y/2^t)` and `r=xy-q*2^t`.",
       "tags": [],
       "operands": ["t"]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
@@ -5420,17 +5639,34 @@
   "LSHIFT#DIV": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `result = floor(2^t*x/y)`.",
       "tags": [],
       "operands": ["t"]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
@@ -5438,17 +5674,34 @@
   "LSHIFT#DIVR": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `result = round(2^t*x/y)`.",
       "tags": [],
       "operands": ["t"]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
@@ -5456,17 +5709,34 @@
   "LSHIFT#DIVC": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `result = ceil(2^t*x/y)`.",
       "tags": [],
       "operands": ["t"]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
@@ -5474,17 +5744,34 @@
   "LSHIFT#MOD": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `result = 2^t*x mod y`.",
       "tags": [],
       "operands": ["t"]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
@@ -5492,17 +5779,34 @@
   "LSHIFT#MODR": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `result = 2^t*x mod y`.",
       "tags": [],
       "operands": ["t"]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
@@ -5510,17 +5814,34 @@
   "LSHIFT#MODC": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `result = 2^t*x mod y`.",
       "tags": [],
       "operands": ["t"]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
@@ -5528,17 +5849,39 @@
   "LSHIFT#DIVMOD": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `q=floor(2^t*x/y)` and `r=2^t*x-q*y`.",
       "tags": [],
       "operands": ["t"]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
@@ -5546,17 +5889,39 @@
   "LSHIFT#DIVMODR": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `q=round(2^t*x/y)` and `r=2^t*x-q*y`.",
       "tags": [],
       "operands": ["t"]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
@@ -5564,17 +5929,39 @@
   "LSHIFT#DIVMODC": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `q=ceil(2^t*x/y)` and `r=2^t*x-q*y`.",
       "tags": [],
       "operands": ["t"]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
