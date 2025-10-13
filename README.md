@@ -12,14 +12,14 @@ language.
 
 ## Current state
 
-- Instructions count: **908**
+- Instructions count: **910**
 - With exit code description: **111**
 - With examples: **33**
-- With other implementations description: **100**
+- With other implementations description: **102**
 - Without any text description: **0**, including arithmetic: **50**
 - With unverified empty stack signature: **64**
 - Fift instructions count: **116**
-- With C++ implementations: **908**
+- With C++ implementations: **910**
 
 ## Validity
 

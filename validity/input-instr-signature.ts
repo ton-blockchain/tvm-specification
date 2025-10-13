@@ -158,6 +158,8 @@ const SKIPPED_INSTRUCTIONS_FOR_INPUT_VALIDATION = [
     "PREVKEYBLOCK", // c7 is not set
     "PREVKEYBLOCK_100", // c7 is not set
     "GLOBALID", // c7 is not set
+    "BTOS", // TVM 12 is not yet released
+    "HASHBU", // TVM 12 is not yet released
 ]
 
 function needSkipInstruction(name: string) {
