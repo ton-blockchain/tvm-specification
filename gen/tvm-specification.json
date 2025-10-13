@@ -40717,7 +40717,7 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "A _Replace_ counterpart of `DICTSETREF`.",
+        "long": "Sets the value associated with `n`-bit key `k` in dictionary `D` to a reference to _Cell_ `c`, but only if the key is already present in `D`. Returns the resulting dictionary as `D'` on success, or the original dictionary `D` if the key was absent.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -41207,7 +41207,7 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "A _Replace_ counterpart of `DICTSETGET`: on success, also returns the old value associated with the key in question.",
+        "long": "Sets the value associated with `n`-bit key `k` in dictionary `D` to `x`, but only if the key is already present in `D`. On success, returns the resulting dictionary `D'` and the old value `y` associated with the key. If the key was absent, returns the original dictionary `D` and `-1`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -41310,7 +41310,7 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "A _Replace_ counterpart of `DICTSETGETREF`.",
+        "long": "Sets the value associated with `n`-bit key `k` in dictionary `D` to a reference to _Cell_ `c`, but only if the key is already present in `D`. On success, returns the resulting dictionary `D'` and the old value (a reference to a _Cell_ or _Null_). If the key was absent, returns the original dictionary `D` and _Null_.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -41825,7 +41825,7 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "An _Add_ counterpart of `DICTSET`: sets the value associated with key `k` in dictionary `D` to `x`, but only if it is not already present in `D`.",
+        "long": "Sets the value associated with `n`-bit key `k` in dictionary `D` to `x`, but only if the key is not already present in `D`. Returns the resulting dictionary `D'` on success, or the original dictionary `D` if the key was already present.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -41923,7 +41923,7 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "An _Add_ counterpart of `DICTSETREF`.",
+        "long": "Sets the value associated with `n`-bit key `k` in dictionary `D` to a reference to _Cell_ `c`, but only if the key is not already present in `D`. Returns the resulting dictionary `D'` on success, or the original dictionary `D` if the key was already present.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -42413,7 +42413,7 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "An _Add_ counterpart of `DICTSETGET`: sets the value associated with key `k` in dictionary `D` to `x`, but only if key `k` is not already present in `D`. Otherwise, just returns the old value `y` without changing the dictionary.",
+        "long": "Sets the value associated with `n`-bit key `k` in dictionary `D` to `x`, but only if the key is not already present in `D`. Returns the resulting dictionary `D'` and the new value `x` on success. If the key was already present, returns the original dictionary `D` and the existing value `y` without modification.",
         "tags": [],
         "operands": [],
         "gas": [
