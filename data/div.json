@@ -328,7 +328,7 @@
   "MODC": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `result = x % y`.",
       "tags": [],
       "operands": []
     },
@@ -437,7 +437,7 @@
   "DIVMODC": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `q = ceil(x / y)` and `r = x - q * y`.",
       "tags": [],
       "operands": []
     },
@@ -637,7 +637,7 @@
   "QDIVR": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `result = round(x / y)`.",
       "tags": [],
       "operands": []
     },
@@ -670,7 +670,7 @@
   "QDIVC": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `result = ceil(x / y)`.",
       "tags": [],
       "operands": []
     },
@@ -703,7 +703,7 @@
   "QMOD": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `result = x % y`.",
       "tags": [],
       "operands": []
     },
@@ -736,7 +736,7 @@
   "QMODR": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `result = x % y`.",
       "tags": [],
       "operands": []
     },
@@ -769,7 +769,7 @@
   "QMODC": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `result = x % y`.",
       "tags": [],
       "operands": []
     },
@@ -802,7 +802,7 @@
   "QDIVMOD": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `q = floor(x / y)` and `r = x - q * y`.",
       "tags": [],
       "operands": []
     },
@@ -840,7 +840,7 @@
   "QDIVMODR": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `q = round(x / y)` and `r = x - q * y`.",
       "tags": [],
       "operands": []
     },
@@ -878,7 +878,7 @@
   "QDIVMODC": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `q = ceil(x / y)` and `r = x - q * y`.",
       "tags": [],
       "operands": []
     },
@@ -1248,17 +1248,39 @@
   "RSHIFTMODR": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `q = round(x / 2^y)` and `r = x - q * 2^y`.",
       "tags": [],
       "operands": []
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
@@ -1266,17 +1288,39 @@
   "RSHIFTMODC": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `q = ceil(x / 2^y)` and `r = x - q * 2^y`.",
       "tags": [],
       "operands": []
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
@@ -1616,17 +1660,39 @@
   "QRSHIFTMODR": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `q = round(x / 2^y)` and `r = x - q * 2^y`.",
       "tags": [],
       "operands": []
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
@@ -1634,17 +1700,39 @@
   "QRSHIFTMODC": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `q = ceil(x / 2^y)` and `r = x - q * 2^y`.",
       "tags": [],
       "operands": []
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
@@ -2335,7 +2423,7 @@
   "QMULDIVR": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `result = round(x * y / z)`.",
       "tags": [],
       "operands": []
     },
@@ -2525,7 +2613,7 @@
   "QMULDIVMOD": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `q = floor(x * y / z)` and `r = x * y - z * q`.",
       "tags": [],
       "operands": []
     },
@@ -4898,17 +4986,29 @@
   "MODPOW2R#": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `result = x % (2^t)`.",
       "tags": [],
       "operands": ["t"]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
@@ -4916,17 +5016,29 @@
   "MODPOW2C#": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `result = x % (2^t)`.",
       "tags": [],
       "operands": ["t"]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
@@ -5969,17 +6081,34 @@
   "RSHIFT_ALT": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `result = floor(x / 2^y)`.",
       "tags": [],
       "operands": []
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
@@ -5987,17 +6116,34 @@
   "QRSHIFT_ALT": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `result = floor(x / 2^y)`.",
       "tags": [],
       "operands": []
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "result",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }

@@ -27591,7 +27591,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `result = x % y`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -27787,7 +27787,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `q = ceil(x / y)` and `r = x - q * y`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -28135,7 +28135,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `result = round(x / y)`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -28197,7 +28197,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `result = ceil(x / y)`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -28259,7 +28259,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `result = x % y`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -28321,7 +28321,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `result = x % y`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -28383,7 +28383,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `result = x % y`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -28445,7 +28445,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `q = floor(x / y)` and `r = x - q * y`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -28512,7 +28512,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `q = round(x / y)` and `r = x - q * y`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -28579,7 +28579,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `q = ceil(x / y)` and `r = x - q * y`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -29242,7 +29242,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `q = round(x / 2^y)` and `r = x - q * 2^y`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -29267,13 +29267,35 @@
         "prefix_str": "A92D"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Int y:Int -> q:Int r:Int",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "y",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "q",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "r",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         }
       },
@@ -29289,7 +29311,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `q = ceil(x / 2^y)` and `r = x - q * 2^y`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -29314,13 +29336,35 @@
         "prefix_str": "A92E"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Int y:Int -> q:Int r:Int",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "y",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "q",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "r",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         }
       },
@@ -29932,7 +29976,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `q = round(x / 2^y)` and `r = x - q * 2^y`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -29957,13 +30001,35 @@
         "prefix_str": "B7A92D"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Int y:Int -> q:Int r:Int",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "y",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "q",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "r",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         }
       },
@@ -29979,7 +30045,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `q = ceil(x / 2^y)` and `r = x - q * 2^y`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -30004,13 +30070,35 @@
         "prefix_str": "B7A92E"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Int y:Int -> q:Int r:Int",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "y",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "q",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "r",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         }
       },
@@ -31179,7 +31267,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `result = round(x * y / z)`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -31514,7 +31602,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `q = floor(x * y / z)` and `r = x * y - z * q`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -60757,7 +60845,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `result = x % (2^t)`.",
         "tags": [],
         "operands": ["t"],
         "gas": [
@@ -60795,13 +60883,25 @@
         "prefix_str": "A939"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Int -> result:Int",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "result",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         }
       },
@@ -60817,7 +60917,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `result = x % (2^t)`.",
         "tags": [],
         "operands": ["t"],
         "gas": [
@@ -60855,13 +60955,25 @@
         "prefix_str": "A93A"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Int -> result:Int",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "result",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         }
       },
@@ -65420,7 +65532,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `result = floor(x / 2^y)`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -65445,13 +65557,30 @@
         "prefix_str": "A924"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Int y:Int -> result:Int",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "y",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "result",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         }
       },
@@ -65599,7 +65728,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `result = floor(x / 2^y)`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -65624,13 +65753,30 @@
         "prefix_str": "B7A924"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Int y:Int -> result:Int",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "y",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "result",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         }
       },
