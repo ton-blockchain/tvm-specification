@@ -7412,6 +7412,12 @@
         "long": "Loads a cell reference `c` from `s` and returns the remainder of `s` as `s''`.",
         "tags": ["slice parsing"],
         "operands": [],
+        "exit_codes": [
+          {
+            "errno": "9",
+            "condition": "Slice does not contain any references."
+          }
+        ],
         "gas": [
           {
             "value": 18,
@@ -7474,6 +7480,12 @@
         "long": "Loads a cell reference `c` from `s`, converts it to _Slice_ and returns that _Slice_ and remainder of `s` as `s''`.",
         "tags": ["slice parsing"],
         "operands": [],
+        "exit_codes": [
+          {
+            "errno": "9",
+            "condition": "Slice does not contain any references."
+          }
+        ],
         "other_implementations": [
           {
             "exact": true,
@@ -7547,6 +7559,12 @@
         "long": "Returns the first `length` bits of `s`.",
         "tags": ["slice parsing"],
         "operands": [],
+        "exit_codes": [
+          {
+            "errno": "9",
+            "condition": "Slice does not contain enough bits."
+          }
+        ],
         "other_implementations": [
           {
             "exact": false,
@@ -7619,6 +7637,12 @@
         "long": "Returns all but the first `length` bits of `s`.",
         "tags": ["slice parsing"],
         "operands": [],
+        "exit_codes": [
+          {
+            "errno": "9",
+            "condition": "Slice does not contain enough bits."
+          }
+        ],
         "other_implementations": [
           {
             "exact": false,
@@ -7691,6 +7715,12 @@
         "long": "Returns the last `length` bits of `s`.",
         "tags": ["slice parsing"],
         "operands": [],
+        "exit_codes": [
+          {
+            "errno": "9",
+            "condition": "Slice does not contain enough bits."
+          }
+        ],
         "gas": [
           {
             "value": 26,
@@ -7757,6 +7787,12 @@
         "long": "Returns all but the last `length` bits of `s`.",
         "tags": ["slice parsing"],
         "operands": [],
+        "exit_codes": [
+          {
+            "errno": "9",
+            "condition": "Slice does not contain enough bits."
+          }
+        ],
         "gas": [
           {
             "value": 26,
@@ -7823,6 +7859,12 @@
         "long": "Returns `length` bits of `s` starting from `offset`, thus extracting a bit substring out of the data of `s`.",
         "tags": ["slice parsing"],
         "operands": [],
+        "exit_codes": [
+          {
+            "errno": "9",
+            "condition": "Slice does not contain enough bits."
+          }
+        ],
         "gas": [
           {
             "value": 26,
@@ -7898,6 +7940,12 @@
         "long": "Returns the first `length` bits and first `refs` references of `s`.",
         "tags": [],
         "operands": [],
+        "exit_codes": [
+          {
+            "errno": "9",
+            "condition": "Slice does not contain enough bits or references."
+          }
+        ],
         "gas": [
           {
             "value": 26,
@@ -7973,6 +8021,12 @@
         "long": "Returns all but the first `length` bits of `s` and `refs` references of `s`.",
         "tags": [],
         "operands": [],
+        "exit_codes": [
+          {
+            "errno": "9",
+            "condition": "Slice does not contain enough bits or references."
+          }
+        ],
         "gas": [
           {
             "value": 26,
@@ -8048,6 +8102,12 @@
         "long": "Returns the last `length` data bits and last `refs` references of `s`.",
         "tags": [],
         "operands": [],
+        "exit_codes": [
+          {
+            "errno": "9",
+            "condition": "Slice does not contain enough bits or references."
+          }
+        ],
         "gas": [
           {
             "value": 26,
@@ -8123,6 +8183,12 @@
         "long": "Returns all but the last `length` bits of `s` and `refs` references of `s`.",
         "tags": [],
         "operands": [],
+        "exit_codes": [
+          {
+            "errno": "9",
+            "condition": "Slice does not contain enough bits or references."
+          }
+        ],
         "gas": [
           {
             "value": 26,
@@ -8198,6 +8264,12 @@
         "long": "Returns `length` bits and `refs` references from _Slice_ `s`, after skipping the first `skip_len` bits and first `skip_refs` references.",
         "tags": [],
         "operands": [],
+        "exit_codes": [
+          {
+            "errno": "9",
+            "condition": "Slice does not contain enough bits or references."
+          }
+        ],
         "gas": [
           {
             "value": 26,
@@ -8283,6 +8355,12 @@
         "long": "Splits the first `length` data bits and first `refs` references from `s` into `s'`, returning the remainder of `s` as `s''`.",
         "tags": [],
         "operands": [],
+        "exit_codes": [
+          {
+            "errno": "9",
+            "condition": "Slice does not contain enough bits or references."
+          }
+        ],
         "gas": [
           {
             "value": 26,
@@ -8531,6 +8609,16 @@
         "long": "Loads an exotic cell `c` and returns an ordinary cell `c'`. If `c` is already ordinary, does nothing. If `c` cannot be loaded, throws an exception.",
         "tags": [],
         "operands": [],
+        "exit_codes": [
+          {
+            "errno": "9",
+            "condition": "Failed to load exotic cell."
+          },
+          {
+            "errno": "9",
+            "condition": "Unexpected special cell type."
+          }
+        ],
         "gas": [
           {
             "value": 26,
@@ -23371,6 +23459,12 @@
         "long": "Loads a `Gram` or `VarUInteger 16` amount from _Slice_ `s`, and returns the amount as _Integer_ `x` along with the remainder `s'` of `s`. The expected serialization of `x` consists of a 4-bit unsigned big-endian integer `l`, followed by an `8l`-bit unsigned big-endian representation of `x`.",
         "tags": ["variable-size integer", "slice parsing"],
         "operands": [],
+        "exit_codes": [
+          {
+            "errno": "9",
+            "condition": "Cannot deserialize a variable-length integer."
+          }
+        ],
         "other_implementations": [
           {
             "exact": false,
@@ -23439,6 +23533,12 @@
         "long": "Loads a `VarInteger 16` amount from _Slice_ `s`, and returns the amount as _Integer_ `x` along with the remainder `s'` of `s`. The expected serialization of `x` consists of a 4-bit unsigned big-endian integer `l`, followed by an `8l`-bit signed big-endian representation of `x`.",
         "tags": ["variable-size integer", "slice parsing"],
         "operands": [],
+        "exit_codes": [
+          {
+            "errno": "9",
+            "condition": "Cannot deserialize a variable-length integer."
+          }
+        ],
         "other_implementations": [
           {
             "exact": false,
@@ -23647,6 +23747,12 @@
         "long": "Loads a `VarUInteger 32` amount from _Slice_ `s`, and returns the amount as _Integer_ `x` along with the remainder `s'` of `s`. The expected serialization of `x` consists of a 5-bit unsigned big-endian integer `l`, followed by an `8l`-bit unsigned big-endian representation of `x`.",
         "tags": ["variable-size integer", "slice parsing"],
         "operands": [],
+        "exit_codes": [
+          {
+            "errno": "9",
+            "condition": "Cannot deserialize a variable-length integer."
+          }
+        ],
         "other_implementations": [
           {
             "exact": false,
@@ -23715,6 +23821,12 @@
         "long": "Loads a `VarInteger 32` amount from _Slice_ `s`, and returns the amount as _Integer_ `x` along with the remainder `s'` of `s`. The expected serialization of `x` consists of a 5-bit unsigned big-endian integer `l`, followed by an `8l`-bit signed big-endian representation of `x`.",
         "tags": ["variable-size integer", "slice parsing"],
         "operands": [],
+        "exit_codes": [
+          {
+            "errno": "9",
+            "condition": "Cannot deserialize a variable-length integer."
+          }
+        ],
         "other_implementations": [
           {
             "exact": false,
@@ -23919,6 +24031,12 @@
         "long": "Loads a valid `MsgAddress` from _Slice_ `s` and pushes the loaded `addr` value onto the stack along with _Slice_ `s'` with the remaining data.",
         "tags": ["address", "slice parsing"],
         "operands": [],
+        "exit_codes": [
+          {
+            "errno": "9",
+            "condition": "Cannot load a MsgAddress."
+          }
+        ],
         "gas": [
           {
             "value": 26,
@@ -36051,6 +36169,12 @@
         "long": "Loads a signed `width`-bit integer `x` from _Slice_ `s`, and returns the remainder of `s` as `s'`.",
         "tags": ["slice parsing"],
         "operands": [],
+        "exit_codes": [
+          {
+            "errno": "9",
+            "condition": "Slice doesn't contain enough bits."
+          }
+        ],
         "gas": [
           {
             "value": 26,
@@ -36122,6 +36246,12 @@
         "long": "Loads an unsigned `width`-bit integer `x` from (the first `width` bits of) `s`.",
         "tags": ["slice parsing"],
         "operands": [],
+        "exit_codes": [
+          {
+            "errno": "9",
+            "condition": "Slice doesn't contain enough bits."
+          }
+        ],
         "gas": [
           {
             "value": 26,
@@ -58605,6 +58735,16 @@
         "long": "Checks whether `s` begins with constant bitstring `search` of length `8x+3` (with continuation bit assumed), where `0 <= x <= 127`, and removes `search` from `s` on success.",
         "tags": [],
         "operands": ["search"],
+        "exit_codes": [
+          {
+            "errno": "6",
+            "condition": "Not enough data bits for a SDBEGINS instruction."
+          },
+          {
+            "errno": "9",
+            "condition": "Slice does not begin with expected data bits."
+          }
+        ],
         "gas": [
           {
             "value": 31,
@@ -63844,6 +63984,12 @@
         "long": "Cuts the next `count` bits of `s` into a separate _Slice_ `loaded`.",
         "tags": ["slice parsing"],
         "operands": ["count"],
+        "exit_codes": [
+          {
+            "errno": "9",
+            "condition": "Slice does not contain enough bits."
+          }
+        ],
         "gas": [
           {
             "value": 26,

@@ -13,7 +13,7 @@ language.
 ## Current state
 
 - Instructions count: **910**
-- With exit code description: **111**
+- With exit code description: **165**
 - With examples: **33**
 - With other implementations description: **102**
 - Without any text description: **0**, including arithmetic: **50**
