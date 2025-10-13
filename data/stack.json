@@ -494,7 +494,25 @@
       "short": "",
       "long": "Pops integer `i` from the stack, then performs `s(i) PUSH`.",
       "tags": ["stack"],
-      "operands": []
+      "operands": [],
+      "exit_codes": [
+        {
+          "errno": "2",
+          "condition": "Stack is empty."
+        },
+        {
+          "errno": "7",
+          "condition": "Top element is not an `Int`."
+        },
+        {
+          "errno": "5",
+          "condition": "Integer is out of range."
+        },
+        {
+          "errno": "2",
+          "condition": "Stack contains less than `i + 1` elements."
+        }
+      ]
     },
     "signature": {
       "inputs": {
@@ -502,7 +520,11 @@
           {
             "type": "simple",
             "name": "i",
-            "value_types": ["Int"]
+            "value_types": ["Int"],
+            "range": {
+              "min": 0,
+              "max": 1073741823
+            }
           }
         ],
         "registers": []
@@ -571,7 +593,11 @@
           {
             "type": "simple",
             "name": "x",
-            "value_types": ["Int"]
+            "value_types": ["Int"],
+            "range": {
+              "min": 0,
+              "max": 1073741823
+            }
           }
         ],
         "registers": []
@@ -586,7 +612,7 @@
     "description": {
       "short": "",
       "long": "Takes integer `x` from the top of the stack and moves the top element to position `x` from the top. For example, `ROLLREV 2` is equivalent to `ROTREV` (`1 2 3 -> 3 1 2`).",
-      "tags": [],
+      "tags": ["stack"],
       "operands": [],
       "exit_codes": [
         {
@@ -640,7 +666,11 @@
           {
             "type": "simple",
             "name": "x",
-            "value_types": ["Int"]
+            "value_types": ["Int"],
+            "range": {
+              "min": 0,
+              "max": 1073741823
+            }
           }
         ],
         "registers": []
@@ -656,7 +686,29 @@
       "short": "",
       "long": "Pops integers `i`,`j` from the stack, then performs `[i] [j] BLKSWAP`.",
       "tags": ["stack"],
-      "operands": []
+      "operands": [],
+      "exit_codes": [
+        {
+          "errno": "2",
+          "condition": "Stack contains less than 2 elements."
+        },
+        {
+          "errno": "7",
+          "condition": "Top element is not an `Int`."
+        },
+        {
+          "errno": "7",
+          "condition": "Second element is not an `Int`."
+        },
+        {
+          "errno": "5",
+          "condition": "Integer is out of range."
+        },
+        {
+          "errno": "2",
+          "condition": "Stack contains less than `i + j` elements."
+        }
+      ]
     },
     "signature": {
       "inputs": {
@@ -664,12 +716,20 @@
           {
             "type": "simple",
             "name": "i",
-            "value_types": ["Int"]
+            "value_types": ["Int"],
+            "range": {
+              "min": 0,
+              "max": 1073741823
+            }
           },
           {
             "type": "simple",
             "name": "j",
-            "value_types": ["Int"]
+            "value_types": ["Int"],
+            "range": {
+              "min": 0,
+              "max": 1073741823
+            }
           }
         ],
         "registers": []
@@ -685,7 +745,29 @@
       "short": "",
       "long": "Pops integers `i`,`j` from the stack, then performs `[i] [j] REVERSE`.",
       "tags": ["stack"],
-      "operands": []
+      "operands": [],
+      "exit_codes": [
+        {
+          "errno": "2",
+          "condition": "Stack contains less than 2 elements."
+        },
+        {
+          "errno": "7",
+          "condition": "Top element is not an `Int`."
+        },
+        {
+          "errno": "7",
+          "condition": "Second element is not an `Int`."
+        },
+        {
+          "errno": "5",
+          "condition": "Integer is out of range."
+        },
+        {
+          "errno": "2",
+          "condition": "Stack contains less than `i + j` elements."
+        }
+      ]
     },
     "signature": {
       "inputs": {
@@ -693,12 +775,20 @@
           {
             "type": "simple",
             "name": "i",
-            "value_types": ["Int"]
+            "value_types": ["Int"],
+            "range": {
+              "min": 0,
+              "max": 1073741823
+            }
           },
           {
             "type": "simple",
             "name": "j",
-            "value_types": ["Int"]
+            "value_types": ["Int"],
+            "range": {
+              "min": 0,
+              "max": 1073741823
+            }
           }
         ],
         "registers": []
@@ -714,7 +804,25 @@
       "short": "",
       "long": "Pops integer `i` from the stack, then performs `[i] BLKDROP`.",
       "tags": ["stack"],
-      "operands": []
+      "operands": [],
+      "exit_codes": [
+        {
+          "errno": "2",
+          "condition": "Stack contains less than 1 element."
+        },
+        {
+          "errno": "7",
+          "condition": "Top element is not an `Int`."
+        },
+        {
+          "errno": "5",
+          "condition": "Integer is out of range."
+        },
+        {
+          "errno": "2",
+          "condition": "Stack contains less than `i` elements."
+        }
+      ]
     },
     "signature": {
       "inputs": {
@@ -722,7 +830,11 @@
           {
             "type": "simple",
             "name": "i",
-            "value_types": ["Int"]
+            "value_types": ["Int"],
+            "range": {
+              "min": 0,
+              "max": 1073741823
+            }
           }
         ],
         "registers": []
@@ -793,7 +905,25 @@
       "short": "",
       "long": "Pops integer `i` from the stack, then performs `s(i) XCHG`.",
       "tags": ["stack"],
-      "operands": []
+      "operands": [],
+      "exit_codes": [
+        {
+          "errno": "2",
+          "condition": "Stack contains less than 1 element."
+        },
+        {
+          "errno": "7",
+          "condition": "Top element is not an `Int`."
+        },
+        {
+          "errno": "5",
+          "condition": "Integer is out of range."
+        },
+        {
+          "errno": "2",
+          "condition": "Stack contains less than `i + 1` elements."
+        }
+      ]
     },
     "signature": {
       "inputs": {
@@ -801,7 +931,11 @@
           {
             "type": "simple",
             "name": "i",
-            "value_types": ["Int"]
+            "value_types": ["Int"],
+            "range": {
+              "min": 0,
+              "max": 1073741823
+            }
           }
         ],
         "registers": []
@@ -863,6 +997,18 @@
       "exit_codes": [
         {
           "errno": "2",
+          "condition": "Stack contains less than 1 element."
+        },
+        {
+          "errno": "7",
+          "condition": "Top element is not an `Int`."
+        },
+        {
+          "errno": "5",
+          "condition": "Integer is out of range."
+        },
+        {
+          "errno": "2",
           "condition": "Stack contains less than `i` elements."
         }
       ]
@@ -873,7 +1019,11 @@
           {
             "type": "simple",
             "name": "i",
-            "value_types": ["Int"]
+            "value_types": ["Int"],
+            "range": {
+              "min": 0,
+              "max": 1073741823
+            }
           }
         ],
         "registers": []
@@ -889,7 +1039,25 @@
       "short": "",
       "long": "Pops integer `i` from the stack, then removes all but the top `i` elements.",
       "tags": ["stack"],
-      "operands": []
+      "operands": [],
+      "exit_codes": [
+        {
+          "errno": "2",
+          "condition": "Stack contains less than 1 element."
+        },
+        {
+          "errno": "7",
+          "condition": "Top element is not an `Int`."
+        },
+        {
+          "errno": "5",
+          "condition": "Integer is out of range."
+        },
+        {
+          "errno": "2",
+          "condition": "Stack contains less than `i` elements."
+        }
+      ]
     },
     "signature": {
       "inputs": {
@@ -897,7 +1065,11 @@
           {
             "type": "simple",
             "name": "i",
-            "value_types": ["Int"]
+            "value_types": ["Int"],
+            "range": {
+              "min": 0,
+              "max": 1073741823
+            }
           }
         ],
         "registers": []
@@ -919,6 +1091,24 @@
           "exact": false,
           "instructions": ["DEPTH", "SWAP", "SUB", "DROPX"]
         }
+      ],
+      "exit_codes": [
+        {
+          "errno": "2",
+          "condition": "Stack contains less than 1 element."
+        },
+        {
+          "errno": "7",
+          "condition": "Top element is not an `Int`."
+        },
+        {
+          "errno": "5",
+          "condition": "Integer is out of range."
+        },
+        {
+          "errno": "2",
+          "condition": "Stack contains less than `i` elements."
+        }
       ]
     },
     "signature": {
@@ -927,7 +1117,11 @@
           {
             "type": "simple",
             "name": "i",
-            "value_types": ["Int"]
+            "value_types": ["Int"],
+            "range": {
+              "min": 0,
+              "max": 1073741823
+            }
           }
         ],
         "registers": []
