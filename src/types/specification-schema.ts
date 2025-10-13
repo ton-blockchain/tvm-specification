@@ -63,6 +63,7 @@ export interface Example {
 export interface GasConsumptionEntry {
     readonly value: number
     readonly description: string
+    readonly formula?: string
 }
 
 export interface DocsLink {

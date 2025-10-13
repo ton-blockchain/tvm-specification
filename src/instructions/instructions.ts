@@ -133,6 +133,7 @@ export type Effect =
     | BlsG2Mul
     | BlsMapToG2
     | BlsG2InGroup
+    | DynamicGas
 
 export type CellLoad = {
     $: "CellLoad",
@@ -328,7 +329,28 @@ export type BlsG2InGroup = {$: "BlsG2InGroup", costs: [{value: 4250, description
 export const BlsG2InGroup = (): BlsG2InGroup => ({
     $: "BlsG2InGroup", costs: [{value: 4250, description: "For BLS_G2_INGROUP operation"}] as const,
 })
+
+export type DynamicGas = {$: "DynamicGas", formula: string, description: string}
+export const DynamicGas = (formula: string, description: string): DynamicGas => ({
+    $: "DynamicGas", formula, description,
+})
 /// end section
+
+// BLS gas price constants
+export const BLS_AGGREGATE_BASE_GAS_PRICE = -2650
+export const BLS_AGGREGATE_ELEMENT_GAS_PRICE = 4350
+export const BLS_FAST_AGGREGATE_VERIFY_BASE_GAS_PRICE = 58000
+export const BLS_FAST_AGGREGATE_VERIFY_ELEMENT_GAS_PRICE = 3000
+export const BLS_AGGREGATE_VERIFY_BASE_GAS_PRICE = 38500
+export const BLS_AGGREGATE_VERIFY_ELEMENT_GAS_PRICE = 22500
+export const BLS_G1_MULTIEXP_BASE_GAS_PRICE = 11375
+export const BLS_G1_MULTIEXP_COEF1_GAS_PRICE = 630
+export const BLS_G1_MULTIEXP_COEF2_GAS_PRICE = 8820
+export const BLS_G2_MULTIEXP_BASE_GAS_PRICE = 30388
+export const BLS_G2_MULTIEXP_COEF1_GAS_PRICE = 1280
+export const BLS_G2_MULTIEXP_COEF2_GAS_PRICE = 22840
+export const BLS_PAIRING_BASE_GAS_PRICE = 20000
+export const BLS_PAIRING_ELEMENT_GAS_PRICE = 11800
 
 export type Opcode = {
     readonly min: number;
@@ -857,14 +879,14 @@ export const instructions: Record<string, Opcode> = {
     RIST255_QMUL: version(4, effects(cat("crypto_rist255", mksimple(0xb7f924, 24, `(_1) => exec_ristretto255_mul(_1, true)`)), Rist255Mul())),
     RIST255_QMULBASE: version(4, effects(cat("crypto_rist255", mksimple(0xb7f925, 24, `(_1) => exec_ristretto255_mul_base(_1, true)`)), Rist255Mulbase())),
     BLS_VERIFY: version(4, effects(cat("crypto_bls", mksimple(0xf93000, 24, `exec_bls_verify`)), BlsVerify())),
-    BLS_AGGREGATE: version(4, cat("crypto_bls", mksimple(0xf93001, 24, `exec_bls_aggregate`))),
-    BLS_FASTAGGREGATEVERIFY: version(4, cat("crypto_bls", mksimple(0xf93002, 24, `exec_bls_fast_aggregate_verify`))),
-    BLS_AGGREGATEVERIFY: version(4, cat("crypto_bls", mksimple(0xf93003, 24, `exec_bls_aggregate_verify`))),
+    BLS_AGGREGATE: version(4, effects(cat("crypto_bls", mksimple(0xf93001, 24, `exec_bls_aggregate`)), DynamicGas(`${BLS_AGGREGATE_BASE_GAS_PRICE} + n * ${BLS_AGGREGATE_ELEMENT_GAS_PRICE}`, "For BLS_AGGREGATE operation"))),
+    BLS_FASTAGGREGATEVERIFY: version(4, effects(cat("crypto_bls", mksimple(0xf93002, 24, `exec_bls_fast_aggregate_verify`)), DynamicGas(`${BLS_FAST_AGGREGATE_VERIFY_BASE_GAS_PRICE} + n * ${BLS_FAST_AGGREGATE_VERIFY_ELEMENT_GAS_PRICE}`, "For BLS_FASTAGGREGATEVERIFY operation"))),
+    BLS_AGGREGATEVERIFY: version(4, effects(cat("crypto_bls", mksimple(0xf93003, 24, `exec_bls_aggregate_verify`)), DynamicGas(`${BLS_AGGREGATE_VERIFY_BASE_GAS_PRICE} + n * ${BLS_AGGREGATE_VERIFY_ELEMENT_GAS_PRICE}`, "For BLS_AGGREGATEVERIFY operation"))),
     BLS_G1_ADD: version(4, effects(cat("crypto_bls", mksimple(0xf93010, 24, `exec_bls_g1_add`)), BlsG1AddSub())),
     BLS_G1_SUB: version(4, effects(cat("crypto_bls", mksimple(0xf93011, 24, `exec_bls_g1_sub`)), BlsG1AddSub())),
     BLS_G1_NEG: version(4, effects(cat("crypto_bls", mksimple(0xf93012, 24, `exec_bls_g1_neg`)), BlsG1Neg())),
     BLS_G1_MUL: version(4, effects(cat("crypto_bls", mksimple(0xf93013, 24, `exec_bls_g1_mul`)), BlsG1Mul())),
-    BLS_G1_MULTIEXP: version(4, cat("crypto_bls", mksimple(0xf93014, 24, `exec_bls_g1_multiexp`))),
+    BLS_G1_MULTIEXP: version(4, effects(cat("crypto_bls", mksimple(0xf93014, 24, `exec_bls_g1_multiexp`)), DynamicGas(`${BLS_G1_MULTIEXP_BASE_GAS_PRICE} + ${BLS_G1_MULTIEXP_COEF1_GAS_PRICE} * n + ${BLS_G1_MULTIEXP_COEF2_GAS_PRICE} * n * n`, "For BLS_G1_MULTIEXP operation"))),
     BLS_G1_ZERO: version(4, cat("crypto_bls", mksimple(0xf93015, 24, `exec_bls_g1_zero`))),
     BLS_MAP_TO_G1: version(4, effects(cat("crypto_bls", mksimple(0xf93016, 24, `exec_bls_map_to_g1`)), BlsMapToG1())),
     BLS_G1_INGROUP: version(4, effects(cat("crypto_bls", mksimple(0xf93017, 24, `exec_bls_g1_in_group`)), BlsG1InGroup())),
@@ -873,12 +895,12 @@ export const instructions: Record<string, Opcode> = {
     BLS_G2_SUB: version(4, effects(cat("crypto_bls", mksimple(0xf93021, 24, `exec_bls_g2_sub`)), BlsG2AddSub())),
     BLS_G2_NEG: version(4, effects(cat("crypto_bls", mksimple(0xf93022, 24, `exec_bls_g2_neg`)), BlsG2Neg())),
     BLS_G2_MUL: version(4, effects(cat("crypto_bls", mksimple(0xf93023, 24, `exec_bls_g2_mul`)), BlsG2Mul())),
-    BLS_G2_MULTIEXP: version(4, cat("crypto_bls", mksimple(0xf93024, 24, `exec_bls_g2_multiexp`))),
+    BLS_G2_MULTIEXP: version(4, effects(cat("crypto_bls", mksimple(0xf93024, 24, `exec_bls_g2_multiexp`)), DynamicGas(`${BLS_G2_MULTIEXP_BASE_GAS_PRICE} + ${BLS_G2_MULTIEXP_COEF1_GAS_PRICE} * n + ${BLS_G2_MULTIEXP_COEF2_GAS_PRICE} * n * n`, "For BLS_G2_MULTIEXP operation"))),
     BLS_G2_ZERO: version(4, cat("crypto_bls", mksimple(0xf93025, 24, `exec_bls_g2_zero`))),
     BLS_MAP_TO_G2: version(4, effects(cat("crypto_bls", mksimple(0xf93026, 24, `exec_bls_map_to_g2`)), BlsMapToG2())),
     BLS_G2_INGROUP: version(4, effects(cat("crypto_bls", mksimple(0xf93027, 24, `exec_bls_g2_in_group`)), BlsG2InGroup())),
     BLS_G2_ISZERO: version(4, cat("crypto_bls", mksimple(0xf93028, 24, `exec_bls_g2_is_zero`))),
-    BLS_PAIRING: version(4, cat("crypto_bls", mksimple(0xf93030, 24, `exec_bls_pairing`))),
+    BLS_PAIRING: version(4, effects(cat("crypto_bls", mksimple(0xf93030, 24, `exec_bls_pairing`)), DynamicGas(`${BLS_PAIRING_BASE_GAS_PRICE} + n * ${BLS_PAIRING_ELEMENT_GAS_PRICE}`, "For BLS_PAIRING operation"))),
     BLS_PUSHR: version(4, cat("crypto_bls", mksimple(0xf93031, 24, `exec_bls_push_r`))),
     CDATASIZEQ: cat("misc", mksimple(0xf940, 16, `(_1) => exec_compute_data_size(_1, 1)`)),
     CDATASIZE: cat("misc", mksimple(0xf941, 16, `(_1) => exec_compute_data_size(_1, 0)`)),
@@ -1577,15 +1599,24 @@ export const COST_PRELOAD_INSTR = 10
 
 export const calculateGasConsumption = (instr: Opcode): number[] => {
     const base = instr.skipLen * COST_PER_BIT + COST_PRELOAD_INSTR
+    const result = [base]
+
     if (!instr.effects || instr.effects.length === 0) {
-        return [base]
+        return result
     }
-    return instr.effects.flatMap(effect => effect.costs.map(it => it.value + base))
+
+    return result.concat(instr.effects.flatMap(effect => {
+        if (effect.$ === "DynamicGas") {
+            return [0]
+        }
+        return effect.costs.map(it => it.value + base)
+    }))
 }
 
 export type GasConsumptionEntry = {
     readonly value: number
     readonly description: string
+    readonly formula?: string
 }
 
 export const calculateGasConsumptionWithDescription = (instr: Opcode): GasConsumptionEntry[] => {
@@ -1597,9 +1628,16 @@ export const calculateGasConsumptionWithDescription = (instr: Opcode): GasConsum
         }]
     }
     return instr.effects.flatMap(effect => {
+        if (effect.$ === "DynamicGas") {
+            return [{
+                value: 0,
+                description: effect.description,
+                formula: effect.formula,
+            }]
+        }
         return effect.costs.map(it => ({
             value: it.value + base,
-            description: it.description,
+            description: it.description as string,
         }))
     })
 }

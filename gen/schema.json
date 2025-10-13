@@ -20,6 +20,11 @@
           "type": "string",
           "description": "Description of the gas consumption",
           "markdownDescription": "Description of the gas consumption"
+        },
+        "formula": {
+          "type": "string",
+          "description": "Optional formula for dynamic gas calculation",
+          "markdownDescription": "Optional formula for dynamic gas calculation"
         }
       },
       "required": ["value", "description"],

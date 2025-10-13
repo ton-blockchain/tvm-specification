@@ -21362,8 +21362,9 @@
         "operands": [],
         "gas": [
           {
-            "value": 34,
-            "description": "Base gas consumption"
+            "value": 0,
+            "description": "For BLS_AGGREGATE operation",
+            "formula": "-2650 + n * 4350"
           }
         ]
       },
@@ -21382,6 +21383,7 @@
         "prefix": 16330753,
         "prefix_str": "F93001"
       },
+      "effects": ["DynamicGas"],
       "signature": {
         "stack_string": "x_1...x_n n:Int -> result:Slice",
         "inputs": {
@@ -21432,8 +21434,9 @@
         "operands": [],
         "gas": [
           {
-            "value": 34,
-            "description": "Base gas consumption"
+            "value": 0,
+            "description": "For BLS_FASTAGGREGATEVERIFY operation",
+            "formula": "58000 + n * 3000"
           }
         ]
       },
@@ -21452,6 +21455,7 @@
         "prefix": 16330754,
         "prefix_str": "F93002"
       },
+      "effects": ["DynamicGas"],
       "signature": {
         "stack_string": "x_1...x_n n:Int msg:Slice sig:Slice -> result:Int",
         "inputs": {
@@ -21512,8 +21516,9 @@
         "operands": [],
         "gas": [
           {
-            "value": 34,
-            "description": "Base gas consumption"
+            "value": 0,
+            "description": "For BLS_AGGREGATEVERIFY operation",
+            "formula": "38500 + n * 22500"
           }
         ]
       },
@@ -21532,6 +21537,7 @@
         "prefix": 16330755,
         "prefix_str": "F93003"
       },
+      "effects": ["DynamicGas"],
       "signature": {
         "stack_string": "x_1...x_n n:Int sgn:Slice -> result:Int",
         "inputs": {
@@ -21843,8 +21849,9 @@
         "operands": [],
         "gas": [
           {
-            "value": 34,
-            "description": "Base gas consumption"
+            "value": 0,
+            "description": "For BLS_G1_MULTIEXP operation",
+            "formula": "11375 + 630 * n + 8820 * n * n"
           }
         ]
       },
@@ -21863,6 +21870,7 @@
         "prefix": 16330772,
         "prefix_str": "F93014"
       },
+      "effects": ["DynamicGas"],
       "signature": {
         "stack_string": "x_1...x_n n:Int -> result:Slice",
         "inputs": {
@@ -22394,8 +22402,9 @@
         "operands": [],
         "gas": [
           {
-            "value": 34,
-            "description": "Base gas consumption"
+            "value": 0,
+            "description": "For BLS_G2_MULTIEXP operation",
+            "formula": "30388 + 1280 * n + 22840 * n * n"
           }
         ]
       },
@@ -22414,6 +22423,7 @@
         "prefix": 16330788,
         "prefix_str": "F93024"
       },
+      "effects": ["DynamicGas"],
       "signature": {
         "stack_string": "x_1...x_n n:Int -> result:Slice",
         "inputs": {
@@ -22694,8 +22704,9 @@
         "operands": [],
         "gas": [
           {
-            "value": 34,
-            "description": "Base gas consumption"
+            "value": 0,
+            "description": "For BLS_PAIRING operation",
+            "formula": "20000 + n * 11800"
           }
         ]
       },
@@ -22714,6 +22725,7 @@
         "prefix": 16330800,
         "prefix_str": "F93030"
       },
+      "effects": ["DynamicGas"],
       "signature": {
         "stack_string": "x_1...x_n n:Int -> result:Int",
         "inputs": {
