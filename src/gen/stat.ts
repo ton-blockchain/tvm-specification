@@ -47,6 +47,7 @@ const main = () => {
         "SETCP_SHORT",
         "ACCEPT",
         "COMMIT",
+        "RETURNARGS",
     ])
 
     for (const [name, instr] of Object.entries(data.instructions)) {
