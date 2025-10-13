@@ -106,7 +106,22 @@ export type debugstr = {$: "debugstr"}
 export const debugstr: debugstr = {$: "debugstr"}
 
 /// section: effects
-export type Effect = CellLoad | CellCreate | CanThrow | AlwaysThrow | Tuple | ImplicitJumpRef
+export type Effect =
+    CellLoad
+    | CellCreate
+    | CanThrow
+    | AlwaysThrow
+    | Tuple
+    | ImplicitJumpRef
+    | Ecrecover
+    | Secp256k1XonlyPubkeyTweakAdd
+    | Chksign
+    | P256Chksign
+    | Rist255Fromhash
+    | Rist255Validate
+    | Rist255Add
+    | Rist255Mul
+    | Rist255Mulbase
 
 export type CellLoad = {
     $: "CellLoad",
@@ -201,6 +216,51 @@ export const ImplicitJumpRef = (): ImplicitJumpRef => ({
         {value: 0, description: "If reference Cell is already loaded"},
         {value: 10, description: "If reference Cell is loaded for the first time"},
     ] as const,
+})
+
+export type Ecrecover = {$: "Ecrecover", costs: [{value: 1500, description: "For ECRECOVER operation"}]}
+export const Ecrecover = (): Ecrecover => ({
+    $: "Ecrecover", costs: [{value: 1500, description: "For ECRECOVER operation"}] as const,
+})
+
+export type Secp256k1XonlyPubkeyTweakAdd = {$: "Secp256k1XonlyPubkeyTweakAdd", costs: [{value: 1250, description: "For SECP256K1_XONLY_PUBKEY_TWEAK_ADD operation"}]}
+export const Secp256k1XonlyPubkeyTweakAdd = (): Secp256k1XonlyPubkeyTweakAdd => ({
+    $: "Secp256k1XonlyPubkeyTweakAdd", costs: [{value: 1250, description: "For SECP256K1_XONLY_PUBKEY_TWEAK_ADD operation"}] as const,
+})
+
+export type Chksign = {$: "Chksign", costs: [{value: 4000, description: "For CHKSIGN operation"}]}
+export const Chksign = (): Chksign => ({
+    $: "Chksign", costs: [{value: 4000, description: "For CHKSIGN operation"}] as const,
+})
+
+export type P256Chksign = {$: "P256Chksign", costs: [{value: 3500, description: "For P256_CHKSIGN operation"}]}
+export const P256Chksign = (): P256Chksign => ({
+    $: "P256Chksign", costs: [{value: 3500, description: "For P256_CHKSIGN operation"}] as const,
+})
+
+export type Rist255Fromhash = {$: "Rist255Fromhash", costs: [{value: 600, description: "For RIST255_FROMHASH operation"}]}
+export const Rist255Fromhash = (): Rist255Fromhash => ({
+    $: "Rist255Fromhash", costs: [{value: 600, description: "For RIST255_FROMHASH operation"}] as const,
+})
+
+export type Rist255Validate = {$: "Rist255Validate", costs: [{value: 200, description: "For RIST255_VALIDATE operation"}]}
+export const Rist255Validate = (): Rist255Validate => ({
+    $: "Rist255Validate", costs: [{value: 200, description: "For RIST255_VALIDATE operation"}] as const,
+})
+
+export type Rist255Add = {$: "Rist255Add", costs: [{value: 600, description: "For RIST255_ADD operation"}]}
+export const Rist255Add = (): Rist255Add => ({
+    $: "Rist255Add", costs: [{value: 600, description: "For RIST255_ADD operation"}] as const,
+})
+
+export type Rist255Mul = {$: "Rist255Mul", costs: [{value: 2000, description: "For RIST255_MUL operation"}]}
+export const Rist255Mul = (): Rist255Mul => ({
+    $: "Rist255Mul", costs: [{value: 2000, description: "For RIST255_MUL operation"}] as const,
+})
+
+export type Rist255Mulbase = {$: "Rist255Mulbase", costs: [{value: 750, description: "For RIST255_MULBASE operation"}]}
+export const Rist255Mulbase = (): Rist255Mulbase => ({
+    $: "Rist255Mulbase", costs: [{value: 750, description: "For RIST255_MULBASE operation"}] as const,
 })
 /// end section
 
@@ -712,24 +772,24 @@ export const instructions: Record<string, Opcode> = {
     HASHCU: cat("crypto_common", mksimple(0xf900, 16, `(_1) => exec_compute_hash(_1, 0)`)),
     HASHSU: effects(cat("crypto_common", mksimple(0xf901, 16, `(_1) => exec_compute_hash(_1, 1)`)), CellCreate()),
     SHA256U: cat("crypto_common", mksimple(0xf902, 16, `exec_compute_sha256`)),
-    CHKSIGNU: cat("crypto_common", mksimple(0xf910, 16, `(_1) => exec_ed25519_check_signature(_1, false)`)),
-    CHKSIGNS: cat("crypto_common", mksimple(0xf911, 16, `(_1) => exec_ed25519_check_signature(_1, true)`)),
-    ECRECOVER: version(4, cat("crypto_common", mksimple(0xf912, 16, `exec_ecrecover`))),
-    SECP256K1_XONLY_PUBKEY_TWEAK_ADD: version(9, cat("crypto_common", mksimple(0xf913, 16, `exec_secp256k1_xonly_pubkey_tweak_add`))),
-    P256_CHKSIGNU: version(4, cat("crypto_common", mksimple(0xf914, 16, `(_1) => exec_p256_chksign(_1, false)`))),
-    P256_CHKSIGNS: version(4, cat("crypto_common", mksimple(0xf915, 16, `(_1) => exec_p256_chksign(_1, true)`))),
-    RIST255_FROMHASH: version(4, cat("crypto_rist255", mksimple(0xf920, 16, `exec_ristretto255_from_hash`))),
-    RIST255_VALIDATE: version(4, cat("crypto_rist255", mksimple(0xf921, 16, `(_1) => exec_ristretto255_validate(_1, false)`))),
-    RIST255_ADD: version(4, cat("crypto_rist255", mksimple(0xf922, 16, `(_1) => exec_ristretto255_add(_1, false)`))),
-    RIST255_SUB: version(4, cat("crypto_rist255", mksimple(0xf923, 16, `(_1) => exec_ristretto255_sub(_1, false)`))),
-    RIST255_MUL: version(4, cat("crypto_rist255", mksimple(0xf924, 16, `(_1) => exec_ristretto255_mul(_1, false)`))),
-    RIST255_MULBASE: version(4, cat("crypto_rist255", mksimple(0xf925, 16, `(_1) => exec_ristretto255_mul_base(_1, false)`))),
+    CHKSIGNU: effects(cat("crypto_common", mksimple(0xf910, 16, `(_1) => exec_ed25519_check_signature(_1, false)`)), Chksign()),
+    CHKSIGNS: effects(cat("crypto_common", mksimple(0xf911, 16, `(_1) => exec_ed25519_check_signature(_1, true)`)), Chksign()),
+    ECRECOVER: version(4, effects(cat("crypto_common", mksimple(0xf912, 16, `exec_ecrecover`)), Ecrecover())),
+    SECP256K1_XONLY_PUBKEY_TWEAK_ADD: version(9, effects(cat("crypto_common", mksimple(0xf913, 16, `exec_secp256k1_xonly_pubkey_tweak_add`)), Secp256k1XonlyPubkeyTweakAdd())),
+    P256_CHKSIGNU: version(4, effects(cat("crypto_common", mksimple(0xf914, 16, `(_1) => exec_p256_chksign(_1, false)`)), P256Chksign())),
+    P256_CHKSIGNS: version(4, effects(cat("crypto_common", mksimple(0xf915, 16, `(_1) => exec_p256_chksign(_1, true)`)), P256Chksign())),
+    RIST255_FROMHASH: version(4, effects(cat("crypto_rist255", mksimple(0xf920, 16, `exec_ristretto255_from_hash`)), Rist255Fromhash())),
+    RIST255_VALIDATE: version(4, effects(cat("crypto_rist255", mksimple(0xf921, 16, `(_1) => exec_ristretto255_validate(_1, false)`)), Rist255Validate())),
+    RIST255_ADD: version(4, effects(cat("crypto_rist255", mksimple(0xf922, 16, `(_1) => exec_ristretto255_add(_1, false)`)), Rist255Add())),
+    RIST255_SUB: version(4, effects(cat("crypto_rist255", mksimple(0xf923, 16, `(_1) => exec_ristretto255_sub(_1, false)`)), Rist255Add())),
+    RIST255_MUL: version(4, effects(cat("crypto_rist255", mksimple(0xf924, 16, `(_1) => exec_ristretto255_mul(_1, false)`)), Rist255Mul())),
+    RIST255_MULBASE: version(4, effects(cat("crypto_rist255", mksimple(0xf925, 16, `(_1) => exec_ristretto255_mul_base(_1, false)`)), Rist255Mulbase())),
     RIST255_PUSHL: version(4, cat("crypto_rist255", mksimple(0xf926, 16, `exec_ristretto255_push_l`))),
-    RIST255_QVALIDATE: version(4, cat("crypto_rist255", mksimple(0xb7f921, 24, `(_1) => exec_ristretto255_validate(_1, true)`))),
-    RIST255_QADD: version(4, cat("crypto_rist255", mksimple(0xb7f922, 24, `(_1) => exec_ristretto255_add(_1, true)`))),
-    RIST255_QSUB: version(4, cat("crypto_rist255", mksimple(0xb7f923, 24, `(_1) => exec_ristretto255_sub(_1, true)`))),
-    RIST255_QMUL: version(4, cat("crypto_rist255", mksimple(0xb7f924, 24, `(_1) => exec_ristretto255_mul(_1, true)`))),
-    RIST255_QMULBASE: version(4, cat("crypto_rist255", mksimple(0xb7f925, 24, `(_1) => exec_ristretto255_mul_base(_1, true)`))),
+    RIST255_QVALIDATE: version(4, effects(cat("crypto_rist255", mksimple(0xb7f921, 24, `(_1) => exec_ristretto255_validate(_1, true)`)), Rist255Validate())),
+    RIST255_QADD: version(4, effects(cat("crypto_rist255", mksimple(0xb7f922, 24, `(_1) => exec_ristretto255_add(_1, true)`)), Rist255Add())),
+    RIST255_QSUB: version(4, effects(cat("crypto_rist255", mksimple(0xb7f923, 24, `(_1) => exec_ristretto255_sub(_1, true)`)), Rist255Add())),
+    RIST255_QMUL: version(4, effects(cat("crypto_rist255", mksimple(0xb7f924, 24, `(_1) => exec_ristretto255_mul(_1, true)`)), Rist255Mul())),
+    RIST255_QMULBASE: version(4, effects(cat("crypto_rist255", mksimple(0xb7f925, 24, `(_1) => exec_ristretto255_mul_base(_1, true)`)), Rist255Mulbase())),
     BLS_VERIFY: version(4, cat("crypto_bls", mksimple(0xf93000, 24, `exec_bls_verify`))),
     BLS_AGGREGATE: version(4, cat("crypto_bls", mksimple(0xf93001, 24, `exec_bls_aggregate`))),
     BLS_FASTAGGREGATEVERIFY: version(4, cat("crypto_bls", mksimple(0xf93002, 24, `exec_bls_fast_aggregate_verify`))),
