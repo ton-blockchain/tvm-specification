@@ -3752,7 +3752,7 @@
   "LSHIFTADDDIVMODC": {
     "description": {
       "short": "",
-      "long": "Calculates `q=round((x*2^y+w)/z)` and `r=(x*2^y+w)-zq`.",
+      "long": "Calculates `q=ceil((x*2^y+w)/z)` and `r=(x*2^y+w)-zq`.",
       "tags": [],
       "operands": []
     },
@@ -4658,17 +4658,39 @@
   "ADDRSHIFT#MOD": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `q=floor((x+w)/2^t)` and `r=(x+w)-q*2^t`.",
       "tags": [],
       "operands": ["t"]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "w",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
@@ -4676,17 +4698,39 @@
   "ADDRSHIFTR#MOD": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `q=round((x+w)/2^t)` and `r=(x+w)-q*2^t`.",
       "tags": [],
       "operands": ["t"]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "w",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
@@ -4694,17 +4738,39 @@
   "ADDRSHIFTC#MOD": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `q=ceil((x+w)/2^t)` and `r=(x+w)-q*2^t`.",
       "tags": [],
       "operands": ["t"]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "w",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
@@ -4922,17 +4988,44 @@
   "MULADDRSHIFT#MOD": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `q=floor((xy+w)/2^t)` and `r=(xy+w)-q*2^t`.",
       "tags": [],
       "operands": ["t"]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "w",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
@@ -4940,17 +5033,44 @@
   "MULADDRSHIFTR#MOD": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `q=round((xy+w)/2^t)` and `r=(xy+w)-q*2^t`.",
       "tags": [],
       "operands": ["t"]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "w",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
@@ -4958,17 +5078,44 @@
   "MULADDRSHIFTC#MOD": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `q=ceil((xy+w)/2^t)` and `r=(xy+w)-q*2^t`.",
       "tags": [],
       "operands": ["t"]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "y",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "w",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
@@ -5138,17 +5285,44 @@
   "LSHIFT#ADDDIVMOD": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `q=floor((x*2^t+w)/z)` and `r=(x*2^t+w)-zq`.",
       "tags": [],
       "operands": ["t"]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "w",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
@@ -5156,17 +5330,44 @@
   "LSHIFT#ADDDIVMODR": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `q=round((x*2^t+w)/z)` and `r=(x*2^t+w)-zq`.",
       "tags": [],
       "operands": ["t"]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "w",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }
@@ -5174,17 +5375,44 @@
   "LSHIFT#ADDDIVMODC": {
     "description": {
       "short": "",
-      "long": "",
+      "long": "Calculates `q=ceil((x*2^t+w)/z)` and `r=(x*2^t+w)-zq`.",
       "tags": [],
       "operands": ["t"]
     },
     "signature": {
       "inputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "x",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "w",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "z",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       },
       "outputs": {
-        "stack": [],
+        "stack": [
+          {
+            "type": "simple",
+            "name": "q",
+            "value_types": ["Int"]
+          },
+          {
+            "type": "simple",
+            "name": "r",
+            "value_types": ["Int"]
+          }
+        ],
         "registers": []
       }
     }

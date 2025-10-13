@@ -33590,7 +33590,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "Calculates `q=round((x*2^y+w)/z)` and `r=(x*2^y+w)-zq`.",
+        "long": "Calculates `q=ceil((x*2^y+w)/z)` and `r=(x*2^y+w)-zq`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -60220,7 +60220,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `q=floor((x+w)/2^t)` and `r=(x+w)-q*2^t`.",
         "tags": [],
         "operands": ["t"],
         "gas": [
@@ -60259,13 +60259,35 @@
         "prefix_str": "A930"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Int w:Int -> q:Int r:Int",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "w",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "q",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "r",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         }
       },
@@ -60281,7 +60303,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `q=round((x+w)/2^t)` and `r=(x+w)-q*2^t`.",
         "tags": [],
         "operands": ["t"],
         "gas": [
@@ -60320,13 +60342,35 @@
         "prefix_str": "A931"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Int w:Int -> q:Int r:Int",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "w",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "q",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "r",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         }
       },
@@ -60342,7 +60386,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `q=ceil((x+w)/2^t)` and `r=(x+w)-q*2^t`.",
         "tags": [],
         "operands": ["t"],
         "gas": [
@@ -60381,13 +60425,35 @@
         "prefix_str": "A932"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Int w:Int -> q:Int r:Int",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "w",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "q",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "r",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         }
       },
@@ -60991,7 +61057,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `q=floor((xy+w)/2^t)` and `r=(xy+w)-q*2^t`.",
         "tags": [],
         "operands": ["t"],
         "gas": [
@@ -61030,13 +61096,40 @@
         "prefix_str": "A9B0"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Int y:Int w:Int -> q:Int r:Int",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "y",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "w",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "q",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "r",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         }
       },
@@ -61052,7 +61145,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `q=round((xy+w)/2^t)` and `r=(xy+w)-q*2^t`.",
         "tags": [],
         "operands": ["t"],
         "gas": [
@@ -61091,13 +61184,40 @@
         "prefix_str": "A9B1"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Int y:Int w:Int -> q:Int r:Int",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "y",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "w",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "q",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "r",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         }
       },
@@ -61113,7 +61233,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `q=ceil((xy+w)/2^t)` and `r=(xy+w)-q*2^t`.",
         "tags": [],
         "operands": ["t"],
         "gas": [
@@ -61152,13 +61272,40 @@
         "prefix_str": "A9B2"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Int y:Int w:Int -> q:Int r:Int",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "y",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "w",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "q",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "r",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         }
       },
@@ -61714,7 +61861,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `q=floor((x*2^t+w)/z)` and `r=(x*2^t+w)-zq`.",
         "tags": [],
         "operands": ["t"],
         "gas": [
@@ -61753,13 +61900,40 @@
         "prefix_str": "A9D0"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Int w:Int z:Int -> q:Int r:Int",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "w",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "z",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "q",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "r",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         }
       },
@@ -61775,7 +61949,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `q=round((x*2^t+w)/z)` and `r=(x*2^t+w)-zq`.",
         "tags": [],
         "operands": ["t"],
         "gas": [
@@ -61814,13 +61988,40 @@
         "prefix_str": "A9D1"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Int w:Int z:Int -> q:Int r:Int",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "w",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "z",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "q",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "r",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         }
       },
@@ -61836,7 +62037,7 @@
       "sub_category": "div",
       "description": {
         "short": "",
-        "long": "",
+        "long": "Calculates `q=ceil((x*2^t+w)/z)` and `r=(x*2^t+w)-zq`.",
         "tags": [],
         "operands": ["t"],
         "gas": [
@@ -61875,13 +62076,40 @@
         "prefix_str": "A9D2"
       },
       "signature": {
-        "stack_string": "∅ -> ∅",
+        "stack_string": "x:Int w:Int z:Int -> q:Int r:Int",
         "inputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "x",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "w",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "z",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         },
         "outputs": {
-          "stack": [],
+          "stack": [
+            {
+              "type": "simple",
+              "name": "q",
+              "value_types": ["Int"]
+            },
+            {
+              "type": "simple",
+              "name": "r",
+              "value_types": ["Int"]
+            }
+          ],
           "registers": []
         }
       },
