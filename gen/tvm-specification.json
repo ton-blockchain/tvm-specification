@@ -8553,7 +8553,7 @@
         "prefix_str": "D73A"
       },
       "signature": {
-        "stack_string": "c:Cell -> c2:Cell",
+        "stack_string": "c:Cell -> c':Cell",
         "inputs": {
           "stack": [
             {
@@ -8567,7 +8567,7 @@
           "stack": [
             {
               "type": "simple",
-              "name": "c2",
+              "name": "c'",
               "value_types": ["Cell"]
             }
           ]
@@ -8610,7 +8610,7 @@
         "prefix_str": "D73B"
       },
       "signature": {
-        "stack_string": "c:Cell -> (c:Cell 0)|(c2:Cell -1) status:Int",
+        "stack_string": "c:Cell -> (c:Cell 0)|(c':Cell -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -8641,7 +8641,7 @@
                   "stack": [
                     {
                       "type": "simple",
-                      "name": "c2",
+                      "name": "c'",
                       "value_types": ["Cell"]
                     }
                   ]
@@ -11428,7 +11428,7 @@
           },
           {
             "type": "variable",
-            "var_name": "c2",
+            "var_name": "c'",
             "save": {
               "c0": {
                 "type": "cc",
@@ -12190,7 +12190,7 @@
         "branches": [
           {
             "type": "variable",
-            "var_name": "c2",
+            "var_name": "c'",
             "save": {
               "c0": {
                 "type": "special",
@@ -12198,7 +12198,7 @@
                 "args": {
                   "cond": {
                     "type": "variable",
-                    "var_name": "c2"
+                    "var_name": "c'"
                   },
                   "body": {
                     "type": "variable",
@@ -12276,7 +12276,7 @@
         "branches": [
           {
             "type": "variable",
-            "var_name": "c2",
+            "var_name": "c'",
             "save": {
               "c0": {
                 "type": "special",
@@ -12284,7 +12284,7 @@
                 "args": {
                   "cond": {
                     "type": "variable",
-                    "var_name": "c2"
+                    "var_name": "c'"
                   },
                   "body": {
                     "type": "cc"
@@ -12933,7 +12933,7 @@
         "branches": [
           {
             "type": "variable",
-            "var_name": "c2",
+            "var_name": "c'",
             "save": {
               "c0": {
                 "type": "special",
@@ -12941,7 +12941,7 @@
                 "args": {
                   "cond": {
                     "type": "variable",
-                    "var_name": "c2"
+                    "var_name": "c'"
                   },
                   "body": {
                     "type": "variable",
@@ -13257,7 +13257,7 @@
         "prefix_str": "ED11"
       },
       "signature": {
-        "stack_string": "x_1...x_r c:Continuation r:Int n:Int -> c2:Continuation",
+        "stack_string": "x_1...x_r c:Continuation r:Int n:Int -> c':Continuation",
         "inputs": {
           "stack": [
             {
@@ -13300,7 +13300,7 @@
           "stack": [
             {
               "type": "simple",
-              "name": "c2",
+              "name": "c'",
               "value_types": ["Continuation"]
             }
           ]
@@ -13343,7 +13343,7 @@
         "prefix_str": "ED12"
       },
       "signature": {
-        "stack_string": "c:Continuation n:Int -> c2:Continuation",
+        "stack_string": "c:Continuation n:Int -> c':Continuation",
         "inputs": {
           "stack": [
             {
@@ -13366,7 +13366,7 @@
           "stack": [
             {
               "type": "simple",
-              "name": "c2",
+              "name": "c'",
               "value_types": ["Continuation"]
             }
           ]
@@ -13681,7 +13681,7 @@
         "prefix_str": "EDE2"
       },
       "signature": {
-        "stack_string": "x:Any c:Continuation i:Int -> c2:Continuation",
+        "stack_string": "x:Any c:Continuation i:Int -> c':Continuation",
         "inputs": {
           "stack": [
             {
@@ -13708,7 +13708,7 @@
           "stack": [
             {
               "type": "simple",
-              "name": "c2",
+              "name": "c'",
               "value_types": ["Continuation"]
             }
           ]
@@ -13822,7 +13822,7 @@
         "prefix_str": "EDF0"
       },
       "signature": {
-        "stack_string": "c:Continuation c':Continuation -> c3:Continuation",
+        "stack_string": "c:Continuation c':Continuation -> c'':Continuation",
         "inputs": {
           "stack": [
             {
@@ -13842,7 +13842,7 @@
           "stack": [
             {
               "type": "simple",
-              "name": "c3",
+              "name": "c''",
               "value_types": ["Continuation"]
             }
           ],
@@ -13892,7 +13892,7 @@
         "prefix_str": "EDF1"
       },
       "signature": {
-        "stack_string": "c:Continuation c':Continuation -> c3:Continuation",
+        "stack_string": "c:Continuation c':Continuation -> c'':Continuation",
         "inputs": {
           "stack": [
             {
@@ -13912,7 +13912,7 @@
           "stack": [
             {
               "type": "simple",
-              "name": "c3",
+              "name": "c''",
               "value_types": ["Continuation"]
             }
           ],
@@ -13956,7 +13956,7 @@
         "prefix_str": "EDF2"
       },
       "signature": {
-        "stack_string": "c:Continuation c2:Continuation -> c3:Continuation",
+        "stack_string": "c:Continuation c':Continuation -> c'':Continuation",
         "inputs": {
           "stack": [
             {
@@ -13966,7 +13966,7 @@
             },
             {
               "type": "simple",
-              "name": "c2",
+              "name": "c'",
               "value_types": ["Continuation"]
             }
           ]
@@ -13975,7 +13975,7 @@
           "stack": [
             {
               "type": "simple",
-              "name": "c3",
+              "name": "c''",
               "value_types": ["Continuation"]
             }
           ]
@@ -14211,7 +14211,7 @@
         "prefix_str": "EDF6"
       },
       "signature": {
-        "stack_string": "c:Continuation -> c2:Continuation",
+        "stack_string": "c:Continuation -> c':Continuation",
         "inputs": {
           "stack": [
             {
@@ -14231,7 +14231,7 @@
           "stack": [
             {
               "type": "simple",
-              "name": "c2",
+              "name": "c'",
               "value_types": ["Continuation"]
             }
           ]
@@ -14274,7 +14274,7 @@
         "prefix_str": "EDF7"
       },
       "signature": {
-        "stack_string": "c:Continuation -> c2:Continuation",
+        "stack_string": "c:Continuation -> c':Continuation",
         "inputs": {
           "stack": [
             {
@@ -14294,7 +14294,7 @@
           "stack": [
             {
               "type": "simple",
-              "name": "c2",
+              "name": "c'",
               "value_types": ["Continuation"]
             }
           ]
@@ -14684,7 +14684,7 @@
               },
               "c2": {
                 "type": "variable",
-                "var_name": "c2",
+                "var_name": "c'",
                 "save": {
                   "c0": {
                     "type": "cc",
@@ -39705,7 +39705,7 @@
         "prefix_str": "F41B"
       },
       "signature": {
-        "stack_string": "c:Cell k:Slice D:Cell|Null n:Int -> (D':Cell 0)|(D':Cell c2:Cell -1) status:Int",
+        "stack_string": "c:Cell k:Slice D:Cell|Null n:Int -> (D':Cell 0)|(D':Cell c':Cell -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -39756,7 +39756,7 @@
                     },
                     {
                       "type": "simple",
-                      "name": "c2",
+                      "name": "c'",
                       "value_types": ["Cell"]
                     }
                   ]
@@ -39911,7 +39911,7 @@
         "prefix_str": "F41D"
       },
       "signature": {
-        "stack_string": "c:Cell i:Int D:Cell|Null n:Int -> (D':Cell 0)|(D':Cell c2:Cell -1) status:Int",
+        "stack_string": "c:Cell i:Int D:Cell|Null n:Int -> (D':Cell 0)|(D':Cell c':Cell -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -39962,7 +39962,7 @@
                     },
                     {
                       "type": "simple",
-                      "name": "c2",
+                      "name": "c'",
                       "value_types": ["Cell"]
                     }
                   ]
@@ -40117,7 +40117,7 @@
         "prefix_str": "F41F"
       },
       "signature": {
-        "stack_string": "c:Cell i:Int D:Cell|Null n:Int -> (D':Cell 0)|(D':Cell c2:Cell -1) status:Int",
+        "stack_string": "c:Cell i:Int D:Cell|Null n:Int -> (D':Cell 0)|(D':Cell c':Cell -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -40168,7 +40168,7 @@
                     },
                     {
                       "type": "simple",
-                      "name": "c2",
+                      "name": "c'",
                       "value_types": ["Cell"]
                     }
                   ]
@@ -40911,7 +40911,7 @@
         "prefix_str": "F42B"
       },
       "signature": {
-        "stack_string": "c:Cell k:Slice D:Cell|Null n:Int -> (D:Cell|Null 0)|(D':Cell c2:Cell -1) status:Int",
+        "stack_string": "c:Cell k:Slice D:Cell|Null n:Int -> (D:Cell|Null 0)|(D':Cell c':Cell -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -40962,7 +40962,7 @@
                     },
                     {
                       "type": "simple",
-                      "name": "c2",
+                      "name": "c'",
                       "value_types": ["Cell"]
                     }
                   ]
@@ -41117,7 +41117,7 @@
         "prefix_str": "F42D"
       },
       "signature": {
-        "stack_string": "c:Cell i:Int D:Cell|Null n:Int -> (D:Cell|Null 0)|(D':Cell c2:Cell -1) status:Int",
+        "stack_string": "c:Cell i:Int D:Cell|Null n:Int -> (D:Cell|Null 0)|(D':Cell c':Cell -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -41168,7 +41168,7 @@
                     },
                     {
                       "type": "simple",
-                      "name": "c2",
+                      "name": "c'",
                       "value_types": ["Cell"]
                     }
                   ]
@@ -41323,7 +41323,7 @@
         "prefix_str": "F42F"
       },
       "signature": {
-        "stack_string": "c:Cell i:Int D:Cell|Null n:Int -> (D:Cell|Null 0)|(D':Cell c2:Cell -1) status:Int",
+        "stack_string": "c:Cell i:Int D:Cell|Null n:Int -> (D:Cell|Null 0)|(D':Cell c':Cell -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -41374,7 +41374,7 @@
                     },
                     {
                       "type": "simple",
-                      "name": "c2",
+                      "name": "c'",
                       "value_types": ["Cell"]
                     }
                   ]
@@ -42117,7 +42117,7 @@
         "prefix_str": "F43B"
       },
       "signature": {
-        "stack_string": "c:Cell k:Slice D:Cell|Null n:Int -> (D:Cell c2:Cell 0)|(D':Cell -1) status:Int",
+        "stack_string": "c:Cell k:Slice D:Cell|Null n:Int -> (D:Cell c':Cell 0)|(D':Cell -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -42158,7 +42158,7 @@
                     },
                     {
                       "type": "simple",
-                      "name": "c2",
+                      "name": "c'",
                       "value_types": ["Cell"]
                     }
                   ]
@@ -42323,7 +42323,7 @@
         "prefix_str": "F43D"
       },
       "signature": {
-        "stack_string": "c:Cell i:Int D:Cell|Null n:Int -> (D:Cell c2:Cell 0)|(D':Cell -1) status:Int",
+        "stack_string": "c:Cell i:Int D:Cell|Null n:Int -> (D:Cell c':Cell 0)|(D':Cell -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -42364,7 +42364,7 @@
                     },
                     {
                       "type": "simple",
-                      "name": "c2",
+                      "name": "c'",
                       "value_types": ["Cell"]
                     }
                   ]
@@ -42529,7 +42529,7 @@
         "prefix_str": "F43F"
       },
       "signature": {
-        "stack_string": "c:Cell i:Int D:Cell|Null n:Int -> (D:Cell c2:Cell 0)|(D':Cell -1) status:Int",
+        "stack_string": "c:Cell i:Int D:Cell|Null n:Int -> (D:Cell c':Cell 0)|(D':Cell -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -42570,7 +42570,7 @@
                     },
                     {
                       "type": "simple",
-                      "name": "c2",
+                      "name": "c'",
                       "value_types": ["Cell"]
                     }
                   ]
@@ -47651,7 +47651,7 @@
         "prefix_str": "F46D"
       },
       "signature": {
-        "stack_string": "c:Cell|Null k:Slice D:Cell|Null n:Int -> D':Cell|Null c2:Cell|Null",
+        "stack_string": "c:Cell|Null k:Slice D:Cell|Null n:Int -> D':Cell|Null c':Cell|Null",
         "inputs": {
           "stack": [
             {
@@ -47685,7 +47685,7 @@
             },
             {
               "type": "simple",
-              "name": "c2",
+              "name": "c'",
               "value_types": ["Cell", "Null"]
             }
           ]
@@ -47734,7 +47734,7 @@
         "prefix_str": "F46E"
       },
       "signature": {
-        "stack_string": "c:Cell|Null i:Int D:Cell|Null n:Int -> D':Cell|Null c2:Cell|Null",
+        "stack_string": "c:Cell|Null i:Int D:Cell|Null n:Int -> D':Cell|Null c':Cell|Null",
         "inputs": {
           "stack": [
             {
@@ -47768,7 +47768,7 @@
             },
             {
               "type": "simple",
-              "name": "c2",
+              "name": "c'",
               "value_types": ["Cell", "Null"]
             }
           ]
@@ -47817,7 +47817,7 @@
         "prefix_str": "F46F"
       },
       "signature": {
-        "stack_string": "c:Cell|Null i:Int D:Cell|Null n:Int -> D':Cell|Null c2:Cell|Null",
+        "stack_string": "c:Cell|Null i:Int D:Cell|Null n:Int -> D':Cell|Null c':Cell|Null",
         "inputs": {
           "stack": [
             {
@@ -47851,7 +47851,7 @@
             },
             {
               "type": "simple",
-              "name": "c2",
+              "name": "c'",
               "value_types": ["Cell", "Null"]
             }
           ]
@@ -51204,7 +51204,7 @@
               },
               "c2": {
                 "type": "variable",
-                "var_name": "c2",
+                "var_name": "c'",
                 "save": {
                   "c0": {
                     "type": "cc",
@@ -54194,7 +54194,7 @@
         "prefix_str": "EC"
       },
       "signature": {
-        "stack_string": "x_1...x_r c:Continuation -> c2:Continuation",
+        "stack_string": "x_1...x_r c:Continuation -> c':Continuation",
         "inputs": {
           "stack": [
             {
@@ -54220,7 +54220,7 @@
           "stack": [
             {
               "type": "simple",
-              "name": "c2",
+              "name": "c'",
               "value_types": ["Continuation"]
             }
           ],
@@ -57572,7 +57572,7 @@
           },
           {
             "type": "variable",
-            "var_name": "c2",
+            "var_name": "c'",
             "save": {
               "c0": {
                 "type": "cc",
@@ -57690,7 +57690,7 @@
           },
           {
             "type": "variable",
-            "var_name": "c2",
+            "var_name": "c'",
             "save": {
               "c0": {
                 "type": "cc",
@@ -57802,7 +57802,7 @@
           },
           {
             "type": "variable",
-            "var_name": "c2",
+            "var_name": "c'",
             "save": {
               "c0": {
                 "type": "cc",
@@ -58834,7 +58834,7 @@
         "prefix_str": "ED60"
       },
       "signature": {
-        "stack_string": "x:Any c:Continuation -> c2:Continuation",
+        "stack_string": "x:Any c:Continuation -> c':Continuation",
         "inputs": {
           "stack": [
             {
@@ -58852,7 +58852,7 @@
           "stack": [
             {
               "type": "simple",
-              "name": "c2",
+              "name": "c'",
               "value_types": ["Continuation"]
             }
           ]

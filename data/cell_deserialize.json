@@ -844,7 +844,7 @@
         "stack": [
           {
             "type": "simple",
-            "name": "c2",
+            "name": "c'",
             "value_types": ["Cell"]
           }
         ]
@@ -889,7 +889,7 @@
                 "stack": [
                   {
                     "type": "simple",
-                    "name": "c2",
+                    "name": "c'",
                     "value_types": ["Cell"]
                   }
                 ]

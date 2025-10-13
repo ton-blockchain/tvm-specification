@@ -47,7 +47,7 @@
             },
             "c2": {
               "type": "variable",
-              "var_name": "c2",
+              "var_name": "c'",
               "save": {
                 "c0": {
                   "type": "cc",
@@ -244,7 +244,7 @@
             },
             "c2": {
               "type": "variable",
-              "var_name": "c2",
+              "var_name": "c'",
               "save": {
                 "c0": {
                   "type": "cc",
