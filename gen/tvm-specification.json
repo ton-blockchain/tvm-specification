@@ -39296,7 +39296,7 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Combines `DICTIGET` with `DICTGETREF`: it uses signed `n`-bit _Integer_ `i` as a key and returns a _Cell_ instead of a _Slice_ on success.",
+        "long": "Looks up key represented by a signed (big-endian) `n`-bit _Integer_ `i` in dictionary `D` of type `HashmapE(n,^Y)`. On success, applies `LDREF` `ENDS` to the found value, returning a _Cell_ `c` instead of a _Slice_. If `i` does not fit into `n` bits or the key is absent, returns _Null_.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -40001,7 +40001,7 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Combines `DICTSET` with `DICTGET`: it sets the value corresponding to key `k` to `x`, but also returns the old value `y` associated with the key in question, if present.",
+        "long": "Sets the value associated with `n`-bit key `k` in dictionary `D` to `x`, and returns the resulting dictionary `D'` along with the old value `y` associated with the key in question, if present. If the key was absent, returns `D'` and `-1`.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -40104,7 +40104,7 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Combines `DICTSETREF` with `DICTGETREF` similarly to `DICTSETGET`.",
+        "long": "Sets the value associated with `n`-bit key `k` in dictionary `D` to a reference to _Cell_ `c`, and returns the resulting dictionary `D'` along with the old value (a reference to a _Cell_ or _Null_). If the key was absent, returns `D'` and _Null_.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -47849,7 +47849,7 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "A variant of `DICTGETREF` that returns _Null_ instead of the value `c^?` if the key `k` is absent from dictionary `D`.",
+        "long": "Looks up key `k` (represented by a _Slice_) in dictionary `D` of type `HashmapE(n,^Y)`. On success, applies `LDREF` `ENDS` to the found value, returning a _Cell_ `c`. If the key is absent, returns _Null_ instead of throwing an exception.",
         "tags": [],
         "operands": [],
         "gas": [
@@ -48050,7 +48050,7 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "A variant of both `DICTGETOPTREF` and `DICTSETGETREF` that sets the value corresponding to key `k` in dictionary `D` to `c^?` (if `c^?` is _Null_, then the key is deleted instead), and returns the old value `~c^?` (if the key `k` was absent before, returns _Null_ instead).",
+        "long": "Sets the value associated with `n`-bit key `k` in dictionary `D` to `c^?` (if `c^?` is _Null_, the key is deleted instead), and returns the resulting dictionary `D'` along with the old value `~c^?` (if the key was absent, returns _Null_).",
         "tags": [],
         "operands": [],
         "gas": [
