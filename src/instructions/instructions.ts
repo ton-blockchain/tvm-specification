@@ -122,6 +122,17 @@ export type Effect =
     | Rist255Add
     | Rist255Mul
     | Rist255Mulbase
+    | BlsVerify
+    | BlsG1AddSub
+    | BlsG1Neg
+    | BlsG1Mul
+    | BlsMapToG1
+    | BlsG1InGroup
+    | BlsG2AddSub
+    | BlsG2Neg
+    | BlsG2Mul
+    | BlsMapToG2
+    | BlsG2InGroup
 
 export type CellLoad = {
     $: "CellLoad",
@@ -261,6 +272,61 @@ export const Rist255Mul = (): Rist255Mul => ({
 export type Rist255Mulbase = {$: "Rist255Mulbase", costs: [{value: 750, description: "For RIST255_MULBASE operation"}]}
 export const Rist255Mulbase = (): Rist255Mulbase => ({
     $: "Rist255Mulbase", costs: [{value: 750, description: "For RIST255_MULBASE operation"}] as const,
+})
+
+export type BlsG1AddSub = {$: "BlsG1AddSub", costs: [{value: 3900, description: "For BLS_G1_ADD/BLS_G1_SUB operation"}]}
+export const BlsG1AddSub = (): BlsG1AddSub => ({
+    $: "BlsG1AddSub", costs: [{value: 3900, description: "For BLS_G1_ADD/BLS_G1_SUB operation"}] as const,
+})
+
+export type BlsG1Neg = {$: "BlsG1Neg", costs: [{value: 750, description: "For BLS_G1_NEG operation"}]}
+export const BlsG1Neg = (): BlsG1Neg => ({
+    $: "BlsG1Neg", costs: [{value: 750, description: "For BLS_G1_NEG operation"}] as const,
+})
+
+export type BlsG1Mul = {$: "BlsG1Mul", costs: [{value: 5200, description: "For BLS_G1_MUL operation"}]}
+export const BlsG1Mul = (): BlsG1Mul => ({
+    $: "BlsG1Mul", costs: [{value: 5200, description: "For BLS_G1_MUL operation"}] as const,
+})
+
+export type BlsMapToG1 = {$: "BlsMapToG1", costs: [{value: 2350, description: "For BLS_MAP_TO_G1 operation"}]}
+export const BlsMapToG1 = (): BlsMapToG1 => ({
+    $: "BlsMapToG1", costs: [{value: 2350, description: "For BLS_MAP_TO_G1 operation"}] as const,
+})
+
+export type BlsG1InGroup = {$: "BlsG1InGroup", costs: [{value: 2950, description: "For BLS_G1_INGROUP operation"}]}
+export const BlsG1InGroup = (): BlsG1InGroup => ({
+    $: "BlsG1InGroup", costs: [{value: 2950, description: "For BLS_G1_INGROUP operation"}] as const,
+})
+
+export type BlsVerify = {$: "BlsVerify", costs: [{value: 61000, description: "For BLS_VERIFY operation"}]}
+export const BlsVerify = (): BlsVerify => ({
+    $: "BlsVerify", costs: [{value: 61000, description: "For BLS_VERIFY operation"}] as const,
+})
+
+export type BlsG2AddSub = {$: "BlsG2AddSub", costs: [{value: 6100, description: "For BLS_G2_ADD/BLS_G2_SUB operation"}]}
+export const BlsG2AddSub = (): BlsG2AddSub => ({
+    $: "BlsG2AddSub", costs: [{value: 6100, description: "For BLS_G2_ADD/BLS_G2_SUB operation"}] as const,
+})
+
+export type BlsG2Neg = {$: "BlsG2Neg", costs: [{value: 1550, description: "For BLS_G2_NEG operation"}]}
+export const BlsG2Neg = (): BlsG2Neg => ({
+    $: "BlsG2Neg", costs: [{value: 1550, description: "For BLS_G2_NEG operation"}] as const,
+})
+
+export type BlsG2Mul = {$: "BlsG2Mul", costs: [{value: 10550, description: "For BLS_G2_MUL operation"}]}
+export const BlsG2Mul = (): BlsG2Mul => ({
+    $: "BlsG2Mul", costs: [{value: 10550, description: "For BLS_G2_MUL operation"}] as const,
+})
+
+export type BlsMapToG2 = {$: "BlsMapToG2", costs: [{value: 7950, description: "For BLS_MAP_TO_G2 operation"}]}
+export const BlsMapToG2 = (): BlsMapToG2 => ({
+    $: "BlsMapToG2", costs: [{value: 7950, description: "For BLS_MAP_TO_G2 operation"}] as const,
+})
+
+export type BlsG2InGroup = {$: "BlsG2InGroup", costs: [{value: 4250, description: "For BLS_G2_INGROUP operation"}]}
+export const BlsG2InGroup = (): BlsG2InGroup => ({
+    $: "BlsG2InGroup", costs: [{value: 4250, description: "For BLS_G2_INGROUP operation"}] as const,
 })
 /// end section
 
@@ -790,27 +856,27 @@ export const instructions: Record<string, Opcode> = {
     RIST255_QSUB: version(4, effects(cat("crypto_rist255", mksimple(0xb7f923, 24, `(_1) => exec_ristretto255_sub(_1, true)`)), Rist255Add())),
     RIST255_QMUL: version(4, effects(cat("crypto_rist255", mksimple(0xb7f924, 24, `(_1) => exec_ristretto255_mul(_1, true)`)), Rist255Mul())),
     RIST255_QMULBASE: version(4, effects(cat("crypto_rist255", mksimple(0xb7f925, 24, `(_1) => exec_ristretto255_mul_base(_1, true)`)), Rist255Mulbase())),
-    BLS_VERIFY: version(4, cat("crypto_bls", mksimple(0xf93000, 24, `exec_bls_verify`))),
+    BLS_VERIFY: version(4, effects(cat("crypto_bls", mksimple(0xf93000, 24, `exec_bls_verify`)), BlsVerify())),
     BLS_AGGREGATE: version(4, cat("crypto_bls", mksimple(0xf93001, 24, `exec_bls_aggregate`))),
     BLS_FASTAGGREGATEVERIFY: version(4, cat("crypto_bls", mksimple(0xf93002, 24, `exec_bls_fast_aggregate_verify`))),
     BLS_AGGREGATEVERIFY: version(4, cat("crypto_bls", mksimple(0xf93003, 24, `exec_bls_aggregate_verify`))),
-    BLS_G1_ADD: version(4, cat("crypto_bls", mksimple(0xf93010, 24, `exec_bls_g1_add`))),
-    BLS_G1_SUB: version(4, cat("crypto_bls", mksimple(0xf93011, 24, `exec_bls_g1_sub`))),
-    BLS_G1_NEG: version(4, cat("crypto_bls", mksimple(0xf93012, 24, `exec_bls_g1_neg`))),
-    BLS_G1_MUL: version(4, cat("crypto_bls", mksimple(0xf93013, 24, `exec_bls_g1_mul`))),
+    BLS_G1_ADD: version(4, effects(cat("crypto_bls", mksimple(0xf93010, 24, `exec_bls_g1_add`)), BlsG1AddSub())),
+    BLS_G1_SUB: version(4, effects(cat("crypto_bls", mksimple(0xf93011, 24, `exec_bls_g1_sub`)), BlsG1AddSub())),
+    BLS_G1_NEG: version(4, effects(cat("crypto_bls", mksimple(0xf93012, 24, `exec_bls_g1_neg`)), BlsG1Neg())),
+    BLS_G1_MUL: version(4, effects(cat("crypto_bls", mksimple(0xf93013, 24, `exec_bls_g1_mul`)), BlsG1Mul())),
     BLS_G1_MULTIEXP: version(4, cat("crypto_bls", mksimple(0xf93014, 24, `exec_bls_g1_multiexp`))),
     BLS_G1_ZERO: version(4, cat("crypto_bls", mksimple(0xf93015, 24, `exec_bls_g1_zero`))),
-    BLS_MAP_TO_G1: version(4, cat("crypto_bls", mksimple(0xf93016, 24, `exec_bls_map_to_g1`))),
-    BLS_G1_INGROUP: version(4, cat("crypto_bls", mksimple(0xf93017, 24, `exec_bls_g1_in_group`))),
+    BLS_MAP_TO_G1: version(4, effects(cat("crypto_bls", mksimple(0xf93016, 24, `exec_bls_map_to_g1`)), BlsMapToG1())),
+    BLS_G1_INGROUP: version(4, effects(cat("crypto_bls", mksimple(0xf93017, 24, `exec_bls_g1_in_group`)), BlsG1InGroup())),
     BLS_G1_ISZERO: version(4, cat("crypto_bls", mksimple(0xf93018, 24, `exec_bls_g1_is_zero`))),
-    BLS_G2_ADD: version(4, cat("crypto_bls", mksimple(0xf93020, 24, `exec_bls_g2_add`))),
-    BLS_G2_SUB: version(4, cat("crypto_bls", mksimple(0xf93021, 24, `exec_bls_g2_sub`))),
-    BLS_G2_NEG: version(4, cat("crypto_bls", mksimple(0xf93022, 24, `exec_bls_g2_neg`))),
-    BLS_G2_MUL: version(4, cat("crypto_bls", mksimple(0xf93023, 24, `exec_bls_g2_mul`))),
+    BLS_G2_ADD: version(4, effects(cat("crypto_bls", mksimple(0xf93020, 24, `exec_bls_g2_add`)), BlsG2AddSub())),
+    BLS_G2_SUB: version(4, effects(cat("crypto_bls", mksimple(0xf93021, 24, `exec_bls_g2_sub`)), BlsG2AddSub())),
+    BLS_G2_NEG: version(4, effects(cat("crypto_bls", mksimple(0xf93022, 24, `exec_bls_g2_neg`)), BlsG2Neg())),
+    BLS_G2_MUL: version(4, effects(cat("crypto_bls", mksimple(0xf93023, 24, `exec_bls_g2_mul`)), BlsG2Mul())),
     BLS_G2_MULTIEXP: version(4, cat("crypto_bls", mksimple(0xf93024, 24, `exec_bls_g2_multiexp`))),
     BLS_G2_ZERO: version(4, cat("crypto_bls", mksimple(0xf93025, 24, `exec_bls_g2_zero`))),
-    BLS_MAP_TO_G2: version(4, cat("crypto_bls", mksimple(0xf93026, 24, `exec_bls_map_to_g2`))),
-    BLS_G2_INGROUP: version(4, cat("crypto_bls", mksimple(0xf93027, 24, `exec_bls_g2_in_group`))),
+    BLS_MAP_TO_G2: version(4, effects(cat("crypto_bls", mksimple(0xf93026, 24, `exec_bls_map_to_g2`)), BlsMapToG2())),
+    BLS_G2_INGROUP: version(4, effects(cat("crypto_bls", mksimple(0xf93027, 24, `exec_bls_g2_in_group`)), BlsG2InGroup())),
     BLS_G2_ISZERO: version(4, cat("crypto_bls", mksimple(0xf93028, 24, `exec_bls_g2_is_zero`))),
     BLS_PAIRING: version(4, cat("crypto_bls", mksimple(0xf93030, 24, `exec_bls_pairing`))),
     BLS_PUSHR: version(4, cat("crypto_bls", mksimple(0xf93031, 24, `exec_bls_push_r`))),

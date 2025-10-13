@@ -21293,8 +21293,8 @@
         "operands": [],
         "gas": [
           {
-            "value": 34,
-            "description": "Base gas consumption"
+            "value": 61034,
+            "description": "For BLS_VERIFY operation"
           }
         ]
       },
@@ -21313,6 +21313,7 @@
         "prefix": 16330752,
         "prefix_str": "F93000"
       },
+      "effects": ["BlsVerify"],
       "signature": {
         "stack_string": "pk:Slice msg:Slice sgn:Slice -> result:Int",
         "inputs": {
@@ -21591,8 +21592,8 @@
         "operands": [],
         "gas": [
           {
-            "value": 34,
-            "description": "Base gas consumption"
+            "value": 3934,
+            "description": "For BLS_G1_ADD/BLS_G1_SUB operation"
           }
         ]
       },
@@ -21611,6 +21612,7 @@
         "prefix": 16330768,
         "prefix_str": "F93010"
       },
+      "effects": ["BlsG1AddSub"],
       "signature": {
         "stack_string": "x:Slice y:Slice -> result:Slice",
         "inputs": {
@@ -21654,8 +21656,8 @@
         "operands": [],
         "gas": [
           {
-            "value": 34,
-            "description": "Base gas consumption"
+            "value": 3934,
+            "description": "For BLS_G1_ADD/BLS_G1_SUB operation"
           }
         ]
       },
@@ -21674,6 +21676,7 @@
         "prefix": 16330769,
         "prefix_str": "F93011"
       },
+      "effects": ["BlsG1AddSub"],
       "signature": {
         "stack_string": "x:Slice y:Slice -> result:Slice",
         "inputs": {
@@ -21717,8 +21720,8 @@
         "operands": [],
         "gas": [
           {
-            "value": 34,
-            "description": "Base gas consumption"
+            "value": 784,
+            "description": "For BLS_G1_NEG operation"
           }
         ]
       },
@@ -21737,6 +21740,7 @@
         "prefix": 16330770,
         "prefix_str": "F93012"
       },
+      "effects": ["BlsG1Neg"],
       "signature": {
         "stack_string": "x:Slice -> result:Slice",
         "inputs": {
@@ -21775,8 +21779,8 @@
         "operands": [],
         "gas": [
           {
-            "value": 34,
-            "description": "Base gas consumption"
+            "value": 5234,
+            "description": "For BLS_G1_MUL operation"
           }
         ]
       },
@@ -21795,6 +21799,7 @@
         "prefix": 16330771,
         "prefix_str": "F93013"
       },
+      "effects": ["BlsG1Mul"],
       "signature": {
         "stack_string": "x:Slice s:Int -> result:Slice",
         "inputs": {
@@ -21962,8 +21967,8 @@
         "operands": [],
         "gas": [
           {
-            "value": 34,
-            "description": "Base gas consumption"
+            "value": 2384,
+            "description": "For BLS_MAP_TO_G1 operation"
           }
         ]
       },
@@ -21982,6 +21987,7 @@
         "prefix": 16330774,
         "prefix_str": "F93016"
       },
+      "effects": ["BlsMapToG1"],
       "signature": {
         "stack_string": "f:Slice -> x:Slice",
         "inputs": {
@@ -22020,8 +22026,8 @@
         "operands": [],
         "gas": [
           {
-            "value": 34,
-            "description": "Base gas consumption"
+            "value": 2984,
+            "description": "For BLS_G1_INGROUP operation"
           }
         ]
       },
@@ -22040,6 +22046,7 @@
         "prefix": 16330775,
         "prefix_str": "F93017"
       },
+      "effects": ["BlsG1InGroup"],
       "signature": {
         "stack_string": "x:Slice -> result:Int",
         "inputs": {
@@ -22136,8 +22143,8 @@
         "operands": [],
         "gas": [
           {
-            "value": 34,
-            "description": "Base gas consumption"
+            "value": 6134,
+            "description": "For BLS_G2_ADD/BLS_G2_SUB operation"
           }
         ]
       },
@@ -22156,6 +22163,7 @@
         "prefix": 16330784,
         "prefix_str": "F93020"
       },
+      "effects": ["BlsG2AddSub"],
       "signature": {
         "stack_string": "x:Slice y:Slice -> result:Slice",
         "inputs": {
@@ -22199,8 +22207,8 @@
         "operands": [],
         "gas": [
           {
-            "value": 34,
-            "description": "Base gas consumption"
+            "value": 6134,
+            "description": "For BLS_G2_ADD/BLS_G2_SUB operation"
           }
         ]
       },
@@ -22219,6 +22227,7 @@
         "prefix": 16330785,
         "prefix_str": "F93021"
       },
+      "effects": ["BlsG2AddSub"],
       "signature": {
         "stack_string": "x:Slice y:Slice -> result:Slice",
         "inputs": {
@@ -22262,8 +22271,8 @@
         "operands": [],
         "gas": [
           {
-            "value": 34,
-            "description": "Base gas consumption"
+            "value": 1584,
+            "description": "For BLS_G2_NEG operation"
           }
         ]
       },
@@ -22282,6 +22291,7 @@
         "prefix": 16330786,
         "prefix_str": "F93022"
       },
+      "effects": ["BlsG2Neg"],
       "signature": {
         "stack_string": "x:Slice -> result:Slice",
         "inputs": {
@@ -22320,8 +22330,8 @@
         "operands": [],
         "gas": [
           {
-            "value": 34,
-            "description": "Base gas consumption"
+            "value": 10584,
+            "description": "For BLS_G2_MUL operation"
           }
         ]
       },
@@ -22340,6 +22350,7 @@
         "prefix": 16330787,
         "prefix_str": "F93023"
       },
+      "effects": ["BlsG2Mul"],
       "signature": {
         "stack_string": "x:Slice s:Int -> result:Slice",
         "inputs": {
@@ -22507,8 +22518,8 @@
         "operands": [],
         "gas": [
           {
-            "value": 34,
-            "description": "Base gas consumption"
+            "value": 7984,
+            "description": "For BLS_MAP_TO_G2 operation"
           }
         ]
       },
@@ -22527,6 +22538,7 @@
         "prefix": 16330790,
         "prefix_str": "F93026"
       },
+      "effects": ["BlsMapToG2"],
       "signature": {
         "stack_string": "f:Slice -> x:Slice",
         "inputs": {
@@ -22565,8 +22577,8 @@
         "operands": [],
         "gas": [
           {
-            "value": 34,
-            "description": "Base gas consumption"
+            "value": 4284,
+            "description": "For BLS_G2_INGROUP operation"
           }
         ]
       },
@@ -22585,6 +22597,7 @@
         "prefix": 16330791,
         "prefix_str": "F93027"
       },
+      "effects": ["BlsG2InGroup"],
       "signature": {
         "stack_string": "x:Slice -> result:Int",
         "inputs": {
