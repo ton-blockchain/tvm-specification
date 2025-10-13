@@ -412,7 +412,7 @@
                 "stack": [
                   {
                     "type": "simple",
-                    "name": "b3",
+                    "name": "b''",
                     "value_types": ["Builder"]
                   }
                 ]
@@ -540,7 +540,7 @@
                 "stack": [
                   {
                     "type": "simple",
-                    "name": "b3",
+                    "name": "b''",
                     "value_types": ["Builder"]
                   }
                 ]
@@ -668,7 +668,7 @@
                 "stack": [
                   {
                     "type": "simple",
-                    "name": "b3",
+                    "name": "b''",
                     "value_types": ["Builder"]
                   }
                 ]
@@ -732,7 +732,7 @@
                 "stack": [
                   {
                     "type": "simple",
-                    "name": "b3",
+                    "name": "b''",
                     "value_types": ["Builder"]
                   }
                 ]
@@ -796,7 +796,7 @@
                 "stack": [
                   {
                     "type": "simple",
-                    "name": "b3",
+                    "name": "b''",
                     "value_types": ["Builder"]
                   }
                 ]

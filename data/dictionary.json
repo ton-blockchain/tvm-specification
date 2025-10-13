@@ -65,7 +65,7 @@
         "stack": [
           {
             "type": "simple",
-            "name": "s2",
+            "name": "s'",
             "value_types": ["Slice"]
           }
         ]
@@ -132,7 +132,7 @@
         "stack": [
           {
             "type": "simple",
-            "name": "s2",
+            "name": "s'",
             "value_types": ["Slice"]
           }
         ]
@@ -165,7 +165,7 @@
           },
           {
             "type": "simple",
-            "name": "s2",
+            "name": "s'",
             "value_types": ["Slice"]
           }
         ]
@@ -630,7 +630,7 @@
                 "stack": [
                   {
                     "type": "simple",
-                    "name": "s2",
+                    "name": "s'",
                     "value_types": ["Slice"]
                   },
                   {
@@ -640,7 +640,7 @@
                   },
                   {
                     "type": "simple",
-                    "name": "s3",
+                    "name": "s''",
                     "value_types": ["Slice"]
                   }
                 ]
@@ -697,7 +697,7 @@
         "stack": [
           {
             "type": "simple",
-            "name": "s2",
+            "name": "s'",
             "value_types": ["Slice"]
           },
           {
@@ -707,7 +707,7 @@
           },
           {
             "type": "simple",
-            "name": "s3",
+            "name": "s''",
             "value_types": ["Slice"]
           }
         ]
@@ -801,12 +801,12 @@
         "stack": [
           {
             "type": "simple",
-            "name": "s2",
+            "name": "s'",
             "value_types": ["Slice"]
           },
           {
             "type": "simple",
-            "name": "s3",
+            "name": "s''",
             "value_types": ["Slice"]
           }
         ]

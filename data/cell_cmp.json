@@ -167,7 +167,7 @@
           },
           {
             "type": "simple",
-            "name": "s2",
+            "name": "s'",
             "value_types": ["Slice"]
           }
         ]
