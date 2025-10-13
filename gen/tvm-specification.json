@@ -16533,6 +16533,12 @@
             "instructions": ["s2 s1 XCHG2"]
           }
         ],
+        "exit_codes": [
+          {
+            "errno": "2",
+            "condition": "Stack contains less than 3 elements."
+          }
+        ],
         "examples": [
           {
             "instructions": [
@@ -16643,6 +16649,12 @@
           {
             "exact": true,
             "instructions": ["s2 s2 XCHG2"]
+          }
+        ],
+        "exit_codes": [
+          {
+            "errno": "2",
+            "condition": "Stack contains less than 3 elements."
           }
         ],
         "examples": [
@@ -52204,8 +52216,14 @@
       "description": {
         "short": "",
         "long": "Removes the top `i` elements from the stack. Equivalent to `DROP` performed `i` times.",
-        "tags": [],
+        "tags": ["stack"],
         "operands": ["i"],
+        "exit_codes": [
+          {
+            "errno": "2",
+            "condition": "Stack contains less than `i` elements."
+          }
+        ],
         "gas": [
           {
             "value": 26,
@@ -53347,6 +53365,12 @@
             "instructions": ["s(i) s(j) XCHG2", "s(k) PUSH"]
           }
         ],
+        "exit_codes": [
+          {
+            "errno": "2",
+            "condition": "Stack contains less than `max(i,j,k) + 2` elements."
+          }
+        ],
         "gas": [
           {
             "value": 34,
@@ -53423,6 +53447,12 @@
           {
             "exact": true,
             "instructions": ["s(i) XCHG_0I", "s(j) s(k) PUSH2"]
+          }
+        ],
+        "exit_codes": [
+          {
+            "errno": "2",
+            "condition": "Stack contains less than `max(i,j,k+1) + 1` elements."
           }
         ],
         "gas": [
@@ -53503,6 +53533,12 @@
             "instructions": ["s(i) PUSH", "s[j+1] s[k+1] PUSH2"]
           }
         ],
+        "exit_codes": [
+          {
+            "errno": "2",
+            "condition": "Stack contains less than `max(i,j,k) + 1` elements."
+          }
+        ],
         "gas": [
           {
             "value": 34,
@@ -53581,6 +53617,12 @@
             "instructions": ["s1 s(i) XCHG", "s(j) XCHG_0I"]
           }
         ],
+        "exit_codes": [
+          {
+            "errno": "2",
+            "condition": "Stack contains less than `max(i,j) + 2` elements."
+          }
+        ],
         "gas": [
           {
             "value": 26,
@@ -53649,6 +53691,12 @@
           {
             "exact": true,
             "instructions": ["s(i) XCHG_0I", "s(j) PUSH"]
+          }
+        ],
+        "exit_codes": [
+          {
+            "errno": "2",
+            "condition": "Stack contains less than `max(i,j) + 1` elements."
           }
         ],
         "gas": [
@@ -53721,6 +53769,12 @@
             "instructions": ["s(i) PUSH", "s[j+1] PUSH"]
           }
         ],
+        "exit_codes": [
+          {
+            "errno": "2",
+            "condition": "Stack contains less than `max(i,j+1) + 1` elements."
+          }
+        ],
         "gas": [
           {
             "value": 26,
@@ -53789,6 +53843,12 @@
           {
             "exact": true,
             "instructions": ["s(i) PUSH", "SWAP", "s(j) XCHG_0I"]
+          }
+        ],
+        "exit_codes": [
+          {
+            "errno": "2",
+            "condition": "Stack contains less than `max(i,j) + 1` elements."
           }
         ],
         "gas": [
@@ -53863,6 +53923,12 @@
           {
             "exact": true,
             "instructions": ["s1 s(i) XCHG_1I", "s(j) s[k-1] PUXC"]
+          }
+        ],
+        "exit_codes": [
+          {
+            "errno": "2",
+            "condition": "Stack contains less than `max(i,j,k) + 1` elements."
           }
         ],
         "gas": [
@@ -53945,6 +54011,12 @@
           {
             "exact": true,
             "instructions": ["s(i) PUSH", "s2 XCHG_0I", "s(j) s(k) XCHG2"]
+          }
+        ],
+        "exit_codes": [
+          {
+            "errno": "2",
+            "condition": "Stack contains less than `max(i,j,k) + 2` elements."
           }
         ],
         "gas": [
@@ -54033,6 +54105,12 @@
             "instructions": ["s(i) s[j-1] PUXC", "s(k) PUSH"]
           }
         ],
+        "exit_codes": [
+          {
+            "errno": "2",
+            "condition": "Stack contains less than `max(i,j,k) + 1` elements."
+          }
+        ],
         "gas": [
           {
             "value": 34,
@@ -54119,6 +54197,12 @@
             "instructions": ["s(i) PUSH", "SWAP", "s(j) s[k-1] PUXC"]
           }
         ],
+        "exit_codes": [
+          {
+            "errno": "2",
+            "condition": "Stack contains less than `max(i,j,k) + 1` elements."
+          }
+        ],
         "gas": [
           {
             "value": 34,
@@ -54197,12 +54281,18 @@
       "description": {
         "short": "",
         "long": "Permutes two blocks `s[j+i+1] ... s[j+1]` and `s(j) ... s0`.",
-        "tags": [],
+        "tags": ["stack"],
         "operands": ["i", "j"],
         "other_implementations": [
           {
             "exact": false,
             "instructions": ["[i+1] [j+1] REVERSE", "[j+1] 0 REVERSE", "[i+j+2] 0 REVERSE"]
+          }
+        ],
+        "exit_codes": [
+          {
+            "errno": "2",
+            "condition": "Stack contains less than `i + j + 2` elements."
           }
         ],
         "gas": [
@@ -54275,8 +54365,14 @@
       "description": {
         "short": "",
         "long": "Reverses the order of `s[j+i+1] ... s(j)`.",
-        "tags": [],
+        "tags": ["stack"],
         "operands": ["i", "j"],
+        "exit_codes": [
+          {
+            "errno": "2",
+            "condition": "Stack contains less than `i + j + 2` elements."
+          }
+        ],
         "gas": [
           {
             "value": 26,
@@ -56555,8 +56651,14 @@
       "description": {
         "short": "",
         "long": "Performs `PUSH s(j)` `i` times.",
-        "tags": [],
+        "tags": ["stack"],
         "operands": ["i", "j"],
+        "exit_codes": [
+          {
+            "errno": "2",
+            "condition": "Stack contains less than `j + 1` elements."
+          }
+        ],
         "gas": [
           {
             "value": 26,
@@ -56619,12 +56721,18 @@
       "description": {
         "short": "",
         "long": "Drops `i` stack elements under the top `j` elements.",
-        "tags": [],
+        "tags": ["stack"],
         "operands": ["i", "j"],
         "other_implementations": [
           {
             "exact": true,
             "instructions": ["[i+j] 0 REVERSE", "[i] BLKDROP", "[j] 0 REVERSE"]
+          }
+        ],
+        "exit_codes": [
+          {
+            "errno": "2",
+            "condition": "Stack contains less than `i + j` elements."
           }
         ],
         "gas": [
@@ -59588,6 +59696,12 @@
             "instructions": ["s3", "s2", "XCHG2"]
           }
         ],
+        "exit_codes": [
+          {
+            "errno": "2",
+            "condition": "Stack contains less than 4 elements."
+          }
+        ],
         "gas": [
           {
             "value": 18,
@@ -59683,6 +59797,12 @@
             "instructions": ["DROP", "DROP"]
           }
         ],
+        "exit_codes": [
+          {
+            "errno": "2",
+            "condition": "Stack contains less than 2 elements."
+          }
+        ],
         "gas": [
           {
             "value": 18,
@@ -59745,6 +59865,12 @@
           {
             "exact": true,
             "instructions": ["s1", "s0", "PUSH2"]
+          }
+        ],
+        "exit_codes": [
+          {
+            "errno": "2",
+            "condition": "Stack contains less than 2 elements."
           }
         ],
         "examples": [
@@ -59850,6 +59976,12 @@
           {
             "exact": true,
             "instructions": ["s3", "s2", "PUSH2"]
+          }
+        ],
+        "exit_codes": [
+          {
+            "errno": "2",
+            "condition": "Stack contains less than 4 elements."
           }
         ],
         "gas": [
@@ -62742,13 +62874,19 @@
       "description": {
         "short": "",
         "long": "Performs `s2 s(i) XCHG`, `s1 s(j) XCHG`, and finally `s(k) XCHG_0I`.",
-        "tags": [],
+        "tags": ["stack"],
         "operands": ["i", "j", "k"],
         "related_instructions": ["XCHG3_ALT"],
         "other_implementations": [
           {
             "exact": true,
             "instructions": ["s2 s(i) XCHG", "s1 s(j) XCHG", "s(k) XCHG_0I"]
+          }
+        ],
+        "exit_codes": [
+          {
+            "errno": "2",
+            "condition": "Stack contains less than `max(i,j,k) + 3` elements."
           }
         ],
         "gas": [
@@ -62821,13 +62959,19 @@
       "description": {
         "short": "",
         "long": "Performs `s2 s(i) XCHG`, `s1 s(j) XCHG`, and finally `s(k) XCHG_0I`. This is a long form of `XCHG3`.",
-        "tags": [],
+        "tags": ["stack"],
         "operands": ["i", "j", "k"],
         "related_instructions": ["XCHG3"],
         "other_implementations": [
           {
             "exact": false,
             "instructions": ["s2 s(i) XCHG", "s1 s(j) XCHG", "s(k) XCHG_0I"]
+          }
+        ],
+        "exit_codes": [
+          {
+            "errno": "2",
+            "condition": "Stack contains less than `max(i,j,k) + 3` elements."
           }
         ],
         "gas": [
