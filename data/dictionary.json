@@ -8700,22 +8700,22 @@
   },
   "DICTPUSHCONST": {
     "description": {
-      "short": "Pushes a non-empty constant dictionary `D` (as a `Cell^?`) along with its key length `n`, stored as a part of the instruction. An empty dictionary can be pushed by a `PUSHNULL` instruction instead.",
-      "long": "The dictionary itself is created from the first of remaining references of the current continuation. In this way, the complete `DICTPUSHCONST` instruction can be obtained by first serializing `xF4A4_`, then the non-empty dictionary itself (one `1` bit and a `Cell` reference), and then the unsigned 10-bit integer `n` (as if by a `STU 10` instruction).",
+      "short": "Pushes a non-empty constant dictionary `d` (as a `Cell^?`) along with its `key_len`, stored as a part of the instruction. An empty dictionary can be pushed by a `PUSHNULL` instruction instead.",
+      "long": "The dictionary itself is created from the first of remaining references of the current continuation. In this way, the complete `DICTPUSHCONST` instruction can be obtained by first serializing `xF4A4_`, then the non-empty dictionary itself (one `1` bit and a `Cell` reference), and then the unsigned 10-bit integer `key_len` (as if by a `STU 10` instruction).",
       "tags": [],
-      "operands": ["d", "n"]
+      "operands": ["d", "key_len"]
     },
     "signature": {
       "outputs": {
         "stack": [
           {
             "type": "simple",
-            "name": "D",
+            "name": "d",
             "value_types": ["Cell", "Null"]
           },
           {
             "type": "simple",
-            "name": "n",
+            "name": "key_len",
             "value_types": ["Int"],
             "range": {
               "min": 0,
@@ -8731,7 +8731,7 @@
       "short": "Performs prefix dictionary lookup and control transfer.",
       "long": "Looks up a `prefix` in dictionary `D` and if found, jumps to the corresponding continuation. Similar to `PFXDICTGETJMP` but with predefined dictionary and key length.",
       "tags": ["dictionary", "prefix", "control"],
-      "operands": ["d", "n"]
+      "operands": ["d", "key_len"]
     },
     "signature": {
       "inputs": {

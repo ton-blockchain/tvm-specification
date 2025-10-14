@@ -7,7 +7,7 @@
         "sourceMap": true,
         "outDir": "./dist",
         "downlevelIteration": true,
-        "strict": true,
+        "strict": false,
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
         "skipLibCheck": true,

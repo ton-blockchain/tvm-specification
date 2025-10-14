@@ -368,6 +368,10 @@
           "type": "string",
           "description": "String representation of instruction prefix in hex"
         },
+        "tlb": {
+          "type": "string",
+          "description": "TLB schema of the instruction"
+        },
         "version": {
           "type": "number"
         }
@@ -381,7 +385,8 @@
         "exec",
         "kind",
         "prefix",
-        "prefix_str"
+        "prefix_str",
+        "tlb"
       ],
       "additionalProperties": false
     },

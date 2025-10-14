@@ -12,6 +12,7 @@ import {
     instructions,
     signatureString,
     calculateGasConsumptionWithDescription,
+    generateTlb,
 } from "../instructions"
 
 export interface InstructionEntry {
@@ -76,6 +77,7 @@ const main = () => {
             subCategory: undefined,
             effects: undefined,
             prefix_str: opcode.prefix.toString(16).toUpperCase(),
+            tlb: generateTlb(name, opcode, instr.description.operands, false),
         }
 
         const gasCosts = calculateGasConsumptionWithDescription(opcode).filter(

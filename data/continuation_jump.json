@@ -667,7 +667,7 @@
       "branches": [
         {
           "type": "variable",
-          "var_name": "c",
+          "var_name": "ref",
           "save": {
             "c0": {
               "type": "cc",
@@ -686,13 +686,13 @@
   "JMPREF": {
     "description": {
       "short": "",
-      "long": "Jumps to the continuation stored in cell reference `c`.",
+      "long": "Jumps to the continuation stored in cell reference `ref`.",
       "tags": [],
-      "operands": ["c"],
+      "operands": ["ref"],
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["PUSHREFCONT [c]", "JMPX"]
+          "instructions": ["PUSHREFCONT [ref]", "JMPX"]
         }
       ]
     },
@@ -710,7 +710,7 @@
       "branches": [
         {
           "type": "variable",
-          "var_name": "c"
+          "var_name": "ref"
         }
       ]
     }
@@ -718,13 +718,13 @@
   "JMPREFDATA": {
     "description": {
       "short": "",
-      "long": "Jumps to the continuation stored in cell reference `c`, converting the remainder of the current continuation into a _Slice_ before pushing it onto the stack of `c`.",
+      "long": "Jumps to the continuation stored in cell reference `ref`, converting the remainder of the current continuation into a _Slice_ before pushing it onto the stack of `ref`.",
       "tags": [],
-      "operands": ["c"],
+      "operands": ["ref"],
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["PUSHREFCONT [c]", "JMPXDATA"]
+          "instructions": ["PUSHREFCONT [ref]", "JMPXDATA"]
         }
       ]
     },
@@ -742,7 +742,7 @@
       "branches": [
         {
           "type": "variable",
-          "var_name": "c"
+          "var_name": "ref"
         }
       ]
     }

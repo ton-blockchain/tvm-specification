@@ -16,6 +16,7 @@ language.
 - With exit code description: **165**
 - With examples: **33**
 - With other implementations description: **102**
+- With TLB representation: **910**
 - Without any text description: **0**, including arithmetic: **0**
 - With unverified empty stack signature: **0**
 - Fift instructions count: **116**
@@ -31,6 +32,8 @@ This repository contains scripts that check the validity of instruction descript
   them and verifying that the resulting stack matches the expected output
 - [other-implementations-validation.ts](validity/other-implementations-validation.ts) — checks that the instructions
   listed in `other_implementations` is compilable
+- [tlb-validation.ts](validity/tlb-validation.ts) — checks the validity of TLB representations by parsing them and
+  generating TypeScript wrapper code
 - JSON Schema validation — validates the JSON schema itself and checks that the generated specification conforms to it
 
 ## Projects that use this specification
