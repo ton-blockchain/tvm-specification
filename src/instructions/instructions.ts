@@ -1321,7 +1321,7 @@ export const instructions: Record<string, Opcode> = {
     INDEX3: cat("tuple", mkfixedn(0x6fc >> 2, 10, 6, seq(uint2, uint2, uint2), `exec_tuple_index3`)),
 
     PUSHPOW2: cat("int_const", mkfixedrangen(0x8300, 0x83ff, 16, 8, seq(delta(1, uint8)), `exec_push_pow2`)),
-    BLKPUSH: cat("stack", mkfixedrangen(0x5f10, 0x6000, 16, 8, seq(uint4, uint4), `exec_blkpush`)),
+    BLKPUSH: cat("stack", mkfixedrangen(0x5f10, 0x6000, 16, 8, seq(uint(4, range(1n, 15n)), stack(4)), `exec_blkpush`)),
     BLKDROP2: cat("stack", mkfixedrangen(0x6c10, 0x6d00, 16, 8, seq(uint4, uint4), `exec_blkdrop2`)),
     GETGLOB: cat("globals", mkfixedrangen(0xf841, 0xf860, 16, 5, seq(uint5), `exec_get_global`)),
     SETGLOB: cat("globals", mkfixedrangen(0xf861, 0xf880, 16, 5, seq(uint5), `exec_set_global`)),
@@ -1475,8 +1475,8 @@ export const instructions: Record<string, Opcode> = {
     PUSHINT_16: cat("int_const", mkfixedn(0x81, 8, 16, seq(int16), `exec_push_smallint`)),
     PUSHINT_LONG: cat("int_const", mkextrange(0x820 << 1, (0x820 << 1) + 31, 13, 5, seq(largeInt), `exec_push_int`)),
 
-    XCHG_0I_LONG: cat("stack", mkfixedn(0x11, 8, 8, seq(stack(8)), `exec_xchg0_l`)),
-    XCHG_0I: cat("stack", mkfixedrangen(0x02, 0x10, 8, 4, seq(stack(4)), `exec_xchg0`)),
+    XCHG_0I_LONG: cat("stack", mkfixedn(0x11, 8, 8, seq(stack2(8, 1n)), `exec_xchg0_l`)),
+    XCHG_0I: cat("stack", mkfixedrangen(0x02, 0x10, 8, 4, seq(stack2(4, 1n)), `exec_xchg0`)),
     XCHG_IJ: cat("stack", mkfixedn(0x10, 8, 8, xchgArgs, `exec_xchg`)),
     XCHG_1I: cat("stack", mkfixedrangen(0x12, 0x20, 8, 4, seq(s1, stack2(4, 2n)), `exec_xchg1`)),
 
