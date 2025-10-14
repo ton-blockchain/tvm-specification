@@ -8,7 +8,7 @@
         "generate": "ts-node src/gen/gen.ts && yarn fmt",
         "find-implementations": "ts-node src/gen/implementation-finder.ts",
         "validate": "ts-node ./validity/input-instr-signature.ts && ts-node ./validity/examples-validation.ts",
-        "validate-schema": "ajv validate -s gen/schema.json -d gen/tvm-specification.json --strict=false",
+        "validate-schema": "ajv validate -s gen/schema.json -d gen/tvm-specification.json",
         "precommit": "yarn fmt && yarn generate && yarn validate && yarn validate-schema"
     },
     "devDependencies": {
