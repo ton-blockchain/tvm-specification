@@ -7,7 +7,6 @@ import * as fs from "node:fs"
 import * as path from "node:path"
 import {execSync} from "node:child_process"
 import {Specification} from "../src/types"
-import {generateCodeByAST} from "@ton-community/tlb-codegen/src/main"
 
 const colors = {
     green: "\x1b[32m",
@@ -15,7 +14,6 @@ const colors = {
     yellow: "\x1b[33m",
     reset: "\x1b[0m",
 } as const
-
 
 async function validateTlb(instructionName: string, tlb: string): Promise<boolean> {
     if (
@@ -37,11 +35,11 @@ async function validateTlb(instructionName: string, tlb: string): Promise<boolea
         const fullTlb = `constructor_name${tlb} = Instruction;`
 
         tempFilePath = path.join(process.cwd(), `temp.tlb`)
-        fs.writeFileSync(tempFilePath, fullTlb, 'utf8')
+        fs.writeFileSync(tempFilePath, fullTlb, "utf8")
 
         execSync(`./node_modules/@ton-community/tlb-codegen/build/main.js  ${tempFilePath}`, {
-            stdio: 'pipe',
-            cwd: process.cwd()
+            stdio: "pipe",
+            cwd: process.cwd(),
         })
 
         console.log(
@@ -60,6 +58,14 @@ async function validateTlb(instructionName: string, tlb: string): Promise<boolea
                 fs.unlinkSync(tempFilePath)
             } catch (cleanupError) {
                 console.warn(`Failed to clean up temporary file ${tempFilePath}:`, cleanupError)
+            }
+        }
+        const tsFilePath = tempFilePath?.replace(".tlb", ".ts")
+        if (tsFilePath && fs.existsSync(tsFilePath)) {
+            try {
+                fs.unlinkSync(tsFilePath)
+            } catch (cleanupError) {
+                console.warn(`Failed to clean up temporary file ${tsFilePath}:`, cleanupError)
             }
         }
     }
