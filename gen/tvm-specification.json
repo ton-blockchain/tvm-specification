@@ -304,7 +304,7 @@
           },
           {
             "exact": true,
-            "instructions": ["ZERO", "SUBR"]
+            "instructions": ["PUSHINT_4 0", "SUBR"]
           }
         ],
         "gas": [
@@ -587,7 +587,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["ONE", "SWAP", "LSHIFT"]
+            "instructions": ["PUSHINT_4 1", "SWAP", "LSHIFT"]
           }
         ],
         "gas": [
@@ -4135,7 +4135,7 @@
         "other_implementations": [
           {
             "exact": false,
-            "instructions": ["SDLEXCMP", "ISZERO"]
+            "instructions": ["SDLEXCMP", "EQINT 0"]
           }
         ],
         "gas": [
@@ -11549,7 +11549,7 @@
         "other_implementations": [
           {
             "exact": false,
-            "instructions": ["ROT", "ISZERO", "INC", "ROLLX", "NIP"]
+            "instructions": ["ROT", "EQINT 0", "INC", "ROLL", "NIP"]
           }
         ],
         "gas": [
@@ -13885,7 +13885,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["SWAP", "SETCONT c0"]
+            "instructions": ["SWAP", "SETCONTCTR c0"]
           }
         ],
         "gas": [
@@ -13955,7 +13955,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["SWAP", "SETCONT c1"]
+            "instructions": ["SWAP", "SETCONTCTR c1"]
           }
         ],
         "gas": [
@@ -14641,7 +14641,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["SAVE c1", "SAMEALT"]
+            "instructions": ["SAVECTR c1", "SAMEALT"]
           }
         ],
         "gas": [
@@ -18771,7 +18771,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["CONFIGROOT", "PUSHINT 32"]
+            "instructions": ["CONFIGROOT", "PUSHINT_8 32"]
           }
         ],
         "gas": [
@@ -48755,7 +48755,7 @@
         "other_implementations": [
           {
             "exact": false,
-            "instructions": ["ZERO", "SWAP", "THROWARGANY"]
+            "instructions": ["PUSHINT_4 0", "SWAP", "THROWARGANY"]
           }
         ],
         "gas": [
@@ -51876,7 +51876,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["PUSHINT num", "PUSHCTR c3", "JMPX"]
+            "instructions": ["PUSHINT_16 [num]", "PUSHCTR c3", "JMPX"]
           }
         ],
         "gas": [
@@ -51957,7 +51957,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["PUSHINT num", "PUSHCTR c3"]
+            "instructions": ["PUSHINT_16 [num]", "PUSHCTR c3"]
           }
         ],
         "gas": [
@@ -53826,13 +53826,13 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Performs two stack element exchanges in sequence (`s1 s(i) XCHG`, `s(j) XCHG_0I`).",
+        "long": "Performs two stack element exchanges in sequence (`XCHG_0I s(i)`, `XCHG_0I s(j)`).",
         "tags": ["stack"],
         "operands": ["i", "j"],
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["XCHG s1 s(i)", "XCHG_0I s(j)"]
+            "instructions": ["XCHG_0I s(i)", "XCHG_0I s(j)"]
           }
         ],
         "exit_codes": [
@@ -53902,7 +53902,7 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Exchanges `i`-th element with top (`s(i) XCHG_0I`) and pushes `j`-th element (`s(j) PUSH`).",
+        "long": "Exchanges `i`-th element with top (`XCHG_0I s(i)`) and pushes `j`-th element (`PUSH s(j)`).",
         "tags": ["stack"],
         "operands": ["i", "j"],
         "other_implementations": [
@@ -53978,7 +53978,7 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Pushes two values from `i`-th and `j`-th positions (`s(i) PUSH`, `s[j+1] PUSH`).",
+        "long": "Pushes two values from `i`-th and `j`-th positions (`PUSH s(i)`, `PUSH s[j+1]`).",
         "tags": ["stack"],
         "operands": ["i", "j"],
         "other_implementations": [
@@ -54054,7 +54054,7 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Pushes `i`-th element, swaps it, and exchanges with `j`-th element (`s(i) PUSH`, `SWAP`, `s(j) XCHG_0I`).",
+        "long": "Pushes `i`-th element, swaps it, and exchanges with `j`-th element (`PUSH s(i)`, `SWAP`, `XCHG_0I s(j)`).",
         "tags": ["stack"],
         "operands": ["i", "j"],
         "other_implementations": [
@@ -54134,7 +54134,7 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Exchanges second with `i`-th element, then performs PUXC with `j` and `k-1` (`s1 s(i) XCHG_1I`, `s(j) s[k-1] PUXC`).",
+        "long": "Exchanges second with `i`-th element, then performs PUXC with `j` and `k-1` (`XCHG_1I s(i)`, `PUXC s(j) s[k-1]`).",
         "tags": ["stack"],
         "operands": ["i", "j", "k"],
         "other_implementations": [
@@ -54222,7 +54222,7 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Pushes `i`-th element, exchanges with third, then performs XCHG2 with `j` and `k` (`s(i) PUSH`, `s2 XCHG_0I`, `s(j) s(k) XCHG2`).",
+        "long": "Pushes `i`-th element, exchanges with third, then performs XCHG2 with `j` and `k` (`PUSH s(i)`, `XCHG_0I s2`, `XCHG2 s(j) s(k)`).",
         "tags": ["stack"],
         "operands": ["i", "j", "k"],
         "other_implementations": [
@@ -54314,7 +54314,7 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Performs PUXC with `i` and `j-1`, then pushes `k`-th element (`s(i) s[j-1] PUXC`, `s(k) PUSH`).",
+        "long": "Performs PUXC with `i` and `j-1`, then pushes `k`-th element (`PUXC s(i) s[j-1]`, `PUSH s(k)`).",
         "tags": ["stack"],
         "operands": ["i", "j", "k"],
         "other_implementations": [
@@ -54406,7 +54406,7 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Pushes `i`-th element, swaps it, then performs PUXC with `j` and `k-1` (`s(i) PUSH`, `SWAP`, `s(j) s[k-1] PUXC`).",
+        "long": "Pushes `i`-th element, swaps it, then performs PUXC with `j` and `k-1` (`PUSH s(i)`, `SWAP`, `PUXC s(j) s[k-1]`).",
         "tags": ["stack"],
         "operands": ["i", "j", "k"],
         "other_implementations": [
@@ -57178,7 +57178,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["PUSHCTR c7", "FIRST", "INDEX [i]"]
+            "instructions": ["PUSHCTR c7", "INDEX 0", "INDEX [i]"]
           }
         ],
         "gas": [
@@ -57416,7 +57416,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["PUSHREFCONT", "CALLX"]
+            "instructions": ["PUSHREFCONT", "EXECUTE"]
           }
         ],
         "gas": [
@@ -59707,7 +59707,7 @@
       "sub_category": "continuation_change",
       "description": {
         "short": "",
-        "long": "Similar to `c(i) SAVE`, but saves the current value of `c(i)` into the savelist of `c1`, not `c0`.",
+        "long": "Similar to `SAVECTR c(i)`, but saves the current value of `c(i)` into the savelist of `c1`, not `c0`.",
         "tags": [],
         "operands": ["i"],
         "gas": [
@@ -59782,7 +59782,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["SAVE c(i)", "SAVEALT c(i)"]
+            "instructions": ["SAVECTR c(i)", "SAVEALTCTR c(i)"]
           }
         ],
         "gas": [
@@ -59921,7 +59921,7 @@
           },
           {
             "exact": true,
-            "instructions": ["s3", "s2", "XCHG2"]
+            "instructions": ["XCHG2 s3 s2"]
           }
         ],
         "exit_codes": [
@@ -60092,7 +60092,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["s1", "s0", "PUSH2"]
+            "instructions": ["PUSH2 s1 s0"]
           }
         ],
         "exit_codes": [
@@ -60203,7 +60203,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["s3", "s2", "PUSH2"]
+            "instructions": ["PUSH2 s3 s2"]
           }
         ],
         "exit_codes": [
@@ -63747,7 +63747,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["XCHG s2 s(i)", "XCHG s1 s(j)", "XCHG_0I s(k)"]
+            "instructions": ["XCHG_IJ s2 s(i)", "XCHG_0I s(j)", "XCHG_0I s(k)"]
           }
         ],
         "exit_codes": [
@@ -63832,7 +63832,7 @@
         "other_implementations": [
           {
             "exact": false,
-            "instructions": ["XCHG s2 s(i)", "XCHG s1 s(j)", "XCHG_0I s(k)"]
+            "instructions": ["XCHG_IJ s2 s(i)", "XCHG_0I s(j)", "XCHG_0I s(k)"]
           }
         ],
         "exit_codes": [
@@ -65799,7 +65799,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["PUSHINT [num]", "PUSHCTR c3", "EXECUTE"]
+            "instructions": ["PUSHINT_16 [num]", "PUSHCTR c3", "EXECUTE"]
           }
         ],
         "gas": [

@@ -529,7 +529,7 @@
       "other_implementations": [
         {
           "exact": false,
-          "instructions": ["ROT", "ISZERO", "INC", "ROLLX", "NIP"]
+          "instructions": ["ROT", "EQINT 0", "INC", "ROLL", "NIP"]
         }
       ]
     },

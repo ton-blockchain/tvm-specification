@@ -86,7 +86,7 @@
       "other_implementations": [
         {
           "exact": false,
-          "instructions": ["ZERO", "SWAP", "THROWARGANY"]
+          "instructions": ["PUSHINT_4 0", "SWAP", "THROWARGANY"]
         }
       ]
     },

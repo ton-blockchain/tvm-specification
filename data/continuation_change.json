@@ -362,7 +362,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["SWAP", "SETCONT c0"]
+          "instructions": ["SWAP", "SETCONTCTR c0"]
         }
       ]
     },
@@ -403,7 +403,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["SWAP", "SETCONT c1"]
+          "instructions": ["SWAP", "SETCONTCTR c1"]
         }
       ]
     },
@@ -799,7 +799,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["SAVE c1", "SAMEALT"]
+          "instructions": ["SAVECTR c1", "SAMEALT"]
         }
       ]
     },
@@ -1160,7 +1160,7 @@
   "SAVEALTCTR": {
     "description": {
       "short": "",
-      "long": "Similar to `c(i) SAVE`, but saves the current value of `c(i)` into the savelist of `c1`, not `c0`.",
+      "long": "Similar to `SAVECTR c(i)`, but saves the current value of `c(i)` into the savelist of `c1`, not `c0`.",
       "tags": [],
       "operands": ["i"]
     },
@@ -1198,7 +1198,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["SAVE c(i)", "SAVEALT c(i)"]
+          "instructions": ["SAVECTR c(i)", "SAVEALTCTR c(i)"]
         }
       ]
     },

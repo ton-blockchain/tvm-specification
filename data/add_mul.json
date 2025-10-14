@@ -164,7 +164,7 @@
         },
         {
           "exact": true,
-          "instructions": ["ZERO", "SUBR"]
+          "instructions": ["PUSHINT_4 0", "SUBR"]
         }
       ]
     },

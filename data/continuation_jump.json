@@ -649,7 +649,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["PUSHREFCONT", "CALLX"]
+          "instructions": ["PUSHREFCONT", "EXECUTE"]
         }
       ]
     },

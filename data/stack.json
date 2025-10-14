@@ -1261,13 +1261,13 @@
   "XCHG2": {
     "description": {
       "short": "",
-      "long": "Performs two stack element exchanges in sequence (`s1 s(i) XCHG`, `s(j) XCHG_0I`).",
+      "long": "Performs two stack element exchanges in sequence (`XCHG_0I s(i)`, `XCHG_0I s(j)`).",
       "tags": ["stack"],
       "operands": ["i", "j"],
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["XCHG s1 s(i)", "XCHG_0I s(j)"]
+          "instructions": ["XCHG_0I s(i)", "XCHG_0I s(j)"]
         }
       ],
       "exit_codes": [
@@ -1291,7 +1291,7 @@
   "XCPU": {
     "description": {
       "short": "",
-      "long": "Exchanges `i`-th element with top (`s(i) XCHG_0I`) and pushes `j`-th element (`s(j) PUSH`).",
+      "long": "Exchanges `i`-th element with top (`XCHG_0I s(i)`) and pushes `j`-th element (`PUSH s(j)`).",
       "tags": ["stack"],
       "operands": ["i", "j"],
       "other_implementations": [
@@ -1321,7 +1321,7 @@
   "PUSH2": {
     "description": {
       "short": "",
-      "long": "Pushes two values from `i`-th and `j`-th positions (`s(i) PUSH`, `s[j+1] PUSH`).",
+      "long": "Pushes two values from `i`-th and `j`-th positions (`PUSH s(i)`, `PUSH s[j+1]`).",
       "tags": ["stack"],
       "operands": ["i", "j"],
       "other_implementations": [
@@ -1351,7 +1351,7 @@
   "PUXC": {
     "description": {
       "short": "",
-      "long": "Pushes `i`-th element, swaps it, and exchanges with `j`-th element (`s(i) PUSH`, `SWAP`, `s(j) XCHG_0I`).",
+      "long": "Pushes `i`-th element, swaps it, and exchanges with `j`-th element (`PUSH s(i)`, `SWAP`, `XCHG_0I s(j)`).",
       "tags": ["stack"],
       "operands": ["i", "j"],
       "other_implementations": [
@@ -1381,7 +1381,7 @@
   "XCPUXC": {
     "description": {
       "short": "",
-      "long": "Exchanges second with `i`-th element, then performs PUXC with `j` and `k-1` (`s1 s(i) XCHG_1I`, `s(j) s[k-1] PUXC`).",
+      "long": "Exchanges second with `i`-th element, then performs PUXC with `j` and `k-1` (`XCHG_1I s(i)`, `PUXC s(j) s[k-1]`).",
       "tags": ["stack"],
       "operands": ["i", "j", "k"],
       "other_implementations": [
@@ -1411,7 +1411,7 @@
   "PUXC2": {
     "description": {
       "short": "",
-      "long": "Pushes `i`-th element, exchanges with third, then performs XCHG2 with `j` and `k` (`s(i) PUSH`, `s2 XCHG_0I`, `s(j) s(k) XCHG2`).",
+      "long": "Pushes `i`-th element, exchanges with third, then performs XCHG2 with `j` and `k` (`PUSH s(i)`, `XCHG_0I s2`, `XCHG2 s(j) s(k)`).",
       "tags": ["stack"],
       "operands": ["i", "j", "k"],
       "other_implementations": [
@@ -1441,7 +1441,7 @@
   "PUXCPU": {
     "description": {
       "short": "",
-      "long": "Performs PUXC with `i` and `j-1`, then pushes `k`-th element (`s(i) s[j-1] PUXC`, `s(k) PUSH`).",
+      "long": "Performs PUXC with `i` and `j-1`, then pushes `k`-th element (`PUXC s(i) s[j-1]`, `PUSH s(k)`).",
       "tags": ["stack"],
       "operands": ["i", "j", "k"],
       "other_implementations": [
@@ -1471,7 +1471,7 @@
   "PU2XC": {
     "description": {
       "short": "",
-      "long": "Pushes `i`-th element, swaps it, then performs PUXC with `j` and `k-1` (`s(i) PUSH`, `SWAP`, `s(j) s[k-1] PUXC`).",
+      "long": "Pushes `i`-th element, swaps it, then performs PUXC with `j` and `k-1` (`PUSH s(i)`, `SWAP`, `PUXC s(j) s[k-1]`).",
       "tags": ["stack"],
       "operands": ["i", "j", "k"],
       "other_implementations": [
@@ -1619,7 +1619,7 @@
         },
         {
           "exact": true,
-          "instructions": ["s3", "s2", "XCHG2"]
+          "instructions": ["XCHG2 s3 s2"]
         }
       ],
       "exit_codes": [
@@ -1732,7 +1732,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["s1", "s0", "PUSH2"]
+          "instructions": ["PUSH2 s1 s0"]
         }
       ],
       "exit_codes": [
@@ -1814,7 +1814,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["s3", "s2", "PUSH2"]
+          "instructions": ["PUSH2 s3 s2"]
         }
       ],
       "exit_codes": [
@@ -1897,7 +1897,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["XCHG s2 s(i)", "XCHG s1 s(j)", "XCHG_0I s(k)"]
+          "instructions": ["XCHG_IJ s2 s(i)", "XCHG_0I s(j)", "XCHG_0I s(k)"]
         }
       ],
       "exit_codes": [
@@ -1928,7 +1928,7 @@
       "other_implementations": [
         {
           "exact": false,
-          "instructions": ["XCHG s2 s(i)", "XCHG s1 s(j)", "XCHG_0I s(k)"]
+          "instructions": ["XCHG_IJ s2 s(i)", "XCHG_0I s(j)", "XCHG_0I s(k)"]
         }
       ],
       "exit_codes": [
