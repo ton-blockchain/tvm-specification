@@ -33,7 +33,7 @@ This repository contains scripts that check the validity of instruction descript
   listed in `other_implementations` is compilable
 - JSON Schema validation — validates the JSON schema itself and checks that the generated specification conforms to it
 
-## Project that uses this specification
+## Projects that use this specification
 
 - [TxTracer](https://txtracer.ton.org/) — Web app for tracing and analyzing transactions
 - [Playground](https://txtracer.ton.org/play/) — TVM Assembly and FunC playground
