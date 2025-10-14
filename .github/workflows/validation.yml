@@ -42,5 +42,8 @@ jobs:
           YARN_ENABLE_HARDENED_MODE: false
         run: yarn install --immutable
 
+      - name: Run prettier
+        run: yarn run fmt:check
+
       - name: Validate
-        run: DEBUG=true yarn validate
+        run: DEBUG=true yarn run validate
