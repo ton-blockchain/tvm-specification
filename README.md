@@ -29,8 +29,17 @@ This repository contains scripts that check the validity of instruction descript
   operands (currently 825 instructions are automatically checked (90%))
 - [examples-validation.ts](validity/examples-validation.ts) — checks the validity of instruction examples by executing
   them and verifying that the resulting stack matches the expected output
-- [other-implementations-validation.ts](validity/other-implementations-validation.ts) — checks that the instructions listed in `other_implementations` is compilable
+- [other-implementations-validation.ts](validity/other-implementations-validation.ts) — checks that the instructions
+  listed in `other_implementations` is compilable
 - JSON Schema validation — validates the JSON schema itself and checks that the generated specification conforms to it
+
+## Project that uses this specification
+
+- [TxTracer](https://txtracer.ton.org/) — Web app for tracing and analyzing transactions
+- [Playground](https://txtracer.ton.org/play/) — TVM Assembly and FunC playground
+- [TVM Specification page](https://txtracer.ton.org/spec/) — Visual representation of this specification
+- [TASM](https://github.com/ton-blockchain/tasm) — Assembler and disassembler implementation for TVM bitcode in pure
+  TypeScript tested on 100k real contracts from blockchain
 
 ## Development
 

@@ -338,7 +338,7 @@ function generateProducerOf(type: StackEntry): string[] {
     return []
 }
 
-function getExpectedElementsOnStack(outputs: StackEntry[]): [number, boolean] {
+function getExpectedElementsOnStack(outputs: readonly StackEntry[]): [number, boolean] {
     let exact = true
     const elements = outputs.reduce((prev, cur) => {
         if (cur.type === "const") {
