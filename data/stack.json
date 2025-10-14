@@ -1156,16 +1156,6 @@
           "condition": "Stack contains less than `i` elements."
         }
       ]
-    },
-    "signature": {
-      "inputs": {
-        "stack": [],
-        "registers": []
-      },
-      "outputs": {
-        "stack": [],
-        "registers": []
-      }
     }
   },
   "XC2PU": {
@@ -1186,16 +1176,6 @@
           "condition": "Stack contains less than `max(i,j,k) + 2` elements."
         }
       ]
-    },
-    "signature": {
-      "inputs": {
-        "stack": [],
-        "registers": []
-      },
-      "outputs": {
-        "stack": [],
-        "registers": []
-      }
     }
   },
   "XCPU2": {
@@ -1216,16 +1196,6 @@
           "condition": "Stack contains less than `max(i,j,k+1) + 1` elements."
         }
       ]
-    },
-    "signature": {
-      "inputs": {
-        "stack": [],
-        "registers": []
-      },
-      "outputs": {
-        "stack": [],
-        "registers": []
-      }
     }
   },
   "PUSH3": {
@@ -1246,16 +1216,6 @@
           "condition": "Stack contains less than `max(i,j,k) + 1` elements."
         }
       ]
-    },
-    "signature": {
-      "inputs": {
-        "stack": [],
-        "registers": []
-      },
-      "outputs": {
-        "stack": [],
-        "registers": []
-      }
     }
   },
   "XCHG2": {
@@ -1276,16 +1236,6 @@
           "condition": "Stack contains less than `max(i,j) + 2` elements."
         }
       ]
-    },
-    "signature": {
-      "inputs": {
-        "stack": [],
-        "registers": []
-      },
-      "outputs": {
-        "stack": [],
-        "registers": []
-      }
     }
   },
   "XCPU": {
@@ -1306,16 +1256,6 @@
           "condition": "Stack contains less than `max(i,j) + 1` elements."
         }
       ]
-    },
-    "signature": {
-      "inputs": {
-        "stack": [],
-        "registers": []
-      },
-      "outputs": {
-        "stack": [],
-        "registers": []
-      }
     }
   },
   "PUSH2": {
@@ -1336,16 +1276,6 @@
           "condition": "Stack contains less than `max(i,j+1) + 1` elements."
         }
       ]
-    },
-    "signature": {
-      "inputs": {
-        "stack": [],
-        "registers": []
-      },
-      "outputs": {
-        "stack": [],
-        "registers": []
-      }
     }
   },
   "PUXC": {
@@ -1366,16 +1296,6 @@
           "condition": "Stack contains less than `max(i,j) + 1` elements."
         }
       ]
-    },
-    "signature": {
-      "inputs": {
-        "stack": [],
-        "registers": []
-      },
-      "outputs": {
-        "stack": [],
-        "registers": []
-      }
     }
   },
   "XCPUXC": {
@@ -1396,16 +1316,6 @@
           "condition": "Stack contains less than `max(i,j,k) + 1` elements."
         }
       ]
-    },
-    "signature": {
-      "inputs": {
-        "stack": [],
-        "registers": []
-      },
-      "outputs": {
-        "stack": [],
-        "registers": []
-      }
     }
   },
   "PUXC2": {
@@ -1426,16 +1336,6 @@
           "condition": "Stack contains less than `max(i,j,k) + 2` elements."
         }
       ]
-    },
-    "signature": {
-      "inputs": {
-        "stack": [],
-        "registers": []
-      },
-      "outputs": {
-        "stack": [],
-        "registers": []
-      }
     }
   },
   "PUXCPU": {
@@ -1456,16 +1356,6 @@
           "condition": "Stack contains less than `max(i,j,k) + 1` elements."
         }
       ]
-    },
-    "signature": {
-      "inputs": {
-        "stack": [],
-        "registers": []
-      },
-      "outputs": {
-        "stack": [],
-        "registers": []
-      }
     }
   },
   "PU2XC": {
@@ -1486,16 +1376,6 @@
           "condition": "Stack contains less than `max(i,j,k) + 1` elements."
         }
       ]
-    },
-    "signature": {
-      "inputs": {
-        "stack": [],
-        "registers": []
-      },
-      "outputs": {
-        "stack": [],
-        "registers": []
-      }
     }
   },
   "BLKSWAP": {
@@ -1516,16 +1396,6 @@
           "condition": "Stack contains less than `i + j + 2` elements."
         }
       ]
-    },
-    "signature": {
-      "inputs": {
-        "stack": [],
-        "registers": []
-      },
-      "outputs": {
-        "stack": [],
-        "registers": []
-      }
     }
   },
   "REVERSE": {
@@ -1540,16 +1410,6 @@
           "condition": "Stack contains less than `i + j + 2` elements."
         }
       ]
-    },
-    "signature": {
-      "inputs": {
-        "stack": [],
-        "registers": []
-      },
-      "outputs": {
-        "stack": [],
-        "registers": []
-      }
     }
   },
   "BLKPUSH": {
@@ -1564,16 +1424,6 @@
           "condition": "Stack contains less than `j + 1` elements."
         }
       ]
-    },
-    "signature": {
-      "inputs": {
-        "stack": [],
-        "registers": []
-      },
-      "outputs": {
-        "stack": [],
-        "registers": []
-      }
     }
   },
   "BLKDROP2": {
@@ -1594,16 +1444,6 @@
           "condition": "Stack contains less than `i + j` elements."
         }
       ]
-    },
-    "signature": {
-      "inputs": {
-        "stack": [],
-        "registers": []
-      },
-      "outputs": {
-        "stack": [],
-        "registers": []
-      }
     }
   },
   "2SWAP": {
@@ -1906,16 +1746,6 @@
           "condition": "Stack contains less than `max(i,j,k) + 3` elements."
         }
       ]
-    },
-    "signature": {
-      "inputs": {
-        "stack": [],
-        "registers": []
-      },
-      "outputs": {
-        "stack": [],
-        "registers": []
-      }
     }
   },
   "XCHG3_ALT": {
@@ -1937,16 +1767,6 @@
           "condition": "Stack contains less than `max(i,j,k) + 3` elements."
         }
       ]
-    },
-    "signature": {
-      "inputs": {
-        "stack": [],
-        "registers": []
-      },
-      "outputs": {
-        "stack": [],
-        "registers": []
-      }
     }
   },
   "XCHG_0I_LONG": {
@@ -1962,16 +1782,6 @@
         }
       ],
       "related_instructions": ["XCHG_0I"]
-    },
-    "signature": {
-      "inputs": {
-        "stack": [],
-        "registers": []
-      },
-      "outputs": {
-        "stack": [],
-        "registers": []
-      }
     }
   },
   "XCHG_0I": {
@@ -2029,16 +1839,6 @@
           }
         }
       ]
-    },
-    "signature": {
-      "inputs": {
-        "stack": [],
-        "registers": []
-      },
-      "outputs": {
-        "stack": [],
-        "registers": []
-      }
     }
   },
   "XCHG_IJ": {
@@ -2053,16 +1853,6 @@
           "condition": "Count of elements on the stack is less or equal to `i` or `j`"
         }
       ]
-    },
-    "signature": {
-      "inputs": {
-        "stack": [],
-        "registers": []
-      },
-      "outputs": {
-        "stack": [],
-        "registers": []
-      }
     }
   },
   "XCHG_1I": {
@@ -2081,16 +1871,6 @@
           "condition": "Count of elements on the stack is less or equal to `i`"
         }
       ]
-    },
-    "signature": {
-      "inputs": {
-        "stack": [],
-        "registers": []
-      },
-      "outputs": {
-        "stack": [],
-        "registers": []
-      }
     }
   },
   "PUSH": {
@@ -2250,16 +2030,6 @@
           }
         }
       ]
-    },
-    "signature": {
-      "inputs": {
-        "stack": [],
-        "registers": []
-      },
-      "outputs": {
-        "stack": [],
-        "registers": []
-      }
     }
   },
   "POP_LONG": {
@@ -2275,16 +2045,6 @@
         }
       ],
       "related_instructions": ["POP"]
-    },
-    "signature": {
-      "inputs": {
-        "stack": [],
-        "registers": []
-      },
-      "outputs": {
-        "stack": [],
-        "registers": []
-      }
     }
   }
 }

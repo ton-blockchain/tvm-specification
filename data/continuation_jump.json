@@ -753,16 +753,6 @@
       "long": "Flags:\n\n- **+1** — same_c3 (set c3 to code)\n- **+2** — push_0 (push an implicit 0 before running the code); only works with +1 enabled\n- **+4** — load c4 (persistent data) from stack and return its final value\n- **+8** — load gas limit from stack and return consumed gas\n- **+16** — load c7 (smart-contract context)\n- **+32** — return c5 (actions)\n- **+64** — pop hard gas limit (enabled by ACCEPT) from stack as well\n- **+128** — isolated gas consumption (separate set of visited cells, reset chksgn counter)\n- **+256** — pop number N, return exactly N values from stack (only if res=0 or 1; if not enough then res=stk_und)",
       "tags": [],
       "operands": ["flags"]
-    },
-    "signature": {
-      "inputs": {
-        "stack": [],
-        "registers": []
-      },
-      "outputs": {
-        "stack": [],
-        "registers": []
-      }
     }
   },
   "CALLXARGS": {

@@ -450,6 +450,9 @@ async function main() {
             throw new Error(`No signature for ${name}`)
         }
         counter++
+        if (instrInfo.signature === undefined) {
+            continue
+        }
         const processed = await checkInstructionInputs(name, instrInfo.signature)
         if (processed) {
             processedCounter++

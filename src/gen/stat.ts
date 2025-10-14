@@ -68,6 +68,7 @@ const main = () => {
             stats.withOtherImplementations++
         }
         if (
+            instr.signature &&
             !instr.signature.inputs?.stack?.length &&
             !instr.signature.inputs?.registers?.length &&
             !instr.signature.outputs?.stack?.length &&

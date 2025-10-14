@@ -28,7 +28,7 @@ export interface Instruction {
     readonly description: Description
     readonly layout: Layout
     readonly effects?: readonly string[]
-    readonly signature: InstructionSignature
+    readonly signature?: InstructionSignature
     readonly control_flow?: ControlFlowOfInstruction
     readonly implementation?: ImplementationInfo
 }

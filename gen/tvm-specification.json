@@ -52472,17 +52472,6 @@
         "prefix": 1520,
         "prefix_str": "5F0"
       },
-      "signature": {
-        "stack_string": "∅ -> ∅",
-        "inputs": {
-          "stack": [],
-          "registers": []
-        },
-        "outputs": {
-          "stack": [],
-          "registers": []
-        }
-      },
       "implementation": {
         "commit_hash": "4ebd7412c52248360464c2df5f434c8aaa3edfe1",
         "file_path": "crypto/vm/stackops.cpp",
@@ -53635,17 +53624,6 @@
         "prefix": 1345,
         "prefix_str": "541"
       },
-      "signature": {
-        "stack_string": "∅ -> ∅",
-        "inputs": {
-          "stack": [],
-          "registers": []
-        },
-        "outputs": {
-          "stack": [],
-          "registers": []
-        }
-      },
       "implementation": {
         "commit_hash": "4ebd7412c52248360464c2df5f434c8aaa3edfe1",
         "file_path": "crypto/vm/stackops.cpp",
@@ -53718,17 +53696,6 @@
         "kind": "fixed",
         "prefix": 1347,
         "prefix_str": "543"
-      },
-      "signature": {
-        "stack_string": "∅ -> ∅",
-        "inputs": {
-          "stack": [],
-          "registers": []
-        },
-        "outputs": {
-          "stack": [],
-          "registers": []
-        }
       },
       "implementation": {
         "commit_hash": "4ebd7412c52248360464c2df5f434c8aaa3edfe1",
@@ -53803,17 +53770,6 @@
         "prefix": 1351,
         "prefix_str": "547"
       },
-      "signature": {
-        "stack_string": "∅ -> ∅",
-        "inputs": {
-          "stack": [],
-          "registers": []
-        },
-        "outputs": {
-          "stack": [],
-          "registers": []
-        }
-      },
       "implementation": {
         "commit_hash": "4ebd7412c52248360464c2df5f434c8aaa3edfe1",
         "file_path": "crypto/vm/stackops.cpp",
@@ -53878,17 +53834,6 @@
         "kind": "fixed",
         "prefix": 80,
         "prefix_str": "50"
-      },
-      "signature": {
-        "stack_string": "∅ -> ∅",
-        "inputs": {
-          "stack": [],
-          "registers": []
-        },
-        "outputs": {
-          "stack": [],
-          "registers": []
-        }
       },
       "implementation": {
         "commit_hash": "4ebd7412c52248360464c2df5f434c8aaa3edfe1",
@@ -53955,17 +53900,6 @@
         "prefix": 81,
         "prefix_str": "51"
       },
-      "signature": {
-        "stack_string": "∅ -> ∅",
-        "inputs": {
-          "stack": [],
-          "registers": []
-        },
-        "outputs": {
-          "stack": [],
-          "registers": []
-        }
-      },
       "implementation": {
         "commit_hash": "4ebd7412c52248360464c2df5f434c8aaa3edfe1",
         "file_path": "crypto/vm/stackops.cpp",
@@ -54030,17 +53964,6 @@
         "kind": "fixed",
         "prefix": 83,
         "prefix_str": "53"
-      },
-      "signature": {
-        "stack_string": "∅ -> ∅",
-        "inputs": {
-          "stack": [],
-          "registers": []
-        },
-        "outputs": {
-          "stack": [],
-          "registers": []
-        }
       },
       "implementation": {
         "commit_hash": "4ebd7412c52248360464c2df5f434c8aaa3edfe1",
@@ -54110,17 +54033,6 @@
         "kind": "fixed",
         "prefix": 82,
         "prefix_str": "52"
-      },
-      "signature": {
-        "stack_string": "∅ -> ∅",
-        "inputs": {
-          "stack": [],
-          "registers": []
-        },
-        "outputs": {
-          "stack": [],
-          "registers": []
-        }
       },
       "implementation": {
         "commit_hash": "4ebd7412c52248360464c2df5f434c8aaa3edfe1",
@@ -54198,17 +54110,6 @@
         "kind": "fixed",
         "prefix": 1346,
         "prefix_str": "542"
-      },
-      "signature": {
-        "stack_string": "∅ -> ∅",
-        "inputs": {
-          "stack": [],
-          "registers": []
-        },
-        "outputs": {
-          "stack": [],
-          "registers": []
-        }
       },
       "implementation": {
         "commit_hash": "4ebd7412c52248360464c2df5f434c8aaa3edfe1",
@@ -54291,17 +54192,6 @@
         "prefix": 1348,
         "prefix_str": "544"
       },
-      "signature": {
-        "stack_string": "∅ -> ∅",
-        "inputs": {
-          "stack": [],
-          "registers": []
-        },
-        "outputs": {
-          "stack": [],
-          "registers": []
-        }
-      },
       "implementation": {
         "commit_hash": "4ebd7412c52248360464c2df5f434c8aaa3edfe1",
         "file_path": "crypto/vm/stackops.cpp",
@@ -54382,17 +54272,6 @@
         "kind": "fixed",
         "prefix": 1349,
         "prefix_str": "545"
-      },
-      "signature": {
-        "stack_string": "∅ -> ∅",
-        "inputs": {
-          "stack": [],
-          "registers": []
-        },
-        "outputs": {
-          "stack": [],
-          "registers": []
-        }
       },
       "implementation": {
         "commit_hash": "4ebd7412c52248360464c2df5f434c8aaa3edfe1",
@@ -54475,17 +54354,6 @@
         "prefix": 1350,
         "prefix_str": "546"
       },
-      "signature": {
-        "stack_string": "∅ -> ∅",
-        "inputs": {
-          "stack": [],
-          "registers": []
-        },
-        "outputs": {
-          "stack": [],
-          "registers": []
-        }
-      },
       "implementation": {
         "commit_hash": "4ebd7412c52248360464c2df5f434c8aaa3edfe1",
         "file_path": "crypto/vm/stackops.cpp",
@@ -54559,17 +54427,6 @@
         "prefix": 85,
         "prefix_str": "55"
       },
-      "signature": {
-        "stack_string": "∅ -> ∅",
-        "inputs": {
-          "stack": [],
-          "registers": []
-        },
-        "outputs": {
-          "stack": [],
-          "registers": []
-        }
-      },
       "implementation": {
         "commit_hash": "4ebd7412c52248360464c2df5f434c8aaa3edfe1",
         "file_path": "crypto/vm/stackops.cpp",
@@ -54632,17 +54489,6 @@
         "kind": "fixed",
         "prefix": 94,
         "prefix_str": "5E"
-      },
-      "signature": {
-        "stack_string": "∅ -> ∅",
-        "inputs": {
-          "stack": [],
-          "registers": []
-        },
-        "outputs": {
-          "stack": [],
-          "registers": []
-        }
       },
       "implementation": {
         "commit_hash": "4ebd7412c52248360464c2df5f434c8aaa3edfe1",
@@ -56915,17 +56761,6 @@
         "prefix": 24336,
         "prefix_str": "5F10"
       },
-      "signature": {
-        "stack_string": "∅ -> ∅",
-        "inputs": {
-          "stack": [],
-          "registers": []
-        },
-        "outputs": {
-          "stack": [],
-          "registers": []
-        }
-      },
       "implementation": {
         "commit_hash": "4ebd7412c52248360464c2df5f434c8aaa3edfe1",
         "file_path": "crypto/vm/stackops.cpp",
@@ -56990,17 +56825,6 @@
         "kind": "fixed-range",
         "prefix": 27664,
         "prefix_str": "6C10"
-      },
-      "signature": {
-        "stack_string": "∅ -> ∅",
-        "inputs": {
-          "stack": [],
-          "registers": []
-        },
-        "outputs": {
-          "stack": [],
-          "registers": []
-        }
       },
       "implementation": {
         "commit_hash": "4ebd7412c52248360464c2df5f434c8aaa3edfe1",
@@ -59887,17 +59711,6 @@
         "kind": "fixed",
         "prefix": 3508,
         "prefix_str": "DB4"
-      },
-      "signature": {
-        "stack_string": "∅ -> ∅",
-        "inputs": {
-          "stack": [],
-          "registers": []
-        },
-        "outputs": {
-          "stack": [],
-          "registers": []
-        }
       },
       "implementation": {
         "commit_hash": "4ebd7412c52248360464c2df5f434c8aaa3edfe1",
@@ -63802,17 +63615,6 @@
         "prefix": 4,
         "prefix_str": "4"
       },
-      "signature": {
-        "stack_string": "∅ -> ∅",
-        "inputs": {
-          "stack": [],
-          "registers": []
-        },
-        "outputs": {
-          "stack": [],
-          "registers": []
-        }
-      },
       "implementation": {
         "commit_hash": "4ebd7412c52248360464c2df5f434c8aaa3edfe1",
         "file_path": "crypto/vm/stackops.cpp",
@@ -63886,17 +63688,6 @@
         "kind": "fixed",
         "prefix": 1344,
         "prefix_str": "540"
-      },
-      "signature": {
-        "stack_string": "∅ -> ∅",
-        "inputs": {
-          "stack": [],
-          "registers": []
-        },
-        "outputs": {
-          "stack": [],
-          "registers": []
-        }
       },
       "implementation": {
         "commit_hash": "4ebd7412c52248360464c2df5f434c8aaa3edfe1",
@@ -66602,17 +66393,6 @@
         "prefix": 17,
         "prefix_str": "11"
       },
-      "signature": {
-        "stack_string": "∅ -> ∅",
-        "inputs": {
-          "stack": [],
-          "registers": []
-        },
-        "outputs": {
-          "stack": [],
-          "registers": []
-        }
-      },
       "implementation": {
         "commit_hash": "4ebd7412c52248360464c2df5f434c8aaa3edfe1",
         "file_path": "crypto/vm/stackops.cpp",
@@ -66707,17 +66487,6 @@
         "prefix": 2,
         "prefix_str": "2"
       },
-      "signature": {
-        "stack_string": "∅ -> ∅",
-        "inputs": {
-          "stack": [],
-          "registers": []
-        },
-        "outputs": {
-          "stack": [],
-          "registers": []
-        }
-      },
       "implementation": {
         "commit_hash": "4ebd7412c52248360464c2df5f434c8aaa3edfe1",
         "file_path": "crypto/vm/stackops.cpp",
@@ -66762,17 +66531,6 @@
         "kind": "fixed",
         "prefix": 16,
         "prefix_str": "10"
-      },
-      "signature": {
-        "stack_string": "∅ -> ∅",
-        "inputs": {
-          "stack": [],
-          "registers": []
-        },
-        "outputs": {
-          "stack": [],
-          "registers": []
-        }
       },
       "implementation": {
         "commit_hash": "4ebd7412c52248360464c2df5f434c8aaa3edfe1",
@@ -66831,17 +66589,6 @@
         "kind": "fixed-range",
         "prefix": 18,
         "prefix_str": "12"
-      },
-      "signature": {
-        "stack_string": "∅ -> ∅",
-        "inputs": {
-          "stack": [],
-          "registers": []
-        },
-        "outputs": {
-          "stack": [],
-          "registers": []
-        }
       },
       "implementation": {
         "commit_hash": "4ebd7412c52248360464c2df5f434c8aaa3edfe1",
@@ -67579,17 +67326,6 @@
         "prefix": 50,
         "prefix_str": "32"
       },
-      "signature": {
-        "stack_string": "∅ -> ∅",
-        "inputs": {
-          "stack": [],
-          "registers": []
-        },
-        "outputs": {
-          "stack": [],
-          "registers": []
-        }
-      },
       "implementation": {
         "commit_hash": "4ebd7412c52248360464c2df5f434c8aaa3edfe1",
         "file_path": "crypto/vm/stackops.cpp",
@@ -67641,17 +67377,6 @@
         "kind": "fixed",
         "prefix": 87,
         "prefix_str": "57"
-      },
-      "signature": {
-        "stack_string": "∅ -> ∅",
-        "inputs": {
-          "stack": [],
-          "registers": []
-        },
-        "outputs": {
-          "stack": [],
-          "registers": []
-        }
       },
       "implementation": {
         "commit_hash": "4ebd7412c52248360464c2df5f434c8aaa3edfe1",

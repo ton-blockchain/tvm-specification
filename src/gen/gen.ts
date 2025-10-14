@@ -96,7 +96,7 @@ const main = () => {
                       stack_string: signatureStr,
                       ...signature,
                   }
-                : {},
+                : undefined,
             control_flow: instr.control_flow,
             implementation: implementationMapping[name],
         }

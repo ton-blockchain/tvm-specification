@@ -151,7 +151,7 @@
           "$ref": "#/definitions/ImplementationInfo"
         }
       },
-      "required": ["category", "sub_category", "description", "layout", "signature"],
+      "required": ["category", "sub_category", "description", "layout"],
       "additionalProperties": false
     },
     "Description": {
@@ -512,7 +512,7 @@
         }
       },
       "additionalProperties": false,
-      "description": "Information related to usage of stack and registers by instruction."
+      "description": "Information related to usage of stack and registers by instruction. If omitted, exact signature is not available."
     },
     "InstructionInputs": {
       "type": "object",
