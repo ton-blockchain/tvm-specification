@@ -27,6 +27,8 @@ This repository contains scripts that check the validity of instruction descript
 
 - [input-instr-signature.ts](validity/input-instr-signature.ts) — checks the validity of instruction signatures and
   operands (currently 825 instructions are automatically checked (90%))
+- [examples-validation.ts](validity/examples-validation.ts) — checks the validity of instruction examples by executing
+  them and verifying that the resulting stack matches the expected output
 
 ## Development
 

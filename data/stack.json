@@ -99,7 +99,7 @@
         {
           "instructions": [
             {
-              "instruction": "PUSHINT_4 42"
+              "instruction": "PUSHINT_16 42"
             },
             {
               "instruction": "DUP",

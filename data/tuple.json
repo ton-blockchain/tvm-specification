@@ -606,11 +606,11 @@
         {
           "instructions": [
             {
-              "instruction": "PUSHINT_4 123",
+              "instruction": "PUSHINT_16 123",
               "comment": "Push an integer (not a tuple)"
             },
             {
-              "instruction": "PUSHINT_4 456"
+              "instruction": "PUSHINT_16 456"
             },
             {
               "instruction": "TPUSH",
@@ -1216,7 +1216,7 @@
         {
           "instructions": [
             {
-              "instruction": "PUSHINT_4 123",
+              "instruction": "PUSHINT_16 123",
               "comment": "Push an integer (not a tuple)"
             },
             {
@@ -1297,7 +1297,7 @@
         {
           "instructions": [
             {
-              "instruction": "PUSHINT_4 123",
+              "instruction": "PUSHINT_16 123",
               "comment": "Push an integer (not a tuple)"
             },
             {

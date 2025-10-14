@@ -7336,7 +7336,7 @@
           {
             "instructions": [
               {
-                "instruction": "PUSHINT_4 123"
+                "instruction": "PUSHINT_16 123"
               },
               {
                 "instruction": "NEWC"
@@ -11266,7 +11266,7 @@
             ],
             "stack": {
               "input": ["Continuation", "-1"],
-              "output": []
+              "output": ["3"]
             }
           }
         ],
@@ -11365,7 +11365,7 @@
             ],
             "stack": {
               "input": ["Continuation", "0"],
-              "output": []
+              "output": ["3"]
             }
           }
         ],
@@ -16265,7 +16265,7 @@
           {
             "instructions": [
               {
-                "instruction": "PUSHINT_4 42"
+                "instruction": "PUSHINT_16 42"
               },
               {
                 "instruction": "DUP",
@@ -26111,11 +26111,11 @@
           {
             "instructions": [
               {
-                "instruction": "PUSHINT_4 123",
+                "instruction": "PUSHINT_16 123",
                 "comment": "Push an integer (not a tuple)"
               },
               {
-                "instruction": "PUSHINT_4 456"
+                "instruction": "PUSHINT_16 456"
               },
               {
                 "instruction": "TPUSH",
@@ -52685,7 +52685,7 @@
           {
             "instructions": [
               {
-                "instruction": "PUSHINT_4 123",
+                "instruction": "PUSHINT_16 123",
                 "comment": "Push an integer (not a tuple)"
               },
               {
@@ -52804,7 +52804,7 @@
           {
             "instructions": [
               {
-                "instruction": "PUSHINT_4 123",
+                "instruction": "PUSHINT_16 123",
                 "comment": "Push an integer (not a tuple)"
               },
               {
@@ -56422,7 +56422,7 @@
             ],
             "stack": {
               "input": ["Continuation", "8"],
-              "output": []
+              "output": ["5"]
             }
           }
         ],
@@ -56539,7 +56539,7 @@
             ],
             "stack": {
               "input": ["Continuation", "8"],
-              "output": []
+              "output": ["5"]
             }
           }
         ],

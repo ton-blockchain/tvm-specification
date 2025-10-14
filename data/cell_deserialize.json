@@ -103,7 +103,7 @@
         {
           "instructions": [
             {
-              "instruction": "PUSHINT_4 123"
+              "instruction": "PUSHINT_16 123"
             },
             {
               "instruction": "NEWC"

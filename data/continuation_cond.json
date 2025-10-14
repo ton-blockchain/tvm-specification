@@ -333,7 +333,7 @@
           ],
           "stack": {
             "input": ["Continuation", "-1"],
-            "output": []
+            "output": ["3"]
           }
         }
       ],
@@ -403,7 +403,7 @@
           ],
           "stack": {
             "input": ["Continuation", "0"],
-            "output": []
+            "output": ["3"]
           }
         }
       ],
@@ -726,7 +726,7 @@
           ],
           "stack": {
             "input": ["Continuation", "8"],
-            "output": []
+            "output": ["5"]
           }
         }
       ],
@@ -805,7 +805,7 @@
           ],
           "stack": {
             "input": ["Continuation", "8"],
-            "output": []
+            "output": ["5"]
           }
         }
       ],
