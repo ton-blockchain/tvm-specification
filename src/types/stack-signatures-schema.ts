@@ -3,40 +3,40 @@
  */
 export type VariableName = string
 
-export type Range = {
-    min: number
-    max: number
+export type PossibleValueRange = {
+    readonly min: number
+    readonly max: number
 }
 /**
  * Representation of stack entry or group of stack entries
  */
 export type StackEntry =
     | {
-          type: "simple"
-          name: VariableName
-          range?: Range
-          presentation: string
-          value_types?: PossibleValueTypes
-          mutations?: Mutation[]
+          readonly type: "simple"
+          readonly name: VariableName
+          readonly range?: PossibleValueRange
+          readonly presentation: string
+          readonly value_types?: PossibleValueTypes
+          readonly mutations?: Mutation[]
       }
     | {
-          type: "const"
-          value_type: ConstantType
-          value: ConstantValue
+          readonly type: "const"
+          readonly value_type: ConstantType
+          readonly value: ConstantValue
       }
     | {
-          type: "conditional"
-          name: VariableName1
-          match: MatchArm[]
-          else?: StackValues
+          readonly type: "conditional"
+          readonly name: VariableName1
+          readonly match: MatchArm[]
+          readonly else?: StackValues
       }
     | {
-          type: "array"
-          name: VariableName
-          length_var: VariableName2
-          array_entry: ArraySingleEntryDefinition
+          readonly type: "array"
+          readonly name: VariableName
+          readonly length_var: VariableName2
+          readonly array_entry: ArraySingleEntryDefinition
       }
-export type PossibleValueTypes = (
+export type PossibleValueTypes = readonly (
     | "Int"
     | "Bool"
     | "Cell"
@@ -64,81 +64,81 @@ export type ArraySingleEntryDefinition = StackValues
 /**
  * Stack constraints. Top of stack is the last value.
  */
-export type StackValues = StackEntry[]
+export type StackValues = readonly StackEntry[]
 /**
  * Represents read/write access to a register
  */
 export type Register =
     | {
-          type: "constant"
-          index: number
+          readonly type: "constant"
+          readonly index: number
       }
     | {
-          type: "variable"
-          var_name: VariableName
+          readonly type: "variable"
+          readonly var_name: VariableName
       }
     | {
-          type: "special"
-          name: "gas" | "cstate" | "r"
+          readonly type: "special"
+          readonly name: "gas" | "cstate" | "r"
       }
-export type RegisterValues = Register[]
+export type RegisterValues = readonly Register[]
 /**
  * Description of a continuation with static savelist
  */
 export type Continuation =
     | {
-          type: "cc"
-          save?: ContinuationSavelist
+          readonly type: "cc"
+          readonly save?: ContinuationSavelist
       }
     | {
-          type: "variable"
-          var_name: VariableName3
-          save?: ContinuationSavelist
+          readonly type: "variable"
+          readonly var_name: VariableName3
+          readonly save?: ContinuationSavelist
       }
     | {
-          type: "register"
-          index: RegisterNumber03
-          save?: ContinuationSavelist
+          readonly type: "register"
+          readonly index: RegisterNumber03
+          readonly save?: ContinuationSavelist
       }
     | {
-          type: "special"
-          name: "until"
-          args: {
-              body: Continuation
-              after: Continuation
+          readonly type: "special"
+          readonly name: "until"
+          readonly args: {
+              readonly body: Continuation
+              readonly after: Continuation
           }
       }
     | {
-          type: "special"
-          name: "while"
-          args: {
-              cond: Continuation
-              body: Continuation
-              after: Continuation
+          readonly type: "special"
+          readonly name: "while"
+          readonly args: {
+              readonly cond: Continuation
+              readonly body: Continuation
+              readonly after: Continuation
           }
       }
     | {
-          type: "special"
-          name: "again"
-          args: {
-              body: Continuation
+          readonly type: "special"
+          readonly name: "again"
+          readonly args: {
+              readonly body: Continuation
           }
       }
     | {
-          type: "special"
-          name: "repeat"
-          args: {
-              count: VariableName4
-              body: Continuation
-              after: Continuation
+          readonly type: "special"
+          readonly name: "repeat"
+          readonly args: {
+              readonly count: VariableName4
+              readonly body: Continuation
+              readonly after: Continuation
           }
       }
     | {
-          type: "special"
-          name: "pushint"
-          args: {
-              value: IntegerToPushToStack
-              next: Continuation
+          readonly type: "special"
+          readonly name: "pushint"
+          readonly args: {
+              readonly value: IntegerToPushToStack
+              readonly next: Continuation
           }
       }
 /**
@@ -153,9 +153,9 @@ export type VariableName4 = string
 export type IntegerToPushToStack = number
 
 export type Mutation = {
-    length: {
-        amount_arg?: number
-        stack_amount_arg?: number
+    readonly length: {
+        readonly amount_arg?: number
+        readonly stack_amount_arg?: number
     }
 }
 
@@ -165,38 +165,38 @@ export type Schema = Record<string, InstructionSignature>
  * Information related to usage of stack and registers by instruction.
  */
 export interface InstructionSignature {
-    stack_string?: string
-    inputs?: InstructionInputs
-    outputs?: InstructionOutputs
+    readonly stack_string?: string
+    readonly inputs?: InstructionInputs
+    readonly outputs?: InstructionOutputs
 }
 
 /**
  * Incoming values constraints.
  */
 export interface InstructionInputs {
-    stack?: StackValues
-    registers: RegisterValues
+    readonly stack?: StackValues
+    readonly registers: RegisterValues
 }
 
 export interface MatchArm {
-    value: ArmValue
-    stack: StackValues
+    readonly value: ArmValue
+    readonly stack: StackValues
 }
 
 /**
  * Outgoing values constraints.
  */
 export interface InstructionOutputs {
-    stack?: StackValues
-    registers: RegisterValues
+    readonly stack?: StackValues
+    readonly registers: RegisterValues
 }
 
 /**
  * Values of saved control flow registers c0-c3
  */
 export interface ContinuationSavelist {
-    c0?: Continuation
-    c1?: Continuation
-    c2?: Continuation
-    c3?: Continuation
+    readonly c0?: Continuation
+    readonly c1?: Continuation
+    readonly c2?: Continuation
+    readonly c3?: Continuation
 }
