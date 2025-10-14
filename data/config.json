@@ -320,7 +320,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["CONFIGROOT", "32 PUSHINT"]
+          "instructions": ["CONFIGROOT", "PUSHINT 32"]
         }
       ]
     },
@@ -863,7 +863,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["c7 PUSHCTR", "FIRST", "[i] INDEX"]
+          "instructions": ["PUSHCTR c7", "FIRST", "INDEX [i]"]
         }
       ]
     },
@@ -1219,7 +1219,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["INMSGPARAMS", "x INDEX"]
+          "instructions": ["INMSGPARAMS", "INDEX x"]
         }
       ]
     },

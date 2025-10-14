@@ -9,7 +9,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["num PUSHINT", "c3 PUSHCTR", "JMPX"]
+          "instructions": ["PUSHINT num", "PUSHCTR c3", "JMPX"]
         }
       ]
     },
@@ -52,7 +52,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["num PUSHINT", "c3 PUSHCTR"]
+          "instructions": ["PUSHINT num", "PUSHCTR c3"]
         }
       ]
     },
@@ -92,7 +92,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["[num] PUSHINT", "c3 PUSHCTR", "EXECUTE"]
+          "instructions": ["PUSHINT [num]", "PUSHCTR c3", "EXECUTE"]
         }
       ]
     },

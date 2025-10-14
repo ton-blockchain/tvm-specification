@@ -1597,7 +1597,7 @@
       "other_implementations": [
         {
           "exact": false,
-          "instructions": ["4 LDU", "SWAP", "3 LSHIFT#", "LDUX"]
+          "instructions": ["LDU 4", "SWAP", "LSHIFT# 3", "LDUX"]
         }
       ]
     },
@@ -1642,7 +1642,7 @@
       "other_implementations": [
         {
           "exact": false,
-          "instructions": ["4 LDU", "SWAP", "3 LSHIFT#", "LDIX"]
+          "instructions": ["LDU 4", "SWAP", "LSHIFT# 3", "LDIX"]
         }
       ]
     },
@@ -1687,7 +1687,7 @@
       "other_implementations": [
         {
           "exact": false,
-          "instructions": ["4 LDU", "SWAP", "3 LSHIFT#", "LDUX"]
+          "instructions": ["LDU 4", "SWAP", "LSHIFT# 3", "LDUX"]
         }
       ]
     },
@@ -1732,7 +1732,7 @@
       "other_implementations": [
         {
           "exact": false,
-          "instructions": ["5 LDU", "SWAP", "3 LSHIFT#", "LDIX"]
+          "instructions": ["LDU 5", "SWAP", "LSHIFT# 3", "LDIX"]
         }
       ]
     },

@@ -362,7 +362,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["SWAP", "c0 SETCONT"]
+          "instructions": ["SWAP", "SETCONT c0"]
         }
       ]
     },
@@ -403,7 +403,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["SWAP", "c1 SETCONT"]
+          "instructions": ["SWAP", "SETCONT c1"]
         }
       ]
     },
@@ -765,7 +765,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["c0 PUSHCTR", "c1 POPCTR"]
+          "instructions": ["PUSHCTR c0", "POPCTR c1"]
         }
       ]
     },
@@ -799,7 +799,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["c1 SAVE", "SAMEALT"]
+          "instructions": ["SAVE c1", "SAMEALT"]
         }
       ]
     },
@@ -930,7 +930,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["BLESS", "[r] [n] SETCONTARGS"]
+          "instructions": ["BLESS", "SETCONTARGS [r] [n]"]
         }
       ]
     },
@@ -1007,7 +1007,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["c0 PUSHCTR", "c(i) SETCONTCTR", "c0 POPCTR"]
+          "instructions": ["PUSHCTR c0", "SETCONTCTR c(i)", "POPCTR c0"]
         }
       ]
     },
@@ -1046,7 +1046,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["c1 PUSHCTR", "c(i) SETCONTCTR", "c1 POPCTR"]
+          "instructions": ["PUSHCTR c1", "SETCONTCTR c(i)", "POPCTR c1"]
         }
       ]
     },
@@ -1085,7 +1085,7 @@
       "other_implementations": [
         {
           "exact": false,
-          "instructions": ["c(i) SAVECTR", "c(i) POPCTR"]
+          "instructions": ["SAVECTR c(i)", "POPCTR c(i)"]
         }
       ]
     },
@@ -1128,7 +1128,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["c(i) PUSHCTR", "c(i) SETRETCTR"]
+          "instructions": ["PUSHCTR c(i)", "SETRETCTR c(i)"]
         }
       ]
     },
@@ -1198,7 +1198,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["c(i) SAVE", "c(i) SAVEALT"]
+          "instructions": ["SAVE c(i)", "SAVEALT c(i)"]
         }
       ]
     },

@@ -1566,7 +1566,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["[i] INDEX", "[j] INDEX"]
+          "instructions": ["INDEX [i]", "INDEX [j]"]
         }
       ]
     },
@@ -1609,7 +1609,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["[i] [j] INDEX2", "[k] INDEX"]
+          "instructions": ["INDEX2 [i] [j]", "INDEX [k]"]
         }
       ]
     },

@@ -10044,7 +10044,7 @@
         "other_implementations": [
           {
             "exact": false,
-            "instructions": ["c0 PUSHCTR", "JMPX"]
+            "instructions": ["PUSHCTR c0", "JMPX"]
           }
         ],
         "gas": [
@@ -10110,7 +10110,7 @@
         "other_implementations": [
           {
             "exact": false,
-            "instructions": ["c1 PUSHCTR", "JMPX"]
+            "instructions": ["PUSHCTR c1", "JMPX"]
           }
         ],
         "gas": [
@@ -10699,7 +10699,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["c0 PUSHCTR", "JMPXDATA"]
+            "instructions": ["PUSHCTR c0", "JMPXDATA"]
           }
         ],
         "gas": [
@@ -13885,7 +13885,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["SWAP", "c0 SETCONT"]
+            "instructions": ["SWAP", "SETCONT c0"]
           }
         ],
         "gas": [
@@ -13955,7 +13955,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["SWAP", "c1 SETCONT"]
+            "instructions": ["SWAP", "SETCONT c1"]
           }
         ],
         "gas": [
@@ -14578,7 +14578,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["c0 PUSHCTR", "c1 POPCTR"]
+            "instructions": ["PUSHCTR c0", "POPCTR c1"]
           }
         ],
         "gas": [
@@ -14641,7 +14641,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["c1 SAVE", "SAMEALT"]
+            "instructions": ["SAVE c1", "SAMEALT"]
           }
         ],
         "gas": [
@@ -16614,11 +16614,11 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["1 2 BLKSWAP"]
+            "instructions": ["BLKSWAP 1 2"]
           },
           {
             "exact": true,
-            "instructions": ["s2 s1 XCHG2"]
+            "instructions": ["XCHG2 s2 s1"]
           }
         ],
         "exit_codes": [
@@ -16732,11 +16732,11 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["2 1 BLKSWAP"]
+            "instructions": ["BLKSWAP 2 1"]
           },
           {
             "exact": true,
-            "instructions": ["s2 s2 XCHG2"]
+            "instructions": ["XCHG2 s2 s2"]
           }
         ],
         "exit_codes": [
@@ -17384,7 +17384,7 @@
           },
           {
             "exact": true,
-            "instructions": ["s1 s1 XCPU"]
+            "instructions": ["XCPU s1 s1"]
           }
         ],
         "gas": [
@@ -18771,7 +18771,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["CONFIGROOT", "32 PUSHINT"]
+            "instructions": ["CONFIGROOT", "PUSHINT 32"]
           }
         ],
         "gas": [
@@ -19925,7 +19925,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["RANDU256", "256 MULRSHIFT"]
+            "instructions": ["RANDU256", "MULRSHIFT 256"]
           }
         ],
         "gas": [
@@ -23468,7 +23468,7 @@
         "other_implementations": [
           {
             "exact": false,
-            "instructions": ["4 LDU", "SWAP", "3 LSHIFT#", "LDUX"]
+            "instructions": ["LDU 4", "SWAP", "LSHIFT# 3", "LDUX"]
           }
         ],
         "gas": [
@@ -23542,7 +23542,7 @@
         "other_implementations": [
           {
             "exact": false,
-            "instructions": ["4 LDU", "SWAP", "3 LSHIFT#", "LDIX"]
+            "instructions": ["LDU 4", "SWAP", "LSHIFT# 3", "LDIX"]
           }
         ],
         "gas": [
@@ -23756,7 +23756,7 @@
         "other_implementations": [
           {
             "exact": false,
-            "instructions": ["4 LDU", "SWAP", "3 LSHIFT#", "LDUX"]
+            "instructions": ["LDU 4", "SWAP", "LSHIFT# 3", "LDUX"]
           }
         ],
         "gas": [
@@ -23830,7 +23830,7 @@
         "other_implementations": [
           {
             "exact": false,
-            "instructions": ["5 LDU", "SWAP", "3 LSHIFT#", "LDIX"]
+            "instructions": ["LDU 5", "SWAP", "LSHIFT# 3", "LDIX"]
           }
         ],
         "gas": [
@@ -51876,7 +51876,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["num PUSHINT", "c3 PUSHCTR", "JMPX"]
+            "instructions": ["PUSHINT num", "PUSHCTR c3", "JMPX"]
           }
         ],
         "gas": [
@@ -51957,7 +51957,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["num PUSHINT", "c3 PUSHCTR"]
+            "instructions": ["PUSHINT num", "PUSHCTR c3"]
           }
         ],
         "gas": [
@@ -53580,7 +53580,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["s(i) s(j) XCHG2", "s(k) PUSH"]
+            "instructions": ["XCHG2 s(i) s(j)", "PUSH s(k)"]
           }
         ],
         "exit_codes": [
@@ -53664,7 +53664,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["s(i) XCHG_0I", "s(j) s(k) PUSH2"]
+            "instructions": ["XCHG_0I s(i)", "PUSH2 s(j) s(k)"]
           }
         ],
         "exit_codes": [
@@ -53748,7 +53748,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["s(i) PUSH", "s[j+1] s[k+1] PUSH2"]
+            "instructions": ["PUSH s(i)", "PUSH2 s[j+1] s[k+1]"]
           }
         ],
         "exit_codes": [
@@ -53832,7 +53832,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["s1 s(i) XCHG", "s(j) XCHG_0I"]
+            "instructions": ["XCHG s1 s(i)", "XCHG_0I s(j)"]
           }
         ],
         "exit_codes": [
@@ -53908,7 +53908,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["s(i) XCHG_0I", "s(j) PUSH"]
+            "instructions": ["XCHG_0I s(i)", "PUSH s(j)"]
           }
         ],
         "exit_codes": [
@@ -53984,7 +53984,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["s(i) PUSH", "s[j+1] PUSH"]
+            "instructions": ["PUSH s(i)", "PUSH s[j+1]"]
           }
         ],
         "exit_codes": [
@@ -54060,7 +54060,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["s(i) PUSH", "SWAP", "s(j) XCHG_0I"]
+            "instructions": ["PUSH s(i)", "SWAP", "XCHG_0I s(j)"]
           }
         ],
         "exit_codes": [
@@ -54140,7 +54140,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["s1 s(i) XCHG_1I", "s(j) s[k-1] PUXC"]
+            "instructions": ["XCHG_1I s1 s(i)", "PUXC s(j) s[k-1]"]
           }
         ],
         "exit_codes": [
@@ -54228,7 +54228,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["s(i) PUSH", "s2 XCHG_0I", "s(j) s(k) XCHG2"]
+            "instructions": ["PUSH s(i)", "XCHG_0I s2", "XCHG2 s(j) s(k)"]
           }
         ],
         "exit_codes": [
@@ -54320,7 +54320,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["s(i) s[j-1] PUXC", "s(k) PUSH"]
+            "instructions": ["PUXC s(i) s[j-1]", "PUSH s(k)"]
           }
         ],
         "exit_codes": [
@@ -54412,7 +54412,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["s(i) PUSH", "SWAP", "s(j) s[k-1] PUXC"]
+            "instructions": ["PUSH s(i)", "SWAP", "PUXC s(j) s[k-1]"]
           }
         ],
         "exit_codes": [
@@ -54504,7 +54504,7 @@
         "other_implementations": [
           {
             "exact": false,
-            "instructions": ["[i+1] [j+1] REVERSE", "[j+1] 0 REVERSE", "[i+j+2] 0 REVERSE"]
+            "instructions": ["REVERSE [i+1] [j+1]", "REVERSE [j+1] 0", "REVERSE [i+j+2] 0"]
           }
         ],
         "exit_codes": [
@@ -54753,7 +54753,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["BLESS", "[r] [n] SETCONTARGS"]
+            "instructions": ["BLESS", "SETCONTARGS [r] [n]"]
           }
         ],
         "gas": [
@@ -56637,7 +56637,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["[i] INDEX", "[j] INDEX"]
+            "instructions": ["INDEX [i]", "INDEX [j]"]
           }
         ],
         "gas": [
@@ -56726,7 +56726,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["[i] [j] INDEX2", "[k] INDEX"]
+            "instructions": ["INDEX2 [i] [j]", "INDEX [k]"]
           }
         ],
         "gas": [
@@ -56944,7 +56944,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["[i+j] 0 REVERSE", "[i] BLKDROP", "[j] 0 REVERSE"]
+            "instructions": ["REVERSE [i+j] 0", "BLKDROP [i]", "REVERSE [j] 0"]
           }
         ],
         "exit_codes": [
@@ -57178,7 +57178,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["c7 PUSHCTR", "FIRST", "[i] INDEX"]
+            "instructions": ["PUSHCTR c7", "FIRST", "INDEX [i]"]
           }
         ],
         "gas": [
@@ -59406,7 +59406,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["c0 PUSHCTR", "c(i) SETCONTCTR", "c0 POPCTR"]
+            "instructions": ["PUSHCTR c0", "SETCONTCTR c(i)", "POPCTR c0"]
           }
         ],
         "gas": [
@@ -59482,7 +59482,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["c1 PUSHCTR", "c(i) SETCONTCTR", "c1 POPCTR"]
+            "instructions": ["PUSHCTR c1", "SETCONTCTR c(i)", "POPCTR c1"]
           }
         ],
         "gas": [
@@ -59558,7 +59558,7 @@
         "other_implementations": [
           {
             "exact": false,
-            "instructions": ["c(i) SAVECTR", "c(i) POPCTR"]
+            "instructions": ["SAVECTR c(i)", "POPCTR c(i)"]
           }
         ],
         "gas": [
@@ -59638,7 +59638,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["c(i) PUSHCTR", "c(i) SETRETCTR"]
+            "instructions": ["PUSHCTR c(i)", "SETRETCTR c(i)"]
           }
         ],
         "gas": [
@@ -59782,7 +59782,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["c(i) SAVE", "c(i) SAVEALT"]
+            "instructions": ["SAVE c(i)", "SAVEALT c(i)"]
           }
         ],
         "gas": [
@@ -59917,7 +59917,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["2 2 BLKSWAP"]
+            "instructions": ["BLKSWAP 2 2"]
           },
           {
             "exact": true,
@@ -63747,7 +63747,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["s2 s(i) XCHG", "s1 s(j) XCHG", "s(k) XCHG_0I"]
+            "instructions": ["XCHG s2 s(i)", "XCHG s1 s(j)", "XCHG_0I s(k)"]
           }
         ],
         "exit_codes": [
@@ -63832,7 +63832,7 @@
         "other_implementations": [
           {
             "exact": false,
-            "instructions": ["s2 s(i) XCHG", "s1 s(j) XCHG", "s(k) XCHG_0I"]
+            "instructions": ["XCHG s2 s(i)", "XCHG s1 s(j)", "XCHG_0I s(k)"]
           }
         ],
         "exit_codes": [
@@ -65799,7 +65799,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["[num] PUSHINT", "c3 PUSHCTR", "EXECUTE"]
+            "instructions": ["PUSHINT [num]", "PUSHCTR c3", "EXECUTE"]
           }
         ],
         "gas": [
@@ -69148,7 +69148,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["INMSGPARAMS", "x INDEX"]
+            "instructions": ["INMSGPARAMS", "INDEX x"]
           }
         ],
         "gas": [

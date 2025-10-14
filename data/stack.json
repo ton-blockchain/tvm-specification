@@ -332,11 +332,11 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["1 2 BLKSWAP"]
+          "instructions": ["BLKSWAP 1 2"]
         },
         {
           "exact": true,
-          "instructions": ["s2 s1 XCHG2"]
+          "instructions": ["XCHG2 s2 s1"]
         }
       ],
       "exit_codes": [
@@ -421,11 +421,11 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["2 1 BLKSWAP"]
+          "instructions": ["BLKSWAP 2 1"]
         },
         {
           "exact": true,
-          "instructions": ["s2 s2 XCHG2"]
+          "instructions": ["XCHG2 s2 s2"]
         }
       ],
       "exit_codes": [
@@ -870,7 +870,7 @@
         },
         {
           "exact": true,
-          "instructions": ["s1 s1 XCPU"]
+          "instructions": ["XCPU s1 s1"]
         }
       ]
     },
@@ -1177,7 +1177,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["s(i) s(j) XCHG2", "s(k) PUSH"]
+          "instructions": ["XCHG2 s(i) s(j)", "PUSH s(k)"]
         }
       ],
       "exit_codes": [
@@ -1207,7 +1207,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["s(i) XCHG_0I", "s(j) s(k) PUSH2"]
+          "instructions": ["XCHG_0I s(i)", "PUSH2 s(j) s(k)"]
         }
       ],
       "exit_codes": [
@@ -1237,7 +1237,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["s(i) PUSH", "s[j+1] s[k+1] PUSH2"]
+          "instructions": ["PUSH s(i)", "PUSH2 s[j+1] s[k+1]"]
         }
       ],
       "exit_codes": [
@@ -1267,7 +1267,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["s1 s(i) XCHG", "s(j) XCHG_0I"]
+          "instructions": ["XCHG s1 s(i)", "XCHG_0I s(j)"]
         }
       ],
       "exit_codes": [
@@ -1297,7 +1297,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["s(i) XCHG_0I", "s(j) PUSH"]
+          "instructions": ["XCHG_0I s(i)", "PUSH s(j)"]
         }
       ],
       "exit_codes": [
@@ -1327,7 +1327,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["s(i) PUSH", "s[j+1] PUSH"]
+          "instructions": ["PUSH s(i)", "PUSH s[j+1]"]
         }
       ],
       "exit_codes": [
@@ -1357,7 +1357,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["s(i) PUSH", "SWAP", "s(j) XCHG_0I"]
+          "instructions": ["PUSH s(i)", "SWAP", "XCHG_0I s(j)"]
         }
       ],
       "exit_codes": [
@@ -1387,7 +1387,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["s1 s(i) XCHG_1I", "s(j) s[k-1] PUXC"]
+          "instructions": ["XCHG_1I s1 s(i)", "PUXC s(j) s[k-1]"]
         }
       ],
       "exit_codes": [
@@ -1417,7 +1417,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["s(i) PUSH", "s2 XCHG_0I", "s(j) s(k) XCHG2"]
+          "instructions": ["PUSH s(i)", "XCHG_0I s2", "XCHG2 s(j) s(k)"]
         }
       ],
       "exit_codes": [
@@ -1447,7 +1447,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["s(i) s[j-1] PUXC", "s(k) PUSH"]
+          "instructions": ["PUXC s(i) s[j-1]", "PUSH s(k)"]
         }
       ],
       "exit_codes": [
@@ -1477,7 +1477,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["s(i) PUSH", "SWAP", "s(j) s[k-1] PUXC"]
+          "instructions": ["PUSH s(i)", "SWAP", "PUXC s(j) s[k-1]"]
         }
       ],
       "exit_codes": [
@@ -1507,7 +1507,7 @@
       "other_implementations": [
         {
           "exact": false,
-          "instructions": ["[i+1] [j+1] REVERSE", "[j+1] 0 REVERSE", "[i+j+2] 0 REVERSE"]
+          "instructions": ["REVERSE [i+1] [j+1]", "REVERSE [j+1] 0", "REVERSE [i+j+2] 0"]
         }
       ],
       "exit_codes": [
@@ -1585,7 +1585,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["[i+j] 0 REVERSE", "[i] BLKDROP", "[j] 0 REVERSE"]
+          "instructions": ["REVERSE [i+j] 0", "BLKDROP [i]", "REVERSE [j] 0"]
         }
       ],
       "exit_codes": [
@@ -1615,7 +1615,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["2 2 BLKSWAP"]
+          "instructions": ["BLKSWAP 2 2"]
         },
         {
           "exact": true,
@@ -1897,7 +1897,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["s2 s(i) XCHG", "s1 s(j) XCHG", "s(k) XCHG_0I"]
+          "instructions": ["XCHG s2 s(i)", "XCHG s1 s(j)", "XCHG_0I s(k)"]
         }
       ],
       "exit_codes": [
@@ -1928,7 +1928,7 @@
       "other_implementations": [
         {
           "exact": false,
-          "instructions": ["s2 s(i) XCHG", "s1 s(j) XCHG", "s(k) XCHG_0I"]
+          "instructions": ["XCHG s2 s(i)", "XCHG s1 s(j)", "XCHG_0I s(k)"]
         }
       ],
       "exit_codes": [

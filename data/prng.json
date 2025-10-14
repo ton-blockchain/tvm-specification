@@ -42,7 +42,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["RANDU256", "256 MULRSHIFT"]
+          "instructions": ["RANDU256", "MULRSHIFT 256"]
         }
       ]
     },

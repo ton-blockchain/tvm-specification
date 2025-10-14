@@ -73,7 +73,7 @@
       "other_implementations": [
         {
           "exact": false,
-          "instructions": ["c0 PUSHCTR", "JMPX"]
+          "instructions": ["PUSHCTR c0", "JMPX"]
         }
       ]
     },
@@ -110,7 +110,7 @@
       "other_implementations": [
         {
           "exact": false,
-          "instructions": ["c1 PUSHCTR", "JMPX"]
+          "instructions": ["PUSHCTR c1", "JMPX"]
         }
       ]
     },
@@ -467,7 +467,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["c0 PUSHCTR", "JMPXDATA"]
+          "instructions": ["PUSHCTR c0", "JMPXDATA"]
         }
       ]
     },
