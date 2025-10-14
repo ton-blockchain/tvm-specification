@@ -1178,7 +1178,7 @@
   "INDEX": {
     "description": {
       "short": "",
-      "long": "Returns the `$k`-th element of a _Tuple_ `$t`.",
+      "long": "Returns the `k`-th element of a _Tuple_ `t`.",
       "tags": [],
       "operands": ["k"],
       "exit_codes": [
@@ -1406,7 +1406,7 @@
   "EXPLODE": {
     "description": {
       "short": "",
-      "long": "Unpacks a _Tuple_ `$t=(x_1,...,x_$tuple_len)` and returns its `$length`, but only if `$length <= $tuple_len <= 15`.",
+      "long": "Unpacks a _Tuple_ `t=(x_1,...,x_$tuple_len)` and returns its `length`, but only if `length <= $tuple_len <= 15`.",
       "tags": [],
       "operands": ["length"],
       "exit_codes": [
