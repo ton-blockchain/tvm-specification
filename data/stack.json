@@ -1231,13 +1231,13 @@
   "PUSH3": {
     "description": {
       "short": "",
-      "long": "Pushes three values from different stack positions (`s(i) PUSH`, `s[j+1] s[k+1] PUSH2`).",
+      "long": "Pushes three values from different stack positions (`PUSH s(i)`, `PUSH2 s(j+1) s(k+1)`).",
       "tags": ["stack"],
       "operands": ["i", "j", "k"],
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["PUSH s(i)", "PUSH2 s[j+1] s[k+1]"]
+          "instructions": ["PUSH s(i)", "PUSH2 s(j+1) s(k+1)"]
         }
       ],
       "exit_codes": [
@@ -1321,13 +1321,13 @@
   "PUSH2": {
     "description": {
       "short": "",
-      "long": "Pushes two values from `i`-th and `j`-th positions (`PUSH s(i)`, `PUSH s[j+1]`).",
+      "long": "Pushes two values from `i`-th and `j`-th positions (`PUSH s(i)`, `PUSH s(j+1)`).",
       "tags": ["stack"],
       "operands": ["i", "j"],
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["PUSH s(i)", "PUSH s[j+1]"]
+          "instructions": ["PUSH s(i)", "PUSH s(j+1)"]
         }
       ],
       "exit_codes": [
@@ -1381,13 +1381,13 @@
   "XCPUXC": {
     "description": {
       "short": "",
-      "long": "Exchanges second with `i`-th element, then performs PUXC with `j` and `k-1` (`XCHG_1I s(i)`, `PUXC s(j) s[k-1]`).",
+      "long": "Exchanges second with `i`-th element, then performs PUXC with `j` and `k-1` (`XCHG_1I s(i)`, `PUXC s(j) s(k-1)`).",
       "tags": ["stack"],
       "operands": ["i", "j", "k"],
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["XCHG_1I s1 s(i)", "PUXC s(j) s[k-1]"]
+          "instructions": ["XCHG_1I s1 s(i)", "PUXC s(j) s(k-1)"]
         }
       ],
       "exit_codes": [
@@ -1441,13 +1441,13 @@
   "PUXCPU": {
     "description": {
       "short": "",
-      "long": "Performs PUXC with `i` and `j-1`, then pushes `k`-th element (`PUXC s(i) s[j-1]`, `PUSH s(k)`).",
+      "long": "Performs PUXC with `i` and `j-1`, then pushes `k`-th element (`PUXC s(i) s(j-1)`, `PUSH s(k)`).",
       "tags": ["stack"],
       "operands": ["i", "j", "k"],
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["PUXC s(i) s[j-1]", "PUSH s(k)"]
+          "instructions": ["PUXC s(i) s(j-1)", "PUSH s(k)"]
         }
       ],
       "exit_codes": [
@@ -1471,13 +1471,13 @@
   "PU2XC": {
     "description": {
       "short": "",
-      "long": "Pushes `i`-th element, swaps it, then performs PUXC with `j` and `k-1` (`PUSH s(i)`, `SWAP`, `PUXC s(j) s[k-1]`).",
+      "long": "Pushes `i`-th element, swaps it, then performs PUXC with `j` and `k-1` (`PUSH s(i)`, `SWAP`, `PUXC s(j) s(k-1)`).",
       "tags": ["stack"],
       "operands": ["i", "j", "k"],
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["PUSH s(i)", "SWAP", "PUXC s(j) s[k-1]"]
+          "instructions": ["PUSH s(i)", "SWAP", "PUXC s(j) s(k-1)"]
         }
       ],
       "exit_codes": [

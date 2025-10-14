@@ -649,7 +649,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["PUSHREFCONT", "EXECUTE"]
+          "instructions": ["PUSHREFCONT [ref]", "EXECUTE"]
         }
       ]
     },
@@ -692,7 +692,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["PUSHREFCONT", "JMPX"]
+          "instructions": ["PUSHREFCONT [c]", "JMPX"]
         }
       ]
     },
@@ -724,7 +724,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["PUSHREFCONT", "JMPXDATA"]
+          "instructions": ["PUSHREFCONT [c]", "JMPXDATA"]
         }
       ]
     },

@@ -2189,7 +2189,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["SWAP", "STI"]
+          "instructions": ["SWAP", "STI [width]"]
         }
       ]
     },
@@ -2253,7 +2253,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["SWAP", "STU"]
+          "instructions": ["SWAP", "STU [width]"]
         }
       ]
     },
@@ -2615,7 +2615,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["PUSHREF", "STREFR"]
+          "instructions": ["PUSHREF [c]", "STREFR"]
         }
       ]
     },
@@ -2649,7 +2649,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["STREFCONST", "STREFCONST"]
+          "instructions": ["STREFCONST {} // c1", "STREFCONST {} // c2"]
         }
       ]
     },

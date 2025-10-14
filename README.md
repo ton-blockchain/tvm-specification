@@ -29,6 +29,7 @@ This repository contains scripts that check the validity of instruction descript
   operands (currently 825 instructions are automatically checked (90%))
 - [examples-validation.ts](validity/examples-validation.ts) — checks the validity of instruction examples by executing
   them and verifying that the resulting stack matches the expected output
+- [other-implementations-validation.ts](validity/other-implementations-validation.ts) — checks that the instructions listed in `other_implementations` is compilable
 - JSON Schema validation — validates the JSON schema itself and checks that the generated specification conforms to it
 
 ## Development

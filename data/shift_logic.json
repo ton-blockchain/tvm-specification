@@ -18,7 +18,7 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["PUSHINT_4 1", "SWAP", "LSHIFT"]
+          "instructions": ["PUSHINT_4 1", "SWAP", "LSHIFT_VAR"]
         }
       ]
     },

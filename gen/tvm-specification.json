@@ -587,7 +587,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["PUSHINT_4 1", "SWAP", "LSHIFT"]
+            "instructions": ["PUSHINT_4 1", "SWAP", "LSHIFT_VAR"]
           }
         ],
         "gas": [
@@ -19925,7 +19925,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["RANDU256", "MULRSHIFT 256"]
+            "instructions": ["RANDU256", "MULRSHIFT# 256"]
           }
         ],
         "gas": [
@@ -23468,7 +23468,7 @@
         "other_implementations": [
           {
             "exact": false,
-            "instructions": ["LDU 4", "SWAP", "LSHIFT# 3", "LDUX"]
+            "instructions": ["LDU 4", "SWAP", "LSHIFT 3", "LDUX"]
           }
         ],
         "gas": [
@@ -23542,7 +23542,7 @@
         "other_implementations": [
           {
             "exact": false,
-            "instructions": ["LDU 4", "SWAP", "LSHIFT# 3", "LDIX"]
+            "instructions": ["LDU 4", "SWAP", "LSHIFT 3", "LDIX"]
           }
         ],
         "gas": [
@@ -23756,7 +23756,7 @@
         "other_implementations": [
           {
             "exact": false,
-            "instructions": ["LDU 4", "SWAP", "LSHIFT# 3", "LDUX"]
+            "instructions": ["LDU 4", "SWAP", "LSHIFT 3", "LDUX"]
           }
         ],
         "gas": [
@@ -23830,7 +23830,7 @@
         "other_implementations": [
           {
             "exact": false,
-            "instructions": ["LDU 5", "SWAP", "LSHIFT# 3", "LDIX"]
+            "instructions": ["LDU 5", "SWAP", "LSHIFT 3", "LDIX"]
           }
         ],
         "gas": [
@@ -48810,7 +48810,7 @@
         "other_implementations": [
           {
             "exact": false,
-            "instructions": ["PUSHCTR 2", "JMPXARGS 2"]
+            "instructions": ["PUSHCTR c2", "JMPXARGS 2"]
           }
         ],
         "gas": [
@@ -53742,13 +53742,13 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Pushes three values from different stack positions (`s(i) PUSH`, `s[j+1] s[k+1] PUSH2`).",
+        "long": "Pushes three values from different stack positions (`PUSH s(i)`, `PUSH2 s(j+1) s(k+1)`).",
         "tags": ["stack"],
         "operands": ["i", "j", "k"],
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["PUSH s(i)", "PUSH2 s[j+1] s[k+1]"]
+            "instructions": ["PUSH s(i)", "PUSH2 s(j+1) s(k+1)"]
           }
         ],
         "exit_codes": [
@@ -53978,13 +53978,13 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Pushes two values from `i`-th and `j`-th positions (`PUSH s(i)`, `PUSH s[j+1]`).",
+        "long": "Pushes two values from `i`-th and `j`-th positions (`PUSH s(i)`, `PUSH s(j+1)`).",
         "tags": ["stack"],
         "operands": ["i", "j"],
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["PUSH s(i)", "PUSH s[j+1]"]
+            "instructions": ["PUSH s(i)", "PUSH s(j+1)"]
           }
         ],
         "exit_codes": [
@@ -54134,13 +54134,13 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Exchanges second with `i`-th element, then performs PUXC with `j` and `k-1` (`XCHG_1I s(i)`, `PUXC s(j) s[k-1]`).",
+        "long": "Exchanges second with `i`-th element, then performs PUXC with `j` and `k-1` (`XCHG_1I s(i)`, `PUXC s(j) s(k-1)`).",
         "tags": ["stack"],
         "operands": ["i", "j", "k"],
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["XCHG_1I s1 s(i)", "PUXC s(j) s[k-1]"]
+            "instructions": ["XCHG_1I s1 s(i)", "PUXC s(j) s(k-1)"]
           }
         ],
         "exit_codes": [
@@ -54314,13 +54314,13 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Performs PUXC with `i` and `j-1`, then pushes `k`-th element (`PUXC s(i) s[j-1]`, `PUSH s(k)`).",
+        "long": "Performs PUXC with `i` and `j-1`, then pushes `k`-th element (`PUXC s(i) s(j-1)`, `PUSH s(k)`).",
         "tags": ["stack"],
         "operands": ["i", "j", "k"],
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["PUXC s(i) s[j-1]", "PUSH s(k)"]
+            "instructions": ["PUXC s(i) s(j-1)", "PUSH s(k)"]
           }
         ],
         "exit_codes": [
@@ -54406,13 +54406,13 @@
       "sub_category": "",
       "description": {
         "short": "",
-        "long": "Pushes `i`-th element, swaps it, then performs PUXC with `j` and `k-1` (`PUSH s(i)`, `SWAP`, `PUXC s(j) s[k-1]`).",
+        "long": "Pushes `i`-th element, swaps it, then performs PUXC with `j` and `k-1` (`PUSH s(i)`, `SWAP`, `PUXC s(j) s(k-1)`).",
         "tags": ["stack"],
         "operands": ["i", "j", "k"],
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["PUSH s(i)", "SWAP", "PUXC s(j) s[k-1]"]
+            "instructions": ["PUSH s(i)", "SWAP", "PUXC s(j) s(k-1)"]
           }
         ],
         "exit_codes": [
@@ -54866,7 +54866,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["SWAP", "STI"]
+            "instructions": ["SWAP", "STI [width]"]
           }
         ],
         "gas": [
@@ -54972,7 +54972,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["SWAP", "STU"]
+            "instructions": ["SWAP", "STU [width]"]
           }
         ],
         "gas": [
@@ -57416,7 +57416,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["PUSHREFCONT", "EXECUTE"]
+            "instructions": ["PUSHREFCONT [ref]", "EXECUTE"]
           }
         ],
         "gas": [
@@ -57497,7 +57497,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["PUSHREFCONT", "JMPX"]
+            "instructions": ["PUSHREFCONT [c]", "JMPX"]
           }
         ],
         "gas": [
@@ -57567,7 +57567,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["PUSHREFCONT", "JMPXDATA"]
+            "instructions": ["PUSHREFCONT [c]", "JMPXDATA"]
           }
         ],
         "gas": [
@@ -57643,7 +57643,7 @@
         "other_implementations": [
           {
             "exact": false,
-            "instructions": ["PUSHREFCONT", "IF"]
+            "instructions": ["PUSHREFCONT [body]", "IF"]
           }
         ],
         "docs_links": [
@@ -57741,7 +57741,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["PUSHREFCONT", "IFNOT"]
+            "instructions": ["PUSHREFCONT [body]", "IFNOT"]
           }
         ],
         "docs_links": [
@@ -57839,7 +57839,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["PUSHREFCONT", "IFJMP"]
+            "instructions": ["PUSHREFCONT [body]", "IFJMP"]
           }
         ],
         "docs_links": [
@@ -57926,7 +57926,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["PUSHREFCONT", "IFNOTJMP"]
+            "instructions": ["PUSHREFCONT [body]", "IFNOTJMP"]
           }
         ],
         "docs_links": [
@@ -58013,7 +58013,7 @@
         "other_implementations": [
           {
             "exact": false,
-            "instructions": ["PUSHREFCONT", "SWAP", "IFELSE"]
+            "instructions": ["PUSHREFCONT [body]", "SWAP", "IFELSE"]
           }
         ],
         "docs_links": [
@@ -58131,7 +58131,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["PUSHREFCONT", "IFELSE"]
+            "instructions": ["PUSHREFCONT [else]", "IFELSE"]
           }
         ],
         "docs_links": [
@@ -58249,7 +58249,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["PUSHREFCONT", "PUSHREFCONT", "IFELSE"]
+            "instructions": ["PUSHREFCONT [body]", "PUSHREFCONT [else]", "IFELSE"]
           }
         ],
         "docs_links": [
@@ -59010,7 +59010,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["PUSHREF", "STREFR"]
+            "instructions": ["PUSHREF [c]", "STREFR"]
           }
         ],
         "gas": [
@@ -59077,7 +59077,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["STREFCONST", "STREFCONST"]
+            "instructions": ["STREFCONST {} // c1", "STREFCONST {} // c2"]
           }
         ],
         "gas": [
@@ -69148,7 +69148,7 @@
         "other_implementations": [
           {
             "exact": true,
-            "instructions": ["INMSGPARAMS", "INDEX x"]
+            "instructions": ["INMSGPARAMS", "INDEX [x]"]
           }
         ],
         "gas": [
