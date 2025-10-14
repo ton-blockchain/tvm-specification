@@ -8,13 +8,15 @@
         "generate": "ts-node src/gen/gen.ts && yarn fmt",
         "find-implementations": "ts-node src/gen/implementation-finder.ts",
         "validate": "ts-node ./validity/input-instr-signature.ts && ts-node ./validity/examples-validation.ts",
-        "precommit": "yarn fmt && yarn generate && yarn validate"
+        "validate-schema": "ajv validate -s gen/schema.json -d gen/tvm-specification.json",
+        "precommit": "yarn fmt && yarn generate && yarn validate && yarn validate-schema"
     },
     "devDependencies": {
         "@ton/core": "^0.61.0",
         "@ton/crypto": "^3.3.0",
         "@ton/sandbox": "^0.36.0",
         "@ton/test-utils": "^0.11.0",
+        "ajv-cli": "^5.0.0",
         "jest": "^30.0.5",
         "prettier": "^3.5.3",
         "ton-assembly": "^0.5.0",
