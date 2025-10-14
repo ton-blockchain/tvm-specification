@@ -37,8 +37,5 @@ jobs:
           YARN_ENABLE_HARDENED_MODE: false
         run: yarn install --immutable
 
-      - name: Generate specification
-        run: yarn generate
-
       - name: Validate JSON Schema
         run: yarn validate-schema
