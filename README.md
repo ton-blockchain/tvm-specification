@@ -46,9 +46,9 @@ This repository contains scripts that check the validity of instruction descript
 
 ## Examples
 
-This repository includes practical examples demonstrating how to use the TVM specification:
+This repository includes practical examples demonstrating how to use this specification:
 
-- [**Simple TVM Disassembler (Go)**](examples/golang/tasm-go/) — Minimal implementation (200 lines of core deserialization logic) showing how to create a TVM bytecode disassembler using the specification.
+- [Simple TVM Disassembler (Go)](examples/golang/tasm-go/) — Minimal implementation (200 lines of core deserialization logic) showing how to create a TVM bytecode disassembler using the specification.
 
 ## Development
 
