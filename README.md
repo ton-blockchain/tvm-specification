@@ -42,6 +42,7 @@ This repository contains scripts that check the validity of instruction descript
 
 - [TxTracer](https://txtracer.ton.org/) — Web app for tracing and analyzing transactions
 - [Playground](https://txtracer.ton.org/play/) — TVM Assembly and FunC playground
+- [TON VS Code Extension](https://github.com/ton-blockchain/ton-language-server) — VS Code extension for TON developers
 - [TVM Specification page](https://txtracer.ton.org/spec/) — Visual representation of this specification
 - [TASM](https://github.com/ton-blockchain/tasm) — Assembler and disassembler implementation for TVM bitcode in pure
   TypeScript tested on 100k real contracts from blockchain
@@ -61,8 +62,8 @@ Currently, the specification is mainly used in two ways:
   autocompletion (Playground).
 - Using machine-readable instruction descriptions for tools such as TASM.
 
-Let's briefly describe the main fields for each way of using the specification. If you want to read full documentation about
-each field, check out the [specification schema](src/types/specification-schema.ts).
+Let's briefly describe the main fields for each way of using the specification. If you want to read full documentation
+about each field, check out the [specification schema](src/types/specification-schema.ts).
 
 ### As Documentation
 
