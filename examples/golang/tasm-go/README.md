@@ -8,10 +8,8 @@ bytecode.
 ## What this project does
 
 The project implements a disassembler that can disassemble TON smart contracts
-from BoC format and presents it as readable assembly code.
-
-This project aims for a minimal implementation (only 200 lines of code for the
-core deserialization logic) to be understandable for any reader interested in
+from BoC format and presents it as readable assembly code. This project aims for a minimal implementation (only 200
+lines of code for the core deserialization logic) to be understandable for any reader interested in
 developing tools based on the TVM specification.
 
 ### Key features
