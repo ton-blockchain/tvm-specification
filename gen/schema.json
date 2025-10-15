@@ -440,9 +440,6 @@
           "$ref": "#/definitions/IntArg"
         },
         {
-          "$ref": "#/definitions/RefsArg"
-        },
-        {
           "$ref": "#/definitions/DeltaArg"
         },
         {
@@ -531,21 +528,6 @@
         }
       },
       "required": ["$", "len", "range"],
-      "additionalProperties": false
-    },
-    "RefsArg": {
-      "type": "object",
-      "properties": {
-        "$": {
-          "type": "string",
-          "const": "refs"
-        },
-        "count": {
-          "type": "integer",
-          "description": "Number of references"
-        }
-      },
-      "required": ["$", "count"],
       "additionalProperties": false
     },
     "DeltaArg": {

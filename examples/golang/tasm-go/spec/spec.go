@@ -251,8 +251,6 @@ type Arg struct {
 	//
 	// Value range for the setcp argument
 	Range                                   *ArgRange `json:"range,omitempty"`
-	// Number of references
-	Count                                   *int64    `json:"count,omitempty"`
 	// Nested argument for delta operation
 	Arg                                     *Arg      `json:"arg,omitempty"`
 	// Delta value
@@ -398,7 +396,6 @@ const (
 	MinusOne        ArgEnum = "minusOne"
 	PlduzArg        ArgEnum = "plduzArg"
 	RefCodeSlice    ArgEnum = "refCodeSlice"
-	Refs            ArgEnum = "refs"
 	RunvmArg        ArgEnum = "runvmArg"
 	S1              ArgEnum = "s1"
 	SetcpArg        ArgEnum = "setcpArg"

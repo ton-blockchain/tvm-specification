@@ -397,7 +397,6 @@ export type Args =
 export type Arg =
     | UintArg
     | IntArg
-    | RefsArg
     | DeltaArg
     | StackArg
     | ControlArg
@@ -446,14 +445,6 @@ export interface IntArg {
      */
     len: number
     range: ArgRange
-}
-
-export interface RefsArg {
-    $: "refs"
-    /**
-     * Number of references
-     */
-    count: number
 }
 
 export interface DeltaArg {

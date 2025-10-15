@@ -66,7 +66,7 @@ export function generateTlb(
             }
             case "slice": {
                 const refs = unwrapDelta(arg.refs)
-                if (refs.$ === "uint") {
+                if (refs.$ === "uint" && refs.len !== 0) {
                     const restriction = refs.range.min !== 0n ? ` { ${refs.range.min} <= r }` : ""
                     result += `r: (## ${refs.len})${restriction} `
                 }
@@ -77,7 +77,7 @@ export function generateTlb(
                     result += `bits: (## ${bits.len})${restriction} `
                 }
 
-                if (refs.$ === "uint") {
+                if (refs.$ === "uint" && refs.len !== 0) {
                     let delta = 0
                     if (arg.refs.$ === "delta") {
                         delta = arg.refs.delta
@@ -129,10 +129,6 @@ export function generateTlb(
             }
             case "runvmArg": {
                 result += "flags: (## 12)"
-                break
-            }
-            case "refs": {
-                // processed in a slice branch
                 break
             }
             case "delta": {

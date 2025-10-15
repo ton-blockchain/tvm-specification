@@ -60208,8 +60208,12 @@
             {
               "$": "slice",
               "refs": {
-                "$": "refs",
-                "count": 0
+                "$": "uint",
+                "len": 0,
+                "range": {
+                  "min": "0",
+                  "max": "0"
+                }
               },
               "bits": {
                 "$": "uint",
@@ -60284,8 +60288,12 @@
             {
               "$": "slice",
               "refs": {
-                "$": "refs",
-                "count": 0
+                "$": "uint",
+                "len": 0,
+                "range": {
+                  "min": "0",
+                  "max": "0"
+                }
               },
               "bits": {
                 "$": "uint",
@@ -69368,8 +69376,12 @@
             {
               "$": "slice",
               "refs": {
-                "$": "refs",
-                "count": 0
+                "$": "uint",
+                "len": 0,
+                "range": {
+                  "min": "0",
+                  "max": "0"
+                }
               },
               "bits": {
                 "$": "uint",

@@ -160,9 +160,8 @@ var load = loaderFunc(nil)
 func loadSlice(slice *cell.Slice, arg spec.Arg) *cell.Slice {
 	// Determine the number of references in the slice
 	countRefs := uint64(0)
-	if arg.Refs.Empty == "refs" {
-		countRefs = uint64(*arg.Refs.Count)
-	} else {
+	// Refs length can be zero if slice doesn't have any references
+	if *arg.Refs.Len != 0 {
 		countRefs = slice.MustLoadUInt(uint(*arg.Refs.Len))
 	}
 
