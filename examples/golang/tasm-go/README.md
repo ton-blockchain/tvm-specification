@@ -52,16 +52,6 @@ developing tools based on the TVM specification.
 - Go 1.24+
 - [tonutils-go](https://github.com/xssnick/tonutils-go) library
 
-### CI/CD
-
-This example includes GitHub Actions workflow that automatically:
-- Builds the project on every push/PR
-- Runs basic tests
-- Verifies dependencies
-- Tests disassembler execution
-
-See [`.github/workflows/go-example.yml`](../../../.github/workflows/go-example.yml) for details.
-
 ### Running
 
 ```bash
