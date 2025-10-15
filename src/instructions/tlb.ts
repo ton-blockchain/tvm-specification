@@ -127,10 +127,6 @@ export function generateTlb(
                 result += `${name}: ^Cell `
                 break
             }
-            case "runvmArg": {
-                result += "flags: (## 12)"
-                break
-            }
             case "delta": {
                 generateArg(arg.arg)
                 break
@@ -145,11 +141,6 @@ export function generateTlb(
             }
             case "largeInt": {
                 result += "len: (## 5) data: (int (8 * l + 19))"
-                break
-            }
-            case "hash": {
-                const name = variableNameGenerator() ?? "i"
-                result += `${name}: (## 8)`
                 break
             }
             case "minusOne": {

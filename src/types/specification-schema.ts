@@ -403,8 +403,6 @@ export type Arg =
     | PlduzArg
     | TinyIntArg
     | LargeIntArg
-    | RunvmArg
-    | HashArg
     | MinusOneArg
     | S1Arg
     | SetcpArg
@@ -486,14 +484,6 @@ export interface TinyIntArg {
 export interface LargeIntArg {
     $: "largeInt"
     range: ArgRange
-}
-
-export interface RunvmArg {
-    $: "runvmArg"
-}
-
-export interface HashArg {
-    $: "hash"
 }
 
 export interface MinusOneArg {

@@ -294,10 +294,6 @@ func loader(instructions []spec.Instruction) loaderFunc {
 					args = append(args, StackRegister{idx: 1})
 				case "minusOne":
 					args = append(args, -1)
-				case "hash":
-					args = append(args, slice.MustLoadUInt(8))
-				case "runvmArg":
-					args = append(args, slice.MustLoadUInt(12))
 				case "refCodeSlice":
 					val, _ := slice.LoadRefCell()
 					args = append(args, decompileCell(val))

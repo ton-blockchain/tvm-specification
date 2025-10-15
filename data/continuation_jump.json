@@ -514,7 +514,11 @@
           {
             "type": "simple",
             "name": "flags",
-            "value_types": ["Int"]
+            "value_types": ["Int"],
+            "range": {
+              "min": 0,
+              "max": 511
+            }
           }
         ],
         "registers": []

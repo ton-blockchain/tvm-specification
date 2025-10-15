@@ -90,8 +90,6 @@ const generateArg = (arg: arg): string => {
             return `boc{${DEFAULT_CODE_SLICE}}`
         case "slice":
             return DEFAULT_SLICE
-        case "hash":
-            return "1"
         case "s1":
             return "s1"
         case "plduzArg":

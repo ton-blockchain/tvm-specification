@@ -458,12 +458,6 @@
           "$ref": "#/definitions/LargeIntArg"
         },
         {
-          "$ref": "#/definitions/RunvmArg"
-        },
-        {
-          "$ref": "#/definitions/HashArg"
-        },
-        {
           "$ref": "#/definitions/MinusOneArg"
         },
         {
@@ -626,28 +620,6 @@
         }
       },
       "required": ["$", "range"],
-      "additionalProperties": false
-    },
-    "RunvmArg": {
-      "type": "object",
-      "properties": {
-        "$": {
-          "type": "string",
-          "const": "runvmArg"
-        }
-      },
-      "required": ["$"],
-      "additionalProperties": false
-    },
-    "HashArg": {
-      "type": "object",
-      "properties": {
-        "$": {
-          "type": "string",
-          "const": "hash"
-        }
-      },
-      "required": ["$"],
       "additionalProperties": false
     },
     "MinusOneArg": {

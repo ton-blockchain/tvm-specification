@@ -11117,7 +11117,11 @@
             {
               "type": "simple",
               "name": "flags",
-              "value_types": ["Int"]
+              "value_types": ["Int"],
+              "range": {
+                "min": 0,
+                "max": 511
+              }
             }
           ],
           "registers": []
@@ -61271,7 +61275,12 @@
           "$": "simpleArgs",
           "children": [
             {
-              "$": "runvmArg"
+              "$": "uint",
+              "len": 12,
+              "range": {
+                "min": "0",
+                "max": "511"
+              }
             }
           ]
         },
@@ -64647,7 +64656,12 @@
           "$": "simpleArgs",
           "children": [
             {
-              "$": "hash"
+              "$": "uint",
+              "len": 8,
+              "range": {
+                "min": "0",
+                "max": "4"
+              }
             }
           ]
         },
@@ -64725,7 +64739,12 @@
           "$": "simpleArgs",
           "children": [
             {
-              "$": "hash"
+              "$": "uint",
+              "len": 8,
+              "range": {
+                "min": "0",
+                "max": "4"
+              }
             }
           ]
         },
@@ -64803,7 +64822,12 @@
           "$": "simpleArgs",
           "children": [
             {
-              "$": "hash"
+              "$": "uint",
+              "len": 8,
+              "range": {
+                "min": "0",
+                "max": "4"
+              }
             }
           ]
         },
@@ -64886,7 +64910,12 @@
           "$": "simpleArgs",
           "children": [
             {
-              "$": "hash"
+              "$": "uint",
+              "len": 8,
+              "range": {
+                "min": "0",
+                "max": "4"
+              }
             }
           ]
         },
