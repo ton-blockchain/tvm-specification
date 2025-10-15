@@ -528,8 +528,7 @@
       "properties": {
         "$": {
           "type": "string",
-          "const": "uint",
-          "description": "Type discriminator for uint argument"
+          "const": "uint"
         },
         "len": {
           "type": "number",
@@ -548,8 +547,7 @@
       "properties": {
         "$": {
           "type": "string",
-          "const": "int",
-          "description": "Type discriminator for int argument"
+          "const": "int"
         },
         "len": {
           "type": "number",
@@ -568,8 +566,7 @@
       "properties": {
         "$": {
           "type": "string",
-          "const": "refs",
-          "description": "Type discriminator for refs argument"
+          "const": "refs"
         },
         "count": {
           "type": "number",
@@ -584,8 +581,7 @@
       "properties": {
         "$": {
           "type": "string",
-          "const": "delta",
-          "description": "Type discriminator for delta argument"
+          "const": "delta"
         },
         "delta": {
           "type": "number",
@@ -604,8 +600,7 @@
       "properties": {
         "$": {
           "type": "string",
-          "const": "stack",
-          "description": "Type discriminator for stack argument"
+          "const": "stack"
         },
         "len": {
           "type": "number",
@@ -624,8 +619,7 @@
       "properties": {
         "$": {
           "type": "string",
-          "const": "control",
-          "description": "Type discriminator for control argument"
+          "const": "control"
         },
         "range": {
           "$ref": "#/definitions/ArgRange",
@@ -640,8 +634,7 @@
       "properties": {
         "$": {
           "type": "string",
-          "const": "plduzArg",
-          "description": "Type discriminator for plduz argument"
+          "const": "plduzArg"
         },
         "range": {
           "$ref": "#/definitions/ArgRange",
@@ -656,8 +649,7 @@
       "properties": {
         "$": {
           "type": "string",
-          "const": "tinyInt",
-          "description": "Type discriminator for tinyInt argument"
+          "const": "tinyInt"
         },
         "range": {
           "$ref": "#/definitions/ArgRange",
@@ -672,8 +664,7 @@
       "properties": {
         "$": {
           "type": "string",
-          "const": "largeInt",
-          "description": "Type discriminator for largeInt argument"
+          "const": "largeInt"
         },
         "range": {
           "$ref": "#/definitions/ArgRange",
@@ -688,8 +679,7 @@
       "properties": {
         "$": {
           "type": "string",
-          "const": "runvmArg",
-          "description": "Type discriminator for runvm argument"
+          "const": "runvmArg"
         }
       },
       "required": ["$"],
@@ -700,8 +690,7 @@
       "properties": {
         "$": {
           "type": "string",
-          "const": "hash",
-          "description": "Type discriminator for hash argument"
+          "const": "hash"
         }
       },
       "required": ["$"],
@@ -712,8 +701,7 @@
       "properties": {
         "$": {
           "type": "string",
-          "const": "minusOne",
-          "description": "Type discriminator for minusOne argument"
+          "const": "minusOne"
         }
       },
       "required": ["$"],
@@ -724,8 +712,7 @@
       "properties": {
         "$": {
           "type": "string",
-          "const": "s1",
-          "description": "Type discriminator for s1 argument"
+          "const": "s1"
         }
       },
       "required": ["$"],
@@ -736,8 +723,7 @@
       "properties": {
         "$": {
           "type": "string",
-          "const": "setcpArg",
-          "description": "Type discriminator for setcp argument"
+          "const": "setcpArg"
         },
         "range": {
           "$ref": "#/definitions/ArgRange",
@@ -752,8 +738,7 @@
       "properties": {
         "$": {
           "type": "string",
-          "const": "slice",
-          "description": "Type discriminator for slice argument"
+          "const": "slice"
         },
         "refs": {
           "$ref": "#/definitions/Arg",
@@ -776,8 +761,7 @@
       "properties": {
         "$": {
           "type": "string",
-          "const": "codeSlice",
-          "description": "Type discriminator for codeSlice argument"
+          "const": "codeSlice"
         },
         "refs": {
           "$ref": "#/definitions/Arg",
@@ -796,8 +780,7 @@
       "properties": {
         "$": {
           "type": "string",
-          "const": "refCodeSlice",
-          "description": "Type discriminator for refCodeSlice argument"
+          "const": "refCodeSlice"
         }
       },
       "required": ["$"],
@@ -808,8 +791,7 @@
       "properties": {
         "$": {
           "type": "string",
-          "const": "inlineCodeSlice",
-          "description": "Type discriminator for inlineCodeSlice argument"
+          "const": "inlineCodeSlice"
         },
         "bits": {
           "$ref": "#/definitions/Arg",
@@ -824,8 +806,7 @@
       "properties": {
         "$": {
           "type": "string",
-          "const": "exoticCell",
-          "description": "Type discriminator for exoticCell argument"
+          "const": "exoticCell"
         }
       },
       "required": ["$"],
@@ -836,8 +817,7 @@
       "properties": {
         "$": {
           "type": "string",
-          "const": "debugstr",
-          "description": "Type discriminator for debugstr argument"
+          "const": "debugstr"
         }
       },
       "required": ["$"],
@@ -847,8 +827,7 @@
       "type": "object",
       "properties": {
         "$": {
-          "type": "string",
-          "description": "Type discriminator for references"
+          "type": "string"
         },
         "count": {
           "type": "number",

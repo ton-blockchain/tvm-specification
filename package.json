@@ -6,7 +6,6 @@
         "fmt": "prettier --write -l --cache .",
         "fmt:check": "prettier --check --cache .",
         "generate": "ts-node src/gen/gen.ts && yarn fmt",
-        "generate-types": "json2ts gen/schema.json --output src/types/specification-schema.ts",
         "find-implementations": "ts-node src/gen/implementation-finder.ts",
         "validate": "ts-node ./validity/input-instr-signature.ts && ts-node ./validity/examples-validation.ts && ts-node ./validity/other-implementations-validation.ts && ts-node ./validity/tlb-validation.ts && ts-node ./validity/docs-links-validation.ts",
         "validate-schema": "ajv validate -s gen/schema.json -d gen/tvm-specification.json",
