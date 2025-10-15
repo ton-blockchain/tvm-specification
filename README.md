@@ -48,7 +48,59 @@ This repository contains scripts that check the validity of instruction descript
 
 This repository includes practical examples demonstrating how to use this specification:
 
-- [Simple TVM Disassembler (Go)](examples/golang/tasm-go/) — Minimal implementation (200 lines of core deserialization logic) showing how to create a TVM bytecode disassembler using the specification.
+- [Simple TVM Disassembler (Go)](examples/golang/tasm-go/) — Minimal implementation (200 lines of core deserialization
+  logic) showing how to create a TVM bytecode disassembler using the specification.
+
+## Use cases
+
+Currently, the specification is mainly used in two ways:
+
+- Using human-readable instruction descriptions in interfaces (TxTracer on hover) or for
+  autocompletion (Playground).
+- Using machine-readable instruction descriptions for tools such as TASM.
+
+Let's briefly describe the main fields for each way of using the specification. If you want to read full documentation about
+each field, check out the [specification schema](src/types/specification-schema.ts).
+
+### As Documentation
+
+If you want to use this specification as documentation, the main source of information is the
+`description` field that exists for each instruction.
+
+#### Required fields:
+
+- `short` — brief mostly one-line description of the instruction. If non-empty, describes the short description of the
+  instruction
+- `long` — detailed description of the instruction's functionality
+- `operands` — list of operand names for the instruction, their types and possible values are located in the root
+  `layout` field
+
+#### Optional fields:
+
+- `tags` — list of tags for categorizing and searching instructions
+- `exit_codes` — list of possible exit codes and their trigger conditions
+- `other_implementations` — list of alternative implementations for this instruction using other instructions
+- `related_instructions` — list of instructions that are related or similar to this one
+- `examples` — list of examples showing how to use this instruction with stack state
+- `gas` — list of gas consumption entries with descriptions and formulas
+- `docs_links` — list of documentation links related to this instruction
+
+If you also want to display the stack signature, use the root `signature` field and the `stack_string`
+field from it. This field contains a human-readable description of the input and output types on the stack.
+
+#### Fift instructions
+
+This specification also describes instructions that are only available in Fift and are aliases for existing
+instructions.
+
+### For Tool Developers
+
+When building tools that work with TVM bytecode (disassemblers, analyzers, debuggers, etc.), you need to decode
+complete instructions from the bytecode stream. The specification provides all the necessary information in the
+`layout` field of each instruction to implement this process.
+
+Check out [examples/golang/tasm-go/tasm/decompile.go](examples/golang/tasm-go/tasm/decompile.go) for a minimal
+implementation of a TVM bytecode disassembler using the specification.
 
 ## Development
 
