@@ -6,10 +6,11 @@
         "fmt": "prettier --write -l --cache .",
         "fmt:check": "prettier --check --cache .",
         "generate": "ts-node src/gen/gen.ts && yarn fmt",
+        "generate-types": "json2ts gen/schema.json --output src/types/specification-schema.ts",
         "find-implementations": "ts-node src/gen/implementation-finder.ts",
         "validate": "ts-node ./validity/input-instr-signature.ts && ts-node ./validity/examples-validation.ts && ts-node ./validity/other-implementations-validation.ts && ts-node ./validity/tlb-validation.ts && ts-node ./validity/docs-links-validation.ts",
         "validate-schema": "ajv validate -s gen/schema.json -d gen/tvm-specification.json",
-        "precommit": "yarn fmt && yarn generate && yarn validate && yarn validate-schema"
+        "precommit": "yarn fmt && yarn generate-types && yarn generate && yarn validate && yarn validate-schema"
     },
     "devDependencies": {
         "@ton-community/tlb-codegen": "2.0.0-beta.0",
@@ -18,6 +19,7 @@
         "@ton/sandbox": "^0.36.0",
         "@ton/test-utils": "^0.11.0",
         "ajv-cli": "^5.0.0",
+        "json-schema-to-typescript": "^15.0.4",
         "prettier": "^3.5.3",
         "ton-assembly": "^0.5.0",
         "ts-node": "^10.9.2",

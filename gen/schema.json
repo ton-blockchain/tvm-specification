@@ -1,5 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Specification",
   "type": "object",
   "definitions": {
     "FiftArgument": {
@@ -396,7 +397,8 @@
           }
         },
         "range": {
-          "$ref": "#/definitions/ArgRange"
+          "$ref": "#/definitions/ArgRange",
+          "description": "Value range for arguments structure"
         }
       },
       "required": ["$"],
@@ -415,22 +417,28 @@
           "description": "Length of the argument in bits"
         },
         "range": {
-          "$ref": "#/definitions/ArgRange"
+          "$ref": "#/definitions/ArgRange",
+          "description": "Value range constraint for the child argument"
         },
         "delta": {
-          "type": "number"
+          "type": "number",
+          "description": "Delta value for the child argument"
         },
         "arg": {
-          "$ref": "#/definitions/Arg"
+          "$ref": "#/definitions/Arg",
+          "description": "Nested argument structure"
         },
         "refs": {
-          "$ref": "#/definitions/Refs"
+          "$ref": "#/definitions/Refs",
+          "description": "References specification for the child argument"
         },
         "bits": {
-          "$ref": "#/definitions/Arg"
+          "$ref": "#/definitions/Arg",
+          "description": "Bits specification for the child argument"
         },
         "pad": {
-          "type": "number"
+          "type": "number",
+          "description": "Padding value for the child argument"
         }
       },
       "required": ["$"],
@@ -440,53 +448,427 @@
       "type": "object",
       "properties": {
         "min": {
-          "type": "string"
+          "type": "string",
+          "description": "Minimum value for the argument range"
         },
         "max": {
-          "type": "string"
+          "type": "string",
+          "description": "Maximum value for the argument range"
         }
       },
       "required": ["min", "max"],
       "additionalProperties": false
     },
     "Arg": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/UintArg"
+        },
+        {
+          "$ref": "#/definitions/IntArg"
+        },
+        {
+          "$ref": "#/definitions/RefsArg"
+        },
+        {
+          "$ref": "#/definitions/DeltaArg"
+        },
+        {
+          "$ref": "#/definitions/StackArg"
+        },
+        {
+          "$ref": "#/definitions/ControlArg"
+        },
+        {
+          "$ref": "#/definitions/PlduzArg"
+        },
+        {
+          "$ref": "#/definitions/TinyIntArg"
+        },
+        {
+          "$ref": "#/definitions/LargeIntArg"
+        },
+        {
+          "$ref": "#/definitions/RunvmArg"
+        },
+        {
+          "$ref": "#/definitions/HashArg"
+        },
+        {
+          "$ref": "#/definitions/MinusOneArg"
+        },
+        {
+          "$ref": "#/definitions/S1Arg"
+        },
+        {
+          "$ref": "#/definitions/SetcpArg"
+        },
+        {
+          "$ref": "#/definitions/SliceArg"
+        },
+        {
+          "$ref": "#/definitions/CodeSliceArg"
+        },
+        {
+          "$ref": "#/definitions/RefCodeSliceArg"
+        },
+        {
+          "$ref": "#/definitions/InlineCodeSliceArg"
+        },
+        {
+          "$ref": "#/definitions/ExoticCellArg"
+        },
+        {
+          "$ref": "#/definitions/DebugstrArg"
+        }
+      ]
+    },
+    "UintArg": {
       "type": "object",
       "properties": {
         "$": {
           "type": "string",
-          "enum": ["stack", "uint"]
+          "const": "uint",
+          "description": "Type discriminator for uint argument"
         },
         "len": {
           "type": "number",
           "description": "Length of the argument in bits"
         },
         "range": {
-          "$ref": "#/definitions/ArgRange"
+          "$ref": "#/definitions/ArgRange",
+          "description": "Value range for the uint argument"
         }
       },
       "required": ["$", "len", "range"],
+      "additionalProperties": false
+    },
+    "IntArg": {
+      "type": "object",
+      "properties": {
+        "$": {
+          "type": "string",
+          "const": "int",
+          "description": "Type discriminator for int argument"
+        },
+        "len": {
+          "type": "number",
+          "description": "Length of the argument in bits"
+        },
+        "range": {
+          "$ref": "#/definitions/ArgRange",
+          "description": "Value range for the int argument"
+        }
+      },
+      "required": ["$", "len", "range"],
+      "additionalProperties": false
+    },
+    "RefsArg": {
+      "type": "object",
+      "properties": {
+        "$": {
+          "type": "string",
+          "const": "refs",
+          "description": "Type discriminator for refs argument"
+        },
+        "count": {
+          "type": "number",
+          "description": "Number of references"
+        }
+      },
+      "required": ["$", "count"],
+      "additionalProperties": false
+    },
+    "DeltaArg": {
+      "type": "object",
+      "properties": {
+        "$": {
+          "type": "string",
+          "const": "delta",
+          "description": "Type discriminator for delta argument"
+        },
+        "delta": {
+          "type": "number",
+          "description": "Delta value"
+        },
+        "arg": {
+          "$ref": "#/definitions/Arg",
+          "description": "Nested argument for delta operation"
+        }
+      },
+      "required": ["$", "delta", "arg"],
+      "additionalProperties": false
+    },
+    "StackArg": {
+      "type": "object",
+      "properties": {
+        "$": {
+          "type": "string",
+          "const": "stack",
+          "description": "Type discriminator for stack argument"
+        },
+        "len": {
+          "type": "number",
+          "description": "Length of the argument in bits"
+        },
+        "range": {
+          "$ref": "#/definitions/ArgRange",
+          "description": "Value range for the stack argument"
+        }
+      },
+      "required": ["$", "len", "range"],
+      "additionalProperties": false
+    },
+    "ControlArg": {
+      "type": "object",
+      "properties": {
+        "$": {
+          "type": "string",
+          "const": "control",
+          "description": "Type discriminator for control argument"
+        },
+        "range": {
+          "$ref": "#/definitions/ArgRange",
+          "description": "Value range for the control argument"
+        }
+      },
+      "required": ["$", "range"],
+      "additionalProperties": false
+    },
+    "PlduzArg": {
+      "type": "object",
+      "properties": {
+        "$": {
+          "type": "string",
+          "const": "plduzArg",
+          "description": "Type discriminator for plduz argument"
+        },
+        "range": {
+          "$ref": "#/definitions/ArgRange",
+          "description": "Value range for the plduz argument"
+        }
+      },
+      "required": ["$", "range"],
+      "additionalProperties": false
+    },
+    "TinyIntArg": {
+      "type": "object",
+      "properties": {
+        "$": {
+          "type": "string",
+          "const": "tinyInt",
+          "description": "Type discriminator for tinyInt argument"
+        },
+        "range": {
+          "$ref": "#/definitions/ArgRange",
+          "description": "Value range for the tinyInt argument"
+        }
+      },
+      "required": ["$", "range"],
+      "additionalProperties": false
+    },
+    "LargeIntArg": {
+      "type": "object",
+      "properties": {
+        "$": {
+          "type": "string",
+          "const": "largeInt",
+          "description": "Type discriminator for largeInt argument"
+        },
+        "range": {
+          "$ref": "#/definitions/ArgRange",
+          "description": "Value range for the largeInt argument"
+        }
+      },
+      "required": ["$", "range"],
+      "additionalProperties": false
+    },
+    "RunvmArg": {
+      "type": "object",
+      "properties": {
+        "$": {
+          "type": "string",
+          "const": "runvmArg",
+          "description": "Type discriminator for runvm argument"
+        }
+      },
+      "required": ["$"],
+      "additionalProperties": false
+    },
+    "HashArg": {
+      "type": "object",
+      "properties": {
+        "$": {
+          "type": "string",
+          "const": "hash",
+          "description": "Type discriminator for hash argument"
+        }
+      },
+      "required": ["$"],
+      "additionalProperties": false
+    },
+    "MinusOneArg": {
+      "type": "object",
+      "properties": {
+        "$": {
+          "type": "string",
+          "const": "minusOne",
+          "description": "Type discriminator for minusOne argument"
+        }
+      },
+      "required": ["$"],
+      "additionalProperties": false
+    },
+    "S1Arg": {
+      "type": "object",
+      "properties": {
+        "$": {
+          "type": "string",
+          "const": "s1",
+          "description": "Type discriminator for s1 argument"
+        }
+      },
+      "required": ["$"],
+      "additionalProperties": false
+    },
+    "SetcpArg": {
+      "type": "object",
+      "properties": {
+        "$": {
+          "type": "string",
+          "const": "setcpArg",
+          "description": "Type discriminator for setcp argument"
+        },
+        "range": {
+          "$ref": "#/definitions/ArgRange",
+          "description": "Value range for the setcp argument"
+        }
+      },
+      "required": ["$", "range"],
+      "additionalProperties": false
+    },
+    "SliceArg": {
+      "type": "object",
+      "properties": {
+        "$": {
+          "type": "string",
+          "const": "slice",
+          "description": "Type discriminator for slice argument"
+        },
+        "refs": {
+          "$ref": "#/definitions/Arg",
+          "description": "References argument for slice"
+        },
+        "bits": {
+          "$ref": "#/definitions/Arg",
+          "description": "Bits argument for slice"
+        },
+        "pad": {
+          "type": "number",
+          "description": "Padding value for slice"
+        }
+      },
+      "required": ["$", "refs", "bits", "pad"],
+      "additionalProperties": false
+    },
+    "CodeSliceArg": {
+      "type": "object",
+      "properties": {
+        "$": {
+          "type": "string",
+          "const": "codeSlice",
+          "description": "Type discriminator for codeSlice argument"
+        },
+        "refs": {
+          "$ref": "#/definitions/Arg",
+          "description": "References argument for code slice"
+        },
+        "bits": {
+          "$ref": "#/definitions/Arg",
+          "description": "Bits argument for code slice"
+        }
+      },
+      "required": ["$", "refs", "bits"],
+      "additionalProperties": false
+    },
+    "RefCodeSliceArg": {
+      "type": "object",
+      "properties": {
+        "$": {
+          "type": "string",
+          "const": "refCodeSlice",
+          "description": "Type discriminator for refCodeSlice argument"
+        }
+      },
+      "required": ["$"],
+      "additionalProperties": false
+    },
+    "InlineCodeSliceArg": {
+      "type": "object",
+      "properties": {
+        "$": {
+          "type": "string",
+          "const": "inlineCodeSlice",
+          "description": "Type discriminator for inlineCodeSlice argument"
+        },
+        "bits": {
+          "$ref": "#/definitions/Arg",
+          "description": "Bits argument for inline code slice"
+        }
+      },
+      "required": ["$", "bits"],
+      "additionalProperties": false
+    },
+    "ExoticCellArg": {
+      "type": "object",
+      "properties": {
+        "$": {
+          "type": "string",
+          "const": "exoticCell",
+          "description": "Type discriminator for exoticCell argument"
+        }
+      },
+      "required": ["$"],
+      "additionalProperties": false
+    },
+    "DebugstrArg": {
+      "type": "object",
+      "properties": {
+        "$": {
+          "type": "string",
+          "const": "debugstr",
+          "description": "Type discriminator for debugstr argument"
+        }
+      },
+      "required": ["$"],
       "additionalProperties": false
     },
     "Refs": {
       "type": "object",
       "properties": {
         "$": {
-          "type": "string"
+          "type": "string",
+          "description": "Type discriminator for references"
         },
         "count": {
-          "type": "number"
+          "type": "number",
+          "description": "Number of references"
         },
         "delta": {
-          "type": "number"
+          "type": "number",
+          "description": "Delta value for references"
         },
         "arg": {
-          "$ref": "#/definitions/Arg"
+          "$ref": "#/definitions/Arg",
+          "description": "Argument for references specification"
         },
         "len": {
-          "type": "number"
+          "type": "number",
+          "description": "Length specification for references"
         },
         "range": {
-          "$ref": "#/definitions/ArgRange"
+          "$ref": "#/definitions/ArgRange",
+          "description": "Value range for references"
         }
       },
       "required": ["$"],
@@ -542,7 +924,7 @@
               "$ref": "#/definitions/VariableName"
             },
             "range": {
-              "$ref": "#/definitions/Range",
+              "$ref": "#/definitions/PossibleValueRange",
               "description": "Optional range constraint for the value, specifying minimum and maximum allowed values"
             },
             "presentation": {
@@ -635,7 +1017,7 @@
         "enum": ["Int", "Bool", "Cell", "Builder", "Slice", "Tuple", "Continuation", "Null", "Any"]
       }
     },
-    "Range": {
+    "PossibleValueRange": {
       "type": "object",
       "description": "Represents a numeric range with minimum and maximum values",
       "properties": {

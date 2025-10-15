@@ -1,6 +1,4 @@
-import type {InstructionSignature, Schema, StackEntry, StackValues} from "../types"
-
-let signatures: Schema | undefined = undefined
+import type {InstructionSignature, StackEntry, StackValues} from "../types"
 
 export const signatureString = (signature: InstructionSignature): string => {
     return (
@@ -46,16 +44,4 @@ const entryString = (entry: StackEntry): string => {
         return variants + "|" + elseValues
     }
     return variants
-}
-
-export const signatureOf = async (name: string): Promise<InstructionSignature | undefined> => {
-    const fs = await import("node:fs")
-
-    if (signatures) {
-        return signatures[name]
-    }
-
-    const signaturesData = fs.readFileSync(`${__dirname}/stack-signatures-data.json`, "utf8")
-    signatures = JSON.parse(signaturesData) as Schema
-    return signatures[name]
 }
