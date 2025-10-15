@@ -390,7 +390,7 @@ export interface Args {
     /**
      * List of child argument structures
      */
-    children?: Child[]
+    children?: Arg[]
     range?: ArgRange
 }
 
@@ -415,38 +415,6 @@ export type Arg =
     | InlineCodeSliceArg
     | ExoticCellArg
     | DebugstrArg
-
-/**
- * Child argument structure with its properties
- */
-export interface Child {
-    /**
-     * Type identifier for the child argument
-     */
-    $: string
-    /**
-     * Length of the argument in bits
-     */
-    len?: number
-    range?: ArgRange
-    /**
-     * Delta value for the child argument
-     */
-    delta?: number
-    /**
-     * Nested argument structure
-     */
-    arg?: Arg
-    refs?: Refs
-    /**
-     * Bits specification for the child argument
-     */
-    bits?: Arg
-    /**
-     * Padding value for the child argument
-     */
-    pad?: number
-}
 
 /**
  * Value range constraint for the child argument

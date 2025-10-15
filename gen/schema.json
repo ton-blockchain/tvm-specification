@@ -393,52 +393,12 @@
           "type": "array",
           "description": "List of child argument structures",
           "items": {
-            "$ref": "#/definitions/Child"
+            "$ref": "#/definitions/Arg"
           }
         },
         "range": {
           "$ref": "#/definitions/ArgRange",
           "description": "Value range for arguments structure"
-        }
-      },
-      "required": ["$"],
-      "additionalProperties": false
-    },
-    "Child": {
-      "type": "object",
-      "description": "Child argument structure with its properties",
-      "properties": {
-        "$": {
-          "type": "string",
-          "description": "Type identifier for the child argument"
-        },
-        "len": {
-          "type": "number",
-          "description": "Length of the argument in bits"
-        },
-        "range": {
-          "$ref": "#/definitions/ArgRange",
-          "description": "Value range constraint for the child argument"
-        },
-        "delta": {
-          "type": "number",
-          "description": "Delta value for the child argument"
-        },
-        "arg": {
-          "$ref": "#/definitions/Arg",
-          "description": "Nested argument structure"
-        },
-        "refs": {
-          "$ref": "#/definitions/Refs",
-          "description": "References specification for the child argument"
-        },
-        "bits": {
-          "$ref": "#/definitions/Arg",
-          "description": "Bits specification for the child argument"
-        },
-        "pad": {
-          "type": "number",
-          "description": "Padding value for the child argument"
         }
       },
       "required": ["$"],
