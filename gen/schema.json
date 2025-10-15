@@ -381,40 +381,11 @@
       "additionalProperties": false
     },
     "Args": {
-      "description": "Arguments structure for instruction operands",
-      "oneOf": [
-        {
-          "type": "object",
-          "description": "Plain arguments with children",
-          "properties": {
-            "$": {
-              "type": "string",
-              "const": "simpleArgs"
-            },
-            "children": {
-              "type": "array",
-              "description": "List of child argument structures",
-              "items": {
-                "$ref": "#/definitions/Arg"
-              }
-            }
-          },
-          "required": ["$", "children"],
-          "additionalProperties": false
-        },
-        {
-          "type": "object",
-          "description": "Dictionary push arguments (key length and dictionary)",
-          "properties": {
-            "$": {
-              "type": "string",
-              "const": "dictpush"
-            }
-          },
-          "required": ["$"],
-          "additionalProperties": false
-        }
-      ]
+      "description": "Instruction arguments",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Arg"
+      }
     },
     "ArgRange": {
       "type": "object",
@@ -477,6 +448,9 @@
         },
         {
           "$ref": "#/definitions/InlineCodeSliceArg"
+        },
+        {
+          "$ref": "#/definitions/InlineDictArg"
         },
         {
           "$ref": "#/definitions/ExoticCellArg"
@@ -725,6 +699,17 @@
         }
       },
       "required": ["$", "bits"],
+      "additionalProperties": false
+    },
+    "InlineDictArg": {
+      "type": "object",
+      "properties": {
+        "$": {
+          "type": "string",
+          "const": "dict"
+        }
+      },
+      "required": ["$"],
       "additionalProperties": false
     },
     "ExoticCellArg": {

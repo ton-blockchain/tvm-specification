@@ -71,7 +71,7 @@ type ContinuationSavelist struct {
 	C3 *Continuation `json:"c3,omitempty"`
 }
 
-type ArgsClass struct {
+type Args struct {
 	After *Continuation `json:"after,omitempty"`
 	Body  *Continuation `json:"body,omitempty"`
 	Cond  *Continuation `json:"cond,omitempty"`
@@ -86,7 +86,7 @@ type Continuation struct {
 	Type    ContinuationType      `json:"type"`
 	VarName *string               `json:"var_name,omitempty"`
 	Index   *int64                `json:"index,omitempty"`
-	Args    *ArgsClass            `json:"args,omitempty"`
+	Args    *Args                 `json:"args,omitempty"`
 	Name    *ContinuationName     `json:"name,omitempty"`
 }
 
@@ -190,7 +190,7 @@ type ImplementationInfo struct {
 
 // Information about instruction's bytecode layout and execution
 type Layout struct {
-	Args                                                 Args   `json:"args"`
+	Args                                                 []Arg  `json:"args"`
 	CheckLen                                             int64  `json:"checkLen"`
 	Exec                                                 string `json:"exec"`
 	// Type of instruction layout format
@@ -209,17 +209,8 @@ type Layout struct {
 	Version                                              *int64 `json:"version,omitempty"`
 }
 
-// Arguments structure for instruction operands
+// Instruction arguments
 //
-// Plain arguments with children
-//
-// Dictionary push arguments (key length and dictionary)
-type Args struct {
-	Empty                               ArgsEnum `json:"$"`
-	// List of child argument structures
-	Children                            []Arg    `json:"children,omitempty"`
-}
-
 // Nested argument for delta operation
 //
 // Bits argument for slice
@@ -232,7 +223,7 @@ type Args struct {
 //
 // Bits argument for inline code slice
 type Arg struct {
-	Empty                                   ArgEnum   `json:"$"`
+	Empty                                   Empty     `json:"$"`
 	// Length of the argument in bits
 	Len                                     *int64    `json:"len,omitempty"`
 	// Value range for the uint argument
@@ -381,33 +372,26 @@ const (
 	TypeRegister   ContinuationType = "register"
 )
 
-type ArgEnum string
+type Empty string
 
 const (
-	CodeSlice       ArgEnum = "codeSlice"
-	Control         ArgEnum = "control"
-	Debugstr        ArgEnum = "debugstr"
-	Delta           ArgEnum = "delta"
-	ExoticCell      ArgEnum = "exoticCell"
-	InlineCodeSlice ArgEnum = "inlineCodeSlice"
-	Int             ArgEnum = "int"
-	LargeInt        ArgEnum = "largeInt"
-	MinusOne        ArgEnum = "minusOne"
-	PlduzArg        ArgEnum = "plduzArg"
-	RefCodeSlice    ArgEnum = "refCodeSlice"
-	S1              ArgEnum = "s1"
-	SetcpArg        ArgEnum = "setcpArg"
-	Slice           ArgEnum = "slice"
-	Stack           ArgEnum = "stack"
-	TinyInt         ArgEnum = "tinyInt"
-	Uint            ArgEnum = "uint"
-)
-
-type ArgsEnum string
-
-const (
-	Dictpush   ArgsEnum = "dictpush"
-	SimpleArgs ArgsEnum = "simpleArgs"
+	CodeSlice       Empty = "codeSlice"
+	Control         Empty = "control"
+	Debugstr        Empty = "debugstr"
+	Delta           Empty = "delta"
+	ExoticCell      Empty = "exoticCell"
+	InlineCodeSlice Empty = "inlineCodeSlice"
+	Int             Empty = "int"
+	LargeInt        Empty = "largeInt"
+	MinusOne        Empty = "minusOne"
+	PlduzArg        Empty = "plduzArg"
+	RefCodeSlice    Empty = "refCodeSlice"
+	S1              Empty = "s1"
+	SetcpArg        Empty = "setcpArg"
+	Slice           Empty = "slice"
+	Stack           Empty = "stack"
+	TinyInt         Empty = "tinyInt"
+	Uint            Empty = "uint"
 )
 
 // Type of instruction layout format

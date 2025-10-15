@@ -262,9 +262,23 @@ func loader(instructions []spec.Instruction) loaderFunc {
 
 		var args []any
 
-		switch layout.Args.Empty {
-		case spec.SimpleArgs:
-			for _, child := range layout.Args.Children {
+		// Process DICTPUSHCONST-like instructions with separate logic
+		if len(layout.Args) == 2 && layout.Args[0].Empty == "dict" {
+			keyLength := slice.MustLoadUInt(10)
+			dictCell, _ := slice.LoadRefCell()
+			dict := dictCell.AsDict(uint(keyLength))
+			keyValues, _ := dict.LoadAll()
+
+			methods := make([]DecompiledMethod, 0, len(keyValues))
+			for _, kv := range keyValues {
+				id := kv.Key.MustLoadUInt(uint(keyLength))
+				code := decompileCell(kv.Value.MustToCell())
+				methods = append(methods, DecompiledMethod{id, code.instructions})
+			}
+
+			args = append(args, keyLength, DecompiledDict{methods})
+		} else {
+			for _, child := range layout.Args {
 				switch child.Empty {
 				case "delta":
 					switch child.Arg.Empty {
@@ -328,20 +342,6 @@ func loader(instructions []spec.Instruction) loaderFunc {
 					log.Fatalf("unhandled type of arg: %v", child)
 				}
 			}
-		case spec.Dictpush:
-			keyLength := slice.MustLoadUInt(10)
-			dictCell, _ := slice.LoadRefCell()
-			dict := dictCell.AsDict(uint(keyLength))
-			all, _ := dict.LoadAll()
-
-			methods := make([]DecompiledMethod, 0, len(all))
-			for _, kv := range all {
-				id := kv.Key.MustLoadUInt(uint(keyLength))
-				code := decompileCell(kv.Value.MustToCell())
-				methods = append(methods, DecompiledMethod{id, code.instructions})
-			}
-
-			args = append(args, keyLength, DecompiledDict{methods})
 		}
 
 		return DeserializedInstruction{

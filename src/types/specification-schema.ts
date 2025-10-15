@@ -358,7 +358,7 @@ export interface Layout {
     max: number
     checkLen: number
     skipLen: number
-    args: Args
+    args: Arg[]
     exec: string
     /**
      * Type of instruction layout format
@@ -378,21 +378,6 @@ export interface Layout {
     tlb: string
     version?: number
 }
-
-/**
- * Arguments structure for instruction operands
- */
-export type Args =
-    | {
-          $: "simpleArgs"
-          /**
-           * List of child argument structures
-           */
-          children: Arg[]
-      }
-    | {
-          $: "dictpush"
-      }
 
 export type Arg =
     | UintArg

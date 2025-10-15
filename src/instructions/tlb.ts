@@ -152,6 +152,11 @@ export function generateTlb(
                 result += "bits: (## 4) data: ((8 * bits + 8) * Bit) "
                 break
             }
+            case "dict": {
+                const name = variableNameGenerator()
+                result += `${name}: ^Cell `
+                break
+            }
             case "s1":
             case "setcpArg":
             case "exoticCell": {
@@ -162,12 +167,10 @@ export function generateTlb(
 
     if (name === "XCHG_IJ") {
         result += "i: (## 4) j: (## 4) { 1 <= i } { i + 1 <= j }"
-    } else if (instruction.args.$ === "simpleArgs") {
-        for (const arg of instruction.args.children) {
+    } else {
+        for (const arg of instruction.args) {
             generateArg(arg)
         }
-    } else if (instruction.args.$ === "dictpush") {
-        result += "d: ^Cell key_len: (## 10)"
     }
 
     if (includeNames) {
