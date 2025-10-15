@@ -143,11 +143,6 @@ export function generateTlb(
                 result += "len: (## 5) data: (int (8 * l + 19))"
                 break
             }
-            case "minusOne": {
-                const name = variableNameGenerator()
-                result += `${name}: (## 4) `
-                break
-            }
             case "debugstr": {
                 result += "bits: (## 4) data: ((8 * bits + 8) * Bit) "
                 break
@@ -157,6 +152,7 @@ export function generateTlb(
                 result += `${name}: ^Cell `
                 break
             }
+            case "minusOne":
             case "s1":
             case "setcpArg":
             case "exoticCell": {

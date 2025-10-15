@@ -393,6 +393,7 @@ export type Arg =
     | SetcpArg
     | SliceArg
     | CodeSliceArg
+    | Dict
     | RefCodeSliceArg
     | InlineCodeSliceArg
     | ExoticCellArg
@@ -510,6 +511,10 @@ export interface CodeSliceArg {
      * Bits argument for code slice
      */
     bits: Arg
+}
+
+export interface Dict {
+    $: "dict"
 }
 
 export interface RefCodeSliceArg {
