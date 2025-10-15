@@ -387,7 +387,7 @@
         "$": {
           "type": "string",
           "description": "Type of arguments structure",
-          "enum": ["dictpush", "simpleArgs", "xchgArgs"]
+          "enum": ["dictpush", "simpleArgs"]
         },
         "children": {
           "type": "array",

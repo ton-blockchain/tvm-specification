@@ -347,8 +347,6 @@ func loader(instructions []spec.Instruction) loaderFunc {
 			}
 
 			args = append(args, keyLength, DecompiledDict{methods})
-		case spec.XchgArgs:
-			args = append(args, StackRegister{int64(slice.MustLoadUInt(4))}, StackRegister{int64(slice.MustLoadUInt(4))})
 		}
 
 		return DeserializedInstruction{

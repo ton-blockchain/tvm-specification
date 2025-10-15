@@ -173,12 +173,12 @@ export function generateTlb(
         }
     }
 
-    if (instruction.args.$ === "simpleArgs") {
+    if (name === "XCHG_IJ") {
+        result += "i: (## 4) j: (## 4) { 1 <= i } { i + 1 <= j }"
+    } else if (instruction.args.$ === "simpleArgs") {
         for (const arg of instruction.args.children) {
             generateArg(arg)
         }
-    } else if (instruction.args.$ === "xchgArgs") {
-        result += "i: (## 4) j: (## 4) { 1 <= i } { i + 1 <= j }"
     } else if (instruction.args.$ === "dictpush") {
         result += "d: ^Cell key_len: (## 10)"
     }

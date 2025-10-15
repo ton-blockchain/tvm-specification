@@ -415,7 +415,6 @@ type ArgsEnum string
 const (
 	Dictpush   ArgsEnum = "dictpush"
 	SimpleArgs ArgsEnum = "simpleArgs"
-	XchgArgs   ArgsEnum = "xchgArgs"
 )
 
 // Type of instruction layout format

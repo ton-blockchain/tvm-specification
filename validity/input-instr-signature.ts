@@ -40,8 +40,6 @@ const generateArgs = (opcode: Opcode): string[] => {
             return args.children.map(arg => generateArg(arg))
         case "dictpush":
             return ["19", "[0 => {} 2 => {}]"]
-        case "xchgArgs":
-            return ["s1", "s1"]
     }
 }
 
