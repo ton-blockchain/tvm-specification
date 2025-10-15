@@ -38,10 +38,10 @@ developing tools based on the TVM specification.
 
 ### Key components
 
-1. **`spec/spec.go`** - Generated data structures for working with TVM
+1. `spec/spec.go` — Generated data structures for working with TVM
    specification
-2. **`tasm/decompile.go`** - Main disassembly logic
-3. **`main.go`** - Demo application showing disassembler usage
+2. `tasm/decompile.go` — Main disassembly logic
+3. `main.go` — Demo application showing disassembler usage
 
 ## Usage
 
