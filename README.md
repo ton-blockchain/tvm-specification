@@ -34,6 +34,8 @@ This repository contains scripts that check the validity of instruction descript
   listed in `other_implementations` is compilable
 - [tlb-validation.ts](validity/tlb-validation.ts) — checks the validity of TLB representations by parsing them and
   generating TypeScript wrapper code
+- [docs-links-validation.ts](validity/docs-links-validation.ts) — checks that documentation links in `docs_links` are
+  reachable
 - JSON Schema validation — validates the JSON schema itself and checks that the generated specification conforms to it
 
 ## Projects that use this specification
