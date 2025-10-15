@@ -44,6 +44,12 @@ This repository contains scripts that check the validity of instruction descript
 - [TASM](https://github.com/ton-blockchain/tasm) — Assembler and disassembler implementation for TVM bitcode in pure
   TypeScript tested on 100k real contracts from blockchain
 
+## Examples
+
+This repository includes practical examples demonstrating how to use this specification:
+
+- [Simple TVM Disassembler (Go)](examples/golang/tasm-go/) — Minimal implementation (200 lines of core deserialization logic) showing how to create a TVM bytecode disassembler using the specification.
+
 ## Development
 
 [`data/`](data) directory contains a set of files with description for all instructions. This description doesn't
