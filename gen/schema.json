@@ -225,7 +225,7 @@
       "properties": {
         "errno": {
           "type": "string",
-          "description": "Exit code integer"
+          "description": "Exit code number"
         },
         "condition": {
           "type": "string",
@@ -381,28 +381,40 @@
       "additionalProperties": false
     },
     "Args": {
-      "type": "object",
       "description": "Arguments structure for instruction operands",
-      "properties": {
-        "$": {
-          "type": "string",
-          "description": "Type of arguments structure",
-          "enum": ["dictpush", "simpleArgs"]
+      "oneOf": [
+        {
+          "type": "object",
+          "description": "Plain arguments with children",
+          "properties": {
+            "$": {
+              "type": "string",
+              "const": "simpleArgs"
+            },
+            "children": {
+              "type": "array",
+              "description": "List of child argument structures",
+              "items": {
+                "$ref": "#/definitions/Arg"
+              }
+            }
+          },
+          "required": ["$", "children"],
+          "additionalProperties": false
         },
-        "children": {
-          "type": "array",
-          "description": "List of child argument structures",
-          "items": {
-            "$ref": "#/definitions/Arg"
-          }
-        },
-        "range": {
-          "$ref": "#/definitions/ArgRange",
-          "description": "Value range for arguments structure"
+        {
+          "type": "object",
+          "description": "Dictionary push arguments (key length and dictionary)",
+          "properties": {
+            "$": {
+              "type": "string",
+              "const": "dictpush"
+            }
+          },
+          "required": ["$"],
+          "additionalProperties": false
         }
-      },
-      "required": ["$"],
-      "additionalProperties": false
+      ]
     },
     "ArgRange": {
       "type": "object",
@@ -530,7 +542,7 @@
         },
         "count": {
           "type": "integer",
-          "description": "integer of references"
+          "description": "Number of references"
         }
       },
       "required": ["$", "count"],
@@ -1135,7 +1147,7 @@
             },
             "index": {
               "type": "integer",
-              "title": "Register integer (0-3)"
+              "title": "Register number (0-3)"
             },
             "save": {
               "$ref": "#/definitions/savelist"
@@ -1268,7 +1280,7 @@
               "properties": {
                 "value": {
                   "type": "integer",
-                  "title": "Integer to push to stack"
+                  "title": "Number to push to stack"
                 },
                 "next": {
                   "$ref": "#/definitions/Continuation"

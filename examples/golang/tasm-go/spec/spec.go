@@ -71,7 +71,7 @@ type ContinuationSavelist struct {
 	C3 *Continuation `json:"c3,omitempty"`
 }
 
-type Args struct {
+type ArgsClass struct {
 	After *Continuation `json:"after,omitempty"`
 	Body  *Continuation `json:"body,omitempty"`
 	Cond  *Continuation `json:"cond,omitempty"`
@@ -86,7 +86,7 @@ type Continuation struct {
 	Type    ContinuationType      `json:"type"`
 	VarName *string               `json:"var_name,omitempty"`
 	Index   *int64                `json:"index,omitempty"`
-	Args    *Args                 `json:"args,omitempty"`
+	Args    *ArgsClass            `json:"args,omitempty"`
 	Name    *ContinuationName     `json:"name,omitempty"`
 }
 
@@ -154,7 +154,7 @@ type ExampleStack struct {
 type ExitCode struct {
 	// Condition that triggers this exit code
 	Condition                                string `json:"condition"`
-	// Exit code integer
+	// Exit code number
 	Errno                                    string `json:"errno"`
 }
 
@@ -184,39 +184,40 @@ type ImplementationInfo struct {
 	FilePath                                                 string `json:"file_path"`
 	// Name of the C++ function implementing this instruction
 	FunctionName                                             string `json:"function_name"`
-	// Line integer where the function is defined
-	LineInteger                                              int64  `json:"line_integer"`
+	// Line number where the function is defined
+	LineNumber                                               int64  `json:"line_number"`
 }
 
 // Information about instruction's bytecode layout and execution
 type Layout struct {
-	Args                                                 LayoutArgs `json:"args"`
-	CheckLen                                             int64      `json:"checkLen"`
-	Exec                                                 string     `json:"exec"`
+	Args                                                 Args   `json:"args"`
+	CheckLen                                             int64  `json:"checkLen"`
+	Exec                                                 string `json:"exec"`
 	// Type of instruction layout format
-	Kind                                                 Kind       `json:"kind"`
+	Kind                                                 Kind   `json:"kind"`
 	// Maximum value for instruction operand range
-	Max                                                  int64      `json:"max"`
+	Max                                                  int64  `json:"max"`
 	// Minimum value for instruction operand range
-	Min                                                  int64      `json:"min"`
+	Min                                                  int64  `json:"min"`
 	// Numeric value of instruction prefix
-	Prefix                                               int64      `json:"prefix"`
+	Prefix                                               int64  `json:"prefix"`
 	// String representation of instruction prefix in hex
-	PrefixStr                                            string     `json:"prefix_str"`
-	SkipLen                                              int64      `json:"skipLen"`
+	PrefixStr                                            string `json:"prefix_str"`
+	SkipLen                                              int64  `json:"skipLen"`
 	// TLB schema of the instruction
-	Tlb                                                  string     `json:"tlb"`
-	Version                                              *int64     `json:"version,omitempty"`
+	Tlb                                                  string `json:"tlb"`
+	Version                                              *int64 `json:"version,omitempty"`
 }
 
 // Arguments structure for instruction operands
-type LayoutArgs struct {
-	// Type of arguments structure
-	Empty                                 ArgsEnum  `json:"$"`
+//
+// Plain arguments with children
+//
+// Dictionary push arguments (key length and dictionary)
+type Args struct {
+	Empty                               ArgsEnum `json:"$"`
 	// List of child argument structures
-	Children                              []Arg     `json:"children,omitempty"`
-	// Value range for arguments structure
-	Range                                 *ArgRange `json:"range,omitempty"`
+	Children                            []Arg    `json:"children,omitempty"`
 }
 
 // Nested argument for delta operation
@@ -250,7 +251,7 @@ type Arg struct {
 	//
 	// Value range for the setcp argument
 	Range                                   *ArgRange `json:"range,omitempty"`
-	// integer of references
+	// Number of references
 	Count                                   *int64    `json:"count,omitempty"`
 	// Nested argument for delta operation
 	Arg                                     *Arg      `json:"arg,omitempty"`
@@ -285,8 +286,6 @@ type Arg struct {
 // Value range for the largeInt argument
 //
 // Value range for the setcp argument
-//
-// Value range for arguments structure
 type ArgRange struct {
 	// Maximum value for the argument range
 	Max                                    string `json:"max"`
@@ -409,7 +408,6 @@ const (
 	Uint            ArgEnum = "uint"
 )
 
-// Type of arguments structure
 type ArgsEnum string
 
 const (

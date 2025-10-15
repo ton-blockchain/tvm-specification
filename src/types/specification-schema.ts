@@ -382,17 +382,17 @@ export interface Layout {
 /**
  * Arguments structure for instruction operands
  */
-export interface Args {
-    /**
-     * Type of arguments structure
-     */
-    $: "dictpush" | "simpleArgs" | "xchgArgs"
-    /**
-     * List of child argument structures
-     */
-    children?: Arg[]
-    range?: ArgRange
-}
+export type Args =
+    | {
+          $: "simpleArgs"
+          /**
+           * List of child argument structures
+           */
+          children: Arg[]
+      }
+    | {
+          $: "dictpush"
+      }
 
 export type Arg =
     | UintArg
