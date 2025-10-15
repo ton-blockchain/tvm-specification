@@ -783,36 +783,6 @@
       "required": ["$"],
       "additionalProperties": false
     },
-    "Refs": {
-      "type": "object",
-      "properties": {
-        "$": {
-          "type": "string"
-        },
-        "count": {
-          "type": "number",
-          "description": "Number of references"
-        },
-        "delta": {
-          "type": "number",
-          "description": "Delta value for references"
-        },
-        "arg": {
-          "$ref": "#/definitions/Arg",
-          "description": "Argument for references specification"
-        },
-        "len": {
-          "type": "number",
-          "description": "Length specification for references"
-        },
-        "range": {
-          "$ref": "#/definitions/ArgRange",
-          "description": "Value range for references"
-        }
-      },
-      "required": ["$"],
-      "additionalProperties": false
-    },
     "InstructionSignature": {
       "type": "object",
       "properties": {
