@@ -126,7 +126,7 @@ type DocsLink struct {
 // Example of instruction usage with stack state and execution result
 type Example struct {
 	// Exit code of the example execution
-	ExitCode                               *float64             `json:"exit_code,omitempty"`
+	ExitCode                               *int64               `json:"exit_code,omitempty"`
 	// List of instructions in this example
 	Instructions                           []ExampleInstruction `json:"instructions"`
 	Stack                                  ExampleStack         `json:"stack"`
@@ -154,7 +154,7 @@ type ExampleStack struct {
 type ExitCode struct {
 	// Condition that triggers this exit code
 	Condition                                string `json:"condition"`
-	// Exit code number
+	// Exit code integer
 	Errno                                    string `json:"errno"`
 }
 
@@ -165,7 +165,7 @@ type GasConsumptionEntry struct {
 	// Optional formula for dynamic gas calculation
 	Formula                                        *string `json:"formula,omitempty"`
 	// The gas consumption value
-	Value                                          float64 `json:"value"`
+	Value                                          int64   `json:"value"`
 }
 
 // Alternative implementation of an instruction using other instructions
@@ -179,78 +179,119 @@ type OtherImplementation struct {
 // Information about the C++ implementation of the instruction in TON repository
 type ImplementationInfo struct {
 	// Git commit hash of the TON repository
-	CommitHash                                               string  `json:"commit_hash"`
+	CommitHash                                               string `json:"commit_hash"`
 	// Path to the C++ file containing the implementation
-	FilePath                                                 string  `json:"file_path"`
+	FilePath                                                 string `json:"file_path"`
 	// Name of the C++ function implementing this instruction
-	FunctionName                                             string  `json:"function_name"`
-	// Line number where the function is defined
-	LineNumber                                               float64 `json:"line_number"`
+	FunctionName                                             string `json:"function_name"`
+	// Line integer where the function is defined
+	LineInteger                                              int64  `json:"line_integer"`
 }
 
 // Information about instruction's bytecode layout and execution
 type Layout struct {
 	Args                                                 LayoutArgs `json:"args"`
-	CheckLen                                             float64    `json:"checkLen"`
+	CheckLen                                             int64      `json:"checkLen"`
 	Exec                                                 string     `json:"exec"`
 	// Type of instruction layout format
 	Kind                                                 Kind       `json:"kind"`
 	// Maximum value for instruction operand range
-	Max                                                  float64    `json:"max"`
+	Max                                                  int64      `json:"max"`
 	// Minimum value for instruction operand range
-	Min                                                  float64    `json:"min"`
+	Min                                                  int64      `json:"min"`
 	// Numeric value of instruction prefix
-	Prefix                                               float64    `json:"prefix"`
+	Prefix                                               int64      `json:"prefix"`
 	// String representation of instruction prefix in hex
 	PrefixStr                                            string     `json:"prefix_str"`
-	SkipLen                                              float64    `json:"skipLen"`
+	SkipLen                                              int64      `json:"skipLen"`
 	// TLB schema of the instruction
 	Tlb                                                  string     `json:"tlb"`
-	Version                                              *float64   `json:"version,omitempty"`
+	Version                                              *int64     `json:"version,omitempty"`
 }
 
 // Arguments structure for instruction operands
 type LayoutArgs struct {
 	// Type of arguments structure
-	Empty                               ArgsEnum  `json:"$"`
+	Empty                                 ArgsEnum  `json:"$"`
 	// List of child argument structures
-	Children                            []Child   `json:"children,omitempty"`
-	Range                               *ArgRange `json:"range,omitempty"`
+	Children                              []Arg     `json:"children,omitempty"`
+	// Value range for arguments structure
+	Range                                 *ArgRange `json:"range,omitempty"`
 }
 
-// Child argument structure with its properties
-type Child struct {
-	// Type identifier for the child argument
-	Empty                                    string    `json:"$"`
-	Arg                                      *Arg      `json:"arg,omitempty"`
-	Bits                                     *Arg      `json:"bits,omitempty"`
-	Delta                                    *float64  `json:"delta,omitempty"`
-	// Length of the argument in bits
-	Len                                      *float64  `json:"len,omitempty"`
-	Pad                                      *float64  `json:"pad,omitempty"`
-	Range                                    *ArgRange `json:"range,omitempty"`
-	Refs                                     *Refs     `json:"refs,omitempty"`
-}
-
+// Nested argument for delta operation
+//
+// Bits argument for slice
+//
+// References argument for slice
+//
+// Bits argument for code slice
+//
+// References argument for code slice
+//
+// Bits argument for inline code slice
 type Arg struct {
-	Empty                            Bits     `json:"$"`
+	Empty                                   ArgEnum   `json:"$"`
 	// Length of the argument in bits
-	Len                              float64  `json:"len"`
-	Range                            ArgRange `json:"range"`
+	Len                                     *int64    `json:"len,omitempty"`
+	// Value range for the uint argument
+	//
+	// Value range for the int argument
+	//
+	// Value range for the stack argument
+	//
+	// Value range for the control argument
+	//
+	// Value range for the plduz argument
+	//
+	// Value range for the tinyInt argument
+	//
+	// Value range for the largeInt argument
+	//
+	// Value range for the setcp argument
+	Range                                   *ArgRange `json:"range,omitempty"`
+	// integer of references
+	Count                                   *int64    `json:"count,omitempty"`
+	// Nested argument for delta operation
+	Arg                                     *Arg      `json:"arg,omitempty"`
+	// Delta value
+	Delta                                   *int64    `json:"delta,omitempty"`
+	// Bits argument for slice
+	//
+	// Bits argument for code slice
+	//
+	// Bits argument for inline code slice
+	Bits                                    *Arg      `json:"bits,omitempty"`
+	// Padding value for slice
+	Pad                                     *int64    `json:"pad,omitempty"`
+	// References argument for slice
+	//
+	// References argument for code slice
+	Refs                                    *Arg      `json:"refs,omitempty"`
 }
 
+// Value range for the uint argument
+//
+// Value range for the int argument
+//
+// Value range for the stack argument
+//
+// Value range for the control argument
+//
+// Value range for the plduz argument
+//
+// Value range for the tinyInt argument
+//
+// Value range for the largeInt argument
+//
+// Value range for the setcp argument
+//
+// Value range for arguments structure
 type ArgRange struct {
-	Max string `json:"max"`
-	Min string `json:"min"`
-}
-
-type Refs struct {
-	Empty string    `json:"$"`
-	Arg   *Arg      `json:"arg,omitempty"`
-	Count *float64  `json:"count,omitempty"`
-	Delta *float64  `json:"delta,omitempty"`
-	Len   *float64  `json:"len,omitempty"`
-	Range *ArgRange `json:"range,omitempty"`
+	// Maximum value for the argument range
+	Max                                    string `json:"max"`
+	// Minimum value for the argument range
+	Min                                    string `json:"min"`
 }
 
 // Information related to usage of stack and registers by instruction. If omitted, exact
@@ -269,7 +310,7 @@ type InstructionInputs struct {
 
 // Represents read/write access to a register
 type Register struct {
-	Index   *float64      `json:"index,omitempty"`
+	Index   *int64        `json:"index,omitempty"`
 	Type    RegisterType  `json:"type"`
 	VarName *string       `json:"var_name,omitempty"`
 	Name    *RegisterName `json:"name,omitempty"`
@@ -277,7 +318,7 @@ type Register struct {
 
 type MatchArm struct {
 	Stack []StackEntry `json:"stack"`
-	Value float64      `json:"value"`
+	Value int64        `json:"value"`
 }
 
 // Stack constraints. Top of stack is the last value.
@@ -288,7 +329,7 @@ type StackEntry struct {
 	Name                                                                                     *string             `json:"name,omitempty"`
 	Presentation                                                                             *string             `json:"presentation,omitempty"`
 	// Optional range constraint for the value, specifying minimum and maximum allowed values
-	Range                                                                                    *Range              `json:"range,omitempty"`
+	Range                                                                                    *PossibleValueRange `json:"range,omitempty"`
 	Type                                                                                     StackEntryType      `json:"type"`
 	ValueTypes                                                                               []PossibleValueType `json:"value_types,omitempty"`
 	Value                                                                                    *ConstantValue      `json:"value"`
@@ -304,14 +345,14 @@ type Mutation struct {
 }
 
 type Length struct {
-	AmountArg      *float64 `json:"amount_arg,omitempty"`
-	StackAmountArg *float64 `json:"stack_amount_arg,omitempty"`
+	AmountArg      *int64 `json:"amount_arg,omitempty"`
+	StackAmountArg *int64 `json:"stack_amount_arg,omitempty"`
 }
 
 // Optional range constraint for the value, specifying minimum and maximum allowed values
 //
 // Represents a numeric range with minimum and maximum values
-type Range struct {
+type PossibleValueRange struct {
 	// Maximum allowed value (inclusive)
 	Max                                 float64 `json:"max"`
 	// Minimum allowed value (inclusive)
@@ -343,11 +384,29 @@ const (
 	TypeRegister   ContinuationType = "register"
 )
 
-type Bits string
+type ArgEnum string
 
 const (
-	Stack Bits = "stack"
-	Uint  Bits = "uint"
+	CodeSlice       ArgEnum = "codeSlice"
+	Control         ArgEnum = "control"
+	Debugstr        ArgEnum = "debugstr"
+	Delta           ArgEnum = "delta"
+	ExoticCell      ArgEnum = "exoticCell"
+	Hash            ArgEnum = "hash"
+	InlineCodeSlice ArgEnum = "inlineCodeSlice"
+	Int             ArgEnum = "int"
+	LargeInt        ArgEnum = "largeInt"
+	MinusOne        ArgEnum = "minusOne"
+	PlduzArg        ArgEnum = "plduzArg"
+	RefCodeSlice    ArgEnum = "refCodeSlice"
+	Refs            ArgEnum = "refs"
+	RunvmArg        ArgEnum = "runvmArg"
+	S1              ArgEnum = "s1"
+	SetcpArg        ArgEnum = "setcpArg"
+	Slice           ArgEnum = "slice"
+	Stack           ArgEnum = "stack"
+	TinyInt         ArgEnum = "tinyInt"
+	Uint            ArgEnum = "uint"
 )
 
 // Type of arguments structure
@@ -412,18 +471,18 @@ const (
 	PossibleValueTypeContinuation PossibleValueType = "Continuation"
 	PossibleValueTypeInt          PossibleValueType = "Int"
 	PossibleValueTypeNull         PossibleValueType = "Null"
-	Slice                         PossibleValueType = "Slice"
+	PossibleValueTypeSlice        PossibleValueType = "Slice"
 	Tuple                         PossibleValueType = "Tuple"
 )
 
 // Argument for a Fift instruction
 type FiftArgument struct {
-	Double *float64
-	String *string
+	Integer *int64
+	String  *string
 }
 
 func (x *FiftArgument) UnmarshalJSON(data []byte) error {
-	object, err := unmarshalUnion(data, nil, &x.Double, nil, &x.String, false, nil, false, nil, false, nil, false, nil, false)
+	object, err := unmarshalUnion(data, &x.Integer, nil, nil, &x.String, false, nil, false, nil, false, nil, false, nil, false)
 	if err != nil {
 		return err
 	}
@@ -433,16 +492,16 @@ func (x *FiftArgument) UnmarshalJSON(data []byte) error {
 }
 
 func (x *FiftArgument) MarshalJSON() ([]byte, error) {
-	return marshalUnion(nil, x.Double, nil, x.String, false, nil, false, nil, false, nil, false, nil, false)
+	return marshalUnion(x.Integer, nil, nil, x.String, false, nil, false, nil, false, nil, false, nil, false)
 }
 
 type ConstantValue struct {
-	Double *float64
-	String *string
+	Integer *int64
+	String  *string
 }
 
 func (x *ConstantValue) UnmarshalJSON(data []byte) error {
-	object, err := unmarshalUnion(data, nil, &x.Double, nil, &x.String, false, nil, false, nil, false, nil, false, nil, true)
+	object, err := unmarshalUnion(data, &x.Integer, nil, nil, &x.String, false, nil, false, nil, false, nil, false, nil, true)
 	if err != nil {
 		return err
 	}
@@ -452,7 +511,7 @@ func (x *ConstantValue) UnmarshalJSON(data []byte) error {
 }
 
 func (x *ConstantValue) MarshalJSON() ([]byte, error) {
-	return marshalUnion(nil, x.Double, nil, x.String, false, nil, false, nil, false, nil, false, nil, true)
+	return marshalUnion(x.Integer, nil, nil, x.String, false, nil, false, nil, false, nil, false, nil, true)
 }
 
 func unmarshalUnion(data []byte, pi **int64, pf **float64, pb **bool, ps **string, haveArray bool, pa interface{}, haveObject bool, pc interface{}, haveMap bool, pm interface{}, haveEnum bool, pe interface{}, nullable bool) (bool, error) {

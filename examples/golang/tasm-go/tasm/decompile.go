@@ -3,7 +3,6 @@ package tasm
 import (
 	"fmt"
 	"log"
-	"math"
 	"math/big"
 	"slices"
 	"strings"
@@ -146,8 +145,8 @@ func formatArg(arg any, depth int) string {
 const maxOpcodeBits = 24
 
 type instructionWithRange struct {
-	min   float64
-	max   float64
+	min   int64
+	max   int64
 	instr *spec.Instruction
 }
 
@@ -158,18 +157,18 @@ var load = loaderFunc(nil)
 // loadSlice loads a TVM slice according to specification.
 // In TVM, slices contain data followed by a completion tag (bit 1)
 // and optionally padding zeros. Function trims trailing zeros and completion tag.
-func loadSlice(slice *cell.Slice, child spec.Child) *cell.Slice {
+func loadSlice(slice *cell.Slice, arg spec.Arg) *cell.Slice {
 	// Determine the number of references in the slice
 	countRefs := uint64(0)
-	if child.Refs.Empty == "refs" {
-		countRefs = uint64(*child.Refs.Count)
+	if arg.Refs.Empty == "refs" {
+		countRefs = uint64(*arg.Refs.Count)
 	} else {
-		countRefs = slice.MustLoadUInt(uint(*child.Refs.Len))
+		countRefs = slice.MustLoadUInt(uint(*arg.Refs.Len))
 	}
 
 	// Calculate slice length in bits: data + padding
-	y := slice.MustLoadUInt(uint(child.Bits.Len))
-	realLength := int64(y*8 + uint64(*child.Pad))
+	y := slice.MustLoadUInt(uint(*arg.Bits.Len))
+	realLength := int64(y*8 + uint64(*arg.Pad))
 	r := slice.MustLoadSlice(uint(realLength))
 
 	// Find completion tag (first 1 bit from the end) and trim everything after it
@@ -210,12 +209,12 @@ func loader(instructions []spec.Instruction) loaderFunc {
 	}
 
 	var list []instructionWithRange
-	topOpcode := float64(1 << maxOpcodeBits)
+	topOpcode := int64(1 << maxOpcodeBits)
 	slices.SortFunc(instructionRanges, func(a, b instructionWithRange) int {
 		return int(a.min - b.min)
 	})
 
-	upto := 0.0
+	upto := int64(0)
 	for _, instr := range instructionRanges {
 		if instr.min >= instr.max || instr.min < upto || instr.max > topOpcode {
 			panic("instruction list is invalid")
@@ -247,7 +246,7 @@ func loader(instructions []spec.Instruction) loaderFunc {
 				break
 			}
 			kElement := list[k]
-			if kElement.min <= float64(opcode) {
+			if kElement.min <= int64(opcode) {
 				i = k
 			} else {
 				j = k
@@ -271,9 +270,9 @@ func loader(instructions []spec.Instruction) loaderFunc {
 				case "delta":
 					switch child.Arg.Empty {
 					case "uint":
-						args = append(args, slice.MustLoadUInt(uint(child.Arg.Len))+uint64(*child.Delta))
+						args = append(args, slice.MustLoadUInt(uint(*child.Arg.Len))+uint64(*child.Delta))
 					case "int":
-						args = append(args, slice.MustLoadInt(uint(child.Arg.Len))+int64(*child.Delta))
+						args = append(args, slice.MustLoadInt(uint(*child.Arg.Len))+int64(*child.Delta))
 					case "stack":
 						args = append(args, StackRegister{idx: slice.MustLoadInt(4) + int64(*child.Delta)})
 					}
@@ -304,15 +303,15 @@ func loader(instructions []spec.Instruction) loaderFunc {
 					val, _ := slice.LoadRefCell()
 					args = append(args, decompileCell(val))
 				case "inlineCodeSlice":
-					y := slice.MustLoadUInt(uint(child.Bits.Len))
+					y := slice.MustLoadUInt(uint(*child.Bits.Len))
 					realLength := y * 8
 					r := slice.MustLoadSlice(uint(realLength))
 					sliceBuilder := cell.Builder{}
 					sliceBuilder.MustStoreSlice(r, uint(realLength))
 					args = append(args, decompileCell(sliceBuilder.EndCell()))
 				case "codeSlice":
-					countRefs := slice.MustLoadUInt(uint(math.Floor(*child.Refs.Len)))
-					y := slice.MustLoadUInt(uint(child.Bits.Len))
+					countRefs := slice.MustLoadUInt(uint(*child.Refs.Len))
+					y := slice.MustLoadUInt(uint(*child.Bits.Len))
 					realLength := y * 8
 					r := slice.MustLoadSlice(uint(realLength))
 					sliceBuilder := cell.Builder{}

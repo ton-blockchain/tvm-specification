@@ -9,7 +9,7 @@
         "find-implementations": "ts-node src/gen/implementation-finder.ts",
         "validate": "ts-node ./validity/input-instr-signature.ts && ts-node ./validity/examples-validation.ts && ts-node ./validity/other-implementations-validation.ts && ts-node ./validity/tlb-validation.ts && ts-node ./validity/docs-links-validation.ts",
         "validate-schema": "ajv validate -s gen/schema.json -d gen/tvm-specification.json",
-        "precommit": "yarn fmt && yarn generate-types && yarn generate && yarn validate && yarn validate-schema"
+        "precommit": "yarn fmt && yarn generate && yarn validate && yarn validate-schema"
     },
     "devDependencies": {
         "@ton-community/tlb-codegen": "2.0.0-beta.0",
