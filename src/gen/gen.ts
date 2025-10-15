@@ -77,7 +77,7 @@ const main = () => {
             subCategory: undefined,
             effects: undefined,
             prefix_str: opcode.prefix.toString(16).toUpperCase(),
-            tlb: generateTlb(name, opcode, instr.description.operands, false),
+            tlb: generateTlb(opcode, instr.description.operands),
         }
 
         const gasCosts = calculateGasConsumptionWithDescription(opcode).filter(

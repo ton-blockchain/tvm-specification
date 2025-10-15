@@ -1,24 +1,12 @@
-import {Opcode, arg as Arg} from "./instructions"
+import {arg as Arg, Opcode} from "./instructions"
 
-export function generateTlb(
-    name: string,
-    instruction: Opcode,
-    operandNames: readonly string[] = [],
-    includeNames: boolean = true,
-): string {
+export function generateTlb(instruction: Opcode, operandNames: readonly string[]): string {
     let result = ""
 
     const nextVariableName = () => {
-        const names = ["i", "j", "k"]
         let index = 0
         return () => {
-            if (operandNames.length > 0 && index < operandNames.length) {
-                const name = operandNames[index]
-                index++
-                return name
-            }
-
-            const name = names[index]
+            const name = operandNames[index]
             index++
             return name
         }
@@ -30,20 +18,9 @@ export function generateTlb(
         opcode = instruction.prefix >> (instruction.skipLen - instruction.checkLen)
     }
 
-    if (includeNames) {
-        const baseName = name.toLowerCase()
-        if (baseName.startsWith("2")) {
-            result += `_${baseName}`
-        } else if (baseName.includes("#")) {
-            result += baseName.replace(/#/g, "_")
-        } else {
-            result += baseName
-        }
-    }
-
     result += "#" + opcode.toString(16) + " "
 
-    function generateArg(rawArg: Arg) {
+    for (const rawArg of instruction.args) {
         const arg = unwrapDelta(rawArg)
 
         switch (arg.$) {
@@ -67,14 +44,11 @@ export function generateTlb(
             case "slice": {
                 const refs = unwrapDelta(arg.refs)
                 if (refs.$ === "uint" && refs.len !== 0) {
-                    const restriction = refs.range.min !== 0n ? ` { ${refs.range.min} <= r }` : ""
-                    result += `r: (## ${refs.len})${restriction} `
+                    result += `r: (## ${refs.len}) `
                 }
                 const bits = unwrapDelta(arg.bits)
                 if (bits.$ === "uint") {
-                    const restriction =
-                        bits.range.min !== 0n ? ` { ${bits.range.min} <= bits }` : ""
-                    result += `bits: (## ${bits.len})${restriction} `
+                    result += `bits: (## ${bits.len}) `
                 }
 
                 if (refs.$ === "uint" && refs.len !== 0) {
@@ -92,14 +66,11 @@ export function generateTlb(
             case "codeSlice": {
                 const refs = unwrapDelta(arg.refs)
                 if (refs.$ === "uint") {
-                    const restriction = refs.range.min !== 0n ? ` { ${refs.range.min} <= r }` : ""
-                    result += `r: (## ${refs.len})${restriction} `
+                    result += `r: (## ${refs.len}) `
                 }
                 const bits = unwrapDelta(arg.bits)
                 if (bits.$ === "uint") {
-                    const restriction =
-                        bits.range.min !== 0n ? ` { ${bits.range.min} <= bits }` : ""
-                    result += `bits: (## ${bits.len})${restriction} `
+                    result += `bits: (## ${bits.len}) `
                 }
 
                 let delta = 0
@@ -113,9 +84,7 @@ export function generateTlb(
             case "inlineCodeSlice": {
                 const bits = unwrapDelta(arg.bits)
                 if (bits.$ === "uint") {
-                    const restriction =
-                        bits.range.min !== 0n ? ` { ${bits.range.min} <= bits }` : ""
-                    result += `bits:(## ${bits.len})${restriction} `
+                    result += `bits:(## ${bits.len}) `
                 }
 
                 const name = variableNameGenerator() ?? "data"
@@ -127,16 +96,14 @@ export function generateTlb(
                 result += `${name}: ^Cell `
                 break
             }
-            case "delta": {
-                generateArg(arg.arg)
-                break
-            }
             case "plduzArg": {
-                result += "i: (## 3)"
+                const name = variableNameGenerator() ?? "i"
+                result += `${name}: (## 3) `
                 break
             }
             case "tinyInt": {
-                result += "i: (## 4)"
+                const name = variableNameGenerator() ?? "i"
+                result += `${name}: (## 4) `
                 break
             }
             case "largeInt": {
@@ -148,10 +115,11 @@ export function generateTlb(
                 break
             }
             case "dict": {
-                const name = variableNameGenerator()
+                const name = variableNameGenerator() ?? "d"
                 result += `${name}: ^Cell `
                 break
             }
+            case "delta":
             case "minusOne":
             case "s1":
             case "setcpArg":
@@ -161,30 +129,7 @@ export function generateTlb(
         }
     }
 
-    if (name === "XCHG_IJ") {
-        result += "i: (## 4) j: (## 4) { 1 <= i } { i + 1 <= j }"
-    } else {
-        for (const arg of instruction.args) {
-            generateArg(arg)
-        }
-    }
-
-    if (includeNames) {
-        result += "= "
-
-        if (name.startsWith("2")) {
-            result += `_${name}`
-        } else if (name.includes("#")) {
-            result += name.replace(/#/g, "_")
-        } else {
-            result += name
-        }
-        result += ";"
-    } else {
-        result = result.trim()
-    }
-
-    return result
+    return result.trim()
 }
 
 function unwrapDelta(arg: Arg): Arg {

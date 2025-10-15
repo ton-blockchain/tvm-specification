@@ -55206,7 +55206,7 @@
         "kind": "fixed",
         "prefix": 6882,
         "prefix_str": "1AE2",
-        "tlb": "#1ae2 i: (## 3)"
+        "tlb": "#1ae2 c: (## 3)"
       },
       "signature": {
         "stack_string": "s:Slice -> s:Slice x:Int",
@@ -65737,7 +65737,7 @@
         "kind": "fixed",
         "prefix": 16,
         "prefix_str": "10",
-        "tlb": "#10 i: (## 4) j: (## 4) { 1 <= i } { i + 1 <= j }"
+        "tlb": "#10 i: (## 4) { 1 <= i } j: (## 4)"
       },
       "implementation": {
         "commit_hash": "4ebd7412c52248360464c2df5f434c8aaa3edfe1",
@@ -65970,7 +65970,7 @@
         "short": "",
         "long": "Padding instruction that does nothing.",
         "tags": [],
-        "operands": [],
+        "operands": ["t"],
         "gas": [
           {
             "value": 26,
@@ -65997,7 +65997,7 @@
         "kind": "fixed-range",
         "prefix": 65045,
         "prefix_str": "FE15",
-        "tlb": "#fe i: (## 8)"
+        "tlb": "#fe t: (## 8)"
       },
       "signature": {
         "stack_string": "∅ -> ∅",
@@ -66080,7 +66080,7 @@
         "short": "",
         "long": "Padding instruction that does nothing.",
         "tags": [],
-        "operands": [],
+        "operands": ["t"],
         "gas": [
           {
             "value": 26,
@@ -66107,7 +66107,7 @@
         "kind": "fixed-range",
         "prefix": 65072,
         "prefix_str": "FE30",
-        "tlb": "#fe i: (## 8)"
+        "tlb": "#fe t: (## 8)"
       },
       "signature": {
         "stack_string": "∅ -> ∅",

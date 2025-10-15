@@ -106,7 +106,7 @@
       "short": "",
       "long": "Padding instruction that does nothing.",
       "tags": [],
-      "operands": []
+      "operands": ["t"]
     },
     "signature": {
       "inputs": {
@@ -142,7 +142,7 @@
       "short": "",
       "long": "Padding instruction that does nothing.",
       "tags": [],
-      "operands": []
+      "operands": ["t"]
     },
     "signature": {
       "inputs": {
