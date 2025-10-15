@@ -103,7 +103,8 @@ async function main() {
     let validatedOtherImplGroups = 0
     let hasValidationErrors = false
 
-    for (const [name, instruction] of Object.entries(spec.instructions)) {
+    for (const instruction of spec.instructions) {
+        const name = instruction.name
         totalInstructions++
 
         const otherImplementations = instruction.description?.other_implementations

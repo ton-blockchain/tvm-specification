@@ -55,7 +55,7 @@ const main = () => {
         process.exit(1)
     }
 
-    const allInstructions: Record<string, Instruction> = {}
+    const allInstructions: Instruction[] = []
 
     for (const [name, opcode] of Object.entries(instructions)) {
         if (name.startsWith("f") || name.startsWith("PSEUDO") || name === "DEBUGMARK") {
@@ -84,7 +84,8 @@ const main = () => {
             it => it.value !== 36,
         )
 
-        allInstructions[name] = {
+        allInstructions.push({
+            name,
             category: opcode.category,
             sub_category: opcode.subCategory,
             description: {
@@ -101,12 +102,19 @@ const main = () => {
                 : undefined,
             control_flow: instr.control_flow,
             implementation: implementationMapping[name],
-        }
+        })
     }
 
-    const fiftInstructions = JSON.parse(
+    const fiftInstructionsRaw = JSON.parse(
         fs.readFileSync(`${__dirname}/../../data/fift/fift-instructions.json`, "utf8"),
-    ) as Record<string, FiftInstruction>
+    ) as Record<string, Omit<FiftInstruction, "name">>
+
+    const fiftInstructions: FiftInstruction[] = Object.entries(fiftInstructionsRaw).map(
+        ([name, instr]) => ({
+            name,
+            ...instr,
+        }),
+    )
 
     validateFiftInstructions(fiftInstructions, allInstructions)
 
@@ -133,21 +141,23 @@ const main = () => {
 }
 
 const validateFiftInstructions = (
-    fiftInstructions: Record<string, FiftInstruction>,
-    allInstructions: Record<string, Instruction>,
+    fiftInstructions: FiftInstruction[],
+    allInstructions: Instruction[],
 ) => {
-    for (const [name, instr] of Object.entries(fiftInstructions)) {
-        if (Object.keys(instructions).includes(name)) {
-            throw new Error(`Alias name ${name} is actual instruction name`)
+    const instructionNames = new Set(allInstructions.map(instr => instr.name))
+
+    for (const instr of fiftInstructions) {
+        if (instructionNames.has(instr.name)) {
+            throw new Error(`Alias name ${instr.name} is actual instruction name`)
         }
 
         if (instr.actual_name === "none") continue
 
-        if (!Object.keys(instructions).includes(instr.actual_name)) {
+        if (!instructionNames.has(instr.actual_name)) {
             throw new Error(`Aliased instruction ${instr.actual_name} doesn't exist`)
         }
 
-        const aliasedInstr = allInstructions[instr.actual_name]
+        const aliasedInstr = allInstructions.find(i => i.name === instr.actual_name)
         if (!aliasedInstr) {
             throw new Error(`Aliased instruction ${instr.actual_name} doesn't exist`)
         }
@@ -155,7 +165,7 @@ const validateFiftInstructions = (
         if (instr.arguments) {
             if (instr.arguments.length !== aliasedInstr.description.operands.length) {
                 throw new Error(
-                    `Count operands mismatch for ${name}:\n  alias: ${instr.arguments.length}\n  instr: ${aliasedInstr.description.operands.length}`,
+                    `Count operands mismatch for ${instr.name}:\n  alias: ${instr.arguments.length}\n  instr: ${aliasedInstr.description.operands.length}`,
                 )
             }
         }

@@ -432,7 +432,10 @@ async function checkInstructionInputs(
 }
 
 function findInstruction(spec: Specification, name: string) {
-    return spec.instructions[name] ?? spec.instructions[name.replace("_", "#")]
+    return (
+        spec.instructions.find(instr => instr.name === name) ??
+        spec.instructions.find(instr => instr.name === name.replace("_", "#"))
+    )
 }
 
 async function main() {

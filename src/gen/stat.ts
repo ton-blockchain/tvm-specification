@@ -50,7 +50,7 @@ const main = () => {
         "RETURNARGS",
     ])
 
-    for (const [name, instr] of Object.entries(data.instructions)) {
+    for (const instr of data.instructions) {
         stats.count++
         if (instr.description.short === "" && instr.description.long === "") {
             if (instr.category !== "arithmetic") {
@@ -73,7 +73,7 @@ const main = () => {
             !instr.signature.inputs?.registers?.length &&
             !instr.signature.outputs?.stack?.length &&
             !instr.signature.outputs?.registers?.length &&
-            !verifiedInstructionsWithEmptyStackSignature.has(name)
+            !verifiedInstructionsWithEmptyStackSignature.has(instr.name)
         ) {
             stats.withoutAEmptySignature++
         }

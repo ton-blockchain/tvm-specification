@@ -77,6 +77,10 @@
       "type": "object",
       "description": "Represents a Fift instruction with its actual TVM instruction name and arguments",
       "properties": {
+        "name": {
+          "type": "string",
+          "description": "The unique name of the Fift instruction"
+        },
         "actual_name": {
           "type": "string",
           "description": "The actual TVM instruction name"
@@ -93,32 +97,17 @@
           "description": "Optional description of what the instruction does"
         }
       },
-      "required": ["actual_name"],
-      "additionalProperties": false
-    },
-    "Specification": {
-      "type": "object",
-      "properties": {
-        "schema": {
-          "type": "string"
-        },
-        "version": {
-          "type": "string"
-        },
-        "instructions": {
-          "type": "object",
-          "additionalProperties": {
-            "$ref": "#/definitions/Instruction"
-          }
-        }
-      },
-      "required": ["schema", "version", "instructions"],
+      "required": ["name", "actual_name"],
       "additionalProperties": false
     },
     "Instruction": {
       "type": "object",
       "description": "Represents a TVM instruction with its properties, layout, effects and signature",
       "properties": {
+        "name": {
+          "type": "string",
+          "description": "The unique name of the instruction"
+        },
         "category": {
           "type": "string",
           "description": "Main category of the instruction (e.g. stack_basic, cont_loops, dict_get)"
@@ -151,7 +140,7 @@
           "$ref": "#/definitions/ImplementationInfo"
         }
       },
-      "required": ["category", "sub_category", "description", "layout"],
+      "required": ["name", "category", "sub_category", "description", "layout"],
       "additionalProperties": false
     },
     "Description": {
@@ -1028,18 +1017,14 @@
       "type": "string"
     },
     "instructions": {
-      "title": "Instructions",
-      "description": "Instruction list.",
-      "type": "object",
-      "additionalProperties": {
+      "type": "array",
+      "items": {
         "$ref": "#/definitions/Instruction"
       }
     },
     "fift_instructions": {
-      "title": "Fift Instructions",
-      "description": "Fift Instruction list.",
-      "type": "object",
-      "additionalProperties": {
+      "type": "array",
+      "items": {
         "$ref": "#/definitions/FiftInstruction"
       }
     }
