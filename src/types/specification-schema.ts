@@ -413,6 +413,9 @@ export interface ArgRange {
     max: string
 }
 
+/**
+ * Represents an unsigned integer argument with a specified length and a range of valid values.
+ */
 export interface UintArg {
     $: "uint"
     /**
@@ -426,6 +429,9 @@ export interface UintArg {
     range: ArgRange
 }
 
+/**
+ * Represents a signed integer argument with a specified length and a range of valid values.
+ */
 export interface IntArg {
     $: "int"
     /**
@@ -439,6 +445,9 @@ export interface IntArg {
     range: ArgRange
 }
 
+/**
+ * Represents argument with specified inner type and delta for it.
+ */
 export interface DeltaArg {
     $: "delta"
     /**
@@ -455,6 +464,11 @@ export interface DeltaArg {
     arg: Arg
 }
 
+/**
+ * Represents a stack argument with a constant bit length equal to 4 and a range of valid values.
+ * This argument can be serialized and deserialized as a plain integer with `slice.load_uint(4)`
+ * and `builder.store_uint(t, 4)`.
+ */
 export interface StackArg {
     $: "stack"
     /**
@@ -468,6 +482,11 @@ export interface StackArg {
     range: ArgRange
 }
 
+/**
+ * Represents a control register argument with a constant bit length equal to 4 and a range of
+ * valid values. This argument can be serialized and deserialized as a plain integer
+ * with `slice.load_uint(4)` and `builder.store_uint(t, 4)`.
+ */
 export interface ControlArg {
     $: "control"
     /**
@@ -477,6 +496,26 @@ export interface ControlArg {
     range: ArgRange
 }
 
+/**
+ * Value range for the control argument
+ */
+export interface ArgRange {
+    /**
+     * Minimum value for the argument range
+     */
+    min: string
+    /**
+     * Maximum value for the argument range
+     */
+    max: string
+}
+
+/**
+ * Represents a special `PLDUZ` argument with a constant bit length equal to 3 and a range of valid values.
+ *
+ * This argument can be deserialized as follows:`((slice.load_uint(3) & 7) + 1) << 5`
+ * and serialized as `builder.store_uint(((value >> 5) - 1) & 7, 3)`.
+ */
 export interface PlduzArg {
     $: "plduzArg"
     /**
@@ -486,6 +525,12 @@ export interface PlduzArg {
     range: ArgRange
 }
 
+/**
+ * Represents a special `PUSHINT_4` argument with a constant bit length equal to 4 and a range of valid values.
+ *
+ * This argument can be deserialized as follows: `((int64(slice.load_uint(4)) + 5) & 15) - 5`
+ * and serialized as `builder.store_uint((value + 16) & 15, 4)`.
+ */
 export interface TinyIntArg {
     $: "tinyInt"
     /**
@@ -495,6 +540,31 @@ export interface TinyIntArg {
     range: ArgRange
 }
 
+/**
+ * Represents a special `PUSHINT_LONG` argument with a range of valid values.
+ *
+ * This argument can be deserialized as follows:
+ *
+ * ```
+ * len = slice.load_uint(5);
+ * value = slice.load_uint(3 + ((len & 31) + 2) * 8) );
+ * ```
+ *
+ * and serialized as
+ *
+ * ```
+ * len = t === 0n ? 1 : t.toString(2).length + (t < 0n ? 0 : 1);
+ * len2 = trunc((len + 7) / 8) - 2;
+ * if (len2 <= 0 || len2 >= 32) {
+ *     b.store_uint(t, 24);
+ *     return;
+ * }
+ * count_bits = ceil((len - 19) / 8);
+ * b.store_uint(count_bits, 5);
+ * data_bits = 8 * count_bits + 19;
+ * b.store_int(t, data_bits);
+ * ```
+ */
 export interface LargeIntArg {
     $: "largeInt"
     /**
@@ -529,6 +599,9 @@ export interface SetcpArg {
     range: ArgRange
 }
 
+/**
+ * Represents data slice argument.
+ */
 export interface SliceArg {
     $: "slice"
     /**
@@ -549,6 +622,9 @@ export interface SliceArg {
     pad: number
 }
 
+/**
+ * Represents code slice argument. This slice is always padded to 8 bytes.
+ */
 export interface CodeSliceArg {
     $: "codeSlice"
     /**
@@ -565,6 +641,12 @@ export interface CodeSliceArg {
     bits: Arg
 }
 
+/**
+ * Represents dictionary argument.
+ *
+ * This argument can only be paired with a dictionary length represented as `uint(10)`,
+ * and they are `DICTPUSHCONST` type instructions and must be processed separately.
+ */
 export interface Dict {
     $: "dict"
     /**
@@ -573,6 +655,12 @@ export interface Dict {
     name?: string
 }
 
+/**
+ * Represents code cell argument stored in a ref.
+ *
+ * This argument can be deserialized as follows: `slice.load_ref()`
+ * and serialized as `builder.store_ref(cell)`.
+ */
 export interface RefCodeSliceArg {
     $: "refCodeSlice"
     /**
@@ -581,6 +669,20 @@ export interface RefCodeSliceArg {
     name?: string
 }
 
+/**
+ * Represents code slice argument that embedded in current slice bytes. This slice is always padded to 8 bytes.
+ *
+ * This argument can be deserialized as follows:
+ * ```
+ * y = slice.load_uint(bits);
+ * data = slice.load_slice(y * 8);
+ * ```
+ * and serialized as
+ * ```
+ * builder.store_uint(ceil(data.len / 8), bits);
+ * builder.store_slice(data);
+ * ```
+ */
 export interface InlineCodeSliceArg {
     $: "inlineCodeSlice"
     /**
@@ -601,6 +703,21 @@ export interface ExoticCellArg {
     name?: string
 }
 
+/**
+ * Represents `DEBUGSTR` argument. This slice is always padded to 8 bytes.
+ *
+ * This argument can be deserialized as follows:
+ * ```
+ * y = slice.load_uint(4);
+ * bits = slice.load_slice((y + 1) * 8)
+ * ```
+ * and serialized as
+ * ```
+ * y = ceil((data.length - 8) / 8);
+ * builder.store_uint(y, 4);
+ * builder.store_slice(data, bits)
+ * ```
+ */
 export interface DebugstrArg {
     $: "debugstr"
     /**

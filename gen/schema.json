@@ -462,6 +462,7 @@
     },
     "UintArg": {
       "type": "object",
+      "description": "Represents an unsigned integer argument with a specified length and a range of valid values.",
       "properties": {
         "$": {
           "type": "string",
@@ -485,6 +486,7 @@
     },
     "IntArg": {
       "type": "object",
+      "description": "Represents a signed integer argument with a specified length and a range of valid values.",
       "properties": {
         "$": {
           "type": "string",
@@ -508,6 +510,7 @@
     },
     "DeltaArg": {
       "type": "object",
+      "description": "Represents argument with specified inner type and delta for it.",
       "properties": {
         "$": {
           "type": "string",
@@ -531,6 +534,7 @@
     },
     "StackArg": {
       "type": "object",
+      "description": "Represents a stack argument with a constant bit length equal to 4 and a range of valid values. This argument can be serialized and deserialized as a plain integer with `slice.load_uint(4)` and `builder.store_uint(t, 4)`.",
       "properties": {
         "$": {
           "type": "string",
@@ -554,6 +558,7 @@
     },
     "ControlArg": {
       "type": "object",
+      "description": "Represents a control register argument with a constant bit length equal to 4 and a range of valid values. This argument can be serialized and deserialized as a plain integer with `slice.load_uint(4)` and `builder.store_uint(t, 4)`.",
       "properties": {
         "$": {
           "type": "string",
@@ -573,6 +578,7 @@
     },
     "PlduzArg": {
       "type": "object",
+      "description": "Represents a special `PLDUZ` argument with a constant bit length equal to 3 and a range of valid values. This argument can be deserialized as follows: `((slice.load_uint(3) & 7) + 1) << 5` and serialized as `builder.store_uint(((value >> 5) - 1) & 7, 3)`.",
       "properties": {
         "$": {
           "type": "string",
@@ -592,6 +598,7 @@
     },
     "TinyIntArg": {
       "type": "object",
+      "description": "Represents a special `PUSHINT_4` argument with a constant bit length equal to 4 and a range of valid values. This argument can be deserialized as follows: `((int64(slice.load_uint(4)) + 5) & 15) - 5` and serialized as `builder.store_uint((value + 16) & 15, 4)`.",
       "properties": {
         "$": {
           "type": "string",
@@ -611,6 +618,7 @@
     },
     "LargeIntArg": {
       "type": "object",
+      "description": "Represents a special `PUSHINT_LONG` argument with a range of valid values. This argument can be deserialized as follows: `len = slice.load_uint(5); value = slice.load_uint(3 + ((len & 31) + 2) * 8) )` and serialized as\n\nlen = t === 0n ? 1 : t.toString(2).length + (t < 0n ? 0 : 1);\nlen2 = trunc((len + 7) / 8) - 2;\nif (len2 <= 0 || len2 >= 32) \n    b.store_uint(t, 24);\n    return;\n\ncount_bits = ceil((len - 19) / 8);\nb.store_uint(count_bits, 5);\ndata_bits = 8 * count_bits + 19;\nb.store_int(t, data_bits);\n.",
       "properties": {
         "$": {
           "type": "string",
@@ -679,6 +687,7 @@
     },
     "SliceArg": {
       "type": "object",
+      "description": "Represents data slice argument.",
       "properties": {
         "$": {
           "type": "string",
@@ -706,6 +715,7 @@
     },
     "CodeSliceArg": {
       "type": "object",
+      "description": "Represents code slice argument. This slice is always padded to 8 bytes.",
       "properties": {
         "$": {
           "type": "string",
@@ -729,6 +739,7 @@
     },
     "RefCodeSliceArg": {
       "type": "object",
+      "description": "Represents code cell argument stored in a ref. This argument can be deserialized as follows: `slice.load_ref()` and serialized as `builder.store_ref(cell)`.",
       "properties": {
         "$": {
           "type": "string",
@@ -744,6 +755,7 @@
     },
     "InlineCodeSliceArg": {
       "type": "object",
+      "description": "Represents code slice argument that embedded in current slice bytes. This slice is always padded to 8 bytes. This argument can be deserialized as follows: `y = slice.load_uint(bits); data = slice.load_slice(y * 8)` and serialized as `builder.store_uint(ceil(data.len / 8), bits); builder.store_slice(data)`.",
       "properties": {
         "$": {
           "type": "string",
@@ -763,6 +775,7 @@
     },
     "InlineDictArg": {
       "type": "object",
+      "description": "Represents dictionary argument. This argument can only be paired with a dictionary length represented as `uint(10)`, and they are `DICTPUSHCONSTS` type instructions and must be processed separately.",
       "properties": {
         "$": {
           "type": "string",
@@ -793,6 +806,7 @@
     },
     "DebugstrArg": {
       "type": "object",
+      "description": "Represents `DEBUGSTR` argument. This slice is always padded to 8 bytes. This argument can be deserialized as follows: `y = slice.load_uint(4); bits = slice.load_slice((y + 1) * 8)` and serialized as `y = ceil((data.length - 8) / 8); builder.store_uint(y, 4); builder.store_slice(data, bits)`.",
       "properties": {
         "$": {
           "type": "string",
