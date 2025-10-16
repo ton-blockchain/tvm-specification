@@ -467,6 +467,10 @@
           "type": "string",
           "const": "uint"
         },
+        "name": {
+          "type": "string",
+          "description": "Name of the argument"
+        },
         "len": {
           "type": "integer",
           "description": "Length of the argument in bits"
@@ -485,6 +489,10 @@
         "$": {
           "type": "string",
           "const": "int"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the argument"
         },
         "len": {
           "type": "integer",
@@ -505,6 +513,10 @@
           "type": "string",
           "const": "delta"
         },
+        "name": {
+          "type": "string",
+          "description": "Name of the argument"
+        },
         "delta": {
           "type": "integer",
           "description": "Delta value"
@@ -523,6 +535,10 @@
         "$": {
           "type": "string",
           "const": "stack"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the argument"
         },
         "len": {
           "type": "integer",
@@ -543,6 +559,10 @@
           "type": "string",
           "const": "control"
         },
+        "name": {
+          "type": "string",
+          "description": "Name of the argument"
+        },
         "range": {
           "$ref": "#/definitions/ArgRange",
           "description": "Value range for the control argument"
@@ -557,6 +577,10 @@
         "$": {
           "type": "string",
           "const": "plduzArg"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the argument"
         },
         "range": {
           "$ref": "#/definitions/ArgRange",
@@ -573,6 +597,10 @@
           "type": "string",
           "const": "tinyInt"
         },
+        "name": {
+          "type": "string",
+          "description": "Name of the argument"
+        },
         "range": {
           "$ref": "#/definitions/ArgRange",
           "description": "Value range for the tinyInt argument"
@@ -588,6 +616,10 @@
           "type": "string",
           "const": "largeInt"
         },
+        "name": {
+          "type": "string",
+          "description": "Name of the argument"
+        },
         "range": {
           "$ref": "#/definitions/ArgRange",
           "description": "Value range for the largeInt argument"
@@ -602,6 +634,10 @@
         "$": {
           "type": "string",
           "const": "minusOne"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the argument"
         }
       },
       "required": ["$"],
@@ -613,6 +649,10 @@
         "$": {
           "type": "string",
           "const": "s1"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the argument"
         }
       },
       "required": ["$"],
@@ -624,6 +664,10 @@
         "$": {
           "type": "string",
           "const": "setcpArg"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the argument"
         },
         "range": {
           "$ref": "#/definitions/ArgRange",
@@ -639,6 +683,10 @@
         "$": {
           "type": "string",
           "const": "slice"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the argument"
         },
         "refs": {
           "$ref": "#/definitions/Arg",
@@ -663,6 +711,10 @@
           "type": "string",
           "const": "codeSlice"
         },
+        "name": {
+          "type": "string",
+          "description": "Name of the argument"
+        },
         "refs": {
           "$ref": "#/definitions/Arg",
           "description": "References argument for code slice"
@@ -681,6 +733,10 @@
         "$": {
           "type": "string",
           "const": "refCodeSlice"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the argument"
         }
       },
       "required": ["$"],
@@ -692,6 +748,10 @@
         "$": {
           "type": "string",
           "const": "inlineCodeSlice"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the argument"
         },
         "bits": {
           "$ref": "#/definitions/Arg",
@@ -707,6 +767,10 @@
         "$": {
           "type": "string",
           "const": "dict"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the argument"
         }
       },
       "required": ["$"],
@@ -718,6 +782,10 @@
         "$": {
           "type": "string",
           "const": "exoticCell"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the argument"
         }
       },
       "required": ["$"],
@@ -729,6 +797,10 @@
         "$": {
           "type": "string",
           "const": "debugstr"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the argument"
         }
       },
       "required": ["$"],

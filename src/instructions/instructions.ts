@@ -21,16 +21,16 @@ export type arg =
 export type range = {min: bigint, max: bigint}
 export const range = (min: bigint, max: bigint) => ({min, max})
 
-export type uint = {$: "uint", len: number, range: range}
+export type uint = {$: "uint", len: number, range: range, name?: string}
 export const uint = (len: number, range: range): uint => ({$: "uint", len, range})
 
-export type int = {$: "int", len: number, range: range}
+export type int = {$: "int", len: number, range: range, name?: string}
 export const int = (len: number, range: range): int => ({$: "int", len, range})
 
-export type delta = {$: "delta", delta: number, arg: arg}
+export type delta = {$: "delta", delta: number, arg: arg, name?: string}
 export const delta = (delta: number, arg: arg): delta => ({$: "delta", delta, arg})
 
-export type stack = {$: "stack", len: number, range: range}
+export type stack = {$: "stack", len: number, range: range, name?: string}
 export const stack = (len: number): stack => ({$: "stack", len, range: range(0n, BigInt(Math.pow(2, len) - 1))})
 export const stack2 = (len: number, start: bigint): stack => ({
     $: "stack",
@@ -38,61 +38,55 @@ export const stack2 = (len: number, start: bigint): stack => ({
     range: range(start, BigInt(Math.pow(2, len) - 1)),
 })
 
-export type control = {$: "control", range: range}
+export type control = {$: "control", range: range, name?: string}
 export const control: control = {$: "control", range: range(0n, 15n)}
 
 // special case: plduz
-export type plduzArg = {$: "plduzArg", range: range}
+export type plduzArg = {$: "plduzArg", range: range, name?: string}
 export const plduzArg: plduzArg = {$: "plduzArg", range: range(0n, 7n)}
 
 // special case: [-5, 10]
-export type tinyInt = {$: "tinyInt", range: range}
+export type tinyInt = {$: "tinyInt", range: range, name?: string}
 export const tinyInt: tinyInt = {$: "tinyInt", range: range(-5n, 10n)}
 
-export type largeInt = {$: "largeInt", range: range}
+export type largeInt = {$: "largeInt", range: range, name?: string}
 const largeIntRange = range(-(2n ** 267n), 2n ** 267n - 1n)
 export const largeInt: largeInt = {$: "largeInt", range: largeIntRange}
 
 // special case: XCHG s1 $
-export type s1 = {$: "s1"}
+export type s1 = {$: "s1", name?: string}
 export const s1: s1 = {$: "s1"}
 
 // special case: CALLXARGS $ -1
-export type minusOne = {$: "minusOne"}
+export type minusOne = {$: "minusOne", name?: string}
 export const minusOne: minusOne = {$: "minusOne"}
 
 // special case: [-15, 239]
-export type setcpArg = {$: "setcpArg", range: range}
+export type setcpArg = {$: "setcpArg", range: range, name?: string}
 export const setcpArg: setcpArg = {$: "setcpArg", range: range(-15n, 239n)}
 
 export type args = arg[]
 export const seq = (...args: arg[]): args => args
 
-export type xchgArgs = {$: "xchgArgs", range: range}
-export const xchgArgs: xchgArgs = {$: "xchgArgs", range: range(1n, 16n)}
-
-export type codeSlice = {$: "codeSlice", refs: arg, bits: arg}
+export type codeSlice = {$: "codeSlice", refs: arg, bits: arg, name?: string}
 export const codeSlice = (refs: arg, bits: arg): codeSlice => ({$: "codeSlice", refs, bits})
 
-export type inlineCodeSlice = {$: "inlineCodeSlice", bits: arg}
+export type inlineCodeSlice = {$: "inlineCodeSlice", bits: arg, name?: string}
 export const inlineCodeSlice = (bits: arg): inlineCodeSlice => ({$: "inlineCodeSlice", bits})
 
-export type refCodeSlice = {$: "refCodeSlice"}
+export type refCodeSlice = {$: "refCodeSlice", name?: string}
 export const refCodeSlice: refCodeSlice = {$: "refCodeSlice"}
 
-export type slice = {$: "slice", refs: arg, bits: arg, pad: number}
+export type slice = {$: "slice", refs: arg, bits: arg, pad: number, name?: string}
 export const slice = (refs: arg, bits: arg, pad: number): slice => ({$: "slice", refs, bits, pad})
 
-export type dict = {$: "dict"}
+export type dict = {$: "dict", name?: string}
 export const dict: dict = {$: "dict"}
 
-export type exoticCell = {$: "exoticCell"}
+export type exoticCell = {$: "exoticCell", name?: string}
 export const exoticCell: exoticCell = {$: "exoticCell"}
 
-export type dictpush = {$: "dictpush"}
-export const dictpush: dictpush = {$: "dictpush"}
-
-export type debugstr = {$: "debugstr"}
+export type debugstr = {$: "debugstr", name?: string}
 export const debugstr: debugstr = {$: "debugstr"}
 
 /// section: effects

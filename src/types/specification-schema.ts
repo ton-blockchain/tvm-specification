@@ -416,6 +416,10 @@ export interface ArgRange {
 export interface UintArg {
     $: "uint"
     /**
+     * Name of the argument
+     */
+    name?: string
+    /**
      * Length of the argument in bits
      */
     len: number
@@ -425,6 +429,10 @@ export interface UintArg {
 export interface IntArg {
     $: "int"
     /**
+     * Name of the argument
+     */
+    name?: string
+    /**
      * Length of the argument in bits
      */
     len: number
@@ -433,6 +441,10 @@ export interface IntArg {
 
 export interface DeltaArg {
     $: "delta"
+    /**
+     * Name of the argument
+     */
+    name?: string
     /**
      * Delta value
      */
@@ -446,6 +458,10 @@ export interface DeltaArg {
 export interface StackArg {
     $: "stack"
     /**
+     * Name of the argument
+     */
+    name?: string
+    /**
      * Length of the argument in bits
      */
     len: number
@@ -454,39 +470,71 @@ export interface StackArg {
 
 export interface ControlArg {
     $: "control"
+    /**
+     * Name of the argument
+     */
+    name?: string
     range: ArgRange
 }
 
 export interface PlduzArg {
     $: "plduzArg"
+    /**
+     * Name of the argument
+     */
+    name?: string
     range: ArgRange
 }
 
 export interface TinyIntArg {
     $: "tinyInt"
+    /**
+     * Name of the argument
+     */
+    name?: string
     range: ArgRange
 }
 
 export interface LargeIntArg {
     $: "largeInt"
+    /**
+     * Name of the argument
+     */
+    name?: string
     range: ArgRange
 }
 
 export interface MinusOneArg {
     $: "minusOne"
+    /**
+     * Name of the argument
+     */
+    name?: string
 }
 
 export interface S1Arg {
     $: "s1"
+    /**
+     * Name of the argument
+     */
+    name?: string
 }
 
 export interface SetcpArg {
     $: "setcpArg"
+    /**
+     * Name of the argument
+     */
+    name?: string
     range: ArgRange
 }
 
 export interface SliceArg {
     $: "slice"
+    /**
+     * Name of the argument
+     */
+    name?: string
     /**
      * References argument for slice
      */
@@ -504,6 +552,10 @@ export interface SliceArg {
 export interface CodeSliceArg {
     $: "codeSlice"
     /**
+     * Name of the argument
+     */
+    name?: string
+    /**
      * References argument for code slice
      */
     refs: Arg
@@ -515,14 +567,26 @@ export interface CodeSliceArg {
 
 export interface Dict {
     $: "dict"
+    /**
+     * Name of the argument
+     */
+    name?: string
 }
 
 export interface RefCodeSliceArg {
     $: "refCodeSlice"
+    /**
+     * Name of the argument
+     */
+    name?: string
 }
 
 export interface InlineCodeSliceArg {
     $: "inlineCodeSlice"
+    /**
+     * Name of the argument
+     */
+    name?: string
     /**
      * Bits argument for inline code slice
      */
@@ -531,10 +595,18 @@ export interface InlineCodeSliceArg {
 
 export interface ExoticCellArg {
     $: "exoticCell"
+    /**
+     * Name of the argument
+     */
+    name?: string
 }
 
 export interface DebugstrArg {
     $: "debugstr"
+    /**
+     * Name of the argument
+     */
+    name?: string
 }
 
 /**

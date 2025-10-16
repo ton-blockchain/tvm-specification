@@ -7,12 +7,14 @@ import {
     InstructionSignature,
     FiftInstruction,
     ControlFlowOfInstruction,
+    Arg,
 } from "../types"
 import {
     instructions,
     signatureString,
     calculateGasConsumptionWithDescription,
     generateTlb,
+    arg,
 } from "../instructions"
 
 export interface InstructionEntry {
@@ -70,8 +72,73 @@ const main = () => {
         const signature = instr.signature
         const signatureStr = signature ? signatureString(signature) : ""
 
+        const argToArg = (arg: arg, name: string | undefined): Arg => {
+            if ("range" in arg) {
+                return {
+                    $: arg.$,
+                    name,
+                    ...arg,
+                    range: {
+                        min: arg.range.min.toString(),
+                        max: arg.range.max.toString(),
+                    },
+                }
+            }
+            if ("arg" in arg) {
+                return {
+                    $: arg.$,
+                    name,
+                    ...arg,
+                    arg: argToArg(arg.arg, name),
+                }
+            }
+            if ("refs" in arg && "bits" in arg) {
+                return {
+                    $: arg.$,
+                    name,
+                    ...arg,
+                    refs: argToArg(arg.refs, name),
+                    bits: argToArg(arg.bits, name),
+                }
+            }
+            if ("bits" in arg) {
+                return {
+                    $: arg.$,
+                    name,
+                    ...arg,
+                    bits: argToArg(arg.bits, name),
+                }
+            }
+            return arg
+        }
+
+        let seenConstantArg = false
+
+        const argsWithNames: Arg[] = opcode.args.flatMap((arg, rawIndex) => {
+            if (arg.$ === "s1" || arg.$ === "minusOne") {
+                seenConstantArg = true
+                return argToArg(arg, undefined)
+            }
+
+            const index = rawIndex - (seenConstantArg ? 1 : 0)
+            const name = instr.description.operands[index]
+            if (name === undefined) {
+                throw new Error(`Operand name is undefined for ${name} at index ${index}`)
+            }
+
+            const converted = argToArg(arg, name)
+            return [
+                {
+                    $: converted.$,
+                    name,
+                    ...converted,
+                },
+            ]
+        })
+
         const layout: Layout = {
             ...opcode,
+            args: argsWithNames,
             // @ts-ignore
             category: undefined,
             subCategory: undefined,

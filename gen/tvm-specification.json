@@ -49453,6 +49453,7 @@
         "args": [
           {
             "$": "int",
+            "name": "y",
             "len": 8,
             "range": {
               "min": "-128",
@@ -49527,6 +49528,7 @@
         "args": [
           {
             "$": "int",
+            "name": "y",
             "len": 8,
             "range": {
               "min": "-128",
@@ -49595,6 +49597,7 @@
         "args": [
           {
             "$": "int",
+            "name": "y",
             "len": 8,
             "range": {
               "min": "-128",
@@ -49663,6 +49666,7 @@
         "args": [
           {
             "$": "int",
+            "name": "y",
             "len": 8,
             "range": {
               "min": "-128",
@@ -49741,6 +49745,7 @@
         "args": [
           {
             "$": "int",
+            "name": "y",
             "len": 8,
             "range": {
               "min": "-128",
@@ -49816,6 +49821,7 @@
         "args": [
           {
             "$": "int",
+            "name": "y",
             "len": 8,
             "range": {
               "min": "-128",
@@ -49891,6 +49897,7 @@
         "args": [
           {
             "$": "int",
+            "name": "y",
             "len": 8,
             "range": {
               "min": "-128",
@@ -49966,6 +49973,7 @@
         "args": [
           {
             "$": "int",
+            "name": "y",
             "len": 8,
             "range": {
               "min": "-128",
@@ -50031,6 +50039,7 @@
         "args": [
           {
             "$": "int",
+            "name": "y",
             "len": 8,
             "range": {
               "min": "-128",
@@ -50098,6 +50107,7 @@
         "args": [
           {
             "$": "int",
+            "name": "y",
             "len": 8,
             "range": {
               "min": "-128",
@@ -50165,6 +50175,7 @@
         "args": [
           {
             "$": "int",
+            "name": "y",
             "len": 8,
             "range": {
               "min": "-128",
@@ -50232,6 +50243,7 @@
         "args": [
           {
             "$": "int",
+            "name": "y",
             "len": 8,
             "range": {
               "min": "-128",
@@ -50299,9 +50311,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "x",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "x",
               "len": 8,
               "range": {
                 "min": "0",
@@ -50359,9 +50373,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "x",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "x",
               "len": 8,
               "range": {
                 "min": "0",
@@ -50429,9 +50445,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "width",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "width",
               "len": 8,
               "range": {
                 "min": "0",
@@ -50509,9 +50527,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "width",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "width",
               "len": 8,
               "range": {
                 "min": "0",
@@ -50579,9 +50599,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "width",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "width",
               "len": 8,
               "range": {
                 "min": "0",
@@ -50648,9 +50670,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "width",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "width",
               "len": 8,
               "range": {
                 "min": "0",
@@ -50717,9 +50741,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "mask",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "mask",
               "len": 8,
               "range": {
                 "min": "0",
@@ -50789,6 +50815,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "p",
             "len": 4,
             "range": {
               "min": "0",
@@ -50797,6 +50824,7 @@
           },
           {
             "$": "uint",
+            "name": "r",
             "len": 4,
             "range": {
               "min": "0",
@@ -50872,6 +50900,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "p",
             "len": 4,
             "range": {
               "min": "0",
@@ -50880,6 +50909,7 @@
           },
           {
             "$": "uint",
+            "name": "r",
             "len": 4,
             "range": {
               "min": "0",
@@ -51006,6 +51036,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "n",
             "len": 2,
             "range": {
               "min": "0",
@@ -51071,6 +51102,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "n",
             "len": 2,
             "range": {
               "min": "0",
@@ -51137,6 +51169,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "n",
             "len": 2,
             "range": {
               "min": "0",
@@ -51210,6 +51243,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "num",
             "len": 14,
             "range": {
               "min": "0",
@@ -51290,6 +51324,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "num",
             "len": 14,
             "range": {
               "min": "0",
@@ -51364,6 +51399,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "num",
             "len": 11,
             "range": {
               "min": "0",
@@ -51425,6 +51461,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "num",
             "len": 11,
             "range": {
               "min": "0",
@@ -51491,6 +51528,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "num",
             "len": 11,
             "range": {
               "min": "0",
@@ -51553,6 +51591,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "p",
             "len": 4,
             "range": {
               "min": "0",
@@ -51628,6 +51667,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "r",
             "len": 4,
             "range": {
               "min": "0",
@@ -51704,6 +51744,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "p",
             "len": 4,
             "range": {
               "min": "0",
@@ -51765,6 +51806,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "i",
             "len": 4,
             "range": {
               "min": "0",
@@ -51888,6 +51930,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "n",
             "len": 4,
             "range": {
               "min": "0",
@@ -52010,6 +52053,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "k",
             "len": 4,
             "range": {
               "min": "0",
@@ -52207,6 +52251,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "n",
             "len": 4,
             "range": {
               "min": "0",
@@ -52341,6 +52386,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "k",
             "len": 4,
             "range": {
               "min": "0",
@@ -52475,6 +52521,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "length",
             "len": 4,
             "range": {
               "min": "0",
@@ -52614,6 +52661,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "i",
             "len": 4,
             "range": {
               "min": "0",
@@ -52684,6 +52732,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "i",
             "len": 4,
             "range": {
               "min": "0",
@@ -52810,6 +52859,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "i",
             "len": 4,
             "range": {
               "min": "0",
@@ -52892,6 +52942,7 @@
         "args": [
           {
             "$": "stack",
+            "name": "i",
             "len": 4,
             "range": {
               "min": "0",
@@ -52900,6 +52951,7 @@
           },
           {
             "$": "stack",
+            "name": "j",
             "len": 4,
             "range": {
               "min": "0",
@@ -52908,6 +52960,7 @@
           },
           {
             "$": "stack",
+            "name": "k",
             "len": 4,
             "range": {
               "min": "0",
@@ -52964,6 +53017,7 @@
         "args": [
           {
             "$": "stack",
+            "name": "i",
             "len": 4,
             "range": {
               "min": "0",
@@ -52972,6 +53026,7 @@
           },
           {
             "$": "stack",
+            "name": "j",
             "len": 4,
             "range": {
               "min": "0",
@@ -52980,6 +53035,7 @@
           },
           {
             "$": "stack",
+            "name": "k",
             "len": 4,
             "range": {
               "min": "0",
@@ -53036,6 +53092,7 @@
         "args": [
           {
             "$": "stack",
+            "name": "i",
             "len": 4,
             "range": {
               "min": "0",
@@ -53044,6 +53101,7 @@
           },
           {
             "$": "stack",
+            "name": "j",
             "len": 4,
             "range": {
               "min": "0",
@@ -53052,6 +53110,7 @@
           },
           {
             "$": "stack",
+            "name": "k",
             "len": 4,
             "range": {
               "min": "0",
@@ -53108,6 +53167,7 @@
         "args": [
           {
             "$": "stack",
+            "name": "i",
             "len": 4,
             "range": {
               "min": "0",
@@ -53116,6 +53176,7 @@
           },
           {
             "$": "stack",
+            "name": "j",
             "len": 4,
             "range": {
               "min": "0",
@@ -53172,6 +53233,7 @@
         "args": [
           {
             "$": "stack",
+            "name": "i",
             "len": 4,
             "range": {
               "min": "0",
@@ -53180,6 +53242,7 @@
           },
           {
             "$": "stack",
+            "name": "j",
             "len": 4,
             "range": {
               "min": "0",
@@ -53236,6 +53299,7 @@
         "args": [
           {
             "$": "stack",
+            "name": "i",
             "len": 4,
             "range": {
               "min": "0",
@@ -53244,6 +53308,7 @@
           },
           {
             "$": "stack",
+            "name": "j",
             "len": 4,
             "range": {
               "min": "0",
@@ -53300,6 +53365,7 @@
         "args": [
           {
             "$": "stack",
+            "name": "i",
             "len": 4,
             "range": {
               "min": "0",
@@ -53308,9 +53374,11 @@
           },
           {
             "$": "delta",
+            "name": "j",
             "delta": -1,
             "arg": {
               "$": "stack",
+              "name": "j",
               "len": 4,
               "range": {
                 "min": "0",
@@ -53368,6 +53436,7 @@
         "args": [
           {
             "$": "stack",
+            "name": "i",
             "len": 4,
             "range": {
               "min": "0",
@@ -53376,6 +53445,7 @@
           },
           {
             "$": "stack",
+            "name": "j",
             "len": 4,
             "range": {
               "min": "0",
@@ -53384,9 +53454,11 @@
           },
           {
             "$": "delta",
+            "name": "k",
             "delta": -1,
             "arg": {
               "$": "stack",
+              "name": "k",
               "len": 4,
               "range": {
                 "min": "0",
@@ -53444,6 +53516,7 @@
         "args": [
           {
             "$": "stack",
+            "name": "i",
             "len": 4,
             "range": {
               "min": "0",
@@ -53452,9 +53525,11 @@
           },
           {
             "$": "delta",
+            "name": "j",
             "delta": -1,
             "arg": {
               "$": "stack",
+              "name": "j",
               "len": 4,
               "range": {
                 "min": "0",
@@ -53464,9 +53539,11 @@
           },
           {
             "$": "delta",
+            "name": "k",
             "delta": -1,
             "arg": {
               "$": "stack",
+              "name": "k",
               "len": 4,
               "range": {
                 "min": "0",
@@ -53524,6 +53601,7 @@
         "args": [
           {
             "$": "stack",
+            "name": "i",
             "len": 4,
             "range": {
               "min": "0",
@@ -53532,9 +53610,11 @@
           },
           {
             "$": "delta",
+            "name": "j",
             "delta": -1,
             "arg": {
               "$": "stack",
+              "name": "j",
               "len": 4,
               "range": {
                 "min": "0",
@@ -53544,9 +53624,11 @@
           },
           {
             "$": "delta",
+            "name": "k",
             "delta": -1,
             "arg": {
               "$": "stack",
+              "name": "k",
               "len": 4,
               "range": {
                 "min": "0",
@@ -53604,6 +53686,7 @@
         "args": [
           {
             "$": "stack",
+            "name": "i",
             "len": 4,
             "range": {
               "min": "0",
@@ -53612,9 +53695,11 @@
           },
           {
             "$": "delta",
+            "name": "j",
             "delta": -1,
             "arg": {
               "$": "stack",
+              "name": "j",
               "len": 4,
               "range": {
                 "min": "0",
@@ -53624,9 +53709,11 @@
           },
           {
             "$": "delta",
+            "name": "k",
             "delta": -2,
             "arg": {
               "$": "stack",
+              "name": "k",
               "len": 4,
               "range": {
                 "min": "0",
@@ -53684,9 +53771,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "i",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "i",
               "len": 4,
               "range": {
                 "min": "0",
@@ -53696,9 +53785,11 @@
           },
           {
             "$": "delta",
+            "name": "j",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "j",
               "len": 4,
               "range": {
                 "min": "0",
@@ -53750,9 +53841,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "i",
             "delta": 2,
             "arg": {
               "$": "uint",
+              "name": "i",
               "len": 4,
               "range": {
                 "min": "0",
@@ -53762,6 +53855,7 @@
           },
           {
             "$": "uint",
+            "name": "j",
             "len": 4,
             "range": {
               "min": "0",
@@ -53806,6 +53900,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "r",
             "len": 4,
             "range": {
               "min": "0",
@@ -53814,9 +53909,11 @@
           },
           {
             "$": "delta",
+            "name": "n",
             "delta": -1,
             "arg": {
               "$": "uint",
+              "name": "n",
               "len": 4,
               "range": {
                 "min": "0",
@@ -53902,6 +53999,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "r",
             "len": 4,
             "range": {
               "min": "0",
@@ -53910,9 +54008,11 @@
           },
           {
             "$": "delta",
+            "name": "n",
             "delta": -1,
             "arg": {
               "$": "uint",
+              "name": "n",
               "len": 4,
               "range": {
                 "min": "0",
@@ -54014,9 +54114,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "width",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "width",
               "len": 8,
               "range": {
                 "min": "0",
@@ -54119,9 +54221,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "width",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "width",
               "len": 8,
               "range": {
                 "min": "0",
@@ -54200,9 +54304,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "c",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "c",
               "len": 8,
               "range": {
                 "min": "0",
@@ -54320,9 +54426,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "c",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "c",
               "len": 8,
               "range": {
                 "min": "0",
@@ -54440,9 +54548,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "c",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "c",
               "len": 8,
               "range": {
                 "min": "0",
@@ -54560,9 +54670,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "c",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "c",
               "len": 8,
               "range": {
                 "min": "0",
@@ -54680,9 +54792,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "width",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "width",
               "len": 8,
               "range": {
                 "min": "0",
@@ -54749,9 +54863,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "width",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "width",
               "len": 8,
               "range": {
                 "min": "0",
@@ -54818,9 +54934,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "width",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "width",
               "len": 8,
               "range": {
                 "min": "0",
@@ -54918,9 +55036,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "width",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "width",
               "len": 8,
               "range": {
                 "min": "0",
@@ -55018,9 +55138,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "width",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "width",
               "len": 8,
               "range": {
                 "min": "0",
@@ -55107,9 +55229,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "width",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "width",
               "len": 8,
               "range": {
                 "min": "0",
@@ -55196,6 +55320,7 @@
         "args": [
           {
             "$": "plduzArg",
+            "name": "c",
             "range": {
               "min": "0",
               "max": "7"
@@ -55265,9 +55390,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "width",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "width",
               "len": 8,
               "range": {
                 "min": "0",
@@ -55334,9 +55461,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "width",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "width",
               "len": 8,
               "range": {
                 "min": "0",
@@ -55434,9 +55563,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "width",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "width",
               "len": 8,
               "range": {
                 "min": "0",
@@ -55561,6 +55692,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "i",
             "len": 5,
             "range": {
               "min": "0",
@@ -55677,6 +55809,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "i",
             "len": 5,
             "range": {
               "min": "0",
@@ -55767,6 +55900,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "i",
             "len": 2,
             "range": {
               "min": "0",
@@ -55775,6 +55909,7 @@
           },
           {
             "$": "uint",
+            "name": "j",
             "len": 2,
             "range": {
               "min": "0",
@@ -55855,6 +55990,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "i",
             "len": 2,
             "range": {
               "min": "0",
@@ -55863,6 +55999,7 @@
           },
           {
             "$": "uint",
+            "name": "j",
             "len": 2,
             "range": {
               "min": "0",
@@ -55871,6 +56008,7 @@
           },
           {
             "$": "uint",
+            "name": "k",
             "len": 2,
             "range": {
               "min": "0",
@@ -55935,9 +56073,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "x",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "x",
               "len": 8,
               "range": {
                 "min": "0",
@@ -56001,6 +56141,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "i",
             "len": 4,
             "range": {
               "min": "1",
@@ -56009,6 +56150,7 @@
           },
           {
             "$": "stack",
+            "name": "j",
             "len": 4,
             "range": {
               "min": "0",
@@ -56065,6 +56207,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "i",
             "len": 4,
             "range": {
               "min": "0",
@@ -56073,6 +56216,7 @@
           },
           {
             "$": "uint",
+            "name": "j",
             "len": 4,
             "range": {
               "min": "0",
@@ -56123,6 +56267,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "i",
             "len": 5,
             "range": {
               "min": "0",
@@ -56193,6 +56338,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "i",
             "len": 5,
             "range": {
               "min": "0",
@@ -56279,6 +56425,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "i",
             "len": 4,
             "range": {
               "min": "0",
@@ -56343,7 +56490,8 @@
         "skipLen": 8,
         "args": [
           {
-            "$": "refCodeSlice"
+            "$": "refCodeSlice",
+            "name": "c"
           }
         ],
         "exec": "(_1, _2, _3, _4) => exec_push_ref(_1, _2, 0, _4)",
@@ -56398,7 +56546,8 @@
         "skipLen": 8,
         "args": [
           {
-            "$": "refCodeSlice"
+            "$": "refCodeSlice",
+            "name": "c"
           }
         ],
         "exec": "(_1, _2, _3, _4) => exec_push_ref(_1, _2, 1, _4)",
@@ -56454,7 +56603,8 @@
         "skipLen": 8,
         "args": [
           {
-            "$": "refCodeSlice"
+            "$": "refCodeSlice",
+            "name": "c"
           }
         ],
         "exec": "(_1, _2, _3, _4) => exec_push_ref(_1, _2, 2, _4)",
@@ -56516,7 +56666,8 @@
         "skipLen": 16,
         "args": [
           {
-            "$": "refCodeSlice"
+            "$": "refCodeSlice",
+            "name": "ref"
           }
         ],
         "exec": "(_1, _2, _3, _4) => exec_do_with_ref(_1, _2, _4, (st, cont) => st.call((cont)), 'CALLREF')",
@@ -56596,7 +56747,8 @@
         "skipLen": 16,
         "args": [
           {
-            "$": "refCodeSlice"
+            "$": "refCodeSlice",
+            "name": "ref"
           }
         ],
         "exec": "(_1, _2, _3, _4) => exec_do_with_ref(_1, _2, _4, (st, cont) => st.jump((cont)), 'JMPREF')",
@@ -56665,7 +56817,8 @@
         "skipLen": 16,
         "args": [
           {
-            "$": "refCodeSlice"
+            "$": "refCodeSlice",
+            "name": "ref"
           }
         ],
         "exec": "(_1, _2, _3, _4) => exec_do_with_ref(_1, _2, _4, (st, cont) => { st.push_code(); return st.jump((cont)) }, 'JMPREFDATA')",
@@ -56750,7 +56903,8 @@
         "skipLen": 16,
         "args": [
           {
-            "$": "refCodeSlice"
+            "$": "refCodeSlice",
+            "name": "body"
           }
         ],
         "exec": "(_1, _2, _3, _4) => exec_do_with_cell(1, _2, _4, (st, cell) => st.get_stack().pop_bool() ? st.call(st.ref_to_cont((cell))) : 0, 'IFREF')",
@@ -56847,7 +57001,8 @@
         "skipLen": 16,
         "args": [
           {
-            "$": "refCodeSlice"
+            "$": "refCodeSlice",
+            "name": "body"
           }
         ],
         "exec": "(_1, _2, _3, _4) => exec_do_with_cell(1, _2, _4, (st, cell) => st.get_stack().pop_bool() ? 0 : st.call(st.ref_to_cont((cell))), 'IFNOTREF')",
@@ -56944,7 +57099,8 @@
         "skipLen": 16,
         "args": [
           {
-            "$": "refCodeSlice"
+            "$": "refCodeSlice",
+            "name": "body"
           }
         ],
         "exec": "(_1, _2, _3, _4) => exec_do_with_cell(1, _2, _4, (st, cell) => st.get_stack().pop_bool() ? st.jump(st.ref_to_cont((cell))) : 0, 'IFJMPREF')",
@@ -57030,7 +57186,8 @@
         "skipLen": 16,
         "args": [
           {
-            "$": "refCodeSlice"
+            "$": "refCodeSlice",
+            "name": "body"
           }
         ],
         "exec": "(_1, _2, _3, _4) => exec_do_with_cell(1, _2, _4, (st, cell) => st.get_stack().pop_bool() ? 0 : st.jump(st.ref_to_cont((cell))), 'IFNOTJMPREF')",
@@ -57116,7 +57273,8 @@
         "skipLen": 16,
         "args": [
           {
-            "$": "refCodeSlice"
+            "$": "refCodeSlice",
+            "name": "body"
           }
         ],
         "exec": "(_1, _2, _3, _4) => exec_ifelse_ref(_1, _2, _4, true)",
@@ -57233,7 +57391,8 @@
         "skipLen": 16,
         "args": [
           {
-            "$": "refCodeSlice"
+            "$": "refCodeSlice",
+            "name": "else"
           }
         ],
         "exec": "(_1, _2, _3, _4) => exec_ifelse_ref(_1, _2, _4, false)",
@@ -57346,10 +57505,12 @@
         "skipLen": 16,
         "args": [
           {
-            "$": "refCodeSlice"
+            "$": "refCodeSlice",
+            "name": "body"
           },
           {
-            "$": "refCodeSlice"
+            "$": "refCodeSlice",
+            "name": "else"
           }
         ],
         "exec": "exec_ifref_elseref",
@@ -57456,6 +57617,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "i",
             "len": 5,
             "range": {
               "min": "0",
@@ -57463,7 +57625,8 @@
             }
           },
           {
-            "$": "refCodeSlice"
+            "$": "refCodeSlice",
+            "name": "body"
           }
         ],
         "exec": "exec_if_bit_jmpref",
@@ -57553,6 +57716,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "i",
             "len": 5,
             "range": {
               "min": "0",
@@ -57560,7 +57724,8 @@
             }
           },
           {
-            "$": "refCodeSlice"
+            "$": "refCodeSlice",
+            "name": "body"
           }
         ],
         "exec": "exec_if_bit_jmpref",
@@ -57629,10 +57794,12 @@
         "skipLen": 24,
         "args": [
           {
-            "$": "dict"
+            "$": "dict",
+            "name": "d"
           },
           {
             "$": "uint",
+            "name": "key_len",
             "len": 10,
             "range": {
               "min": "0",
@@ -57697,10 +57864,12 @@
         "skipLen": 24,
         "args": [
           {
-            "$": "dict"
+            "$": "dict",
+            "name": "d"
           },
           {
             "$": "uint",
+            "name": "key_len",
             "len": 10,
             "range": {
               "min": "0",
@@ -57937,8 +58106,10 @@
         "args": [
           {
             "$": "slice",
+            "name": "search",
             "refs": {
               "$": "uint",
+              "name": "search",
               "len": 0,
               "range": {
                 "min": "0",
@@ -57947,6 +58118,7 @@
             },
             "bits": {
               "$": "uint",
+              "name": "search",
               "len": 7,
               "range": {
                 "min": "0",
@@ -58014,8 +58186,10 @@
         "args": [
           {
             "$": "slice",
+            "name": "search",
             "refs": {
               "$": "uint",
+              "name": "search",
               "len": 0,
               "range": {
                 "min": "0",
@@ -58024,6 +58198,7 @@
             },
             "bits": {
               "$": "uint",
+              "name": "search",
               "len": 7,
               "range": {
                 "min": "0",
@@ -58122,7 +58297,8 @@
         "skipLen": 16,
         "args": [
           {
-            "$": "refCodeSlice"
+            "$": "refCodeSlice",
+            "name": "c"
           }
         ],
         "exec": "exec_store_const_ref",
@@ -58188,10 +58364,12 @@
         "skipLen": 16,
         "args": [
           {
-            "$": "refCodeSlice"
+            "$": "refCodeSlice",
+            "name": "c1"
           },
           {
-            "$": "refCodeSlice"
+            "$": "refCodeSlice",
+            "name": "c2"
           }
         ],
         "exec": "exec_store_const_ref",
@@ -58388,7 +58566,8 @@
         "skipLen": 16,
         "args": [
           {
-            "$": "debugstr"
+            "$": "debugstr",
+            "name": "s"
           }
         ],
         "exec": "exec_dummy_debug_str",
@@ -58439,6 +58618,7 @@
         "args": [
           {
             "$": "control",
+            "name": "i",
             "range": {
               "min": "0",
               "max": "15"
@@ -58513,6 +58693,7 @@
         "args": [
           {
             "$": "control",
+            "name": "i",
             "range": {
               "min": "0",
               "max": "15"
@@ -58588,6 +58769,7 @@
         "args": [
           {
             "$": "control",
+            "name": "i",
             "range": {
               "min": "0",
               "max": "15"
@@ -58663,6 +58845,7 @@
         "args": [
           {
             "$": "control",
+            "name": "i",
             "range": {
               "min": "0",
               "max": "15"
@@ -58742,6 +58925,7 @@
         "args": [
           {
             "$": "control",
+            "name": "i",
             "range": {
               "min": "0",
               "max": "15"
@@ -58810,6 +58994,7 @@
         "args": [
           {
             "$": "control",
+            "name": "i",
             "range": {
               "min": "0",
               "max": "15"
@@ -58884,6 +59069,7 @@
         "args": [
           {
             "$": "control",
+            "name": "i",
             "range": {
               "min": "0",
               "max": "15"
@@ -58960,6 +59146,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "flags",
             "len": 12,
             "range": {
               "min": "0",
@@ -59398,9 +59585,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "t",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "t",
               "len": 8,
               "range": {
                 "min": "0",
@@ -59480,9 +59669,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "t",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "t",
               "len": 8,
               "range": {
                 "min": "0",
@@ -59562,9 +59753,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "t",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "t",
               "len": 8,
               "range": {
                 "min": "0",
@@ -59644,9 +59837,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "t",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "t",
               "len": 8,
               "range": {
                 "min": "0",
@@ -59715,9 +59910,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "t",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "t",
               "len": 8,
               "range": {
                 "min": "0",
@@ -59786,9 +59983,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "t",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "t",
               "len": 8,
               "range": {
                 "min": "0",
@@ -59857,9 +60056,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "t",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "t",
               "len": 8,
               "range": {
                 "min": "0",
@@ -59928,9 +60129,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "t",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "t",
               "len": 8,
               "range": {
                 "min": "0",
@@ -59999,9 +60202,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "t",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "t",
               "len": 8,
               "range": {
                 "min": "0",
@@ -60070,9 +60275,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "t",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "t",
               "len": 8,
               "range": {
                 "min": "0",
@@ -60146,9 +60353,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "t",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "t",
               "len": 8,
               "range": {
                 "min": "0",
@@ -60222,9 +60431,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "t",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "t",
               "len": 8,
               "range": {
                 "min": "0",
@@ -60298,9 +60509,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "t",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "t",
               "len": 8,
               "range": {
                 "min": "0",
@@ -60385,9 +60598,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "t",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "t",
               "len": 8,
               "range": {
                 "min": "0",
@@ -60472,9 +60687,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "t",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "t",
               "len": 8,
               "range": {
                 "min": "0",
@@ -60559,9 +60776,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "t",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "t",
               "len": 8,
               "range": {
                 "min": "0",
@@ -60635,9 +60854,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "t",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "t",
               "len": 8,
               "range": {
                 "min": "0",
@@ -60711,9 +60932,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "t",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "t",
               "len": 8,
               "range": {
                 "min": "0",
@@ -60787,9 +61010,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "t",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "t",
               "len": 8,
               "range": {
                 "min": "0",
@@ -60863,9 +61088,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "t",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "t",
               "len": 8,
               "range": {
                 "min": "0",
@@ -60939,9 +61166,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "t",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "t",
               "len": 8,
               "range": {
                 "min": "0",
@@ -61015,9 +61244,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "t",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "t",
               "len": 8,
               "range": {
                 "min": "0",
@@ -61096,9 +61327,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "t",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "t",
               "len": 8,
               "range": {
                 "min": "0",
@@ -61177,9 +61410,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "t",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "t",
               "len": 8,
               "range": {
                 "min": "0",
@@ -61258,9 +61493,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "t",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "t",
               "len": 8,
               "range": {
                 "min": "0",
@@ -61345,9 +61582,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "t",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "t",
               "len": 8,
               "range": {
                 "min": "0",
@@ -61432,9 +61671,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "t",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "t",
               "len": 8,
               "range": {
                 "min": "0",
@@ -61519,9 +61760,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "t",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "t",
               "len": 8,
               "range": {
                 "min": "0",
@@ -61595,9 +61838,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "t",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "t",
               "len": 8,
               "range": {
                 "min": "0",
@@ -61671,9 +61916,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "t",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "t",
               "len": 8,
               "range": {
                 "min": "0",
@@ -61747,9 +61994,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "t",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "t",
               "len": 8,
               "range": {
                 "min": "0",
@@ -61823,9 +62072,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "t",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "t",
               "len": 8,
               "range": {
                 "min": "0",
@@ -61899,9 +62150,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "t",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "t",
               "len": 8,
               "range": {
                 "min": "0",
@@ -61975,9 +62228,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "t",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "t",
               "len": 8,
               "range": {
                 "min": "0",
@@ -62056,9 +62311,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "t",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "t",
               "len": 8,
               "range": {
                 "min": "0",
@@ -62137,9 +62394,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "t",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "t",
               "len": 8,
               "range": {
                 "min": "0",
@@ -62218,6 +62477,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "hash_id",
             "len": 8,
             "range": {
               "min": "0",
@@ -62298,6 +62558,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "hash_id",
             "len": 8,
             "range": {
               "min": "0",
@@ -62378,6 +62639,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "hash_id",
             "len": 8,
             "range": {
               "min": "0",
@@ -62463,6 +62725,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "hash_id",
             "len": 8,
             "range": {
               "min": "0",
@@ -62819,6 +63082,7 @@
         "args": [
           {
             "$": "stack",
+            "name": "i",
             "len": 4,
             "range": {
               "min": "0",
@@ -62827,6 +63091,7 @@
           },
           {
             "$": "stack",
+            "name": "j",
             "len": 4,
             "range": {
               "min": "0",
@@ -62835,6 +63100,7 @@
           },
           {
             "$": "stack",
+            "name": "k",
             "len": 4,
             "range": {
               "min": "0",
@@ -62892,6 +63158,7 @@
         "args": [
           {
             "$": "stack",
+            "name": "i",
             "len": 4,
             "range": {
               "min": "0",
@@ -62900,6 +63167,7 @@
           },
           {
             "$": "stack",
+            "name": "j",
             "len": 4,
             "range": {
               "min": "0",
@@ -62908,6 +63176,7 @@
           },
           {
             "$": "stack",
+            "name": "k",
             "len": 4,
             "range": {
               "min": "0",
@@ -62970,9 +63239,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "width",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "width",
               "len": 8,
               "range": {
                 "min": "0",
@@ -63069,9 +63340,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "width",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "width",
               "len": 8,
               "range": {
                 "min": "0",
@@ -63168,9 +63441,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "width",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "width",
               "len": 8,
               "range": {
                 "min": "0",
@@ -63267,9 +63542,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "width",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "width",
               "len": 8,
               "range": {
                 "min": "0",
@@ -63397,9 +63674,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "width",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "width",
               "len": 8,
               "range": {
                 "min": "0",
@@ -63471,9 +63750,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "width",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "width",
               "len": 8,
               "range": {
                 "min": "0",
@@ -63594,9 +63875,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "width",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "width",
               "len": 8,
               "range": {
                 "min": "0",
@@ -63668,9 +63951,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "width",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "width",
               "len": 8,
               "range": {
                 "min": "0",
@@ -63748,9 +64033,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "count",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "count",
               "len": 8,
               "range": {
                 "min": "0",
@@ -63822,9 +64109,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "c",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "c",
               "len": 8,
               "range": {
                 "min": "0",
@@ -63961,9 +64250,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "c",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "c",
               "len": 8,
               "range": {
                 "min": "0",
@@ -64091,9 +64382,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "c",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "c",
               "len": 8,
               "range": {
                 "min": "0",
@@ -64225,9 +64518,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "count",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "count",
               "len": 8,
               "range": {
                 "min": "0",
@@ -64351,9 +64646,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "count",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "count",
               "len": 8,
               "range": {
                 "min": "0",
@@ -64485,9 +64782,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "c",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "c",
               "len": 8,
               "range": {
                 "min": "0",
@@ -64678,9 +64977,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "c",
             "delta": 1,
             "arg": {
               "$": "uint",
+              "name": "c",
               "len": 8,
               "range": {
                 "min": "0",
@@ -64817,6 +65118,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "num",
             "len": 8,
             "range": {
               "min": "0",
@@ -64902,6 +65204,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "num",
             "len": 14,
             "range": {
               "min": "0",
@@ -64986,6 +65289,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "num",
             "len": 6,
             "range": {
               "min": "0",
@@ -65042,6 +65346,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "num",
             "len": 11,
             "range": {
               "min": "0",
@@ -65102,6 +65407,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "num",
             "len": 6,
             "range": {
               "min": "0",
@@ -65163,6 +65469,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "num",
             "len": 11,
             "range": {
               "min": "0",
@@ -65224,6 +65531,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "num",
             "len": 6,
             "range": {
               "min": "0",
@@ -65285,6 +65593,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "num",
             "len": 11,
             "range": {
               "min": "0",
@@ -65343,6 +65652,7 @@
         "args": [
           {
             "$": "tinyInt",
+            "name": "i",
             "range": {
               "min": "-5",
               "max": "10"
@@ -65399,6 +65709,7 @@
         "args": [
           {
             "$": "int",
+            "name": "x",
             "len": 8,
             "range": {
               "min": "-128",
@@ -65456,6 +65767,7 @@
         "args": [
           {
             "$": "int",
+            "name": "x",
             "len": 16,
             "range": {
               "min": "-32768",
@@ -65513,6 +65825,7 @@
         "args": [
           {
             "$": "largeInt",
+            "name": "x",
             "range": {
               "min": "-237142198758023568227473377297792835283496928595231875152809132048206089502588928",
               "max": "237142198758023568227473377297792835283496928595231875152809132048206089502588927"
@@ -65575,6 +65888,7 @@
         "args": [
           {
             "$": "stack",
+            "name": "i",
             "len": 8,
             "range": {
               "min": "1",
@@ -65668,6 +65982,7 @@
         "args": [
           {
             "$": "stack",
+            "name": "i",
             "len": 4,
             "range": {
               "min": "1",
@@ -65718,6 +66033,7 @@
         "args": [
           {
             "$": "stack",
+            "name": "i",
             "len": 4,
             "range": {
               "min": "1",
@@ -65726,6 +66042,7 @@
           },
           {
             "$": "stack",
+            "name": "j",
             "len": 4,
             "range": {
               "min": "0",
@@ -65783,6 +66100,7 @@
           },
           {
             "$": "stack",
+            "name": "i",
             "len": 4,
             "range": {
               "min": "2",
@@ -65873,6 +66191,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "i",
             "len": 8,
             "range": {
               "min": "0",
@@ -65986,6 +66305,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "t",
             "len": 8,
             "range": {
               "min": "0",
@@ -66041,6 +66361,7 @@
         "args": [
           {
             "$": "stack",
+            "name": "i",
             "len": 4,
             "range": {
               "min": "0",
@@ -66096,6 +66417,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "t",
             "len": 8,
             "range": {
               "min": "0",
@@ -66151,6 +66473,7 @@
         "args": [
           {
             "$": "control",
+            "name": "i",
             "range": {
               "min": "0",
               "max": "15"
@@ -66264,6 +66587,7 @@
         "args": [
           {
             "$": "stack",
+            "name": "i",
             "len": 4,
             "range": {
               "min": "0",
@@ -66332,6 +66656,7 @@
         "args": [
           {
             "$": "stack",
+            "name": "i",
             "len": 8,
             "range": {
               "min": "0",
@@ -66399,6 +66724,7 @@
         "args": [
           {
             "$": "control",
+            "name": "i",
             "range": {
               "min": "0",
               "max": "15"
@@ -66508,6 +66834,7 @@
         "args": [
           {
             "$": "stack",
+            "name": "i",
             "len": 4,
             "range": {
               "min": "0",
@@ -66559,6 +66886,7 @@
         "args": [
           {
             "$": "stack",
+            "name": "i",
             "len": 8,
             "range": {
               "min": "0",
@@ -66603,6 +66931,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "p",
             "len": 4,
             "range": {
               "min": "0",
@@ -66693,6 +67022,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "p",
             "len": 4,
             "range": {
               "min": "0",
@@ -66701,6 +67031,7 @@
           },
           {
             "$": "uint",
+            "name": "r",
             "len": 4,
             "range": {
               "min": "0",
@@ -66773,8 +67104,10 @@
         "args": [
           {
             "$": "slice",
+            "name": "slice",
             "refs": {
               "$": "uint",
+              "name": "slice",
               "len": 0,
               "range": {
                 "min": "0",
@@ -66783,6 +67116,7 @@
             },
             "bits": {
               "$": "uint",
+              "name": "slice",
               "len": 4,
               "range": {
                 "min": "0",
@@ -66841,11 +67175,14 @@
         "args": [
           {
             "$": "slice",
+            "name": "slice",
             "refs": {
               "$": "delta",
+              "name": "slice",
               "delta": 1,
               "arg": {
                 "$": "uint",
+                "name": "slice",
                 "len": 2,
                 "range": {
                   "min": "0",
@@ -66855,6 +67192,7 @@
             },
             "bits": {
               "$": "uint",
+              "name": "slice",
               "len": 5,
               "range": {
                 "min": "0",
@@ -66913,8 +67251,10 @@
         "args": [
           {
             "$": "slice",
+            "name": "slice",
             "refs": {
               "$": "uint",
+              "name": "slice",
               "len": 3,
               "range": {
                 "min": "0",
@@ -66923,6 +67263,7 @@
             },
             "bits": {
               "$": "uint",
+              "name": "slice",
               "len": 7,
               "range": {
                 "min": "0",
@@ -66983,8 +67324,10 @@
         "args": [
           {
             "$": "codeSlice",
+            "name": "c",
             "refs": {
               "$": "uint",
+              "name": "c",
               "len": 2,
               "range": {
                 "min": "0",
@@ -66993,6 +67336,7 @@
             },
             "bits": {
               "$": "uint",
+              "name": "c",
               "len": 7,
               "range": {
                 "min": "0",
@@ -67052,8 +67396,10 @@
         "args": [
           {
             "$": "inlineCodeSlice",
+            "name": "c",
             "bits": {
               "$": "uint",
+              "name": "c",
               "len": 4,
               "range": {
                 "min": "0",
@@ -67111,8 +67457,10 @@
         "args": [
           {
             "$": "slice",
+            "name": "s",
             "refs": {
               "$": "uint",
+              "name": "s",
               "len": 2,
               "range": {
                 "min": "0",
@@ -67121,6 +67469,7 @@
             },
             "bits": {
               "$": "uint",
+              "name": "s",
               "len": 3,
               "range": {
                 "min": "0",
@@ -67188,6 +67537,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "num",
             "len": 8,
             "range": {
               "min": "0",
@@ -67289,9 +67639,11 @@
         "args": [
           {
             "$": "delta",
+            "name": "num",
             "delta": -256,
             "arg": {
               "$": "uint",
+              "name": "num",
               "len": 8,
               "range": {
                 "min": "0",
@@ -67343,6 +67695,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "i",
             "len": 8,
             "range": {
               "min": "0",
@@ -67463,6 +67816,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "i",
             "len": 8,
             "range": {
               "min": "0",
@@ -68066,6 +68420,7 @@
         "args": [
           {
             "$": "uint",
+            "name": "x",
             "len": 4,
             "range": {
               "min": "0",
