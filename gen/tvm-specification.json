@@ -638,7 +638,7 @@
               "name": "x",
               "range": {
                 "min": 0,
-                "max": 1023
+                "max": 255
               },
               "value_types": ["Int"]
             }
@@ -25415,7 +25415,7 @@
               "value_types": ["Int"],
               "range": {
                 "min": 0,
-                "max": 15
+                "max": 31
               }
             }
           ],
