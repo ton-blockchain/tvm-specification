@@ -63,7 +63,7 @@
             "value_types": ["Int"],
             "range": {
               "min": 0,
-              "max": 15
+              "max": 31
             }
           }
         ],
