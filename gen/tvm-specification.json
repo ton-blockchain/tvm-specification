@@ -65836,7 +65836,7 @@
         "kind": "ext-range",
         "prefix": 4160,
         "prefix_str": "1040",
-        "tlb": "#82 len: (## 5) data: (int (8 * l + 19))"
+        "tlb": "#82 len: (## 5) data: (int (8 * len + 19))"
       },
       "signature": {
         "stack_string": "∅ -> x:Int",

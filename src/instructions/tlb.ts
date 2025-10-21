@@ -107,7 +107,7 @@ export function generateTlb(instruction: Opcode, operandNames: readonly string[]
                 break
             }
             case "largeInt": {
-                result += "len: (## 5) data: (int (8 * l + 19))"
+                result += "len: (## 5) data: (int (8 * len + 19))"
                 break
             }
             case "debugstr": {
