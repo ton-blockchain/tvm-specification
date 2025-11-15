@@ -1860,6 +1860,356 @@
       }
     }
   },
+  "LDSTDADDR": {
+    "description": {
+      "short": "Loads a `MsgAddressInt` with tag `addr_std$10`.",
+      "long": "Loads a `MsgAddressInt` with tag `addr_std$10` from _Slice_ `s` and pushes the loaded `addr` value onto the stack along with _Slice_ `s'` with the remaining data. If the address is not `addr_std$10`, throws an exception.",
+      "tags": ["address", "slice parsing"],
+      "operands": [],
+      "exit_codes": [
+        {
+          "errno": "9",
+          "condition": "Cannot load a MsgAddressInt."
+        }
+      ]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "addr",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "s'",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "LDSTDADDRQ": {
+    "description": {
+      "short": "Quietly loads a `MsgAddressInt` with tag `addr_std$10`.",
+      "long": "Loads a `MsgAddressInt` with tag `addr_std$10` from _Slice_ `s` and pushes the loaded `addr` value onto the stack along with _Slice_ `s'` with the remaining data. This is a quiet version of `LDSTDADDR` which means that instead of throwing an exception, it pushes a status flag to the stack: 0 if the operation fails, -1 if the operation succeeds.",
+      "tags": ["address", "slice parsing"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "s",
+                    "value_types": ["Slice"]
+                  }
+                ]
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "addr",
+                    "value_types": ["Slice"]
+                  },
+                  {
+                    "type": "simple",
+                    "name": "s'",
+                    "value_types": ["Slice"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "LDOPTSTDADDR": {
+    "description": {
+      "short": "Loads a `MsgAddressInt` with tag `addr_std$10` or `addr_none$00`.",
+      "long": "Loads a `MsgAddressInt` with tag `addr_std$10` or `addr_none$00` from _Slice_ `s`. If the address is `addr_std$10`, pushes the loaded `addr` value onto the stack. If the address is `addr_none$00`, pushes a `Null`. If the address has any other tag, throws an exception.",
+      "tags": ["address", "slice parsing"],
+      "operands": [],
+      "exit_codes": [
+        {
+          "errno": "9",
+          "condition": "Cannot load a MsgAddressInt."
+        }
+      ]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "addr",
+            "value_types": ["Slice", "Null"]
+          },
+          {
+            "type": "simple",
+            "name": "s'",
+            "value_types": ["Slice"]
+          }
+        ]
+      }
+    }
+  },
+  "LDOPTSTDADDRQ": {
+    "description": {
+      "short": "Quietly loads a `MsgAddressInt` with tag `addr_std$10` or `addr_none$00`.",
+      "long": "Loads a `MsgAddressInt` with tag `addr_std$10` or `addr_none$00` from _Slice_ `s`. If the address is `addr_std$10`, pushes the loaded `addr` value onto the stack. If the address is `addr_none$00`, pushes a `Null`. If the address has any other tag, pushes a status flag 0. This is a quiet version of `LDOPTSTDADDR` which means that instead of throwing an exception, it pushes a status flag to the stack: 0 if the operation fails, -1 if the operation succeeds.",
+      "tags": ["address", "slice parsing"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "s",
+                    "value_types": ["Slice"]
+                  }
+                ]
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "addr",
+                    "value_types": ["Slice", "Null"]
+                  },
+                  {
+                    "type": "simple",
+                    "name": "s'",
+                    "value_types": ["Slice"]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "STSTDADDR": {
+    "description": {
+      "short": "Stores a `MsgAddressInt` with tag `addr_std$10`.",
+      "long": "Stores a `MsgAddressInt` with tag `addr_std$10` from _Slice_ `s` into _Builder_ `b`, returning the updated builder `b'`. If the address is not `addr_std$10`, throws an exception.",
+      "tags": ["address"],
+      "operands": [],
+      "exit_codes": [
+        {
+          "errno": "9",
+          "condition": "Cannot load a MsgAddressInt."
+        }
+      ]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b'",
+            "value_types": ["Builder"]
+          }
+        ]
+      }
+    }
+  },
+  "STSTDADDRQ": {
+    "description": {
+      "short": "Quietly stores a `MsgAddressInt` with tag `addr_std$10`.",
+      "long": "Stores a `MsgAddressInt` with tag `addr_std$10` from _Slice_ `s` into _Builder_ `b`, returning the updated builder `b'`. This is a quiet version of `STSTDADDR` which means that instead of throwing an exception, it pushes a status flag to the stack: 0 if the operation succeeds, -1 if the operation fails.",
+      "tags": ["address"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "s",
+            "value_types": ["Slice"]
+          },
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b'",
+            "value_types": ["Builder"]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
+  "STOPTSTDADDR": {
+    "description": {
+      "short": "Stores a `MsgAddressInt` with tag `addr_std$10` or `Null` (stored as `addr_none$00`).",
+      "long": "Stores a `MsgAddressInt` with tag `addr_std$10` or a `Null` (stored as `addr_none$00`) from the stack into _Builder_ `b`, returning the updated builder `b'`. If the value is not `addr_std$10` or `Null`, throws an exception.",
+      "tags": ["address"],
+      "operands": [],
+      "exit_codes": [
+        {
+          "errno": "9",
+          "condition": "Cannot load a MsgAddressInt."
+        }
+      ]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "addr",
+            "value_types": ["Slice", "Null"]
+          },
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b'",
+            "value_types": ["Builder"]
+          }
+        ]
+      }
+    }
+  },
+  "STOPTSTDADDRQ": {
+    "description": {
+      "short": "Quietly stores a `MsgAddressInt` with tag `addr_std$10` or `Null` (stored as `addr_none$00`).",
+      "long": "Stores a `MsgAddressInt` with tag `addr_std$10` or a `Null` (stored as `addr_none$00`) from the stack into _Builder_ `b`, returning the updated builder `b'`. This is a quiet version of `STOPTSTDADDR` which means that instead of throwing an exception, it pushes a status flag to the stack: 0 if the operation succeeds, -1 if the operation fails.",
+      "tags": ["address"],
+      "operands": []
+    },
+    "signature": {
+      "inputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "addr",
+            "value_types": ["Slice", "Null"]
+          },
+          {
+            "type": "simple",
+            "name": "b",
+            "value_types": ["Builder"]
+          }
+        ]
+      },
+      "outputs": {
+        "stack": [
+          {
+            "type": "simple",
+            "name": "b'",
+            "value_types": ["Builder"]
+          },
+          {
+            "type": "simple",
+            "name": "status",
+            "value_types": ["Int"]
+          }
+        ]
+      }
+    }
+  },
   "LDIX": {
     "description": {
       "short": "",

@@ -21,16 +21,16 @@ export type arg =
 export type range = {min: bigint, max: bigint}
 export const range = (min: bigint, max: bigint) => ({min, max})
 
-export type uint = {$: "uint", len: number, range: range, name?: string}
+export type uint = {$: "uint", len: number, range: range}
 export const uint = (len: number, range: range): uint => ({$: "uint", len, range})
 
-export type int = {$: "int", len: number, range: range, name?: string}
+export type int = {$: "int", len: number, range: range}
 export const int = (len: number, range: range): int => ({$: "int", len, range})
 
-export type delta = {$: "delta", delta: number, arg: arg, name?: string}
+export type delta = {$: "delta", delta: number, arg: arg}
 export const delta = (delta: number, arg: arg): delta => ({$: "delta", delta, arg})
 
-export type stack = {$: "stack", len: number, range: range, name?: string}
+export type stack = {$: "stack", len: number, range: range}
 export const stack = (len: number): stack => ({$: "stack", len, range: range(0n, BigInt(Math.pow(2, len) - 1))})
 export const stack2 = (len: number, start: bigint): stack => ({
     $: "stack",
@@ -38,60 +38,60 @@ export const stack2 = (len: number, start: bigint): stack => ({
     range: range(start, BigInt(Math.pow(2, len) - 1)),
 })
 
-export type control = {$: "control", range: range, name?: string}
+export type control = {$: "control", range: range}
 export const control: control = {$: "control", range: range(0n, 15n)}
 
 // special case: plduz
-export type plduzArg = {$: "plduzArg", range: range, name?: string}
+export type plduzArg = {$: "plduzArg", range: range}
 export const plduzArg: plduzArg = {$: "plduzArg", range: range(0n, 7n)}
 
 // special case: [-5, 10]
-export type tinyInt = {$: "tinyInt", range: range, name?: string}
+export type tinyInt = {$: "tinyInt", range: range}
 export const tinyInt: tinyInt = {$: "tinyInt", range: range(-5n, 10n)}
 
-export type largeInt = {$: "largeInt", range: range, name?: string}
+export type largeInt = {$: "largeInt", range: range}
 const largeIntRange = range(-(2n ** 267n), 2n ** 267n - 1n)
 export const largeInt: largeInt = {$: "largeInt", range: largeIntRange}
 
 // special case: XCHG s1 $
-export type s1 = {$: "s1", name?: string}
+export type s1 = {$: "s1"}
 export const s1: s1 = {$: "s1"}
 
 // special case: CALLXARGS $ -1
-export type minusOne = {$: "minusOne", name?: string}
+export type minusOne = {$: "minusOne"}
 export const minusOne: minusOne = {$: "minusOne"}
 
 // special case: [-15, 239]
-export type setcpArg = {$: "setcpArg", range: range, name?: string}
+export type setcpArg = {$: "setcpArg", range: range}
 export const setcpArg: setcpArg = {$: "setcpArg", range: range(-15n, 239n)}
 
 export type args = arg[]
 export const seq = (...args: arg[]): args => args
 
-export type codeSlice = {$: "codeSlice", refs: arg, bits: arg, name?: string}
+export type codeSlice = {$: "codeSlice", refs: arg, bits: arg}
 export const codeSlice = (refs: arg, bits: arg): codeSlice => ({$: "codeSlice", refs, bits})
 
-export type inlineCodeSlice = {$: "inlineCodeSlice", bits: arg, name?: string}
+export type inlineCodeSlice = {$: "inlineCodeSlice", bits: arg}
 export const inlineCodeSlice = (bits: arg): inlineCodeSlice => ({$: "inlineCodeSlice", bits})
 
-export type refCodeSlice = {$: "refCodeSlice", name?: string}
+export type refCodeSlice = {$: "refCodeSlice"}
 export const refCodeSlice: refCodeSlice = {$: "refCodeSlice"}
 
-export type slice = {$: "slice", refs: arg, bits: arg, pad: number, name?: string}
+export type slice = {$: "slice", refs: arg, bits: arg, pad: number}
 export const slice = (refs: arg, bits: arg, pad: number): slice => ({$: "slice", refs, bits, pad})
 
-export type dict = {$: "dict", name?: string}
+export type dict = {$: "dict"}
 export const dict: dict = {$: "dict"}
 
-export type exoticCell = {$: "exoticCell", name?: string}
+export type exoticCell = {$: "exoticCell"}
 export const exoticCell: exoticCell = {$: "exoticCell"}
 
-export type debugstr = {$: "debugstr", name?: string}
+export type debugstr = {$: "debugstr"}
 export const debugstr: debugstr = {$: "debugstr"}
 
 /// section: effects
 export type Effect =
-    CellLoad
+    | CellLoad
     | CellCreate
     | CanThrow
     | AlwaysThrow
@@ -1522,8 +1522,17 @@ export const instructions: Record<string, Opcode> = {
     INMSG_STATEINIT: version(11, cat("config", mksimple(0xf899, 16, `exec_get_in_msg_param`))),
     INMSGPARAM: version(11, cat("config", mkfixedrangen(0xf89a, 0xf8a0, 16, 4, seq(uint4), `exec_get_var_in_msg_param`))),
 
+    // TVM 12 instructions
     BTOS: version(12, cat("cell_deserialize", mksimple(0xcf50, 16, "exec_builder_to_slice"))),
     HASHBU: version(12, cat("crypto_common", mksimple(0xf916, 16, "exec_compute_hash"))),
+    LDSTDADDR: version(12, cat("cell_deserialize", mksimple(0xfa48, 16, `(_1) => exec_load_std_message_addr(_1, false)`))),
+    LDSTDADDRQ: version(12, cat("cell_deserialize", mksimple(0xfa49, 16, `(_1) => exec_load_std_message_addr(_1, true)`))),
+    LDOPTSTDADDR: version(12, cat("cell_deserialize", mksimple(0xfa50, 16, `(_1) => exec_load_opt_std_message_addr(_1, false)`))),
+    LDOPTSTDADDRQ: version(12, cat("cell_deserialize", mksimple(0xfa51, 16, `(_1) => exec_load_opt_std_message_addr(_1, true)`))),
+    STSTDADDR: version(12, cat("cell_deserialize", mksimple(0xfa52, 16, `(_1) => exec_store_std_address(_1, false)`))),
+    STSTDADDRQ: version(12, cat("cell_deserialize", mksimple(0xfa53, 16, `(_1) => exec_store_std_address(_1, true)`))),
+    STOPTSTDADDR: version(12, cat("cell_deserialize", mksimple(0xfa54, 16, `(_1) => exec_store_opt_std_address(_1, false)`))),
+    STOPTSTDADDRQ: version(12, cat("cell_deserialize", mksimple(0xfa55, 16, `(_1) => exec_store_opt_std_address(_1, true)`))),
 
     DEBUGMARK: cat("int_const", mkfixedn(0xF955, 16, 16, seq(uint(16, range(0n, 0n))), `exec_push_pow2dec`)),
 
@@ -1596,12 +1605,12 @@ export const calculateGasConsumption = (instr: Opcode): number[] => {
         return result
     }
 
-    return result.concat(instr.effects.flatMap(effect => {
+    return [...result, ...instr.effects.flatMap(effect => {
         if (effect.$ === "DynamicGas") {
             return [0]
         }
         return effect.costs.map(it => it.value + base)
-    }))
+    })]
 }
 
 export type GasConsumptionEntry = {

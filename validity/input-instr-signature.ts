@@ -173,7 +173,15 @@ function needSkipInstruction(name: string) {
         name.includes("CHKSIG") ||
         name.includes("UNTIL") ||
         name.includes("WHILE") ||
-        name.includes("AGAIN")
+        name.includes("AGAIN") ||
+        name.includes("LDSTDADDR") ||
+        name.includes("LDSTDADDRQ") ||
+        name.includes("LDOPTSTDADDR") ||
+        name.includes("LDOPTSTDADDRQ") ||
+        name.includes("STSTDADDR") ||
+        name.includes("STSTDADDRQ") ||
+        name.includes("STOPTSTDADDR") ||
+        name.includes("STOPTSTDADDRQ")
     )
 }
 

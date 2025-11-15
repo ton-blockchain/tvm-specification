@@ -20,7 +20,7 @@
         "ajv-cli": "^5.0.0",
         "json-schema-to-typescript": "^15.0.4",
         "prettier": "^3.5.3",
-        "ton-assembly": "^0.5.0",
+        "ton-assembly": "^0.6.0",
         "ts-node": "^10.9.2",
         "typescript": "^5.8.2"
     },

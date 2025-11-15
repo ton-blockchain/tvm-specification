@@ -1656,9 +1656,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ton-assembly@npm:^0.5.0":
-  version: 0.5.0
-  resolution: "ton-assembly@npm:0.5.0"
+"ton-assembly@npm:^0.6.0":
+  version: 0.6.0
+  resolution: "ton-assembly@npm:0.6.0"
   dependencies:
     "@tonstudio/parser-runtime": "npm:^0.0.1"
     cac: "npm:^6.7.14"
@@ -1672,7 +1672,7 @@ __metadata:
     tasm: dist/cli/assembler.js
     tdisasm: dist/cli/disassembler.js
     tfift: dist/cli/fift-compiler.js
-  checksum: 10c0/f35e598c835c852eda6d71b6bf8a791b5015fda77f6ca3896902aac4057f11a62663d7f1dda9aa013c5420dabc818a33d028d20c4a058df16d5b2706bfddef21
+  checksum: 10c0/88bbb543420aeb499a5ecee902d9643f2704421d84de9594df5e1d4087cae301bb74b7fa7bd27e3953f9d0acab8ee2e74f9cac4d838a2f49f788b5d5681d8c93
   languageName: node
   linkType: hard
 
@@ -1780,7 +1780,7 @@ __metadata:
     ajv-cli: "npm:^5.0.0"
     json-schema-to-typescript: "npm:^15.0.4"
     prettier: "npm:^3.5.3"
-    ton-assembly: "npm:^0.5.0"
+    ton-assembly: "npm:^0.6.0"
     ts-node: "npm:^10.9.2"
     typescript: "npm:^5.8.2"
   languageName: unknown
