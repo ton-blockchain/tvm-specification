@@ -964,13 +964,7 @@
             "match": [
               {
                 "value": 0,
-                "stack": [
-                  {
-                    "type": "simple",
-                    "name": "c",
-                    "value_types": ["Cell"]
-                  }
-                ]
+                "stack": []
               },
               {
                 "value": -1,
@@ -1097,7 +1091,7 @@
           {
             "type": "simple",
             "name": "result",
-            "value_types": ["Int"]
+            "value_types": ["Bool"]
           }
         ]
       }
@@ -1130,7 +1124,7 @@
           {
             "type": "simple",
             "name": "result",
-            "value_types": ["Int"]
+            "value_types": ["Bool"]
           }
         ]
       }
@@ -1168,7 +1162,7 @@
           {
             "type": "simple",
             "name": "result",
-            "value_types": ["Int"]
+            "value_types": ["Bool"]
           }
         ]
       }
@@ -1839,12 +1833,12 @@
                 "stack": [
                   {
                     "type": "simple",
-                    "name": "s'",
+                    "name": "addr",
                     "value_types": ["Slice"]
                   },
                   {
                     "type": "simple",
-                    "name": "addr",
+                    "name": "s'",
                     "value_types": ["Slice"]
                   }
                 ]

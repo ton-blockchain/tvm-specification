@@ -732,7 +732,7 @@
                 "stack": [
                   {
                     "type": "simple",
-                    "name": "b''",
+                    "name": "b'",
                     "value_types": ["Builder"]
                   }
                 ]
