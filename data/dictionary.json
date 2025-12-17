@@ -231,7 +231,13 @@
             "match": [
               {
                 "value": 0,
-                "stack": []
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "s",
+                    "value_types": ["Slice"]
+                  }
+                ]
               },
               {
                 "value": -1,
