@@ -68996,7 +68996,7 @@
         "tlb": "#fa53"
       },
       "signature": {
-        "stack_string": "s:Slice b:Builder -> b':Builder status:Int",
+        "stack_string": "s:Slice b:Builder -> (b':Builder 0)|(s:Slice b:Builder -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -69014,9 +69014,35 @@
         "outputs": {
           "stack": [
             {
-              "type": "simple",
-              "name": "b'",
-              "value_types": ["Builder"]
+              "type": "conditional",
+              "name": "status",
+              "match": [
+                {
+                  "value": 0,
+                  "stack": [
+                    {
+                      "type": "simple",
+                      "name": "b'",
+                      "value_types": ["Builder"]
+                    }
+                  ]
+                },
+                {
+                  "value": -1,
+                  "stack": [
+                    {
+                      "type": "simple",
+                      "name": "s",
+                      "value_types": ["Slice"]
+                    },
+                    {
+                      "type": "simple",
+                      "name": "b",
+                      "value_types": ["Builder"]
+                    }
+                  ]
+                }
+              ]
             },
             {
               "type": "simple",
@@ -69131,7 +69157,7 @@
         "tlb": "#fa55"
       },
       "signature": {
-        "stack_string": "addr:Slice|Null b:Builder -> b':Builder status:Int",
+        "stack_string": "addr:Slice|Null b:Builder -> (b':Builder 0)|(addr:Slice|Null b:Builder -1) status:Int",
         "inputs": {
           "stack": [
             {
@@ -69149,9 +69175,35 @@
         "outputs": {
           "stack": [
             {
-              "type": "simple",
-              "name": "b'",
-              "value_types": ["Builder"]
+              "type": "conditional",
+              "name": "status",
+              "match": [
+                {
+                  "value": 0,
+                  "stack": [
+                    {
+                      "type": "simple",
+                      "name": "b'",
+                      "value_types": ["Builder"]
+                    }
+                  ]
+                },
+                {
+                  "value": -1,
+                  "stack": [
+                    {
+                      "type": "simple",
+                      "name": "addr",
+                      "value_types": ["Slice", "Null"]
+                    },
+                    {
+                      "type": "simple",
+                      "name": "b",
+                      "value_types": ["Builder"]
+                    }
+                  ]
+                }
+              ]
             },
             {
               "type": "simple",

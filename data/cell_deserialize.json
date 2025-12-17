@@ -2120,9 +2120,35 @@
       "outputs": {
         "stack": [
           {
-            "type": "simple",
-            "name": "b'",
-            "value_types": ["Builder"]
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "b'",
+                    "value_types": ["Builder"]
+                  }
+                ]
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "s",
+                    "value_types": ["Slice"]
+                  },
+                  {
+                    "type": "simple",
+                    "name": "b",
+                    "value_types": ["Builder"]
+                  }
+                ]
+              }
+            ]
           },
           {
             "type": "simple",
@@ -2197,9 +2223,35 @@
       "outputs": {
         "stack": [
           {
-            "type": "simple",
-            "name": "b'",
-            "value_types": ["Builder"]
+            "type": "conditional",
+            "name": "status",
+            "match": [
+              {
+                "value": 0,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "b'",
+                    "value_types": ["Builder"]
+                  }
+                ]
+              },
+              {
+                "value": -1,
+                "stack": [
+                  {
+                    "type": "simple",
+                    "name": "addr",
+                    "value_types": ["Slice", "Null"]
+                  },
+                  {
+                    "type": "simple",
+                    "name": "b",
+                    "value_types": ["Builder"]
+                  }
+                ]
+              }
+            ]
           },
           {
             "type": "simple",
