@@ -58595,6 +58595,56 @@
       }
     },
     {
+      "name": "EXTCALL",
+      "category": "debug",
+      "sub_category": "",
+      "description": {
+        "short": "Special instruction for FFI (not released yet)",
+        "long": "",
+        "tags": [],
+        "operands": ["id"],
+        "gas": [
+          {
+            "value": 58,
+            "description": "Base gas consumption"
+          }
+        ]
+      },
+      "layout": {
+        "min": 16515072,
+        "max": 16515328,
+        "checkLen": 16,
+        "skipLen": 48,
+        "args": [
+          {
+            "$": "uint",
+            "name": "id",
+            "len": 32,
+            "range": {
+              "min": "0",
+              "max": "1000000"
+            }
+          }
+        ],
+        "exec": "exec_extcall",
+        "kind": "ext",
+        "prefix": 64512,
+        "prefix_str": "FC00",
+        "tlb": "#fc00 id: (## 32)"
+      },
+      "signature": {
+        "stack_string": "∅ -> ∅",
+        "inputs": {
+          "stack": [],
+          "registers": []
+        },
+        "outputs": {
+          "stack": [],
+          "registers": []
+        }
+      }
+    },
+    {
       "name": "SETCONTCTR",
       "category": "continuation",
       "sub_category": "continuation_change",

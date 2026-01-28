@@ -1,3 +1,4 @@
 src/instructions/instructions.ts
 dist/
 .tmp/
+examples/rust

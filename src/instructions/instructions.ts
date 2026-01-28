@@ -1350,6 +1350,7 @@ export const instructions: Record<string, Opcode> = {
     THROWANYIF: effects(cat("exception", mksimple(0xf2f2, 16, `exec_throw_any`)), CanThrow()),
     THROWARGANYIF: effects(cat("exception", mksimple(0xf2f3, 16, `exec_throw_any`)), CanThrow()),
     DEBUGSTR: cat("debug", mkext(0xfef, 12, 4, seq(debugstr), `exec_dummy_debug_str`)),
+    EXTCALL: cat("debug", mkext(0xfc00, 16, 32, seq(uint(32, range(0n, 1000000n))), `exec_extcall`)),
 
     SETCONTCTR: cat("continuation_change", mkfixedrangen(0xed60, 0xed68, 16, 4, seq(control), `exec_setcont_ctr`)),
     SETRETCTR: cat("continuation_change", mkfixedrangen(0xed70, 0xed78, 16, 4, seq(control), `exec_setret_ctr`)),

@@ -48,6 +48,7 @@ const main = () => {
         "ACCEPT",
         "COMMIT",
         "RETURNARGS",
+        "EXTCALL",
     ])
 
     for (const instr of data.instructions) {

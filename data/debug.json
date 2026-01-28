@@ -154,5 +154,23 @@
         "registers": []
       }
     }
+  },
+  "EXTCALL": {
+    "description": {
+      "short": "Special instruction for FFI (not released yet)",
+      "long": "",
+      "tags": [],
+      "operands": ["id"]
+    },
+    "signature": {
+      "inputs": {
+        "stack": [],
+        "registers": []
+      },
+      "outputs": {
+        "stack": [],
+        "registers": []
+      }
+    }
   }
 }

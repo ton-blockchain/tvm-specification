@@ -12,11 +12,11 @@ language.
 
 ## Current state
 
-- Instructions count: **918**
+- Instructions count: **919**
 - With exit code description: **169**
 - With examples: **33**
 - With other implementations description: **102**
-- With TLB representation: **918**
+- With TLB representation: **919**
 - Without any text description: **0**, including arithmetic: **0**
 - With unverified empty stack signature: **0**
 - Fift instructions count: **116**
