@@ -48146,6 +48146,14 @@
           ]
         }
       },
+      "control_flow": {
+        "branches": [
+          {
+            "type": "register",
+            "index": 2
+          }
+        ]
+      },
       "implementation": {
         "commit_hash": "f58297f1b668c7b49e8b30b65062951ca7c18acc",
         "file_path": "crypto/vm/contops.cpp",
@@ -48205,6 +48213,14 @@
           ]
         }
       },
+      "control_flow": {
+        "branches": [
+          {
+            "type": "register",
+            "index": 2
+          }
+        ]
+      },
       "implementation": {
         "commit_hash": "f58297f1b668c7b49e8b30b65062951ca7c18acc",
         "file_path": "crypto/vm/contops.cpp",
@@ -48258,6 +48274,14 @@
               "type": "simple",
               "name": "cond",
               "value_types": ["Int"]
+            }
+          ]
+        },
+        "control_flow": {
+          "branches": [
+            {
+              "type": "register",
+              "index": 2
             }
           ]
         }
@@ -48323,6 +48347,14 @@
             }
           ]
         }
+      },
+      "control_flow": {
+        "branches": [
+          {
+            "type": "register",
+            "index": 2
+          }
+        ]
       },
       "implementation": {
         "commit_hash": "f58297f1b668c7b49e8b30b65062951ca7c18acc",
@@ -51426,6 +51458,14 @@
           ]
         }
       },
+      "control_flow": {
+        "branches": [
+          {
+            "type": "register",
+            "index": 2
+          }
+        ]
+      },
       "implementation": {
         "commit_hash": "f58297f1b668c7b49e8b30b65062951ca7c18acc",
         "file_path": "crypto/vm/contops.cpp",
@@ -51493,6 +51533,14 @@
           ]
         }
       },
+      "control_flow": {
+        "branches": [
+          {
+            "type": "register",
+            "index": 2
+          }
+        ]
+      },
       "implementation": {
         "commit_hash": "f58297f1b668c7b49e8b30b65062951ca7c18acc",
         "file_path": "crypto/vm/contops.cpp",
@@ -51559,6 +51607,14 @@
             }
           ]
         }
+      },
+      "control_flow": {
+        "branches": [
+          {
+            "type": "register",
+            "index": 2
+          }
+        ]
       },
       "implementation": {
         "commit_hash": "f58297f1b668c7b49e8b30b65062951ca7c18acc",
@@ -58456,6 +58512,14 @@
           ]
         }
       },
+      "control_flow": {
+        "branches": [
+          {
+            "type": "register",
+            "index": 2
+          }
+        ]
+      },
       "implementation": {
         "commit_hash": "f58297f1b668c7b49e8b30b65062951ca7c18acc",
         "file_path": "crypto/vm/contops.cpp",
@@ -58517,6 +58581,14 @@
             }
           ]
         }
+      },
+      "control_flow": {
+        "branches": [
+          {
+            "type": "register",
+            "index": 2
+          }
+        ]
       },
       "implementation": {
         "commit_hash": "f58297f1b668c7b49e8b30b65062951ca7c18acc",
@@ -65365,6 +65437,14 @@
           "registers": []
         }
       },
+      "control_flow": {
+        "branches": [
+          {
+            "type": "register",
+            "index": 2
+          }
+        ]
+      },
       "implementation": {
         "commit_hash": "f58297f1b668c7b49e8b30b65062951ca7c18acc",
         "file_path": "crypto/vm/contops.cpp",
@@ -65421,6 +65501,14 @@
           "stack": [],
           "registers": []
         }
+      },
+      "control_flow": {
+        "branches": [
+          {
+            "type": "register",
+            "index": 2
+          }
+        ]
       },
       "implementation": {
         "commit_hash": "f58297f1b668c7b49e8b30b65062951ca7c18acc",
@@ -65484,6 +65572,14 @@
           ]
         }
       },
+      "control_flow": {
+        "branches": [
+          {
+            "type": "register",
+            "index": 2
+          }
+        ]
+      },
       "implementation": {
         "commit_hash": "f58297f1b668c7b49e8b30b65062951ca7c18acc",
         "file_path": "crypto/vm/contops.cpp",
@@ -65545,6 +65641,14 @@
             }
           ]
         }
+      },
+      "control_flow": {
+        "branches": [
+          {
+            "type": "register",
+            "index": 2
+          }
+        ]
       },
       "implementation": {
         "commit_hash": "f58297f1b668c7b49e8b30b65062951ca7c18acc",
@@ -65608,6 +65712,14 @@
           ]
         }
       },
+      "control_flow": {
+        "branches": [
+          {
+            "type": "register",
+            "index": 2
+          }
+        ]
+      },
       "implementation": {
         "commit_hash": "f58297f1b668c7b49e8b30b65062951ca7c18acc",
         "file_path": "crypto/vm/contops.cpp",
@@ -65669,6 +65781,14 @@
             }
           ]
         }
+      },
+      "control_flow": {
+        "branches": [
+          {
+            "type": "register",
+            "index": 2
+          }
+        ]
       },
       "implementation": {
         "commit_hash": "f58297f1b668c7b49e8b30b65062951ca7c18acc",
