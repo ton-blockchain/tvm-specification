@@ -2058,8 +2058,8 @@
       "operands": [],
       "exit_codes": [
         {
-          "errno": "9",
-          "condition": "Cannot load a MsgAddressInt."
+          "errno": "8",
+          "condition": "Cannot store a MsgAddressInt."
         }
       ]
     },
@@ -2161,8 +2161,8 @@
       "operands": [],
       "exit_codes": [
         {
-          "errno": "9",
-          "condition": "Cannot load a MsgAddressInt."
+          "errno": "8",
+          "condition": "Cannot store a MsgAddressInt."
         }
       ]
     },
