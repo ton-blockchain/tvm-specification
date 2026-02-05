@@ -22,12 +22,16 @@
           {
             "type": "simple",
             "name": "x",
-            "value_types": ["Int"]
+            "value_types": [
+              "Int"
+            ]
           },
           {
             "type": "simple",
             "name": "y",
-            "value_types": ["Int"]
+            "value_types": [
+              "Int"
+            ]
           }
         ]
       },
@@ -37,7 +41,9 @@
             "type": "simple",
             "name": "result",
             "presentation": "x + y",
-            "value_types": ["Int"]
+            "value_types": [
+              "Int"
+            ]
           }
         ]
       }
@@ -66,12 +72,16 @@
           {
             "type": "simple",
             "name": "x",
-            "value_types": ["Int"]
+            "value_types": [
+              "Int"
+            ]
           },
           {
             "type": "simple",
             "name": "y",
-            "value_types": ["Int"]
+            "value_types": [
+              "Int"
+            ]
           }
         ]
       },
@@ -81,7 +91,9 @@
             "type": "simple",
             "name": "result",
             "presentation": "x - y",
-            "value_types": ["Int"]
+            "value_types": [
+              "Int"
+            ]
           }
         ]
       }
@@ -106,7 +118,10 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["SWAP", "SUB"]
+          "instructions": [
+            "SWAP",
+            "SUB"
+          ]
         }
       ]
     },
@@ -116,12 +131,16 @@
           {
             "type": "simple",
             "name": "x",
-            "value_types": ["Int"]
+            "value_types": [
+              "Int"
+            ]
           },
           {
             "type": "simple",
             "name": "y",
-            "value_types": ["Int"]
+            "value_types": [
+              "Int"
+            ]
           }
         ]
       },
@@ -131,7 +150,9 @@
             "type": "simple",
             "name": "result",
             "presentation": "y - x",
-            "value_types": ["Int"]
+            "value_types": [
+              "Int"
+            ]
           }
         ]
       }
@@ -160,11 +181,17 @@
       "other_implementations": [
         {
           "exact": true,
-          "instructions": ["MULINT -1", "NEGATE"]
+          "instructions": [
+            "MULINT -1",
+            "NEGATE"
+          ]
         },
         {
           "exact": true,
-          "instructions": ["PUSHINT_4 0", "SUBR"]
+          "instructions": [
+            "PUSHINT_4 0",
+            "SUBR"
+          ]
         }
       ]
     },
@@ -174,7 +201,9 @@
           {
             "type": "simple",
             "name": "x",
-            "value_types": ["Int"]
+            "value_types": [
+              "Int"
+            ]
           }
         ]
       },
@@ -184,7 +213,9 @@
             "type": "simple",
             "name": "result",
             "presentation": "-x",
-            "value_types": ["Int"]
+            "value_types": [
+              "Int"
+            ]
           }
         ]
       }
@@ -213,7 +244,9 @@
           {
             "type": "simple",
             "name": "x",
-            "value_types": ["Int"]
+            "value_types": [
+              "Int"
+            ]
           }
         ]
       },
@@ -223,7 +256,9 @@
             "type": "simple",
             "name": "result",
             "presentation": "x + 1",
-            "value_types": ["Int"]
+            "value_types": [
+              "Int"
+            ]
           }
         ]
       }
@@ -252,7 +287,9 @@
           {
             "type": "simple",
             "name": "x",
-            "value_types": ["Int"]
+            "value_types": [
+              "Int"
+            ]
           }
         ]
       },
@@ -262,7 +299,9 @@
             "type": "simple",
             "name": "result",
             "presentation": "x - 1",
-            "value_types": ["Int"]
+            "value_types": [
+              "Int"
+            ]
           }
         ]
       }
@@ -291,12 +330,16 @@
           {
             "type": "simple",
             "name": "x",
-            "value_types": ["Int"]
+            "value_types": [
+              "Int"
+            ]
           },
           {
             "type": "simple",
             "name": "y",
-            "value_types": ["Int"]
+            "value_types": [
+              "Int"
+            ]
           }
         ]
       },
@@ -306,7 +349,9 @@
             "type": "simple",
             "name": "result",
             "presentation": "x * y",
-            "value_types": ["Int"]
+            "value_types": [
+              "Int"
+            ]
           }
         ]
       }
@@ -325,12 +370,16 @@
           {
             "type": "simple",
             "name": "x",
-            "value_types": ["Int"]
+            "value_types": [
+              "Int"
+            ]
           },
           {
             "type": "simple",
             "name": "y",
-            "value_types": ["Int"]
+            "value_types": [
+              "Int"
+            ]
           }
         ]
       },
@@ -339,7 +388,9 @@
           {
             "type": "simple",
             "name": "result",
-            "value_types": ["Int"]
+            "value_types": [
+              "Int"
+            ]
           }
         ]
       }
@@ -358,12 +409,16 @@
           {
             "type": "simple",
             "name": "x",
-            "value_types": ["Int"]
+            "value_types": [
+              "Int"
+            ]
           },
           {
             "type": "simple",
             "name": "y",
-            "value_types": ["Int"]
+            "value_types": [
+              "Int"
+            ]
           }
         ]
       },
@@ -372,7 +427,9 @@
           {
             "type": "simple",
             "name": "result",
-            "value_types": ["Int"]
+            "value_types": [
+              "Int"
+            ]
           }
         ]
       }
@@ -391,12 +448,16 @@
           {
             "type": "simple",
             "name": "x",
-            "value_types": ["Int"]
+            "value_types": [
+              "Int"
+            ]
           },
           {
             "type": "simple",
             "name": "y",
-            "value_types": ["Int"]
+            "value_types": [
+              "Int"
+            ]
           }
         ]
       },
@@ -405,7 +466,9 @@
           {
             "type": "simple",
             "name": "result",
-            "value_types": ["Int"]
+            "value_types": [
+              "Int"
+            ]
           }
         ]
       }
@@ -424,7 +487,9 @@
           {
             "type": "simple",
             "name": "x",
-            "value_types": ["Int"]
+            "value_types": [
+              "Int"
+            ]
           }
         ]
       },
@@ -433,7 +498,9 @@
           {
             "type": "simple",
             "name": "result",
-            "value_types": ["Int"]
+            "value_types": [
+              "Int"
+            ]
           }
         ]
       }
@@ -452,7 +519,9 @@
           {
             "type": "simple",
             "name": "x",
-            "value_types": ["Int"]
+            "value_types": [
+              "Int"
+            ]
           }
         ]
       },
@@ -461,7 +530,9 @@
           {
             "type": "simple",
             "name": "result",
-            "value_types": ["Int"]
+            "value_types": [
+              "Int"
+            ]
           }
         ]
       }
@@ -480,7 +551,9 @@
           {
             "type": "simple",
             "name": "x",
-            "value_types": ["Int"]
+            "value_types": [
+              "Int"
+            ]
           }
         ]
       },
@@ -489,7 +562,9 @@
           {
             "type": "simple",
             "name": "result",
-            "value_types": ["Int"]
+            "value_types": [
+              "Int"
+            ]
           }
         ]
       }
@@ -508,12 +583,16 @@
           {
             "type": "simple",
             "name": "x",
-            "value_types": ["Int"]
+            "value_types": [
+              "Int"
+            ]
           },
           {
             "type": "simple",
             "name": "y",
-            "value_types": ["Int"]
+            "value_types": [
+              "Int"
+            ]
           }
         ]
       },
@@ -522,7 +601,9 @@
           {
             "type": "simple",
             "name": "result",
-            "value_types": ["Int"]
+            "value_types": [
+              "Int"
+            ]
           }
         ]
       }
@@ -533,11 +614,35 @@
       "short": "",
       "long": "Adds `x` from stack and `y` from arguments and pushes the result back onto the stack.",
       "tags": [],
-      "operands": ["y"],
+      "operands": [
+        "y"
+      ],
       "exit_codes": [
         {
           "errno": "4",
           "condition": "Top element is a `NaN`."
+        }
+      ],
+      "examples": [
+        {
+          "instructions": [
+            {
+              "instruction": "PUSHINT_4 5",
+              "comment": "Push integer 5 onto the stack"
+            },
+            {
+              "instruction": "ADDINT 3",
+              "comment": "Add 3 to the top stack value (5 + 3 = 8)"
+            }
+          ],
+          "stack": {
+            "input": [
+              "5"
+            ],
+            "output": [
+              "8"
+            ]
+          }
         }
       ]
     },
@@ -547,7 +652,9 @@
           {
             "type": "simple",
             "name": "x",
-            "value_types": ["Int"]
+            "value_types": [
+              "Int"
+            ]
           }
         ],
         "registers": []
@@ -558,7 +665,9 @@
             "type": "simple",
             "name": "result",
             "presentation": "x + y",
-            "value_types": ["Int"]
+            "value_types": [
+              "Int"
+            ]
           }
         ],
         "registers": []
@@ -570,11 +679,35 @@
       "short": "",
       "long": "Multiplies `x` from stack and `y` from arguments and pushes the result back onto the stack.",
       "tags": [],
-      "operands": ["y"],
+      "operands": [
+        "y"
+      ],
       "exit_codes": [
         {
           "errno": "4",
           "condition": "Top element is a `NaN`."
+        }
+      ],
+      "examples": [
+        {
+          "instructions": [
+            {
+              "instruction": "PUSHINT_4 7",
+              "comment": "Push integer 7 onto the stack"
+            },
+            {
+              "instruction": "MULINT 6",
+              "comment": "Multiply the top stack value by 6 (7 * 6 = 42)"
+            }
+          ],
+          "stack": {
+            "input": [
+              "7"
+            ],
+            "output": [
+              "42"
+            ]
+          }
         }
       ]
     },
@@ -584,7 +717,9 @@
           {
             "type": "simple",
             "name": "x",
-            "value_types": ["Int"]
+            "value_types": [
+              "Int"
+            ]
           }
         ],
         "registers": []
@@ -595,7 +730,9 @@
             "type": "simple",
             "name": "result",
             "presentation": "x * y",
-            "value_types": ["Int"]
+            "value_types": [
+              "Int"
+            ]
           }
         ],
         "registers": []
@@ -607,7 +744,9 @@
       "short": "",
       "long": "Adds `x` from stack and `y` from arguments and pushes the result back onto the stack. If stack element is a `NaN`, returns `NaN`.",
       "tags": [],
-      "operands": ["y"]
+      "operands": [
+        "y"
+      ]
     },
     "signature": {
       "inputs": {
@@ -615,7 +754,9 @@
           {
             "type": "simple",
             "name": "x",
-            "value_types": ["Int"]
+            "value_types": [
+              "Int"
+            ]
           }
         ],
         "registers": []
@@ -626,7 +767,9 @@
             "type": "simple",
             "name": "result",
             "presentation": "x + y",
-            "value_types": ["Int"]
+            "value_types": [
+              "Int"
+            ]
           }
         ],
         "registers": []
@@ -638,7 +781,9 @@
       "short": "",
       "long": "Multiplies `x` from stack and `y` from arguments and pushes the result back onto the stack. If stack element is a `NaN`, returns `NaN`.",
       "tags": [],
-      "operands": ["y"]
+      "operands": [
+        "y"
+      ]
     },
     "signature": {
       "inputs": {
@@ -646,7 +791,9 @@
           {
             "type": "simple",
             "name": "x",
-            "value_types": ["Int"]
+            "value_types": [
+              "Int"
+            ]
           }
         ],
         "registers": []
@@ -657,7 +804,9 @@
             "type": "simple",
             "name": "result",
             "presentation": "x * y",
-            "value_types": ["Int"]
+            "value_types": [
+              "Int"
+            ]
           }
         ],
         "registers": []
