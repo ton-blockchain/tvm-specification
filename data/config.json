@@ -98,7 +98,7 @@
   "BALANCE": {
     "description": {
       "short": "Returns current smart contract balance.",
-      "long": "Returns the current balance of the smart contract in nanotons. This value is taken from the parameter 7 of the c7 tuple.",
+      "long": "Returns the current balance of the smart contract as a tuple `(balance_grams, balance_other)`, where `balance_grams` is the remaining balance in nanotons (_Int_) and `balance_other` is a _Maybe Cell_ representing a dictionary of extra currencies. This value is taken from the parameter 7 of the c7 tuple.",
       "tags": ["balance"],
       "operands": []
     },
@@ -112,7 +112,7 @@
           {
             "type": "simple",
             "name": "balance",
-            "value_types": ["Int"]
+            "value_types": ["Tuple"]
           }
         ],
         "registers": []
