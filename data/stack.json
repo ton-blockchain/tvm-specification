@@ -872,6 +872,26 @@
           "exact": true,
           "instructions": ["XCPU s1 s1"]
         }
+      ],
+      "examples": [
+        {
+          "instructions": [
+            {
+              "instruction": "PUSHINT_4 1"
+            },
+            {
+              "instruction": "PUSHINT_4 2"
+            },
+            {
+              "instruction": "TUCK",
+              "comment": "Copies the top element (2) below the second element"
+            }
+          ],
+          "stack": {
+            "input": ["1", "2"],
+            "output": ["2", "1", "2"]
+          }
+        }
       ]
     },
     "signature": {
@@ -1539,6 +1559,26 @@
           "errno": "2",
           "condition": "Stack contains less than 2 elements."
         }
+      ],
+      "examples": [
+        {
+          "instructions": [
+            {
+              "instruction": "PUSHINT_4 1"
+            },
+            {
+              "instruction": "PUSHINT_4 2"
+            },
+            {
+              "instruction": "DROP2",
+              "comment": "Removes the top two elements (1 and 2)"
+            }
+          ],
+          "stack": {
+            "input": ["1", "2"],
+            "output": []
+          }
+        }
       ]
     },
     "signature": {
@@ -1661,6 +1701,32 @@
         {
           "errno": "2",
           "condition": "Stack contains less than 4 elements."
+        }
+      ],
+      "examples": [
+        {
+          "instructions": [
+            {
+              "instruction": "PUSHINT_4 1"
+            },
+            {
+              "instruction": "PUSHINT_4 2"
+            },
+            {
+              "instruction": "PUSHINT_4 3"
+            },
+            {
+              "instruction": "PUSHINT_4 4"
+            },
+            {
+              "instruction": "OVER2",
+              "comment": "Copies the third and fourth elements (1 and 2) to the top"
+            }
+          ],
+          "stack": {
+            "input": ["1", "2", "3", "4"],
+            "output": ["1", "2", "3", "4", "1", "2"]
+          }
         }
       ]
     },
