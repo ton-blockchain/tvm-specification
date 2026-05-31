@@ -40,12 +40,14 @@ This repository contains scripts that check the validity of instruction descript
 
 ## Projects that use this specification
 
+- [Acton](https://github.com/ton-blockchain/acton) — A unified toolchain for TON smart contracts
 - [TxTracer](https://txtracer.ton.org/) — Web app for tracing and analyzing transactions
 - [Playground](https://txtracer.ton.org/play/) — TVM Assembly and FunC playground
 - [TON VS Code Extension](https://github.com/ton-blockchain/ton-language-server) — VS Code extension for TON developers
 - [TVM Specification page](https://txtracer.ton.org/spec/) — Visual representation of this specification
 - [TASM](https://github.com/ton-blockchain/tasm) — Assembler and disassembler implementation for TVM bitcode in pure
   TypeScript tested on 100k real contracts from blockchain
+- [IntelliJ TON](https://github.com/ton-blockchain/intellij-ton) — IntelliJ plugin for TON development
 
 ## Examples
 
