@@ -25,7 +25,10 @@ export const instructionList = (): [string, Opcode][] => {
     return Object.entries(instructions)
         .filter(
             ([name]) =>
-                !name.startsWith("f") && !name.startsWith("PSEUDO_") && name !== "DEBUGMARK",
+                !name.startsWith("f") &&
+                !name.startsWith("PSEUDO_") &&
+                name !== "DEBUGMARK" &&
+                name !== "EXTCALL",
         )
         .map(([rawName, opcode]) => {
             const normalizedHashes = rawName.replace("#", "_")
