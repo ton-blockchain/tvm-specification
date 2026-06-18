@@ -100,6 +100,14 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "register",
+          "index": 2
+        }
+      ]
     }
   },
   "THROWARGANY": {
@@ -130,6 +138,14 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "register",
+          "index": 2
+        }
+      ]
     }
   },
   "THROWANYIFNOT": {
@@ -151,6 +167,14 @@
             "type": "simple",
             "name": "cond",
             "value_types": ["Int"]
+          }
+        ]
+      },
+      "control_flow": {
+        "branches": [
+          {
+            "type": "register",
+            "index": 2
           }
         ]
       }
@@ -183,6 +207,14 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "register",
+          "index": 2
+        }
+      ]
     }
   },
   "TRYARGS": {
@@ -291,6 +323,14 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "register",
+          "index": 2
+        }
+      ]
     }
   },
   "THROWARGIF": {
@@ -315,6 +355,14 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "register",
+          "index": 2
+        }
+      ]
     }
   },
   "THROWARGIFNOT": {
@@ -339,6 +387,14 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "register",
+          "index": 2
+        }
+      ]
     }
   },
   "THROWANYIF": {
@@ -363,6 +419,14 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "register",
+          "index": 2
+        }
+      ]
     }
   },
   "THROWARGANYIF": {
@@ -392,6 +456,14 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "register",
+          "index": 2
+        }
+      ]
     }
   },
   "THROW_SHORT": {
@@ -410,6 +482,14 @@
         "stack": [],
         "registers": []
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "register",
+          "index": 2
+        }
+      ]
     }
   },
   "THROW": {
@@ -428,6 +508,14 @@
         "stack": [],
         "registers": []
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "register",
+          "index": 2
+        }
+      ]
     }
   },
   "THROWIF_SHORT": {
@@ -447,6 +535,14 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "register",
+          "index": 2
+        }
+      ]
     }
   },
   "THROWIF": {
@@ -466,6 +562,14 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "register",
+          "index": 2
+        }
+      ]
     }
   },
   "THROWIFNOT_SHORT": {
@@ -485,6 +589,14 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "register",
+          "index": 2
+        }
+      ]
     }
   },
   "THROWIFNOT": {
@@ -504,6 +616,14 @@
           }
         ]
       }
+    },
+    "control_flow": {
+      "branches": [
+        {
+          "type": "register",
+          "index": 2
+        }
+      ]
     }
   }
 }
